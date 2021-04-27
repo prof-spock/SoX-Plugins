@@ -1,0 +1,11 @@
+/**
+ * The package <C>ViewAndController</C> provides classes for the
+ * interconnection to the enclosing plugin framework (abstracted via
+ * the JUCE framework): a <C>SoXAudioProcessor</C> connects to the
+ * plugin host, the <C>SoXAudioEditor</C> is the UI component and
+ * interacts with the user and consists of
+ * <C>SoXAudioEditorWidgets</C> like sliders and comboboxes to show
+ * and get data.
+ */
+namespace SoXPlugins::ViewAndController {
+}

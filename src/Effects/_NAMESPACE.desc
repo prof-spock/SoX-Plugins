@@ -1,0 +1,8 @@
+/**
+ * The package <C>Effects</C> provides types for the different audio
+ * effects themselves; the currently supported SoX effects are
+ * <B>compander</B>, <B>filter</B>, <B>gain</B>, <B>overdrive</B>,
+ * <B>phaser/tremolo</B> and <B>reverb</B>.
+ */
+namespace SoXPlugins::Effects {
+}

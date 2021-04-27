@@ -1,0 +1,9 @@
+/**
+ * The package <C>SoXFilter</C> provides classes for the SoX audio
+ * effects for IIR filters; those are <B>allpass</B>, <B>band</B>,
+ * <B>bandpass</B>, <B>bandreject</B>, <B>bass</B>, <B>biquad</B>,
+ * <B>equalizer</B>, <B>highpass</B>, <B>lowpass</B> and <B>treble</B>
+ * filters that are combined into a single plugin.
+ */
+namespace SoXPlugins::Effects::SoXFilter {
+}

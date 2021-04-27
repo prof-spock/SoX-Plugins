@@ -1,0 +1,6 @@
+/**
+ * The package <C>SoXReverb</C> provides classes for the SoX
+ * <B>reverb</B> audio effect.
+ */
+namespace SoXPlugins::Effects::SoXReverb {
+}

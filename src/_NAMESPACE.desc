@@ -1,0 +1,8 @@
+/**
+ * The package <C>SoXPlugins</C> provides all types for the DAW
+ * plugins emulating the command-line audio processor SoX; the
+ * connection to the plugin host is abstracted via the JUCE framework,
+ * the effect implementation itself is completedly self-contained.
+ */
+namespace SoXPlugins {
+}

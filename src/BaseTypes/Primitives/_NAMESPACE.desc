@@ -1,0 +1,7 @@
+/**
+ * The package <C>Primitives</C> provides the primitive types used for
+ * the SoX plugins; those are type wrappers around booleans, integers,
+ * naturals, percentages, objects, radians, reals and strings.
+ */
+namespace SoXPlugins::BaseTypes::Primitives {
+}

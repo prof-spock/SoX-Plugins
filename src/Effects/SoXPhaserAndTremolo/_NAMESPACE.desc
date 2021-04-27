@@ -1,0 +1,7 @@
+/**
+ * The package <C>SoXPhaserAndTremolo</C> provides classes for the SoX
+ * audio modulation effects <B>phaser</B> and <B>tremolo</B> that have
+ * similar parameters and hence are combined into a single plugin.
+ */
+namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
+}

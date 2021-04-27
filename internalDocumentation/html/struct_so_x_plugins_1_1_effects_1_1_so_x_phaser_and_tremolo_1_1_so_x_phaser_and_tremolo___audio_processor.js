@@ -1,0 +1,5 @@
+var struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_processor =
+[
+    [ "SoXPhaserAndTremolo_AudioProcessor", "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_processor.html#ac55b4fbf31972e3c7c6dfd64cb6ae3cb", null ],
+    [ "name", "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_processor.html#a68d27293440421ecb813ae448c6f4c5c", null ]
+];

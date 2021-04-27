@@ -1,0 +1,7 @@
+/**
+ * The package <C>CommonAudio</C> contains the audio specific types
+ * used for the SoX plugins (like sample management, IIR filtering,
+ * waveform management etc.).
+ */
+namespace SoXPlugins::CommonAudio {
+}

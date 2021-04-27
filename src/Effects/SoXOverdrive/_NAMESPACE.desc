@@ -1,0 +1,6 @@
+/**
+ * The package <C>SoXOverdrive</C> provides classes for the SoX
+ * <B>overdrive</B> audio effect.
+ */
+namespace SoXPlugins::Effects::SoXOverdrive {
+}

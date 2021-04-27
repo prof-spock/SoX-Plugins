@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['_5fallpassfilter_550',['_AllpassFilter',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html',1,'SoXPlugins::Effects::SoXReverb']]],
+  ['_5fcombfilter_551',['_CombFilter',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html',1,'SoXPlugins::Effects::SoXReverb']]],
+  ['_5fcompander_552',['_Compander',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html',1,'SoXPlugins::Effects::SoXCompander']]],
+  ['_5fcompanderbandparameterdata_553',['_CompanderBandParameterData',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander_band_parameter_data.html',1,'SoXPlugins::Effects::SoXCompander']]],
+  ['_5feffectdescriptor_5fcmpd_554',['_EffectDescriptor_CMPD',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___effect_descriptor___c_m_p_d.html',1,'SoXPlugins::Effects::SoXCompander']]],
+  ['_5feffectdescriptor_5ffltr_555',['_EffectDescriptor_FLTR',['../struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html',1,'SoXPlugins::Effects::SoXFilter']]],
+  ['_5feffectdescriptor_5fgain_556',['_EffectDescriptor_GAIN',['../struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1___effect_descriptor___g_a_i_n.html',1,'SoXPlugins::Effects::SoXGain']]],
+  ['_5feffectdescriptor_5fovrd_557',['_EffectDescriptor_OVRD',['../struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_v_r_d.html',1,'SoXPlugins::Effects::SoXOverdrive']]],
+  ['_5feffectdescriptor_5fphtr_558',['_EffectDescriptor_PHTR',['../struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html',1,'SoXPlugins::Effects::SoXPhaserAndTremolo']]],
+  ['_5feffectdescriptor_5frvrb_559',['_EffectDescriptor_RVRB',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html',1,'SoXPlugins::Effects::SoXReverb']]],
+  ['_5floggingtime_560',['_LoggingTime',['../class_so_x_plugins_1_1_base_types_1_1___logging_time.html',1,'SoXPlugins::BaseTypes']]],
+  ['_5flrcrossoverfilter_561',['_LRCrossoverFilter',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_crossover_filter.html',1,'SoXPlugins::Effects::SoXCompander']]],
+  ['_5flrfilter_562',['_LRFilter',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_filter.html',1,'SoXPlugins::Effects::SoXCompander']]],
+  ['_5fmcompanderband_563',['_MCompanderBand',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html',1,'SoXPlugins::Effects::SoXCompander']]],
+  ['_5fpoint2d_564',['_Point2D',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html',1,'SoXPlugins::Effects::SoXCompander']]],
+  ['_5freverbchannel_565',['_ReverbChannel',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_channel.html',1,'SoXPlugins::Effects::SoXReverb']]],
+  ['_5freverbeffectparameterdata_566',['_ReverbEffectParameterData',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html',1,'SoXPlugins::Effects::SoXReverb']]],
+  ['_5freverbline_567',['_ReverbLine',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html',1,'SoXPlugins::Effects::SoXReverb']]],
+  ['_5fsoxreverb_568',['_SoXReverb',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___so_x_reverb.html',1,'SoXPlugins::Effects::SoXReverb']]],
+  ['_5ftfsegment_569',['_TfSegment',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html',1,'SoXPlugins::Effects::SoXCompander']]],
+  ['_5ftransferfunction_570',['_TransferFunction',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html',1,'SoXPlugins::Effects::SoXCompander']]],
+  ['_5fwaveformdescriptor_571',['_WaveFormDescriptor',['../struct_so_x_plugins_1_1_common_audio_1_1___wave_form_descriptor.html',1,'SoXPlugins::CommonAudio']]]
+];

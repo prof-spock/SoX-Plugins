@@ -1,0 +1,213 @@
+/**
+ * @file
+ * The <C>SoXAudioSampleQueue</C> body implements a ring buffer for
+ * audio samples with left and right shifts and access to first and
+ * last elements in queue <I>(this is the effective code include file
+ * for conditional inlining)</I>.
+ *
+ * @author Dr. Thomas Tensi
+ */
+
+/*====================*/
+
+#include "StringUtil.h"
+
+/*====================*/
+
+using SoXPlugins::CommonAudio::SoXAudioSampleQueue;
+namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
+
+/*====================*/
+
+/** calculates the effective index in a ring buffer by modulus
+ * calculation */
+#define SQ_effectiveIndex(p) ((_firstIndex + (p)) % _length)
+
+/** calculates the effective last index in a ring buffer */
+#define SQ_lastIndex (_firstIndex > 0 ? _firstIndex - 1 : _length - 1)
+
+/** calculates the effective next index in a ring buffer */
+#define SQ_nextIndex (_firstIndex < _length - 1 ? _firstIndex + 1 : 0)
+
+/*--------------------*/
+
+INLINE
+SoXAudioSampleQueue::SoXAudioSampleQueue ()
+    : _firstIndex{0},
+      _data{},
+      _length{0},
+      _allocatedLength{0}
+{
+}
+
+/*--------------------*/
+
+INLINE
+SoXAudioSampleQueue::SoXAudioSampleQueue (IN Natural length)
+    : _firstIndex{0},
+      _data{},
+      _length{length},
+      _allocatedLength{length}
+{
+    _data.setLength(length);
+    setToZero();
+}
+
+/*--------------------*/
+
+INLINE
+SoXAudioSampleQueue::~SoXAudioSampleQueue ()
+{
+    _data.resize(0);
+    _length = 0;
+}
+
+/*--------------------*/
+
+INLINE
+String SoXAudioSampleQueue::toString() const
+{
+    String st = "[";
+
+    for (Natural i = 0;  i < _length;  i++) {
+        st += (i > 0 ? ", " : "") + TOSTRING(_data[i]);
+    }
+
+    st += "]";
+
+    String result = "SoXAudioSampleQueue(";
+    result += "_firstIndex = " + TOSTRING(_firstIndex);
+    result += ", _length = " + TOSTRING(_length);
+    result += ", _allocatedLength = " + TOSTRING(_allocatedLength);
+    result += ", _data = " + st;
+    result += ")";
+
+    return result;
+}
+
+/*--------------------*/
+
+INLINE
+void SoXAudioSampleQueue::setToZero ()
+{
+    _firstIndex = 0;
+
+    for (SoXAudioSample& listElement : _data) {
+        listElement = 0.0;
+    }
+}
+
+/*--------------------*/
+
+INLINE
+void SoXAudioSampleQueue::setLength (IN Natural length)
+{
+    if (length > _allocatedLength) {
+        _data.setLength(length);
+        _allocatedLength = length;
+    }
+
+    _length = length;
+    setToZero();
+}
+
+/*--------------------*/
+
+INLINE
+Natural SoXAudioSampleQueue::length () const
+{
+    return _length;
+}
+
+/*--------------------*/
+
+INLINE
+SoXAudioSample& SoXAudioSampleQueue::at (IN Natural position)
+{
+    const Natural i = SQ_effectiveIndex(position);
+    return _data[i];
+}
+
+/*--------------------*/
+
+INLINE
+const SoXAudioSample& SoXAudioSampleQueue::at (IN Natural position) const
+{
+    const Natural i = SQ_effectiveIndex(position);
+    return _data[i];
+}
+
+/*--------------------*/
+
+INLINE
+SoXAudioSample& SoXAudioSampleQueue::operator [] (IN Natural position)
+{
+    return at(position);
+}
+
+/*--------------------*/
+
+INLINE const
+SoXAudioSample& SoXAudioSampleQueue::operator [] (IN Natural position) const
+{
+    return at(position);
+}
+
+/*--------------------*/
+
+INLINE
+SoXAudioSample SoXAudioSampleQueue::first () const
+{
+    return _data[_firstIndex];
+}
+
+/*--------------------*/
+
+INLINE
+SoXAudioSample SoXAudioSampleQueue::last () const
+{
+    return _data[SQ_lastIndex];
+}
+
+/*--------------------*/
+
+INLINE
+void SoXAudioSampleQueue::setAt (IN Natural position,
+                                 IN SoXAudioSample sample)
+{
+    Natural i = SQ_effectiveIndex(position);
+    _data[i] = sample;
+}
+
+/*--------------------*/
+
+INLINE
+void SoXAudioSampleQueue::setFirst (IN SoXAudioSample sample)
+{
+    _data[_firstIndex] = sample;
+}
+
+/*--------------------*/
+
+INLINE
+void SoXAudioSampleQueue::setLast (IN SoXAudioSample sample)
+{
+    _data[SQ_lastIndex] = sample;
+}
+
+/*--------------------*/
+
+INLINE
+void SoXAudioSampleQueue::shiftLeft (IN SoXAudioSample sample)
+{
+    _data[_firstIndex] = sample;
+    _firstIndex = SQ_nextIndex;
+}
+
+/*--------------------*/
+INLINE
+void SoXAudioSampleQueue::shiftRight (IN SoXAudioSample sample)
+{
+    _firstIndex = SQ_lastIndex;
+    _data[_firstIndex] = sample;
+}

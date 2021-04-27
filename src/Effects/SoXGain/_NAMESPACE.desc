@@ -1,0 +1,6 @@
+/**
+ * The package <C>SoXGain</C> provides classes for the SoX <B>gain</B>
+ * audio effect.
+ */
+namespace SoXPlugins::Effects::SoXGain {
+}
