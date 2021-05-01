@@ -87,37 +87,37 @@ $(document).ready(function(){initNavTree('_so_x_audio_value_change_kind_8h_sourc
 </div><!--header-->
 <div class="contents">
 <a href="_so_x_audio_value_change_kind_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/*====================*/</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_so_x_plugins_1_1_common_audio.html">SoXPlugins::CommonAudio</a> {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespace_so_x_plugins_1_1_common_audio.html#a1fb0f1efa0fe27a0b4f4fe91f1cd60d3">   17</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="namespace_so_x_plugins_1_1_common_audio.html#a1fb0f1efa0fe27a0b4f4fe91f1cd60d3">SoXAudioValueChangeKind</a> : short {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        globalChange = 1,</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        pageChange = 2,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        pageCountChange = 3,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="namespace_so_x_plugins_1_1_common_audio.html#a1fb0f1efa0fe27a0b4f4fe91f1cd60d3ab6c1503bf3ca26a7932d2f6227ec2ba3">parameterChange</a> = 4</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    };</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/*--------------------*/</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="_so_x_audio_value_change_kind_8h.html#ac0c53f28407f02fa1dc457202665e8a6">   44</a></span>&#160;<span class="preprocessor">#define SoXAudioValueChangeKind_toString(kind) \</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">    String((short)(kind) == 1 ? &quot;globalChange&quot; \</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">           : ((short)(kind) == 2 ? &quot;pageChange&quot; \</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">              : ((short)(kind) == 3 ? &quot;pageCountChange&quot; \</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">                 : &quot;parameterChange&quot;)))</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/*====================*/</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_so_x_plugins_1_1_common_audio.html">SoXPlugins::CommonAudio</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="namespace_so_x_plugins_1_1_common_audio.html#a1fb0f1efa0fe27a0b4f4fe91f1cd60d3">   18</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="namespace_so_x_plugins_1_1_common_audio.html#a1fb0f1efa0fe27a0b4f4fe91f1cd60d3">SoXAudioValueChangeKind</a> : short {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        globalChange = 1,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        pageChange = 2,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        pageCountChange = 3,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="namespace_so_x_plugins_1_1_common_audio.html#a1fb0f1efa0fe27a0b4f4fe91f1cd60d3ab6c1503bf3ca26a7932d2f6227ec2ba3">parameterChange</a> = 4</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    };</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/*--------------------*/</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="_so_x_audio_value_change_kind_8h.html#ac0c53f28407f02fa1dc457202665e8a6">   45</a></span>&#160;<span class="preprocessor">#define SoXAudioValueChangeKind_toString(kind) \</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">    String((short)(kind) == 1 ? &quot;globalChange&quot; \</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">           : ((short)(kind) == 2 ? &quot;pageChange&quot; \</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">              : ((short)(kind) == 3 ? &quot;pageCountChange&quot; \</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">                 : &quot;parameterChange&quot;)))</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespace_so_x_plugins_1_1_common_audio_html_a1fb0f1efa0fe27a0b4f4fe91f1cd60d3ab6c1503bf3ca26a7932d2f6227ec2ba3"><div class="ttname"><a href="namespace_so_x_plugins_1_1_common_audio.html#a1fb0f1efa0fe27a0b4f4fe91f1cd60d3ab6c1503bf3ca26a7932d2f6227ec2ba3">SoXPlugins::CommonAudio::SoXAudioValueChangeKind::globalChange</a></div><div class="ttdeci">@ globalChange</div><div class="ttdoc">the global change in all parameters</div></div>
-<div class="ttc" id="anamespace_so_x_plugins_1_1_common_audio_html_a1fb0f1efa0fe27a0b4f4fe91f1cd60d3"><div class="ttname"><a href="namespace_so_x_plugins_1_1_common_audio.html#a1fb0f1efa0fe27a0b4f4fe91f1cd60d3">SoXPlugins::CommonAudio::SoXAudioValueChangeKind</a></div><div class="ttdeci">SoXAudioValueChangeKind</div><div class="ttdoc">kind of change in a parameter value to be reported to observers</div><div class="ttdef"><b>Definition:</b> SoXAudioValueChangeKind.h:17</div></div>
+<div class="ttc" id="anamespace_so_x_plugins_1_1_common_audio_html_a1fb0f1efa0fe27a0b4f4fe91f1cd60d3"><div class="ttname"><a href="namespace_so_x_plugins_1_1_common_audio.html#a1fb0f1efa0fe27a0b4f4fe91f1cd60d3">SoXPlugins::CommonAudio::SoXAudioValueChangeKind</a></div><div class="ttdeci">SoXAudioValueChangeKind</div><div class="ttdoc">kind of change in a parameter value to be reported to observers</div><div class="ttdef"><b>Definition:</b> SoXAudioValueChangeKind.h:18</div></div>
 <div class="ttc" id="anamespace_so_x_plugins_1_1_common_audio_html"><div class="ttname"><a href="namespace_so_x_plugins_1_1_common_audio.html">SoXPlugins::CommonAudio</a></div><div class="ttdoc">The package CommonAudio contains the audio specific types used for the SoX plugins (like sample manag...</div><div class="ttdef"><b>Definition:</b> _NAMESPACE.desc:6</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

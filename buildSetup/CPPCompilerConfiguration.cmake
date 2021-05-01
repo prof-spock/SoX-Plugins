@@ -70,8 +70,23 @@ IF(MSVC)
            /fp:fast      # fast floating point calculation
     )
 ELSE()
-    # lots of warnings and all warnings as errors
-    SET(cppFlagsRelease -Wall -Wextra -pedantic -Werror)
+    STRING(JOIN " " cppFlagsCommon
+           -O2                  # any suitable inline expansion
+           -Ofast               # favors fast code
+           -pedantic            # set strict standard conformance
+           -Wall                # warning level: all
+    )
+
+    # ---  add all clauses in cppDefineClauseList ---
+    FOREACH(defineClause ${cppDefineClauseList})
+        STRING(APPEND cppFlagsCommon " -D" ${defineClause})
+    ENDFOREACH()         
+  
+    STRING(JOIN " " cppFlagsRelease
+           -DNDEBUG      # no debugging
+           -Ofast        # generate fast code
+           /ffast-math   # fast floating point calculation
+    )
 ENDIF()
 
 SET(CMAKE_CXX_FLAGS ${cppFlagsCommon} CACHE STRING "" FORCE)

@@ -3,6 +3,9 @@
  * The <C>GenericSequence</C> specification and body defines a
  * generic sequence type of values with zero-based arbitrary indexed
  * access to positions in the sequence.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once

@@ -1,5 +1,10 @@
 var NAVTREEINDEX2 =
 {
+"struct_so_x_plugins_1_1_common_audio_1_1___wave_form_descriptor.html#ad17a579e9246dbb431f7f6044a4f0624":[1,0,0,1,0,7],
+"struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html":[1,0,0,1,1],
+"struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a06fb80612a4ed2308cf768c5f7bac0a7":[1,0,0,1,1,1],
+"struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a20683cbe412d425bc27b7bd3a8e63e0b":[1,0,0,1,1,7],
+"struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a52c02d7043630d5cb6a339f9f20170a8":[1,0,0,1,1,6],
 "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a6846edf1d6af8abf8617cf5f443f126e":[1,0,0,1,1,3],
 "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a6ec699909aea949a87215532343e0e59":[1,0,0,1,1,20],
 "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a798c194b470722f63a9430b9db094c88":[1,0,0,1,1,17],
@@ -244,10 +249,5 @@ var NAVTREEINDEX2 =
 "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html":[1,0,0,2,3,1],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a157e13cfd1e5ea0c24b60a8ede823654":[1,0,0,2,3,1,6],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a8cb97a9f31655fc9e214fbd1891c48de":[1,0,0,2,3,1,1],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a935d301106298215ee2f9d0876517d99":[1,0,0,2,3,1,3],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#aa0d8e076c4b664d6eaf31834c2ad6beb":[1,0,0,2,3,1,5],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#aa5d32d5c41a45bc5f0516764b5069316":[1,0,0,2,3,1,0],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#ad298109a1586eb1ea6ab9109d7127d8e":[1,0,0,2,3,1,4],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#ada554264fd5285fa3a4d75cac71c19cd":[1,0,0,2,3,1,2],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor.html":[1,0,0,2,3,2]
+"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a935d301106298215ee2f9d0876517d99":[1,0,0,2,3,1,3]
 };

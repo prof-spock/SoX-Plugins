@@ -2,6 +2,9 @@
  * @file
  * The <C>Object</C> specification and body provides the root object
  * type.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once

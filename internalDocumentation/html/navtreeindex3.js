@@ -1,5 +1,10 @@
 var NAVTREEINDEX3 =
 {
+"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#aa0d8e076c4b664d6eaf31834c2ad6beb":[1,0,0,2,3,1,5],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#aa5d32d5c41a45bc5f0516764b5069316":[1,0,0,2,3,1,0],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#ad298109a1586eb1ea6ab9109d7127d8e":[1,0,0,2,3,1,4],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#ada554264fd5285fa3a4d75cac71c19cd":[1,0,0,2,3,1,2],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor.html":[1,0,0,2,3,2],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor.html#aa7106c20ea3574056de8312a8fa8622b":[1,0,0,2,3,2,0],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor.html#ada530e02bdce68c1745d78cbc24eed82":[1,0,0,2,3,2,1],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html":[1,0,0,2,4,0],

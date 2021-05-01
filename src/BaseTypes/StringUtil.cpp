@@ -5,6 +5,7 @@
  * calculation, whitespace stripping etc).
  *
  * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 /*====================*/

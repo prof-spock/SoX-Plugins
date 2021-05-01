@@ -1,6 +1,9 @@
 /**
  * @file
  * The <C>String</C> body implements a standard string type.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 /*====================*/

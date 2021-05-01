@@ -4,6 +4,7 @@
  * a VST3 plugin for the SoX <B>gain</B> effect.
  *
  * @author Dr. Thomas Tensi
+ * @date   2020-07
  */
 
 /*====================*/

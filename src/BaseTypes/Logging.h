@@ -5,6 +5,9 @@
  * provides a conditional facade that expands all logging functions to
  * empty for production code and expands to concrete logging
  * implementations for debugging code.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2021-02
  */
 
 #pragma once

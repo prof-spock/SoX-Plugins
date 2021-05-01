@@ -5,6 +5,9 @@
  * the beginning or end of a function with prefices ">>" and "<<" as
  * well as intermediate log lines with prefix "--"; the name of the
  * function is also logged to give a fully bracketed log.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2021-02
  */
 
 #pragma once

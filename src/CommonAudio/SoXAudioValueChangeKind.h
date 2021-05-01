@@ -4,6 +4,7 @@
  * change kind enumeration for SoX plugins.
  *
  * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once

@@ -5,6 +5,7 @@
  * compander is just seen as a multiband compander with a single band.
  *
  * @author Dr. Thomas Tensi
+ * @date   2021-01
  */
 
 /*====================*/

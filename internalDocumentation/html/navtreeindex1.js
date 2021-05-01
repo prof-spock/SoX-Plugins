@@ -1,5 +1,10 @@
 var NAVTREEINDEX1 =
 {
+"dir_74b0edb8dc056f9954be058bc67f17c6.html":[2,0,0,0,0],
+"dir_79ff3fa04765fe858cfb9c52ad27e8cd.html":[2,0,0,2,1],
+"dir_87308edd68cd74a6fcef9bee24916036.html":[2,0,0,1],
+"dir_a4945da1ebc4024de933b7ceb3435a56.html":[2,0,0,2,5],
+"dir_ea754da17e3d11d3201d9d479b786745.html":[2,0,0,0,1],
 "files.html":[2,0],
 "functions.html":[1,3,0],
 "functions.html":[1,3,0,0],
@@ -79,8 +84,8 @@ var NAVTREEINDEX1 =
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html":[0,0,0,2,0],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html":[1,0,0,2,1],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html":[0,0,0,2,1],
-"namespace_so_x_plugins_1_1_effects_1_1_so_x_gain.html":[0,0,0,2,2],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_gain.html":[1,0,0,2,2],
+"namespace_so_x_plugins_1_1_effects_1_1_so_x_gain.html":[0,0,0,2,2],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive.html":[1,0,0,2,3],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive.html":[0,0,0,2,3],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html":[0,0,0,2,4],
@@ -244,10 +249,5 @@ var NAVTREEINDEX1 =
 "struct_so_x_plugins_1_1_common_audio_1_1___wave_form_descriptor.html#a893bd97b4ad3c6fde9d06fa3625a8ecf":[1,0,0,1,0,9],
 "struct_so_x_plugins_1_1_common_audio_1_1___wave_form_descriptor.html#a99f61cc2cc8b55bf234db70585964a56":[1,0,0,1,0,4],
 "struct_so_x_plugins_1_1_common_audio_1_1___wave_form_descriptor.html#abca60d9a5dfcd57a1aad24f00de49d89":[1,0,0,1,0,0],
-"struct_so_x_plugins_1_1_common_audio_1_1___wave_form_descriptor.html#ac1f71d451ab12d480877d1a5a34b885b":[1,0,0,1,0,6],
-"struct_so_x_plugins_1_1_common_audio_1_1___wave_form_descriptor.html#ad17a579e9246dbb431f7f6044a4f0624":[1,0,0,1,0,7],
-"struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html":[1,0,0,1,1],
-"struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a06fb80612a4ed2308cf768c5f7bac0a7":[1,0,0,1,1,1],
-"struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a20683cbe412d425bc27b7bd3a8e63e0b":[1,0,0,1,1,7],
-"struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a52c02d7043630d5cb6a339f9f20170a8":[1,0,0,1,1,6]
+"struct_so_x_plugins_1_1_common_audio_1_1___wave_form_descriptor.html#ac1f71d451ab12d480877d1a5a34b885b":[1,0,0,1,0,6]
 };

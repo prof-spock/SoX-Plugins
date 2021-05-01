@@ -3,6 +3,10 @@
  * effects themselves; the currently supported SoX effects are
  * <B>compander</B>, <B>filter</B>, <B>gain</B>, <B>overdrive</B>,
  * <B>phaser/tremolo</B> and <B>reverb</B>.
+ *
+ * The plugins are based on the algorithms in the SoX repository based
+ * on the works of the SoX team namely Chris Bagwell, Mans Rullgard,
+ * Rob Sewell, Ulrich Klauer, Lance Norskog and many others.
  */
 namespace SoXPlugins::Effects {
 }

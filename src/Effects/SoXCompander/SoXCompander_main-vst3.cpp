@@ -5,6 +5,7 @@
  * <B>mcompand</B> effect.
  *
  * @author Dr. Thomas Tensi
+ * @date   2021-01
  */
 
 /*====================*/

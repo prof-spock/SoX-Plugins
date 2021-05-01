@@ -226,21 +226,22 @@ audio files in several formats into other audio files.  It provides
 several standard audio effects (like e.g. filters or reverb) in good
 quality and with a transparent, open-source implementation.
 
-The plugin implementation is completely platform-neutral based on the
-JUCE audio framework~\cite{reference:juce}.  Currently only a build
-for VST3 plugins under Windows 10 is provided, but porting to other
-targets should be straightforward, since building is supported by a
+The plugin implementation is completely free, open-source,
+platform-neutral and based on the JUCE audio
+framework~\cite{reference:juce}.  Currently only a version for VST3
+plugins under Windows 10 is provided, but porting to other targets
+should be straightforward, since building is supported by a
 platform-neutral CMAKE build file (see chapter~\ref{section:build}).
 
 The effects provided here are a complete rewrite in C++ of the
-original \SoX\ algorithms, but still aiming at producing
+original \SoX\ algorithms nevertheless aiming at producing
 \emph{(bit-exact) identical} renderings in the DAW.  This goal is
-achieved. When rendering some audio externally via \SoX\ and
+achieved: when rendering some audio externally via \SoX\ and
 internally with the plugins, there is almost no difference. After
 rendering and subtracting the results (see
-chapter~\ref{section:regressionTest}) the results cancel out with
-typically a residual noise of less than -120dBFS due to rounding or
-precision errors (SoX often uses 32bit integer processing, while
+chapter~\ref{section:regressionTest}) those cancel out with typically a
+residual noise of less than -120dBFS due to rounding or precision
+errors (SoX often uses 32bit integer processing, while
 \SoXPlugins\ always uses double floating point processing).
 
 The main motivation for this package is to be able to play around with
@@ -265,12 +266,12 @@ three segments).
 
 \textbf{Note also that a spiffy user interface is \emph{not at all} a
         priority for this package.  Also the parameter ranges are
-        somewhat debatable, because they simply reflect the \SoX\
-        command parameters.}
+        somewhat debatable, but they simply reflect the wide
+        parameter ranges of the \SoX\ command-line effect.}
 
 The redesign and restructuring has also been done for easier
 maintenance, because there is some redundancy and unnecessary
-complexity in the original source due to its several contributors.
+complexity in the original sources due to their several contributors.
 Nevertheless ---~as pointed out~--- the effects provided here
 faithfully model the \SoX\ command-line processing.
 
@@ -344,6 +345,19 @@ The following effects are supported:
   \item[tremolo:] a tremolo effect with sine modulation using a
     double-sideband suppressed carrier modulation
 \end{ttDescription}
+
+%-------------------------
+\section{Acknowledgements}
+%-------------------------
+
+This project is a derivative work based on the foundations laid by the
+SoX community.  Although the algorithms used were modified and
+redesigned, this project would been much more complicated and tedious
+without this basis.
+
+Hence my thanks go to Chris Bagwell, Nick Bailey, Daniel Pouzzner,
+Måns Rullgård, Rob Sewell and all the other contributors of the SoX
+project: without your effort this would not have been possible!
 
 %=================================================
 \chapter{Installation of the \SoXPlugins\ Effects}
@@ -709,7 +723,7 @@ band; hence the setting for the \embeddedCode{Top Frequency} is not
 used.
 
 \restriction{Only one overall pair of attack/decay parameters may be
-  specified (where \SoX\ allows one pair per channel).This is in
+  specified (where \SoX\ allows one pair per channel). This is in
   principle supported by the effects engine of \SoXPlugins, but not
   supported in the current user interface.}
 \restriction{The original \SoX\ allows an arbitrary multi-segmented
@@ -900,11 +914,11 @@ definition of its parameters).
 compander which can be set to the desired number, where the maximum is
 10.  \embeddedCode{Band Index} selects the band whose parameters shall
 be modified; note that it is possible to modify any band, but the
-\textbf{inactive bands are signified a special reddish background}
+\textbf{inactive bands are signified by a special reddish background}
 (see figure~\ref{figure:panelMCompand}).
 
 \restriction{Only one overall pair of attack/decay parameters may be
-  specified per band (where \SoX\ allows one pair per channel).This is
+  specified per band (where \SoX\ allows one pair per channel). This is
   in principle supported by the effects engine of \SoXPlugins, but not
   supported in the current user interface.}
 \restriction{The original \SoX\ allows an arbitrary multi-segmented
@@ -912,9 +926,6 @@ be modified; note that it is possible to modify any band, but the
   engine of \SoXPlugins, but not supported in the current user
   interface.}
 \restriction{There is no delay parameter for delayed compansion.}
-\restriction{It is not possible to change the number of bands, but one
-  has to select one of several multi-band companders with two to five
-  bands.}
 
 %-------------------------
 \clearpage
@@ -1163,8 +1174,9 @@ externally generated audio material.
 \label{section:regressionTest}
 %=============================
 
-To test that the effects of \SoXPlugins\ really are bit-identical to \SoX,
-a little test suite has been set up for the Reaper DAW.
+To test that the effects of \SoXPlugins\ really are bit-identical to
+\SoX, a little test suite has been set up for checking DAW versus the
+command-line.
 
 The suite assumes that command-line \SoX\ is installed in the Windows
 search path.
@@ -1178,10 +1190,10 @@ ensure that algorithmic differences between \SoX\ and
 \embeddedCode{makeTestFiles.bat}
 
 Since there are so many DAWs available, it is hard to provide a test
-suite for each of those.  The distribution contains a Reaper project
-referencing those audio test files and result files in autonomous
-tracks (see figure~\ref{figure:regressionTestSetup}). Adaption to
-other DAW should be straightforward.
+project for each of those.  The distribution just contains a Reaper
+project referencing those audio test files and result files in
+autonomous tracks (see figure~\ref{figure:regressionTestSetup}).
+Adaption to other DAWs should be straightforward.
 
 The \SoXPlugins\ effects are configured with the exactly the same
 parameters as given in the batch file and are correspondingly applied
@@ -1197,9 +1209,11 @@ When subtracting the rendered audio in Reaper and the externally
 rendered audio from \SoX, they (almost) cancel out.  This can be
 checked by a spectrum analyser in the master channel, which is shown
 in figure~\ref{figure:regressionTestNoiseFloor}.  It shows a noise
-floor of typically less than -140dB.  This comes from the 24~bit
-sample depth used in the FLAC files of the test suite; increasing that
-sample depth would even lead to less residual noise.
+floor of typically less than -140dB.  This comes from rounding or
+precision errors ---~SoX often uses 32bit integer processing, while
+the SoX-Plugins always use double floating point processing~--- and
+the 24~bit sample depth used in the FLAC files of the test suite;
+increasing that sample depth would even lead to less residual noise.
 
 \begin{centeredFigure}
   \centeredExternalPicture{0.5}{noiseFloor.png}
@@ -1289,13 +1303,19 @@ The steps are as follows:
     and change to it.
 
   \item Find the path of the \embeddedCode{CMakeList.txt}
-    configuration file and configure the build process via
+    configuration file.  Adapt the file
+    \embeddedCode{LocalConfiguration.cmake} accordingly to reflect the
+    location of \LaTeX as well as the JUCE and the doxygen
+    installation.
+
+  \item Configure the build process via
 
         \begin{commandLine}
 cmake -S <pathTo>/CMakeList.txt -B . --config Release
         \end{commandLine}
 
   \item Build all the plugins via
+
         \begin{commandLine}
 cmake --build . --config Release
         \end{commandLine}
@@ -1305,7 +1325,7 @@ cmake --build . --config Release
     documentation there via
 
         \begin{commandLine}
-cmake --install .
+cmake --build . --config Release --target install
         \end{commandLine}
 
 \end{enumerate}
@@ -1317,11 +1337,11 @@ cmake --install .
 In the github repository there is an extensive doxygen documentation
 available for the inner workings of the plugins at
 \begin{center}
-  \hyperlink{\gitPluginPath/internalDocumentation}
+  \hyperlink{\gitPluginPath/tree/master/internalDocumentation/html}
 \end{center}
 with entry point
 \begin{center}
-  \hyperlink{\gitPluginPath/internalDocumentation/index.html}.
+  \hyperlink{\gitPluginPath/tree/master/internalDocumentation/html/index.html}.
 \end{center}
 
 Every public and private feature of all classes and data types is

@@ -5,6 +5,7 @@
  * a single discrete value parameter.
  *
  * @author Dr. Thomas Tensi
+ * @date   2020-06
  */
 
 /*====================*/

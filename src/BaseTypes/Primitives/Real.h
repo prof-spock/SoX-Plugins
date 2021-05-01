@@ -2,6 +2,9 @@
  * @file
  * The <C>Real</C> specification defines a value object type for real
  * values.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once

@@ -1,9 +1,11 @@
 /**
  * @file
  * The <C>SoXWaveForm</C> body implements common services for (LFO)
- * wave forms.
+ * wave forms.  The algorithms here are based on implementation ideas
+ * from Carsten Borchardt and Rob Sewell in SoX file "synth.c".
  *
  * @author Dr. Thomas Tensi
+ * @date   2020-06
  */
 
 /*====================*/
@@ -110,7 +112,8 @@ namespace SoXPlugins::CommonAudio {
         Assertion_pre(position >= 0, "position must be non-negative");
         Assertion_pre(waveTableLength > 0, "wave table must be non-empty");
 
-        const Natural indexA = Natural::floor((double) position) % waveTableLength;
+        const Natural indexA = (Natural::floor((double) position)
+                                % waveTableLength);
         const Natural indexB = (indexA + 1) % waveTableLength;
         const Real valueA = waveTable->at(indexA);
         const Real valueB = waveTable->at(indexB);

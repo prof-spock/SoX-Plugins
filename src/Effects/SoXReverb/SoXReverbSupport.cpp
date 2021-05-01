@@ -4,7 +4,14 @@
  * freeverb algorithm and provides a single <B>_SoXReverb</B> class as
  * its interface.
  *
+ * The original algorithms can be found in the <A
+ * HREF="https://sourceforge.net/p/sox/code">SoX repository</A>
+ * in the file
+ *   - "reverb.c" by Rob Sewell with the code for the reverb effect
+ *     based on freeverb by Jezar at Dreampoint.
+ *
  * @author Dr. Thomas Tensi
+ * @date   2020-10
  */
 
 /*====================*/

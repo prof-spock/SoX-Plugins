@@ -7,6 +7,7 @@
  * <B>highpass</B>, <B>lowpass</B> and <B>treble</B>.
  *
  * @author Dr. Thomas Tensi
+ * @date   2020-11
  */
 
 /*====================*/

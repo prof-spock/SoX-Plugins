@@ -2,6 +2,9 @@
  * @file
  * The <C>Radians</C> specification and body provides a simple
  * radians type.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once

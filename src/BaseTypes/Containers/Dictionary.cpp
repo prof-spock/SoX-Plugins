@@ -2,6 +2,9 @@
  * @file
  * The <C>Dictionary</C> body implements maps from string keys to
  * string values.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 /*====================*/

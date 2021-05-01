@@ -2,6 +2,9 @@
  * @file
  * The <C>Integer</C> specification and body provides a value object
  * type for ints.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once

@@ -6,6 +6,9 @@
  * An object may be compared for equality and inequality with other
  * objects of the same type and can be initialized with some literal
  * value.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once

@@ -2,6 +2,9 @@
  * @file
  * The <C>Percentage</C> specification and body provides a simple
  * percentage type.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once

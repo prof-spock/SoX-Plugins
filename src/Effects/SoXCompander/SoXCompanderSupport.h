@@ -5,7 +5,8 @@
  * <B>SoXMultibandCompander</B> class as its interface.
  *
  * @author Dr. Thomas Tensi
-*/
+ * @date   2021-01
+ */
 
 #pragma once
 

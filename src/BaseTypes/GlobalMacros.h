@@ -2,6 +2,9 @@
  * @file
  * The <C>GlobalMacros</C> specification defines simple macros
  * (e.g.\ for parameter modes).
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once

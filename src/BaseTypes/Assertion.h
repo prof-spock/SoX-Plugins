@@ -2,6 +2,9 @@
  * @file
  * The <C>Assertion</C> specification defines macros for pre- and
  * postconditions in functions or methods.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once

@@ -1,3 +1,12 @@
+/**
+ * @file
+ * The <C>SoXReverb_config</C> sets up effect parameters for the JUCE
+ * framework.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-10
+ */
+
 #pragma once
 
 // Plugin Settings

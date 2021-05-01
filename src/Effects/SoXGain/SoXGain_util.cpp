@@ -4,6 +4,7 @@
  * for a plugin.
  *
  * @author Dr. Thomas Tensi
+ * @data   2020-06
  */
 
 #include "SoXGain_juceConfig.h"

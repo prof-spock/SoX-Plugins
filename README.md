@@ -4,7 +4,7 @@
       <H1>SoX Plugins for DAWs</H1>
     <TH>
       <IMG SRC="./doc/latex/figures/title.svg" STYLE="float:right"
-           WIDTH="50%" HEIGHT="50%">
+           WIDTH="55%" HEIGHT="55%">
     </TH>
   </TR>
 </TABLE>
@@ -22,11 +22,11 @@ other audio files.  It provides several standard audio effects (like
 e.g. filters or reverb) in good quality and with a transparent,
 open-source implementation.
 
-This plugin implementation is completely platform-neutral based on the
-*[JUCE][]* audio framework.  Currently only a build for VST3 plugins
-under Windows 10 is provided, but porting it to other targets should
-be straightforward, since building is supported by a platform-neutral
-CMAKE build file.
+This plugin implementation is completely free, open-source,
+platform-neutral and based on the *[JUCE][]* audio framework.
+Currently only a version for VST3 plugins under Windows 10 is
+provided, but porting it to other targets should be straightforward,
+since building is supported by a platform-neutral CMAKE build file.
 
 The effects provided here are a complete rewrite in C++ of the SoX
 algorithms for producing *(bit-exact) identical* renderings in the
@@ -56,12 +56,13 @@ allows the typical definition of a threshold and a compression ratio
 (with three segments).
 
 Note also that a spiffy user interface is *not at all* a priority in
-this project..  Also the parameter ranges are somewhat debatable,
-because they simply reflect the SoX command parameters.
+this project.  Also their parameter ranges are somewhat debatable, but
+they simply reflect the wide parameter ranges of the SoX command-line
+effect.
 
 The redesign and restructuring has also been done for easier
 maintenance, because there is some redundancy and unnecessary
-complexity in the original source due to its several contributors.
+complexity in the original sources due to their several contributors.
 Nevertheless - as pointed out - the effects provided here faithfully
 model the SoX command-line processing.
 
@@ -152,7 +153,8 @@ Plugin Example - Phaser
 
 ![Panel for SoXPlugins Phaser](./doc/latex/figures/SoX-Phaser.png)
 
-This effect is implements a phaser effect to the audio.
+The above diagram gives an example for one of the plugins: this is the
+UI for the phaser effect.
 
 Here `In Gain` is the amplification factor for the input in decibels.
 `Delay` gives the delay in milliseconds, `Decay` a factor for the
@@ -176,7 +178,7 @@ The test script produces several sound and noise files and applies SoX
 audio effects to produces result audio files.
 
 Since there are so many DAWs available, it is hard to provide a test
-suite for each of those.  The distribution contains a Reaper project
+project for each of those.  The distribution contains a Reaper project
 referencing those audio test files and result files in autonomous
 tracks. Adaption to other DAW should be straightforward.
 
@@ -195,3 +197,16 @@ The detailed user manual can be found
 
 [JUCE]: http://www.juce.com/
 [SoX]: http://sox.sourceforge.net/
+
+Acknowledgements
+----------------
+
+This project is a derivative work based on the foundations laid by the
+SoX community.  Although the algorithms used were modified and
+redesigned, this project would been much more complicated and tedious
+without this basis.
+
+Hence my thanks go to Chris Bagwell, Nick Bailey, Daniel Pouzzner,
+Måns Rullgård, Rob Sewell and all the other contributors of the SoX
+project: without your effort this would not have been possible!
+

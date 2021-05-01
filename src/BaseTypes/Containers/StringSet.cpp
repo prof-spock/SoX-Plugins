@@ -3,6 +3,9 @@
  * The <C>StringSet</C> body implements sets of string values with no
  * duplicates and only simple containment access and the ability to
  * add and remove elements.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 /*====================*/

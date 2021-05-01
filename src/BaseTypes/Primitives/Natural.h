@@ -2,6 +2,9 @@
  * @file
  * The <C>Natural</C> specification and body provides a value object
  * type for naturals (positive integers with zero).
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once

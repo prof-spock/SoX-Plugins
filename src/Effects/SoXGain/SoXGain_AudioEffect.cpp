@@ -4,7 +4,12 @@
  * plugin amplifying or attenuating the input signal by a specific dB
  * amount.
  *
+ * The original algorithms can be found in the <A
+ * HREF="https://sourceforge.net/p/sox/code">SoX repository</A>
+ * and the file "gain.c" by Rob Sewell.
+ *
  * @author Dr. Thomas Tensi
+ * @date   2020-07
  */
 
 /*====================*/

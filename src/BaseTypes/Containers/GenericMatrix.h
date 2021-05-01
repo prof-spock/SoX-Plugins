@@ -2,6 +2,9 @@
  * @file
  * The <C>GenericMatrix</C> specification defines a generic matrix
  * type with a single element type parameter <C>T</C>.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once

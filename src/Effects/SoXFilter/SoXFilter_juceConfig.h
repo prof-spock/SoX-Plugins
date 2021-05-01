@@ -1,3 +1,12 @@
+/**
+ * @file
+ * The <C>SoXCompander_config</C> sets up effect parameters for the JUCE
+ * framework.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-11
+ */
+
 #pragma once
 
 // Plugin Settings

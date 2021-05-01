@@ -6,7 +6,18 @@
  * routines and types implement transfer functions, the LR-filtering
  * and the processing.
  *
- * @author: Dr. Thomas Tensi, 2020
+ * The original algorithms can be found in the <A
+ * HREF="https://sourceforge.net/p/sox/code">SoX repository</A>
+ * and the files
+ *
+ *   - "compandt.c" by Rob Sewell for the compander transfer function,
+ *   - "compand.c" by Chris Bagwell and Nick Bailey for the compander
+ *     effect,
+ *   - "mcompand_xover.h" by Rob Sewell for the crossover function, and
+ *   - "mcompand.c" by Daniel Pouzzner for the mcompander effect.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2021-01
  */
 
 /*====================*/

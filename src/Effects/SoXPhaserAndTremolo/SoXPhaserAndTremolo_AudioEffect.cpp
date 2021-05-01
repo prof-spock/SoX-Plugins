@@ -4,7 +4,18 @@
  * <B>phaser</B> and <B>tremolo</B> modulation effects that have
  * similar parameters and hence are combined into a single plugin.
  *
+ * The original algorithms can be found in the <A
+ * HREF="https://sourceforge.net/p/sox/code">SoX repository</A>
+ * in the files
+ *   - "phaser.c" by Juergen Mueller and Sundry Contributors with the
+ *     code for the phaser effect
+ *   - "synth.c" by Carsten Borchardt and Rob Sowell with the
+ *     code for the synth base effect, and
+ *   - "tremolo.c" by Rob Sewell with the code for the (wrapper) tremolo
+ *     effect.
+ *
  * @author Dr. Thomas Tensi
+ * @date   2020-09
  */
 
 /*====================*/

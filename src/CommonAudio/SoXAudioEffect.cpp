@@ -2,6 +2,9 @@
  * @file
  * The <C>SoXAudioEffect</C> body implements the root class for
  * all SoX audio effects.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 /*====================*/

@@ -2,6 +2,16 @@
  * The package <C>SoXCompander</C> provides classes for the SoX
  * <B>compand</B> and <B>mcompand</B> audio effects.  A simple
  * compander is just seen as a multiband compander with a single band.
+ *
+ * The original algorithms can be found in the <A
+ * HREF="https://sourceforge.net/p/sox/code">SoX repository</A>
+ * and the files
+ *
+ *   - "compandt.c" by Rob Sewell for the compander transfer function,
+ *   - "compand.c" by Chris Bagwell and Nick Bailey for the compander
+ *     effect,
+ *   - "mcompand_xover.h" by Rob Sewell for the crossover function, and
+ *   - "mcompand.c" by Daniel Pouzzner for the mcompander effect.
  */
 namespace SoXPlugins::Effects::SoXCompander {
 }

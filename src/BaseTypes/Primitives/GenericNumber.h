@@ -11,6 +11,9 @@
  *
  * Very important is that the wrapper type abstraction does not impose
  * a runtime penalty.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once

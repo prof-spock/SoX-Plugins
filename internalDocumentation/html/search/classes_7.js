@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['percentage_606',['Percentage',['../struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_percentage.html',1,'SoXPlugins::BaseTypes::Primitives']]]
+  ['percentage_611',['Percentage',['../struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_percentage.html',1,'SoXPlugins::BaseTypes::Primitives']]]
 ];

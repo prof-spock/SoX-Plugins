@@ -29,10 +29,13 @@ SET(CMAKE_CXX_STANDARD_REQUIRED True)
 INCLUDE(CPPCompilerConfiguration.cmake)
 
 # --- LaTeX ---
-FIND_PACKAGE(LATEX COMPONENTS PDFLATEX)
+FIND_PACKAGE(LATEX QUIET OPTIONAL_COMPONENTS PDFLATEX)
 
 # --- DoxyGen ---
-#FIND_PACKAGE(Doxygen REQUIRED dot)
+FIND_PACKAGE(Doxygen QUIET)
+
+# --- JUCE ---
+FIND_PACKAGE(juce QUIET)
 
 # ===========================
 # === local configuration ===
@@ -74,6 +77,8 @@ SET(doxygenTargetDirectory ../internalDocumentation)
 SET(testFileDirectory ../test)
 
 # --- include directories ---
+
+SET(juceModulesDirectory ${JUCE_DIR}/modules)
 
 SET(standardIncludeDirectories
     ${srcDirectory}/BaseTypes

@@ -4,6 +4,10 @@
  * <B>bandpass</B>, <B>bandreject</B>, <B>bass</B>, <B>biquad</B>,
  * <B>equalizer</B>, <B>highpass</B>, <B>lowpass</B> and <B>treble</B>
  * filters that are combined into a single plugin.
+ *
+ * The original algorithms can be found in the <A
+ * HREF="https://sourceforge.net/p/sox/code">SoX repository</A>
+ * and the file "biquads.c" by Rob Sewell.
  */
 namespace SoXPlugins::Effects::SoXFilter {
 }

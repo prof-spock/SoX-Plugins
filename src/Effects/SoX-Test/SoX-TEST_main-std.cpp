@@ -1,3 +1,15 @@
+/**
+ * @file
+ * The <C>SoX-TEST</C> module implements a simple command-line test
+ * program for the more complex SoX effects <B>reverb</B>,
+ * <B>phaser/tremolo</B> and <B>compander</C>; there is no GUI
+ * involved, only the engines are checked with standardized
+ * parameters.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-10
+ */
+
 /*====================*/
 
 #include <iostream>

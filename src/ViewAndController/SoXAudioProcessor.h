@@ -5,6 +5,7 @@
  * enclosing plugin host.
  *
  * @author Dr. Thomas Tensi
+ * @date   2020-06
  */
 
 #pragma once

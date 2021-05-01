@@ -2,6 +2,9 @@
  * @file
  * The <C>SoXAudioSampleList</C> body implements a simple list of
  * audio samples.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 /*====================*/

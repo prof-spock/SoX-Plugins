@@ -1,6 +1,10 @@
 /**
  * The package <C>SoXGain</C> provides classes for the SoX <B>gain</B>
  * audio effect.
+ *
+ * The original algorithms can be found in the <A
+ * HREF="https://sourceforge.net/p/sox/code">SoX repository</A>
+ * and the file "gain.c" by Rob Sewell.
  */
 namespace SoXPlugins::Effects::SoXGain {
 }

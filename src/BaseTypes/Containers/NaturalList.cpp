@@ -3,6 +3,9 @@
  * The <C>NaturalList</C> body implements sequences of non-negative
  * integer values with zero-based arbitrary indexed access to
  * positions in the sequence.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 /*====================*/

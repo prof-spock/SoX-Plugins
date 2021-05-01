@@ -3,6 +3,9 @@
  * The <C>StringList</C> body implements sequences of string values
  * with zero-based arbitrary indexed access to positions in the
  * sequence.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 /*====================*/

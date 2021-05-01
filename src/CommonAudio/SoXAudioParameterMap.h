@@ -6,6 +6,7 @@
  * interpretative coupling between audio processors and audio editors.
  *
  * @author Dr. Thomas Tensi
+ * @date   2020-08
  */
 
 #pragma once
