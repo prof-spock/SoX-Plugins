@@ -92,6 +92,22 @@ SET(additionalIncludeDirectories
     ${juceModulesDirectory}
     ${juceModulesDirectory}/juce_audio_processors/format_types/VST3_SDK)
 
+IF(APPLE)
+    SET(additionalIncludeDirectories
+        ${additionalIncludeDirectories}
+        /Developer/Headers/FlatCarbon)
+ENDIF(APPLE)
+
+# --- additional JUCE settings ---
+
+SET(jucePrefix ${srcJuceFacadeDirectory}/include_juce)
+
+IF(APPLE)
+    SET(juceSuffix mm)
+ELSE()
+    SET(juceSuffix cpp)
+ENDIF()
+
 # ====================
 # === source files ===
 # ====================
@@ -156,22 +172,61 @@ FOREACH(effectName Compander Reverb)
 ENDFOREACH(effectName)
 
 # -------------------------------------------------------------------
-# --- XXXFilesVST is the file name list for the VST3 library for  ---
-# --- some SoX effect                                             ---
+# --- XXXFiles_VST is the file name list for the VST3 library     ---
+# --- for some SoX effect                                         ---
 # -------------------------------------------------------------------
 
 FOREACH(effectName ${effectNameList})
     SET(effectDirectory ${srcEffect${effectName}Directory})
 
-    SET(fileListName srcEffect${effectName}FilesVST)
+    SET(fileListName srcEffect${effectName}Files_VST)
 
     SET(${fileListName}
-        ${effectDirectory}/resources.rc
-        ${effectDirectory}/SoX${effectName}_main-vst3.cpp
-        ${effectDirectory}/SoX${effectName}_util.cpp)
+        ${effectDirectory}/SoX${effectName}_AudioProcessor.cpp
+        ${effectDirectory}/SoXPlugin-util.cpp
+        ${effectDirectory}/SoXPlugin-VST_1.cpp)
+
+    IF(WINDOWS)
+        SET(${fileListName}
+            ${${fileListName}}
+            ${effectDirectory}/resources.rc)
+    ENDIF(WINDOWS)
+
+    IF(APPLE)
+        SET(${fileListName}
+            ${${fileListName}}
+            ${effectDirectory}/SoXPlugin-VST_2.${juceSuffix}
+            ${effectDirectory}/SoXPlugin-Standalone.cpp)
+    ENDIF(APPLE)
 
     SET(allSrcFiles ${allSrcFiles} ${${fileListName}})
 ENDFOREACH(effectName)
+
+# -------------------------------------------------------------------
+# --- XXXFiles_AU is the file name list for the AUv3 library for  ---
+# --- some SoX effect                                             ---
+# -------------------------------------------------------------------
+
+IF(APPLE)
+    FOREACH(effectName ${effectNameList})
+        SET(effectDirectory ${srcEffect${effectName}Directory})
+
+        SET(fileListName srcEffect${effectName}Files_AU)
+
+        SET(${fileListName}
+            ${effectDirectory}/SoX${effectName}_AudioProcessor.cpp
+            ${effectDirectory}/SoXPlugin-util.cpp
+            ${effectDirectory}/SoXPlugin-AU_1.mm
+            ${effectDirectory}/SoXPlugin-AU_2.mm
+            ${effectDirectory}/SoXPlugin-Standalone.cpp)
+
+        SET(allSrcFiles ${allSrcFiles} ${${fileListName}})
+    ENDFOREACH(effectName)
+ENDIF(APPLE)
+
+# -------------------------------------------------------------------
+# --- a simple command line test for some of the engines          ---
+# -------------------------------------------------------------------
 
 SET(srcEffectsTestFiles
     ${srcEffectsTestDirectory}/SoX-TEST_main-std.cpp)
@@ -180,30 +235,33 @@ SET(allSrcFiles ${allSrcFiles} ${srcEffectsTestFiles})
 
 # -------------------------------------------------------------------
 # --- the file name list of facade files for JUCE; those files    ---
-# --- reference real implementations in JUCE                      ---
+# --- reference real implementations in JUCE; note that on        ---
+# --- Apple platforms the Objective-C++ (.mm) files are used      ---
+# --- of the standard C++ (.cpp) files                            ---
 # -------------------------------------------------------------------
 
 SET(srcJuceFacadeFilesSTD
-    ${srcJuceFacadeDirectory}/include_juce_audio_basics.cpp
-    ${srcJuceFacadeDirectory}/include_juce_audio_devices.cpp
-    ${srcJuceFacadeDirectory}/include_juce_audio_formats.cpp
-    ${srcJuceFacadeDirectory}/include_juce_audio_processors.cpp
-    ${srcJuceFacadeDirectory}/include_juce_audio_utils.cpp
-    ${srcJuceFacadeDirectory}/include_juce_core.cpp
-    ${srcJuceFacadeDirectory}/include_juce_cryptography.cpp
-    ${srcJuceFacadeDirectory}/include_juce_data_structures.cpp
-    ${srcJuceFacadeDirectory}/include_juce_events.cpp
-    ${srcJuceFacadeDirectory}/include_juce_graphics.cpp
-    ${srcJuceFacadeDirectory}/include_juce_gui_basics.cpp
-    ${srcJuceFacadeDirectory}/include_juce_gui_extra.cpp
-    ${srcJuceFacadeDirectory}/include_juce_opengl.cpp)
+    ${jucePrefix}_audio_basics.${juceSuffix}
+    ${jucePrefix}_audio_devices.${juceSuffix}
+    ${jucePrefix}_audio_formats.${juceSuffix}
+    ${jucePrefix}_audio_processors.${juceSuffix}
+    ${jucePrefix}_audio_utils.${juceSuffix}
+    ${jucePrefix}_core.${juceSuffix}
+    ${jucePrefix}_data_structures.${juceSuffix}
+    ${jucePrefix}_events.${juceSuffix}
+    ${jucePrefix}_graphics.${juceSuffix}
+    ${jucePrefix}_gui_basics.${juceSuffix}
+    ${jucePrefix}_gui_extra.${juceSuffix})
 
-SET(srcJuceFacadeFilesPLUGIN
-    ${srcJuceFacadeDirectory}/include_juce_audio_plugin_client_RTAS_utils.cpp
-    ${srcJuceFacadeDirectory}/include_juce_audio_plugin_client_Standalone.cpp
-    ${srcJuceFacadeDirectory}/include_juce_audio_plugin_client_utils.cpp
-    ${srcJuceFacadeDirectory}/include_juce_audio_plugin_client_VST2.cpp
-    ${srcJuceFacadeDirectory}/include_juce_audio_plugin_client_VST3.cpp)
+SET(srcJuceFacadeFiles_VST
+    ${jucePrefix}_audio_plugin_client_utils.cpp
+    ${jucePrefix}_audio_plugin_client_VST_utils.${juceSuffix})
+
+SET(srcJuceFacadeFiles_AU
+    #${jucePrefix}_audio_plugin_client_utils.cpp
+    #${jucePrefix}_audio_plugin_client_AU_1.mm
+    #${jucePrefix}_audio_plugin_client_AU_2.mm
+    )
 
 # --- documentation sources ---
 SET(docLatexFileNameStem SoXPlugins-documentation)
@@ -215,6 +273,24 @@ SET(regressionTestFileList
     ${testFileDirectory}/makeTestFiles.bat
     ${testFileDirectory}/makeTestFiles.sh
     "${testFileDirectory}/testSoxPlugins-C++.rpp")
+
+# -------------------------------------------------
+# --- Apple framework files and bundle settings ---
+# -------------------------------------------------
+
+IF(NOT APPLE)
+    SET(frameworkNameList '')
+ELSE()
+    SET(frameworkNameList
+        AVFoundation AVKit Accelerate AudioToolbox AudioUnit Carbon
+        Cocoa CoreAudio CoreAudioKit CoreGraphics CoreImage CoreMIDI
+        CoreMedia CoreServices CoreText DiscRecording Foundation
+        IOKit ImageIO OpenGL QTKit QuartzCore WebKit)
+
+    SET(MACOSX_BUNDLE_BUNDLE_VERSION "1.0")
+    SET(MACOSX_BUNDLE_SHORT_VERSION_STRING "1.0")
+    SET(bundlePrefix "eu.tensi.thomas.SoXPlugins")
+ENDIF(NOT APPLE)
 
 ###########
 # TARGETS #
@@ -233,6 +309,12 @@ ADD_LIBRARY(JuceFramework STATIC EXCLUDE_FROM_ALL
 TARGET_INCLUDE_DIRECTORIES(JuceFramework PUBLIC
                            ${additionalIncludeDirectories})
 
+SET_TARGET_PROPERTIES(JuceFramework PROPERTIES
+        XCODE_ATTRIBUTE_CLANG_LINK_OBJC_RUNTIME NO
+        XCODE_ATTRIBUTE_COMBINE_HIDPI_IMAGES YES
+        POSITION_INDEPENDENT_CODE TRUE
+        C_VISIBILITY_PRESET hidden)
+
 # --- common services library (primitives containers and common audio) ---
 ADD_LIBRARY(SoXCommon STATIC EXCLUDE_FROM_ALL
             ${srcBaseTypesFiles} ${srcPrimitivesFiles}
@@ -246,59 +328,119 @@ TARGET_INCLUDE_DIRECTORIES(SoXViewAndController PUBLIC
                            ${srcJuceFacadeDirectory}
                            ${additionalIncludeDirectories})
 
-# ------------------------------------------------------
-# - build a static library for each effect without GUI -
-# ------------------------------------------------------
-
-FOREACH(effectName ${effectNameList})
-    SET(libraryName SoXEffect${effectName})
-
-    ADD_LIBRARY(${libraryName} STATIC
-                ${srcEffect${effectName}FilesSTD})
-
-    TARGET_INCLUDE_DIRECTORIES(${libraryName}
-                               PUBLIC ${srcEffect${effectName}Directory})
-ENDFOREACH(effectName)
+ADD_CUSTOM_TARGET(SupportLibraries ALL)
+ADD_DEPENDENCIES(SupportLibraries
+                 JuceFramework SoXCommon SoXViewAndController)
 
 # ==============================
 # === effective target files ===
 # ==============================
 
+ADD_CUSTOM_TARGET(SoXPlugins ALL)
+
+# -------------------------------------------------------
+# --- a target combining the plugins for the platform ---
+# --- for each effect                                 ---
+# -------------------------------------------------------
+
+FOREACH(effectName ${effectNameList})
+    SET(targetName SoX${effectName})
+    ADD_CUSTOM_TARGET(${targetName} ALL)
+    ADD_DEPENDENCIES(SoXPlugins ${targetName})
+ENDFOREACH(effectName)
+
+# ------------------------------------------------------
+# - build a static library for each effect without GUI -
+# ------------------------------------------------------
+
+ADD_CUSTOM_TARGET(SoXPlugins_Effect ALL)
+
+FOREACH(effectName ${effectNameList})
+    SET(targetName SoX${effectName}_Effect)
+
+    ADD_LIBRARY(${targetName} STATIC
+                ${srcEffect${effectName}FilesSTD})
+
+    TARGET_INCLUDE_DIRECTORIES(${targetName}
+                               PUBLIC ${srcEffect${effectName}Directory})
+
+    ADD_DEPENDENCIES(SoXPlugins_Effect ${targetName})
+ENDFOREACH(effectName)
+
 # -----------------------------------------------------------------
-# --- build a DLL library for each effect with Juce GUI and VST ---
-# --- client plus the static library of that SoX effect         ---
+# --- build a dynamic library for each effect with Juce GUI and ---
+# --- VST client plus the static library of that SoX effect     ---
 # -----------------------------------------------------------------
+
+ADD_CUSTOM_TARGET(SoXPlugins_VST ALL)
 
 FOREACH(effectName ${effectNameList})
     SET(libraryName SoX${effectName})
+    SET(targetName ${libraryName}_VST)
 
-    ADD_LIBRARY(${libraryName} SHARED
-                ${srcEffect${effectName}FilesVST})
+    IF(NOT APPLE)
+        ADD_LIBRARY(${targetName} SHARED
+                    ${srcEffect${effectName}Files_VST})
+    ELSE()
+        ADD_EXECUTABLE(${targetName} MACOSX_BUNDLE
+                       ${srcEffect${effectName}Files_VST})
+        FOREACH(frameworkName ${frameworkNameList})
+            TARGET_LINK_LIBRARIES(${targetName} "-framework ${frameworkName}")
+        ENDFOREACH(frameworkName)
+    ENDIF(NOT APPLE)
 
-    TARGET_INCLUDE_DIRECTORIES(${libraryName} PUBLIC
+    TARGET_INCLUDE_DIRECTORIES(${targetName} PUBLIC
                                ${additionalIncludeDirectories})
 
-    TARGET_LINK_LIBRARIES(${libraryName}
+    TARGET_LINK_LIBRARIES(${targetName}
                           SoXCommon SoXViewAndController JuceFramework
-                          SoXEffect${effectName})
+                          SoX${effectName}_Effect)
 
-    SET_TARGET_PROPERTIES(${libraryName} PROPERTIES SUFFIX ".vst3")
+    SET_TARGET_PROPERTIES(${targetName} PROPERTIES
+                          OUTPUT_NAME ${libraryName}
+                          SUFFIX ".vst3")
+
+    ADD_DEPENDENCIES(SoXPlugins_VST ${targetName})
+    ADD_DEPENDENCIES(SoX${effectName} ${targetName})
 ENDFOREACH(effectName)
 
-# -------------------------------------------------
-# --- a test executable for a simple smoke test ---
-# -------------------------------------------------
+# -----------------------------------------------------------------
+# --- build an audio unit app for each effect with Juce GUI and ---
+# --- AUv3 client plus the static library of that SoX effect     ---
+# -----------------------------------------------------------------
 
-ADD_EXECUTABLE(SoXTest ${srcEffectsTestFiles})
+IF(APPLE)
+    ADD_CUSTOM_TARGET(SoXPlugins_AU ALL)
 
-TARGET_INCLUDE_DIRECTORIES(SoXTest PUBLIC
-    ${srcEffectsCompanderDirectory}
-    ${srcEffectsPhaserAndTremoloDirectory}
-    ${srcEffectsReverbDirectory})
+    FOREACH(effectName ${effectNameList})
+        SET(libraryName SoX${effectName})
+        SET(targetName ${libraryName}_AU)
 
-TARGET_LINK_LIBRARIES(SoXTest
-                      SoXCommon SoXEffectCompander
-                      SoXEffectPhaserAndTremolo SoXEffectReverb)
+        ADD_EXECUTABLE(${targetName} MACOSX_BUNDLE
+                       ${srcEffect${effectName}Files_AU})
+
+        TARGET_INCLUDE_DIRECTORIES(${targetName} PUBLIC
+                                   ${additionalIncludeDirectories})
+
+        TARGET_LINK_LIBRARIES(${targetName}
+                              SoXCommon SoXViewAndController JuceFramework
+                              SoXEffect${effectName})
+
+        FOREACH(frameworkName ${frameworkNameList})
+            TARGET_LINK_LIBRARIES(${targetName} "-framework ${frameworkName}")
+        ENDFOREACH(frameworkName)
+
+        SET_TARGET_PROPERTIES(${targetName} PROPERTIES
+            BUNDLE True
+            MACOSX_BUNDLE_BUNDLE_NAME ${libraryName}
+            MACOSX_BUNDLE_GUI_IDENTIFIER ${bundlePrefix}.${libraryName}
+            OUTPUT_NAME ${libraryName}
+            SUFFIX ".au")
+
+        ADD_DEPENDENCIES(SoXPlugins_AU ${targetName})
+        ADD_DEPENDENCIES(SoX${effectName} ${targetName})
+    ENDFOREACH(effectName)
+ENDIF()
 
 # ---------------------------
 # --- LaTeX Documentation ---
@@ -324,7 +466,7 @@ ELSE()
 
     SET(docLatexPdfFile ${docLatexFileNameStemBuildPath}.pdf)
 
-    ADD_CUSTOM_TARGET(finalPDFManual
+    ADD_CUSTOM_TARGET(pdfDocumentation
                       DEPENDS ${docLatexFile}
                       COMMAND ${pdflatexCommandA}
                               ${docLatexFileNameStem}.ltx
@@ -333,7 +475,7 @@ ELSE()
                       COMMENT "Generating Manual."
                       WORKING_DIRECTORY ${docLatexDirectory})
 
-    ADD_DEPENDENCIES(documentation finalPDFManual)
+    ADD_DEPENDENCIES(documentation pdfDocumentation)
 ENDIF()
 
 # -----------------------------
@@ -362,11 +504,22 @@ ENDIF()
 # === INSTALLATION ===
 # ====================
 
+# --- install the documentation ---
+IF(LATEX_PDFLATEX_FOUND)
+    # WORKAROUND: find the path of the PDF file from some target
+    INSTALL(FILES ${buildDirectory}/${docLatexFileNameStem}.pdf
+            DESTINATION ${targetDirectory}/doc)
+ENDIF()
+
+# --- install the regression test files ---
+INSTALL(FILES ${regressionTestFileList} DESTINATION ${targetDirectory}/test)
+
 # --- install the VST3 plugins to platform directory ---
 FOREACH(effectName ${effectNameList})
     SET(libraryName SoX${effectName})
+    SET(targetName ${libraryName}_VST)
 
-    INSTALL(TARGETS ${libraryName}
+    INSTALL(TARGETS ${targetName}
             DESTINATION ${targetDirectory}/${platformName})
 
     # WORKAROUND: get rid of extra static effect lib files
@@ -375,11 +528,15 @@ FOREACH(effectName ${effectNameList})
     INSTALL(CODE "FILE(REMOVE \"${staticLibFilePath}\")")
 ENDFOREACH(effectName)
 
-# --- install the documentation ---
-IF(LATEX_PDFLATEX_FOUND)
-    # WORKAROUND: find the path of the PDF file from some target
-    INSTALL(FILES ${buildDirectory}/${docLatexFileNameStem}.pdf
-            DESTINATION ${targetDirectory}/doc)
+# --- install the AUv3 plugins to platform directory ---
+IF(APPLE)
+    FOREACH(effectName ${effectNameList})
+        SET(libraryName SoX${effectName})
+        SET(targetName ${libraryName}_AU)
+
+        INSTALL(TARGETS ${targetName}
+                DESTINATION ${targetDirectory}/${platformName})
+    ENDFOREACH(effectName)
 ENDIF()
 
 # --- install the regression test files ---

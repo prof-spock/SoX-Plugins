@@ -94,6 +94,7 @@ $(document).ready(function(){initNavTree('_so_x_phaser_and_tremolo___audio_effec
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;cstdio&gt;</code><br />
+<code>#include &quot;<a class="el" href="_logging_8h_source.html">Logging.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_natural_8h_source.html">Natural.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_percentage_8h_source.html">Percentage.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_radians_8h_source.html">Radians.h</a>&quot;</code><br />
@@ -127,6 +128,11 @@ Namespaces</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXPhaserAndTremolo_AudioEffect</code> body implements the SoX <b>phaser</b> and <b>tremolo</b> modulation effects that have similar parameters and hence are combined into a single plugin. </p>
+<p>The original algorithms can be found in the <a href="https://sourceforge.net/p/sox/code">SoX repository</a> in the files</p><ul>
+<li>"phaser.c" by Juergen Mueller and Sundry Contributors with the code for the phaser effect</li>
+<li>"synth.c" by Carsten Borchardt and Rob Sowell with the code for the synth base effect, and</li>
+<li>"tremolo.c" by Rob Sewell with the code for the (wrapper) tremolo effect.</li>
+</ul>
 <dl class="section author"><dt>Author</dt><dd>Dr. Thomas Tensi </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020-09 </dd></dl>
 </div></div><!-- contents -->

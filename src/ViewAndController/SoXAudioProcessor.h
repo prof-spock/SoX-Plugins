@@ -13,7 +13,8 @@
 /*====================*/
 
 #include <set>
-#include "JuceLibrary.h"
+#include "JuceHeaders.h"
+
 #include "GlobalMacros.h"
 #include "MyString.h"
 #include "SoXAudioEffect.h"

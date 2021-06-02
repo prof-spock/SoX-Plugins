@@ -198,9 +198,9 @@ SoXAudioEditorWidget::SoXAudioEditorWidget (INOUT juce::Component* parent,
                                             IN SoXAudioParameterMap& map,
                                             IN String& parameterName,
                                             IN String& labelText)
-    : _parameterMap(map),
-      _parameterName(parameterName),
-      _labelWidget(new juce::Label())
+    : _parameterName(parameterName),
+      _labelWidget(new juce::Label()),
+      _parameterMap(map)
 {
     Logging_trace2(">>: name = %1, label = %2", parameterName, labelText);
 

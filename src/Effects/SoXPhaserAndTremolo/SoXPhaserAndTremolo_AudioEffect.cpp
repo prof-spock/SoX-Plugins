@@ -23,6 +23,7 @@
 #include <cmath>
 #include <cstdio>
 
+#include "Logging.h"
 #include "Natural.h"
 #include "Percentage.h"
 #include "Radians.h"
@@ -209,6 +210,41 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
     /*--------------------*/
 
     /**
+     * Returns <C>descriptor</C> string representation.
+     *
+     * @param[in] effectDescriptor  descriptor of effect
+     * @return  string representation of effect
+     */
+    static String
+    _effectDescriptorPHTRToString (INOUT _EffectDescriptor_PHTR*
+                                             effectDescriptor)
+    {
+        String st = "_EffectDescriptor_PHTR(";
+        st += "isPhaser = " + TOSTRING(effectDescriptor->isPhaser);
+        st += (", frequency = " + TOSTRING(effectDescriptor->frequency)
+               + "Hz");
+        st += (", timeOffset = " + TOSTRING(effectDescriptor->timeOffset)
+               + "s");
+        st += ", inGain = " + TOSTRING(effectDescriptor->inGain);
+        st += ", outGain = " + TOSTRING(effectDescriptor->outGain);
+        st += ", delay = " + TOSTRING(effectDescriptor->delay) + "s";
+        st += ", decay = " + TOSTRING(effectDescriptor->decay) + "s";
+        st += ", depth = " + TOSTRING(effectDescriptor->depth) + "%";
+        st += ", waveForm = " + effectDescriptor->waveForm.toString();
+        st += (", delayBufferLength = "
+               + TOSTRING(effectDescriptor->delayBufferLength));
+        st += (", delayBufferIndex = "
+               + TOSTRING(effectDescriptor->delayBufferIndex));
+        st += (", delayBufferList = "
+               + effectDescriptor->delayBufferList.toString());
+        st += ")";
+
+        return st;
+    }
+
+    /*--------------------*/
+
+    /**
      * Sets up all audio editor parameters in <C>parameterMap</C> for
      * effect kind given as <C>effectKind</C>.
      *
@@ -263,6 +299,9 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
     _updateSettings (INOUT _EffectDescriptor_PHTR* effectDescriptor,
                      IN Real sampleRate, IN Real currentTime)
     {
+        Logging_trace2(">>: sampleRate = %1, currentTime = %2",
+                       TOSTRING(sampleRate), TOSTRING(currentTime));
+
         const Real frequency = effectDescriptor->frequency;
         const Real waveFormLength = sampleRate / frequency;
         Natural delayBufferLength;
@@ -308,6 +347,9 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
         waveForm.set(waveFormLength, effectDescriptor->waveFormKind,
                      lowModulationValue, highModulationValue,
                      effectivePhase, hasIntegerValues);
+
+        Logging_trace1("<<: %1",
+                       _effectDescriptorPHTRToString(effectDescriptor));
     }
 
 };
@@ -345,28 +387,7 @@ String SoXPhaserAndTremolo_AudioEffect::_effectDescriptorToString () const
 {
     _EffectDescriptor_PHTR* effectDescriptor =
         static_cast<_EffectDescriptor_PHTR*>(_effectDescriptor);
-
-    String st = "_EffectDescriptor_PHTR(";
-    st += "isPhaser = " + TOSTRING(effectDescriptor->isPhaser);
-    st += ", frequency = " + TOSTRING(effectDescriptor->frequency) + "Hz";
-    st += ", timeOffset = " + TOSTRING(effectDescriptor->timeOffset) + "s";
-    st += ", inGain = " + TOSTRING(effectDescriptor->inGain);
-    st += ", outGain = " + TOSTRING(effectDescriptor->outGain);
-    st += ", delay = " + TOSTRING(effectDescriptor->delay) + "s";
-    st += ", decay = " + TOSTRING(effectDescriptor->decay) + "s";
-    st += ", depth = " + TOSTRING(effectDescriptor->depth) + "%";
-    st += (effectDescriptor->waveFormKind == SoXWaveFormKind::sine
-           ? "sine" : "triangle");
-    st += ", waveForm = " + effectDescriptor->waveForm.toString();
-    st += (", delayBufferLength = "
-           + TOSTRING(effectDescriptor->delayBufferLength));
-    st += (", delayBufferIndex = "
-           + TOSTRING(effectDescriptor->delayBufferIndex));
-    st += (", delayBufferList = "
-           + effectDescriptor->delayBufferList.toString());
-    st += ")";
-
-    return st;
+    return _effectDescriptorPHTRToString(effectDescriptor);
 }
 
 /*--------------------*/
@@ -499,7 +520,13 @@ void SoXPhaserAndTremolo_AudioEffect::processBlock
             SoXAudioSample outputSample = 0;
 
             if (!isPhaser) {
-                outputSample = inputSample * waveForm.current();
+                Real factor = waveForm.current();
+                //outputSample = inputSample * waveForm.current();
+                outputSample = inputSample * factor;
+                //Logging_trace4("--: currentTime = %1, in = %2"
+                //               ", fact = %3, out = %4",
+                //               TOSTRING(timePosition), TOSTRING(inputSample),
+                //               TOSTRING(factor), TOSTRING(outputSample));
             } else if (delayBufferLength > 0) {
                 const Natural modulatedIndex =
                     ((delayBufferIndex

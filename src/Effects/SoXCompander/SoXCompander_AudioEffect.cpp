@@ -483,7 +483,8 @@ void SoXCompander_AudioEffect::setDefaultValues ()
         _audioParameterMap.setValue(pagedName(parameterName_dBGain),
                                     "5");
         const Real topFrequency =
-            (_maxTopFrequency * ((size_t) bandIndex + 1)) / _maxBandCount;
+            (((_maxTopFrequency - 0.1) * ((size_t) bandIndex + 1))
+             / _maxBandCount);
         _audioParameterMap.setValue(pagedName(parameterName_topFrequency),
                                     TOSTRING(topFrequency));
     }

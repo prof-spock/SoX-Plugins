@@ -27,13 +27,13 @@ using SoXPlugins::CommonAudio::SoXAudioValueChangeKind;
 /*--------------------*/
 
 SoXAudioEffect::SoXAudioEffect ()
-     : _audioParameterMap{},
+     : _sampleRate{100},
+       _channelCount{0},
+       _audioParameterMap{},
+       _effectDescriptor{},
        _currentTimePosition{Real::infinity},
        _previousTimePosition{Real::infinity},
        _timePositionHasMoved{true},
-       _effectDescriptor{},
-       _sampleRate{100},
-       _channelCount{0},
        _parametersAreValid{false}
 {
 }

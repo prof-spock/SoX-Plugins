@@ -170,7 +170,7 @@ namespace SoXPlugins::BaseTypes {
                     _previousTimestamp = currentTimestamp;
                     const Natural fractionalPart =
                         (Natural) currentTimestamp % _timeFactor;
-                    currentTimestamp /= (Timestamp) _timeFactor;
+                    currentTimestamp /= (int) _timeFactor;
                     const Natural seconds =
                         (Natural) currentTimestamp % 60;
                     const Natural minutes =

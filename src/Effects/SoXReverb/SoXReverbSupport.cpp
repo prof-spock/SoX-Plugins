@@ -436,17 +436,15 @@ namespace SoXPlugins::Effects::SoXReverb {
 
     /** list of sample queue lengths for comb filters */
     static const NaturalList _combFilterLengthList =
-        NaturalList::fromList(_lineCombFilterCount,
-                              Natural{1116}, Natural{1188},
-                              Natural{1277}, Natural{1356},
-                              Natural{1422}, Natural{1491},
-                              Natural{1557}, Natural{1617});
+        NaturalList::fromList({Natural{1116}, Natural{1188},
+                               Natural{1277}, Natural{1356},
+                               Natural{1422}, Natural{1491},
+                               Natural{1557}, Natural{1617}});
 
     /** list of sample queue lengths for allpass filters */
     static const NaturalList _allpassFilterLengthList =
-        NaturalList::fromList(_lineAllpassFilterCount,
-                              Natural{225}, Natural{341},
-                              Natural{441}, Natural{556});
+        NaturalList::fromList({Natural{225}, Natural{341},
+                               Natural{441}, Natural{556}});
 
     /*============================================================*/
 

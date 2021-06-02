@@ -194,9 +194,8 @@ _addWidgetsToList (INOUT SoXAudioEditor* currentEditor,
             Natural::maximum(positionInPage + 1, maximumWidgetCountOnPage);
     }
 
-    NaturalList result = NaturalList::fromList(2,
-                                               fixedWidgetCount,
-                                               maximumWidgetCountOnPage);
+    NaturalList result = NaturalList::fromList({fixedWidgetCount,
+                                                maximumWidgetCountOnPage});
 
     Logging_trace1("<<: %1", result.toString());
     return result;
@@ -290,7 +289,7 @@ static NaturalList _findPageIndices (INOUT SoXAudioEditor* currentEditor)
         }
     }
 
-    const NaturalList result= NaturalList::fromList(2, pageCount, pageIndex);
+    const NaturalList result = NaturalList::fromList({pageCount, pageIndex});
     Logging_trace1("<<: %1", result.toString());
     return result;
 }

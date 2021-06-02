@@ -19,17 +19,14 @@ using SoXPlugins::BaseTypes::Containers::IntegerList;
 
 /*====================*/
 
-IntegerList IntegerList::fromList (IN size_t count, ...)
+IntegerList IntegerList::fromList (IN initializer_list<Integer> list)
 {
     IntegerList result{};
-    std::va_list argumentList;
-    va_start(argumentList, count);
 
-    for (size_t i = 0;  i < count;  ++i) {
-        result.append(va_arg(argumentList, Integer));
+    for (Integer element : list) {
+        result.append(element);
     }
             
-    va_end(argumentList);
     return result;
 }
 

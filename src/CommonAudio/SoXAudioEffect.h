@@ -22,7 +22,7 @@
 #include "SoXAudioSampleBuffer.h"
 #include "SoXAudioSampleList.h"
 #include "SoXAudioValueChangeKind.h"
-#include "String.h"
+#include "MyString.h"
 
 /*====================*/
 

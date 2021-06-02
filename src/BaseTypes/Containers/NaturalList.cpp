@@ -19,17 +19,14 @@ using SoXPlugins::BaseTypes::Containers::NaturalList;
 
 /*====================*/
 
-NaturalList NaturalList::fromList (IN size_t count, ...)
+NaturalList NaturalList::fromList (IN initializer_list<Natural> list)
 {
     NaturalList result{};
-    std::va_list argumentList;
-    va_start(argumentList, count);
 
-    for (size_t i = 0;  i < count;  ++i) {
-        result.append(va_arg(argumentList, Natural));
+    for (Natural element : list) {
+        result.append(element);
     }
             
-    va_end(argumentList);
     return result;
 }
 

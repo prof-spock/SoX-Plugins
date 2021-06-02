@@ -1155,9 +1155,9 @@ namespace SoXPlugins::Effects::SoXCompander {
     _Compander::_Compander ()
         : _transferFunction{},
           _channelsAreAggregated{true},
-          _volumeList{},
           _attackTimeList{},
-          _releaseTimeList{}
+          _releaseTimeList{},
+          _volumeList{}
     {
         Logging_trace(">>");
         _volumeList.setLength(_maximumChannelCount);

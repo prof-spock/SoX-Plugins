@@ -192,12 +192,13 @@ namespace SoXPlugins::BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Strips off integer part from <C>x</C> and only returns digits
-         * after the decimal point; for negative <C>x</C> also a positive
-         * result is produced
+         * Strips off integer part from <C>x</C> and only returns
+         * digits after the decimal point; for negative <C>x</C>
+         * values a negative value is produced
          *
          * @param[in] x  some real value
-         * @return  the positive fractional part after the decimal point
+         * @return  the fractional part after the decimal point with the
+         *          sign of x
          */
         static Real fractionalPart (IN Real x)
         {
@@ -224,17 +225,19 @@ namespace SoXPlugins::BaseTypes::Primitives {
 
         /**
           * Returns the real modulus; brings result into the range
-          * [0,i)
+          * [0,d)
           *
           * @param[in] x  some real value
-          * @param[in] d  the real divisor value
-          * @return remainder of division in range [0,i)
+          * @param[in] d  the positive real divisor value
+          * @return remainder of division in range [0,d)
           */
         static Real mod (IN Real x, IN Real d)
         {
             const double xv = x._value;
             const double dv = d._value;
-            return (x >= 0.0 ? fmod(xv, dv) : fmod(dv - xv, dv));
+            double result = fmod(xv, dv);
+            result += (result < 0 ? dv : 0.0);
+            return result;
         }
 
         /*--------------------*/

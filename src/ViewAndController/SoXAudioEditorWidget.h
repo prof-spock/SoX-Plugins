@@ -12,13 +12,13 @@
 
 /*====================*/
 
-#include "JuceLibrary.h"
+#include "JuceHeaders.h"
 
 #include "GlobalMacros.h"
 #include "Natural.h"
 #include "Object.h"
 #include "Percentage.h"
-#include "String.h"
+#include "MyString.h"
 #include "SoXAudioParameterMap.h"
 
 /*====================*/

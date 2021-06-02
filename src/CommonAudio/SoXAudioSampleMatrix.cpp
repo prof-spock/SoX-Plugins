@@ -49,8 +49,9 @@ SoXAudioSampleMatrix::SoXAudioSampleMatrix
                           (IN Natural channelCount,
                            IN bool hasTwoQueuesPerChannel,
                            IN Natural sampleQueueLength)
-    : _data{_effectiveIndex(hasTwoQueuesPerChannel, channelCount, 0)},
-      _hasTwoQueuesPerChannel(hasTwoQueuesPerChannel)
+    : _hasTwoQueuesPerChannel(hasTwoQueuesPerChannel),
+      _data{_effectiveIndex(hasTwoQueuesPerChannel, channelCount, 0)}
+      
 {
     Logging_trace(">>");
     setQueueLength(sampleQueueLength);

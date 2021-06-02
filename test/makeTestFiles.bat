@@ -15,6 +15,7 @@ REM === prepare test files ===
 REM ==========================
 
 ECHO === preparing test files ===
+
 SET soxCommandsSuffix=fade 0.1 -0 pad 1 1
 
 REM -- a stereo file with noise on one channel and sine on the other
@@ -35,6 +36,8 @@ SET soxCommands=synth %durationInSeconds% sine 500 remix 1 1
 REM =====================
 REM === perform tests ===
 REM =====================
+
+ECHO === performing tests ===
 
 SET soxCommands=allpass 1050 3q
 CALL :performTest noise allpass
@@ -78,7 +81,6 @@ CALL :performTest noise mcompander
 
 SET soxCommands=phaser 0.6 0.66 3 0.6 0.5 -t
 CALL :performTest noise phaser
-CALL :performTest sine-sweep phaser
 
 SET soxCommands=reverb 60 22 87.5 34.88 20 -3
 CALL :performTest noise reverb
@@ -111,6 +113,7 @@ REM ============================================================
     :ENDIF1
 
     SET fileList=%fileList% %fileList%
+    ECHO --- burst file %targetFileStem% --- %soxCommandsSuffix%
     %sox% %fileList% %targetFileStem%%soxFileType% %soxCommandsSuffix%
 GOTO :EOF
 
@@ -123,7 +126,7 @@ REM --------------------
     SET sourceStem=%1
     SET category=%2
 
-    ECHO === %category% (%sourceStem%) test === %soxCommands%
+    ECHO --- %category% (%sourceStem%) test --- %soxCommands%
     SET sourceFile=%sourceStem%%soxFileType%
     SET targetFile=%sourceStem%-%category%test%soxFileType%
     %sox% %sourceFile% %targetFile% %soxCommands%

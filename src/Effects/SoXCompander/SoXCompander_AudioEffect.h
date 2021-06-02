@@ -14,9 +14,9 @@
 
 #include "GlobalMacros.h"
 #include "Real.h"
-#include "String.h"
 #include "SoXAudioEffect.h"
 #include "SoXAudioValueChangeKind.h"
+#include "MyString.h"
 
 /*====================*/
 

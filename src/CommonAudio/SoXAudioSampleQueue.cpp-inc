@@ -34,10 +34,10 @@ namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
 
 INLINE
 SoXAudioSampleQueue::SoXAudioSampleQueue ()
-    : _firstIndex{0},
-      _data{},
+    : _allocatedLength{0},
       _length{0},
-      _allocatedLength{0}
+      _firstIndex{0},
+      _data{}
 {
 }
 
@@ -45,10 +45,10 @@ SoXAudioSampleQueue::SoXAudioSampleQueue ()
 
 INLINE
 SoXAudioSampleQueue::SoXAudioSampleQueue (IN Natural length)
-    : _firstIndex{0},
-      _data{},
+    : _allocatedLength{length},
       _length{length},
-      _allocatedLength{length}
+      _firstIndex{0},
+      _data{}
 {
     _data.setLength(length);
     setToZero();

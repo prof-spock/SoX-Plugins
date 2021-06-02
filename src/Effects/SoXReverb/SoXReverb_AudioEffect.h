@@ -50,7 +50,7 @@ namespace SoXPlugins::Effects::SoXReverb {
         /* property queries   */
         /*--------------------*/
 
-        String name () const;
+        String name () const override;
 
         /*--------------------*/
         /* parameter change   */

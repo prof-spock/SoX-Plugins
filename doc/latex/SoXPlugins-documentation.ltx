@@ -106,9 +106,8 @@
                   \end{center}}
 
   \newcommand{\parameterTableHeader}{%
-    \cellcolor{parameterTableHeadingBackgroundColor}\bf Parameter&
-    \cellcolor{parameterTableHeadingBackgroundColor}\bf Description&
-    \cellcolor{parameterTableHeadingBackgroundColor}\bf Unit\\
+    \rowcolor{parameterTableHeadingBackgroundColor}
+    \bf Parameter&\bf Description&\bf Unit\\
   }
 
   \newcommand{\parameterTableLine}[3]{#1&#2&#3\\\hline}
@@ -130,6 +129,8 @@
       \label{figure:panel#1}
     \end{minipage}
   }
+
+  \newcommand{\subTarget}{\hspace*{5mm}\(\dashleftarrow\)~}
 
   \newcommand{\TODO}[1]{\emph{\color{red}\textbf{TODO:} #1}}
 
@@ -875,8 +876,8 @@ The double-pole filters are described in detail in
   \parameterTableLine{Band Index}
                      {the index of the band to be adapted}
                      {---}
-  \multicolumn{3}{|l|}{\cellcolor{parameterTableOtherBackgroundColor}
-                       \bf for every band}\\\hline
+  \rowcolor{parameterTableOtherBackgroundColor}
+  \multicolumn{3}{|l|}{\bf for every band}\\\hline
   \parameterTableLine{Attack}
                      {the attack time of the compander band}
                      {s}
@@ -1372,6 +1373,70 @@ updated.
 
 To trigger regeneration, it suffices to delete the file
 \embeddedCode{internalDocumentation/html/index.html}.
+
+%--------------------------------
+\section{Available Build Targets}
+%--------------------------------
+
+Figure~\ref{figure:doxygenDocumentation} shows the available CMAKE
+targets. They can be used as
+\begin{commandLine}
+cmake --build . --config Release --target XXX
+\end{commandLine}
+where XXX is the target name.
+
+\begin{centeredFigure}
+  \begin{center}\small
+    \begin{tabular}{|>{\tt}p{6cm}|p{7cm}|}
+      \hline
+      \rowcolor{parameterTableHeadingBackgroundColor}
+      \bf Target Name&\bf Description\\\hline
+      documentation&
+        the complete project documentation\\\hline
+      \subTarget internalDocumentation&
+        the HTML doxygen documentation for the code\\\hline
+      \subTarget pdfDocumentation&
+        the PDF manual for the plugins\\\hline
+      SoXPlugins&
+        the static libraries plus platform plugins for all effects\\\hline
+      \subTarget SoXPlugins\_Effect&
+        the static effect libraries for all the effects\\\hline
+      \subTarget SoXPlugins\_VST&
+        the VST3 libraries for all the effects\\\hline
+      \subTarget SoXPlugins\_AU&
+        the AU libraries for all the effects (only on MacOSX)\\\hline
+      SupportLibraries&
+        the static libraries supporting the effects\\\hline
+      \subTarget JuceFramework&
+        the static library with utility classes from the JUCE
+        framework\\\hline
+      \subTarget SoXCommon&
+        the static library with utility classes (like e.g. lists or
+        logging)\\\hline
+      \subTarget SoXViewAndController&
+        the static library with plugin UI and plugin wrapper (like e.g.\ 
+        \embeddedCode{SoXAudioEditor} or \embeddedCode{SoXAudioProcessor})\\
+      \hline
+      \rowcolor{parameterTableOtherBackgroundColor}
+      \multicolumn{2}{|p{13cm}|}
+                  {\bf foreach effectName in \{Compander, Filter,
+                    Gain, Overdrive, PhaserAndTremolo, Reverb\}
+                    do}\\\hline
+      SoX<effectName>&
+        the static libraries plus platform plugins for given effect\\\hline
+      \subTarget SoX<effectName>\_Effect&
+        the static library for the given effect\\\hline
+      \subTarget SoX<effectName>\_VST&
+        the VST3 library for the given effect\\\hline
+      \subTarget SoX<effectName>\_AU&
+        the AU library for the given effect (only for MacOSX)\\\hline
+      \rowcolor{parameterTableOtherBackgroundColor}
+      \multicolumn{2}{|l|}{\bf od}\\\hline
+    \end{tabular}
+  \end{center}
+  \caption{Available Build Targets for CMAKE}
+  \label{figure:buildTargets}
+\end{centeredFigure}
 
 %--------------------
 \section{Debugging}

@@ -12,11 +12,13 @@
 
 /*====================*/
 
+#include <initializer_list>
 #include "GenericSequence.h"
 #include "Real.h"
 
 /*====================*/
 
+using std::initializer_list;
 using SoXPlugins::BaseTypes::Primitives::Real;
 
 /*====================*/
@@ -33,12 +35,13 @@ namespace SoXPlugins::BaseTypes::Containers {
     {
 
         /**
-         * Initializes sequence of reals from array of values.
+         * Initializes sequence of reals from initializer list of
+         * values.
          *
-         * @param count  count of element values
+         * @param list  initializer list of real values
          * @return  sequence with values in order given
          */
-        static RealList fromList (IN size_t count, ...);
+        static RealList fromList (IN initializer_list<Real> list);
 
         /*--------------------*/
 

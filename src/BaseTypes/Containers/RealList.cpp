@@ -19,17 +19,14 @@ using SoXPlugins::BaseTypes::Containers::RealList;
 
 /*====================*/
 
-RealList RealList::fromList (IN size_t count, ...)
+RealList RealList::fromList (IN initializer_list<Real> list)
 {
     RealList result{};
-    std::va_list argumentList;
-    va_start(argumentList, count);
 
-    for (size_t i = 0;  i < count;  ++i) {
-        result.append(va_arg(argumentList, Real));
+    for (Real element : list) {
+        result.append(element);
     }
-            
-    va_end(argumentList);
+
     return result;
 }
 

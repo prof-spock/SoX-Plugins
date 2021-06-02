@@ -35,12 +35,13 @@ namespace SoXPlugins::BaseTypes::Containers {
     {
 
         /**
-         * Initializes sequence of naturals from array of values.
+         * Initializes sequence of naturals from an initializer list
+         * values.
          *
-         * @param count  count of element values
+         * @param list  initializer list of natural values
          * @return  sequence with values in order given
          */
-        static NaturalList fromList (IN size_t count, ...);
+        static NaturalList fromList (IN initializer_list<Natural> list);
 
         /*--------------------*/
 

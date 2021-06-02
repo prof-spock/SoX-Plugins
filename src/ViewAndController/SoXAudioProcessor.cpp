@@ -10,7 +10,7 @@
 
 /*====================*/
 
-#include "JuceLibrary.h"
+#include "JuceHeaders.h"
 #include "Natural.h"
 #include "SoXAudioEditor.h"
 #include "SoXAudioProcessor.h"
@@ -439,7 +439,8 @@ SoXAudioProcessor::_notifyObserversAboutChange
 
 void SoXAudioProcessor::prepareToPlay (IN double sampleRate, IN int)
 {
-    Logging_trace1(">>: sampleRate = %1", TOSTRING(sampleRate));
+    Logging_trace1(">>: sampleRate = %1",
+                   TOSTRING(Real{sampleRate}));
 
     if (!_effect->hasValidParameters()) {
         _effect->setDefaultValues();

@@ -12,11 +12,13 @@
 
 /*====================*/
 
+#include <initializer_list>
 #include "GenericSequence.h"
 #include "Integer.h"
 
 /*====================*/
 
+using std::initializer_list;
 using SoXPlugins::BaseTypes::Primitives::Integer;
 
 /*====================*/
@@ -33,12 +35,13 @@ namespace SoXPlugins::BaseTypes::Containers {
     {
 
         /**
-         * Initializes sequence of integers from array of values.
+         * Initializes sequence of integers from an initializer list
+         * of values.
          *
-         * @param count  count of element values
+         * @param list  initializer list of integer values
          * @return  sequence with values in order given
          */
-        static IntegerList fromList (IN size_t count, ...);
+        static IntegerList fromList (IN initializer_list<Integer> list);
 
         /*--------------------*/
 

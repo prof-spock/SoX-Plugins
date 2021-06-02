@@ -93,7 +93,8 @@ namespace SoXPlugins::CommonAudio {
      */
     static String _waveFormKind (IN SoXWaveFormKind kind)
     {
-        return String(kind == SoXWaveFormKind::sine ? "sine" : "triangle");
+        return String(kind == SoXWaveFormKind::sine
+                      ? "sine" : "triangle");
     }
 
     /*--------------------*/
@@ -169,9 +170,9 @@ namespace SoXPlugins::CommonAudio {
      */
     static Real _position (IN _WaveFormDescriptor* descriptor)
     {
-        return Real::mod(descriptor->firstPosition
-                         + Real{descriptor->stepCount} * descriptor->increment,
-                         Real{descriptor->waveTableLength});
+        Real p = (descriptor->firstPosition
+                  + Real{descriptor->stepCount} * descriptor->increment);
+        return Real::mod(p, Real{descriptor->waveTableLength});
     }
 
 };
@@ -237,7 +238,7 @@ String SoXWaveForm::toString() const {
                + TOSTRING(descriptor->hasIntegerValues));
     result += (", waveTableLength = "
                + TOSTRING(descriptor->waveTableLength));
-    // result += ", buffer = " + descriptor->buffer->toString()
+    result += ", buffer = " + descriptor->buffer->toString();
     result += ")";
 
     return result;
@@ -359,10 +360,9 @@ Radians SoXWaveForm::phaseByTime (IN Real frequency,
                    TOSTRING(frequency), TOSTRING(timeOffset),
                    TOSTRING(currentTime));
 
-    const Real deltaTime = currentTime - timeOffset;
     Radians result;
-
-    result = Real::fractionalPart(deltaTime * frequency)* Real::twoPi;
+    const Real deltaTime = currentTime - timeOffset;
+    result = Real::fractionalPart(deltaTime * frequency) * Real::twoPi;
     result = result.mod(Real::twoPi);
 
     Logging_trace1("<<: %1", TOSTRING(result));
