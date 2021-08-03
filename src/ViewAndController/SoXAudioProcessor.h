@@ -42,7 +42,7 @@ namespace SoXPlugins::ViewAndController {
      * A <C>_SoXAudioEditorPtrSet</C> is a set of pointers to SoX
      * audio editors.
      */
-    typedef set<SoXAudioEditor*> _SoXAudioEditorPtrSet;
+    using _SoXAudioEditorPtrSet = set<SoXAudioEditor*>;
 
     /*--------------------*/
 
@@ -392,4 +392,4 @@ namespace SoXPlugins::ViewAndController {
 
     };
 
-};
+}

@@ -14,7 +14,7 @@
 
 #define JucePlugin_Name                  "SoX Gain"
 #define JucePlugin_Desc                  "gain effect from SoX"
-#define JucePlugin_PluginCode            4711
+#define JucePlugin_PluginCode            0x6761696e
 
 // settings for the different plugin kinds
 #define JucePlugin_AAXIdentifier         _PluginPathName

@@ -9,7 +9,7 @@ var indexSectionsWithContent =
   6: "_ost",
   7: "_s",
   8: "gp",
-  9: "_aiost"
+  9: "_aimost"
 };
 
 var indexSectionNames =

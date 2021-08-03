@@ -9,7 +9,7 @@ var struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect =
     [ "hasValidParameters", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a52c02d7043630d5cb6a339f9f20170a8", null ],
     [ "name", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a20683cbe412d425bc27b7bd3a8e63e0b", null ],
     [ "prepareToPlay", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#ad5da88fd2a3b4cecfd2e25fd70a7ac05", null ],
-    [ "processBlock", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#acbce8c1237cfa3a1846a63b0fc9bef9e", null ],
+    [ "processBlock", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#afa8aa3db1909e779e403b2198f6b83d4", null ],
     [ "releaseResources", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#aa9b71710af346e9e4b980b281b60a452", null ],
     [ "setDefaultValues", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#afbf0c65b1949af93ee4f8d28d1403da3", null ],
     [ "setParameterValidity", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#accb0c8080a392b762ccd26a294a606f0", null ],

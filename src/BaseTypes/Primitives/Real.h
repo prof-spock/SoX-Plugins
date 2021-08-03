@@ -528,4 +528,4 @@ namespace SoXPlugins::BaseTypes::Primitives {
     inline const Real Real::twoPi{Real{2} * pi};
     inline const Real Real::infinity{1e99};
 
-};
+}

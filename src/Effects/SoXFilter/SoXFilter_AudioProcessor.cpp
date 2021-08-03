@@ -52,7 +52,7 @@ namespace SoXPlugins::Effects::SoXFilter {
 
     };
 
-};
+}
 
 /*--------------------*/
 

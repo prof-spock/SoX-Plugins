@@ -87,4 +87,4 @@ namespace SoXPlugins::BaseTypes::Primitives {
 
     };
 
-};
+}

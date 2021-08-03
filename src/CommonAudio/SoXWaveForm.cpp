@@ -33,7 +33,7 @@ using SoXPlugins::CommonAudio::SoXWaveFormKind;
 namespace SoXPlugins::CommonAudio {
 
     /** <C>_WaveTable</C> is a local alias name for a real list */
-    typedef RealList _WaveTable;
+    using  _WaveTable = RealList;
 
     static bool _isInitialized = false;
     static _WaveTable _sineWaveTable;
@@ -175,7 +175,7 @@ namespace SoXPlugins::CommonAudio {
         return Real::mod(p, Real{descriptor->waveTableLength});
     }
 
-};
+}
 
 /*============================================================*/
 
@@ -216,7 +216,9 @@ SoXWaveForm::SoXWaveForm ()
 SoXWaveForm::~SoXWaveForm ()
 {
     Logging_trace(">>");
-    delete _internalData;
+    _WaveFormDescriptor* descriptor =
+        (_WaveFormDescriptor*) _internalData;
+    delete descriptor;
     Logging_trace("<<");
 }
 

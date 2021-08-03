@@ -41,9 +41,7 @@ String RealList::toString () const
 
 void RealList::fill (IN Real value)
 {
-    for (Real& entry : *this) {
-        entry = value;
-    }
+    std::fill(begin(), end(), value);
 }
 
 /*--------------------*/

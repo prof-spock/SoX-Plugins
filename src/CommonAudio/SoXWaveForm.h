@@ -33,7 +33,7 @@ namespace SoXPlugins::CommonAudio {
      * A <C>SoXWaveFormIteratorState</C> object holds the state of
      * an iterator on the current waveform.
      */
-    typedef Natural SoXWaveFormIteratorState;
+    using SoXWaveFormIteratorState = Natural;
 
     /*--------------------*/
 
@@ -171,4 +171,4 @@ namespace SoXPlugins::CommonAudio {
 
     };
 
-};
+}

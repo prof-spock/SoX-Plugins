@@ -179,7 +179,7 @@ namespace SoXPlugins::Effects::SoXReverb {
         reverb.resize(sampleRate, channelCount);
     }
 
-};
+}
 
 /*============================================================*/
 
@@ -299,8 +299,9 @@ void SoXReverb_AudioEffect::setDefaultValues ()
 /* event handling     */
 /*--------------------*/
 
-void SoXReverb_AudioEffect::processBlock (IN Real timePosition,
-                                          INOUT SoXAudioSampleBuffer& buffer)
+void SoXReverb_AudioEffect::processBlock
+                                (IN Real timePosition,
+                                 INOUT SoXAudioSampleListVector& buffer)
 {
     SoXAudioEffect::processBlock(timePosition, buffer);
 

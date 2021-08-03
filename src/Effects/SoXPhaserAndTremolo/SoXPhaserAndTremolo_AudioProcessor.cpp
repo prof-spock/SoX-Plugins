@@ -50,7 +50,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
 
     };
 
-};
+}
 
 /*--------------------*/
 

@@ -4,6 +4,8 @@ var struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_sequence =
     [ "GenericSequence", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_sequence.html#aad3582abfd7826fe0d06ef7847d4202e", null ],
     [ "_toString", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_sequence.html#a300010582bfe5c0156a228b1d6dd8953", null ],
     [ "append", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_sequence.html#aa761f75c6acad3caa25b62869a1ae246", null ],
+    [ "asArray", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_sequence.html#a0bbd7008a956c989aba1e54b8063f1b6", null ],
+    [ "asArray", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_sequence.html#a058152da85054e57d11175d39e8e6d2d", null ],
     [ "at", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_sequence.html#a80bdb20478bd699ea1867150f5f594e8", null ],
     [ "at", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_sequence.html#a243e84b68e75b541fb69219d0013da8a", null ],
     [ "contains", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_sequence.html#a223923cd04ddf8f4d640e30c4226976a", null ],

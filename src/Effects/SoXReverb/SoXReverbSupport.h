@@ -120,4 +120,4 @@ namespace SoXPlugins::Effects::SoXReverb {
 
     };
 
-};
+}

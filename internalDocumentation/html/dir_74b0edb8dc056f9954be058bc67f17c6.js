@@ -17,6 +17,7 @@ var dir_74b0edb8dc056f9954be058bc67f17c6 =
     [ "IntegerList.h", "_integer_list_8h.html", [
       [ "IntegerList", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_integer_list.html", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_integer_list" ]
     ] ],
+    [ "MyArray.h", "_my_array_8h.html", "_my_array_8h" ],
     [ "NaturalList.cpp", "_natural_list_8cpp.html", null ],
     [ "NaturalList.h", "_natural_list_8h.html", [
       [ "NaturalList", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_natural_list.html", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_natural_list" ]

@@ -550,4 +550,4 @@ namespace SoXPlugins::CommonAudio {
 
     };
 
-};
+}

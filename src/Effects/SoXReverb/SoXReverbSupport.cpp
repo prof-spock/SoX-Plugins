@@ -73,7 +73,7 @@ namespace SoXPlugins::Effects::SoXReverb {
     /**
      * A <C>_SamplePair</C> is a pair of audio samples.
      */
-    typedef GenericTuple<SoXAudioSample, 2> _SamplePair;
+    using _SamplePair = GenericTuple<SoXAudioSample, 2>;
 
     /*====================*/
     /* Allpass Filter     */
@@ -375,7 +375,7 @@ namespace SoXPlugins::Effects::SoXReverb {
     /*--------------------*/
 
     /** a list of reverb channels */
-    typedef GenericSequence<_ReverbChannel*> _ReverbChannelList;
+    using _ReverbChannelList = GenericSequence<_ReverbChannel*>;
 
     /*====================*/
     /* Reverb             */
@@ -807,7 +807,7 @@ namespace SoXPlugins::Effects::SoXReverb {
         }
     }
 
-};
+}
 
 /*============================================================*/
 

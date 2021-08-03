@@ -14,7 +14,7 @@
 
 #define JucePlugin_Name                  "SoX Overdrive"
 #define JucePlugin_Desc                  "overdrive effect from SoX"
-#define JucePlugin_PluginCode            4712
+#define JucePlugin_PluginCode            0x6f647276
 
 // settings for the different plugin kinds
 #define JucePlugin_AAXIdentifier         _PluginPathName

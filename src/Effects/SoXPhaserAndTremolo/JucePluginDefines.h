@@ -11,8 +11,9 @@
 
 // Plugin Settings
 #define _PluginPathName                  eu.tensi.SoXPlugins.PhaserAndTremolo
-#define JucePlugin_Name                  "SoX Phaser And Tremolo"
-#define JucePlugin_PluginCode            4721
+#define JucePlugin_Name                  "SoX PhaserAndTremolo"
+#define JucePlugin_Desc                  "phaser and tremolo modulation effect from SoX"
+#define JucePlugin_PluginCode            0x70687472
 
 // settings for the different plugin kinds
 #define JucePlugin_AAXIdentifier         _PluginPathName

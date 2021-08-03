@@ -104,7 +104,7 @@ static const juce::Colour _dimmedBackgroundColor  = _grey8;
 /** the default width of an SoXPlugins editor in pixels */
 static const Natural _defaultWidth    = 500;
 /** the default height of an SoXPlugin widget in pixels */
-static const Natural _heightPerWidget =  55;
+static const Natural _heightPerWidget =  40;
 
 /*--------------------*/
 /* auxiliary routines */
@@ -156,7 +156,7 @@ _addWidgetsToList (INOUT SoXAudioEditor* currentEditor,
     // find fixed count of widgets
     Natural fixedWidgetCount = 0;
 
-    for (const String parameterName : parameterNameList) {
+    for (const String& parameterName : parameterNameList) {
         Natural pageNumber;
         String labelName;
         SoXAudioParameterMap::splitParameterName(parameterName,
@@ -171,7 +171,7 @@ _addWidgetsToList (INOUT SoXAudioEditor* currentEditor,
     _clearWidgetList(widgetList);
     Logging_trace1("--: fixedWidgetCount = %1", TOSTRING(fixedWidgetCount));
 
-    for (const String parameterName : parameterNameList) {
+    for (const String& parameterName : parameterNameList) {
         Natural pageNumber;
         String labelName;
         SoXAudioParameterMap::splitParameterName(parameterName,
@@ -267,7 +267,7 @@ static NaturalList _findPageIndices (INOUT SoXAudioEditor* currentEditor)
     Natural pageIndex = 0;
     Natural pageCount = 0;
 
-    for (const String parameterName : parameterNameList) {
+    for (const String& parameterName : parameterNameList) {
         Natural pageNumber;
         String labelName;
         Integer nominalPageNumber;

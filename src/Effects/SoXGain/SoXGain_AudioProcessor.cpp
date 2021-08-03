@@ -47,7 +47,7 @@ namespace SoXPlugins::Effects::SoXGain {
 
     };
 
-};
+}
 
 /*--------------------*/
 

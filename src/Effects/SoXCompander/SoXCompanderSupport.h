@@ -160,4 +160,4 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     };
 
-};
+}

@@ -141,4 +141,11 @@ namespace SoXPlugins::CommonAudio {
 
     };
 
-};
+}
+
+//============================================================
+
+#ifndef DEBUG
+    //production code is inlined
+    #include "SoXIIRFilter.cpp-inc"
+#endif

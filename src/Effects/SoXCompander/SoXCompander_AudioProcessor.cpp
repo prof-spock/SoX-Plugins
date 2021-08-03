@@ -48,7 +48,7 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     };
 
-};
+}
 
 /*--------------------*/
 

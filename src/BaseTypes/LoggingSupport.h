@@ -134,4 +134,4 @@ namespace SoXPlugins::BaseTypes {
 
     };
 
-};
+}

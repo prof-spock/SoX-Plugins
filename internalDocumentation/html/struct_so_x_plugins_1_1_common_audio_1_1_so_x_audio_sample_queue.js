@@ -17,5 +17,6 @@ var struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue =
     [ "setToZero", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue.html#ab5b18b59bd520b4d68085a63d74de69b", null ],
     [ "shiftLeft", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue.html#af003c4e08eb3bbf7827748df426d67b6", null ],
     [ "shiftRight", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue.html#a770e4d3f7afa6c8f81e61e125d1fe072", null ],
+    [ "toArray", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue.html#a6140b2cf0cc81c98a4c1bc611099406e", null ],
     [ "toString", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue.html#ad14fd7a89b87c89041e9ba08552ad9c5", null ]
 ];

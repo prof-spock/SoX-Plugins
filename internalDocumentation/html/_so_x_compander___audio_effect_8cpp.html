@@ -138,10 +138,10 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a5b53acc784ad4b4c1b879003cbf4845c"><td class="memItemLeft" align="right" valign="top"><a id="a5b53acc784ad4b4c1b879003cbf4845c"></a>
-typedef <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_tuple.html">GenericTuple</a>&lt; _CompanderBandParameterData, <a class="el" href="_so_x_compander___audio_effect_8cpp.html#a80b8ea21efe3bcd9f627dbf1aa4067b3">_maxBandCount</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a5b53acc784ad4b4c1b879003cbf4845c">SoXPlugins::Effects::SoXCompander::_BandIndexToCompanderDataMap</a></td></tr>
-<tr class="memdesc:a5b53acc784ad4b4c1b879003cbf4845c"><td class="mdescLeft">&#160;</td><td class="mdescRight">fixed-length mapping from natural to compander data <br /></td></tr>
-<tr class="separator:a5b53acc784ad4b4c1b879003cbf4845c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8765ded7791a2b7d076153f3e56640a"><td class="memItemLeft" align="right" valign="top"><a id="ac8765ded7791a2b7d076153f3e56640a"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ac8765ded7791a2b7d076153f3e56640a">SoXPlugins::Effects::SoXCompander::_BandIndexToCompanderDataMap</a> = <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_tuple.html">GenericTuple</a>&lt; _CompanderBandParameterData, <a class="el" href="_so_x_compander___audio_effect_8cpp.html#a80b8ea21efe3bcd9f627dbf1aa4067b3">_maxBandCount</a> &gt;</td></tr>
+<tr class="memdesc:ac8765ded7791a2b7d076153f3e56640a"><td class="mdescLeft">&#160;</td><td class="mdescRight">fixed-length mapping from natural to compander data <br /></td></tr>
+<tr class="separator:ac8765ded7791a2b7d076153f3e56640a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -180,7 +180,7 @@ constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    Natural::maximum(1, Natural::minimum(effectDescriptor-&gt;bandCount,\</div>
+<b>Value:</b><div class="fragment"><div class="line">    Natural::maximum(1, Natural::minimum(effectDescriptor-&gt;bandCount, \</div>
 <div class="line">                                         bandIndex))</div>
 </div><!-- fragment -->
 <p>function to adjust a bandindex to range of 1 to maximum band count </p>

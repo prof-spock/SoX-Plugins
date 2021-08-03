@@ -46,7 +46,7 @@ using StringUtil::substring;
 /*====================*/
 
 /** the timestamp type as provided by the system call */
-typedef uint64_t Timestamp;
+using Timestamp = uint64_t;
 
 /*--------------------*/
 
@@ -193,7 +193,7 @@ namespace SoXPlugins::BaseTypes {
             }
 
     };
-};
+}
 
 /*====================*/
 
@@ -275,9 +275,12 @@ static
 String _functionNameFromSignature (IN String& functionSignature,
                                    IN String& ignoredFunctionNamePrefix) {
     String functionName = functionSignature;
+
+    // sanitize function name    
     Natural position = functionName.find("(");
     functionName = prefix(functionName, position);
-    StringUtil::replace(functionName, " *__cdecl ", "::");
+    replace(functionName, " *__cdecl ", "::");
+    replace(functionName, "*", "");
     position = functionName.rfind(" ");
     functionName = substring(functionName, position + 1);
     replace(functionName, "::", ".");

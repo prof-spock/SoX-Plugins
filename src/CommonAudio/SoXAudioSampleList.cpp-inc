@@ -1,0 +1,46 @@
+/**
+ * @file
+ * The <C>SoXAudioSampleList</C> body implements a simple list of
+ * audio samples <I>(this is the effective code include file for
+ * conditional inlining)</I>.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
+ */
+
+/*====================*/
+
+#include "SoXAudioSampleList.h"
+
+/*====================*/
+
+using SoXPlugins::CommonAudio::SoXAudioSampleList;
+
+/*====================*/
+
+INLINE
+String SoXAudioSampleList::toString () const
+{
+    return _toString("SoXAudioSampleList");
+}
+
+/*--------------------*/
+
+INLINE
+String SoXAudioSampleList::toString (IN SoXAudioSampleList& list)
+{
+    return list.toString();
+}
+
+/*--------------------*/
+
+INLINE
+void SoXAudioSampleList::setToZero ()
+{
+    const Natural currentLength = length();
+    SoXAudioSample* sample = asArray();
+
+    for (Natural count = 0;  count < currentLength;  count++) {
+        *sample++ = 0.0;
+    }
+}

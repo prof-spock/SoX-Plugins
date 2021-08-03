@@ -22,6 +22,6 @@ using SoXPlugins::BaseTypes::Primitives::Real;
 namespace SoXPlugins::CommonAudio {
 
     /** type for an audio sample */
-    typedef Real SoXAudioSample;
+    using SoXAudioSample = Real;
 
-};
+}

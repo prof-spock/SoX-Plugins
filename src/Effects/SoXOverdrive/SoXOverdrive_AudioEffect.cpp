@@ -18,12 +18,12 @@
 
 #include <cmath>
 #include "SoXAudioHelper.h"
-#include "SoXAudioSampleMatrix.h"
+#include "SoXAudioSampleQueueMatrix.h"
 #include "StringUtil.h"
 
 /*====================*/
 
-using SoXPlugins::CommonAudio::SoXAudioSampleMatrix;
+using SoXPlugins::CommonAudio::SoXAudioSampleQueueMatrix;
 using SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect;
 
 namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
@@ -49,7 +49,7 @@ namespace SoXPlugins::Effects::SoXOverdrive {
         Real colour;
 
         /** the list of samples queues for input and output */
-        SoXAudioSampleMatrix sampleQueueList;
+        SoXAudioSampleQueueMatrix sampleQueueMatrix;
     };
 
     /*====================*/
@@ -78,7 +78,7 @@ namespace SoXPlugins::Effects::SoXOverdrive {
             new _EffectDescriptor_OVRD{
                 SoXAudioHelper::dBToLinear(0.0),  // gain
                 (Real) 20 * colourFactor,         // colour
-                {2, true, 1}                      // sampleQueueList
+                {2, true, 1}                      // sampleQueueMatrix
             };
 
         return result;
@@ -99,7 +99,7 @@ namespace SoXPlugins::Effects::SoXOverdrive {
         parameterMap.setKindAndValueInt(parameterName_colour, 0, 100, 1, 20);
     }
 
-};
+}
 
 /*============================================================*/
 
@@ -137,8 +137,8 @@ String SoXOverdrive_AudioEffect::_effectDescriptorToString () const
     String st = "_EffectDescriptor_OVRD(";
     st += "gain = " + StringUtil::toString(effectDescriptor->gain);
     st += ", colour = " + StringUtil::toString(effectDescriptor->colour);
-    st += (", sampleQueueList = "
-           + effectDescriptor->sampleQueueList.toString());
+    st += (", sampleQueueMatrix = "
+           + effectDescriptor->sampleQueueMatrix.toString());
     st += ")";
 
     return st;
@@ -188,8 +188,9 @@ void SoXOverdrive_AudioEffect::setDefaultValues () {
 /* event handling     */
 /*--------------------*/
 
-void SoXOverdrive_AudioEffect::processBlock  (Real timePosition,
-                                              SoXAudioSampleBuffer& buffer)
+void
+SoXOverdrive_AudioEffect::processBlock (IN Real timePosition,
+                                        INOUT SoXAudioSampleListVector& buffer)
 {
     SoXAudioEffect::processBlock(timePosition, buffer);
     _EffectDescriptor_OVRD* effectDescriptor =
@@ -198,15 +199,15 @@ void SoXOverdrive_AudioEffect::processBlock  (Real timePosition,
     const Natural sampleCount = buffer[0].size();
     const Real gain   = effectDescriptor->gain;
     const Real colour = effectDescriptor->colour;
-    SoXAudioSampleMatrix& sampleQueueList =
-        effectDescriptor->sampleQueueList;
+    SoXAudioSampleQueueMatrix& sampleQueueMatrix =
+        effectDescriptor->sampleQueueMatrix;
 
     for (Natural channel = 0;  channel < _channelCount;
          channel++) {
         SoXAudioSampleQueue& inputSampleQueue =
-            sampleQueueList.at(channel, 0);
+            sampleQueueMatrix.at(channel, 0);
         SoXAudioSampleQueue& outputSampleQueue =
-            sampleQueueList.at(channel, 1);
+            sampleQueueMatrix.at(channel, 1);
         const SoXAudioSampleList& inputList  = buffer[channel];
         SoXAudioSampleList& outputList = buffer[channel];
 

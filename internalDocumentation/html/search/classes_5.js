@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logging_604',['Logging',['../struct_so_x_plugins_1_1_base_types_1_1_logging.html',1,'SoXPlugins::BaseTypes']]]
+  ['logging_613',['Logging',['../struct_so_x_plugins_1_1_base_types_1_1_logging.html',1,'SoXPlugins::BaseTypes']]]
 ];

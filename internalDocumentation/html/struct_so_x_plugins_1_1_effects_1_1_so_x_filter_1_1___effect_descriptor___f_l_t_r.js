@@ -14,7 +14,7 @@ var struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_
     [ "frequency", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#af9645f3f30a654d4f8192f912406894c", null ],
     [ "isSinglePole", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a8d897852b38da563ad2fc2a1779f419c", null ],
     [ "kind", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a25f5cb02b5e9bef4e60c9ba4e544f563", null ],
-    [ "sampleQueueList", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a27baaa39f575f98a8cc186fc4c0c989f", null ],
+    [ "sampleQueueMatrix", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a9875a329d1c36de8ecad5cb299b55c1a", null ],
     [ "usesConstantSkirtGain", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#ab2330331f3616d5fb4a0764a0aad2bef", null ],
     [ "usesUnpitchedAudioMode", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a42d61b3dae7f1210c62d7aea15d55ac5", null ]
 ];

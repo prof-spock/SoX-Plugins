@@ -133,6 +133,30 @@ namespace SoXPlugins::BaseTypes::Containers {
         /*--------------------*/
 
         /**
+         * Returns pointer to first element of sequence.
+         *
+         * @return  pointer to first element
+         */
+        T* asArray ()
+        {
+            return vector<T>::data();
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns read pointer to first element of sequence.
+         *
+         * @return  read pointer to first element
+         */
+        const T* asArray () const
+        {
+            return vector<T>::data();
+        }
+
+        /*--------------------*/
+
+        /**
          * Tells whether current sequence contains <C>element</C>.
          *
          * @param[in] element  element to be searched in sequence
@@ -247,4 +271,4 @@ namespace SoXPlugins::BaseTypes::Containers {
 
     };
 
-};
+}

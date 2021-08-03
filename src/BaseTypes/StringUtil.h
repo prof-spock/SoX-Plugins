@@ -448,7 +448,7 @@ namespace SoXPlugins::BaseTypes::StringUtil {
         return _combineListElements(typeName, printableStringList);
     }
 
-};
+}
 
 /*--------------------*/
 

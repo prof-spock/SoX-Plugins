@@ -19,7 +19,7 @@
 #include "Real.h"
 #include "SoXAudioParameterMap.h"
 #include "SoXAudioSample.h"
-#include "SoXAudioSampleBuffer.h"
+#include "SoXAudioSampleListVector.h"
 #include "SoXAudioSampleList.h"
 #include "SoXAudioValueChangeKind.h"
 #include "MyString.h"
@@ -31,8 +31,8 @@ using SoXPlugins::BaseTypes::Primitives::Object;
 using SoXPlugins::BaseTypes::Primitives::Real;
 using SoXPlugins::BaseTypes::Primitives::String;
 using SoXPlugins::CommonAudio::SoXAudioParameterMap;
-using SoXPlugins::CommonAudio::SoXAudioSampleBuffer;
 using SoXPlugins::CommonAudio::SoXAudioSampleList;
+using SoXPlugins::CommonAudio::SoXAudioSampleListVector;
 using SoXPlugins::CommonAudio::SoXAudioValueChangeKind;
 
 /*====================*/
@@ -172,7 +172,7 @@ namespace SoXPlugins::CommonAudio {
          *                             samples to be processed
          */
         virtual void processBlock (IN Real timePosition,
-                                   INOUT SoXAudioSampleBuffer& buffer);
+                                   INOUT SoXAudioSampleListVector& buffer);
 
         /*--------------------*/
         /*--------------------*/
@@ -254,4 +254,4 @@ namespace SoXPlugins::CommonAudio {
 
     };
 
-};
+}

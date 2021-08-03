@@ -11,10 +11,12 @@
 
 /*====================*/
 
+#include "MyArray.h"
 #include "StringUtil.h"
 
 /*====================*/
 
+using SoXPlugins::BaseTypes::Containers::copyArray;
 using SoXPlugins::CommonAudio::SoXAudioSampleQueue;
 namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
 
@@ -206,9 +208,31 @@ void SoXAudioSampleQueue::shiftLeft (IN SoXAudioSample sample)
 }
 
 /*--------------------*/
+
 INLINE
 void SoXAudioSampleQueue::shiftRight (IN SoXAudioSample sample)
 {
     _firstIndex = SQ_lastIndex;
     _data[_firstIndex] = sample;
+}
+
+/*--------------------*/
+
+INLINE
+void SoXAudioSampleQueue::toArray (OUT SoXAudioSample* elementArray) const
+{
+    // directly access the underlying arrays
+    SoXAudioSample* sourcePtr = (SoXAudioSample*) _data.data();
+    SoXAudioSample* targetPtr = elementArray;
+    SoXAudioSample* sPtr;
+
+    // copy first segment from firstIndex to end
+    const Natural segmentLengthA = _length - _firstIndex;
+    sPtr = &sourcePtr[(int)_firstIndex];
+    copyArray(targetPtr, sPtr, segmentLengthA);
+
+    // copy second segment from 0 to (firstIndex - 1)
+    const Natural segmentLengthB = _firstIndex;
+    sPtr = sourcePtr;
+    copyArray(targetPtr, sPtr, segmentLengthB);
 }

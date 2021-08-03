@@ -24,7 +24,7 @@
 using SoXPlugins::BaseTypes::Primitives::Real;
 using SoXPlugins::BaseTypes::Primitives::String;
 using SoXPlugins::CommonAudio::SoXAudioEffect;
-using SoXPlugins::CommonAudio::SoXAudioSampleBuffer;
+using SoXPlugins::CommonAudio::SoXAudioSampleListVector;
 using SoXPlugins::CommonAudio::SoXAudioValueChangeKind;
 
 /*====================*/
@@ -67,7 +67,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
         /*--------------------*/
 
         void processBlock (IN Real timePosition,
-                           INOUT SoXAudioSampleBuffer& buffer)
+                           INOUT SoXAudioSampleListVector& buffer)
             override;
 
         /*--------------------*/
@@ -88,4 +88,4 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
 
     };
 
-};
+}

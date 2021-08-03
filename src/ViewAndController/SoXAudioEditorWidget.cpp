@@ -186,7 +186,7 @@ namespace SoXPlugins::ViewAndController {
         return result;
     }
 
-};
+}
 
 /*============================================================*/
 
@@ -227,7 +227,9 @@ SoXAudioEditorWidget::~SoXAudioEditorWidget ()
     Logging_trace(">>");
     delete _labelWidget;
     delete _controlWidget;
-    delete _eventDispatcher;
+    EventDispatcher* eventDispatcher =
+      (EventDispatcher*) _eventDispatcher;
+    delete eventDispatcher;
     Logging_trace("<<");
 }
 

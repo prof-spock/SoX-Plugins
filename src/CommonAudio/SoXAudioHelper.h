@@ -46,4 +46,4 @@ namespace SoXPlugins::CommonAudio::SoXAudioHelper {
         return Real::power(10.0, dBValue / quotient);
     }
 
-};
+}

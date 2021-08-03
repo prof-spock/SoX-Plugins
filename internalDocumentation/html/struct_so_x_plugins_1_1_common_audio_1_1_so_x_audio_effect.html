@@ -150,9 +150,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#aa9b71710af346e9e4b980b281b60a452">releaseResources</a> ()</td></tr>
 <tr class="memdesc:aa9b71710af346e9e4b980b281b60a452"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tells effect to release resources after playback. <br /></td></tr>
 <tr class="separator:aa9b71710af346e9e4b980b281b60a452"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbce8c1237cfa3a1846a63b0fc9bef9e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#acbce8c1237cfa3a1846a63b0fc9bef9e">processBlock</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a> timePosition, <a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_buffer.html">SoXAudioSampleBuffer</a> &amp;buffer)</td></tr>
-<tr class="memdesc:acbce8c1237cfa3a1846a63b0fc9bef9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes a block of audio samples <code>buffer</code> for position <code>timePosition</code>.  <a href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#acbce8c1237cfa3a1846a63b0fc9bef9e">More...</a><br /></td></tr>
-<tr class="separator:acbce8c1237cfa3a1846a63b0fc9bef9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa8aa3db1909e779e403b2198f6b83d4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#afa8aa3db1909e779e403b2198f6b83d4">processBlock</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a> timePosition, <a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_list_vector.html">SoXAudioSampleListVector</a> &amp;buffer)</td></tr>
+<tr class="memdesc:afa8aa3db1909e779e403b2198f6b83d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes a block of audio samples <code>buffer</code> for position <code>timePosition</code>.  <a href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#afa8aa3db1909e779e403b2198f6b83d4">More...</a><br /></td></tr>
+<tr class="separator:afa8aa3db1909e779e403b2198f6b83d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -424,8 +424,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 
 </div>
 </div>
-<a id="acbce8c1237cfa3a1846a63b0fc9bef9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbce8c1237cfa3a1846a63b0fc9bef9e">&#9670;&nbsp;</a></span>processBlock()</h2>
+<a id="afa8aa3db1909e779e403b2198f6b83d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa8aa3db1909e779e403b2198f6b83d4">&#9670;&nbsp;</a></span>processBlock()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -442,7 +442,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_buffer.html">SoXAudioSampleBuffer</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_list_vector.html">SoXAudioSampleListVector</a> &amp;&#160;</td>
           <td class="paramname"><em>buffer</em>&#160;</td>
         </tr>
         <tr>
@@ -467,7 +467,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html#a35228ca468a9e048d1fbb982900aa49b">SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html#aa716df899b947306a21659019d6069a2">SoXPlugins::Effects::SoXPhaserAndTremolo::SoXPhaserAndTremolo_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#ad298109a1586eb1ea6ab9109d7127d8e">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#a01f29c0738117f6595916a787202a670">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a3fcc4798424edf1de6589fcddebdc46c">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>.</p>
+<p>Reimplemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html#afa8294947e5c601cd84a8b6d036769ff">SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html#aee457460280b4bbabc8654d97eb539b9">SoXPlugins::Effects::SoXPhaserAndTremolo::SoXPhaserAndTremolo_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a5e1567c324453a6e7aa1e685cc76c275">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#a4fff23ab9a72b149ceb650a78a4a24de">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a6aea90dee887f7da303ce78babd7188f">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>.</p>
 
 </div>
 </div>

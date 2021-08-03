@@ -23,7 +23,7 @@
 using SoXPlugins::BaseTypes::Primitives::Real;
 using SoXPlugins::BaseTypes::Primitives::String;
 using SoXPlugins::CommonAudio::SoXAudioEffect;
-using SoXPlugins::CommonAudio::SoXAudioSampleBuffer;
+using SoXPlugins::CommonAudio::SoXAudioSampleListVector;
 using SoXPlugins::CommonAudio::SoXAudioValueChangeKind;
 
 /*====================*/
@@ -43,6 +43,10 @@ namespace SoXPlugins::Effects::SoXCompander {
         /*--------------------*/
 
         SoXCompander_AudioEffect ();
+
+        /*--------------------*/
+
+        ~SoXCompander_AudioEffect () override;
 
         /*-----------------------*/
         /* string representation */
@@ -72,7 +76,7 @@ namespace SoXPlugins::Effects::SoXCompander {
         /*--------------------*/
 
         void processBlock (Real timePosition,
-                           SoXAudioSampleBuffer& buffer)
+                           SoXAudioSampleListVector& buffer)
             override;
 
         /*--------------------*/
@@ -93,4 +97,4 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     };
 
-};
+}

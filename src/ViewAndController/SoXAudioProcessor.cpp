@@ -21,7 +21,7 @@ using SoXPlugins::BaseTypes::Primitives::Integer;
 using SoXPlugins::BaseTypes::Primitives::Natural;
 using SoXPlugins::CommonAudio::SoXAudioParameterKind;
 using SoXPlugins::CommonAudio::SoXAudioParameterMap;
-using SoXPlugins::CommonAudio::SoXAudioSampleBuffer;
+using SoXPlugins::CommonAudio::SoXAudioSampleListVector;
 using SoXPlugins::ViewAndController::SoXAudioEditor;
 using SoXPlugins::ViewAndController::_SoXAudioEditorPtrSet;
 using SoXPlugins::ViewAndController::SoXAudioProcessor;
@@ -128,14 +128,20 @@ namespace SoXPlugins::ViewAndController {
         // index is lineCount - 1
         const Natural firstIndex = 1;
         const Natural lastIndex  = lineList.size() - 2;
+        Natural previousPageNumber = Natural::maximumValue();
 
         for (Natural i = firstIndex; i <= lastIndex; i++) {
             const String line = lineList[i];
             const StringList partList = StringList::makeBySplit(line, "=");
 
             if (partList.size() == 2) {
+                Natural pageNumber;
+                String labelName;
                 const String parameterName = StringUtil::strip(partList[0]);
                 String value = StringUtil::strip(partList[1]);
+                SoXAudioParameterMap::splitParameterName(parameterName,
+                                                         labelName,
+                                                         pageNumber);
 
                 if (value.length() >= 2
                     && value[0] == quoteCharacter
@@ -143,10 +149,15 @@ namespace SoXPlugins::ViewAndController {
                     value = value.substr(1, value.length() - 2);
                 }
 
+                // the recalculation is suppressed when the value is
+                // within a page and not the last value of the
+                // sequence
+                const bool isOnSamePage = (previousPageNumber == pageNumber);
+                const bool recalculationIsSuppressed =
+                  (i < lastIndex && isOnSamePage);
+
                 // make sure that the value in parameter map does not
                 // match the new value
-                const bool recalculationIsSuppressed = (i < lastIndex);
-
                 if (!parameterMap.isAllowedValue(parameterName, value)) {
                     value = parameterMap.value(parameterName);
                 }
@@ -184,7 +195,7 @@ namespace SoXPlugins::ViewAndController {
         return currentTime;
     }
 
-};
+}
 
 /*============================================================*/
 
@@ -489,7 +500,7 @@ void SoXAudioProcessor::processBlock (juce::AudioBuffer<double>& buffer,
         buffer.clear((int) i, 0, (int) sampleCount);
     }
 
-    SoXAudioSampleBuffer audioSampleBuffer{};
+    SoXAudioSampleListVector audioSampleBuffer{};
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
         const double* inputPtr  =

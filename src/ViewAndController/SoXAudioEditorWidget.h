@@ -261,4 +261,4 @@ namespace SoXPlugins::ViewAndController {
 
     };
 
-};
+}

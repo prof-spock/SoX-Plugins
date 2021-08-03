@@ -80,7 +80,7 @@ namespace SoXPlugins::Effects::SoXGain {
         parameterMap.setKindReal(parameterName_gain, -10, 10, 0.001);
     }
 
-};
+}
 
 /*============================================================*/
 
@@ -163,8 +163,9 @@ void SoXGain_AudioEffect::setDefaultValues () {
 /* event handling     */
 /*--------------------*/
 
-void SoXGain_AudioEffect::processBlock (IN Real timePosition,
-                                        INOUT SoXAudioSampleBuffer& buffer)
+void
+SoXGain_AudioEffect::processBlock (IN Real timePosition,
+                                   INOUT SoXAudioSampleListVector& buffer)
 {
     SoXAudioEffect::processBlock(timePosition, buffer);
     _EffectDescriptor_GAIN* effectDescriptor =

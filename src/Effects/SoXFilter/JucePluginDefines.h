@@ -11,8 +11,10 @@
 
 // Plugin Settings
 #define _PluginPathName                  eu.tensi.SoXPlugins.Filter
+
 #define JucePlugin_Name                  "SoX Filter"
-#define JucePlugin_PluginCode            4713
+#define JucePlugin_Desc                  "generic filter from SoX"
+#define JucePlugin_PluginCode            0x66696c74
 
 // settings for the different plugin kinds
 #define JucePlugin_AAXIdentifier         _PluginPathName

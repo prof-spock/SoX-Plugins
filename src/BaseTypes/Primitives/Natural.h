@@ -288,4 +288,4 @@ namespace SoXPlugins::BaseTypes::Primitives {
 
     };
 
-};
+}

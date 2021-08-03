@@ -67,8 +67,8 @@ var hierarchy =
       [ "SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html", null ]
     ] ],
     [ "SoXPlugins::CommonAudio::SoXAudioParameterMap", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_parameter_map.html", null ],
-    [ "SoXPlugins::CommonAudio::SoXAudioSampleMatrix", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_matrix.html", null ],
     [ "SoXPlugins::CommonAudio::SoXAudioSampleQueue", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue.html", null ],
+    [ "SoXPlugins::CommonAudio::SoXAudioSampleQueueMatrix", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue_matrix.html", null ],
     [ "SoXPlugins::CommonAudio::SoXIIRFilter", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_i_i_r_filter.html", [
       [ "SoXPlugins::Effects::SoXCompander::_LRFilter", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_filter.html", null ]
     ] ],
@@ -104,7 +104,7 @@ var hierarchy =
         [ "SoXPlugins::CommonAudio::SoXAudioSampleList", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_list.html", null ]
       ] ],
       [ "SoXPlugins::BaseTypes::Containers::GenericSequence< SoXAudioSampleList, SoXAudioSampleList::toString >", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_sequence.html", [
-        [ "SoXPlugins::CommonAudio::SoXAudioSampleBuffer", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_buffer.html", null ]
+        [ "SoXPlugins::CommonAudio::SoXAudioSampleListVector", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_list_vector.html", null ]
       ] ],
       [ "SoXPlugins::BaseTypes::Containers::GenericSequence< SoXPlugins::BaseTypes::Containers::GenericSequence< SoXAudioSampleQueue > >", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_sequence.html", null ],
       [ "SoXPlugins::BaseTypes::Containers::GenericSequence< SoXPlugins::BaseTypes::Containers::GenericSequence< T > >", "struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_generic_sequence.html", null ],

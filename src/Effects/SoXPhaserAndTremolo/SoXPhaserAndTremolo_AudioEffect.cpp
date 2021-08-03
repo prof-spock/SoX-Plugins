@@ -33,7 +33,7 @@
 #include "StringUtil.h"
 
 #include "SoXAudioHelper.h"
-#include "SoXAudioSampleMatrix.h"
+#include "SoXAudioSampleQueueMatrix.h"
 #include "SoXAudioSampleQueue.h"
 #include "SoXPhaserAndTremolo_AudioEffect.h"
 #include "SoXWaveForm.h"
@@ -47,7 +47,7 @@ using SoXPlugins::BaseTypes::Primitives::Real;
 using SoXPlugins::BaseTypes::Primitives::String;
 using SoXPlugins::BaseTypes::Containers::StringList;
 using SoXPlugins::CommonAudio::SoXAudioSampleQueue;
-using SoXPlugins::CommonAudio::SoXAudioSampleMatrix;
+using SoXPlugins::CommonAudio::SoXAudioSampleQueueMatrix;
 using SoXPlugins::CommonAudio::SoXWaveForm;
 using SoXPlugins::CommonAudio::SoXWaveFormKind;
 using SoXPlugins::CommonAudio::SoXWaveFormIteratorState;
@@ -155,14 +155,14 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
         /** the modulation depth in percent */
         Percentage depth;
 
-        /** the buffer for the delay line */
-        SoXAudioSampleMatrix delayBufferList;
+        /** the buffer queue for the delay line */
+        SoXAudioSampleQueueMatrix delayQueueList;
 
-        /** the delay buffer length in samples */
-        Natural delayBufferLength;
+        /** the delay queue length in samples */
+        Natural delayQueueLength;
 
-        /** the pointer to the delay buffer (as an index) */
-        Natural delayBufferIndex;
+        /** the pointer to the delay queue (as an index) */
+        Natural delayQueueIndex;
     };
 
     /*====================*/
@@ -181,7 +181,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
     static
     _EffectDescriptor_PHTR* _createEffectDescriptor (IN Real sampleRate)
     {
-        const Natural maximumDelayBufferLength =
+        const Natural maximumDelayQueueLength =
             Natural::ceiling((double)(_maximumDelay * sampleRate));
 
         _EffectDescriptor_PHTR* result =
@@ -199,9 +199,9 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
                 0.4,                                   // decay
                 40,                                    // depth
 
-                {2, false, maximumDelayBufferLength},  // delayBufferList
-                maximumDelayBufferLength,              // delayBufferLength
-                0                                      // delayBufferIndex
+                {2, false, maximumDelayQueueLength},   // delayQueueList
+                maximumDelayQueueLength,               // delayQueueLength
+                0                                      // delayQueueIndex
             };
 
         return result;
@@ -231,12 +231,12 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
         st += ", decay = " + TOSTRING(effectDescriptor->decay) + "s";
         st += ", depth = " + TOSTRING(effectDescriptor->depth) + "%";
         st += ", waveForm = " + effectDescriptor->waveForm.toString();
-        st += (", delayBufferLength = "
-               + TOSTRING(effectDescriptor->delayBufferLength));
-        st += (", delayBufferIndex = "
-               + TOSTRING(effectDescriptor->delayBufferIndex));
-        st += (", delayBufferList = "
-               + effectDescriptor->delayBufferList.toString());
+        st += (", delayQueueLength = "
+               + TOSTRING(effectDescriptor->delayQueueLength));
+        st += (", delayQueueIndex = "
+               + TOSTRING(effectDescriptor->delayQueueIndex));
+        st += (", delayQueueList = "
+               + effectDescriptor->delayQueueList.toString());
         st += ")";
 
         return st;
@@ -304,17 +304,17 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
 
         const Real frequency = effectDescriptor->frequency;
         const Real waveFormLength = sampleRate / frequency;
-        Natural delayBufferLength;
+        Natural delayQueueLength;
         Real lowModulationValue;
         Real highModulationValue;
         bool hasIntegerValues;
 
         if (effectDescriptor->isPhaser) {
             // phaser
-            delayBufferLength =
+            delayQueueLength =
                 Natural::round((double)(effectDescriptor->delay * sampleRate));
             lowModulationValue  = 1;
-            highModulationValue = Real{delayBufferLength};
+            highModulationValue = Real{delayQueueLength};
             hasIntegerValues = true;
         } else {
             // tremolo: set some effect parameters to constants
@@ -323,7 +323,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
             effectDescriptor->outGain = 1;
             effectDescriptor->waveFormKind = SoXWaveFormKind::sine;
 
-            delayBufferLength = 0;
+            delayQueueLength = 0;
             lowModulationValue =
                 Real{1} - effectDescriptor->depth / Real{100.0};
             highModulationValue = 1;
@@ -331,10 +331,10 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
         }
 
         // delay settings
-        effectDescriptor->delayBufferIndex  = 0;
-        effectDescriptor->delayBufferLength = delayBufferLength;
-        effectDescriptor->delayBufferList.setQueueLength(delayBufferLength);
-        effectDescriptor->delayBufferList.setToZero();
+        effectDescriptor->delayQueueIndex  = 0;
+        effectDescriptor->delayQueueLength = delayQueueLength;
+        effectDescriptor->delayQueueList.setQueueLength(delayQueueLength);
+        effectDescriptor->delayQueueList.setToZero();
 
         // waveform
         const Radians effectivePhase =
@@ -352,7 +352,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
                        _effectDescriptorPHTRToString(effectDescriptor));
     }
 
-};
+}
 
 /*============================================================*/
 
@@ -477,8 +477,8 @@ void SoXPhaserAndTremolo_AudioEffect::setDefaultValues ()
 /*--------------------*/
 
 void SoXPhaserAndTremolo_AudioEffect::processBlock
-                                          (IN Real timePosition,
-                                           INOUT SoXAudioSampleBuffer& buffer)
+                                        (IN Real timePosition,
+                                         INOUT SoXAudioSampleListVector& buffer)
 {
     SoXAudioEffect::processBlock(timePosition, buffer);
 
@@ -497,12 +497,12 @@ void SoXPhaserAndTremolo_AudioEffect::processBlock
     const Real inGain   = effectDescriptor->inGain;
     const Real outGain  = effectDescriptor->outGain;
     const Real decay    = effectDescriptor->decay;
-    const Natural delayBufferLength =
-        effectDescriptor->delayBufferLength;
-    Natural delayBufferIndex  =
-        effectDescriptor->delayBufferIndex;
-    SoXAudioSampleMatrix& delayBufferList =
-        effectDescriptor->delayBufferList;
+    const Natural delayQueueLength =
+        effectDescriptor->delayQueueLength;
+    Natural delayQueueIndex  =
+        effectDescriptor->delayQueueIndex;
+    SoXAudioSampleQueueMatrix& delayQueueList =
+        effectDescriptor->delayQueueList;
     SoXWaveForm& waveForm = effectDescriptor->waveForm;
     SoXWaveFormIteratorState state = waveForm.state();
 
@@ -510,10 +510,10 @@ void SoXPhaserAndTremolo_AudioEffect::processBlock
          channel++) {
         const SoXAudioSampleList& inputList = buffer[channel];
         SoXAudioSampleList& outputList = buffer[channel];
-        SoXAudioSampleQueue& delayBuffer = delayBufferList[channel];
+        SoXAudioSampleQueue& delayQueue = delayQueueList[channel];
 
         waveForm.setState(state);
-        delayBufferIndex = effectDescriptor->delayBufferIndex;
+        delayQueueIndex = effectDescriptor->delayQueueIndex;
 
         for (Natural i = 0;  i < sampleCount;  i++) {
             const SoXAudioSample inputSample = inputList[i];
@@ -527,16 +527,16 @@ void SoXPhaserAndTremolo_AudioEffect::processBlock
                 //               ", fact = %3, out = %4",
                 //               TOSTRING(timePosition), TOSTRING(inputSample),
                 //               TOSTRING(factor), TOSTRING(outputSample));
-            } else if (delayBufferLength > 0) {
+            } else if (delayQueueLength > 0) {
                 const Natural modulatedIndex =
-                    ((delayBufferIndex
+                    ((delayQueueIndex
                       + Natural::floor((double) waveForm.current()))
-                     % delayBufferLength);
+                     % delayQueueLength);
                 outputSample = (inputSample * inGain
-                                + delayBuffer[modulatedIndex] * decay);
-                delayBufferIndex =
-                    (delayBufferIndex + 1) % delayBufferLength;
-                delayBuffer[delayBufferIndex] = outputSample;
+                                + delayQueue[modulatedIndex] * decay);
+                delayQueueIndex =
+                    (delayQueueIndex + 1) % delayQueueLength;
+                delayQueue[delayQueueIndex] = outputSample;
                 outputSample *= outGain;
             }
 
@@ -545,6 +545,6 @@ void SoXPhaserAndTremolo_AudioEffect::processBlock
         }
     }
 
-    effectDescriptor->delayBufferIndex     = delayBufferIndex;
+    effectDescriptor->delayQueueIndex = delayQueueIndex;
     _previousTimePosition = _currentTimePosition;
 }

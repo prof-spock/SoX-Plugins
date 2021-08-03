@@ -33,7 +33,7 @@ using SoXPlugins::BaseTypes::Primitives::Real;
 using SoXPlugins::BaseTypes::Primitives::Natural;
 using SoXPlugins::BaseTypes::Primitives::String;
 using SoXPlugins::CommonAudio::SoXAudioSample;
-using SoXPlugins::CommonAudio::SoXAudioSampleBuffer;
+using SoXPlugins::CommonAudio::SoXAudioSampleListVector;
 using SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect;
 using SoXPlugins::Effects::SoXPhaserAndTremolo
          ::SoXPhaserAndTremolo_AudioEffect;
@@ -47,7 +47,7 @@ using SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect;
 
 const Natural _blocksPerSecond = 100;
 const Natural _channelCount    = 2;
-const Natural _repetitionCount = Natural{20} * _blocksPerSecond;
+const Natural _repetitionCount = Natural{5000} * _blocksPerSecond;
 
 /* effect names */
 const String _effectName_compander = "COMPANDER";
@@ -75,7 +75,7 @@ void _writeToOutputFile (String title,
 /**
   * Puts five samples onto left and right channel in <buffer>
   */
-void _adaptBuffer (INOUT SoXAudioSampleBuffer& buffer) {
+void _adaptBuffer (INOUT SoXAudioSampleListVector& buffer) {
     SoXAudioSampleList& leftInputList = buffer[0];
     leftInputList[0] =   0.6;
     leftInputList[1] =  -0.3;
@@ -94,8 +94,8 @@ void _adaptBuffer (INOUT SoXAudioSampleBuffer& buffer) {
 
 /*--------------------*/
 
-void _copyBuffer (IN SoXAudioSampleBuffer& srcBuffer,
-                  OUT SoXAudioSampleBuffer& destBuffer) {
+void _copyBuffer (IN SoXAudioSampleListVector& srcBuffer,
+                  OUT SoXAudioSampleListVector& destBuffer) {
     Natural channelCount = srcBuffer.length();
     Natural sampleCount = srcBuffer[0].length();
     destBuffer.clear();
@@ -119,7 +119,7 @@ void _copyBuffer (IN SoXAudioSampleBuffer& srcBuffer,
 /**
   * Constructs a sine wave with 441Hz for <sampleRate> in <buffer>
   */
-void _fillBuffer (OUT SoXAudioSampleBuffer& buffer,
+void _fillBuffer (OUT SoXAudioSampleListVector& buffer,
                   IN Integer sampleRate) {
     Logging_trace1(">>: sampleRate = %1", TOSTRING(sampleRate));
 
@@ -149,15 +149,36 @@ void _initializeEffect (IN String audioEffectKind,
     Logging_trace1(">>: %1", audioEffectKind);
 
     if (audioEffectKind == _effectName_compander) {
-        audioEffect->setValue("0#BANDCOUNT", "1", true);
+        audioEffect->setValue("0#BANDCOUNT", "4", true);
         audioEffect->setValue("-1#BANDINDEX", "1", true);
-        audioEffect->setValue("1#Attack [s]", "0.02", true);
+        audioEffect->setValue("1#Attack [s]", "0.03", true);
         audioEffect->setValue("1#Decay [s]", "0.15", true);
-        audioEffect->setValue("1#Knee [dB]", "4.0", true);
-        audioEffect->setValue("1#Threshold [dB]", "-60.0", true);
-        audioEffect->setValue("1#Ratio", "1.5", true);
-        audioEffect->setValue("1#Gain [dB]", "4.5", true);
-        audioEffect->setValue("1#Top Frequency [Hz]", "25000.0", false);
+        audioEffect->setValue("1#Knee [dB]", "6.0", true);
+        audioEffect->setValue("1#Threshold [dB]", "-18.0", true);
+        audioEffect->setValue("1#Ratio", "6", true);
+        audioEffect->setValue("1#Gain [dB]", "4", true);
+        audioEffect->setValue("1#Top Frequency [Hz]", "300.0", false);
+        audioEffect->setValue("2#Attack [s]", "0.03", true);
+        audioEffect->setValue("2#Decay [s]", "0.15", true);
+        audioEffect->setValue("2#Knee [dB]", "6.0", true);
+        audioEffect->setValue("2#Threshold [dB]", "-18.0", true);
+        audioEffect->setValue("2#Ratio", "6", true);
+        audioEffect->setValue("2#Gain [dB]", "-7", true);
+        audioEffect->setValue("2#Top Frequency [Hz]", "1500.0", false);
+        audioEffect->setValue("3#Attack [s]", "0.04", true);
+        audioEffect->setValue("3#Decay [s]", "0.15", true);
+        audioEffect->setValue("3#Knee [dB]", "6.0", true);
+        audioEffect->setValue("3#Threshold [dB]", "-20.0", true);
+        audioEffect->setValue("3#Ratio", "20", true);
+        audioEffect->setValue("3#Gain [dB]", "10", true);
+        audioEffect->setValue("3#Top Frequency [Hz]", "4000.0", false);
+        audioEffect->setValue("4#Attack [s]", "0.30", true);
+        audioEffect->setValue("4#Decay [s]", "0.50", true);
+        audioEffect->setValue("4#Knee [dB]", "6.0", true);
+        audioEffect->setValue("4#Threshold [dB]", "-60.0", true);
+        audioEffect->setValue("4#Ratio", "1.05", true);
+        audioEffect->setValue("4#Gain [dB]", "0", true);
+        audioEffect->setValue("4#Top Frequency [Hz]", "25000.0", false);
     } else if (audioEffectKind == _effectName_reverb) {
         audioEffect->setValue("isWetOnly?", "false", true);
         audioEffect->setValue("Reverberance [%]", "50", true);
@@ -204,7 +225,7 @@ SoXAudioEffect* _makeNewEffect (IN String& audioEffectKind) {
  * sample rate of <sampleRate>
  */
 void _runForEffect (IN String& audioEffectKind,
-                    INOUT SoXAudioSampleBuffer& waveFormBuffer,
+                    INOUT SoXAudioSampleListVector& waveFormBuffer,
                     IN Integer sampleRate) {
     Logging_trace1(">>: kind = %1", audioEffectKind);
 
@@ -214,11 +235,10 @@ void _runForEffect (IN String& audioEffectKind,
     Real timePosition = 0.0;
     Real increment = Real{1} / Real{_blocksPerSecond};
     Natural repetitionCount = _repetitionCount;
-    SoXAudioSampleBuffer buffer{};
+    SoXAudioSampleListVector buffer{};
 
     if (audioEffectKind == _effectName_compander) {
         _adaptBuffer(waveFormBuffer);
-        repetitionCount = 1;
     }
 
     _copyBuffer(waveFormBuffer, buffer);
@@ -250,7 +270,7 @@ int main (int argc, char* argv[]) {
 
     const Integer sampleRate = 44100;
     String effectName;
-    SoXAudioSampleBuffer waveFormBuffer{};
+    SoXAudioSampleListVector waveFormBuffer{};
 
     if (argc > 1 && argv[1][0] == 'C') {
         effectName = _effectName_compander;

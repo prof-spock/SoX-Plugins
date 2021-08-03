@@ -24,9 +24,10 @@ open-source implementation.
 
 This plugin implementation is completely free, open-source,
 platform-neutral and based on the *[JUCE][]* audio framework.
-Currently only a version for VST3 plugins under Windows 10 is
-provided, but porting it to other targets should be straightforward,
-since building is supported by a platform-neutral CMAKE build file.
+Currently only plugin versions as VST3 under Windows 10, VST3 and AU
+under MacOSX (x86_64) and VST3 under Linux (x86_64) are provided, but
+porting to other targets should be straightforward, since building is
+supported by a platform-neutral CMAKE build file.
 
 The effects provided here are a complete rewrite in C++ of the SoX
 algorithms for producing *(bit-exact) identical* renderings in the
@@ -136,7 +137,8 @@ Installation
 
 The installation is as follows:
 
-   1. Copy the plugins from the [_DISTRIBUTION](./_DISTRIBUTION)
+   1. Copy the plugins from the appropriate subdirectory of
+      [_DISTRIBUTION/targetPlatforms](./_DISTRIBUTION/targetPlatforms)
       directory into the directory for VST plugins of your DAW.
 
    2. The distribution also contains a documentation pdf file in
@@ -144,7 +146,12 @@ The installation is as follows:
       subdirectory [test](./_DISTRIBUTION/test) (for details on
       the regression test see below).
 
-   3. Restart your DAW and rescan the VST plugins.  You should now be
+   3. When installing the plugins on MacOSX, note that those are
+      **not signed**; so you have to explicitly remove the quarantine
+      flag from them (e.g. by applying the command `sudo xattr -rd
+      com.apple.quarantine «vstPath»`).
+
+   4. Restart your DAW and rescan the plugins.  You should now be
       able to select the SoXPlugins (they are all prefixed with
       "SoX").
 

@@ -238,7 +238,7 @@ namespace SoXPlugins::Effects::SoXCompander {
     /**
      * A <C>_TfSegmentList</C> is a list of transfer function segments.
      */
-    typedef GenericSequence<_TfSegment> _TfSegmentList;
+    using _TfSegmentList = GenericSequence<_TfSegment>;
 
     /*===================*/
     /* Transfer Function */
@@ -629,8 +629,8 @@ namespace SoXPlugins::Effects::SoXCompander {
      * to a queue for input, low and high output samples; it is the
      * element type in a <B>_CompanderSampleBuffer</B>.
      */
-    typedef array<SoXAudioSampleQueue*, _companderStreamKindCount>
-              _CompanderSampleBufferEntry;
+    using _CompanderSampleBufferEntry =
+        array<SoXAudioSampleQueue*, _companderStreamKindCount>;
 
     /**
      * A <C>_CompanderSampleBuffer</C> object contains pointers to the
@@ -639,7 +639,8 @@ namespace SoXPlugins::Effects::SoXCompander {
      * the input samples, the following bands use the high output of
      * the previous crossover band
      */
-    typedef GenericSequence<_CompanderSampleBufferEntry> _CompanderSampleBuffer;
+    using _CompanderSampleBuffer =
+        GenericSequence<_CompanderSampleBufferEntry>;
 
     /*=================*/
     /* _MCompanderBand */
@@ -777,10 +778,13 @@ namespace SoXPlugins::Effects::SoXCompander {
              * multiband compander) */
             _LRCrossoverFilter _crossoverFilter;
 
-            /** the sample list for the separation filter (for a multiband
-             * compander) */
+            /** the sample list for the separation filter (for a
+             * multiband compander) */
             _CompanderSampleBuffer _buffer;
 
+            /** a temporary input sample list only used in the apply
+             * method*/
+            SoXAudioSampleList _inputSampleList;
     };
 
     /*=====================*/
@@ -790,7 +794,7 @@ namespace SoXPlugins::Effects::SoXCompander {
     /**
      * A <C>_MCompanderBandList</C> is a list of compander bands.
      */
-    typedef GenericSequence<_MCompanderBand> _MCompanderBandList;
+    using _MCompanderBandList = GenericSequence<_MCompanderBand>;
 
     /*============================================================*/
     /*============================================================*/
@@ -923,7 +927,7 @@ namespace SoXPlugins::Effects::SoXCompander {
         result.add(startPoint);
 
         return result;
-    };
+    }
 
     /*============================================================*/
 
@@ -1272,7 +1276,7 @@ namespace SoXPlugins::Effects::SoXCompander {
     _Compander::_maximumAbsoluteSample (IN SoXAudioSampleList& sampleList) {
         SoXAudioSample result = 0;
 
-        for (const SoXAudioSample value : sampleList) {
+        for (const SoXAudioSample& value : sampleList) {
             const SoXAudioSample absValue = value.abs();
 
             if (absValue > result) {
@@ -1469,7 +1473,8 @@ namespace SoXPlugins::Effects::SoXCompander {
           _compander{},
           _topFrequency{maxTopFrequency},
           _crossoverFilter{},
-          _buffer{}
+          _buffer{},
+          _inputSampleList{}
     {
         Logging_trace(">>");
         Logging_trace1("<<: %1", toString());
@@ -1486,6 +1491,7 @@ namespace SoXPlugins::Effects::SoXCompander {
         st += ", _crossoverFilter = " + _crossoverFilter.toString();
         st += ", _compander = " + _compander.toString();
         st += ", _buffer = " + _sampleBufferToString(_buffer);
+        st += ", _inputSampleList = " + _inputSampleList.toString();
         st += ")";
 
         return st;
@@ -1525,7 +1531,8 @@ namespace SoXPlugins::Effects::SoXCompander {
         Logging_trace1(">>: %1", TOSTRING(channelCount));
         _channelCount = channelCount;
         _buffer.setLength(channelCount);
-        _compander.setLength(_channelCount);
+        _compander.setLength(channelCount);
+        _inputSampleList.setLength(channelCount);
         Logging_trace("<<");
     }
 
@@ -1542,18 +1549,16 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     void _MCompanderBand::apply (OUT SoXAudioSampleList& outputSampleList)
     {
-        SoXAudioSampleList inputSampleList{_channelCount};
-
         for (Natural channel = 0;  channel < _channelCount;  channel++) {
             const _CompanderSampleBufferEntry& bufferEntry =
                 _buffer[channel];
             const SoXAudioSampleQueue* outputQueueLow =
                 bufferEntry[(int) _CompanderStreamKind::lowOutputStream];
             SoXAudioSample inputSample = outputQueueLow->first();
-            inputSampleList[channel] = inputSample;
+            _inputSampleList[channel] = inputSample;
         }
 
-        _compander.apply(inputSampleList, outputSampleList, true);
+        _compander.apply(_inputSampleList, outputSampleList, true);
     }
 
     /*--------------------*/
@@ -1590,9 +1595,9 @@ namespace SoXPlugins::Effects::SoXCompander {
         st += ")";
         return st;
 
-    };
+    }
 
-};
+}
 
 /*============================================================*/
 
@@ -1611,7 +1616,8 @@ SoXMultibandCompander::SoXMultibandCompander ()
 
 SoXMultibandCompander::~SoXMultibandCompander () {
     Logging_trace(">>");
-    delete _companderBandList;
+    _MCompanderBandList* list = (_MCompanderBandList*) _companderBandList;
+    delete list;
     Logging_trace("<<");
 }
 

@@ -159,4 +159,4 @@ namespace SoXPlugins::BaseTypes::Containers {
 
     };
 
-};
+}

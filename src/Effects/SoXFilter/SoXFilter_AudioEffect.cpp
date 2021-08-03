@@ -19,7 +19,7 @@
 #include "Natural.h"
 #include "StringUtil.h"
 #include "SoXAudioHelper.h"
-#include "SoXAudioSampleMatrix.h"
+#include "SoXAudioSampleQueueMatrix.h"
 #include "SoXAudioValueChangeKind.h"
 #include "SoXFilterBandwidthUnit.h"
 #include "SoXIIRFilter.h"
@@ -33,7 +33,7 @@ using std::map;
 
 using SoXPlugins::BaseTypes::Primitives::Natural;
 using SoXPlugins::BaseTypes::Containers::Dictionary;
-using SoXPlugins::CommonAudio::SoXAudioSampleMatrix;
+using SoXPlugins::CommonAudio::SoXAudioSampleQueueMatrix;
 using SoXPlugins::CommonAudio::SoXAudioSampleQueue;
 using SoXPlugins::CommonAudio::SoXFilterBandwidthUnit;
 using SoXPlugins::CommonAudio::SoXIIRFilter;
@@ -61,7 +61,7 @@ namespace SoXPlugins::Effects::SoXFilter {
         Real a2; /**< IIR filter coefficient a2 */
 
         /** a matrix of sample queues for the IIR filter */
-        SoXAudioSampleMatrix sampleQueueList;
+        SoXAudioSampleQueueMatrix sampleQueueMatrix;
 
         /** the underlying IIR filter */
         SoXIIRFilter filter;
@@ -405,7 +405,7 @@ namespace SoXPlugins::Effects::SoXFilter {
             new _EffectDescriptor_FLTR{
                 filterKind_biquad,              // kind
                 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,   // coefficients
-                {2, true, _biquadFilterOrder},  // sampleQueueList
+                {2, true, _biquadFilterOrder},  // sampleQueueMatrix
                 {_biquadFilterOrder},           // filter
                 1000.0,                         // frequency
                 1.5,                            // bandwidth
@@ -723,7 +723,7 @@ namespace SoXPlugins::Effects::SoXFilter {
 
         effectDescriptor->filter.set(b0, b1, b2, a0, a1, a2);
     }
-};
+}
 
 /*============================================================*/
 
@@ -778,8 +778,8 @@ String SoXFilter_AudioEffect::_effectDescriptorToString () const
     st += ", a1 = " + TOSTRING(effectDescriptor->a1);
     st += ", a2 = " + TOSTRING(effectDescriptor->a2);
     st += ", filter = " + effectDescriptor->filter.toString();
-    st += (", sampleQueueList = "
-           + effectDescriptor->sampleQueueList.toString());
+    st += (", sampleQueueMatrix = "
+           + effectDescriptor->sampleQueueMatrix.toString());
     st += ")";
 
     return st;
@@ -879,7 +879,7 @@ void SoXFilter_AudioEffect::prepareToPlay (IN Real sampleRate)
 
 void
 SoXFilter_AudioEffect::processBlock (IN Real timePosition,
-                                     INOUT SoXAudioSampleBuffer& buffer)
+                                     INOUT SoXAudioSampleListVector& buffer)
 {
     SoXAudioEffect::processBlock(timePosition, buffer);
 
@@ -887,14 +887,14 @@ SoXFilter_AudioEffect::processBlock (IN Real timePosition,
         static_cast<_EffectDescriptor_FLTR*>(_effectDescriptor);
     const Natural sampleCount = buffer[0].size();
      SoXIIRFilter& filter{effectDescriptor->filter};
-    SoXAudioSampleMatrix& sampleQueueList =
-        effectDescriptor->sampleQueueList;
+    SoXAudioSampleQueueMatrix& sampleQueueMatrix =
+        effectDescriptor->sampleQueueMatrix;
 
     for (Natural channel = 0;  channel < _channelCount;
          channel++) {
-        SoXAudioSampleQueue& inputSampleQueue{sampleQueueList
+        SoXAudioSampleQueue& inputSampleQueue{sampleQueueMatrix
                                                 .at(channel, 0)};
-        SoXAudioSampleQueue& outputSampleQueue{sampleQueueList
+        SoXAudioSampleQueue& outputSampleQueue{sampleQueueMatrix
                                                  .at(channel, 1)};
         const SoXAudioSampleList& inputList = buffer[channel];
         SoXAudioSampleList& outputList = buffer[channel];

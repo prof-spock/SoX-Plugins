@@ -99,7 +99,7 @@
 
   \newenvironment{parameterTable}
                  {\begin{center}\small
-                    \begin{tabular}{|>{\tt}p{3cm}|p{6cm}|p{3cm}|}
+                    \begin{tabular}{|>{\tt}p{3cm}|p{5cm}|p{4.5cm}|}
                       \hline \parameterTableHeader \hline
                  }
                  {  \end{tabular}
@@ -196,14 +196,17 @@
   \begin{center}
     \textbf{\hugeTimesFont SoX Plugins}\\[1cm]
     \textit{\Large A Reimplementation of the \SoX\ Commandline Processor
-            as DAW Plugins\\[2mm]---~Version: VST3 on Windows~x64~---}
+            as DAW Plugins}
   \end{center}
   ~\\[7cm]
   \large
-  \begin{tabular}{>{\bf}p{3cm}p{6cm}}
+  \begin{tabular}{>{\bf}p{3cm}p{9cm}}
     Author:&Dr.~Thomas Tensi\\
-    Date:&2021-04-20\\
-    Version:&0.9\\
+    Date:&2021-08-01\\
+    Version:&0.93\\
+    Platforms:&VST3 on Windows~x64,\\
+              &VST3 \& AU on MacOSX (x86\_64)\\
+              &VST3 on Linux (x86\_64)\\
   \end{tabular}
   \vfill
 \end{titlepage}
@@ -222,15 +225,16 @@ digital audio workstations (DAWs); they implement some of the more
 prominent audio processing effects from \SoX\ as DAW audio plugins.
 
 SoX~\cite{reference:soxDocumentation} is a command line audio
-processing tool for Unix, Windows and Mac OS that transforms source
+processing tool for Unix, Windows and MacOSX that transforms source
 audio files in several formats into other audio files.  It provides
 several standard audio effects (like e.g. filters or reverb) in good
 quality and with a transparent, open-source implementation.
 
 The plugin implementation is completely free, open-source,
 platform-neutral and based on the JUCE audio
-framework~\cite{reference:juce}.  Currently only a version for VST3
-plugins under Windows 10 is provided, but porting to other targets
+framework~\cite{reference:juce}.  Currently only plugin versions as
+VST3 under Windows 10, VST3 and AU under MacOSX (x86\_64) and VST3
+under Linux (x86\_64) are provided, but porting to other targets
 should be straightforward, since building is supported by a
 platform-neutral CMAKE build file (see chapter~\ref{section:build}).
 
@@ -367,16 +371,22 @@ project: without your effort this would not have been possible!
 The installation is as follows:
 \begin{enumerate}
 
-   \item Copy the plugins from the \embeddedCode{\_DISTRIBUTION}
+   \item Copy the plugins from the appropriate subdirectory for your
+     platform of \embeddedCode{\_DISTRIBUTION/targetPlatforms}
      directory in \cite{reference:soxPluginsRepository} into the
-     directory for VST plugins of your DAW.
+     directory for VST or AU plugins of your DAW.
 
    \item The distribution also contains this documentation pdf file in
      subdirectory \embeddedCode{doc} and test files in subdirectory
      \embeddedCode{test} (see section~\ref{section:regressionTest}).
 
-   \item Restart your DAW and rescan the VST plugins.  You should now
-     be able to select all the \SoXPlugins (they are all prefixed by
+   \item When installing the MacOSX plugins, note that those are
+     \textbf{not signed}; so you have to explicitly remove the
+     quarantine flag from them (e.g.\ by applying the command
+     \embeddedCode{sudo xattr -rd com.apple.quarantine «vstPath»}).
+
+   \item Restart your DAW and rescan the plugins.  You should now be
+     able to select all the \SoXPlugins (they are all prefixed by
      "SoX").
 
 \end{enumerate}
@@ -1244,9 +1254,10 @@ Those changes have been done with the goal in mind to produce
 in section~\ref{section:regressionTest} this goal has been achieved.
 
 The complete source code of \SoXPlugins\ is open-source for easy
-review and adaptation.  Currently there is only a tool chain for
-Windows 10 (Visual Studio) and VST3 plugins, but in principle the code
-is easily portable to other plugin formats or platforms.
+review and adaptation.  Currently there is only a tool chain for VST3
+plugins under Windows 10, VST3 and AU plugins under MacOSX and VST3
+under Linux, but in principle the code is easily portable to other
+plugin formats or platforms.
 
 %-----------------------------
 \section{Building the Plugins}
@@ -1322,8 +1333,9 @@ cmake --build . --config Release
         \end{commandLine}
 
   \item Install the plugins into a architecture-specific subfolder in
-    the \embeddedCode{\_DISTRIBUTION} directory and install also the
-    documentation there via
+    the \embeddedCode{\_DISTRIBUTION/targetPlatforms} directory and
+    install also the documentation into the
+    \embeddedCode{\_DISTRIBUTION} directory via
 
         \begin{commandLine}
 cmake --build . --config Release --target install
@@ -1418,7 +1430,7 @@ where XXX is the target name.
         \embeddedCode{SoXAudioEditor} or \embeddedCode{SoXAudioProcessor})\\
       \hline
       \rowcolor{parameterTableOtherBackgroundColor}
-      \multicolumn{2}{|p{13cm}|}
+      \multicolumn{2}{|p{13.4cm}|}
                   {\bf foreach effectName in \{Compander, Filter,
                     Gain, Overdrive, PhaserAndTremolo, Reverb\}
                     do}\\\hline
@@ -1442,7 +1454,7 @@ where XXX is the target name.
 \section{Debugging}
 %--------------------
 
-For debugging purposes, every VST can also exist as a debugging
+For debugging purposes, every plugin can also exist as a debugging
 version that does an extensive entry-exit-logging into the temp
 directory.  Note that this debugging slows down processing extremely,
 but it helps to understand problems in case of errors.

@@ -46,7 +46,7 @@ namespace SoXPlugins::Effects::SoXReverb {
 
     };
 
-};
+}
 
 /*--------------------*/
 

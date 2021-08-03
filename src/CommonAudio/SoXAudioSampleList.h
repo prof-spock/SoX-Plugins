@@ -63,4 +63,11 @@ namespace SoXPlugins::CommonAudio {
 
     };
 
-};
+}
+
+//============================================================
+
+#ifndef DEBUG
+    //production code is inlined
+    #include "SoXAudioSampleList.cpp-inc"
+#endif

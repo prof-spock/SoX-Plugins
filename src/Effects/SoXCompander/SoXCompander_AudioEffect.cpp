@@ -51,7 +51,7 @@ constexpr double _maxTopFrequency = 25000.0;
 
 /** function to adjust a bandindex to range of 1 to maximum band count */
 #define _adjustBandIndex(bandIndex) \
-    Natural::maximum(1, Natural::minimum(effectDescriptor->bandCount,\
+    Natural::maximum(1, Natural::minimum(effectDescriptor->bandCount, \
                                          bandIndex))
 
 /*--------------------*/
@@ -89,8 +89,8 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*====================*/
 
     /** fixed-length mapping from natural to compander data */
-    typedef GenericTuple<_CompanderBandParameterData, _maxBandCount>
-            _BandIndexToCompanderDataMap;
+    using _BandIndexToCompanderDataMap =
+        GenericTuple<_CompanderBandParameterData, _maxBandCount>;
 
     /*====================*/
 
@@ -270,7 +270,7 @@ namespace SoXPlugins::Effects::SoXCompander {
             parameterMap.setKindReal(pagedName(parameterName_dBGain),
                                      -20, 20, 0.01);
             parameterMap.setKindReal(pagedName(parameterName_topFrequency),
-                                     0, _maxTopFrequency, 1);
+                                     0.1, _maxTopFrequency, 0.1);
         }
 
         Logging_trace1("<<: %1", parameterMap.toString());
@@ -311,8 +311,9 @@ namespace SoXPlugins::Effects::SoXCompander {
             const Real topFrequency =
                 (isUnbounded ? _maxTopFrequency : data.topFrequency);
             compander.setCompanderBandData(bandIndex, sampleRate,
-                                           data.attack, data.decay, data.knee,
-                                           data.threshold, data.ratio, data.gain,
+                                           data.attack, data.decay,
+                                           data.knee, data.threshold,
+                                           data.ratio, data.gain,
                                            topFrequency);
         }
 
@@ -322,7 +323,7 @@ namespace SoXPlugins::Effects::SoXCompander {
         Logging_trace1("<<: %1", _descriptorToString(effectDescriptor));
     }
 
-};
+}
 
 /*============================================================*/
 
@@ -342,6 +343,15 @@ SoXCompander_AudioEffect::SoXCompander_AudioEffect ()
     _updateSettings(effectDescriptor, _sampleRate, 2);
     _audioParameterMap.changeActivenessByPage(effectDescriptor->bandCount);
     Logging_trace1("<<: %1", toString());
+}
+
+/*--------------------*/
+
+SoXCompander_AudioEffect::~SoXCompander_AudioEffect ()
+{
+    Logging_trace(">>");
+    delete (_EffectDescriptor_CMPD*) _effectDescriptor;
+    Logging_trace("<<");
 }
 
 /*-----------------------*/
@@ -483,8 +493,7 @@ void SoXCompander_AudioEffect::setDefaultValues ()
         _audioParameterMap.setValue(pagedName(parameterName_dBGain),
                                     "5");
         const Real topFrequency =
-            (((_maxTopFrequency - 0.1) * ((size_t) bandIndex + 1))
-             / _maxBandCount);
+          (_maxTopFrequency * ((size_t) bandIndex + 1)) / _maxBandCount;
         _audioParameterMap.setValue(pagedName(parameterName_topFrequency),
                                     TOSTRING(topFrequency));
     }
@@ -522,7 +531,7 @@ void SoXCompander_AudioEffect::prepareToPlay (Real sampleRate)
 
 void
 SoXCompander_AudioEffect::processBlock (Real timePosition,
-                                        SoXAudioSampleBuffer& buffer) {
+                                        SoXAudioSampleListVector& buffer) {
     SoXAudioEffect::processBlock(timePosition, buffer);
 
     _EffectDescriptor_CMPD* effectDescriptor =

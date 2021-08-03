@@ -21,7 +21,7 @@ namespace SoXPlugins::BaseTypes::Primitives {
      * The <C>String</C> type represents (Unicode) character
      * sequences.
     */
-    typedef std::string String;
+    using String = std::string;
 
     /*--------------------*/
 
@@ -33,4 +33,4 @@ namespace SoXPlugins::BaseTypes::Primitives {
     */
     String String_toString (IN String& st);
 
-};
+}

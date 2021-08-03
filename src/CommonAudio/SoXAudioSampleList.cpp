@@ -1,7 +1,8 @@
 /**
  * @file
  * The <C>SoXAudioSampleList</C> body implements a simple list of
- * audio samples.
+ * audio samples <I>(this is the formal CPP file used when not doing
+ * inlining in production code)</I>.
  *
  * @author Dr. Thomas Tensi
  * @date   2020-08
@@ -11,29 +12,7 @@
 
 #include "SoXAudioSampleList.h"
 
-/*====================*/
-
-using SoXPlugins::CommonAudio::SoXAudioSampleList;
-
-/*====================*/
-
-String SoXAudioSampleList::toString () const
-{
-    return _toString("SoXAudioSampleList");
-}
-
-/*--------------------*/
-
-String SoXAudioSampleList::toString (IN SoXAudioSampleList& list)
-{
-    return list.toString();
-}
-
-/*--------------------*/
-
-void SoXAudioSampleList::setToZero ()
-{
-    for (SoXAudioSample& sample : *this) {
-        sample = 0.0;
-    }
-}
+#ifdef DEBUG
+    // module implementation contains functions
+    #include "SoXAudioSampleList.cpp-inc"
+#endif

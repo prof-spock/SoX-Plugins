@@ -43,7 +43,6 @@ SoXAudioEffect::SoXAudioEffect ()
 SoXAudioEffect::~SoXAudioEffect ()
 {
     Logging_trace1(">>: %1", toString());
-    delete _effectDescriptor;
     Logging_trace("<<");
 }
 
@@ -179,7 +178,7 @@ void SoXAudioEffect::releaseResources ()
 /*--------------------*/
 
 void SoXAudioEffect::processBlock (IN Real timePosition,
-                                   INOUT SoXAudioSampleBuffer& buffer)
+                                   INOUT SoXAudioSampleListVector& buffer)
 {
     // Logging_trace1(">>: timePosition = %1", TOSTRING(timePosition));
 

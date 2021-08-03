@@ -214,6 +214,17 @@ namespace SoXPlugins::CommonAudio {
         void shiftRight (IN SoXAudioSample sample);
 
         /*--------------------*/
+
+        /**
+         * Gets all elements in queue in ordered form into
+         * <C>elementArray</C>.  Assumes that capacity of target is
+         * large enough.
+         *
+         * @param[out] elementArray  array of samples
+         */
+        void toArray (OUT SoXAudioSample* elementArray) const;
+
+        /*--------------------*/
         /*--------------------*/
 
         private:
@@ -232,7 +243,7 @@ namespace SoXPlugins::CommonAudio {
             GenericSequence<SoXAudioSample> _data;
 
     };
-};
+}
 
 //============================================================
 

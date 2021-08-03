@@ -26,6 +26,14 @@ using SoXPlugins::BaseTypes::StringUtil::expand;
 
 /*====================*/
 
+#ifdef __FUNCSIG__
+    #define signatureOfFunction __FUNCSIG__
+#else
+    #define signatureOfFunction __PRETTY_FUNCTION__
+#endif
+
+/*--------------------*/
+
 #ifdef LOGGING_IS_ACTIVE
     // for active logging routines are redirected to corresponding
     // routines in logging class
@@ -50,10 +58,10 @@ using SoXPlugins::BaseTypes::StringUtil::expand;
                                             fractionalDigitCount)
 
     #define _Logging_trace(message) \
-                Logging::trace(__FUNCSIG__, message)
+                Logging::trace(signatureOfFunction, message)
 
     #define _Logging_traceError(message) \
-                Logging::traceError(__FUNCSIG__, message)
+                Logging::traceError(signatureOfFunction, message)
 
 #else
     // for inactive logging routines are simply empty
@@ -76,6 +84,8 @@ using SoXPlugins::BaseTypes::StringUtil::expand;
     #define _Logging_traceError(message)
 
 #endif
+
+/*--------------------*/
 
 #define Logging_trace(formattingTemplate)   \
             _Logging_trace(formattingTemplate)

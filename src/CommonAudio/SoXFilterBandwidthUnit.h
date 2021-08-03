@@ -21,4 +21,4 @@ namespace SoXPlugins::CommonAudio {
         frequency, octaves, quality, butterworth, slope
     };
 
-};
+}

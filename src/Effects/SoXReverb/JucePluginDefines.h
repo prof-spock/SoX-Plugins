@@ -11,8 +11,10 @@
 
 // Plugin Settings
 #define _PluginPathName                  eu.tensi.SoXPlugins.Reverb
+
 #define JucePlugin_Name                  "SoX Reverb"
-#define JucePlugin_PluginCode            4725
+#define JucePlugin_Desc                  "reverb effect from SoX"
+#define JucePlugin_PluginCode            0x72657662
 
 // settings for the different plugin kinds
 #define JucePlugin_AAXIdentifier         _PluginPathName

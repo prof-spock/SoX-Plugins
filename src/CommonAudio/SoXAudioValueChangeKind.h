@@ -32,7 +32,7 @@ namespace SoXPlugins::CommonAudio {
 
     };
 
-};
+}
 
 /*--------------------*/
 

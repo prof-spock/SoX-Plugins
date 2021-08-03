@@ -14,7 +14,7 @@
 
 #define JucePlugin_Name                  "SoX Compander"
 #define JucePlugin_Desc                  "multiband compander effect from SoX"
-#define JucePlugin_PluginCode            4731
+#define JucePlugin_PluginCode            0x6D637064
 
 // settings for the different plugin kinds
 #define JucePlugin_AAXIdentifier         _PluginPathName

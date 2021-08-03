@@ -35,7 +35,8 @@ using SoXPlugins::ViewAndController::SoXAudioEditorWidget;
 namespace SoXPlugins::ViewAndController {
 
     /** a list of audio editor widgets */
-    typedef GenericSequence<SoXAudioEditorWidget*> SoXAudioEditorWidgetPtrList;
+    using SoXAudioEditorWidgetPtrList =
+        GenericSequence<SoXAudioEditorWidget*>;
 
     /*--------------------*/
 
@@ -157,4 +158,4 @@ namespace SoXPlugins::ViewAndController {
 
     };
 
-};
+}
