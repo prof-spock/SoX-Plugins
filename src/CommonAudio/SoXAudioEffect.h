@@ -240,9 +240,9 @@ namespace SoXPlugins::CommonAudio {
              * seconds */
             Real _currentTimePosition;
 
-            /** during processing: the previous time position in
+            /** during processing: the expected next time position in
              * seconds */
-            Real _previousTimePosition;
+            Real _expectedNextTimePosition;
 
             /** tells whether the time position has moved between
              *  current and previous processing */

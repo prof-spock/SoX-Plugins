@@ -546,5 +546,4 @@ void SoXPhaserAndTremolo_AudioEffect::processBlock
     }
 
     effectDescriptor->delayQueueIndex = delayQueueIndex;
-    _previousTimePosition = _currentTimePosition;
 }

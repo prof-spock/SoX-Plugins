@@ -19,8 +19,8 @@ var struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect =
     [ "_channelCount", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#adc962d3e98e616f98f7b7cb3e312675f", null ],
     [ "_currentTimePosition", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a798c194b470722f63a9430b9db094c88", null ],
     [ "_effectDescriptor", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a9e737a613983957d9db7fdbbe1d8e1d1", null ],
+    [ "_expectedNextTimePosition", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#ac30b432ef137798081286f5be0ebb99e", null ],
     [ "_parametersAreValid", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#aff395874e484a73e0fe2c325590d35cc", null ],
-    [ "_previousTimePosition", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#a6ec699909aea949a87215532343e0e59", null ],
     [ "_sampleRate", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#ad1c9dfbfa5827139caf973bb9fdf71be", null ],
     [ "_timePositionHasMoved", "struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html#af15378ef0e0b72e58ccef0520321bca6", null ]
 ];

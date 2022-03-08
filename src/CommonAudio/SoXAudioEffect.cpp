@@ -32,7 +32,7 @@ SoXAudioEffect::SoXAudioEffect ()
        _audioParameterMap{},
        _effectDescriptor{},
        _currentTimePosition{Real::infinity},
-       _previousTimePosition{Real::infinity},
+       _expectedNextTimePosition{Real::infinity},
        _timePositionHasMoved{true},
        _parametersAreValid{false}
 {
@@ -68,8 +68,8 @@ String SoXAudioEffect::_asRawString () const
     st += ", _channelCount = " + TOSTRING(_channelCount);
     st += (", _currentTimePosition = "
            + TOSTRING(_currentTimePosition) + "s");
-    st += (", _previousTimePosition = "
-           + TOSTRING(_previousTimePosition) + "s");
+    st += (", _expectedNextTimePosition = "
+           + TOSTRING(_expectedNextTimePosition) + "s");
     st += (", _timePositionHasMoved = "
            + TOSTRING(_timePositionHasMoved));
     st += ", _parametersAreValid = " + TOSTRING(_parametersAreValid);
@@ -161,7 +161,7 @@ void SoXAudioEffect::setParameterValidity (IN bool isValid)
 void SoXAudioEffect::prepareToPlay (IN Real sampleRate)
 {
     Logging_trace1(">>: sampleRate = %1", TOSTRING(sampleRate));
-    _previousTimePosition = Real::infinity;
+    _expectedNextTimePosition = Real::infinity;
     _sampleRate           = sampleRate;
     Logging_trace("<<");
 }
@@ -171,7 +171,7 @@ void SoXAudioEffect::prepareToPlay (IN Real sampleRate)
 void SoXAudioEffect::releaseResources ()
 {
     Logging_trace(">>");
-    _previousTimePosition = Real::infinity;
+    _expectedNextTimePosition = Real::infinity;
     Logging_trace("<<");
 }
 
@@ -186,8 +186,13 @@ void SoXAudioEffect::processBlock (IN Real timePosition,
     _channelCount        = buffer.size();
 
     // check whether timing has changed significantly
-    const Real difference = _currentTimePosition - _previousTimePosition;
-    _timePositionHasMoved = (difference < 0 || difference > 0.1);
+    const Real absoluteDifference =
+        Real::abs(_currentTimePosition - _expectedNextTimePosition);
+    _timePositionHasMoved = (absoluteDifference > 1E-3);
+
+    const Natural sampleCount = buffer[0].size();
+    _expectedNextTimePosition = (timePosition
+                                 + Real(sampleCount) / _sampleRate);
 
     // Logging_trace("<<");
 }
