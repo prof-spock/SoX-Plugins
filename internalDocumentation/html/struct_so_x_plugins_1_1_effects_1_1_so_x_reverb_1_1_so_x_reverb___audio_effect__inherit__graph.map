@@ -1,0 +1,4 @@
+<map id="SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect" name="SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect">
+<area shape="rect" id="node1" title="A SoXReverb_AudioEffect object models the SoX reverb plugin as a simple reverb implementing the Freev..." alt="" coords="7,487,218,696"/>
+<area shape="rect" id="node2" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="5,5,220,439"/>
+</map>

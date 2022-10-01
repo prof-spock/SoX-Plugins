@@ -1,0 +1,17 @@
+<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Containers/StringSet.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Containers/StringSet.h">
+<area shape="rect" id="node1" title="The StringSet specification defines sets of string values with no duplicates and only simple containm..." alt="" coords="5,5,243,81"/>
+<area shape="rect" id="node2" title=" " alt="" coords="56,129,99,157"/>
+<area shape="rect" id="node3" href="$_string_list_8h.html" title="The StringList specification defines sequences of string values with zero&#45;based arbitrary indexed acc..." alt="" coords="123,129,218,157"/>
+<area shape="rect" id="node4" href="$_generic_sequence_8h.html" title="The GenericSequence specification and body defines a generic sequence type of values with zero&#45;based ..." alt="" coords="95,205,246,233"/>
+<area shape="rect" id="node5" title=" " alt="" coords="70,281,133,309"/>
+<area shape="rect" id="node6" href="$_boolean_8h.html" title="The Boolean specification and body provides a value object type for boolean values." alt="" coords="158,509,245,537"/>
+<area shape="rect" id="node10" href="$_integer_8h.html" title="The Integer specification and body provides a value object type for ints." alt="" coords="283,281,362,309"/>
+<area shape="rect" id="node7" href="$_my_string_8h.html" title="The String specification defines a standard string type." alt="" coords="257,585,348,613"/>
+<area shape="rect" id="node8" title=" " alt="" coords="216,661,275,689"/>
+<area shape="rect" id="node9" href="$_global_macros_8h.html" title="The GlobalMacros specification defines simple macros (e.g. for parameter modes)." alt="" coords="299,661,421,689"/>
+<area shape="rect" id="node11" title=" " alt="" coords="422,433,485,461"/>
+<area shape="rect" id="node12" title=" " alt="" coords="227,357,312,385"/>
+<area shape="rect" id="node13" href="$_natural_8h.html" title="The Natural specification and body provides a value object type for naturals (positive integers with ..." alt="" coords="336,357,416,385"/>
+<area shape="rect" id="node14" href="$_generic_number_8h.html" title="The GenericNumber specification and body defines a template for wrapper objects for elementary numeri..." alt="" coords="209,433,346,461"/>
+<area shape="rect" id="node15" title=" " alt="" coords="269,509,325,537"/>
+</map>

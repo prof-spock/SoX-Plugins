@@ -1,0 +1,234 @@
+/**
+ * @file
+ * The <C>AudioSampleRingBufferVector</C> body implements a
+ * two-dimensional list of ring buffers for audio samples <I>(this is
+ * the effective code include file for conditional inlining)</I>.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
+ */
+
+/*====================*/
+
+#include "AudioSampleRingBufferVector.h"
+
+#include "Assertion.h"
+#include "Logging.h"
+#include "StringUtil.h"
+
+/*====================*/
+
+using Audio::AudioSampleRingBufferVector;
+using BaseModules::StringUtil;
+
+/*====================*/
+
+/*--------------------*/
+/* internal routines  */
+/*--------------------*/
+
+/**
+ * Returns the real index into the list for <C>channel</C> and
+ * <C>position</C> also taking flag <C>hasTwoRingBuffersPerChannel</C>
+ * into account.
+ *
+ * @param[in] hasTwoRingBuffersPerChannel  information whether one or two
+ *                                         ring buffers should be used in
+ *                                         the matrix
+ * @param[in] channelIndex                 the index of the channel
+ * @param[in] position                     the index of the sample in the
+ *                                         underlying ring buffer
+ * @return  index of entry in list
+ */
+INLINE
+static Natural _effectiveIndex (IN Boolean hasTwoRingBuffersPerChannel,
+                                IN Natural channelIndex,
+                                IN Natural position)
+{
+    return (Natural{(size_t) (hasTwoRingBuffersPerChannel ? 2 : 1)}
+            * channelIndex + position);
+}
+
+/*--------------------*/
+/* exported routines  */
+/*--------------------*/
+
+INLINE
+AudioSampleRingBufferVector::AudioSampleRingBufferVector
+                              (IN Natural channelCount,
+                               IN Boolean hasTwoRingBuffersPerChannel,
+                               IN Natural sampleRingBufferLength)
+    : _hasTwoRingBuffersPerChannel(hasTwoRingBuffersPerChannel),
+      _data{_effectiveIndex(hasTwoRingBuffersPerChannel, channelCount, 0)}
+      
+{
+    Logging_trace(">>");
+    setRingBufferLength(sampleRingBufferLength);
+    Logging_trace1("<<: %1", toString());
+}
+
+/*--------------------*/
+
+INLINE String
+AudioSampleRingBufferVector::toString (IN Boolean sampleDataIsShown,
+                                       IN Natural audioFrameCount,
+                                       IN Boolean isGroupedByFrames) const
+{
+    String result = "";
+    const Natural channelCount = ringBufferCount();
+    const Natural sampleCount =
+        Natural::minimum(audioFrameCount, ringBufferLength());
+
+    if (!sampleDataIsShown) {
+        result = _expand("channelCount = %1, sampleCount = %2",
+                         TOSTRING(channelCount), TOSTRING(sampleCount));
+    } else {
+        Natural groupCount =
+            (isGroupedByFrames ? audioFrameCount : channelCount);
+        Natural groupLength =
+            (isGroupedByFrames ? channelCount : audioFrameCount);
+    
+        for (Natural i = 0; i < groupCount; i++) {
+            String groupString = "(";
+
+            for (Natural j = 0; j < groupLength; j++) {
+                const AudioSample& sample = (isGroupedByFrames
+                                             ? _data[j][i]
+                                             : _data[i][j]);
+                groupString += (j == 0 ? "" : ", ") + TOSTRING(sample);
+            }
+
+            groupString += (sampleCount < audioFrameCount ? ", ..." : "");
+            groupString += ")";
+            result += (result == "" ? "" : ", ") + groupString;
+        }
+    }
+
+    result = StringUtil::expand("AudioSampleRingBufferVector(%1)", result);
+    return result;
+}
+
+/*--------------------*/
+
+INLINE
+void AudioSampleRingBufferVector::clear ()
+{
+    Logging_trace(">>");
+    _data.clear();
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+INLINE
+Natural AudioSampleRingBufferVector::ringBufferCount () const
+{
+    Logging_trace(">>");
+    Natural result = _data.length();
+    Logging_trace1("<<: %1", TOSTRING(result));
+    return result;
+}
+
+/*--------------------*/
+
+INLINE
+Natural AudioSampleRingBufferVector::ringBufferLength () const
+{
+    Natural result = (_data.length() == 0 ? 0 : _data[0].length());
+    return result;
+}
+
+/*--------------------*/
+
+INLINE
+void AudioSampleRingBufferVector::setRingBufferCount (IN Natural count)
+{
+    Logging_trace1(">>: %1", TOSTRING(count));
+    _data.setLength(count);
+
+    for (AudioSampleRingBuffer& ringBuffer : _data) {
+        ringBuffer.setLength(0);
+    }
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+INLINE
+void AudioSampleRingBufferVector::setRingBufferLength (IN Natural length)
+{
+    Logging_trace1(">>: %1", TOSTRING(length));
+
+    for (AudioSampleRingBuffer& ringBuffer : _data) {
+        ringBuffer.setLength(length);
+    }
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+INLINE
+void AudioSampleRingBufferVector::setToZero ()
+{
+    Logging_trace(">>");
+
+    for (AudioSampleRingBuffer& ringBuffer : _data) {
+        ringBuffer.setToZero();
+    }
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+INLINE
+AudioSampleRingBuffer& AudioSampleRingBufferVector::at
+                         (IN Natural channelIndex,
+                          IN Natural position)
+{
+    return _data[_effectiveIndex(_hasTwoRingBuffersPerChannel,
+                                 channelIndex, position)];
+}
+
+
+/*--------------------*/
+
+INLINE
+AudioSampleRingBuffer& AudioSampleRingBufferVector::at
+                         (IN Natural channelIndex)
+{
+    Assertion_pre(!_hasTwoRingBuffersPerChannel,
+                  "a simple matrix may only have one ring buffer"
+                  " per channel");
+    return at(channelIndex, 0);
+}
+
+/*--------------------*/
+
+INLINE
+AudioSampleRingBuffer& AudioSampleRingBufferVector::operator []
+                         (IN Natural channelIndex)
+{
+    return at(channelIndex);
+}
+
+/*--------------------*/
+
+INLINE void
+AudioSampleRingBufferVector::append
+                                 (IN AudioSampleRingBuffer& sampleRingBuffer)
+{
+    Logging_trace(">>");
+    _data.append(sampleRingBuffer);
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+INLINE
+AudioSampleRingBuffer& AudioSampleRingBufferVector::last ()
+{
+    return _data.back();
+}

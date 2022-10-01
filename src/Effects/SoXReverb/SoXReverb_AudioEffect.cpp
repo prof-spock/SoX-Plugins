@@ -8,27 +8,24 @@
  * @date   2020-10
  */
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include "SoXReverb_AudioEffect.h"
 
 #include <vector>
-#include "Natural.h"
-#include "Percentage.h"
-#include "SoXAudioHelper.h"
-#include "SoXReverbSupport.h"
-#include "StringUtil.h"
 
-/*====================*/
+#include "StringUtil.h"
+#include "SoXReverbSupport.h"
+
+/*--------------------*/
 
 using std::vector;
-using SoXPlugins::BaseTypes::Primitives::Natural;
-using SoXPlugins::BaseTypes::Primitives::Percentage;
+
+using BaseModules::StringUtil;
 using SoXPlugins::Effects::SoXReverb::_SoXReverb;
 using SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect;
-
-namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
-namespace SoXAudioHelper = SoXPlugins::CommonAudio::SoXAudioHelper;
 
 /*============================================================*/
 
@@ -51,7 +48,7 @@ namespace SoXPlugins::Effects::SoXReverb {
 
         /** information whether direct signal should be suppressed in
          * output */
-        bool isWetOnly;
+        Boolean isWetOnly;
 
         /** the reverberance in percent */
         Percentage reverberance;
@@ -119,12 +116,12 @@ namespace SoXPlugins::Effects::SoXReverb {
         _EffectDescriptor_RVRB* result =
             new _EffectDescriptor_RVRB{
                 false, // isWetOnly
-                50,    // reverberance
-                50,    // hfDamping
-                100,   // roomScale
-                100,   // stereoDepth
-                0,     // preDelayInMs
-                0,     // wetDbGain
+                50.0,  // reverberance
+                50.0,  // hfDamping
+                100.0, // roomScale
+                100.0, // stereoDepth
+                0.0,   // preDelayInMs
+                0.0,   // wetDbGain
                 0,     // channelCount
                 {}     // reverb
             };
@@ -145,12 +142,15 @@ namespace SoXPlugins::Effects::SoXReverb {
     _initializeAllParameters (INOUT SoXAudioParameterMap& parameterMap)
     {
         parameterMap.setKindEnum(parameterName_isWetOnly, _yesNoList);
-        parameterMap.setKindReal(parameterName_reverberance, 0, 100, 0.001);
-        parameterMap.setKindReal(parameterName_hfDamping, 0, 100, 0.001);
-        parameterMap.setKindReal(parameterName_roomScale, 0, 100, 0.001);
-        parameterMap.setKindReal(parameterName_stereoDepth, 0, 100, 0.001);
-        parameterMap.setKindReal(parameterName_preDelay, 0, 500, 0.001);
-        parameterMap.setKindReal(parameterName_wetGain, -100, 100, 0.001);
+        parameterMap.setKindReal(parameterName_reverberance,
+                                 0.0, 100.0, 0.001);
+        parameterMap.setKindReal(parameterName_hfDamping, 0.0, 100.0, 0.001);
+        parameterMap.setKindReal(parameterName_roomScale, 0.0, 100.0, 0.001);
+        parameterMap.setKindReal(parameterName_stereoDepth,
+                                 0.0, 100.0, 0.001);
+        parameterMap.setKindReal(parameterName_preDelay, 0.0, 500.0, 0.001);
+        parameterMap.setKindReal(parameterName_wetGain,
+                                 -100.0, 100.0, 0.001);
     }
 
     /*--------------------*/
@@ -174,7 +174,7 @@ namespace SoXPlugins::Effects::SoXReverb {
                              effectDescriptor->hfDamping,
                              effectDescriptor->roomScale,
                              effectDescriptor->stereoDepth,
-                             effectDescriptor->preDelayInMs / 1000,
+                             effectDescriptor->preDelayInMs / 1000.0,
                              effectDescriptor->wetDbGain);
         reverb.resize(sampleRate, channelCount);
     }
@@ -248,9 +248,10 @@ String SoXReverb_AudioEffect::name() const
 /*--------------------*/
 
 SoXAudioValueChangeKind
-SoXReverb_AudioEffect::_setValueInternal (IN String& parameterName,
-                                          IN String& value,
-                                          IN bool recalculationIsSuppressed)
+SoXReverb_AudioEffect::_setValueInternal
+                           (IN String& parameterName,
+                            IN String& value,
+                            IN Boolean recalculationIsSuppressed)
 {
     _EffectDescriptor_RVRB* effectDescriptor =
         static_cast<_EffectDescriptor_RVRB*>(_effectDescriptor);
@@ -258,17 +259,13 @@ SoXReverb_AudioEffect::_setValueInternal (IN String& parameterName,
     if (parameterName == parameterName_isWetOnly) {
         effectDescriptor->isWetOnly = (value == "Yes");
     } else if (parameterName == parameterName_reverberance) {
-        effectDescriptor->reverberance =
-            Percentage{(double) StringUtil::toReal(value)};
+        effectDescriptor->reverberance = StringUtil::toPercentage(value);
     } else if (parameterName == parameterName_hfDamping) {
-        effectDescriptor->hfDamping =
-            Percentage{(double) StringUtil::toReal(value)};
+        effectDescriptor->hfDamping = StringUtil::toPercentage(value);
     } else if (parameterName == parameterName_roomScale) {
-        effectDescriptor->roomScale =
-            Percentage{(double) StringUtil::toReal(value)};
+        effectDescriptor->roomScale = StringUtil::toPercentage(value);
     } else if (parameterName == parameterName_stereoDepth) {
-        effectDescriptor->stereoDepth =
-            Percentage{(double) StringUtil::toReal(value)};
+        effectDescriptor->stereoDepth = StringUtil::toPercentage(value);
     } else if (parameterName == parameterName_preDelay) {
         effectDescriptor->preDelayInMs = StringUtil::toReal(value);
     } else if (parameterName == parameterName_wetGain) {
@@ -301,7 +298,7 @@ void SoXReverb_AudioEffect::setDefaultValues ()
 
 void SoXReverb_AudioEffect::processBlock
                                 (IN Real timePosition,
-                                 INOUT SoXAudioSampleListVector& buffer)
+                                 INOUT AudioSampleListVector& buffer)
 {
     SoXAudioEffect::processBlock(timePosition, buffer);
 
@@ -316,14 +313,14 @@ void SoXReverb_AudioEffect::processBlock
 
     const Natural sampleCount = buffer[0].size();
     _SoXReverb& reverb = effectDescriptor->reverb;
-    SoXAudioSampleQueue inputSampleList{_channelCount};
-    SoXAudioSampleQueue outputSampleList{_channelCount};
+    AudioSampleRingBuffer inputSampleList{_channelCount};
+    AudioSampleRingBuffer outputSampleList{_channelCount};
 
     for (Natural i = 0;  i < sampleCount;  i++) {
         // read all channel samples into one list
         for (Natural channel = 0;  channel < _channelCount;
              channel++) {
-            const SoXAudioSampleList& inputList = buffer[channel];
+            const AudioSampleList& inputList = buffer[channel];
             inputSampleList[channel] = inputList[i];
         }
 
@@ -332,7 +329,7 @@ void SoXReverb_AudioEffect::processBlock
         // write output sample list onto all channels
         for (Natural channel = 0;  channel < _channelCount;
              channel++) {
-            SoXAudioSampleList& outputList = buffer[channel];
+            AudioSampleList& outputList = buffer[channel];
             outputList[i] = outputSampleList[channel];
         }
     }

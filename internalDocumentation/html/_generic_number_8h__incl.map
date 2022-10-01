@@ -1,0 +1,8 @@
+<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Primitives/GenericNumber.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Primitives/GenericNumber.h">
+<area shape="rect" id="node1" title="The GenericNumber specification and body defines a template for wrapper objects for elementary numeri..." alt="" coords="5,5,243,81"/>
+<area shape="rect" id="node2" title=" " alt="" coords="48,129,104,157"/>
+<area shape="rect" id="node3" href="$_boolean_8h.html" title="The Boolean specification and body provides a value object type for boolean values." alt="" coords="129,129,215,157"/>
+<area shape="rect" id="node4" href="$_my_string_8h.html" title="The String specification defines a standard string type." alt="" coords="127,205,217,233"/>
+<area shape="rect" id="node5" title=" " alt="" coords="85,281,144,309"/>
+<area shape="rect" id="node6" href="$_global_macros_8h.html" title="The GlobalMacros specification defines simple macros (e.g. for parameter modes)." alt="" coords="168,281,291,309"/>
+</map>

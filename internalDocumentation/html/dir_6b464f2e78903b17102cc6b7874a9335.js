@@ -10,6 +10,8 @@ var dir_6b464f2e78903b17102cc6b7874a9335 =
     [ "SoXCompanderSupport.h", "_so_x_compander_support_8h.html", [
       [ "SoXMultibandCompander", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander" ]
     ] ],
+    [ "SoXPlugin-Standalone.cpp", "_so_x_compander_2_so_x_plugin-_standalone_8cpp.html", null ],
     [ "SoXPlugin-util.cpp", "_so_x_compander_2_so_x_plugin-util_8cpp.html", null ],
-    [ "SoXPlugin-VST_1.cpp", "_so_x_compander_2_so_x_plugin-_v_s_t__1_8cpp.html", null ]
+    [ "SoXPlugin-VST_1.cpp", "_so_x_compander_2_so_x_plugin-_v_s_t__1_8cpp.html", null ],
+    [ "SoXPlugin-VST_2.cpp", "_so_x_compander_2_so_x_plugin-_v_s_t__2_8cpp.html", null ]
 ];

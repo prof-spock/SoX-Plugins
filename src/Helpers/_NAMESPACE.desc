@@ -1,0 +1,8 @@
+/**
+ * The package <C>Helpers</C> provides some simple support types for
+ * the DAW plugins like e.g. a component with utility functions like
+ * decibels calculation or the handling of the parameter map to be
+ * used by effects.
+ */
+namespace SoXPlugins::Helpers {
+}

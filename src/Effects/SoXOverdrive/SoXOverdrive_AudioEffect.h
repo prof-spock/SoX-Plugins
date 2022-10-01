@@ -8,23 +8,19 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
-#include "GlobalMacros.h"
-#include "Real.h"
-#include "MyString.h"
 #include "SoXAudioEffect.h"
-#include "SoXAudioValueChangeKind.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::BaseTypes::Primitives::Real;
-using SoXPlugins::BaseTypes::Primitives::String;
-using SoXPlugins::CommonAudio::SoXAudioEffect;
-using SoXPlugins::CommonAudio::SoXAudioSampleListVector;
-using SoXPlugins::CommonAudio::SoXAudioValueChangeKind;
+using SoXPlugins::Effects::SoXAudioEffect;
 
 /*====================*/
 
@@ -67,7 +63,7 @@ namespace SoXPlugins::Effects::SoXOverdrive {
         /*--------------------*/
 
         void processBlock (IN Real timePosition,
-                           INOUT SoXAudioSampleListVector& buffer)
+                           INOUT AudioSampleListVector& buffer)
             override;
 
         /*--------------------*/
@@ -83,7 +79,7 @@ namespace SoXPlugins::Effects::SoXOverdrive {
             SoXAudioValueChangeKind
             _setValueInternal (IN String& parameterName,
                                IN String& value,
-                               IN bool recalculationIsSuppressed)
+                               IN Boolean recalculationIsSuppressed)
                 override;
 
     };

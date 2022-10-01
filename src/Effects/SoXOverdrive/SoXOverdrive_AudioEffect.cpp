@@ -12,22 +12,23 @@
  * @date   2020-08
  */
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include "SoXOverdrive_AudioEffect.h"
 
 #include <cmath>
-#include "SoXAudioHelper.h"
-#include "SoXAudioSampleQueueMatrix.h"
 #include "StringUtil.h"
+#include "AudioSampleRingBufferVector.h"
+#include "SoXAudioHelper.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::CommonAudio::SoXAudioSampleQueueMatrix;
+using Audio::AudioSampleRingBufferVector;
+using BaseModules::StringUtil;
 using SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect;
-
-namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
-namespace SoXAudioHelper = SoXPlugins::CommonAudio::SoXAudioHelper;
+using SoXPlugins::Helpers::SoXAudioHelper;
 
 /*====================*/
 
@@ -48,8 +49,8 @@ namespace SoXPlugins::Effects::SoXOverdrive {
           * a DC offset applied to the signal*/
         Real colour;
 
-        /** the list of samples queues for input and output */
-        SoXAudioSampleQueueMatrix sampleQueueMatrix;
+        /** the list of samples ring buffers for input and output */
+        AudioSampleRingBufferVector sampleRingBufferVector;
     };
 
     /*====================*/
@@ -77,8 +78,8 @@ namespace SoXPlugins::Effects::SoXOverdrive {
         _EffectDescriptor_OVRD* result =
             new _EffectDescriptor_OVRD{
                 SoXAudioHelper::dBToLinear(0.0),  // gain
-                (Real) 20 * colourFactor,         // colour
-                {2, true, 1}                      // sampleQueueMatrix
+                Real{20.0} * colourFactor,               // colour
+                {2, true, 1}                             // sampleRingBufferVector
             };
 
         return result;
@@ -137,8 +138,8 @@ String SoXOverdrive_AudioEffect::_effectDescriptorToString () const
     String st = "_EffectDescriptor_OVRD(";
     st += "gain = " + StringUtil::toString(effectDescriptor->gain);
     st += ", colour = " + StringUtil::toString(effectDescriptor->colour);
-    st += (", sampleQueueMatrix = "
-           + effectDescriptor->sampleQueueMatrix.toString());
+    st += (", sampleRingBufferVector = "
+           + effectDescriptor->sampleRingBufferVector.toString());
     st += ")";
 
     return st;
@@ -161,7 +162,7 @@ SoXAudioValueChangeKind
 SoXOverdrive_AudioEffect::_setValueInternal
                               (IN String& parameterName,
                                IN String& value,
-                               IN bool recalculationIsSuppressed)
+                               IN Boolean recalculationIsSuppressed)
 {
     _EffectDescriptor_OVRD* effectDescriptor =
         static_cast<_EffectDescriptor_OVRD*>(_effectDescriptor);
@@ -190,7 +191,7 @@ void SoXOverdrive_AudioEffect::setDefaultValues () {
 
 void
 SoXOverdrive_AudioEffect::processBlock (IN Real timePosition,
-                                        INOUT SoXAudioSampleListVector& buffer)
+                                        INOUT AudioSampleListVector& buffer)
 {
     SoXAudioEffect::processBlock(timePosition, buffer);
     _EffectDescriptor_OVRD* effectDescriptor =
@@ -199,37 +200,37 @@ SoXOverdrive_AudioEffect::processBlock (IN Real timePosition,
     const Natural sampleCount = buffer[0].size();
     const Real gain   = effectDescriptor->gain;
     const Real colour = effectDescriptor->colour;
-    SoXAudioSampleQueueMatrix& sampleQueueMatrix =
-        effectDescriptor->sampleQueueMatrix;
+    AudioSampleRingBufferVector& sampleRingBufferVector =
+        effectDescriptor->sampleRingBufferVector;
 
     for (Natural channel = 0;  channel < _channelCount;
          channel++) {
-        SoXAudioSampleQueue& inputSampleQueue =
-            sampleQueueMatrix.at(channel, 0);
-        SoXAudioSampleQueue& outputSampleQueue =
-            sampleQueueMatrix.at(channel, 1);
-        const SoXAudioSampleList& inputList  = buffer[channel];
-        SoXAudioSampleList& outputList = buffer[channel];
+        AudioSampleRingBuffer& inputSampleRingBuffer =
+            sampleRingBufferVector.at(channel, 0);
+        AudioSampleRingBuffer& outputSampleRingBuffer =
+            sampleRingBufferVector.at(channel, 1);
+        const AudioSampleList& inputList  = buffer[channel];
+        AudioSampleList& outputList = buffer[channel];
 
         for (Natural i = 0;  i < sampleCount;  i++) {
-            const SoXAudioSample inputSample = inputList[i];
-            const SoXAudioSample previousInputSample =
-                inputSampleQueue.first();
-            const SoXAudioSample previousOutputSample =
-                outputSampleQueue.first();
-            SoXAudioSample newValue;
+            const AudioSample inputSample = inputList[i];
+            const AudioSample previousInputSample =
+                inputSampleRingBuffer.first();
+            const AudioSample previousOutputSample =
+                outputSampleRingBuffer.first();
+            AudioSample newValue;
 
-            newValue = (SoXAudioSample) (inputSample * gain + colour);
+            newValue = (AudioSample) (inputSample * gain + colour);
             newValue = newValue.forceToRange(-1.0, 1.0);
             newValue = (newValue - (newValue * newValue * newValue)
-                        / Real{3});
-            const SoXAudioSample outputSample =
+                        / Real{3.0});
+            const AudioSample outputSample =
                 (newValue - previousInputSample
                  + Real{0.995}  * previousOutputSample);
-            outputList[i] = (inputSample / Real{2}
+            outputList[i] = (inputSample / Real{2.0}
                              + outputSample * Real{0.75});
-            inputSampleQueue.setFirst(newValue);
-            outputSampleQueue.setFirst(outputSample);
+            inputSampleRingBuffer.setFirst(newValue);
+            outputSampleRingBuffer.setFirst(outputSample);
         }
     }
 }

@@ -8,27 +8,30 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <vector>
 
-#include "GlobalMacros.h"
-#include "Natural.h"
+#include "Boolean.h"
 #include "Integer.h"
-#include "MyString.h"
 
-/*====================*/
+/*--------------------*/
 
 using std::vector;
-using SoXPlugins::BaseTypes::Primitives::Natural;
-using SoXPlugins::BaseTypes::Primitives::Integer;
-using SoXPlugins::BaseTypes::Primitives::String;
+using BaseTypes::Primitives::Boolean;
+using BaseTypes::Primitives::Natural;
+using BaseTypes::Primitives::Integer;
+using BaseTypes::Primitives::String;
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Containers {
+namespace BaseTypes::Containers {
 
     /**
      * A <C>GenericSequence</C> is a generic sequence type of values
@@ -43,8 +46,12 @@ namespace SoXPlugins::BaseTypes::Containers {
     struct GenericSequence : public vector<T>
     {
 
+        /*--------------------*/
+        /* con-/destruction   */
+        /*--------------------*/
+
         /**
-         * Initializes list to an empty sequence.
+         * Initializes sequence to an empty sequence.
          */
         GenericSequence ()
         {
@@ -53,7 +60,27 @@ namespace SoXPlugins::BaseTypes::Containers {
         /*--------------------*/
 
         /**
-         * Initializes list to a sequence of length
+         * Initializes sequence by data from <C>elementArray</C> with
+         * <C>elementCount</C> entries.
+         *
+         * @param[in] elementArray  array of elements of underlying
+         *                          type
+         * @param[in] elementCount  count of elements to be used
+         */
+        GenericSequence (IN T* elementArray,
+                         IN Natural elementCount)
+        {
+            setLength(elementCount);
+
+            for (Natural i = 0;  i < elementCount;  i++) {
+                setAt(i, elementArray[i]);
+            }
+        }
+
+        /*--------------------*/
+
+        /**
+         * Initializes sequence to a sequence of length
          * <C>initialSize</C>.
          *
          * @param[in] initialSize  initial length of sequence
@@ -64,7 +91,47 @@ namespace SoXPlugins::BaseTypes::Containers {
         }
 
         /*--------------------*/
-        /* operators          */
+
+        /**
+         * Initializes sequence by data from <C>otherSequence</C>
+         *
+         * @param[in] otherSequence  sequence to be copied into
+         *                           current
+         */
+        GenericSequence (IN GenericSequence& otherSequence)
+        {
+            clear();
+            append(otherSequence);
+        }
+
+        /*--------------------*/
+        /* conversion         */
+        /*--------------------*/
+
+        /**
+         * Returns pointer to first element of sequence.
+         *
+         * @return  pointer to first element
+         */
+        T* asArray ()
+        {
+            return vector<T>::data();
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns read pointer to first element of sequence.
+         *
+         * @return  read pointer to first element
+         */
+        const T* asArray () const
+        {
+            return vector<T>::data();
+        }
+
+        /*--------------------*/
+        /* property access    */
         /*--------------------*/
 
         /**
@@ -92,8 +159,6 @@ namespace SoXPlugins::BaseTypes::Containers {
         }
 
         /*--------------------*/
-        /* Methods            */
-        /*--------------------*/
 
         /**
          * Returns value reference to sequence at <C>position</C>.
@@ -120,6 +185,24 @@ namespace SoXPlugins::BaseTypes::Containers {
         }
 
         /*--------------------*/
+        /* property change    */
+        /*--------------------*/
+
+        /**
+         * Assigns <C>otherSequence</C> to current.
+         *
+         * @param[in] otherSequence  other sequence to be assigned to
+         *                           current sequence
+         * @return  reference to current sequence
+         */
+        GenericSequence& operator= (const GenericSequence& otherSequence)
+        {
+            clear();
+            append(otherSequence);
+            return *this;
+        }
+
+        /*--------------------*/
 
         /**
          * Appends <C>element</C> as last element.
@@ -133,77 +216,40 @@ namespace SoXPlugins::BaseTypes::Containers {
         /*--------------------*/
 
         /**
-         * Returns pointer to first element of sequence.
+         * Append <C>otherSequence</C> to current sequence.
          *
-         * @return  pointer to first element
+         * @param[in] otherSequence  other sequence to be appended to
+         *                           current sequence
          */
-        T* asArray ()
+        void append (IN GenericSequence& otherSequence)
         {
-            return vector<T>::data();
-        }
-
-        /*--------------------*/
-
-        /**
-         * Returns read pointer to first element of sequence.
-         *
-         * @return  read pointer to first element
-         */
-        const T* asArray () const
-        {
-            return vector<T>::data();
-        }
-
-        /*--------------------*/
-
-        /**
-         * Tells whether current sequence contains <C>element</C>.
-         *
-         * @param[in] element  element to be searched in sequence
-         * @return  information whether <C>element</C> occurs as element in
-         *          sequence
-         */
-        bool contains (IN T& element) const
-        {
-            return (position(element) >= 0);
-        }
-
-        /*--------------------*/
-
-        /**
-         * Tells first position where sequence contains <C>element</C>;
-         * returns -1 when not found
-         *
-         * @param[in] element  element to be searched in sequence
-         * @return  first index position of <C>element</C> in sequence
-         *          (starting with 0) or -1 when not found
-         */
-        Integer position (IN T& element) const
-        {
-            Integer result{-1};
-
-            for (Natural i = 0;  i < this->size();  i++) {
-                if (at(i) == element) {
-                    result = Integer{(int) i};
-                    break;
-                }
+            for (Natural i = 0;  i < otherSequence.size();  i++) {
+                const T& element = otherSequence.at(i);
+                append(element);
             }
-
-            return result;
         }
 
         /*--------------------*/
 
         /**
-         * Returns the length of sequence.
-         *
-         * @return  length of sequence
+         * Clears current sequence by setting its length to zero.
          */
-        Natural length () const
+        void clear ()
         {
-            return Natural{vector<T>::size()};
+            vector<T>::clear();
         }
-        
+
+        /*--------------------*/
+
+        /**
+         * Prepends <C>element</C> as first element.
+         * @param[in] element  element to be prepended to sequence
+         */
+        void prepend (IN T& element)
+        {
+            vector<T>::emplace(vector<T>::begin(), element);
+        }
+
         /*--------------------*/
 
         /**
@@ -244,9 +290,103 @@ namespace SoXPlugins::BaseTypes::Containers {
         }
 
         /*--------------------*/
+
+        /**
+         * A <C>Comparator</C> type compares two objects and returns
+         * -1 for a smaller first object, +1 for a smaller second object
+         * and 0 for equality
+         */
+        typedef int Comparator (const void*, const void*);
+        
+        /*--------------------*/
+
+        /**
+         * Sorts current sequence in place by <C>comparator</C>.
+         *
+         * @param[in] comparator  comparison function returning -1 if
+         *                        the first argument is less than the
+         *                        second, +1 if the first argument is
+         *                        greater than the second and 0 if the
+         *                        arguments are equivalent
+         */
+        void sort (Comparator& comparator)
+        {
+            std::qsort(this->data(), this->size(), sizeof(T), comparator);
+        }
+
+        /*--------------------*/
+        /* measurement        */
+        /*--------------------*/
+
+        /**
+         * Tells whether current sequence contains <C>element</C>.
+         *
+         * @param[in] element  element to be searched in sequence
+         * @return  information whether <C>element</C> occurs as element
+         *          in sequence
+         */
+        Boolean contains (IN T& element) const
+        {
+            return (position(element) >= 0);
+        }
+
+        /*--------------------*/
+
+        /**
+         * Tells whether current sequence is empty.
+         *
+         * @return  information whether no <C>element</C> occurs in
+         *          sequence
+         */
+        Boolean isEmpty () const
+        {
+            return (this->size() == 0);
+        }
+
+        /*--------------------*/
+
+        /**
+         * Tells first position where sequence contains <C>element</C>;
+         * returns -1 when not found
+         *
+         * @param[in] element  element to be searched in sequence
+         * @return  first index position of <C>element</C> in sequence
+         *          (starting with 0) or -1 when not found
+         */
+        Integer position (IN T& element) const
+        {
+            Integer result{-1};
+
+            for (Natural i = 0;  i < this->size();  i++) {
+                if (at(i) == element) {
+                    result = Integer{(int) i};
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns the length of sequence.
+         *
+         * @return  length of sequence
+         */
+        Natural length () const
+        {
+            return Natural{vector<T>::size()};
+        }
+        
+        /*--------------------*/
         /*--------------------*/
 
         protected:
+
+            /*--------------------*/
+            /* conversion         */
+            /*--------------------*/
 
             /**
              * Converts sequence to linear string representation
@@ -256,13 +396,14 @@ namespace SoXPlugins::BaseTypes::Containers {
              * @param nameOfType  name of sequence type
              * @return  single string representation of sequence
              */
-            String _toString (IN String nameOfType) const
+            String _toString (IN String& nameOfType) const
             {
                 String result = "";
 
                 for (const T& element : *this) {
                     result += (result.size() == 0 ? "" : ", ");
-                    result += elementToString(element);
+                    result += (elementToString == nullptr
+                               ? "???" : elementToString(element));
                 }
 
                 result = nameOfType + "(" + result + ")";

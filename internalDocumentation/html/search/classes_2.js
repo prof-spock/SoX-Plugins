@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['eventdispatcher_583',['EventDispatcher',['../struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html',1,'SoXPlugins::ViewAndController']]]
+  ['boolean_686',['Boolean',['../struct_base_types_1_1_primitives_1_1_boolean.html',1,'BaseTypes::Primitives']]],
+  ['byte_687',['Byte',['../struct_base_types_1_1_primitives_1_1_byte.html',1,'BaseTypes::Primitives']]],
+  ['bytelist_688',['ByteList',['../struct_base_types_1_1_containers_1_1_byte_list.html',1,'BaseTypes::Containers']]]
 ];

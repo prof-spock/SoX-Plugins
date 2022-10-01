@@ -91,61 +91,61 @@ $(document).ready(function(){initNavTree('struct_so_x_plugins_1_1_effects_1_1_so
 </div><!--header-->
 <div class="contents">
 
-<p>A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html" title="A _CombFilter object is a simple Schröder-Moorer comb filter with an associated sample queue as a del...">_CombFilter</a></code> object is a simple Schröder-Moorer comb filter with an associated sample queue as a delay line and a single stored sample.  
+<p>A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html" title="A _CombFilter object is a simple Schröder-Moorer comb filter with an associated sample ring buffer as...">_CombFilter</a></code> object is a simple Schröder-Moorer comb filter with an associated sample ring buffer as a delay line and a single stored sample.  
  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa161de498440609ed31cfc02605a1f57"><td class="memItemLeft" align="right" valign="top"><a id="aa161de498440609ed31cfc02605a1f57"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#aa161de498440609ed31cfc02605a1f57">_CombFilter</a> ()</td></tr>
-<tr class="memdesc:aa161de498440609ed31cfc02605a1f57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes comb filter with embedded sample queue. <br /></td></tr>
+<tr class="memdesc:aa161de498440609ed31cfc02605a1f57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes comb filter with embedded sample ring buffer. <br /></td></tr>
 <tr class="separator:aa161de498440609ed31cfc02605a1f57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afec8b4cd9c3bb2d174067cb79373859d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#afec8b4cd9c3bb2d174067cb79373859d">queueLength</a> () const</td></tr>
-<tr class="memdesc:afec8b4cd9c3bb2d174067cb79373859d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets length of sample queue in filter.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#afec8b4cd9c3bb2d174067cb79373859d">More...</a><br /></td></tr>
-<tr class="separator:afec8b4cd9c3bb2d174067cb79373859d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c0e0d963cfe686fd971e7b5320425e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#a7c0e0d963cfe686fd971e7b5320425e0">setQueueLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_natural.html">Natural</a> length)</td></tr>
-<tr class="memdesc:a7c0e0d963cfe686fd971e7b5320425e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets length of sample queue in filter.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#a7c0e0d963cfe686fd971e7b5320425e0">More...</a><br /></td></tr>
-<tr class="separator:a7c0e0d963cfe686fd971e7b5320425e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a724542b2941559355c34d66578befa38"><td class="memItemLeft" align="right" valign="top">SoXAudioSample&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#a724542b2941559355c34d66578befa38">apply</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> SoXAudioSample inputSample, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a> feedback, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a> hfDamping)</td></tr>
-<tr class="memdesc:a724542b2941559355c34d66578befa38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies comb filter to single <code>inputSample</code> with parameters <code>feedback</code> and <code>hfDamping</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#a724542b2941559355c34d66578befa38">More...</a><br /></td></tr>
-<tr class="separator:a724542b2941559355c34d66578befa38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8485ca86706b723abf7ad8c63550bf3f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#a8485ca86706b723abf7ad8c63550bf3f">ringBufferLength</a> () const</td></tr>
+<tr class="memdesc:a8485ca86706b723abf7ad8c63550bf3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets length of sample ring buffer in filter.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#a8485ca86706b723abf7ad8c63550bf3f">More...</a><br /></td></tr>
+<tr class="separator:a8485ca86706b723abf7ad8c63550bf3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5a81ae3b28dfee0eb1772bdcbb317bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#af5a81ae3b28dfee0eb1772bdcbb317bd">setRingBufferLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> length)</td></tr>
+<tr class="memdesc:af5a81ae3b28dfee0eb1772bdcbb317bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets length of sample ring buffer in filter.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#af5a81ae3b28dfee0eb1772bdcbb317bd">More...</a><br /></td></tr>
+<tr class="separator:af5a81ae3b28dfee0eb1772bdcbb317bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ef1188833ddf5fdc74c31384bf6177c"><td class="memItemLeft" align="right" valign="top">AudioSample&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#a5ef1188833ddf5fdc74c31384bf6177c">apply</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> AudioSample inputSample, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> feedback, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> hfDamping)</td></tr>
+<tr class="memdesc:a5ef1188833ddf5fdc74c31384bf6177c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies comb filter to single <code>inputSample</code> with parameters <code>feedback</code> and <code>hfDamping</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#a5ef1188833ddf5fdc74c31384bf6177c">More...</a><br /></td></tr>
+<tr class="separator:a5ef1188833ddf5fdc74c31384bf6177c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a4ae19026541d038ac3ae0d1720b3ece3"><td class="memItemLeft" align="right" valign="top"><a id="a4ae19026541d038ac3ae0d1720b3ece3"></a>
-<a class="el" href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue.html">SoXAudioSampleQueue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#a4ae19026541d038ac3ae0d1720b3ece3">_sampleQueue</a></td></tr>
-<tr class="memdesc:a4ae19026541d038ac3ae0d1720b3ece3"><td class="mdescLeft">&#160;</td><td class="mdescRight">internal sample queue of comb filter <br /></td></tr>
-<tr class="separator:a4ae19026541d038ac3ae0d1720b3ece3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78bd2e7ccf89c04f0f250e6b2273edfc"><td class="memItemLeft" align="right" valign="top"><a id="a78bd2e7ccf89c04f0f250e6b2273edfc"></a>
-SoXAudioSample&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#a78bd2e7ccf89c04f0f250e6b2273edfc">_storedSample</a></td></tr>
-<tr class="memdesc:a78bd2e7ccf89c04f0f250e6b2273edfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">the single state sample of comb filter <br /></td></tr>
-<tr class="separator:a78bd2e7ccf89c04f0f250e6b2273edfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3b6dd2ee2ed6780e3f723de7c8744ac"><td class="memItemLeft" align="right" valign="top"><a id="ae3b6dd2ee2ed6780e3f723de7c8744ac"></a>
+<a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html">AudioSampleRingBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#ae3b6dd2ee2ed6780e3f723de7c8744ac">_sampleRingBuffer</a></td></tr>
+<tr class="memdesc:ae3b6dd2ee2ed6780e3f723de7c8744ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">internal sample ring buffer of comb filter <br /></td></tr>
+<tr class="separator:ae3b6dd2ee2ed6780e3f723de7c8744ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05cd94a3e77bab6e6db50f02c43395f4"><td class="memItemLeft" align="right" valign="top"><a id="a05cd94a3e77bab6e6db50f02c43395f4"></a>
+AudioSample&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#a05cd94a3e77bab6e6db50f02c43395f4">_storedSample</a></td></tr>
+<tr class="memdesc:a05cd94a3e77bab6e6db50f02c43395f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the single state sample of comb filter <br /></td></tr>
+<tr class="separator:a05cd94a3e77bab6e6db50f02c43395f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html" title="A _CombFilter object is a simple Schröder-Moorer comb filter with an associated sample queue as a del...">_CombFilter</a></code> object is a simple Schröder-Moorer comb filter with an associated sample queue as a delay line and a single stored sample. </p>
+<div class="textblock"><p>A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html" title="A _CombFilter object is a simple Schröder-Moorer comb filter with an associated sample ring buffer as...">_CombFilter</a></code> object is a simple Schröder-Moorer comb filter with an associated sample ring buffer as a delay line and a single stored sample. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a724542b2941559355c34d66578befa38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a724542b2941559355c34d66578befa38">&#9670;&nbsp;</a></span>apply()</h2>
+<a id="a5ef1188833ddf5fdc74c31384bf6177c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ef1188833ddf5fdc74c31384bf6177c">&#9670;&nbsp;</a></span>apply()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SoXAudioSample SoXPlugins::Effects::SoXReverb::_CombFilter::apply </td>
+          <td class="memname">AudioSample SoXPlugins::Effects::SoXReverb::_CombFilter::apply </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> SoXAudioSample&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> AudioSample&#160;</td>
           <td class="paramname"><em>inputSample</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
           <td class="paramname"><em>feedback</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
           <td class="paramname"><em>hfDamping</em>&#160;</td>
         </tr>
         <tr>
@@ -169,14 +169,14 @@ SoXAudioSample&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 
 </div>
 </div>
-<a id="afec8b4cd9c3bb2d174067cb79373859d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afec8b4cd9c3bb2d174067cb79373859d">&#9670;&nbsp;</a></span>queueLength()</h2>
+<a id="a8485ca86706b723abf7ad8c63550bf3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8485ca86706b723abf7ad8c63550bf3f">&#9670;&nbsp;</a></span>ringBufferLength()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_natural.html">Natural</a> SoXPlugins::Effects::SoXReverb::_CombFilter::queueLength </td>
+          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> SoXPlugins::Effects::SoXReverb::_CombFilter::ringBufferLength </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -184,31 +184,31 @@ SoXAudioSample&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
       </table>
 </div><div class="memdoc">
 
-<p>Gets length of sample queue in filter. </p>
-<dl class="section return"><dt>Returns</dt><dd>length of sample queue </dd></dl>
+<p>Gets length of sample ring buffer in filter. </p>
+<dl class="section return"><dt>Returns</dt><dd>length of sample ring buffer </dd></dl>
 
 </div>
 </div>
-<a id="a7c0e0d963cfe686fd971e7b5320425e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c0e0d963cfe686fd971e7b5320425e0">&#9670;&nbsp;</a></span>setQueueLength()</h2>
+<a id="af5a81ae3b28dfee0eb1772bdcbb317bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5a81ae3b28dfee0eb1772bdcbb317bd">&#9670;&nbsp;</a></span>setRingBufferLength()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void SoXPlugins::Effects::SoXReverb::_CombFilter::setQueueLength </td>
+          <td class="memname">void SoXPlugins::Effects::SoXReverb::_CombFilter::setRingBufferLength </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td>
           <td class="paramname"><em>length</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets length of sample queue in filter. </p>
+<p>Sets length of sample ring buffer in filter. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>new length of sample queue </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>new length of sample ring buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -216,7 +216,7 @@ SoXAudioSample&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>C:/Users/Thomas/Documents/Visual_Studio/Projects/SoXPlugins/src/Effects/SoXReverb/<a class="el" href="_so_x_reverb_support_8cpp.html">SoXReverbSupport.cpp</a></li>
+<li>C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXReverb/<a class="el" href="_so_x_reverb_support_8cpp.html">SoXReverbSupport.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -8,47 +8,86 @@
  * @date   2021-07
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
+
+#include <cstring>
+    /** a qualified version of imported function */
+    #define CString_memcpy  memcpy
 
 #include "Natural.h"
 
+/*--------------------*/
+
+using BaseTypes::Primitives::Natural;
+
 /*====================*/
 
-using SoXPlugins::BaseTypes::Primitives::Natural;
-
-/*====================*/
-
-namespace SoXPlugins::BaseTypes::Containers {
+namespace BaseTypes::Containers {
 
     /**
-     * Allocates an array of <C>count</C> elements of type <C>T</C> on
-     * the stack.
+     * Allocates an array of <C>count</C> elements of type
+     * <C>ElementType</C> on the stack.
      *
-     * @param T      type of element
-     * @param count  count of elements to be allocated
-     * @return array with <C>count</C> entries of type <C>T</C>
+     * @param ElementType  type of element
+     * @param count        count of elements to be allocated
+     * @return array with <C>count</C> entries of type <C>ElementType</C>
      */
-    #define makeLocalArray(T, count) \
-        (T*) alloca(((int) (count)) * sizeof(T))
+    #define makeLocalArray(ElementType, count) \
+        (ElementType*) alloca(((int) (count)) * sizeof(ElementType))
 
     /*--------------------*/
 
     /**
      * Copies <C>count</C> elements from array pointed to by
-     * <C>sourcePtr</C> to array pointed to by <C>targetPtr</C>.
+     * <C>sourcePtr</C> of type <C>ElementType</C> to array pointed to
+     * by <C>targetPtr</C> (also of type <C>ElementType</C>).
      * Increments both pointers by <C>count</C>.
      *
-     * @param sourcePtr       pointer to first source data element
-     * @param targetPtr       pointer to first target data element
-     * @param count           count of elements to be copied
+     * @tparam       ElementType  element type of both arrays
+     * @param[in]    sourcePtr    pointer to first source data element
+     * @param[inout] targetPtr    pointer to first target data element
+     * @param[in]    count        count of elements to be copied
      */
-    template<typename T>
-    void copyArray (T*& targetPtr, T*& sourcePtr, Natural count)
+    template<typename ElementType>
+    void copyArray (ElementType*& targetPtr,
+                    const ElementType*& sourcePtr,
+                    Natural count)
     {
-        for (int i = (int) count;  i > 0;  i--) {
-            *targetPtr++ = *sourcePtr++;
+        const Natural byteCount = Natural{sizeof(ElementType)} * count;
+        CString_memcpy(targetPtr, sourcePtr, (size_t) byteCount);
+        targetPtr += (size_t) count;
+    }
+
+    /*--------------------*/
+
+    /**
+     * Copies <C>count</C> elements from array pointed to by
+     * <C>sourcePtr</C> of type <C>SourceElementType</C> to array
+     * pointed to by <C>targetPtr</C> of type
+     * <C>TargetElementType</C>.  Increments both pointers by
+     * <C>count</C>.
+     *
+     * @tparam     TargetElementType  element type of target array
+     * @tparam     SourceElementType  element type of source array
+     * @param[in]  sourcePtr          pointer to first source data
+     *                                element
+     * @param[out] targetPtr          pointer to first target data
+     *                                element
+     * @param[in]  count              count of elements to be copied
+     */
+    template<typename TargetElementType, typename SourceElementType>
+    void convertArray (OUT TargetElementType* targetPtr,
+                       IN SourceElementType* sourcePtr,
+                       IN Natural count)
+    {
+        for (Natural i = 0;  i < count;  i++) {
+            *targetPtr++ = (TargetElementType) *sourcePtr++;
         }
     }
 

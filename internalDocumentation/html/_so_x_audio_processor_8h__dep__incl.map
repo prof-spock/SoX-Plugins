@@ -1,0 +1,13 @@
+<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/ViewAndController/SoXAudioProcessor.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/ViewAndController/SoXAudioProcessor.h">
+<area shape="rect" id="node1" title="The SoXAudioProcessor specification defines an audio effect wrapper for a plugin responsible for the ..." alt="" coords="854,5,1137,81"/>
+<area shape="rect" id="node2" href="$_so_x_compander___audio_processor_8cpp.html" title="The SoXCompander_AudioProcessor module provides boilerplate code for a plugin for the combined SoX co..." alt="" coords="5,129,244,221"/>
+<area shape="rect" id="node3" href="$_so_x_filter___audio_processor_8cpp.html" title="The SoXFilter_AudioProcessor module provides boilerplate code for a plugin for several SoX filter eff..." alt="" coords="269,137,557,213"/>
+<area shape="rect" id="node4" href="$_so_x_gain___audio_processor_8cpp.html" title="The SoXGain_AudioProcessor module provides boilerplate code for a plugins for the SoX gain effect." alt="" coords="581,137,865,213"/>
+<area shape="rect" id="node5" href="$_so_x_overdrive___audio_processor_8cpp.html" title="The SoXOverdrive_AudioProcessor module provides boilerplate code for a plugin for the SoX overdrive e..." alt="" coords="890,129,1101,221"/>
+<area shape="rect" id="node6" href="$_so_x_phaser_and_tremolo___audio_processor_8cpp.html" title="The SoXPhaserAndTremolo_AudioProcessor module provides boilerplate code for a plugin for the SoX phas..." alt="" coords="1125,129,1461,221"/>
+<area shape="rect" id="node7" href="$_so_x_reverb___audio_processor_8cpp.html" title="The SoXReverb_AudioProcessor module provides boilerplate code for a plugin for the SoX reverb effect." alt="" coords="1485,137,1804,213"/>
+<area shape="rect" id="node8" href="$_so_x_audio_editor_8h.html" title="The SoXAudioEditor specification defines the audio editor for a plugin, represented by a display wind..." alt="" coords="1829,137,2111,213"/>
+<area shape="rect" id="node9" href="$_so_x_audio_editor_8cpp.html" title="The SoXAudioEditor body implements the audio editor for a plugin, represented by a display window con..." alt="" coords="1522,269,1805,345"/>
+<area shape="rect" id="node10" href="$_so_x_audio_editor_widget_8cpp.html" title="The SoXAudioEditorWidget body implements an audio editor widget (a slider or a combo box) in a SoX au..." alt="" coords="1829,269,2111,345"/>
+<area shape="rect" id="node11" href="$_so_x_audio_processor_8cpp.html" title="The SoXAudioProcessor body implements an audio effect wrapper for a plugin responsible for the commun..." alt="" coords="2135,269,2418,345"/>
+</map>

@@ -7,25 +7,25 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <map>
+#include "StringUtil.h"
 
-#include "GlobalMacros.h"
-#include "MyString.h"
-#include "StringList.h"
-
-/*====================*/
+/*--------------------*/
 
 using std::map;
-using SoXPlugins::BaseTypes::Primitives::String;
-using SoXPlugins::BaseTypes::Containers::StringList;
+using BaseModules::StringUtil;
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Containers {
+namespace BaseTypes::Containers {
 
     /**
      * A <C>Dictionary</C> object maps string keys to string values.
@@ -63,6 +63,26 @@ namespace SoXPlugins::BaseTypes::Containers {
         /*--------------------*/
 
         /**
+         * Makes dictionary from a string <C>st</C>
+         * gained by serializing a dictionary via <C>toString</C>;
+         *
+         * @param st                 string with serialized form of
+         *                           dictionary
+         * @param entrySeparator     separator between different entries
+         * @param keyValueSeparator  separator between a key and its
+         *                           value
+         * @return  dictionary with keys and values as given in
+         *          <C>st</C>
+         */
+        static
+        Dictionary makeFromString (
+            IN String& st,
+            IN String& entrySeparator = StringUtil::entrySeparator,
+            IN String& keyValueSeparator = StringUtil::keyValueSeparator);
+
+        /*--------------------*/
+
+        /**
          * Returns printable representation of dictionary.
          *
          * @return string representation of dictionary
@@ -90,7 +110,17 @@ namespace SoXPlugins::BaseTypes::Containers {
          * @param key  key to be tested for existence within dictionary
          * @return information whether <C>key</C> is in dictionary
          */
-        bool contains (IN String& key) const;
+        Boolean contains (IN String& key) const;
+
+        /*--------------------*/
+
+        /**
+         * Sets entry for <C>key</C> to <C>value</C>.
+         *
+         * @param[in] key    key within dictionary
+         * @param[in] value  new associated value for key
+         */
+        void set (IN String& key, IN String& value);
 
     };
 

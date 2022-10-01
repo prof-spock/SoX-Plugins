@@ -1,0 +1,28 @@
+<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/ViewAndController/SoXAudioEditorWidget.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/ViewAndController/SoXAudioEditorWidget.h">
+<area shape="rect" id="node1" title="The SoXAudioEditorWidget specification defines an audio editor widget (a slider or a combo box) in a ..." alt="" coords="88,5,371,81"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,129,125,157"/>
+<area shape="rect" id="node3" href="$_object_8h.html" title="The Object specification and body provides the root object type." alt="" coords="23,205,100,233"/>
+<area shape="rect" id="node5" href="$_percentage_8h.html" title="The Percentage specification and body provides a simple percentage type." alt="" coords="373,357,483,385"/>
+<area shape="rect" id="node17" href="$_so_x_audio_parameter_map_8h.html" title="The SoXAudioParameterMap specification defines a map of string keys and associated values of SoXAudio..." alt="" coords="201,129,394,157"/>
+<area shape="rect" id="node4" title=" " alt="" coords="65,281,108,309"/>
+<area shape="rect" id="node6" href="$_real_8h.html" title="The Real specification defines a value object type for real values." alt="" coords="455,433,519,461"/>
+<area shape="rect" id="node7" title=" " alt="" coords="522,661,585,689"/>
+<area shape="rect" id="node8" href="$_integer_8h.html" title="The Integer specification and body provides a value object type for ints." alt="" coords="414,509,493,537"/>
+<area shape="rect" id="node9" title=" " alt="" coords="431,585,516,613"/>
+<area shape="rect" id="node10" href="$_natural_8h.html" title="The Natural specification and body provides a value object type for naturals (positive integers with ..." alt="" coords="276,585,356,613"/>
+<area shape="rect" id="node11" href="$_generic_number_8h.html" title="The GenericNumber specification and body defines a template for wrapper objects for elementary numeri..." alt="" coords="273,661,410,689"/>
+<area shape="rect" id="node14" href="$_my_string_8h.html" title="The String specification defines a standard string type." alt="" coords="296,813,387,841"/>
+<area shape="rect" id="node12" title=" " alt="" coords="313,737,369,765"/>
+<area shape="rect" id="node13" href="$_boolean_8h.html" title="The Boolean specification and body provides a value object type for boolean values." alt="" coords="197,737,283,765"/>
+<area shape="rect" id="node15" title=" " alt="" coords="255,889,313,917"/>
+<area shape="rect" id="node16" href="$_global_macros_8h.html" title="The GlobalMacros specification defines simple macros (e.g. for parameter modes)." alt="" coords="337,889,460,917"/>
+<area shape="rect" id="node18" title=" " alt="" coords="348,281,399,309"/>
+<area shape="rect" id="node19" href="$_dictionary_8h.html" title="The Dictionary specification defines maps from string keys to string values." alt="" coords="244,205,343,233"/>
+<area shape="rect" id="node26" href="$_string_set_8h.html" title="The StringSet specification defines sets of string values with no duplicates and only simple containm..." alt="" coords="125,205,219,233"/>
+<area shape="rect" id="node20" href="$_string_util_8h.html" title="The StringUtil specification defines several string routines not included in the standard C++ library..." alt="" coords="231,281,323,309"/>
+<area shape="rect" id="node21" href="$_byte_8h.html" title="The Byte specification and body provides a value object type for byte values." alt="" coords="517,509,579,537"/>
+<area shape="rect" id="node22" href="$_character_8h.html" title="The Character specification and body provides a value object type for character values." alt="" coords="272,509,371,537"/>
+<area shape="rect" id="node23" href="$_string_list_8h.html" title="The StringList specification defines sequences of string values with zero&#45;based arbitrary indexed acc..." alt="" coords="102,357,197,385"/>
+<area shape="rect" id="node24" href="$_generic_sequence_8h.html" title="The GenericSequence specification and body defines a generic sequence type of values with zero&#45;based ..." alt="" coords="46,433,197,461"/>
+<area shape="rect" id="node25" title=" " alt="" coords="83,509,146,537"/>
+</map>

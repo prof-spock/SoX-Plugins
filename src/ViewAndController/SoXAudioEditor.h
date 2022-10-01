@@ -8,25 +8,21 @@
  * @date   2020-06
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
-#include "Natural.h"
 #include "GenericSequence.h"
-#include "Percentage.h"
-#include "MyString.h"
 #include "SoXAudioEditorWidget.h"
 #include "SoXAudioProcessor.h"
-#include "SoXAudioValueChangeKind.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::BaseTypes::Primitives::Natural;
-using SoXPlugins::BaseTypes::Primitives::Percentage;
-using SoXPlugins::BaseTypes::Primitives::String;
-using SoXPlugins::BaseTypes::Containers::GenericSequence;
-using SoXPlugins::CommonAudio::SoXAudioValueChangeKind;
+using BaseTypes::Containers::GenericSequence;
 using SoXPlugins::ViewAndController::SoXAudioProcessor;
 using SoXPlugins::ViewAndController::SoXAudioEditorWidget;
 

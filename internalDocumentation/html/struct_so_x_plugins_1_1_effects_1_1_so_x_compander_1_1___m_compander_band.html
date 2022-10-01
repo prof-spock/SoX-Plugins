@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('struct_so_x_plugins_1_1_effects_1_1_so
 </div><!--header-->
 <div class="contents">
 
-<p>A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html" title="A _MCompanderBand object is a single band in a multiband compander consisting of a compander and samp...">_MCompanderBand</a></code> object is a single band in a multiband compander consisting of a compander and sample queues for the crossover filter.  
+<p>A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html" title="A _MCompanderBand object is a single band in a multiband compander consisting of a compander and samp...">_MCompanderBand</a></code> object is a single band in a multiband compander consisting of a compander and sample buffers for the crossover filter.  
  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -103,21 +103,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa6064f5d8d6efae62a9edd8cfdfe239a"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#aa6064f5d8d6efae62a9edd8cfdfe239a">toString</a> () const</td></tr>
 <tr class="memdesc:aa6064f5d8d6efae62a9edd8cfdfe239a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the string representation of current compander band.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#aa6064f5d8d6efae62a9edd8cfdfe239a">More...</a><br /></td></tr>
 <tr class="separator:aa6064f5d8d6efae62a9edd8cfdfe239a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa631a99f019c27c3ac414222c21a221d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#aa631a99f019c27c3ac414222c21a221d">setChannelCount</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_natural.html">Natural</a> channelCount)</td></tr>
+<tr class="memitem:aa631a99f019c27c3ac414222c21a221d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#aa631a99f019c27c3ac414222c21a221d">setChannelCount</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> channelCount)</td></tr>
 <tr class="memdesc:aa631a99f019c27c3ac414222c21a221d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets channel count for compander band to <code>channelCount</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#aa631a99f019c27c3ac414222c21a221d">More...</a><br /></td></tr>
 <tr class="separator:aa631a99f019c27c3ac414222c21a221d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d880f8a74d0dea06e8415f76e694e1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a0d880f8a74d0dea06e8415f76e694e1c">setQueue</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_natural.html">Natural</a> channel, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a137dc3ea0a6107046c06c9e27625186e">_CompanderStreamKind</a> stream, <a class="el" href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue.html">SoXAudioSampleQueue</a> *queue)</td></tr>
-<tr class="memdesc:a0d880f8a74d0dea06e8415f76e694e1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets stream queue for compander band for <code>channel</code> and <code>stream</code> to <code>queue</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a0d880f8a74d0dea06e8415f76e694e1c">More...</a><br /></td></tr>
-<tr class="separator:a0d880f8a74d0dea06e8415f76e694e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a958ce0138a76d75da5b102343b10a1a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a958ce0138a76d75da5b102343b10a1a8">setBuffer</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> channel, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a137dc3ea0a6107046c06c9e27625186e">_CompanderStreamKind</a> stream, <a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html">AudioSampleRingBuffer</a> *buffer)</td></tr>
+<tr class="memdesc:a958ce0138a76d75da5b102343b10a1a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets stream buffer for compander band for <code>channel</code> and <code>stream</code> to <code>buffer</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a958ce0138a76d75da5b102343b10a1a8">More...</a><br /></td></tr>
+<tr class="separator:a958ce0138a76d75da5b102343b10a1a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afaffd0453884f889d5f4a8749fd9ac69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#afaffd0453884f889d5f4a8749fd9ac69">setFilter</a> (<a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_crossover_filter.html">_LRCrossoverFilter</a> *filter)</td></tr>
 <tr class="memdesc:afaffd0453884f889d5f4a8749fd9ac69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets crossover filter for this compander to <code>filter</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#afaffd0453884f889d5f4a8749fd9ac69">More...</a><br /></td></tr>
 <tr class="separator:afaffd0453884f889d5f4a8749fd9ac69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe3eb330d2d923f8bca0aa3852ab454b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#afe3eb330d2d923f8bca0aa3852ab454b">adapt</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a> attack, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a> release, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a> dBKnee, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a> dBThreshold, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a> ratio, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a> dBGain, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a> topFrequency)</td></tr>
+<tr class="memitem:afe3eb330d2d923f8bca0aa3852ab454b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#afe3eb330d2d923f8bca0aa3852ab454b">adapt</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> attack, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> release, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> dBKnee, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> dBThreshold, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> ratio, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> dBGain, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> topFrequency)</td></tr>
 <tr class="memdesc:afe3eb330d2d923f8bca0aa3852ab454b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up compander band using standard compander parameters <code>attack</code>, <code>release</code>, <code>dBKnee</code>, <code>dBThreshold</code>, <code>ratio</code> and <code>dBGain</code>; <code>sampleRate</code> is the current sample rate, <code>topFrequency</code> defines the crossover frequency for this band.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#afe3eb330d2d923f8bca0aa3852ab454b">More...</a><br /></td></tr>
 <tr class="separator:afe3eb330d2d923f8bca0aa3852ab454b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac22a80b3b7e0eb405081b0bc6bbee2c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#ac22a80b3b7e0eb405081b0bc6bbee2c6">apply</a> (<a class="el" href="_global_macros_8h.html#aec78e7a9e90a406a56f859ee456e8eae">OUT</a> <a class="el" href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_list.html">SoXAudioSampleList</a> &amp;outputSampleList)</td></tr>
-<tr class="memdesc:ac22a80b3b7e0eb405081b0bc6bbee2c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies band compander to internal input stream and updates <code>outputSampleList</code> (by adding resulting values per channel).  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#ac22a80b3b7e0eb405081b0bc6bbee2c6">More...</a><br /></td></tr>
-<tr class="separator:ac22a80b3b7e0eb405081b0bc6bbee2c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05d1ac2420fe8619471585598bdf1f9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a05d1ac2420fe8619471585598bdf1f9d">apply</a> (<a class="el" href="_global_macros_8h.html#aec78e7a9e90a406a56f859ee456e8eae">OUT</a> <a class="el" href="struct_audio_1_1_audio_sample_list.html">AudioSampleList</a> &amp;outputSampleList)</td></tr>
+<tr class="memdesc:a05d1ac2420fe8619471585598bdf1f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies band compander to internal input stream and updates <code>outputSampleList</code> (by adding resulting values per channel).  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a05d1ac2420fe8619471585598bdf1f9d">More...</a><br /></td></tr>
+<tr class="separator:a05d1ac2420fe8619471585598bdf1f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0097286fcedf90c82cda350928daebdb"><td class="memItemLeft" align="right" valign="top"><a id="a0097286fcedf90c82cda350928daebdb"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a0097286fcedf90c82cda350928daebdb">calculateCrossover</a> ()</td></tr>
 <tr class="memdesc:a0097286fcedf90c82cda350928daebdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes samples from input for band compander; updates associated sample buffers for low and high output of this band. <br /></td></tr>
@@ -126,13 +126,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a6f243d2faa1d264b527d5b046f36826e"><td class="memItemLeft" align="right" valign="top"><a id="a6f243d2faa1d264b527d5b046f36826e"></a>
-static const <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a6f243d2faa1d264b527d5b046f36826e">maxTopFrequency</a> = 1E9</td></tr>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a6f243d2faa1d264b527d5b046f36826e">maxTopFrequency</a> = 1E9</td></tr>
 <tr class="memdesc:a6f243d2faa1d264b527d5b046f36826e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the maximum top frequency allowed for a band <br /></td></tr>
 <tr class="separator:a6f243d2faa1d264b527d5b046f36826e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html" title="A _MCompanderBand object is a single band in a multiband compander consisting of a compander and samp...">_MCompanderBand</a></code> object is a single band in a multiband compander consisting of a compander and sample queues for the crossover filter. </p>
-<p>For each channel the crossover calculation is done on an input queue resulting in low output and high output (for the next band), companding is done on the input queue only </p>
+<div class="textblock"><p>A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html" title="A _MCompanderBand object is a single band in a multiband compander consisting of a compander and samp...">_MCompanderBand</a></code> object is a single band in a multiband compander consisting of a compander and sample buffers for the crossover filter. </p>
+<p>For each channel the crossover calculation is done on an input buffer resulting in low output and high output (for the next band), companding is done on the input buffer only </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="afe3eb330d2d923f8bca0aa3852ab454b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe3eb330d2d923f8bca0aa3852ab454b">&#9670;&nbsp;</a></span>adapt()</h2>
@@ -143,49 +143,49 @@ static const <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitiv
         <tr>
           <td class="memname">void SoXPlugins::Effects::SoXCompander::_MCompanderBand::adapt </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
           <td class="paramname"><em>attack</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
           <td class="paramname"><em>release</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
           <td class="paramname"><em>dBKnee</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
           <td class="paramname"><em>dBThreshold</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
           <td class="paramname"><em>ratio</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
           <td class="paramname"><em>dBGain</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
           <td class="paramname"><em>sampleRate</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
           <td class="paramname"><em>topFrequency</em>&#160;</td>
         </tr>
         <tr>
@@ -213,8 +213,8 @@ static const <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitiv
 
 </div>
 </div>
-<a id="ac22a80b3b7e0eb405081b0bc6bbee2c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac22a80b3b7e0eb405081b0bc6bbee2c6">&#9670;&nbsp;</a></span>apply()</h2>
+<a id="a05d1ac2420fe8619471585598bdf1f9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05d1ac2420fe8619471585598bdf1f9d">&#9670;&nbsp;</a></span>apply()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,7 +222,7 @@ static const <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitiv
         <tr>
           <td class="memname">void SoXPlugins::Effects::SoXCompander::_MCompanderBand::apply </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#aec78e7a9e90a406a56f859ee456e8eae">OUT</a> <a class="el" href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_list.html">SoXAudioSampleList</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#aec78e7a9e90a406a56f859ee456e8eae">OUT</a> <a class="el" href="struct_audio_1_1_audio_sample_list.html">AudioSampleList</a> &amp;&#160;</td>
           <td class="paramname"><em>outputSampleList</em></td><td>)</td>
           <td></td>
         </tr>
@@ -239,6 +239,50 @@ static const <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitiv
 
 </div>
 </div>
+<a id="a958ce0138a76d75da5b102343b10a1a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a958ce0138a76d75da5b102343b10a1a8">&#9670;&nbsp;</a></span>setBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SoXPlugins::Effects::SoXCompander::_MCompanderBand::setBuffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a137dc3ea0a6107046c06c9e27625186e">_CompanderStreamKind</a>&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html">AudioSampleRingBuffer</a> *&#160;</td>
+          <td class="paramname"><em>buffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets stream buffer for compander band for <code>channel</code> and <code>stream</code> to <code>buffer</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>channel of band to be changed </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">stream</td><td>stream of band to be changed </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buffer</td><td>buffer to be assigned to this position </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="aa631a99f019c27c3ac414222c21a221d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa631a99f019c27c3ac414222c21a221d">&#9670;&nbsp;</a></span>setChannelCount()</h2>
 
@@ -248,7 +292,7 @@ static const <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitiv
         <tr>
           <td class="memname">void SoXPlugins::Effects::SoXCompander::_MCompanderBand::setChannelCount </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td>
           <td class="paramname"><em>channelCount</em></td><td>)</td>
           <td></td>
         </tr>
@@ -291,50 +335,6 @@ static const <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitiv
 
 </div>
 </div>
-<a id="a0d880f8a74d0dea06e8415f76e694e1c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d880f8a74d0dea06e8415f76e694e1c">&#9670;&nbsp;</a></span>setQueue()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SoXPlugins::Effects::SoXCompander::_MCompanderBand::setQueue </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td>
-          <td class="paramname"><em>channel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a137dc3ea0a6107046c06c9e27625186e">_CompanderStreamKind</a>&#160;</td>
-          <td class="paramname"><em>stream</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue.html">SoXAudioSampleQueue</a> *&#160;</td>
-          <td class="paramname"><em>queue</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets stream queue for compander band for <code>channel</code> and <code>stream</code> to <code>queue</code>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>channel of band to be changed </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">stream</td><td>stream of band to be changed </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">queue</td><td>queue to be assigned to this position </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="aa6064f5d8d6efae62a9edd8cfdfe239a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa6064f5d8d6efae62a9edd8cfdfe239a">&#9670;&nbsp;</a></span>toString()</h2>
 
@@ -356,7 +356,7 @@ static const <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitiv
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>C:/Users/Thomas/Documents/Visual_Studio/Projects/SoXPlugins/src/Effects/SoXCompander/<a class="el" href="_so_x_compander_support_8cpp.html">SoXCompanderSupport.cpp</a></li>
+<li>C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXCompander/<a class="el" href="_so_x_compander_support_8cpp.html">SoXCompanderSupport.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['radians_617',['Radians',['../struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_radians.html',1,'SoXPlugins::BaseTypes::Primitives']]],
-  ['real_618',['Real',['../struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_real.html',1,'SoXPlugins::BaseTypes::Primitives']]],
-  ['reallist_619',['RealList',['../struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_real_list.html',1,'SoXPlugins::BaseTypes::Containers']]]
+  ['iirfilter_723',['IIRFilter',['../struct_audio_1_1_i_i_r_filter.html',1,'Audio']]],
+  ['integer_724',['Integer',['../struct_base_types_1_1_primitives_1_1_integer.html',1,'BaseTypes::Primitives']]],
+  ['integerlist_725',['IntegerList',['../struct_base_types_1_1_containers_1_1_integer_list.html',1,'BaseTypes::Containers']]]
 ];

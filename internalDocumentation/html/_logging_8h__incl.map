@@ -1,0 +1,13 @@
+<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseModules/Logging.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseModules/Logging.h">
+<area shape="rect" id="node1" title="The Logging specification defines macros for entry&#45;, exit&#45; and intermediate logging of functions into..." alt="" coords="5,5,256,81"/>
+<area shape="rect" id="node2" title=" " alt="" coords="31,129,102,157"/>
+<area shape="rect" id="node3" href="$_logging_support_8h.html" title="The LoggingSupport specification defines a class for simple entry/exit logging to a file; this loggin..." alt="" coords="127,129,263,157"/>
+<area shape="rect" id="node4" href="$_boolean_8h.html" title="The Boolean specification and body provides a value object type for boolean values." alt="" coords="201,357,287,385"/>
+<area shape="rect" id="node8" href="$_natural_8h.html" title="The Natural specification and body provides a value object type for naturals (positive integers with ..." alt="" coords="221,205,301,233"/>
+<area shape="rect" id="node5" href="$_my_string_8h.html" title="The String specification defines a standard string type." alt="" coords="300,433,391,461"/>
+<area shape="rect" id="node6" title=" " alt="" coords="259,509,317,537"/>
+<area shape="rect" id="node7" href="$_global_macros_8h.html" title="The GlobalMacros specification defines simple macros (e.g. for parameter modes)." alt="" coords="341,509,464,537"/>
+<area shape="rect" id="node9" title=" " alt="" coords="165,281,227,309"/>
+<area shape="rect" id="node10" href="$_generic_number_8h.html" title="The GenericNumber specification and body defines a template for wrapper objects for elementary numeri..." alt="" coords="251,281,389,309"/>
+<area shape="rect" id="node11" title=" " alt="" coords="312,357,368,385"/>
+</map>

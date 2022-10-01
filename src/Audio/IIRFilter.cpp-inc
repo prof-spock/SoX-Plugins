@@ -1,0 +1,208 @@
+/**
+ * @file
+ * The <C>IIRFilter</C> body implements an infinite impulse
+ * response filter <I>(this is the effective code include file for
+ * conditional inlining)</I>.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-06
+ */
+
+/*=========*/
+/* IMPORTS */
+/*=========*/
+
+#include "Assertion.h"
+#include "Logging.h"
+#include "MyArray.h"
+#include "AudioSample.h"
+
+/*====================*/
+
+using Audio::IIRFilter;
+
+/*====================*/
+
+/*--------------------*/
+/* internal routines  */
+/*--------------------*/
+
+/**
+ * Normalizes coefficients in <C>data</C> for IIR filter of
+ * <C>order</C> by dividing all by a0.
+ *
+ * @param data   IIR filter coefficient list
+ * @param order  IIR filter order
+ */
+INLINE
+void _normalize (INOUT RealList& data, IN Natural order)
+{
+    Logging_trace1(">>: order = %1", TOSTRING(order));
+
+    const Real referenceValue = data[order];
+
+    if (referenceValue != 0.0) {
+        for (Real& listElement : data) {
+            listElement /= referenceValue;
+        }
+    }
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+/* exported routines  */
+/*--------------------*/
+
+INLINE
+IIRFilter::IIRFilter (IN Natural order)
+    : _data(),
+      _order(order)
+{
+    Logging_trace(">>");
+    _data.setLength(order * 2, 0.0);
+    Logging_trace1("<<: %1", toString());
+}
+
+/*--------------------*/
+
+INLINE
+IIRFilter::~IIRFilter ()
+{
+    Logging_trace(">>");
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+INLINE
+String IIRFilter::toString() const
+{
+    String result = "IIRFilter(";
+    result += "_order = " + TOSTRING(_order);
+    result += ", _data = " + _data.toString();
+    result += ")";
+
+    return result;
+}
+
+/*--------------------*/
+
+INLINE
+void IIRFilter::clear ()
+{
+    Logging_trace(">>");
+    _data.fill(0.0);
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+INLINE
+void IIRFilter::set (IN Real b0)
+{
+    Logging_trace1(">>: %1", TOSTRING(b0));
+
+    clear();
+    _data[0]      = b0;
+    _data[_order] = 1.0;
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+INLINE
+void IIRFilter::set (IN Real b0, IN Real b1, IN Real b2,
+                        IN Real a0, IN Real a1, IN Real a2)
+{
+    Logging_trace6(">>: b = (%1, %2, %3), a = (%4, %5, %6)",
+                   TOSTRING(b0), TOSTRING(b1), TOSTRING(b2),
+                   TOSTRING(a0), TOSTRING(a1), TOSTRING(a2));
+
+    Assertion_pre(_order == 3, "filter order must be 3");
+
+    _data[0] = b0;
+    _data[1] = b1;
+    _data[2] = b2;
+    _data[3] = a0;
+    _data[4] = a1;
+    _data[5] = a2;
+    _normalize(_data, _order);
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+INLINE
+void IIRFilter::set (IN Real b0, IN Real b1, IN Real b2,
+                        IN Real b3, IN Real b4,
+                        IN Real a0, IN Real a1, IN Real a2,
+                        IN Real a3, IN Real a4)
+{
+    Logging_trace10(">>: b = (%1, %2, %3, %4, %5),"
+                    " a = (%6, %7, %8, %9, %A)",
+                    TOSTRING(b0), TOSTRING(b1), TOSTRING(b2),
+                    TOSTRING(b3), TOSTRING(b4),
+                    TOSTRING(a0), TOSTRING(a1), TOSTRING(a2),
+                    TOSTRING(a3), TOSTRING(a4));
+
+    Assertion_pre(_order == 5, "filter order must be 5");
+
+    _data[0] = b0;
+    _data[1] = b1;
+    _data[2] = b2;
+    _data[3] = b3;
+    _data[4] = b4;
+    _data[5] = a0;
+    _data[6] = a1;
+    _data[7] = a2;
+    _data[8] = a3;
+    _data[9] = a4;
+    _normalize(_data, _order);
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+INLINE
+void IIRFilter::apply (IN AudioSampleRingBuffer& inputBuffer,
+                       INOUT AudioSampleRingBuffer& outputBuffer) const
+{
+    #if 0
+        AudioSample outputValue = _data[0] * inputBuffer.first();
+
+        for (Natural i = 1;  i < _order;  i++) {
+            const Natural j = i + _order;
+            outputValue += (_data[i] * inputBuffer[i]
+                            - _data[j] * outputBuffer[i]);
+        }
+
+        outputBuffer.setFirst(outputValue);
+    #else
+        // support vectorization by using arrays for the buffers
+        AudioSample* inputBufferAsArray  =
+            makeLocalArray(AudioSample, _order);
+        AudioSample* outputBufferAsArray =
+            makeLocalArray(AudioSample, _order);
+        const AudioSample* dataAsArray = _data.asArray();
+        const AudioSample* otherDataAsArray = dataAsArray + (int) _order;
+        inputBuffer.toArray(inputBufferAsArray);
+        outputBuffer.toArray(outputBufferAsArray);
+
+        AudioSample outputValue;
+        outputValue = *dataAsArray++ * *inputBufferAsArray++;
+        otherDataAsArray++;
+        outputBufferAsArray++;
+
+        for (int i = 1;  i < (int) _order;  i++) {
+            outputValue +=
+                (*dataAsArray++ * *inputBufferAsArray++
+                 - *otherDataAsArray++ * *outputBufferAsArray++);
+        }
+
+        outputBuffer.setFirst(outputValue);
+    #endif
+}

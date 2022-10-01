@@ -1,0 +1,4 @@
+<map id="Audio::IIRFilter" name="Audio::IIRFilter">
+<area shape="rect" id="node1" title="A IIRFilter object is an infinite impulse response filter." alt="" coords="49,5,163,215"/>
+<area shape="rect" id="node2" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_filter.html" title="A _LRFilter object is a Linkwitz&#45;Riley filter of order 5." alt="" coords="5,263,207,376"/>
+</map>

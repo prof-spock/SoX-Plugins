@@ -1,0 +1,26 @@
+var struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect =
+[
+    [ "SoXAudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a8d50c671783febe328af6743c526beeb", null ],
+    [ "~SoXAudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a06fb80612a4ed2308cf768c5f7bac0a7", null ],
+    [ "_asRawString", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#aac9c8bfc52b9844b76501c2e87eb00e6", null ],
+    [ "_effectDescriptorToString", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a6846edf1d6af8abf8617cf5f443f126e", null ],
+    [ "_setValueInternal", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#aa3d662aabd949cd148e05827e03bb50e", null ],
+    [ "audioParameterMap", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#afa6abb91e9cbc449e1d644912e8f4330", null ],
+    [ "hasValidParameters", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ab530ca1d9adec79971cb0508ae697ee6", null ],
+    [ "name", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a20683cbe412d425bc27b7bd3a8e63e0b", null ],
+    [ "prepareToPlay", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ad5da88fd2a3b4cecfd2e25fd70a7ac05", null ],
+    [ "processBlock", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ad9202d0f7b570033b26915b8829b4b77", null ],
+    [ "releaseResources", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#aa9b71710af346e9e4b980b281b60a452", null ],
+    [ "setDefaultValues", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a4bf3b20b5834b9607f408aa8bff6d50e", null ],
+    [ "setParameterValidity", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#adadb0c7a70e55bca080207e314b50b24", null ],
+    [ "setValue", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a3c130f5d32eb51d3b1279cef9a9c3721", null ],
+    [ "toString", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#aee18be5bb7048909c45831bcca78a8a3", null ],
+    [ "_audioParameterMap", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#afeda30d6441a1fd00456c32b3fb4688a", null ],
+    [ "_channelCount", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ab211499efb61d7b4bba13c2563dc0900", null ],
+    [ "_currentTimePosition", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#aaeced2a97dfc532dad3eec89d7f32ca7", null ],
+    [ "_effectDescriptor", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a601e402242d5c10229e28b9fb5fb6735", null ],
+    [ "_expectedNextTimePosition", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a13a9e5797e58625cf5d5a63ece4c024a", null ],
+    [ "_parametersAreValid", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a5cd71c383fb66ae989dc44f7cf19eaa7", null ],
+    [ "_sampleRate", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ad327c3c6c773b9de08848d49938d0183", null ],
+    [ "_timePositionHasMoved", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a54469052f47e0128b234b5ca87ccc6a6", null ]
+];

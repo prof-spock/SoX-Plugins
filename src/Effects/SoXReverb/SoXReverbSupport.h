@@ -8,26 +8,24 @@
  * @date   2020-10
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
-#include "GlobalMacros.h"
-#include "Natural.h"
+#include "AudioSampleRingBuffer.h"
 #include "Object.h"
 #include "Percentage.h"
-#include "Real.h"
-#include "MyString.h"
-#include "SoXAudioSampleQueue.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::BaseTypes::Primitives::Natural;
-using SoXPlugins::BaseTypes::Primitives::Object;
-using SoXPlugins::BaseTypes::Primitives::Percentage;
-using SoXPlugins::BaseTypes::Primitives::Real;
-using SoXPlugins::BaseTypes::Primitives::String;
-using SoXPlugins::CommonAudio::SoXAudioSampleQueue;
+using Audio::AudioSampleRingBuffer;
+using BaseTypes::Primitives::Object;
+using BaseTypes::Primitives::Percentage;
+using BaseTypes::Primitives::Real;
 
 /*====================*/
 
@@ -54,6 +52,8 @@ namespace SoXPlugins::Effects::SoXReverb {
 
         /**
          * Returns a string representation of reverb
+         * 
+         * @return string representation
          */
         String toString () const;
 
@@ -75,7 +75,7 @@ namespace SoXPlugins::Effects::SoXReverb {
          * @param[in] wetDbGain     the gain of the wet signal in
          *                          decibels
          */
-        void setParameters (IN bool isWetOnly,
+        void setParameters (IN Boolean isWetOnly,
                             IN Percentage reverberance,
                             IN Percentage hfDamping,
                             IN Percentage roomScale,
@@ -107,8 +107,8 @@ namespace SoXPlugins::Effects::SoXReverb {
          * @param[out] outputSampleList  the queue of samples for all
          *                               output channels
          */
-        void apply (IN SoXAudioSampleQueue& inputSampleList,
-                    OUT SoXAudioSampleQueue& outputSampleList);
+        void apply (IN AudioSampleRingBuffer& inputSampleList,
+                    OUT AudioSampleRingBuffer& outputSampleList);
 
         /*--------------------*/
         /*--------------------*/

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+  <!--
+    primitives types of SoX plugins
+    -->
+  <Type Name="SoXPlugins::BaseTypes::Primitives::Boolean">
+	<DisplayString>{_value}</DisplayString>
+  </Type>
+
+  <Type Name="SoXPlugins::BaseTypes::Primitives::Byte">
+	<DisplayString>{_value}</DisplayString>
+  </Type>
+
+  <Type Name="SoXPlugins::BaseTypes::Primitives::Character">
+	<DisplayString>{_value}</DisplayString>
+  </Type>
+
+  <Type Name="SoXPlugins::BaseTypes::Primitives::Natural">
+	<DisplayString>{_value}</DisplayString>
+  </Type>
+
+  <Type Name="SoXPlugins::BaseTypes::Primitives::Integer">
+      <DisplayString>{_value}</DisplayString>
+  </Type>
+
+  <Type Name="SoXPlugins::BaseTypes::Primitives::Real">
+	  <DisplayString>{_value}</DisplayString>
+  </Type>
+
+</AutoVisualizer>

@@ -8,14 +8,16 @@
  * @date   2020-08
  */
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <cstdarg>
 #include "IntegerList.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::BaseTypes::Containers::IntegerList;
+using BaseTypes::Containers::IntegerList;
 
 /*====================*/
 

@@ -8,26 +8,23 @@
  * @date   2020-06
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <set>
 #include "JuceHeaders.h"
 
-#include "GlobalMacros.h"
-#include "MyString.h"
 #include "SoXAudioEffect.h"
-#include "SoXAudioParameterMap.h"
-#include "SoXAudioValueChangeKind.h"
 
-/*====================*/
+/*--------------------*/
 
 using std::set;
-using SoXPlugins::BaseTypes::Primitives::String;
-using SoXPlugins::CommonAudio::SoXAudioEffect;
-using SoXPlugins::CommonAudio::SoXAudioParameterMap;
-using SoXPlugins::CommonAudio::SoXAudioValueChangeKind;
+using SoXPlugins::Effects::SoXAudioEffect;
 
 /*====================*/
 
@@ -92,7 +89,7 @@ namespace SoXPlugins::ViewAndController {
          * values.
          *
          * @return  information whether this processor can handle
-         *          double sample values (true)
+         *          double sample values (false)
          */
         bool supportsDoublePrecisionProcessing () const override;
 
@@ -238,7 +235,7 @@ namespace SoXPlugins::ViewAndController {
          */
         virtual void setValue (IN String& parameterName,
                                IN String& value,
-                               IN bool recalculationIsSuppressed=false);
+                               IN Boolean recalculationIsSuppressed=false);
 
         /*--------------------*/
 
@@ -307,8 +304,7 @@ namespace SoXPlugins::ViewAndController {
 
         /**
          * Processes a block of float samples with this audio
-         * processor (by internally calling the routine for double
-         * values).
+         * processor.
          *
          * @param[inout] buffer     combination of input and output
          *                          sample lists in float format
@@ -316,21 +312,6 @@ namespace SoXPlugins::ViewAndController {
          *                          processed (here ignored)
          */
         void processBlock (juce::AudioBuffer<float>& buffer,
-                           juce::MidiBuffer& midiMessages)
-            override;
-
-        /*--------------------*/
-
-        /**
-         * Processes a block of double samples with this audio
-         * processor.
-         *
-         * @param[inout] buffer     combination of input and output
-         *                          samples in double format
-         * @param[in] midiMessages  list of midi messages to be
-         *                          processed (here ignored)
-         */
-        void processBlock (juce::AudioBuffer<double>& buffer,
                            juce::MidiBuffer& midiMessages)
             override;
 

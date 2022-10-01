@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SoXPlugins: C:/Users/Thomas/Documents/Visual_Studio/Projects/SoXPlugins/src/CommonAudio/SoXAudioParameterMap.cpp File Reference</title>
+<title>SoXPlugins: C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Helpers/SoXAudioParameterMap.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,6 +83,7 @@ $(document).ready(function(){initNavTree('_so_x_audio_parameter_map_8cpp.html','
 
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">SoXAudioParameterMap.cpp File Reference</div>  </div>
@@ -93,27 +94,96 @@ $(document).ready(function(){initNavTree('_so_x_audio_parameter_map_8cpp.html','
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_so_x_audio_parameter_map_8h_source.html">SoXAudioParameterMap.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_assertion_8h_source.html">Assertion.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_string_util_8h_source.html">StringUtil.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_string_set_8h_source.html">StringSet.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_logging_8h_source.html">Logging.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for SoXAudioParameterMap.cpp:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="_so_x_audio_parameter_map_8cpp__incl.svg" width="834" height="923"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a6bceb6dcc4f8cacf756e6333e377a9f9"><td class="memItemLeft" align="right" valign="top"><a id="a6bceb6dcc4f8cacf756e6333e377a9f9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_parameter_map_8cpp.html#a6bceb6dcc4f8cacf756e6333e377a9f9">prefix</a>&#160;&#160;&#160;StringUtil::prefix</td></tr>
+<tr class="memdesc:a6bceb6dcc4f8cacf756e6333e377a9f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviated form of function name <br /></td></tr>
+<tr class="separator:a6bceb6dcc4f8cacf756e6333e377a9f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48023dcddef65d6e57c0d3a4aff2d785"><td class="memItemLeft" align="right" valign="top"><a id="a48023dcddef65d6e57c0d3a4aff2d785"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_parameter_map_8cpp.html#a48023dcddef65d6e57c0d3a4aff2d785">stringMapToStringExplicit</a>&#160;&#160;&#160;StringUtil::stringMapToStringExplicit</td></tr>
+<tr class="memdesc:a48023dcddef65d6e57c0d3a4aff2d785"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviated form of function name <br /></td></tr>
+<tr class="separator:a48023dcddef65d6e57c0d3a4aff2d785"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23f4f424fd6b62d633c93d03f0c50b71"><td class="memItemLeft" align="right" valign="top"><a id="a23f4f424fd6b62d633c93d03f0c50b71"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_parameter_map_8cpp.html#a23f4f424fd6b62d633c93d03f0c50b71">substring</a>&#160;&#160;&#160;StringUtil::substring</td></tr>
+<tr class="memdesc:a23f4f424fd6b62d633c93d03f0c50b71"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviated form of function name <br /></td></tr>
+<tr class="separator:a23f4f424fd6b62d633c93d03f0c50b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa357958d58956eda594c15e7590da272"><td class="memItemLeft" align="right" valign="top"><a id="aa357958d58956eda594c15e7590da272"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_parameter_map_8cpp.html#aa357958d58956eda594c15e7590da272">_addToParameterList</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_string_list.html">StringList</a> &amp;parameterNameList, <a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_dictionary.html">Dictionary</a> &amp;parameterNameToValueMap, <a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_string_set.html">StringSet</a> &amp;activeParameterNameSet, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName)</td></tr>
-<tr class="memdesc:aa357958d58956eda594c15e7590da272"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new parameter name <code>parameterName</code> to internal lists and clears any existing value, kind and value range settings for it. <br /></td></tr>
+<tr class="memitem:aa357958d58956eda594c15e7590da272"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_parameter_map_8cpp.html#aa357958d58956eda594c15e7590da272">_addToParameterList</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a> &amp;parameterNameList, <a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_base_types_1_1_containers_1_1_dictionary.html">Dictionary</a> &amp;parameterNameToValueMap, <a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_base_types_1_1_containers_1_1_string_set.html">StringSet</a> &amp;activeParameterNameSet, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName)</td></tr>
+<tr class="memdesc:aa357958d58956eda594c15e7590da272"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new parameter name <code>parameterName</code> to internal lists and clears any existing value, kind and value range settings for it.  <a href="_so_x_audio_parameter_map_8cpp.html#aa357958d58956eda594c15e7590da272">More...</a><br /></td></tr>
 <tr class="separator:aa357958d58956eda594c15e7590da272"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXAudioParameterMap</code> body implements a map of string keys and associated values of <code>SoXAudioParameterKind</code>; those values can be set and queried; this provides an interpretative coupling between audio processors and audio editors. </p>
 <dl class="section author"><dt>Author</dt><dd>Dr. Thomas Tensi </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020-08 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="aa357958d58956eda594c15e7590da272"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa357958d58956eda594c15e7590da272">&#9670;&nbsp;</a></span>_addToParameterList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _addToParameterList </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a> &amp;&#160;</td>
+          <td class="paramname"><em>parameterNameList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_base_types_1_1_containers_1_1_dictionary.html">Dictionary</a> &amp;&#160;</td>
+          <td class="paramname"><em>parameterNameToValueMap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_base_types_1_1_containers_1_1_string_set.html">StringSet</a> &amp;&#160;</td>
+          <td class="paramname"><em>activeParameterNameSet</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>parameterName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a new parameter name <code>parameterName</code> to internal lists and clears any existing value, kind and value range settings for it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">parameterNameList</td><td>list of parameter names in map </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">parameterNameToValueMap</td><td>mapping from names to values </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">activeParameterNameSet</td><td>set of parameter names considered active </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">parameterName</td><td>name of parameter to be added </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_87308edd68cd74a6fcef9bee24916036.html">CommonAudio</a></li><li class="navelem"><a class="el" href="_so_x_audio_parameter_map_8cpp.html">SoXAudioParameterMap.cpp</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_bba0a06b7c5bf1521d83c5188eb207fb.html">Helpers</a></li><li class="navelem"><a class="el" href="_so_x_audio_parameter_map_8cpp.html">SoXAudioParameterMap.cpp</a></li>
     <li class="footer">Generated by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20 </li>
   </ul>
 </div>

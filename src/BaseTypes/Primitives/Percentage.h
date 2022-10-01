@@ -7,22 +7,25 @@
  * @date   2020-08
  */
 
-#pragma once
-
 /*====================*/
 
-#include "GlobalMacros.h"
+#pragma once
+
+/*=========*/
+/* IMPORTS */
+/*=========*/
+
 #include "Real.h"
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Primitives {
+namespace BaseTypes::Primitives {
 
     /**
      * A <C>Percentage</C> object is real-valued and represents a
      * percentage (normalized to the 0 to 100 range).
      */
-    struct Percentage : Real {
+    struct Percentage : public Real {
 
         /*--------------------*/
         /* constructors       */
@@ -38,13 +41,37 @@ namespace SoXPlugins::BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Initializes percentage from double <C>d</C>.
+         * Initializes percentage from double precision value <C>d</C>.
          *
-         * @param[in] d  floating point value
+         * @param[in] d  double precision floating point value
          */
         Percentage (IN double d)
         {
             _value = d;
+        }
+
+        /*--------------------*/
+
+        /**
+         * Initializes percentage from single precision value <C>f</C>.
+         *
+         * @param[in] f  single precision floating point value
+         */
+        Percentage (IN float f)
+        {
+            _value = f;
+        }
+
+        /*--------------------*/
+
+        /**
+         * Initializes percentage from real value <C>r</C>.
+         *
+         * @param[in] r  real value
+         */
+        Percentage (IN Real r)
+            : Percentage((double) r)
+        {
         }
 
         /*--------------------*/
@@ -76,6 +103,34 @@ namespace SoXPlugins::BaseTypes::Primitives {
         }
 
         /*--------------------*/
+        /* operators          */
+        /*--------------------*/
+
+        /**
+         * Return sum of current value and <C>other</C>.
+         *
+         * @param[in] other   value to be added
+         * @return  sum of current value and other
+         */
+         Percentage operator + (IN Percentage other) const
+        {
+            return Percentage{_value + other._value};
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns difference of current value and <C>other</C>.
+         *
+         * @param[in] other   value to be subtracted
+         * @return  difference of current value and other
+         */
+        Percentage operator - (IN Percentage other) const
+        {
+            return Percentage{_value - other._value};
+        }
+
+        /*--------------------*/
         /* advanced functions */
         /*--------------------*/
 
@@ -102,7 +157,7 @@ namespace SoXPlugins::BaseTypes::Primitives {
         static Real percentOf (IN Percentage percentage,
                                IN Real value)
         {
-            return Real{(double) percentage * (double) value / 100.0};
+            return percentage * value / Real{100.0};
         }
 
         /*--------------------*/
@@ -117,8 +172,7 @@ namespace SoXPlugins::BaseTypes::Primitives {
         static Integer percentOf (IN Percentage percentage,
                                   IN Integer value)
         {
-            return Integer{(int) ((double) percentage
-                                  * (int) value / 100.0)};
+            return Integer{(int) percentOf(percentage, Real{value})};
         }
 
         /*--------------------*/
@@ -133,8 +187,7 @@ namespace SoXPlugins::BaseTypes::Primitives {
         static Natural percentOf (IN Percentage percentage,
                                   IN Natural value)
         {
-            return Natural::round((double) percentage / 100.0
-                                  * (double) value);
+            return Natural{(size_t) percentOf(percentage, Integer{value})};
         }
 
         /*--------------------*/

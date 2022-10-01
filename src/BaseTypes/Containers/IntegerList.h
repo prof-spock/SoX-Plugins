@@ -8,22 +8,24 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <initializer_list>
 #include "GenericSequence.h"
-#include "Integer.h"
 
-/*====================*/
+/*--------------------*/
 
 using std::initializer_list;
-using SoXPlugins::BaseTypes::Primitives::Integer;
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Containers {
+namespace BaseTypes::Containers {
 
     /**
      * An <C>IntegerList</C> object is a sequence of integer values

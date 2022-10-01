@@ -1,8 +1,14 @@
 /**
- * The package <C>BaseTypes</C> provides the elementary types used for
- * the SoX plugins; those are primitive types (like strings or reals),
- * containers (like generic tuples or matrices) and modules for
- * assertion and logging management.
+ * The package <C>BaseTypes</C> provides elementary types like
+ * primitives and containers.
+ *
+ * In sub-package <C>Primitives</C> elementary types of C++ like ints and
+ * chars are wrapped into classes like Integer, Natural, String
+ * etc.  This approach allows a more consistent program documentation.
+ *
+ * Sub-package <C>Containers</C> specifies and implements
+ * dictionaries, maps from string to objects, lists of string or
+ * numbers and string sets.
  */
-namespace SoXPlugins::BaseTypes {
+namespace BaseTypes {
 }

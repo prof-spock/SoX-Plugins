@@ -1,0 +1,35 @@
+/**
+ * @file
+ * The <C>AudioSampleListVector</C> body implements the communication
+ * buffer structure for the block processing of audio effects; it is a
+ * list of audio sample lists containing the input samples and the
+ * finally (processed) output samples <I>(this is the effective code
+ * include file for conditional inlining)</I>.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
+ */
+
+/*=========*/
+/* IMPORTS */
+/*=========*/
+
+using Audio::AudioSampleListVector;
+
+/*====================*/
+
+INLINE
+String AudioSampleListVector::toString () const
+{
+    return _toString("AudioSampleListVector");
+}
+
+/*--------------------*/
+
+INLINE
+void AudioSampleListVector::setToZero ()
+{
+    for (AudioSampleList& list : *this) {
+        list.setToZero();
+    }
+}

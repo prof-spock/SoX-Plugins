@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['globalchange_1137',['globalChange',['../namespace_so_x_plugins_1_1_common_audio.html#a1fb0f1efa0fe27a0b4f4fe91f1cd60d3ab6c1503bf3ca26a7932d2f6227ec2ba3',1,'SoXPlugins::CommonAudio']]]
+  ['globalchange_1310',['globalChange',['../namespace_so_x_plugins_1_1_helpers.html#af2013ffd1a0d121ca0a2858accbf3f31ab6c1503bf3ca26a7932d2f6227ec2ba3',1,'SoXPlugins::Helpers']]]
 ];

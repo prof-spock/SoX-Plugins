@@ -26,23 +26,22 @@
 
 #include <array>
 
+#include "AudioSampleRingBuffer.h"
+#include "IIRFilter.h"
 #include "Logging.h"
 #include "GenericSequence.h"
 #include "RealList.h"
 #include "StringUtil.h"
-#include "SoXAudioSampleQueue.h"
-#include "SoXIIRFilter.h"
 
 /*====================*/
 
 using std::array;
 
-using SoXPlugins::BaseTypes::Containers::GenericSequence;
-using SoXPlugins::BaseTypes::Containers::RealList;
-using SoXPlugins::CommonAudio::SoXIIRFilter;
+using Audio::IIRFilter;
+using BaseTypes::Containers::GenericSequence;
+using BaseTypes::Containers::RealList;
 using SoXPlugins::Effects::SoXCompander::SoXMultibandCompander;
-
-namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
+using BaseModules::StringUtil;
 
 /*============================================================*/
 
@@ -215,7 +214,7 @@ namespace SoXPlugins::Effects::SoXCompander {
         /*--------------------*/
 
         /** tells whether current segment is a straight line */
-        bool isStraightLine;
+        Boolean isStraightLine;
 
         /** the start point of the segment */
         _Point2D startPoint;
@@ -284,6 +283,9 @@ namespace SoXPlugins::Effects::SoXCompander {
 
         /**
          * Applies transfer function to <value>
+         *
+         * @param[in] value   value to be adapted by function
+         * @return associated function result
          */
         Real apply (IN Real value) const;
 
@@ -369,6 +371,8 @@ namespace SoXPlugins::Effects::SoXCompander {
 
         /**
          * Return string representation of current compander
+         *
+         * @return string representation
          */
         String toString () const;
 
@@ -408,16 +412,16 @@ namespace SoXPlugins::Effects::SoXCompander {
          * set, the output samples are summed up into
          * <C>outputSampleList</C>.
          *
-         * @param[in]  inputSampleList       the queue of samples for all
+         * @param[in]  inputSampleList       the list of samples for all
          *                                   input channels
-         * @param[out] outputSampleList      the queue of samples for all
+         * @param[out] outputSampleList      the list of samples for all
          *                                   output channels
          * @param[in] outputValuesAreSummed  tells whether old values
          *                                   are kept in output sample
          *                                   list
          */
-        void apply (IN SoXAudioSampleList& inputSampleList,
-                    OUT SoXAudioSampleList& outputSampleList,
+        void apply (IN AudioSampleList& inputSampleList,
+                    OUT AudioSampleList& outputSampleList,
                     IN bool outputValuesAreSummed);
 
         /*--------------------*/
@@ -437,7 +441,7 @@ namespace SoXPlugins::Effects::SoXCompander {
             _TransferFunction _transferFunction;
 
             /** tells whether all channels are combined for compression */
-            bool _channelsAreAggregated;
+            Boolean _channelsAreAggregated;
 
             /** list of attack times for all channels */
             RealList _attackTimeList;
@@ -485,8 +489,8 @@ namespace SoXPlugins::Effects::SoXCompander {
              * @param[in] sampleList  audio sample list to be scanned
              * @return  maximum absolute sample value
              */
-            static SoXAudioSample _maximumAbsoluteSample (
-                IN SoXAudioSampleList& sampleList);
+            static AudioSample _maximumAbsoluteSample (
+                IN AudioSampleList& sampleList);
 
     };
 
@@ -498,7 +502,7 @@ namespace SoXPlugins::Effects::SoXCompander {
      * A <C>_LRFilter</C> object is a Linkwitz-Riley filter of order
      * 5.
      */
-    struct _LRFilter : SoXIIRFilter {
+    struct _LRFilter : IIRFilter {
 
         /** the order of the filter */
         static const Natural order;
@@ -566,18 +570,18 @@ namespace SoXPlugins::Effects::SoXCompander {
         /*--------------------*/
 
         /**
-         * Applies current LR4 crossover filter to <C>inputQueue</C>
-         * and <C>outputQueueLow</C> and <C>outputQueueHigh</C>;
-         * assumes that first entry in input queue is current sample
-         * and writes results sample into top of output queues.
+         * Applies current LR4 crossover filter to <C>inputBuffer</C>
+         * and <C>outputBufferLow</C> and <C>outputBufferHigh</C>;
+         * assumes that first entry in input buffer is current sample
+         * and writes results sample into top of output buffers.
          *
-         * @param[in]  inputQueue       input sample queue
-         * @param[out] outputQueueLow   sample queue for low filter output
-         * @param[out] outputQueueHigh  sample queue for high filter output
+         * @param[in]  inputBuffer       input sample buffer
+         * @param[out] outputBufferLow   sample buffer for low filter output
+         * @param[out] outputBufferHigh  sample buffer for high filter output
          */
-        void apply (IN SoXAudioSampleQueue& inputQueue,
-                    OUT SoXAudioSampleQueue& outputQueueLow,
-                    OUT SoXAudioSampleQueue& outputQueueHigh);
+        void apply (IN AudioSampleRingBuffer& inputBuffer,
+                    OUT AudioSampleRingBuffer& outputBufferLow,
+                    OUT AudioSampleRingBuffer& outputBufferHigh);
 
         /*--------------------*/
 
@@ -626,16 +630,16 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     /**
      * A <C>_CompanderSampleBufferEntry</C> object contains pointers
-     * to a queue for input, low and high output samples; it is the
+     * to a buffer for input, low and high output samples; it is the
      * element type in a <B>_CompanderSampleBuffer</B>.
      */
     using _CompanderSampleBufferEntry =
-        array<SoXAudioSampleQueue*, _companderStreamKindCount>;
+        array<AudioSampleRingBuffer*, _companderStreamKindCount>;
 
     /**
      * A <C>_CompanderSampleBuffer</C> object contains pointers to the
-     * queues for input, low and high output samples for each channel
-     * in a crossover band; the input queue of the first band contain
+     * buffers for input, low and high output samples for each channel
+     * in a crossover band; the input buffer of the first band contain
      * the input samples, the following bands use the high output of
      * the previous crossover band
      */
@@ -648,12 +652,12 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     /**
      * A <C>_MCompanderBand</C> object is a single band in a multiband
-     * compander consisting of a compander and sample queues for the
+     * compander consisting of a compander and sample buffers for the
      * crossover filter.
      *
      * For each channel the crossover calculation is done on an input
-     * queue resulting in low output and high output (for the next
-     * band), companding is done on the input queue only
+     * buffer resulting in low output and high output (for the next
+     * band), companding is done on the input buffer only
      */
     struct _MCompanderBand {
 
@@ -684,16 +688,16 @@ namespace SoXPlugins::Effects::SoXCompander {
         /*--------------------*/
 
         /**
-         * Sets stream queue for compander band for <C>channel</C> and
-         * <C>stream</C> to <C>queue</C>.
+         * Sets stream buffer for compander band for <C>channel</C> and
+         * <C>stream</C> to <C>buffer</C>.
          *
          * @param[in] channel  channel of band to be changed
          * @param[in] stream   stream of band to be changed
-         * @param[in] queue    queue to be assigned to this position
+         * @param[in] buffer    buffer to be assigned to this position
          */
-        void setQueue (IN Natural channel,
+        void setBuffer (IN Natural channel,
                        IN _CompanderStreamKind stream,
-                       SoXAudioSampleQueue* queue);
+                       AudioSampleRingBuffer* buffer);
 
         /*--------------------*/
 
@@ -744,7 +748,7 @@ namespace SoXPlugins::Effects::SoXCompander {
          * @param[out] outputSampleList  the sample list to be written
          *                               to
          */
-        void apply (OUT SoXAudioSampleList& outputSampleList);
+        void apply (OUT AudioSampleList& outputSampleList);
 
         /*--------------------*/
 
@@ -784,7 +788,7 @@ namespace SoXPlugins::Effects::SoXCompander {
 
             /** a temporary input sample list only used in the apply
              * method*/
-            SoXAudioSampleList _inputSampleList;
+            AudioSampleList _inputSampleList;
     };
 
     /*=====================*/
@@ -800,8 +804,8 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*============================================================*/
 
     _Point2D::_Point2D ()
-        : x{0},
-          y{0}
+        : x{0.0},
+          y{0.0}
     {
     }
 
@@ -834,8 +838,8 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     void _Point2D::clear () {
-        x = 0;
-        y = 0;
+        x = 0.0;
+        y = 0.0;
     }
 
     /*--------------------*/
@@ -896,9 +900,9 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     void _TfSegment::adaptCoefficients (IN _Point2D point) {
-        if (length() == 0) {
-            a1 = 0;
-            a2 = 0;
+        if (length() == 0.0) {
+            a1 = 0.0;
+            a2 = 0.0;
         } else {
             const Real inA  = point.x - startPoint.x;
             const Real outA = point.y - startPoint.y;
@@ -915,8 +919,8 @@ namespace SoXPlugins::Effects::SoXCompander {
         const Real segmentLength = length();
         Real relativePosition;
 
-        if (segmentLength == 0) {
-            relativePosition = 0;
+        if (segmentLength == 0.0) {
+            relativePosition = 0.0;
         } else {
             relativePosition = position / segmentLength;
         }
@@ -936,7 +940,7 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     void _TransferFunction::_adaptCurvesInSegmentList () {
-        const Real radius = _dBKnee * log(10) / 20;
+        const Real radius = _dBKnee * log(10) / 20.0;
         const Natural segmentCount = _segmentList.size();
 
         if (segmentCount >= 2) {
@@ -962,7 +966,7 @@ namespace SoXPlugins::Effects::SoXCompander {
 
                     // adapt curve segment to the right
                     length = nextSegment->length();
-                    position = Real::minimum(radius, length / Real{2});
+                    position = Real::minimum(radius, length / 2.0);
                     segmentEndPoint = nextSegment->interpolate(position);
                     nextSegment->startPoint = segmentEndPoint;
 
@@ -991,7 +995,7 @@ namespace SoXPlugins::Effects::SoXCompander {
             segment.endPoint.scale(factor);
 
             if (segment.isStraightLine) {
-                segment.a2 = 0;
+                segment.a2 = 0.0;
                 segment.a1 = segment.gradient();
             }
         }
@@ -1054,9 +1058,9 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     _TransferFunction::_TransferFunction ()
         : _segmentList{3},
-          _minimumLinearInValue{1},
-          _minimumLinearOutValue{1},
-          _dBGain{0},
+          _minimumLinearInValue{1.0},
+          _minimumLinearOutValue{1.0},
+          _dBGain{0.0},
           _dBKnee{0.01}
     {
         Logging_trace(">>");
@@ -1096,18 +1100,18 @@ namespace SoXPlugins::Effects::SoXCompander {
                        TOSTRING(dBKnee), TOSTRING(cDBThreshold),
                        TOSTRING(cRatio), TOSTRING(dBGain));
 
-        const Real ratio = Real::maximum(Real{1}, cRatio);
-        const Real dBThreshold = Real::minimum(Real{0}, cDBThreshold);
-        _dBKnee = Real::maximum(Real{0}, dBKnee);
+        const Real ratio = Real::maximum(1.0, cRatio);
+        const Real dBThreshold = Real::minimum(0.0, cDBThreshold);
+        _dBKnee = Real::maximum(0.0, dBKnee);
         _dBGain = dBGain;
 
         // set data for the straight segments
         _Point2D& segmentStart = _segmentList[0].startPoint;
-        segmentStart = _Point2D(dBThreshold - _leftDbOffset, 0);
+        segmentStart = _Point2D(dBThreshold - _leftDbOffset, 0.0);
 
         _TfSegment& segment = _segmentList[2];
-        segment.startPoint = _Point2D(dBThreshold, 0);
-        segment.endPoint   = _Point2D(0, (ratio - 1) * dBThreshold / ratio);
+        segment.startPoint = _Point2D(dBThreshold, 0.0);
+        segment.endPoint   = _Point2D(0.0, (ratio - 1.0) * dBThreshold / ratio);
 
         _updateSegmentList();
 
@@ -1150,8 +1154,9 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     Real _Compander::_adaptEnvelopeTime (IN Real t,
                                          IN Real sampleRate) {
-        return Real::minimum(Real{1},
-                             Real{1} - (-Real{1} / (sampleRate * t)).exp());
+        const Real one{1.0};
+        return Real::minimum(one,
+                             one - (-one / (sampleRate * t)).exp());
     }
 
     /*--------------------*/
@@ -1216,8 +1221,8 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     /*--------------------*/
 
-    void _Compander::apply (IN SoXAudioSampleList& inputSampleList,
-                            OUT SoXAudioSampleList& outputSampleList,
+    void _Compander::apply (IN AudioSampleList& inputSampleList,
+                            OUT AudioSampleList& outputSampleList,
                             IN bool outputValuesAreSummed) {
         Natural channel;
         const Natural channelCount = inputSampleList.size();
@@ -1225,22 +1230,22 @@ namespace SoXPlugins::Effects::SoXCompander {
         if (_channelsAreAggregated) {
             // use settings of first channel to represent all channels
             channel = 0;
-            const SoXAudioSample maximumSample =
+            const AudioSample maximumSample =
                 _maximumAbsoluteSample(inputSampleList);
             _integrateVolume(channel, maximumSample);
         } else {
             for (channel = 0;  channel < channelCount;  channel++) {
-                const SoXAudioSample inputSample = inputSampleList[channel];
+                const AudioSample inputSample = inputSampleList[channel];
                 _integrateVolume(channel, inputSample);
             }
         }
 
         for (channel = 0;  channel < channelCount;  channel++) {
-            const SoXAudioSample inputSample = inputSampleList[channel];
+            const AudioSample inputSample = inputSampleList[channel];
             const Real currentVolume = _volumeList[channel];
             const Real amplificationFactor =
                 _transferFunction.apply(currentVolume);
-            SoXAudioSample outputSample = inputSample * amplificationFactor;
+            AudioSample outputSample = inputSample * amplificationFactor;
 
             if (outputValuesAreSummed) {
                 outputSample += outputSampleList[channel];
@@ -1256,7 +1261,7 @@ namespace SoXPlugins::Effects::SoXCompander {
                                        IN Real inputVolume) {
         Real volume = _volumeList[channel];
         const Real delta = inputVolume - volume;
-        const RealList& timeList = (delta > 0
+        const RealList& timeList = (delta > 0.0
                                     ? _attackTimeList
                                     : _releaseTimeList);
         const Real increment = timeList[channel];
@@ -1272,12 +1277,12 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     /*--------------------*/
 
-    SoXAudioSample
-    _Compander::_maximumAbsoluteSample (IN SoXAudioSampleList& sampleList) {
-        SoXAudioSample result = 0;
+    AudioSample
+    _Compander::_maximumAbsoluteSample (IN AudioSampleList& sampleList) {
+        AudioSample result = 0.0;
 
-        for (const SoXAudioSample& value : sampleList) {
-            const SoXAudioSample absValue = value.abs();
+        for (const AudioSample& value : sampleList) {
+            const AudioSample absValue = value.abs();
 
             if (absValue > result) {
                 result = absValue;
@@ -1306,7 +1311,7 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     _LRFilter::_LRFilter ()
-            : SoXIIRFilter(order)
+            : IIRFilter(order)
     {
         Logging_trace1(">>: %1", TOSTRING(order));
         Logging_trace1("<<: %1", toString());
@@ -1328,10 +1333,10 @@ namespace SoXPlugins::Effects::SoXCompander {
                  ? coefficientListA
                  : coefficientListB);
             _data[i + 0] = coefficientList[0].sqr();
-            _data[i + 1] = Real{2} *coefficientList[0] * coefficientList[1];
-            _data[i + 2] = (Real{2} * coefficientList[0] * coefficientList[2]
+            _data[i + 1] = Real{2.0} * coefficientList[0] * coefficientList[1];
+            _data[i + 2] = (Real{2.0} * coefficientList[0] * coefficientList[2]
                             + coefficientList[1].sqr());
-            _data[i + 3] = Real{2} * coefficientList[1] * coefficientList[2];
+            _data[i + 3] = Real{2.0} * coefficientList[1] * coefficientList[2];
             _data[i + 4] = coefficientList[2].sqr();
             i += order;
         }
@@ -1346,8 +1351,8 @@ namespace SoXPlugins::Effects::SoXCompander {
           _highpassFilter{}
     {
         Logging_trace(">>");
-        _lowpassFilter.set(1);
-        _highpassFilter.set(0);
+        _lowpassFilter.set(1.0);
+        _highpassFilter.set(0.0);
         Logging_trace1("<<: %1", toString());
     }
 
@@ -1370,34 +1375,34 @@ namespace SoXPlugins::Effects::SoXCompander {
                        TOSTRING(frequency), TOSTRING(sampleRate));
 
         if (frequency >= sampleRate / 2.0) {
-            _lowpassFilter.set(1);
-            _highpassFilter.set(0);
+            _lowpassFilter.set(1.0);
+            _highpassFilter.set(0.0);
         } else {
             const Real w0 = Real::twoPi * frequency / sampleRate;
             const Real filterQuality = sqrt(0.5);
-            const Real alpha = w0.sin() / (Real{2} * filterQuality);
+            const Real alpha = w0.sin() / (Real{2.0} * filterQuality);
             const Real cosW0 = w0.cos();
             RealList coefficientListA{Natural{3}};
             RealList coefficientListB{Natural{3}};
             RealList coefficientListC{Natural{3}};
 
             // biquad lowpass filter numerator
-            coefficientListA[0] = (Real{1} - cosW0) / Real{2};
-            coefficientListA[1] = Real{1} - cosW0;
+            coefficientListA[0] = (Real{1.0} - cosW0) / Real{2.0};
+            coefficientListA[1] = Real{1.0} - cosW0;
             coefficientListA[2] = coefficientListA[0];
 
             // biquad highpass filter numerator
-            coefficientListB[0] = (Real{1} + cosW0) / Real{2};
-            coefficientListB[1] = -Real{1} - cosW0;
+            coefficientListB[0] = (Real{1.0} + cosW0) / Real{2.0};
+            coefficientListB[1] = -Real{1.0} - cosW0;
             coefficientListB[2] = coefficientListB[0];
 
             // biquad LP/HP filter denominator
-            coefficientListC[0] = Real{1} + alpha;
-            coefficientListC[1] = -Real{2} *cosW0;
-            coefficientListC[2] = Real{1} - alpha;
+            coefficientListC[0] = Real{1.0} + alpha;
+            coefficientListC[1] = -Real{2.0} *cosW0;
+            coefficientListC[2] = Real{1.0} - alpha;
 
             // normalize coefficients
-            Real referenceValue = Real{1} / coefficientListC[0];
+            Real referenceValue = Real{1.0} / coefficientListC[0];
             coefficientListA.multiply(referenceValue);
             coefficientListB.multiply(referenceValue);
             coefficientListC.multiply(referenceValue);
@@ -1414,20 +1419,20 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     void
-    _LRCrossoverFilter::apply (IN SoXAudioSampleQueue& inputQueue,
-                               OUT SoXAudioSampleQueue& outputQueueLow,
-                               OUT SoXAudioSampleQueue& outputQueueHigh)
+    _LRCrossoverFilter::apply (IN AudioSampleRingBuffer& inputBuffer,
+                               OUT AudioSampleRingBuffer& outputBufferLow,
+                               OUT AudioSampleRingBuffer& outputBufferHigh)
     {
-        _lowpassFilter.apply(inputQueue, outputQueueLow);
-        _highpassFilter.apply(inputQueue, outputQueueHigh);
+        _lowpassFilter.apply(inputBuffer, outputBufferLow);
+        _highpassFilter.apply(inputBuffer, outputBufferHigh);
     }
 
     /*--------------------*/
 
     void _LRCrossoverFilter::setToIdentity () {
         Logging_trace(">>");
-        _lowpassFilter.set(1);
-        _highpassFilter.set(0);
+        _lowpassFilter.set(1.0);
+        _highpassFilter.set(0.0);
         Logging_trace1("<<: %1", toString());
     }
 
@@ -1446,13 +1451,13 @@ namespace SoXPlugins::Effects::SoXCompander {
 
             for (int stream = 0;  stream < _companderStreamKindCount;
                  stream++) {
-                const SoXAudioSampleQueue* queue =
+                const AudioSampleRingBuffer* ringBuffer =
                     buffer[channel][stream];
-                const String queueAsString =
-                    (queue == NULL ? "NULL" : queue->toString());
+                const String bufferAsString =
+                    (ringBuffer == NULL ? "NULL" : ringBuffer->toString());
                 st += ("channel_" + TOSTRING(channel) +
                        + "_" + _streamKindAsString[stream] + " = (");
-                st += queueAsString;
+                st += bufferAsString;
                 st += ")";
             }
         }
@@ -1538,23 +1543,23 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     /*--------------------*/
 
-    void _MCompanderBand::setQueue (IN Natural channel,
+    void _MCompanderBand::setBuffer (IN Natural channel,
                                     IN _CompanderStreamKind stream,
-                                    SoXAudioSampleQueue* queue)
+                                    AudioSampleRingBuffer* buffer)
     {
-        _buffer[channel][(int) stream] = queue;
+        _buffer[channel][(int) stream] = buffer;
     }
 
     /*--------------------*/
 
-    void _MCompanderBand::apply (OUT SoXAudioSampleList& outputSampleList)
+    void _MCompanderBand::apply (OUT AudioSampleList& outputSampleList)
     {
         for (Natural channel = 0;  channel < _channelCount;  channel++) {
             const _CompanderSampleBufferEntry& bufferEntry =
                 _buffer[channel];
-            const SoXAudioSampleQueue* outputQueueLow =
+            const AudioSampleRingBuffer* outputBufferLow =
                 bufferEntry[(int) _CompanderStreamKind::lowOutputStream];
-            SoXAudioSample inputSample = outputQueueLow->first();
+            AudioSample inputSample = outputBufferLow->first();
             _inputSampleList[channel] = inputSample;
         }
 
@@ -1566,16 +1571,16 @@ namespace SoXPlugins::Effects::SoXCompander {
     void _MCompanderBand::calculateCrossover ()
     {
         for (_CompanderSampleBufferEntry& bufferEntry : _buffer) {
-            const SoXAudioSampleQueue* inputQueue =
+            const AudioSampleRingBuffer* inputBuffer =
                 bufferEntry[(int) _CompanderStreamKind::inputStream];
-            SoXAudioSampleQueue* outputQueueLow =
+            AudioSampleRingBuffer* outputBufferLow =
                 bufferEntry[(int) _CompanderStreamKind::lowOutputStream];
-            SoXAudioSampleQueue* outputQueueHigh =
+            AudioSampleRingBuffer* outputBufferHigh =
                 bufferEntry[(int) _CompanderStreamKind::highOutputStream];
 
-            _crossoverFilter.apply(*inputQueue,
-                                   *outputQueueLow,
-                                   *outputQueueHigh);
+            _crossoverFilter.apply(*inputBuffer,
+                                   *outputBufferLow,
+                                   *outputBufferHigh);
         }
     }
 
@@ -1605,7 +1610,7 @@ SoXMultibandCompander::SoXMultibandCompander ()
     : _allocatedBandCount{0},
       _bandCount{0},
       _channelCount{0},
-      _sampleQueueMatrix{}
+      _sampleRingBufferVector{}
 {
     Logging_trace(">>");
     _companderBandList = new _MCompanderBandList(_allocatedBandCount);
@@ -1690,31 +1695,33 @@ void SoXMultibandCompander::resize (IN Natural bandCount,
         companderBand.setChannelCount(channelCount);
     }
 
-    const Natural queueCountPerChannel = _allocatedBandCount * 2 + 1;
-    _sampleQueueMatrix.resize(_channelCount, queueCountPerChannel);
+    const Natural bufferCountPerChannel = _allocatedBandCount * 2 + 1;
+    _sampleRingBufferVector.resize(_channelCount, bufferCountPerChannel);
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
-        // connect the compander buffers to the sample queue matrix
+        // connect the compander buffers to the sample buffer matrix
         Natural i = 0;
 
         for (_MCompanderBand& companderBand : *companderBandList) {
-            companderBand.setQueue(channel,
-                                   _CompanderStreamKind::inputStream,
-                                   &_sampleQueueMatrix.at(channel, i));
-            companderBand.setQueue(channel,
-                                   _CompanderStreamKind::lowOutputStream,
-                                   &_sampleQueueMatrix.at(channel, i + 1));
-            companderBand.setQueue(channel,
-                                   _CompanderStreamKind::highOutputStream,
-                                   &_sampleQueueMatrix.at(channel, i + 2));
-            // take care of single overlapping queue between the bands
+            companderBand.setBuffer(channel,
+                                    _CompanderStreamKind::inputStream,
+                                    &_sampleRingBufferVector.at(channel, i));
+            companderBand.setBuffer(channel,
+                                    _CompanderStreamKind::lowOutputStream,
+                                    &_sampleRingBufferVector.at(channel,
+                                                                i + 1));
+            companderBand.setBuffer(channel,
+                                    _CompanderStreamKind::highOutputStream,
+                                    &_sampleRingBufferVector.at(channel,
+                                                                i + 2));
+            // take care of single overlapping buffer between the bands
             i += 2;
         }
 
-        for (Natural j = 0;  j < queueCountPerChannel;  j++) {
-            SoXAudioSampleQueue& sampleQueue =
-                _sampleQueueMatrix.at(channel, j);
-            sampleQueue.setLength(_LRFilter::order);
+        for (Natural j = 0;  j < bufferCountPerChannel;  j++) {
+            AudioSampleRingBuffer& sampleBuffer =
+                _sampleRingBufferVector.at(channel, j);
+            sampleBuffer.setLength(_LRFilter::order);
         }
     }
 
@@ -1734,29 +1741,30 @@ void SoXMultibandCompander::setEffectiveSize (IN Natural bandCount)
 /*--------------------*/
 
 void
-SoXMultibandCompander::apply (IN SoXAudioSampleList& inputSampleList,
-                              OUT SoXAudioSampleList& outputSampleList)
+SoXMultibandCompander::apply (IN AudioSampleList& inputSampleList,
+                              OUT AudioSampleList& outputSampleList)
 {
     outputSampleList.setToZero();
-    const Natural queueCountPerChannel = _bandCount * 2 + 1;
+    const Natural bufferCountPerChannel = _bandCount * 2 + 1;
 
     for (Natural channel = 0;  channel < _channelCount;  channel++) {
-        for (Natural j = 0;  j < queueCountPerChannel;  j++) {
-            SoXAudioSampleQueue& sampleQueue =
-                _sampleQueueMatrix.at(channel, j);
-            sampleQueue.shiftRight(0);
+        for (Natural j = 0;  j < bufferCountPerChannel;  j++) {
+            AudioSampleRingBuffer& sampleBuffer =
+                _sampleRingBufferVector.at(channel, j);
+            sampleBuffer.shiftRight(0.0);
         }
 
         // setup sample buffer for processing
-        SoXAudioSampleQueue& inputQueue = _sampleQueueMatrix.at(channel, 0);
-        SoXAudioSample inputSample = inputSampleList[channel];
-        inputQueue.setFirst(inputSample);
+        AudioSampleRingBuffer& inputBuffer =
+            _sampleRingBufferVector.at(channel, 0);
+        AudioSample inputSample = inputSampleList[channel];
+        inputBuffer.setFirst(inputSample);
     }
 
     _MCompanderBandList* companderBandList =
         (_MCompanderBandList*) _companderBandList;
 
-    // calculate crossover filtering from input queues into
+    // calculate crossover filtering from input buffers into
     // low and high outputs
     for (Natural bandIndex = 0;  bandIndex < _bandCount;  bandIndex++) {
         _MCompanderBand& companderBand =
@@ -1771,11 +1779,11 @@ SoXMultibandCompander::apply (IN SoXAudioSampleList& inputSampleList,
         companderBand.apply(outputSampleList);
     }
 
-    // write all output channel samples
+    // write all output channel samples to buffer
     for (Natural channel = 0;  channel < _channelCount;  channel++) {
-        const SoXAudioSample outputSample = outputSampleList[channel];
-        SoXAudioSampleQueue& outputQueue =
-            _sampleQueueMatrix.at(channel, queueCountPerChannel - 1);
-        outputQueue.setFirst(outputSample);
+        const AudioSample outputSample = outputSampleList[channel];
+        AudioSampleRingBuffer& outputBuffer =
+            _sampleRingBufferVector.at(channel, bufferCountPerChannel - 1);
+        outputBuffer.setFirst(outputSample);
     }
 }

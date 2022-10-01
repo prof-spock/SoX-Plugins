@@ -137,10 +137,6 @@ IF(MSVC)
            /MDd                 # creates debug multithreaded DLL
            /MP                  # multi processor compilation
            /nologo              # suppresses display of banner
-           /Ob2                 # any suitable inline expansion
-           /Oi                  # generates intrinsic functions
-           /Ot                  # favors fast code
-           /Ox                  # subset of optimization
            /permissive-         # set strict standard conformance
            /W4                  # warning level 4
            /Zc:forScope         # standard conformance for scoping
@@ -164,11 +160,19 @@ IF(MSVC)
            /DNDEBUG      # no debugging
            /O2           # generate fast code
            /fp:fast      # fast floating point calculation
+           /Gw           # global program optimization
+    )
+
+    STRING(JOIN " " cppFlagsReleaseWithDebugInfo
+           /DNDEBUG      # no debugging
+           /O2           # generate fast code
+           /fp:fast      # fast floating point calculation
+           /Gw           # global program optimization
     )
 
     STRING(JOIN " " cppFlagsDebug
            /DDEBUG       # debugging on
-           /Z7           # debug information in object files
+           /Zi           # debug information in database
            /fp:fast      # fast floating point calculation
     )
 ELSE()
@@ -202,6 +206,12 @@ ELSE()
   
     STRING(JOIN " " cppFlagsRelease
            -DNDEBUG         # no debugging
+           -O3              # extreme optimization
+    )
+
+    STRING(JOIN " " cppFlagsReleaseWithDebugInfo
+           -DNDEBUG         # no debugging
+           -O3              # extreme optimization
     )
 
     STRING(JOIN " " cppFlagsDebug
@@ -213,6 +223,9 @@ ENDIF()
 
 SET(CMAKE_CXX_FLAGS ${cppFlagsCommon} CACHE STRING "" FORCE)
 SET(CMAKE_CXX_FLAGS_RELEASE ${cppFlagsRelease} CACHE STRING "" FORCE)
+#SET(CMAKE_CXX_FLAGS_RELWITHDEBINFO ${cppFlagsReleaseWithDebugInfo}
+#    CACHE STRING "" FORCE)
 SET(CMAKE_CXX_FLAGS_DEBUG ${cppFlagsDebug} CACHE STRING "" FORCE)
 
-SET(CMAKE_SHARED_LINKER_FLAGS ${cppLinkerFlagsCommon} CACHE STRING "" FORCE)
+SET(CMAKE_SHARED_LINKER_FLAGS ${cppLinkerFlagsCommon}
+    CACHE STRING "" FORCE)

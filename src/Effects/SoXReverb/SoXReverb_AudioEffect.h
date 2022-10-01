@@ -7,21 +7,21 @@
  * @date   2020-10
  */
 
-#pragma once
-
 /*====================*/
 
-#include "GlobalMacros.h"
-#include "Real.h"
-#include "MyString.h"
-#include "SoXAudioEffect.h"
-#include "SoXAudioValueChangeKind.h"
+#pragma once
 
-using SoXPlugins::BaseTypes::Primitives::Real;
-using SoXPlugins::BaseTypes::Primitives::String;
-using SoXPlugins::CommonAudio::SoXAudioEffect;
-using SoXPlugins::CommonAudio::SoXAudioSampleListVector;
-using SoXPlugins::CommonAudio::SoXAudioValueChangeKind;
+/*=========*/
+/* IMPORTS */
+/*=========*/
+
+#include "Boolean.h"
+#include "SoXAudioEffect.h"
+
+/*--------------------*/
+
+using BaseTypes::Primitives::Boolean;
+using SoXPlugins::Effects::SoXAudioEffect;
 
 /*====================*/
 
@@ -32,7 +32,7 @@ namespace SoXPlugins::Effects::SoXReverb {
      * <B>reverb</B> plugin as a simple reverb implementing the
      * Freeverb algorithm.
      */
-    struct SoXReverb_AudioEffect  : public SoXAudioEffect {
+    struct SoXReverb_AudioEffect : public SoXAudioEffect {
 
         /*--------------------*/
         /* setup              */
@@ -63,7 +63,7 @@ namespace SoXPlugins::Effects::SoXReverb {
         /*--------------------*/
 
         void processBlock (IN Real timePosition,
-                           INOUT SoXAudioSampleListVector& buffer)
+                           INOUT AudioSampleListVector& buffer)
             override;
 
         /*--------------------*/
@@ -79,7 +79,7 @@ namespace SoXPlugins::Effects::SoXReverb {
             SoXAudioValueChangeKind
             _setValueInternal (IN String& parameterName,
                                IN String& value,
-                               IN bool recalculationIsSuppressed)
+                               IN Boolean recalculationIsSuppressed)
                 override;
 
     };

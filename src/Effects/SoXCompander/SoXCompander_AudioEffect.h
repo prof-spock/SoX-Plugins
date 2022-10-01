@@ -20,11 +20,11 @@
 
 /*====================*/
 
-using SoXPlugins::BaseTypes::Primitives::Real;
-using SoXPlugins::BaseTypes::Primitives::String;
-using SoXPlugins::CommonAudio::SoXAudioEffect;
-using SoXPlugins::CommonAudio::SoXAudioSampleListVector;
-using SoXPlugins::CommonAudio::SoXAudioValueChangeKind;
+using Audio::AudioSampleListVector;
+using BaseTypes::Primitives::Real;
+using BaseTypes::Primitives::String;
+using SoXPlugins::Effects::SoXAudioEffect;
+using SoXPlugins::Helpers::SoXAudioValueChangeKind;
 
 /*====================*/
 
@@ -70,13 +70,13 @@ namespace SoXPlugins::Effects::SoXCompander {
         /* event handling     */
         /*--------------------*/
 
-        void prepareToPlay (Real sampleRate)
+        void prepareToPlay (IN Real sampleRate)
             override;
 
         /*--------------------*/
 
-        void processBlock (Real timePosition,
-                           SoXAudioSampleListVector& buffer)
+        void processBlock (IN Real timePosition,
+                           INOUT AudioSampleListVector& buffer)
             override;
 
         /*--------------------*/
@@ -92,7 +92,7 @@ namespace SoXPlugins::Effects::SoXCompander {
             SoXAudioValueChangeKind
             _setValueInternal (IN String& parameterName,
                                IN String& value,
-                               IN bool recalculationIsSuppressed)
+                               IN Boolean recalculationIsSuppressed)
                 override;
 
     };

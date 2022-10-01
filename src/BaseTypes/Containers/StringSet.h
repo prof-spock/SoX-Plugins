@@ -8,25 +8,24 @@
  * @date   2020-08
  */
 
+/*====================*/
 
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <set>
-
-#include "GlobalMacros.h"
-#include "MyString.h"
 #include "StringList.h"
 
-/*====================*/
+/*--------------------*/
 
 using std::set;
-using SoXPlugins::BaseTypes::Primitives::String;
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Containers {
+namespace BaseTypes::Containers {
 
     /**
      * A <C>StringSet</C> object is a set of string values with no
@@ -74,7 +73,7 @@ namespace SoXPlugins::BaseTypes::Containers {
          * @param element  string to be searched for
          * @return information whether <C>element</C> is in set
          */
-        bool contains (IN String& element) const;
+        Boolean contains (IN String& element) const;
 
         /*--------------------*/
 

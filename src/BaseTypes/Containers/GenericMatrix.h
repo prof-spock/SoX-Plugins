@@ -7,22 +7,23 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
-#include "GlobalMacros.h"
-#include "Natural.h"
 #include "GenericSequence.h"
 
+/*--------------------*/
+
+using BaseTypes::Containers::GenericSequence;
+
 /*====================*/
 
-using SoXPlugins::BaseTypes::Primitives::Natural;
-using SoXPlugins::BaseTypes::Containers::GenericSequence;
-
-/*====================*/
-
-namespace SoXPlugins::BaseTypes::Containers {
+namespace BaseTypes::Containers {
 
     /**
      * A <C>GenericMatrix</C> is a generic (two-dimensional) matrix

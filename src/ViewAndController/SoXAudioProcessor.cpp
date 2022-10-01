@@ -8,27 +8,26 @@
  * @date   2020-06
  */
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
-#include "JuceHeaders.h"
-#include "Natural.h"
-#include "SoXAudioEditor.h"
-#include "SoXAudioProcessor.h"
-#include "StringUtil.h"
+#include "MyArray.h"
 #include "Logging.h"
+#include "SoXAudioEditor.h"
 
-using SoXPlugins::BaseTypes::Primitives::Integer;
-using SoXPlugins::BaseTypes::Primitives::Natural;
-using SoXPlugins::CommonAudio::SoXAudioParameterKind;
-using SoXPlugins::CommonAudio::SoXAudioParameterMap;
-using SoXPlugins::CommonAudio::SoXAudioSampleListVector;
+/*--------------------*/
+
+using Audio::AudioSampleListVector;
+using SoXPlugins::Helpers::SoXAudioParameterKind;
 using SoXPlugins::ViewAndController::SoXAudioEditor;
 using SoXPlugins::ViewAndController::_SoXAudioEditorPtrSet;
-using SoXPlugins::ViewAndController::SoXAudioProcessor;
+using BaseTypes::Containers::convertArray;
 
-namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
-using StringUtil::expand;
-using StringUtil::replace;
+/** abbreviated form of function name */
+#define expand StringUtil::expand
+/** abbreviated form of function name */
+#define replace StringUtil::replace
 
 /*============================================================*/
 
@@ -38,7 +37,7 @@ namespace SoXPlugins::ViewAndController {
     static const char quoteCharacter = '"';
 
     /** number of decimal places for reals in serialized form */
-    static const Natural decimalPlaceCount = 4;
+    static const Natural decimalPlaceCount = 5;
 
     /*--------------------*/
     /* internal routines  */
@@ -87,10 +86,8 @@ namespace SoXPlugins::ViewAndController {
                 parameterValue =
                     quoteCharacter + parameterValue + quoteCharacter;
             } else if (kind == SoXAudioParameterKind::realKind) {
-                // round to <decimalPlaceCount> decimal places
-                const Real r = Real::round(StringUtil::toReal(parameterValue),
-                                           decimalPlaceCount);
-                parameterValue = TOSTRING(r);
+                const Real r = StringUtil::toReal(parameterValue);
+                parameterValue = r.toString();
             }
 
             // write each entry as a line
@@ -152,8 +149,9 @@ namespace SoXPlugins::ViewAndController {
                 // the recalculation is suppressed when the value is
                 // within a page and not the last value of the
                 // sequence
-                const bool isOnSamePage = (previousPageNumber == pageNumber);
-                const bool recalculationIsSuppressed =
+                const Boolean isOnSamePage =
+                    (previousPageNumber == pageNumber);
+                const Boolean recalculationIsSuppressed =
                   (i < lastIndex && isOnSamePage);
 
                 // make sure that the value in parameter map does not
@@ -187,9 +185,8 @@ namespace SoXPlugins::ViewAndController {
         if (playHead == nullptr) {
             currentTime = 0.0;
         } else {
-            juce::AudioPlayHead::CurrentPositionInfo positionInfo;
-            playHead->getCurrentPosition(positionInfo);
-            currentTime = positionInfo.timeInSeconds;
+            currentTime =
+                Real{*(playHead->getPosition()->getTimeInSeconds())};
         }
 
         return currentTime;
@@ -237,7 +234,7 @@ juce::AudioProcessorEditor* SoXAudioProcessor::createEditor ()
 
 bool SoXAudioProcessor::supportsDoublePrecisionProcessing () const
 {
-    return true;
+    return false;
 }
 
 /*--------------------*/
@@ -371,7 +368,7 @@ SoXAudioParameterMap& SoXAudioProcessor::audioParameterMap () const
 
 void SoXAudioProcessor::setValue (IN String& parameterName,
                                   IN String& value,
-                                  IN bool recalculationIsSuppressed)
+                                  IN Boolean recalculationIsSuppressed)
 {
     Logging_trace3(">>: parameterName = %1, value = %2,"
                    " recalcIsSuppressed = %3",
@@ -402,7 +399,7 @@ void SoXAudioProcessor::setValues (IN Dictionary& dictionary)
     for (auto& entry : dictionary) {
         const String parameterName = entry.first;
         const String value         = entry.second;
-        const bool recalculationIsSuppressed = (--count > 0);
+        const Boolean recalculationIsSuppressed = (--count > 0);
         setValue(parameterName, value, recalculationIsSuppressed);
     }
 
@@ -475,19 +472,6 @@ void SoXAudioProcessor::releaseResources ()
 /*--------------------*/
 
 void SoXAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
-                                      juce::MidiBuffer& midiMessages)
-{
-    // processes a block of float samples by internally
-    // calling the double routine
-    juce::AudioBuffer<double> sampleBuffer;
-    sampleBuffer.makeCopyOf(buffer);
-    processBlock(sampleBuffer, midiMessages);
-    buffer.makeCopyOf(sampleBuffer);
-}
-
-/*--------------------*/
-
-void SoXAudioProcessor::processBlock (juce::AudioBuffer<double>& buffer,
                                       juce::MidiBuffer&)
 {
     const Natural channelCount = getTotalNumInputChannels();
@@ -500,17 +484,12 @@ void SoXAudioProcessor::processBlock (juce::AudioBuffer<double>& buffer,
         buffer.clear((int) i, 0, (int) sampleCount);
     }
 
-    SoXAudioSampleListVector audioSampleBuffer{};
+    AudioSampleListVector audioSampleBuffer{};
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
-        const double* inputPtr  =
-            buffer.getReadPointer((int) channel);
-        SoXAudioSampleList sampleList{sampleCount};
-
-        for (SoXAudioSample& audioSample : sampleList) {
-            audioSample = *inputPtr++;
-        }
-
+        const float* inputPtr = buffer.getReadPointer((int) channel);
+        AudioSampleList sampleList{sampleCount};
+        convertArray(sampleList.asArray(), inputPtr, sampleCount);
         audioSampleBuffer.append(sampleList);
     }
 
@@ -518,12 +497,8 @@ void SoXAudioProcessor::processBlock (juce::AudioBuffer<double>& buffer,
     _effect->processBlock(currentTimePosition, audioSampleBuffer);
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
-        SoXAudioSample* outputPtr =
-            (Real*) buffer.getWritePointer((int) channel);
-        SoXAudioSampleList& sampleList = audioSampleBuffer[channel];
-
-        for (SoXAudioSample& audioSample : sampleList) {
-            *outputPtr++ = audioSample;
-        }
+        float* outputPtr = buffer.getWritePointer((int) channel);
+        AudioSampleList& sampleList = audioSampleBuffer[channel];
+        convertArray(outputPtr, sampleList.asArray(), sampleCount);
     }
 }

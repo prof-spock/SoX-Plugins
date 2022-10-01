@@ -8,27 +8,19 @@
  * @date   2020-06
  */
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
-#include "SoXAudioEditorWidget.h"
-
-#include "Integer.h"
 #include "Logging.h"
-#include "Real.h"
-#include "StringUtil.h"
 #include "SoXAudioEditor.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::CommonAudio::audioParameterKindToString;
-
-using SoXPlugins::BaseTypes::Primitives::Integer;
-using SoXPlugins::BaseTypes::Primitives::Real;
-using SoXPlugins::CommonAudio::SoXAudioParameterKind;
+using SoXPlugins::Helpers::SoXAudioParameterKind;
 using SoXPlugins::ViewAndController::SoXAudioEditor;
-using SoXPlugins::ViewAndController::SoXAudioEditorWidget;
 
-namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
+using SoXPlugins::Helpers::audioParameterKindToString;
 
 /*============================================================*/
 
@@ -87,9 +79,9 @@ namespace SoXPlugins::ViewAndController {
         {
             const String parameterName = slider->getName().toStdString();
             const Real realValue = slider->getValue();
-            const Integer intValue{(int) (double) realValue};
+            const Integer intValue{realValue};
             const String value =(realValue == (Real) intValue
-                                 ? intValue.toString()
+                                 ? TOSTRING(intValue)
                                  : TOSTRING(realValue));
             _editor->setValue(parameterName, value);
         }
@@ -174,7 +166,8 @@ namespace SoXPlugins::ViewAndController {
                 delta     = (Real) d;
             }
 
-            slider->setRange((double) lowValue, (double) highValue, (double) delta);
+            slider->setRange((double) lowValue, (double) highValue,
+                             (double) delta);
             slider->setValue((double) StringUtil::toReal(currentValue),
                              noNotification);
             slider->setVelocityBasedMode(true);
@@ -345,7 +338,7 @@ SoXAudioEditorWidget::handlePageChange (IN Natural pageNumber)
 {
     Logging_trace1(">>: %1", TOSTRING(pageNumber));
     _currentPageNumber = pageNumber;
-    const bool isVisible = _widgetIsActive;
+    const Boolean isVisible = _widgetIsActive;
     _controlWidget->setVisible(isVisible);
     _labelWidget->setVisible(isVisible);
     // redraw widgets upon page change

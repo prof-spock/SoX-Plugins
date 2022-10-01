@@ -8,7 +8,7 @@ var _so_x_compander_support_8cpp =
     [ "_LRCrossoverFilter", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_crossover_filter.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_crossover_filter" ],
     [ "_MCompanderBand", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band" ],
     [ "_CompanderSampleBuffer", "_so_x_compander_support_8cpp.html#a5d1b4a9a33e7563a0b05d34ffe9fd36c", null ],
-    [ "_CompanderSampleBufferEntry", "_so_x_compander_support_8cpp.html#a1528890ad37c6af38dd520a993ceeab7", null ],
+    [ "_CompanderSampleBufferEntry", "_so_x_compander_support_8cpp.html#a0bb739d775a51382d227d17cc9f2a9d8", null ],
     [ "_MCompanderBandList", "_so_x_compander_support_8cpp.html#aed0870a138d834f65624eb5425c1d669", null ],
     [ "_TfSegmentList", "_so_x_compander_support_8cpp.html#a3d1c14f26713e206e553c255a2b1b872", null ],
     [ "_CompanderStreamKind", "_so_x_compander_support_8cpp.html#a137dc3ea0a6107046c06c9e27625186e", [

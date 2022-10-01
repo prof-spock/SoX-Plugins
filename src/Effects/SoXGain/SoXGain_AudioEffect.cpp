@@ -12,18 +12,20 @@
  * @date   2020-07
  */
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
+
+#include "StringUtil.h"
 
 #include "SoXAudioHelper.h"
 #include "SoXGain_AudioEffect.h"
-#include "StringUtil.h"
 
-/*====================*/
+/*--------------------*/
 
+using BaseModules::StringUtil;
 using SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect;
-
-namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
-namespace SoXAudioHelper = SoXPlugins::CommonAudio::SoXAudioHelper;
+using SoXPlugins::Helpers::SoXAudioHelper;
 
 /*============================================================*/
 
@@ -77,7 +79,7 @@ namespace SoXPlugins::Effects::SoXGain {
     static
     void _initializeAllParameters (INOUT SoXAudioParameterMap& parameterMap)
     {
-        parameterMap.setKindReal(parameterName_gain, -10, 10, 0.001);
+        parameterMap.setKindReal(parameterName_gain, -10.0, 10.0, 0.001);
     }
 
 }
@@ -137,9 +139,10 @@ String SoXGain_AudioEffect::name() const
 /*--------------------*/
 
 SoXAudioValueChangeKind
-SoXGain_AudioEffect::_setValueInternal (IN String& parameterName,
-                                        IN String& value,
-                                        IN bool recalculationIsSuppressed)
+SoXGain_AudioEffect::_setValueInternal
+                         (IN String& parameterName,
+                          IN String& value,
+                          IN Boolean recalculationIsSuppressed)
 {
     _EffectDescriptor_GAIN* effectDescriptor =
         static_cast<_EffectDescriptor_GAIN*>(_effectDescriptor);
@@ -165,7 +168,7 @@ void SoXGain_AudioEffect::setDefaultValues () {
 
 void
 SoXGain_AudioEffect::processBlock (IN Real timePosition,
-                                   INOUT SoXAudioSampleListVector& buffer)
+                                   INOUT AudioSampleListVector& buffer)
 {
     SoXAudioEffect::processBlock(timePosition, buffer);
     _EffectDescriptor_GAIN* effectDescriptor =
@@ -176,13 +179,13 @@ SoXGain_AudioEffect::processBlock (IN Real timePosition,
 
     for (Natural channel = 0;  channel < _channelCount;
          channel++) {
-        const SoXAudioSampleList& inputList  = buffer[channel];
-        SoXAudioSampleList& outputList = buffer[channel];
+        const AudioSampleList& inputList  = buffer[channel];
+        AudioSampleList& outputList = buffer[channel];
 
         for (Natural i = 0;  i < sampleCount;  i++) {
-            const SoXAudioSample inputSample = inputList[i];
-            SoXAudioSample& outputSample     = outputList[i];
-            outputSample = (SoXAudioSample) (inputSample * gain);
+            const AudioSample inputSample = inputList[i];
+            AudioSample& outputSample     = outputList[i];
+            outputSample = (AudioSample) (inputSample * gain);
         }
     }
 }

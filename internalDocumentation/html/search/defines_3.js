@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['makelocalarray_1150',['makeLocalArray',['../_my_array_8h.html#ab56e2bfb3a2a97af7df8e43e1d170844',1,'MyArray.h']]]
+  ['expand_1327',['expand',['../_logging_support_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd',1,'expand():&#160;LoggingSupport.cpp'],['../_so_x_audio_processor_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd',1,'expand():&#160;SoXAudioProcessor.cpp']]]
 ];

@@ -8,14 +8,16 @@
  * @date   2020-08
  */
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <cstdarg>
 #include "RealList.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::BaseTypes::Containers::RealList;
+using BaseTypes::Containers::RealList;
 
 /*====================*/
 

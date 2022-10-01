@@ -7,18 +7,16 @@
  * @date   2020-07
  */
 
-/*====================*/
-
-#include "JucePluginDefines.h"
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include "SoXAudioProcessor.h"
 #include "SoXGain_AudioEffect.h"
 #include "Logging.h"
-#include "MyString.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::BaseTypes::Primitives::String;
 using SoXPlugins::ViewAndController::SoXAudioProcessor;
 
 /*====================*/

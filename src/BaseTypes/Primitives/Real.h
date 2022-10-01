@@ -7,32 +7,47 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <cmath>
+#undef max
 
-#include "GlobalMacros.h"
-#include "GenericNumber.h"
-#include "Natural.h"
 #include "Integer.h"
-#include "MyString.h"
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Primitives {
+namespace BaseTypes::Primitives {
 
     /**
-     * An <C>Real</C> object wraps a value of the associated primitive
-     * type double in an object.  An object of type Real contains a
-     * single internal variable whose type is some kind of floating
-     * point value.
+     * An <C>Real</C> object wraps a value of some associated
+     * primitive float point type in an object.  An object of type
+     * Real contains a single internal variable whose type is some
+     * kind of floating point value.
      *
      * An important benefit of this approach is that all free-floating
      * functions on reals are gathered into a single class.
      */
     struct Real : GenericNumber<Real, double> {
+
+        /*--------------------*/
+        /* class properties   */
+        /*--------------------*/
+
+        /**
+         * Tells whether the real value has double precision.
+         *
+         * @return information, whether a real value is a double
+         */
+        static Boolean hasDoublePrecision ()
+        {
+            return true;
+        }
 
         /*--------------------*/
         /* constructors       */
@@ -50,11 +65,23 @@ namespace SoXPlugins::BaseTypes::Primitives {
         /**
          * Initializes real from double <C>d</C>.
          *
-         * @param[in] d  floating point value
+         * @param[in] d  double precision floating point value
          */
         Real (IN double d)
         {
             _value = d;
+        }
+
+        /*--------------------*/
+
+        /**
+         * Initializes real from float <C>f</C>.
+         *
+         * @param[in] f  single precision floating point value
+         */
+        Real (IN float f)
+        {
+            _value = f;
         }
 
         /*--------------------*/
@@ -67,6 +94,18 @@ namespace SoXPlugins::BaseTypes::Primitives {
         Real (IN Integer i)
         {
             _value = (int) i;
+        }
+
+        /*--------------------*/
+
+        /**
+         * Initializes real from natural <C>n</C>.
+         *
+         * @param[in] n  natural value
+         */
+        Real (IN Natural n)
+        {
+            _value = (size_t) n;
         }
 
         /*--------------------*/
@@ -98,6 +137,66 @@ namespace SoXPlugins::BaseTypes::Primitives {
             }
 
             return result;
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns the current value as a double value.
+         *
+         * @return current value as double
+         */
+        explicit operator double () const
+        {
+            return (double) _value;
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns the current value as a float value.
+         *
+         * @return current value as float
+         */
+        explicit operator float () const
+        {
+            return (float) _value;
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns the current value as an int value.
+         *
+         * @return current value as int
+         */
+        explicit operator int () const
+        {
+            return (int) _value;
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns the current value as an integer value.
+         *
+         * @return current value as integer
+         */
+        explicit operator Integer () const
+        {
+            return Integer{(int) _value};
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns the current value as a natural value.
+         *
+         * @return current value as natural
+         */
+        explicit operator Natural () const
+        {
+            return Natural{(size_t) _value};
         }
 
         /*-----------------------------*/
@@ -261,16 +360,17 @@ namespace SoXPlugins::BaseTypes::Primitives {
          * and returns result.
          *
          * @param[in] x                  the value to be rounded
-         * @param[in] decimalPlaceCount  the number of decimal places to keep
-         *                               by rounding
+         * @param[in] decimalPlaceCount  the number of decimal places
+         *                               to keep by rounding
 
-         * @return  the value <C>x</C> rounded to <C>decimalPlaceCount</C>
-         *          decimal places
+         * @return  the value <C>x</C> rounded to
+         *          <C>decimalPlaceCount</C> decimal places
          */
         static Real round (IN Real x,
                            IN Natural decimalPlaceCount = 0)
         {
-            const double factor = std::pow(10.0, (double) decimalPlaceCount);
+            const double factor =
+                std::pow(10.0, (double) decimalPlaceCount);
             return ((int) Integer::round(x._value * factor) / factor);
         }
 
@@ -285,6 +385,19 @@ namespace SoXPlugins::BaseTypes::Primitives {
         static Real sin (IN Real x)
         {
             return Real{std::sin(x._value)};
+        }
+
+        /*--------------------*/
+
+        /**
+          * Returns the hyperbolic sine of <C>x</C>.
+          *
+          * @param[in] x  real value
+          * @return  the hyperbolic sine of x
+          */
+        static Real sinh (IN Real x)
+        {
+            return Real{std::sinh(x._value)};
         }
 
         /*--------------------*/
@@ -319,6 +432,7 @@ namespace SoXPlugins::BaseTypes::Primitives {
          * Returns string representation of real <C>r</C> with
          * precision and padding information.
          *
+         * @param[in] r  real value to be converted to a string
          * @return  string representation
          */
         static String toString (IN Real& r)
@@ -493,6 +607,18 @@ namespace SoXPlugins::BaseTypes::Primitives {
         /*--------------------*/
 
         /**
+          * Returns the hyperbolic sine of current value.
+          *
+          * @return  the hyperbolic sine of current value
+          */
+        Real sinh () const
+        {
+            return sinh(*this);
+        }
+
+        /*--------------------*/
+
+        /**
           * Returns the square of current value.
           *
           * @return x^2
@@ -525,7 +651,7 @@ namespace SoXPlugins::BaseTypes::Primitives {
     };
 
     inline const Real Real::pi{3.1415926535897932385};
-    inline const Real Real::twoPi{Real{2} * pi};
-    inline const Real Real::infinity{1e99};
+    inline const Real Real::twoPi{Real{2.0} * pi};
+    inline const Real Real::infinity{maximumValue()};
 
 }

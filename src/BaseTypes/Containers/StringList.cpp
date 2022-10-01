@@ -8,22 +8,17 @@
  * @date   2020-08
  */
 
-/*====================*/
-
-#include "StringList.h"
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include "Assertion.h"
 #include "StringUtil.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::BaseTypes::Primitives::String;
-using SoXPlugins::BaseTypes::Containers::StringList;
-
-namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
-using StringUtil::listToStringExplicit;
-using StringUtil::prefix;
-using StringUtil::substring;
+using BaseModules::StringUtil;
+using BaseTypes::Primitives::String;
 
 /*====================*/
 
@@ -51,7 +46,7 @@ String StringList::join (IN String& separator) const
 StringList StringList::makeBySplit (IN String& st,
                                     IN String& separator)
 {
-    const Natural undefined = std::string::npos;
+    const Natural undefined = Natural::maximumValue();
     const Natural separatorLength = separator.length();
     Assertion_pre(separatorLength > 0, "separator must be non-empty");
 
@@ -60,13 +55,14 @@ StringList StringList::makeBySplit (IN String& st,
     Natural position;
 
     do {
-        position = remainder.find(separator);
+        position = StringUtil::find(remainder, separator);
 
         if (position == undefined) {
             result.append(remainder);
         } else {
-            result.append(prefix(remainder, position));
-            remainder = substring(remainder, position + separatorLength);
+            result.append(StringUtil::prefix(remainder, position));
+            remainder = StringUtil::substring(remainder,
+                                              position + separatorLength);
         }
     } while (position != undefined);
 

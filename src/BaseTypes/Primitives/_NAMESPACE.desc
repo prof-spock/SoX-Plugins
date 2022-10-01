@@ -1,7 +1,10 @@
 /**
- * The package <C>Primitives</C> provides the primitive types used for
- * the SoX plugins; those are type wrappers around booleans, integers,
- * naturals, percentages, objects, radians, reals and strings.
+ * The package <C>Primitives</C> wraps elementary types of C++ like
+ * ints and chars into types like Integer, Natural, String etc. also
+ * including convenience types like Percentage or Radians.
+ * Additionally also a template for enumeration classes is given.
+ *
+ * This approach allows a more consistent program documentation.
  */
-namespace SoXPlugins::BaseTypes::Primitives {
+namespace BaseTypes::Primitives {
 }

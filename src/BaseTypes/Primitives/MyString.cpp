@@ -6,17 +6,19 @@
  * @date   2020-08
  */
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include "MyString.h"
 
+/*--------------------*/
+
+using BaseTypes::Primitives::String;
+
 /*====================*/
 
-using SoXPlugins::BaseTypes::Primitives::String;
-
-/*====================*/
-
-namespace SoXPlugins::BaseTypes::Primitives {
+namespace BaseTypes::Primitives {
 
     String String_toString (IN String& st)
     {

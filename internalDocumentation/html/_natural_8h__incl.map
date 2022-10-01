@@ -1,0 +1,10 @@
+<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Primitives/Natural.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Primitives/Natural.h">
+<area shape="rect" id="node1" title="The Natural specification and body provides a value object type for naturals (positive integers with ..." alt="" coords="42,5,279,81"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,129,68,157"/>
+<area shape="rect" id="node3" href="$_generic_number_8h.html" title="The GenericNumber specification and body defines a template for wrapper objects for elementary numeri..." alt="" coords="92,129,229,157"/>
+<area shape="rect" id="node6" href="$_my_string_8h.html" title="The String specification defines a standard string type." alt="" coords="181,281,271,309"/>
+<area shape="rect" id="node4" title=" " alt="" coords="62,205,118,233"/>
+<area shape="rect" id="node5" href="$_boolean_8h.html" title="The Boolean specification and body provides a value object type for boolean values." alt="" coords="143,205,229,233"/>
+<area shape="rect" id="node7" title=" " alt="" coords="139,357,198,385"/>
+<area shape="rect" id="node8" href="$_global_macros_8h.html" title="The GlobalMacros specification defines simple macros (e.g. for parameter modes)." alt="" coords="222,357,345,385"/>
+</map>

@@ -8,20 +8,19 @@
  * @date   2020-08
  */
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include "StringSet.h"
 
 #include <cassert>
 #include "StringUtil.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::BaseTypes::Containers::StringSet;
-
-namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
-using StringUtil::listToStringExplicit;
-using StringUtil::toPrintableString;
+using BaseModules::StringUtil;
+using BaseTypes::Containers::StringSet;
 
 /*====================*/
 
@@ -54,14 +53,15 @@ StringSet::~StringSet ()
 
 String StringSet::toString () const
 {
-    return listToStringExplicit<StringSet,
-                                String,
-                                toPrintableString>("StringSet", *this);
+    return StringUtil
+        ::listToStringExplicit<StringSet,
+                               String,
+                               StringUtil::toPrintableString>("StringSet", *this);
 }
 
 /*--------------------*/
 
-bool StringSet::contains (IN String& key) const
+Boolean StringSet::contains (IN String& key) const
 {
     return (find(key) != end());
 }

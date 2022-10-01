@@ -7,20 +7,21 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <cmath>
-
-#include "GlobalMacros.h"
-#include "GenericNumber.h"
+#include <stdexcept>
 #include "Natural.h"
-#include "MyString.h"
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Primitives {
+namespace BaseTypes::Primitives {
 
     /**
      * An <C>Integer</C> object wraps a value of the associated
@@ -103,6 +104,18 @@ namespace SoXPlugins::BaseTypes::Primitives {
          *
          * @return current value as a floating point value
          */
+        explicit operator float () const
+        {
+            return (float) _value;
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns the current value as a floating point value.
+         *
+         * @return current value as a floating point value
+         */
         explicit operator double () const
         {
             return (double) _value;
@@ -127,9 +140,11 @@ namespace SoXPlugins::BaseTypes::Primitives {
         /**
          * Returns the modulus of current value and <C>other</C>.
          *
+         * @param[in] other  other integer value to be used as
+         *                   divisor
          * @return  modulus of current and <C>other</C>.
          */
-        Integer operator % (IN Integer other)
+        Integer operator % (IN Integer other) const
         {
             return Integer{_value % other._value};
         }
@@ -262,11 +277,30 @@ namespace SoXPlugins::BaseTypes::Primitives {
          * Returns string representation of integer <C>i</C> with
          * default precision and padding information.
          *
+         * @param[in] i  integer value to be converted to a string
          * @return  string representation
          */
         static String toString (IN Integer& i)
         {
             return i.toString();
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns natural representation of integer <C>i</C>; fails
+         * when integer is negative.
+         *
+         * @param[in] i  integer value to be converted to a natural
+         * @return  natural representation
+         */
+        static Natural toNatural (IN Integer& i)
+        {
+            if (i < 0) {
+                throw std::range_error("negative value not allowed for natural");
+            }
+
+            return Natural{(size_t) (int) i};
         }
 
         /*--------------------*/

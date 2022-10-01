@@ -10,31 +10,26 @@
  * @date   2020-10
  */
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <iostream>
 #include <fstream>
 
-#include "GlobalMacros.h"
 #include "Logging.h"
-#include "Natural.h"
-#include "Real.h"
-#include "SoXAudioEffect.h"
 #include "SoXCompander_AudioEffect.h"
+#include "SoXFilter_AudioEffect.h"
 #include "SoXPhaserAndTremolo_AudioEffect.h"
 #include "SoXReverb_AudioEffect.h"
-#include "StringUtil.h"
 
-/*====================*/
+/*--------------------*/
 
 using std::cout;
 
-using SoXPlugins::BaseTypes::Primitives::Real;
-using SoXPlugins::BaseTypes::Primitives::Natural;
-using SoXPlugins::BaseTypes::Primitives::String;
-using SoXPlugins::CommonAudio::SoXAudioSample;
-using SoXPlugins::CommonAudio::SoXAudioSampleListVector;
+using Audio::AudioSample;
 using SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect;
+using SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect;
 using SoXPlugins::Effects::SoXPhaserAndTremolo
          ::SoXPhaserAndTremolo_AudioEffect;
 using SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect;
@@ -47,10 +42,10 @@ using SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect;
 
 const Natural _blocksPerSecond = 100;
 const Natural _channelCount    = 2;
-const Natural _repetitionCount = Natural{5000} * _blocksPerSecond;
 
 /* effect names */
 const String _effectName_compander = "COMPANDER";
+const String _effectName_filter    = "FILTER";
 const String _effectName_reverb    = "REVERB";
 const String _effectName_tremolo   = "TREMOLO";
 
@@ -75,15 +70,15 @@ void _writeToOutputFile (String title,
 /**
   * Puts five samples onto left and right channel in <buffer>
   */
-void _adaptBuffer (INOUT SoXAudioSampleListVector& buffer) {
-    SoXAudioSampleList& leftInputList = buffer[0];
+void _adaptBuffer (INOUT AudioSampleListVector& buffer) {
+    AudioSampleList& leftInputList = buffer[0];
     leftInputList[0] =   0.6;
     leftInputList[1] =  -0.3;
     leftInputList[2] =   0.25;
     leftInputList[3] =   0.4;
     leftInputList[4] =  -0.6;
     leftInputList.setLength(5);
-    SoXAudioSampleList& rightInputList = buffer[1];
+    AudioSampleList& rightInputList = buffer[1];
     rightInputList[0] =  0.3;
     rightInputList[1] = -0.6;
     rightInputList[2] =  0.4;
@@ -94,16 +89,16 @@ void _adaptBuffer (INOUT SoXAudioSampleListVector& buffer) {
 
 /*--------------------*/
 
-void _copyBuffer (IN SoXAudioSampleListVector& srcBuffer,
-                  OUT SoXAudioSampleListVector& destBuffer) {
+void _copyBuffer (IN AudioSampleListVector& srcBuffer,
+                  OUT AudioSampleListVector& destBuffer) {
     Natural channelCount = srcBuffer.length();
     Natural sampleCount = srcBuffer[0].length();
     destBuffer.clear();
 
     for (Natural channel = 0;  channel < channelCount;
          channel++) {
-        const SoXAudioSampleList& srcList = srcBuffer[channel];
-        SoXAudioSampleList destList{sampleCount};
+        const AudioSampleList& srcList = srcBuffer[channel];
+        AudioSampleList destList{sampleCount};
 
         for (Natural i = 0;  i < sampleCount;  i++) {
             destList[i] = srcList[i];
@@ -119,7 +114,7 @@ void _copyBuffer (IN SoXAudioSampleListVector& srcBuffer,
 /**
   * Constructs a sine wave with 441Hz for <sampleRate> in <buffer>
   */
-void _fillBuffer (OUT SoXAudioSampleListVector& buffer,
+void _fillBuffer (OUT AudioSampleListVector& buffer,
                   IN Integer sampleRate) {
     Logging_trace1(">>: sampleRate = %1", TOSTRING(sampleRate));
 
@@ -128,10 +123,10 @@ void _fillBuffer (OUT SoXAudioSampleListVector& buffer,
 
     for (Natural channel = 0;  channel < _channelCount;
          channel++) {
-        SoXAudioSampleList inputList{bufferLength};
+        AudioSampleList inputList{bufferLength};
 
         for (Natural i = 0;  i < bufferLength;  i++) {
-            SoXAudioSample s = Real::sin(Real::twoPi * Real(i)
+            AudioSample s = Real::sin(Real::twoPi * Real(i)
                                          / Real{bufferLength});
             inputList[i] = s;
         }
@@ -179,6 +174,12 @@ void _initializeEffect (IN String audioEffectKind,
         audioEffect->setValue("4#Ratio", "1.05", true);
         audioEffect->setValue("4#Gain [dB]", "0", true);
         audioEffect->setValue("4#Top Frequency [Hz]", "25000.0", false);
+    } else if (audioEffectKind == _effectName_filter) {
+        audioEffect->setValue("Filter Kind", "Equalizer", true);
+        audioEffect->setValue("Frequency [Hz]", "1000", true);
+        audioEffect->setValue("Bandwidth", "2", true);
+        audioEffect->setValue("Bandwidth Unit", "Octave(s)", true);
+        audioEffect->setValue("Eq. Gain [dB]", "5", false);
     } else if (audioEffectKind == _effectName_reverb) {
         audioEffect->setValue("isWetOnly?", "false", true);
         audioEffect->setValue("Reverberance [%]", "50", true);
@@ -198,14 +199,20 @@ void _initializeEffect (IN String audioEffectKind,
 
 /*--------------------*/
 
-SoXAudioEffect* _makeNewEffect (IN String& audioEffectKind) {
+SoXAudioEffect* _makeNewEffect (IN String& audioEffectKind,
+                                INOUT Natural& testLengthInSeconds) {
     Logging_trace1(">>: %1", audioEffectKind);
 
     SoXAudioEffect* audioEffect = nullptr;
 
+    testLengthInSeconds = 50000;
+    
     if (audioEffectKind == _effectName_compander) {
         audioEffect = new SoXCompander_AudioEffect{};
+    } else if (audioEffectKind == _effectName_filter) {
+        audioEffect = new SoXFilter_AudioEffect{};
     } else if (audioEffectKind == _effectName_reverb) {
+        testLengthInSeconds = 50;
         audioEffect = new SoXReverb_AudioEffect{};
     } else if (audioEffectKind == _effectName_tremolo) {
         audioEffect = new SoXPhaserAndTremolo_AudioEffect{};
@@ -213,7 +220,8 @@ SoXAudioEffect* _makeNewEffect (IN String& audioEffectKind) {
 
     _initializeEffect(audioEffectKind, audioEffect);
 
-    Logging_trace1("<<: %1", audioEffect->toString());
+    Logging_trace2("<<: testLength = %1s, effect = %2",
+                   testLengthInSeconds, audioEffect->toString());
     return audioEffect;
 }
 
@@ -225,27 +233,29 @@ SoXAudioEffect* _makeNewEffect (IN String& audioEffectKind) {
  * sample rate of <sampleRate>
  */
 void _runForEffect (IN String& audioEffectKind,
-                    INOUT SoXAudioSampleListVector& waveFormBuffer,
+                    INOUT AudioSampleListVector& waveFormBuffer,
                     IN Integer sampleRate) {
     Logging_trace1(">>: kind = %1", audioEffectKind);
 
-    SoXAudioEffect* audioEffect = _makeNewEffect(audioEffectKind);
+    Natural testLengthInSeconds;
+    SoXAudioEffect* audioEffect =
+        _makeNewEffect(audioEffectKind, testLengthInSeconds);
     Logging_trace("--: AFTER INITIALIZATION");
     _writeToOutputFile("EFFECT AFTER INITIALIZATION", *audioEffect);
     Real timePosition = 0.0;
-    Real increment = Real{1} / Real{_blocksPerSecond};
-    Natural repetitionCount = _repetitionCount;
-    SoXAudioSampleListVector buffer{};
+    Real increment = Real{1.0} / Real{_blocksPerSecond};
+    AudioSampleListVector buffer{};
 
     if (audioEffectKind == _effectName_compander) {
         _adaptBuffer(waveFormBuffer);
     }
 
     _copyBuffer(waveFormBuffer, buffer);
-    audioEffect->prepareToPlay((int) sampleRate);
+    audioEffect->prepareToPlay(sampleRate);
     _writeToOutputFile("EFFECT AFTER PREPARATION", *audioEffect);
     Logging_trace("--: AFTER PREPARATION");
 
+    const Natural repetitionCount = testLengthInSeconds * _blocksPerSecond;
     for (Natural i = 0;  i < repetitionCount;  i++) {
         audioEffect->processBlock(timePosition, buffer);
         timePosition += increment;
@@ -270,11 +280,14 @@ int main (int argc, char* argv[]) {
 
     const Integer sampleRate = 44100;
     String effectName;
-    SoXAudioSampleListVector waveFormBuffer{};
+    AudioSampleListVector waveFormBuffer{};
+    const Character effectCharacter = (argc < 2 ? ' ' : argv[1][0]);
 
-    if (argc > 1 && argv[1][0] == 'C') {
+    if (effectCharacter  == 'C') {
         effectName = _effectName_compander;
-    } else if (argc > 1 && argv[1][0] == 'T') {
+    } else if (effectCharacter == 'F') {
+        effectName = _effectName_filter;
+    } else if (effectCharacter == 'T') {
         effectName = _effectName_tremolo;
     } else {
         effectName = _effectName_reverb;

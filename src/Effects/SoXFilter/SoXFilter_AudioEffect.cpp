@@ -10,34 +10,28 @@
  * @date   2020-11
  */
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include "SoXFilter_AudioEffect.h"
 
 #include <cmath>
+
 #include "Dictionary.h"
-#include "Natural.h"
-#include "StringUtil.h"
+#include "AudioSampleRingBufferVector.h"
+#include "FilterBandwidthUnit.h"
+#include "IIRFilter.h"
 #include "SoXAudioHelper.h"
-#include "SoXAudioSampleQueueMatrix.h"
-#include "SoXAudioValueChangeKind.h"
-#include "SoXFilterBandwidthUnit.h"
-#include "SoXIIRFilter.h"
 
-/*====================*/
+/*--------------------*/
 
-namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
-namespace SoXAudioHelper = SoXPlugins::CommonAudio::SoXAudioHelper;
-
-using std::map;
-
-using SoXPlugins::BaseTypes::Primitives::Natural;
-using SoXPlugins::BaseTypes::Containers::Dictionary;
-using SoXPlugins::CommonAudio::SoXAudioSampleQueueMatrix;
-using SoXPlugins::CommonAudio::SoXAudioSampleQueue;
-using SoXPlugins::CommonAudio::SoXFilterBandwidthUnit;
-using SoXPlugins::CommonAudio::SoXIIRFilter;
+using Audio::AudioSampleRingBufferVector;
+using Audio::FilterBandwidthUnit;
+using Audio::IIRFilter;
+using BaseTypes::Containers::Dictionary;
 using SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect;
+using SoXPlugins::Helpers::SoXAudioHelper;
 
 /*============================================================*/
 
@@ -60,11 +54,11 @@ namespace SoXPlugins::Effects::SoXFilter {
         Real a1; /**< IIR filter coefficient a1 */
         Real a2; /**< IIR filter coefficient a2 */
 
-        /** a matrix of sample queues for the IIR filter */
-        SoXAudioSampleQueueMatrix sampleQueueMatrix;
+        /** a vector of sample ring buffers for the IIR filter */
+        AudioSampleRingBufferVector sampleRingBufferVector;
 
         /** the underlying IIR filter */
-        SoXIIRFilter filter;
+        IIRFilter filter;
 
         /** the characteristic frequency of the filter */
         Real frequency;
@@ -73,7 +67,7 @@ namespace SoXPlugins::Effects::SoXFilter {
         Real bandwidth;
 
         /** the unit of the bandwidth of the filter */
-        SoXFilterBandwidthUnit bandwidthUnit;
+        FilterBandwidthUnit bandwidthUnit;
 
         /** the filter gain */
         Real dBGain;
@@ -83,13 +77,13 @@ namespace SoXPlugins::Effects::SoXFilter {
 
         /** tells whether filter uses mode for unpitched audio (for a band
          *  filter) */
-        bool usesUnpitchedAudioMode;
+        Boolean usesUnpitchedAudioMode;
 
         /** tells whether filter uses constant skirt gain (for a bandpass) */
-        bool usesConstantSkirtGain;
+        Boolean usesConstantSkirtGain;
 
         /** tells whether filter is a 1-pole filter */
-        bool isSinglePole;
+        Boolean isSinglePole;
     };
 
     /*--------------------*/
@@ -322,38 +316,41 @@ namespace SoXPlugins::Effects::SoXFilter {
      */
     static Real _alphaForBandwidth (IN Real sampleRate,
                                     IN Real bandwidth,
-                                    IN SoXFilterBandwidthUnit unit,
+                                    IN FilterBandwidthUnit unit,
                                     IN Real frequency,
                                     IN Real dBGain)
     {
         const Real w0 = Real::twoPi * frequency / sampleRate;
-        const Real sinW0 = sin((double) w0);
+        const Real sinW0 = w0.sin();
+        const Real one{1.0};
+        const Real two{2.0};
+        const Real oneHalf{0.5};
         Real alpha = 0.0;
 
         switch(unit) {
-            case SoXFilterBandwidthUnit::quality:
-                alpha = sinW0 / (Real{2} * bandwidth);
+            case FilterBandwidthUnit::quality:
+                alpha = sinW0 / (two * bandwidth);
                 break;
 
-            case SoXFilterBandwidthUnit::octaves:
-                alpha = sinW0 * sinh(log(2.0)/2
-                                       * (double) (bandwidth * w0 / sinW0));
+            case FilterBandwidthUnit::octaves:
+                alpha = sinW0 * Real::sinh(two.log() / two
+                                           * (bandwidth * w0 / sinW0));
                 break;
 
-            case SoXFilterBandwidthUnit::butterworth:
-                alpha = sinW0 / Real{2 * sqrt(0.5)};
+            case FilterBandwidthUnit::butterworth:
+                alpha = sinW0 / (two * oneHalf.sqrt());
                 break;
 
-            case SoXFilterBandwidthUnit::frequency:
-                alpha = sinW0 / (Real{2} * frequency / bandwidth);
+            case FilterBandwidthUnit::frequency:
+                alpha = sinW0 / (two * frequency / bandwidth);
                 break;
 
-            case SoXFilterBandwidthUnit::slope:
-                const Real a = SoXAudioHelper::dBToLinear(dBGain, 40);
-                alpha = (sinW0 / Real{2}
-                         * Real::sqrt((a + Real{1}/a)
-                                      * (Real{1}/bandwidth - Real{1})
-                                      + Real{2}));
+            case FilterBandwidthUnit::slope:
+                const Real a = SoXAudioHelper::dBToLinear(dBGain, 40.0);
+                alpha = (sinW0 / two
+                         * Real::sqrt((a + one / a)
+                                      * (one / bandwidth - one)
+                                      + two));
         }
 
         return alpha;
@@ -367,24 +364,24 @@ namespace SoXPlugins::Effects::SoXFilter {
      * @param[in] value  band width unit
      * @return  string representation
      */
-    static String _bwUnitToString (IN SoXFilterBandwidthUnit value)
+    static String _bwUnitToString (IN FilterBandwidthUnit value)
     {
         String result;
 
         switch (value) {
-            case SoXFilterBandwidthUnit::frequency:
+            case FilterBandwidthUnit::frequency:
                 result = enumValue_frequency;
                 break;
-            case SoXFilterBandwidthUnit::octaves:
+            case FilterBandwidthUnit::octaves:
                 result = enumValue_octave;
                 break;
-            case SoXFilterBandwidthUnit::quality:
+            case FilterBandwidthUnit::quality:
                 result = enumValue_quality;
                 break;
-            case SoXFilterBandwidthUnit::slope:
+            case FilterBandwidthUnit::slope:
                 result = enumValue_slope;
                 break;
-            case SoXFilterBandwidthUnit::butterworth:
+            case FilterBandwidthUnit::butterworth:
                 result = enumValue_butterworth;
                 break;
         }
@@ -405,11 +402,11 @@ namespace SoXPlugins::Effects::SoXFilter {
             new _EffectDescriptor_FLTR{
                 filterKind_biquad,              // kind
                 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,   // coefficients
-                {2, true, _biquadFilterOrder},  // sampleQueueMatrix
+                {2, true, _biquadFilterOrder},  // sampleRingBufferVector
                 {_biquadFilterOrder},           // filter
                 1000.0,                         // frequency
                 1.5,                            // bandwidth
-                SoXFilterBandwidthUnit::slope,  // bandwidthUnit
+                FilterBandwidthUnit::slope,     // bandwidthUnit
                 0.0,                            // dBGain
                 0.0,                            // equGain
                 false,                          // usesUnpitchedAudioMode
@@ -453,19 +450,19 @@ namespace SoXPlugins::Effects::SoXFilter {
                 for (Natural i = 0;  i < _biquadFilterOrder;  i++) {
                     const String parameterName = prefix + TOSTRING(i);
                     parameterMap.setKindAndValueReal(parameterName,
-                                                     -10, 10, 1e-6, 0.0);
+                                                     -10.0, 10.0, 1e-6, 0.0);
                 }
             }
         }
 
         if (widgetCodeList.contains(paramFlag_poleCount)) {
             parameterMap.setKindAndValueReal(parameterName_poleCount,
-                                             1, 2, 1, 1);
+                                             1.0, 2.0, 1.0, 1.0);
         }
 
         if (widgetCodeList.contains(paramFlag_dBGain)) {
             parameterMap.setKindAndValueReal(parameterName_dBGain,
-                                             -25, 25, 0.01, 0);
+                                             -25.0, 25.0, 0.01, 0.0);
         }
 
         if (widgetCodeList.contains(paramFlag_unpitchedMode)) {
@@ -480,7 +477,7 @@ namespace SoXPlugins::Effects::SoXFilter {
 
         if (widgetCodeList.contains(paramFlag_frequency)) {
             parameterMap.setKindAndValueReal(parameterName_frequency,
-                                             10, 20000, 0.01, 1000);
+                                             10.0, 20000.0, 0.01, 1000.0);
         }
 
         if (widgetCodeList.contains(paramFlag_bandwidth)) {
@@ -497,7 +494,7 @@ namespace SoXPlugins::Effects::SoXFilter {
             }
 
             parameterMap.setKindAndValueReal(parameterName_bandwidth,
-                                             0.001, 20000, 0.001, 1.0);
+                                             0.001, 20000.0, 0.001, 1.0);
             parameterMap.setKindAndValueEnum(parameterName_bandwidthUnit,
                                              enumerationValueList,
                                              enumValue_quality);
@@ -505,7 +502,7 @@ namespace SoXPlugins::Effects::SoXFilter {
 
         if (widgetCodeList.contains(paramFlag_equGain)) {
             parameterMap.setKindAndValueReal(parameterName_equGain,
-                                             -25, 25, 0.01, 0);
+                                             -25.0, 25.0, 0.01, 0.0);
         }
     }
 
@@ -535,20 +532,20 @@ namespace SoXPlugins::Effects::SoXFilter {
      * @param[in] value  string representation of bandwidth unit
      * @return  associated bandwidth unit
      */
-    static SoXFilterBandwidthUnit _toBWUnit (IN String& value)
+    static FilterBandwidthUnit _toBWUnit (IN String& value)
     {
-        SoXFilterBandwidthUnit result;
+        FilterBandwidthUnit result;
 
         if (value == enumValue_frequency) {
-            result = SoXFilterBandwidthUnit::frequency;
+            result = FilterBandwidthUnit::frequency;
         } else if (value == enumValue_octave) {
-            result = SoXFilterBandwidthUnit::octaves;
+            result = FilterBandwidthUnit::octaves;
         } else if (value == enumValue_quality) {
-            result = SoXFilterBandwidthUnit::quality;
+            result = FilterBandwidthUnit::quality;
         } else if (value == enumValue_slope) {
-            result = SoXFilterBandwidthUnit::slope;
+            result = FilterBandwidthUnit::slope;
         } else {
-            result = SoXFilterBandwidthUnit::butterworth;
+            result = FilterBandwidthUnit::butterworth;
         }
 
         return result;
@@ -592,10 +589,16 @@ namespace SoXPlugins::Effects::SoXFilter {
             a1 = effectDescriptor->a1;
             a2 = effectDescriptor->a2;
         } else {
+            const Real zero{0.0};
+            const Real one{1.0};
+            const Real two{2.0};
+            const Real four{4.0};
+            const Real ten{10.0};
+
             const String kind    = effectDescriptor->kind;
             const Real frequency = effectDescriptor->frequency;
             const Real bandwidth = effectDescriptor->bandwidth;
-            const SoXFilterBandwidthUnit bandwidthUnit =
+            const FilterBandwidthUnit bandwidthUnit =
                 effectDescriptor->bandwidthUnit;
 
             const Real w0 = Real::twoPi * frequency / sampleRate;
@@ -607,108 +610,111 @@ namespace SoXPlugins::Effects::SoXFilter {
                                                   frequency,
                                                   effectDescriptor->dBGain);
             const Real a =
-                SoXAudioHelper::dBToLinear(effectDescriptor->dBGain, 40);
+                SoXAudioHelper::dBToLinear(effectDescriptor->dBGain, 40.0);
 
             if (kind == filterKind_allpass) {
-                b0 =  Real{1} - alpha;
-                b1 = -Real{2} * cw0;
-                b2 =  Real{1} + alpha;
+                b0 =  one - alpha;
+                b1 = -two * cw0;
+                b2 =  one + alpha;
                 a0 =  b2;
                 a1 =  b1;
                 a2 =  b0;
             } else if (kind == filterKind_band) {
                 const Real bandwidthAsFrequency =
-                         (bandwidthUnit == SoXFilterBandwidthUnit::quality
+                         (bandwidthUnit == FilterBandwidthUnit::quality
                           ? frequency / bandwidth
-                          : (bandwidthUnit == SoXFilterBandwidthUnit::octaves
-                             ? Real{(frequency * Real::power(2.0, bandwidth - 1)
-                                     * Real::power(2.0, -bandwidth / 2))}
+                          : (bandwidthUnit == FilterBandwidthUnit::octaves
+                             ? Real{(frequency * two.power(bandwidth - one)
+                                     * two.power(-bandwidth / two))}
                              : bandwidth));
                 a2 = (-Real::twoPi * bandwidthAsFrequency / sampleRate).exp();
-                a1 = -Real{4} * a2 / (Real{1} + a2) * cw0;
-                a0 = 1;
-                b2 = 0;
-                b1 = 0;
-                b0 = Real::sqrt(Real{1} - a1.sqr()
-                                / (Real{4} * a2)) * (Real{1} - a2);
+                a1 = -four * a2 / (one + a2) * cw0;
+                a0 = one;
+                b2 = zero;
+                b1 = zero;
+                b0 = Real::sqrt(one - a1.sqr()
+                                / (four * a2)) * (one - a2);
 
                 if (effectDescriptor->usesUnpitchedAudioMode) {
                     const Real factor =
-                        Real::sqrt(((Real{1} + a2).sqr() - a1.sqr())
-                                   * (Real{1} - a2) / (Real{1} + a2))
+                        Real::sqrt(((one + a2).sqr() - a1.sqr())
+                                   * (one - a2) / (one + a2))
                         / b0;
                     b0 *= factor;
                 }
             } else if (kind == filterKind_bandpass
                        || kind == filterKind_bandreject) {
                 if (kind == filterKind_bandreject) {
-                    b0 =  1;
-                    b1 = -cw0 * 2;
-                    b2 =  1;
+                    b0 =  one;
+                    b1 = -cw0 * two;
+                    b2 =  one;
                 } else {
                     b0 =  (effectDescriptor->usesConstantSkirtGain
-                           ? sw0 / 2 : alpha);
-                    b1 =  0;
+                           ? sw0 / two : alpha);
+                    b1 =  zero;
                     b2 = -b0;
                 }
 
-                a0 =  alpha + 1;
-                a1 = -cw0 * 2;
-                a2 = -alpha + 1;
+                a0 =  alpha + one;
+                a1 = -cw0 * two;
+                a2 = -alpha + one;
             } else if (kind == filterKind_bass || kind == filterKind_treble) {
-                const Real f = (kind == filterKind_bass ? 1 : -1);
-                const Real sqrtAlphaA = Real{2} * Real::sqrt(a) * alpha;
-                b0 =          a * ( (a+1) - f * (a-1) * cw0 + sqrtAlphaA );
-                b1 =  f * 2 * a * ( (a-1) - f * (a+1) * cw0              );
-                b2 =          a * ( (a+1) - f * (a-1) * cw0 - sqrtAlphaA );
-                a0 =                (a+1) + f * (a-1) * cw0 + sqrtAlphaA;
-                a1 = -f * 2 *     ( (a-1) + f * (a+1) * cw0              );
-                a2 =                (a+1) + f * (a-1) * cw0 - sqrtAlphaA;
+                const Real f = (kind == filterKind_bass ? one : -one);
+                const Real sqrtAlphaA = two * Real::sqrt(a) * alpha;
+                const Real aP1 = a + one;
+                const Real aM1 = a - one;
+                const Real twoF = two * f;
+                b0 =         a * ( (aP1) - f * (aM1) * cw0 + sqrtAlphaA );
+                b1 =  twoF * a * ( (aM1) - f * (aP1) * cw0              );
+                b2 =         a * ( (aP1) - f * (aM1) * cw0 - sqrtAlphaA );
+                a0 =               (aP1) + f * (aM1) * cw0 + sqrtAlphaA;
+                a1 = -twoF *     ( (aM1) + f * (aP1) * cw0              );
+                a2 =               (aP1) + f * (aM1) * cw0 - sqrtAlphaA;
             } else if (kind == filterKind_equalizer) {
                 const Real filterGain =
-                    Real::power(10, (double) effectDescriptor->equGain / 40);
-                b0  = Real{1} + alpha * filterGain;
-                b1  = -Real{2} * cw0;
-                b2  = Real{1} - alpha * filterGain;
-                a0 = Real{1} + alpha / filterGain;
+                    ten.power(effectDescriptor->equGain / 40.0);
+                b0  = one + alpha * filterGain;
+                b1  = -two * cw0;
+                b2  = one - alpha * filterGain;
+                a0 = one + alpha / filterGain;
                 a1 = b1;
-                a2 = Real{1} - alpha / filterGain;
+                a2 = one - alpha / filterGain;
             } else if (kind == filterKind_highpass
                        || kind == filterKind_lowpass) {
                 Real factorA, factorB, factorC;
 
                 if (effectDescriptor->isSinglePole) {
                     if (kind == filterKind_highpass) {
-                        factorA = -1;
+                        factorA = -one;
                         factorB = 0.5;
-                        factorC = -1;
+                        factorC = -one;
                     } else {
-                        factorA = 1;
-                        factorB = 1;
-                        factorC = 0;
+                        factorA = one;
+                        factorB = one;
+                        factorC = zero;
                     }
 
-                    a0 = 1;
+                    a0 = one;
                     a1 = -Real::exp(-w0);
-                    a2 = 0;
-                    b0  = (Real{1} + factorA * a1) * factorB;
+                    a2 = zero;
+                    b0  = (one + factorA * a1) * factorB;
                     b1  = factorC * b0;
-                    b2  = 0;
+                    b2  = zero;
                 } else {
                     if (kind == filterKind_highpass) {
-                        factorA = (Real{1} + cw0);
-                        factorB = -1;
+                        factorA = (one + cw0);
+                        factorB = -one;
                     } else {
-                        factorA = (Real{1} - cw0);
-                        factorB = 1;
+                        factorA = (one - cw0);
+                        factorB = one;
                     }
 
-                    b0  = factorA / 2.0;
+                    b0  = factorA / two;
                     b1  = factorB * factorA;
                     b2  = b0;
-                    a0 = Real{1} + alpha;
-                    a1 = -Real{2} * cw0;
-                    a2 = Real{1} - alpha;
+                    a0 = one + alpha;
+                    a1 = -two * cw0;
+                    a2 = one - alpha;
                 }
             }
 
@@ -778,8 +784,8 @@ String SoXFilter_AudioEffect::_effectDescriptorToString () const
     st += ", a1 = " + TOSTRING(effectDescriptor->a1);
     st += ", a2 = " + TOSTRING(effectDescriptor->a2);
     st += ", filter = " + effectDescriptor->filter.toString();
-    st += (", sampleQueueMatrix = "
-           + effectDescriptor->sampleQueueMatrix.toString());
+    st += (", sampleRingBufferVector = "
+           + effectDescriptor->sampleRingBufferVector.toString());
     st += ")";
 
     return st;
@@ -799,9 +805,10 @@ String SoXFilter_AudioEffect::name() const
 /*--------------------*/
 
 SoXAudioValueChangeKind
-SoXFilter_AudioEffect::_setValueInternal (IN String& parameterName,
-                                          IN String& value,
-                                          IN bool recalculationIsSuppressed)
+SoXFilter_AudioEffect::_setValueInternal
+                           (IN String& parameterName,
+                            IN String& value,
+                            IN Boolean recalculationIsSuppressed)
 {
     _EffectDescriptor_FLTR* effectDescriptor =
         static_cast<_EffectDescriptor_FLTR*>(_effectDescriptor);
@@ -879,33 +886,33 @@ void SoXFilter_AudioEffect::prepareToPlay (IN Real sampleRate)
 
 void
 SoXFilter_AudioEffect::processBlock (IN Real timePosition,
-                                     INOUT SoXAudioSampleListVector& buffer)
+                                     INOUT AudioSampleListVector& buffer)
 {
     SoXAudioEffect::processBlock(timePosition, buffer);
 
     _EffectDescriptor_FLTR* effectDescriptor =
         static_cast<_EffectDescriptor_FLTR*>(_effectDescriptor);
     const Natural sampleCount = buffer[0].size();
-     SoXIIRFilter& filter{effectDescriptor->filter};
-    SoXAudioSampleQueueMatrix& sampleQueueMatrix =
-        effectDescriptor->sampleQueueMatrix;
+    IIRFilter& filter{effectDescriptor->filter};
+    AudioSampleRingBufferVector& sampleRingBufferVector =
+        effectDescriptor->sampleRingBufferVector;
 
     for (Natural channel = 0;  channel < _channelCount;
          channel++) {
-        SoXAudioSampleQueue& inputSampleQueue{sampleQueueMatrix
-                                                .at(channel, 0)};
-        SoXAudioSampleQueue& outputSampleQueue{sampleQueueMatrix
-                                                 .at(channel, 1)};
-        const SoXAudioSampleList& inputList = buffer[channel];
-        SoXAudioSampleList& outputList = buffer[channel];
+        AudioSampleRingBuffer& inputSampleRingBuffer =
+            sampleRingBufferVector.at(channel, 0);
+        AudioSampleRingBuffer& outputSampleRingBuffer =
+            sampleRingBufferVector.at(channel, 1);
+        const AudioSampleList& inputList = buffer[channel];
+        AudioSampleList& outputList = buffer[channel];
 
         for (Natural i = 0;  i < sampleCount;  i++) {
-            const SoXAudioSample inputSample = inputList[i];
-            SoXAudioSample& outputSample     = outputList[i];
-            inputSampleQueue.shiftRight(inputSample);
-            outputSampleQueue.shiftRight(0.0);
-            filter.apply(inputSampleQueue, outputSampleQueue);
-            outputSample = outputSampleQueue.first();
+            const AudioSample inputSample = inputList[i];
+            AudioSample& outputSample     = outputList[i];
+            inputSampleRingBuffer.shiftRight(inputSample);
+            outputSampleRingBuffer.shiftRight(0.0);
+            filter.apply(inputSampleRingBuffer, outputSampleRingBuffer);
+            outputSample = outputSampleRingBuffer.first();
         }
     }
 }

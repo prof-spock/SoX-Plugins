@@ -8,28 +8,25 @@
  * @date   2021-01
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
-#include "GlobalMacros.h"
 #include "GenericMatrix.h"
-#include "Natural.h"
 #include "Object.h"
 #include "Real.h"
-#include "MyString.h"
-#include "SoXAudioSampleList.h"
-#include "SoXAudioSampleQueue.h"
+#include "AudioSampleRingBuffer.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::BaseTypes::Primitives::Natural;
-using SoXPlugins::BaseTypes::Primitives::Object;
-using SoXPlugins::BaseTypes::Primitives::Real;
-using SoXPlugins::BaseTypes::Primitives::String;
-using SoXPlugins::BaseTypes::Containers::GenericMatrix;
-using SoXPlugins::CommonAudio::SoXAudioSampleList;
-using SoXPlugins::CommonAudio::SoXAudioSampleQueue;
+using Audio::AudioSampleRingBuffer;
+using BaseTypes::Primitives::Object;
+using BaseTypes::Primitives::Real;
+using BaseTypes::Containers::GenericMatrix;
 
 /*====================*/
 
@@ -127,8 +124,8 @@ namespace SoXPlugins::Effects::SoXCompander {
          * @param[out] outputSampleList  the queue of samples for all
          *                               output channels
          */
-        void apply (IN SoXAudioSampleList& inputSampleList,
-                    OUT SoXAudioSampleList& outputSampleList);
+        void apply (IN AudioSampleList& inputSampleList,
+                    OUT AudioSampleList& outputSampleList);
 
         /*--------------------*/
         /*--------------------*/
@@ -150,13 +147,15 @@ namespace SoXPlugins::Effects::SoXCompander {
              * compander */
             Object _companderBandList;
 
-            /** the matrix of sample queues shared between the bands
+            /**
+             * the vector of sample ring buffers shared between the
+             * bands
              *
-             * each channel contains (2 * bandCount + 1) sample queues
-             * where each band covers a window of three entries
-             * overlapping in one entry
+             * each channel contains (2 * bandCount + 1) sample ring
+             * buffers where each band covers a window of three
+             * entries overlapping in one entry
              */
-            GenericMatrix<SoXAudioSampleQueue> _sampleQueueMatrix;
+            GenericMatrix<AudioSampleRingBuffer> _sampleRingBufferVector;
 
     };
 

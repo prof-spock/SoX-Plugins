@@ -8,22 +8,24 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <initializer_list>
 #include "GenericSequence.h"
-#include "Natural.h"
 
-/*====================*/
+/*--------------------*/
 
 using std::initializer_list;
-using SoXPlugins::BaseTypes::Primitives::Natural;
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Containers {
+namespace BaseTypes::Containers {
 
     /**
      * A <C>NaturalList</C> object is a sequence of non-negative

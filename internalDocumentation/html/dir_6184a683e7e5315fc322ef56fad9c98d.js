@@ -6,6 +6,8 @@ var dir_6184a683e7e5315fc322ef56fad9c98d =
       [ "SoXPhaserAndTremolo_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect" ]
     ] ],
     [ "SoXPhaserAndTremolo_AudioProcessor.cpp", "_so_x_phaser_and_tremolo___audio_processor_8cpp.html", "_so_x_phaser_and_tremolo___audio_processor_8cpp" ],
+    [ "SoXPlugin-Standalone.cpp", "_so_x_phaser_and_tremolo_2_so_x_plugin-_standalone_8cpp.html", null ],
     [ "SoXPlugin-util.cpp", "_so_x_phaser_and_tremolo_2_so_x_plugin-util_8cpp.html", null ],
-    [ "SoXPlugin-VST_1.cpp", "_so_x_phaser_and_tremolo_2_so_x_plugin-_v_s_t__1_8cpp.html", null ]
+    [ "SoxPlugin-VST_1.cpp", "_so_x_phaser_and_tremolo_2_sox_plugin-_v_s_t__1_8cpp.html", null ],
+    [ "SoXPlugin-VST_2.cpp", "_so_x_phaser_and_tremolo_2_so_x_plugin-_v_s_t__2_8cpp.html", null ]
 ];

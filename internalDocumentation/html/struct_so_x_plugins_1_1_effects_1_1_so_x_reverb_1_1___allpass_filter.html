@@ -91,45 +91,45 @@ $(document).ready(function(){initNavTree('struct_so_x_plugins_1_1_effects_1_1_so
 </div><!--header-->
 <div class="contents">
 
-<p>An <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html" title="An _AllpassFilter object is a simple allpass filter with an associated sample queue as a delay line.">_AllpassFilter</a></code> object is a simple allpass filter with an associated sample queue as a delay line.  
+<p>An <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html" title="An _AllpassFilter object is a simple allpass filter with an associated sample ring buffer as a delay ...">_AllpassFilter</a></code> object is a simple allpass filter with an associated sample ring buffer as a delay line.  
  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1206ef100577938a1a81ee943a1b02bd"><td class="memItemLeft" align="right" valign="top"><a id="a1206ef100577938a1a81ee943a1b02bd"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#a1206ef100577938a1a81ee943a1b02bd">_AllpassFilter</a> ()</td></tr>
-<tr class="memdesc:a1206ef100577938a1a81ee943a1b02bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes allpass filter with embedded sample queue. <br /></td></tr>
+<tr class="memdesc:a1206ef100577938a1a81ee943a1b02bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes allpass filter with embedded sample ring buffer. <br /></td></tr>
 <tr class="separator:a1206ef100577938a1a81ee943a1b02bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0f50939421e22032e7f33db95f313e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#af0f50939421e22032e7f33db95f313e6">queueLength</a> () const</td></tr>
-<tr class="memdesc:af0f50939421e22032e7f33db95f313e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets length of sample queue in filter.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#af0f50939421e22032e7f33db95f313e6">More...</a><br /></td></tr>
-<tr class="separator:af0f50939421e22032e7f33db95f313e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add782ea44187a3b90362ed7f085e536f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#add782ea44187a3b90362ed7f085e536f">setQueueLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_natural.html">Natural</a> length)</td></tr>
-<tr class="memdesc:add782ea44187a3b90362ed7f085e536f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets length of sample queue in filter to <code>length</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#add782ea44187a3b90362ed7f085e536f">More...</a><br /></td></tr>
-<tr class="separator:add782ea44187a3b90362ed7f085e536f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac19a12e4c6d5c80799173a57f5023350"><td class="memItemLeft" align="right" valign="top">SoXAudioSample&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#ac19a12e4c6d5c80799173a57f5023350">apply</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> SoXAudioSample inputSample)</td></tr>
-<tr class="memdesc:ac19a12e4c6d5c80799173a57f5023350"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies allpass filter to single <code>inputSample</code> and returns resulting sample.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#ac19a12e4c6d5c80799173a57f5023350">More...</a><br /></td></tr>
-<tr class="separator:ac19a12e4c6d5c80799173a57f5023350"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a583b8c533b613667baab5c30bc047b20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#a583b8c533b613667baab5c30bc047b20">ringBufferLength</a> () const</td></tr>
+<tr class="memdesc:a583b8c533b613667baab5c30bc047b20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets length of sample ring buffer in filter.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#a583b8c533b613667baab5c30bc047b20">More...</a><br /></td></tr>
+<tr class="separator:a583b8c533b613667baab5c30bc047b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7cccd8ac06caa63bb399a9b02e8e8f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#aa7cccd8ac06caa63bb399a9b02e8e8f3">setRingBufferLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> length)</td></tr>
+<tr class="memdesc:aa7cccd8ac06caa63bb399a9b02e8e8f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets length of sample ring buffer in filter to <code>length</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#aa7cccd8ac06caa63bb399a9b02e8e8f3">More...</a><br /></td></tr>
+<tr class="separator:aa7cccd8ac06caa63bb399a9b02e8e8f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0f7278bf7709b35327b1d7223411826"><td class="memItemLeft" align="right" valign="top">AudioSample&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#ad0f7278bf7709b35327b1d7223411826">apply</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> AudioSample inputSample)</td></tr>
+<tr class="memdesc:ad0f7278bf7709b35327b1d7223411826"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies allpass filter to single <code>inputSample</code> and returns resulting sample.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#ad0f7278bf7709b35327b1d7223411826">More...</a><br /></td></tr>
+<tr class="separator:ad0f7278bf7709b35327b1d7223411826"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a6e3ec108c011b53758576f0521f60610"><td class="memItemLeft" align="right" valign="top"><a id="a6e3ec108c011b53758576f0521f60610"></a>
-<a class="el" href="struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue.html">SoXAudioSampleQueue</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#a6e3ec108c011b53758576f0521f60610">_sampleQueue</a></td></tr>
-<tr class="memdesc:a6e3ec108c011b53758576f0521f60610"><td class="mdescLeft">&#160;</td><td class="mdescRight">internal sample queue of allpass <br /></td></tr>
-<tr class="separator:a6e3ec108c011b53758576f0521f60610"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae91eb4aed481e1d18107c27f59a76470"><td class="memItemLeft" align="right" valign="top"><a id="ae91eb4aed481e1d18107c27f59a76470"></a>
+<a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html">AudioSampleRingBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#ae91eb4aed481e1d18107c27f59a76470">_sampleRingBuffer</a></td></tr>
+<tr class="memdesc:ae91eb4aed481e1d18107c27f59a76470"><td class="mdescLeft">&#160;</td><td class="mdescRight">internal sample ring buffer of allpass <br /></td></tr>
+<tr class="separator:ae91eb4aed481e1d18107c27f59a76470"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>An <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html" title="An _AllpassFilter object is a simple allpass filter with an associated sample queue as a delay line.">_AllpassFilter</a></code> object is a simple allpass filter with an associated sample queue as a delay line. </p>
+<div class="textblock"><p>An <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html" title="An _AllpassFilter object is a simple allpass filter with an associated sample ring buffer as a delay ...">_AllpassFilter</a></code> object is a simple allpass filter with an associated sample ring buffer as a delay line. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac19a12e4c6d5c80799173a57f5023350"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac19a12e4c6d5c80799173a57f5023350">&#9670;&nbsp;</a></span>apply()</h2>
+<a id="ad0f7278bf7709b35327b1d7223411826"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0f7278bf7709b35327b1d7223411826">&#9670;&nbsp;</a></span>apply()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SoXAudioSample SoXPlugins::Effects::SoXReverb::_AllpassFilter::apply </td>
+          <td class="memname">AudioSample SoXPlugins::Effects::SoXReverb::_AllpassFilter::apply </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> SoXAudioSample&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> AudioSample&#160;</td>
           <td class="paramname"><em>inputSample</em></td><td>)</td>
           <td></td>
         </tr>
@@ -147,14 +147,14 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af0f50939421e22032e7f33db95f313e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0f50939421e22032e7f33db95f313e6">&#9670;&nbsp;</a></span>queueLength()</h2>
+<a id="a583b8c533b613667baab5c30bc047b20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a583b8c533b613667baab5c30bc047b20">&#9670;&nbsp;</a></span>ringBufferLength()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_natural.html">Natural</a> SoXPlugins::Effects::SoXReverb::_AllpassFilter::queueLength </td>
+          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> SoXPlugins::Effects::SoXReverb::_AllpassFilter::ringBufferLength </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -162,31 +162,31 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gets length of sample queue in filter. </p>
-<dl class="section return"><dt>Returns</dt><dd>length of sample queue </dd></dl>
+<p>Gets length of sample ring buffer in filter. </p>
+<dl class="section return"><dt>Returns</dt><dd>length of sample ring buffer </dd></dl>
 
 </div>
 </div>
-<a id="add782ea44187a3b90362ed7f085e536f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add782ea44187a3b90362ed7f085e536f">&#9670;&nbsp;</a></span>setQueueLength()</h2>
+<a id="aa7cccd8ac06caa63bb399a9b02e8e8f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7cccd8ac06caa63bb399a9b02e8e8f3">&#9670;&nbsp;</a></span>setRingBufferLength()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void SoXPlugins::Effects::SoXReverb::_AllpassFilter::setQueueLength </td>
+          <td class="memname">void SoXPlugins::Effects::SoXReverb::_AllpassFilter::setRingBufferLength </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td>
           <td class="paramname"><em>length</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets length of sample queue in filter to <code>length</code>. </p>
+<p>Sets length of sample ring buffer in filter to <code>length</code>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>new length of sample queue </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>new length of sample ring buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -194,7 +194,7 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>C:/Users/Thomas/Documents/Visual_Studio/Projects/SoXPlugins/src/Effects/SoXReverb/<a class="el" href="_so_x_reverb_support_8cpp.html">SoXReverbSupport.cpp</a></li>
+<li>C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXReverb/<a class="el" href="_so_x_reverb_support_8cpp.html">SoXReverbSupport.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

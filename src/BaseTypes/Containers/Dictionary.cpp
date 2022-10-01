@@ -7,21 +7,16 @@
  * @date   2020-08
  */
 
-/*====================*/
-
-#include "Dictionary.h"
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include "Assertion.h"
-#include "StringUtil.h"
+#include "Dictionary.h"
 
-/*====================*/
+/*--------------------*/
 
-using std::pair;
-using SoXPlugins::BaseTypes::Containers::Dictionary;
-
-namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
-using StringUtil::stringMapToStringExplicit;
-using StringUtil::toPrintableString;
+using BaseTypes::Containers::Dictionary;
 
 /*====================*/
 
@@ -37,7 +32,7 @@ Dictionary Dictionary::makeFromList (IN StringList& list)
     Dictionary result;
 
     Assertion_pre(list.size() % 2 == 0, "list must have even length");
-    bool isKey = true;
+    Boolean isKey = true;
     String key;
 
     for (const String& st : list) {
@@ -53,7 +48,6 @@ Dictionary Dictionary::makeFromList (IN StringList& list)
     return result;
 }
 
-
 /*--------------------*/
 
 Dictionary::~Dictionary ()
@@ -64,9 +58,43 @@ Dictionary::~Dictionary ()
 
 String Dictionary::toString () const
 {
-    return stringMapToStringExplicit<Dictionary,
-                                     String,
-                                     toPrintableString>("Dictionary", *this);
+    return StringUtil
+           ::stringMapToStringExplicit<Dictionary,
+                                       String,
+                                       StringUtil::toPrintableString>("Dictionary", *this);
+}
+
+/*--------------------*/
+
+Dictionary Dictionary::makeFromString (IN String& st,
+                                       IN String& entrySeparator,
+                                       IN String& keyValueSeparator)
+{
+    Dictionary result;
+
+    /* remove leading and trailing white space from separators to also
+       allow omitted blanks in st */
+    const String eSeparator = StringUtil::strip(entrySeparator);
+    const String kvSeparator = StringUtil::strip(keyValueSeparator);
+
+    const StringList list = StringList::makeBySplit(st, eSeparator);
+
+    for (const String& dictionaryEntryString : list) {
+        String key;
+        String value;
+        Boolean isOkay = StringUtil::splitAt(dictionaryEntryString, 
+                                             kvSeparator, key, value);
+
+        if (isOkay) {
+            key   =
+                StringUtil::fromPrintableString(StringUtil::strip(key));
+            value =
+                StringUtil::fromPrintableString(StringUtil::strip(value));
+            result[key] = value;
+        }
+    }
+
+    return result;
 }
 
 /*--------------------*/
@@ -79,7 +107,14 @@ String Dictionary::atWithDefault (IN String& key,
 
 /*--------------------*/
 
-bool Dictionary::contains (IN String& key) const
+Boolean Dictionary::contains (IN String& key) const
 {
     return (find(key) != end());
+}
+
+/*--------------------*/
+
+void Dictionary::set (IN String& key, IN String& value)
+{
+    insert_or_assign(key,  value);
 }

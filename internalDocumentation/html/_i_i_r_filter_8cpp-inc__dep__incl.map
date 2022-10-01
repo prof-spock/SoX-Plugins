@@ -1,0 +1,7 @@
+<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Audio/IIRFilter.cpp&#45;inc" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Audio/IIRFilter.cpp&#45;inc">
+<area shape="rect" id="node1" title="The IIRFilter body implements an infinite impulse response filter (this is the effective code include..." alt="" coords="288,5,487,81"/>
+<area shape="rect" id="node2" href="$_i_i_r_filter_8h.html" title="The IIRFilter specification defines an infinite impulse response filter." alt="" coords="288,129,487,205"/>
+<area shape="rect" id="node3" href="$_i_i_r_filter_8cpp.html" title="The IIRFilter body implements an infinite impulse response filter (this is the formal CPP file used w..." alt="" coords="5,253,204,329"/>
+<area shape="rect" id="node4" href="$_so_x_compander_support_8cpp.html" title="The SoXCompanderSupport body implements several internal compander classes for the compander algorith..." alt="" coords="229,253,546,329"/>
+<area shape="rect" id="node5" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="570,253,829,329"/>
+</map>

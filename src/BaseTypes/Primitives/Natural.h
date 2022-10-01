@@ -7,19 +7,21 @@
  * @date   2020-08
  */
 
-#pragma once
-
 /*====================*/
 
-#include <cmath>
+#pragma once
 
-#include "GlobalMacros.h"
+/*=========*/
+/* IMPORTS */
+/*=========*/
+
+#include <cmath>
 #include "GenericNumber.h"
 #include "MyString.h"
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Primitives {
+namespace BaseTypes::Primitives {
 
     /**
      * An <C>Natural</C> object wraps a value of the associated
@@ -90,6 +92,18 @@ namespace SoXPlugins::BaseTypes::Primitives {
          *
          * @return current value as a floating point value
          */
+        explicit operator float () const
+        {
+            return (float) _value;
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns the current value as a floating point value.
+         *
+         * @return current value as a floating point value
+         */
         explicit operator double () const
         {
             return (double) _value;
@@ -114,9 +128,11 @@ namespace SoXPlugins::BaseTypes::Primitives {
         /**
          * Returns the modulus of current value and <C>other</C>.
          *
+         * @param[in] other  other natural value to be used as
+         *                   divisor
          * @return  modulus of current and <C>other</C>.
          */
-        Natural operator % (IN Natural other)
+        Natural operator % (IN Natural other) const
         {
             return Natural{_value % other._value};
         }
@@ -142,7 +158,7 @@ namespace SoXPlugins::BaseTypes::Primitives {
          */
         Natural operator ++ ()
         {
-            return Natural{--_value};
+            return Natural{++_value};
         }
 
         /*--------------------*/
@@ -249,6 +265,7 @@ namespace SoXPlugins::BaseTypes::Primitives {
          * Returns string representation of natural <C>n</C> with
          * default precision and padding information.
          *
+         * @param[in] n  natural value to be converted to a string
          * @return  string representation
          */
         static String toString (IN Natural& n)

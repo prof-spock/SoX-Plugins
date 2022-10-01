@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['timestamp_1131',['Timestamp',['../_logging_support_8cpp.html#a68af595a6a2728c5427f71992f11a0bd',1,'LoggingSupport.cpp']]]
+  ['filepointer_1297',['FilePointer',['../_file_8cpp.html#aa99fc14e9abd46ef7ab808983ee4a876',1,'File.cpp']]]
 ];

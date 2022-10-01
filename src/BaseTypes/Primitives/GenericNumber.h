@@ -16,16 +16,22 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <limits>
-#include "GlobalMacros.h"
+#include "Boolean.h"
+
+using BaseTypes::Primitives::Boolean;
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Primitives {
+namespace BaseTypes::Primitives {
 
     /**
      * A <C>GenericNumber</C> is a generic number type that defines a
@@ -123,6 +129,32 @@ namespace SoXPlugins::BaseTypes::Primitives {
             return Type{_value / other._value};
         }
 
+        /*--------------------*/
+
+        /**
+         * Returns bitwise-and of current value and <C>other</C>.
+         *
+         * @param[in] other   value to be combined with
+         * @return  bitwise-and of current value and other
+         */
+        Type operator & (IN Type other) const
+        {
+            return Type{_value & other._value};
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns bitwise-or of current value and <C>other</C>.
+         *
+         * @param[in] other   value to be combined with
+         * @return  bitwise-or of current value and other
+         */
+        Type operator | (IN Type other) const
+        {
+            return Type{_value | other._value};
+        }
+
         /*----------------------*/
         /* assignment operators */
         /*----------------------*/
@@ -185,8 +217,9 @@ namespace SoXPlugins::BaseTypes::Primitives {
          * Checks whether current value and <C>other</C> are equal.
          *
          * @param[in] other   value to be compared
+         * @result  returns equality of <C>this</C> and <C>other</C>
          */
-        bool operator == (IN Type other) const
+        Boolean operator == (IN Type other) const
         {
             return (_value == other._value);
         }
@@ -197,8 +230,9 @@ namespace SoXPlugins::BaseTypes::Primitives {
          * Checks whether current value and <C>other</C> are not equal.
          *
          * @param[in] other   value to be compared
+         * @result  returns inequality of <C>this</C> and <C>other</C>
          */
-        bool operator != (IN Type other) const
+        Boolean operator != (IN Type other) const
         {
             return (_value != other._value);
         }
@@ -209,8 +243,10 @@ namespace SoXPlugins::BaseTypes::Primitives {
          * Checks whether current value is less than <C>other</C>.
          *
          * @param[in] other   value to be compared
+         * @result  returns information whether <C>this</C> is less
+         *          than <C>other</C>
          */
-        bool operator < (IN Type other) const
+        Boolean operator < (IN Type other) const
         {
             return (_value < other._value);
         }
@@ -222,8 +258,10 @@ namespace SoXPlugins::BaseTypes::Primitives {
          * <C>other</C>.
          *
          * @param[in] other   value to be compared
+         * @result  returns information whether <C>this</C> is not
+         *          greater than <C>other</C>
          */
-        bool operator <= (IN Type other) const
+        Boolean operator <= (IN Type other) const
         {
             return (_value <= other._value);
         }
@@ -234,8 +272,10 @@ namespace SoXPlugins::BaseTypes::Primitives {
          * Checks whether current value is greater than <C>other</C>.
          *
          * @param[in] other   value to be compared
+         * @result  returns information whether <C>this</C> is greater
+         *          than <C>other</C>
          */
-        bool operator > (IN Type other) const
+        Boolean operator > (IN Type other) const
         {
             return (_value > other._value);
         }
@@ -247,8 +287,10 @@ namespace SoXPlugins::BaseTypes::Primitives {
          * <C>other</C>.
          *
          * @param[in] other   value to be compared
+         * @result  returns information whether <C>this</C> is not
+         *          less than <C>other</C>
          */
-        bool operator >= (IN Type other) const
+        Boolean operator >= (IN Type other) const
         {
             return (_value >= other._value);
         }

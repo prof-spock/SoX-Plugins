@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['pagechange_1138',['pageChange',['../namespace_so_x_plugins_1_1_common_audio.html#a1fb0f1efa0fe27a0b4f4fe91f1cd60d3a2c581a6ab7d343813e8926b1db2dabba',1,'SoXPlugins::CommonAudio']]],
-  ['pagecountchange_1139',['pageCountChange',['../namespace_so_x_plugins_1_1_common_audio.html#a1fb0f1efa0fe27a0b4f4fe91f1cd60d3a6865c555494c8184927c5f3a80e6cde7',1,'SoXPlugins::CommonAudio']]],
-  ['parameterchange_1140',['parameterChange',['../namespace_so_x_plugins_1_1_common_audio.html#a1fb0f1efa0fe27a0b4f4fe91f1cd60d3ad099a3a097d6349d897c64f783e1239d',1,'SoXPlugins::CommonAudio']]]
+  ['inbufferingmode_1311',['inBufferingMode',['../namespace_base_modules.html#ae1d9048d43db9507aa672f29446e5c14abaa6b6b0cdc2274c1482029e18bafdda',1,'BaseModules']]],
+  ['inlimbo_1312',['inLimbo',['../namespace_base_modules.html#ae1d9048d43db9507aa672f29446e5c14ad3a350a1569ff8298d83b63f49cfc0f7',1,'BaseModules']]],
+  ['inwritethroughmode_1313',['inWriteThroughMode',['../namespace_base_modules.html#ae1d9048d43db9507aa672f29446e5c14aab07994e9728ce3194ae76b92443d974',1,'BaseModules']]],
+  ['isdone_1314',['isDone',['../namespace_base_modules.html#ae1d9048d43db9507aa672f29446e5c14a16f169c333c51345791d66e74f233054',1,'BaseModules']]]
 ];

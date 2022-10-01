@@ -8,22 +8,26 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <initializer_list>
 #include "GenericSequence.h"
 #include "Real.h"
 
-/*====================*/
+/*--------------------*/
 
 using std::initializer_list;
-using SoXPlugins::BaseTypes::Primitives::Real;
+using BaseTypes::Primitives::Real;
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Containers {
+namespace BaseTypes::Containers {
 
     /**
      * A <C>RealList</C> object is a sequence of real values with

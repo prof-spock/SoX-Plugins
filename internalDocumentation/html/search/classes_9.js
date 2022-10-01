@@ -1,29 +1,4 @@
 var searchData=
 [
-  ['soxaudioeditor_620',['SoXAudioEditor',['../struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html',1,'SoXPlugins::ViewAndController']]],
-  ['soxaudioeditorwidget_621',['SoXAudioEditorWidget',['../struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html',1,'SoXPlugins::ViewAndController']]],
-  ['soxaudioeffect_622',['SoXAudioEffect',['../struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_effect.html',1,'SoXPlugins::CommonAudio']]],
-  ['soxaudioparametermap_623',['SoXAudioParameterMap',['../struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_parameter_map.html',1,'SoXPlugins::CommonAudio']]],
-  ['soxaudioprocessor_624',['SoXAudioProcessor',['../struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html',1,'SoXPlugins::ViewAndController']]],
-  ['soxaudiosamplelist_625',['SoXAudioSampleList',['../struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_list.html',1,'SoXPlugins::CommonAudio']]],
-  ['soxaudiosamplelistvector_626',['SoXAudioSampleListVector',['../struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_list_vector.html',1,'SoXPlugins::CommonAudio']]],
-  ['soxaudiosamplequeue_627',['SoXAudioSampleQueue',['../struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue.html',1,'SoXPlugins::CommonAudio']]],
-  ['soxaudiosamplequeuematrix_628',['SoXAudioSampleQueueMatrix',['../struct_so_x_plugins_1_1_common_audio_1_1_so_x_audio_sample_queue_matrix.html',1,'SoXPlugins::CommonAudio']]],
-  ['soxcompander_5faudioeffect_629',['SoXCompander_AudioEffect',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html',1,'SoXPlugins::Effects::SoXCompander']]],
-  ['soxcompander_5faudioprocessor_630',['SoXCompander_AudioProcessor',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_processor.html',1,'SoXPlugins::Effects::SoXCompander']]],
-  ['soxfilter_5faudioeffect_631',['SoXFilter_AudioEffect',['../struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html',1,'SoXPlugins::Effects::SoXFilter']]],
-  ['soxfilter_5faudioprocessor_632',['SoXFilter_AudioProcessor',['../struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_processor.html',1,'SoXPlugins::Effects::SoXFilter']]],
-  ['soxgain_5faudioeffect_633',['SoXGain_AudioEffect',['../struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html',1,'SoXPlugins::Effects::SoXGain']]],
-  ['soxgain_5faudioprocessor_634',['SoXGain_AudioProcessor',['../struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_processor.html',1,'SoXPlugins::Effects::SoXGain']]],
-  ['soxiirfilter_635',['SoXIIRFilter',['../struct_so_x_plugins_1_1_common_audio_1_1_so_x_i_i_r_filter.html',1,'SoXPlugins::CommonAudio']]],
-  ['soxmultibandcompander_636',['SoXMultibandCompander',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html',1,'SoXPlugins::Effects::SoXCompander']]],
-  ['soxoverdrive_5faudioeffect_637',['SoXOverdrive_AudioEffect',['../struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html',1,'SoXPlugins::Effects::SoXOverdrive']]],
-  ['soxoverdrive_5faudioprocessor_638',['SoXOverdrive_AudioProcessor',['../struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor.html',1,'SoXPlugins::Effects::SoXOverdrive']]],
-  ['soxphaserandtremolo_5faudioeffect_639',['SoXPhaserAndTremolo_AudioEffect',['../struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html',1,'SoXPlugins::Effects::SoXPhaserAndTremolo']]],
-  ['soxphaserandtremolo_5faudioprocessor_640',['SoXPhaserAndTremolo_AudioProcessor',['../struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_processor.html',1,'SoXPlugins::Effects::SoXPhaserAndTremolo']]],
-  ['soxreverb_5faudioeffect_641',['SoXReverb_AudioEffect',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html',1,'SoXPlugins::Effects::SoXReverb']]],
-  ['soxreverb_5faudioprocessor_642',['SoXReverb_AudioProcessor',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_processor.html',1,'SoXPlugins::Effects::SoXReverb']]],
-  ['soxwaveform_643',['SoXWaveForm',['../struct_so_x_plugins_1_1_common_audio_1_1_so_x_wave_form.html',1,'SoXPlugins::CommonAudio']]],
-  ['stringlist_644',['StringList',['../struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_string_list.html',1,'SoXPlugins::BaseTypes::Containers']]],
-  ['stringset_645',['StringSet',['../struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_string_set.html',1,'SoXPlugins::BaseTypes::Containers']]]
+  ['logging_726',['Logging',['../struct_base_modules_1_1_logging.html',1,'BaseModules']]]
 ];

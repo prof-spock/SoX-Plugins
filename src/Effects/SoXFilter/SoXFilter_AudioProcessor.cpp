@@ -10,18 +10,16 @@
  * @date   2020-11
  */
 
-/*====================*/
-
-#include "JucePluginDefines.h"
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include "SoXAudioProcessor.h"
 #include "SoXFilter_AudioEffect.h"
 #include "Logging.h"
-#include "MyString.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::BaseTypes::Primitives::String;
 using SoXPlugins::ViewAndController::SoXAudioProcessor;
 
 /*====================*/

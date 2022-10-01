@@ -1,8 +1,8 @@
 var struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter =
 [
     [ "_AllpassFilter", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#a1206ef100577938a1a81ee943a1b02bd", null ],
-    [ "apply", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#ac19a12e4c6d5c80799173a57f5023350", null ],
-    [ "queueLength", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#af0f50939421e22032e7f33db95f313e6", null ],
-    [ "setQueueLength", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#add782ea44187a3b90362ed7f085e536f", null ],
-    [ "_sampleQueue", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#a6e3ec108c011b53758576f0521f60610", null ]
+    [ "apply", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#ad0f7278bf7709b35327b1d7223411826", null ],
+    [ "ringBufferLength", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#a583b8c533b613667baab5c30bc047b20", null ],
+    [ "setRingBufferLength", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#aa7cccd8ac06caa63bb399a9b02e8e8f3", null ],
+    [ "_sampleRingBuffer", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#ae91eb4aed481e1d18107c27f59a76470", null ]
 ];

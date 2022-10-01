@@ -8,26 +8,25 @@
  * @date   2020-06
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include "JuceHeaders.h"
 
-#include "GlobalMacros.h"
-#include "Natural.h"
 #include "Object.h"
 #include "Percentage.h"
-#include "MyString.h"
 #include "SoXAudioParameterMap.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::BaseTypes::Primitives::Natural;
-using SoXPlugins::BaseTypes::Primitives::Object;
-using SoXPlugins::BaseTypes::Primitives::String;
-using SoXPlugins::BaseTypes::Primitives::Percentage;
-using SoXPlugins::CommonAudio::SoXAudioParameterMap;
+using BaseTypes::Primitives::Object;
+using BaseTypes::Primitives::Percentage;
+using SoXPlugins::Helpers::SoXAudioParameterMap;
 
 /*====================*/
 

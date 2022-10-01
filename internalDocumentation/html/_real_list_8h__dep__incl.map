@@ -1,0 +1,12 @@
+<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Containers/RealList.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Containers/RealList.h">
+<area shape="rect" id="node1" title="The RealList specification defines sequences of real values with zero&#45;based arbitrary indexed access ..." alt="" coords="797,5,1034,81"/>
+<area shape="rect" id="node2" href="$_i_i_r_filter_8h.html" title="The IIRFilter specification defines an infinite impulse response filter." alt="" coords="383,137,581,213"/>
+<area shape="rect" id="node4" href="$_so_x_compander_support_8cpp.html" title="The SoXCompanderSupport body implements several internal compander classes for the compander algorith..." alt="" coords="511,277,829,353"/>
+<area shape="rect" id="node6" href="$_wave_form_8h.html" title="The WaveForm specification defines common services for (LFO) wave forms." alt="" coords="816,137,1015,213"/>
+<area shape="rect" id="node9" href="$_real_list_8cpp.html" title="The RealList body implements sequences of real values with zero&#45;based arbitrary indexed access to pos..." alt="" coords="1039,137,1277,213"/>
+<area shape="rect" id="node10" href="$_so_x_compander___audio_effect_8cpp.html" title="The SoXCompander_AudioEffect body implements the SoX compand and mcompand audio effects; a simple com..." alt="" coords="1301,129,1540,221"/>
+<area shape="rect" id="node3" href="$_i_i_r_filter_8cpp.html" title="The IIRFilter body implements an infinite impulse response filter (this is the formal CPP file used w..." alt="" coords="5,277,204,353"/>
+<area shape="rect" id="node5" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="229,277,487,353"/>
+<area shape="rect" id="node7" href="$_wave_form_8cpp.html" title="The WaveForm body implements common services for (LFO) wave forms." alt="" coords="853,277,1052,353"/>
+<area shape="rect" id="node8" href="$_so_x_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXPhaserAndTremolo_AudioEffect body implements the SoX phaser and tremolo modulation effects tha..." alt="" coords="1077,269,1413,361"/>
+</map>

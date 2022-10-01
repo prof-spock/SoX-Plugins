@@ -1,0 +1,44 @@
+/**
+ * @file
+ * The <C>AudioSampleList</C> body implements a simple list of
+ * audio samples <I>(this is the effective code include file for
+ * conditional inlining)</I>.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2020-08
+ */
+
+/*=========*/
+/* IMPORTS */
+/*=========*/
+
+using Audio::AudioSampleList;
+
+/*====================*/
+
+INLINE
+String AudioSampleList::toString () const
+{
+    return _toString("AudioSampleList");
+}
+
+/*--------------------*/
+
+INLINE
+String AudioSampleList::toString (IN AudioSampleList& list)
+{
+    return list.toString();
+}
+
+/*--------------------*/
+
+INLINE
+void AudioSampleList::setToZero ()
+{
+    const Natural currentLength = length();
+    AudioSample* sample = asArray();
+
+    for (Natural count = 0;  count < currentLength;  count++) {
+        *sample++ = 0.0;
+    }
+}

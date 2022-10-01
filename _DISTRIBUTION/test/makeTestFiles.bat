@@ -2,7 +2,7 @@
 REM generate SOX test files for cancellation test
 
 REM --- sox command path ---
-SET sox=sox
+SET sox=CALL sox
 
 REM --- internal configuration ---
 SET soxFileType=.flac

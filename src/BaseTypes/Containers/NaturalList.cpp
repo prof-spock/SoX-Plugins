@@ -8,14 +8,16 @@
  * @date   2020-08
  */
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <cstdarg>
 #include "NaturalList.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::BaseTypes::Containers::NaturalList;
+using BaseTypes::Containers::NaturalList;
 
 /*====================*/
 

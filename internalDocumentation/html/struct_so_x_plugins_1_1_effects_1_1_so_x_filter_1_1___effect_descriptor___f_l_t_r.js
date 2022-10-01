@@ -7,14 +7,14 @@ var struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_
     [ "b1", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a90ede1e9f0dac3383f41911d184547e7", null ],
     [ "b2", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a78f77d8046638576fb68cc261e6517d2", null ],
     [ "bandwidth", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#ade4c9aeb36a724281ff50d6b9bad2421", null ],
-    [ "bandwidthUnit", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a7af02fe67d56c004f9d39beb489f02bd", null ],
+    [ "bandwidthUnit", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a17966b3f3fdad72f91a42710555b7b2e", null ],
     [ "dBGain", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a5947afdb98ebee69e7173c94007cff77", null ],
     [ "equGain", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#aeb97831812247323ff77fc53df835835", null ],
-    [ "filter", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a6f0df9dcdc986eb2497e65ea53a068da", null ],
+    [ "filter", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#afbb32d2bdb0a417f13e8a47b4975c781", null ],
     [ "frequency", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#af9645f3f30a654d4f8192f912406894c", null ],
-    [ "isSinglePole", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a8d897852b38da563ad2fc2a1779f419c", null ],
+    [ "isSinglePole", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a795aadefa8f3157be84b8e516fb532ed", null ],
     [ "kind", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a25f5cb02b5e9bef4e60c9ba4e544f563", null ],
-    [ "sampleQueueMatrix", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a9875a329d1c36de8ecad5cb299b55c1a", null ],
-    [ "usesConstantSkirtGain", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#ab2330331f3616d5fb4a0764a0aad2bef", null ],
-    [ "usesUnpitchedAudioMode", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a42d61b3dae7f1210c62d7aea15d55ac5", null ]
+    [ "sampleRingBufferVector", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#afda040ab11e28c3731d9681e1cd3c67b", null ],
+    [ "usesConstantSkirtGain", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a49cf010a076dc4c865fed836e748dcb2", null ],
+    [ "usesUnpitchedAudioMode", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#aba72d52c807847ab3b2bb42c476c4ce4", null ]
 ];

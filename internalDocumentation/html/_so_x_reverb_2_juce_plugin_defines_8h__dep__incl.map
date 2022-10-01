@@ -1,0 +1,7 @@
+<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXReverb/JucePluginDefines.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXReverb/JucePluginDefines.h">
+<area shape="rect" id="node1" title="The JucePluginDefines sets up effect parameters for the JUCE framework." alt="" coords="429,5,667,81"/>
+<area shape="rect" id="node2" href="$_so_x_reverb_2_so_x_plugin-_standalone_8cpp.html" title="The SoXPlugin&#45;Standalone connects to the JUCE framework client functions for standalone applications ..." alt="" coords="5,129,283,205"/>
+<area shape="rect" id="node3" href="$_so_x_reverb_2_so_x_plugin-util_8cpp.html" title="The SoXPlugin&#45;util connects to the JUCE framework utilities for a plugin." alt="" coords="307,129,530,205"/>
+<area shape="rect" id="node4" href="$_so_x_reverb_2_sox_plugin-_v_s_t__1_8cpp.html" title="The SoXPlugin&#45;VST_1 connects to the JUCE framework client functions for a VST3 plugin." alt="" coords="554,129,801,205"/>
+<area shape="rect" id="node5" href="$_so_x_reverb_2_so_x_plugin-_v_s_t__2_8cpp.html" title="The SoXPlugin&#45;VST_2 connects to the JUCE framework client functions for a VST3 plugin." alt="" coords="825,129,1073,205"/>
+</map>

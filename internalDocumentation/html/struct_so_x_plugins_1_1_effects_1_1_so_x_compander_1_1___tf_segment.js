@@ -9,6 +9,6 @@ var struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment =
     [ "a1", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#aea050c30762ffb9b590b21a4babdc730", null ],
     [ "a2", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#a7bbf1046e903712e8ea2caee1d0b593b", null ],
     [ "endPoint", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#a1a7d0824b21072fae5ad33a2b8e71844", null ],
-    [ "isStraightLine", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#a46b4f5f3f777c1dd700334aabb960b46", null ],
+    [ "isStraightLine", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#afb4bc2c4c9c2a206df97f8e73d5c0b66", null ],
     [ "startPoint", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#abe85b6917edb2cf159bd96e2f840bfc3", null ]
 ];

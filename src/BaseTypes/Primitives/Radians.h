@@ -7,16 +7,19 @@
  * @date   2020-08
  */
 
-#pragma once
-
 /*====================*/
 
-#include "GlobalMacros.h"
+#pragma once
+
+/*=========*/
+/* IMPORTS */
+/*=========*/
+
 #include "Real.h"
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Primitives {
+namespace BaseTypes::Primitives {
 
     /**
      * A <C>Radians</C> object is a real-valued and represents the

@@ -1,0 +1,12 @@
+<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Containers/MyArray&#45;NEW.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Containers/MyArray&#45;NEW.h">
+<area shape="rect" id="node1" title="The MyArray specification and body defines a generic array type for stack allocated arrays represente..." alt="" coords="5,5,243,81"/>
+<area shape="rect" id="node2" title=" " alt="" coords="43,129,109,157"/>
+<area shape="rect" id="node3" href="$_natural_8h.html" title="The Natural specification and body provides a value object type for naturals (positive integers with ..." alt="" coords="133,129,213,157"/>
+<area shape="rect" id="node4" title=" " alt="" coords="18,205,81,233"/>
+<area shape="rect" id="node5" href="$_generic_number_8h.html" title="The GenericNumber specification and body defines a template for wrapper objects for elementary numeri..." alt="" coords="105,205,242,233"/>
+<area shape="rect" id="node8" href="$_my_string_8h.html" title="The String specification defines a standard string type." alt="" coords="193,357,284,385"/>
+<area shape="rect" id="node6" title=" " alt="" coords="75,281,131,309"/>
+<area shape="rect" id="node7" href="$_boolean_8h.html" title="The Boolean specification and body provides a value object type for boolean values." alt="" coords="155,281,242,309"/>
+<area shape="rect" id="node9" title=" " alt="" coords="152,433,211,461"/>
+<area shape="rect" id="node10" href="$_global_macros_8h.html" title="The GlobalMacros specification defines simple macros (e.g. for parameter modes)." alt="" coords="235,433,357,461"/>
+</map>

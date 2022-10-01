@@ -1,0 +1,14 @@
+<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Helpers/SoXAudioHelper.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Helpers/SoXAudioHelper.h">
+<area shape="rect" id="node1" title="The SoXAudioHelper specification defines several audio helper routines (like, for example,..." alt="" coords="5,5,219,81"/>
+<area shape="rect" id="node2" title=" " alt="" coords="123,357,186,385"/>
+<area shape="rect" id="node3" href="$_real_8h.html" title="The Real specification defines a value object type for real values." alt="" coords="115,129,179,157"/>
+<area shape="rect" id="node4" href="$_integer_8h.html" title="The Integer specification and body provides a value object type for ints." alt="" coords="193,205,271,233"/>
+<area shape="rect" id="node5" title=" " alt="" coords="216,281,301,309"/>
+<area shape="rect" id="node6" href="$_natural_8h.html" title="The Natural specification and body provides a value object type for naturals (positive integers with ..." alt="" coords="325,281,405,309"/>
+<area shape="rect" id="node7" href="$_generic_number_8h.html" title="The GenericNumber specification and body defines a template for wrapper objects for elementary numeri..." alt="" coords="213,357,350,385"/>
+<area shape="rect" id="node10" href="$_my_string_8h.html" title="The String specification defines a standard string type." alt="" coords="301,509,392,537"/>
+<area shape="rect" id="node8" title=" " alt="" coords="183,433,239,461"/>
+<area shape="rect" id="node9" href="$_boolean_8h.html" title="The Boolean specification and body provides a value object type for boolean values." alt="" coords="263,433,350,461"/>
+<area shape="rect" id="node11" title=" " alt="" coords="260,585,319,613"/>
+<area shape="rect" id="node12" href="$_global_macros_8h.html" title="The GlobalMacros specification defines simple macros (e.g. for parameter modes)." alt="" coords="343,585,465,613"/>
+</map>

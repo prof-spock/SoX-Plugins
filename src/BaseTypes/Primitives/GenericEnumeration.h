@@ -11,15 +11,19 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include "GlobalMacros.h"
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Primitives {
+namespace BaseTypes::Primitives {
 
     /**
      * A <C>GenericEnumeration</C> is a generic type that defines a
@@ -58,7 +62,7 @@ namespace SoXPlugins::BaseTypes::Primitives {
          * @param other  other enumeration value
          * @return equality information
          */
-        bool operator == (IN Type other) const
+        Boolean operator == (IN Type other) const
         {
             return (_value == other._value);
         }
@@ -72,7 +76,7 @@ namespace SoXPlugins::BaseTypes::Primitives {
          * @param other  other enumeration value
          * @return inequality information
          */
-        bool operator != (IN Type other) const
+        Boolean operator != (IN Type other) const
         {
             return (_value != other._value);
         }

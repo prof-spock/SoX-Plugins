@@ -32,7 +32,8 @@ var NAVTREE =
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ],
-        [ "Enumerations", "namespacemembers_enum.html", null ]
+        [ "Enumerations", "namespacemembers_enum.html", null ],
+        [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -42,7 +43,8 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -61,10 +63,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_assertion_8h.html",
-"_so_x_phaser_and_tremolo_2_juce_plugin_defines_8h.html#a63703b2d4cde9aebc90083be61142199",
-"struct_so_x_plugins_1_1_base_types_1_1_containers_1_1_integer_list.html",
-"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_filter.html#aa29df3e36c04d6e3eabf9b8d3b5b9abd",
-"struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a568bb0d40d24af692f15daeaf1a69768"
+"_so_x_gain_2_juce_plugin_defines_8h.html#a0aa9dd2f988ba4b664b637abb830eed6",
+"struct_audio_1_1___wave_form_descriptor.html#ac430ce0a757c9764ea15413526dda83c",
+"struct_base_types_1_1_primitives_1_1_real.html#a5933fdee41d58c6197695c9d0f744145",
+"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a921b82dd6d9604786a4472ec496c4891"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

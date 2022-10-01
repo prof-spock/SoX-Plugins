@@ -8,28 +8,26 @@
  * @date   2020-06
  */
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include "SoXAudioEditor.h"
 
 #include <map>
-#include "Integer.h"
 #include "Logging.h"
 #include "NaturalList.h"
 #include "StringSet.h"
-#include "StringUtil.h"
 
-/*====================*/
+/*--------------------*/
 
-using SoXPlugins::BaseTypes::Primitives::Integer;
-using SoXPlugins::BaseTypes::Containers::NaturalList;
-using SoXPlugins::BaseTypes::Containers::StringSet;
+using BaseTypes::Containers::NaturalList;
+using BaseTypes::Containers::StringSet;
 using SoXPlugins::ViewAndController::SoXAudioEditor;
 using SoXPlugins::ViewAndController::SoXAudioEditorWidgetPtrList;
-using SoXPlugins::ViewAndController::SoXAudioProcessor;
 
-namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
-using StringUtil::toNatural;
+/** abbreviated form of function name */
+#define toNatural StringUtil::toNatural
 
 /*====================*/
 
@@ -335,16 +333,16 @@ SoXAudioEditor::SoXAudioEditor (INOUT SoXAudioProcessor& processor)
     setSize(50, 50);
 
     // default width distribution in a widget row
-    SoXAudioEditorWidget::setPartWidthsInRow(Percentage{3},
-                                             Percentage{20},
-                                             Percentage{3},
-                                             Percentage{50},
-                                             Percentage{15});
+    SoXAudioEditorWidget::setPartWidthsInRow(Percentage{3.0},
+                                             Percentage{20.0},
+                                             Percentage{3.0},
+                                             Percentage{50.0},
+                                             Percentage{15.0});
 
     // default height distribution in an editor page
-    SoXAudioEditorWidget::setPartHeightsInPage(Percentage{10},
-                                               Percentage{20},
-                                               Percentage{10});
+    SoXAudioEditorWidget::setPartHeightsInPage(Percentage{10.0},
+                                               Percentage{20.0},
+                                               Percentage{10.0});
 
     // initialize the page indices
     NaturalList pageIndices = _findPageIndices(this);
@@ -378,8 +376,7 @@ void SoXAudioEditor::paint (juce::Graphics& graphics)
 
     juce::Rectangle<int> rectangle = getLocalBounds();
     const Integer height{rectangle.getHeight()};
-    const Integer y =
-        Integer::floor((double) _fixedWidgetPercentage.of(height));
+    const Integer y{_fixedWidgetPercentage.of(height)};
     Logging_trace2("--: height = %1, y = %2",
                    height.toString(), y.toString());
 
@@ -389,7 +386,7 @@ void SoXAudioEditor::paint (juce::Graphics& graphics)
     graphics.fillRect(rectangle);
 
     // fill page part with color depending on activeness of page
-    const bool isActivePage =
+    const Boolean isActivePage =
         (_currentEditorPageIndex <= _lastEditorPageIndex);
     const juce::Colour pageColor = (isActivePage
                                     ? _activePageColor
@@ -438,7 +435,7 @@ void SoXAudioEditor::notifyAboutChange (IN SoXAudioValueChangeKind kind,
 {
     Logging_trace2(">>: kind = %1, data = %2",
                    SoXAudioValueChangeKind_toString(kind), data);
-    bool repaintIsNecessary = false;
+    Boolean repaintIsNecessary = false;
 
     if (kind == SoXAudioValueChangeKind::globalChange) {
         _resetAppearance();
@@ -490,22 +487,24 @@ void SoXAudioEditor::_resetAppearance ()
     // initialize page setup
     const Real rowSpaceFactor = 0.25;
     const Real borderFactor   = 0.5;
+    const Real one = 1.0;
+    const Real two = 2.0;
+    const Real oneHundred = 100.0;
     const Percentage rowHeight =
-        100.0 / (((size_t) maximumWidgetCount - 1)
-                 * (1 + (double) rowSpaceFactor)
-                 + 2 * (double) borderFactor + 1);
-    const Percentage topHeight      = Percentage{(double) rowHeight / 2};
-    const Percentage rowSpaceHeight = Percentage{(double) topHeight / 2};
+        oneHundred / ((Real{maximumWidgetCount} - one)
+                 * (one + rowSpaceFactor) + two * borderFactor + one);
+    const Percentage topHeight      = Percentage{rowHeight / two};
+    const Percentage rowSpaceHeight = Percentage{topHeight / two};
     SoXAudioEditorWidget::setPartHeightsInPage(topHeight,
                                                rowHeight,
                                                rowSpaceHeight);
     _fixedWidgetPercentage =
-        Percentage{(double) (fixedWidgetCount == maximumWidgetCount
-                    ? 100.0
-                    : (topHeight
-                       + ((double) (rowHeight + rowSpaceHeight)
-                          * (double) fixedWidgetCount)
-                       - rowSpaceHeight / 2))};
+        Percentage{fixedWidgetCount == maximumWidgetCount
+                   ? oneHundred
+                   : (topHeight
+                      + ((rowHeight + rowSpaceHeight)
+                          * Real{fixedWidgetCount})
+                      - rowSpaceHeight / two)};
 
     Logging_trace("<<");
 }

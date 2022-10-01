@@ -6,6 +6,8 @@ var dir_1d8ad4e22bddba08da5448ad89771a30 =
       [ "SoXOverdrive_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect" ]
     ] ],
     [ "SoXOverdrive_AudioProcessor.cpp", "_so_x_overdrive___audio_processor_8cpp.html", "_so_x_overdrive___audio_processor_8cpp" ],
+    [ "SoXPlugin-Standalone.cpp", "_so_x_overdrive_2_so_x_plugin-_standalone_8cpp.html", null ],
     [ "SoXPlugin-util.cpp", "_so_x_overdrive_2_so_x_plugin-util_8cpp.html", null ],
-    [ "SoXPlugin-VST_1.cpp", "_so_x_overdrive_2_so_x_plugin-_v_s_t__1_8cpp.html", null ]
+    [ "SoXPlugin-VST_1.cpp", "_so_x_overdrive_2_so_x_plugin-_v_s_t__1_8cpp.html", null ],
+    [ "SoXPlugin-VST_2.cpp", "_so_x_overdrive_2_so_x_plugin-_v_s_t__2_8cpp.html", null ]
 ];

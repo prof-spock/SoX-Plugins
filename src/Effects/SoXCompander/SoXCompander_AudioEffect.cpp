@@ -25,21 +25,21 @@
 
 /*====================*/
 
-namespace StringUtil = SoXPlugins::BaseTypes::StringUtil;
-
-using SoXPlugins::BaseTypes::Primitives::Integer;
-using SoXPlugins::BaseTypes::Primitives::Natural;
-using SoXPlugins::BaseTypes::Primitives::Real;
-using SoXPlugins::BaseTypes::Primitives::String;
-using SoXPlugins::BaseTypes::Containers::GenericTuple;
-using SoXPlugins::BaseTypes::Containers::RealList;
-using SoXPlugins::BaseTypes::Containers::StringList;
-using SoXPlugins::CommonAudio::SoXAudioParameterMap;
-using SoXPlugins::CommonAudio::SoXAudioValueChangeKind;
+using BaseModules::StringUtil;
+using BaseTypes::Containers::GenericTuple;
+using BaseTypes::Containers::RealList;
+using BaseTypes::Containers::StringList;
+using BaseTypes::Primitives::Integer;
+using BaseTypes::Primitives::Natural;
+using BaseTypes::Primitives::Real;
+using BaseTypes::Primitives::String;
+using SoXPlugins::Helpers::SoXAudioParameterMap;
+using SoXPlugins::Helpers::SoXAudioValueChangeKind;
 using SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect;
 using SoXPlugins::Effects::SoXCompander::SoXMultibandCompander;
 
-using StringUtil::toNatural;
+/** abbreviation for toNatural */
+#define _toNatural  StringUtil::toNatural
 
 /*====================*/
 
@@ -116,10 +116,10 @@ namespace SoXPlugins::Effects::SoXCompander {
         _BandIndexToCompanderDataMap indexToCompanderBandParamDataMap;
 
         /** the input sample buffer of this effect */
-        SoXAudioSampleList inputSampleList;
+        AudioSampleList inputSampleList;
 
         /** the output sample buffer of this effect */
-        SoXAudioSampleList outputSampleList;
+        AudioSampleList outputSampleList;
     };
 
     /*====================*/
@@ -258,17 +258,17 @@ namespace SoXPlugins::Effects::SoXCompander {
                 };
 
             parameterMap.setKindReal(pagedName(parameterName_attack),
-                                     0.001, 1, 0.001);
+                                     0.001, 1.0, 0.001);
             parameterMap.setKindReal(pagedName(parameterName_decay),
-                                     0.001, 1, 0.001);
+                                     0.001, 1.0, 0.001);
             parameterMap.setKindReal(pagedName(parameterName_dBKnee),
-                                     0, 20, 0.01);
+                                     0.0, 20.0, 0.01);
             parameterMap.setKindReal(pagedName(parameterName_dBThreshold),
-                                     -128, 0, 0.1);
+                                     -128.0, 0.0, 0.1);
             parameterMap.setKindReal(pagedName(parameterName_ratio),
-                                     0.001, 1000, 0.001);
+                                     0.001, 1000.0, 0.001);
             parameterMap.setKindReal(pagedName(parameterName_dBGain),
-                                     -20, 20, 0.01);
+                                     -20.0, 20.0, 0.01);
             parameterMap.setKindReal(pagedName(parameterName_topFrequency),
                                      0.1, _maxTopFrequency, 0.1);
         }
@@ -392,7 +392,7 @@ String SoXCompander_AudioEffect::name() const
 SoXAudioValueChangeKind SoXCompander_AudioEffect
 ::_setValueInternal (IN String& parameterName,
                      IN String& value,
-                     IN bool recalculationIsSuppressed)
+                     IN Boolean recalculationIsSuppressed)
 {
     Logging_trace3(">>: parameterName = %1, value = %2,"
                    " recalcIsSuppressed = %3",
@@ -409,7 +409,7 @@ SoXAudioValueChangeKind SoXCompander_AudioEffect
     if (StringUtil::endsWith(parameterName, bandCountParam)) {
         Logging_trace1("--: new bandCount = %1", value);
         const Natural bandCount =
-            Natural::minimum(Natural::maximum(toNatural(value), 1),
+            Natural::minimum(Natural::maximum(_toNatural(value), 1),
                              _maxBandCount);
         effectDescriptor->bandCount = bandCount;
         effectDescriptor->multibandCompander.setEffectiveSize(bandCount);
@@ -418,7 +418,7 @@ SoXAudioValueChangeKind SoXCompander_AudioEffect
         _updateSettings(effectDescriptor, _sampleRate, _channelCount);
         result = SoXAudioValueChangeKind::pageCountChange;
     } else if (StringUtil::endsWith(parameterName, bandIndexParam)) {
-        const Natural bandIndex = _adjustBandIndex(toNatural(value));
+        const Natural bandIndex = _adjustBandIndex(_toNatural(value));
         _audioParameterMap.setValue(bandIndexParam, TOSTRING(bandIndex));
         result = SoXAudioValueChangeKind::pageChange;
     } else {
@@ -510,7 +510,7 @@ void SoXCompander_AudioEffect::setDefaultValues ()
 /* event handling     */
 /*--------------------*/
 
-void SoXCompander_AudioEffect::prepareToPlay (Real sampleRate)
+void SoXCompander_AudioEffect::prepareToPlay (IN Real sampleRate)
 {
     Logging_trace1(">>: %1", TOSTRING(sampleRate));
 
@@ -530,8 +530,9 @@ void SoXCompander_AudioEffect::prepareToPlay (Real sampleRate)
 /*--------------------*/
 
 void
-SoXCompander_AudioEffect::processBlock (Real timePosition,
-                                        SoXAudioSampleListVector& buffer) {
+SoXCompander_AudioEffect::processBlock
+                              (IN Real timePosition,
+                               INOUT AudioSampleListVector& buffer) {
     SoXAudioEffect::processBlock(timePosition, buffer);
 
     _EffectDescriptor_CMPD* effectDescriptor =
@@ -544,14 +545,14 @@ SoXCompander_AudioEffect::processBlock (Real timePosition,
 
     const Natural sampleCount = buffer[0].size();
     SoXMultibandCompander& compander = effectDescriptor->multibandCompander;
-    SoXAudioSampleList& inputSampleList  =
+    AudioSampleList& inputSampleList  =
         effectDescriptor->inputSampleList;
-    SoXAudioSampleList& outputSampleList =
+    AudioSampleList& outputSampleList =
         effectDescriptor->outputSampleList;
 
     for (Natural i = 0;  i < sampleCount;  i++) {
         for (Natural channel = 0;  channel < _channelCount;  channel++) {
-            const SoXAudioSampleList& inputList = buffer[channel];
+            const AudioSampleList& inputList = buffer[channel];
             inputSampleList[channel] = inputList[i];
         }
 
@@ -559,7 +560,7 @@ SoXCompander_AudioEffect::processBlock (Real timePosition,
 
         // write output sample list onto all channels
         for (Natural channel = 0;  channel < _channelCount;  channel++) {
-            SoXAudioSampleList& outputList = buffer[channel];
+            AudioSampleList& outputList = buffer[channel];
             outputList[i] = outputSampleList[channel];
         }
     }

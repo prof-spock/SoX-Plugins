@@ -1,0 +1,36 @@
+<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXGain/SoXGain_AudioEffect.cpp" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXGain/SoXGain_AudioEffect.cpp">
+<area shape="rect" id="node1" title="The SoXGain_AudioEffect body implements the SoX gain plugin amplifying or attenuating the input signa..." alt="" coords="527,5,782,81"/>
+<area shape="rect" id="node2" href="$_string_util_8h.html" title="The StringUtil specification defines several string routines not included in the standard C++ library..." alt="" coords="609,433,701,461"/>
+<area shape="rect" id="node20" href="$_so_x_audio_helper_8h.html" title="The SoXAudioHelper specification defines several audio helper routines (like, for example,..." alt="" coords="921,509,1060,537"/>
+<area shape="rect" id="node21" href="$_so_x_gain___audio_effect_8h.html" title="The SoXGain_AudioEffect specification defines the SoX gain plugin amplifying or attenuating the input..." alt="" coords="349,129,523,157"/>
+<area shape="rect" id="node3" href="$_boolean_8h.html" title="The Boolean specification and body provides a value object type for boolean values." alt="" coords="535,889,622,917"/>
+<area shape="rect" id="node7" href="$_byte_8h.html" title="The Byte specification and body provides a value object type for byte values." alt="" coords="618,661,681,689"/>
+<area shape="rect" id="node12" href="$_character_8h.html" title="The Character specification and body provides a value object type for character values." alt="" coords="705,661,804,689"/>
+<area shape="rect" id="node13" href="$_percentage_8h.html" title="The Percentage specification and body provides a simple percentage type." alt="" coords="737,509,847,537"/>
+<area shape="rect" id="node17" href="$_string_list_8h.html" title="The StringList specification defines sequences of string values with zero&#45;based arbitrary indexed acc..." alt="" coords="466,509,561,537"/>
+<area shape="rect" id="node4" href="$_my_string_8h.html" title="The String specification defines a standard string type." alt="" coords="635,965,725,993"/>
+<area shape="rect" id="node5" title=" " alt="" coords="593,1041,652,1069"/>
+<area shape="rect" id="node6" href="$_global_macros_8h.html" title="The GlobalMacros specification defines simple macros (e.g. for parameter modes)." alt="" coords="676,1041,799,1069"/>
+<area shape="rect" id="node8" title=" " alt="" coords="866,813,929,841"/>
+<area shape="rect" id="node9" href="$_natural_8h.html" title="The Natural specification and body provides a value object type for naturals (positive integers with ..." alt="" coords="611,737,691,765"/>
+<area shape="rect" id="node10" href="$_generic_number_8h.html" title="The GenericNumber specification and body defines a template for wrapper objects for elementary numeri..." alt="" coords="611,813,749,841"/>
+<area shape="rect" id="node11" title=" " alt="" coords="652,889,708,917"/>
+<area shape="rect" id="node14" href="$_real_8h.html" title="The Real specification defines a value object type for real values." alt="" coords="844,585,908,613"/>
+<area shape="rect" id="node15" href="$_integer_8h.html" title="The Integer specification and body provides a value object type for ints." alt="" coords="829,661,907,689"/>
+<area shape="rect" id="node16" title=" " alt="" coords="816,737,901,765"/>
+<area shape="rect" id="node18" href="$_generic_sequence_8h.html" title="The GenericSequence specification and body defines a generic sequence type of values with zero&#45;based ..." alt="" coords="410,585,561,613"/>
+<area shape="rect" id="node19" title=" " alt="" coords="199,661,262,689"/>
+<area shape="rect" id="node22" href="$_so_x_audio_effect_8h.html" title="The SoXAudioEffect specification defines the root class for all SoX audio effects." alt="" coords="321,205,455,233"/>
+<area shape="rect" id="node23" href="$_object_8h.html" title="The Object specification and body provides the root object type." alt="" coords="303,281,380,309"/>
+<area shape="rect" id="node25" href="$_audio_sample_list_vector_8h.html" title="The AudioSampleListVector specification defines the communication buffer structure for the block proc..." alt="" coords="173,357,358,385"/>
+<area shape="rect" id="node30" href="$_so_x_audio_parameter_map_8h.html" title="The SoXAudioParameterMap specification defines a map of string keys and associated values of SoXAudio..." alt="" coords="693,281,886,309"/>
+<area shape="rect" id="node34" href="$_so_x_audio_value_change_kind_8h.html" title="The SoXAudioValueChangeKind specification defines a value change kind enumeration for SoX plugins." alt="" coords="404,281,617,309"/>
+<area shape="rect" id="node24" title=" " alt="" coords="460,433,503,461"/>
+<area shape="rect" id="node26" href="$_audio_sample_list_8h.html" title="The AudioSampleList specification defines sequences of audio samples with zero&#45;based arbitrary indexe..." alt="" coords="293,433,435,461"/>
+<area shape="rect" id="node29" href="$_audio_sample_list_vector_8cpp-inc.html" title="The AudioSampleListVector body implements the communication buffer structure for the block processing..." alt="" coords="43,433,269,461"/>
+<area shape="rect" id="node27" href="$_audio_sample_8h.html" title="The AudioSample specification and body provides the definition of the audio sample (a real value)." alt="" coords="321,509,441,537"/>
+<area shape="rect" id="node28" href="$_audio_sample_list_8cpp-inc.html" title="The AudioSampleList body implements a simple list of audio samples (this is the effective code includ..." alt="" coords="114,509,297,537"/>
+<area shape="rect" id="node31" title=" " alt="" coords="759,433,809,461"/>
+<area shape="rect" id="node32" href="$_dictionary_8h.html" title="The Dictionary specification defines maps from string keys to string values." alt="" coords="692,357,791,385"/>
+<area shape="rect" id="node33" href="$_string_set_8h.html" title="The StringSet specification defines sets of string values with no duplicates and only simple containm..." alt="" coords="493,357,587,385"/>
+</map>

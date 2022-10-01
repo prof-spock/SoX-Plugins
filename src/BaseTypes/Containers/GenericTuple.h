@@ -8,28 +8,28 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <array>
-
-#include "GlobalMacros.h"
-#include "Natural.h"
 #include "Integer.h"
-#include "MyString.h"
 
-/*====================*/
+/*--------------------*/
 
 using std::array;
 
-using SoXPlugins::BaseTypes::Primitives::Natural;
-using SoXPlugins::BaseTypes::Primitives::Integer;
-using SoXPlugins::BaseTypes::Primitives::String;
+using BaseTypes::Primitives::Natural;
+using BaseTypes::Primitives::Integer;
+using BaseTypes::Primitives::String;
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Containers {
+namespace BaseTypes::Containers {
 
     /**
      * A <C>GenericTuple</C> is a generic tuple type of values with
@@ -111,7 +111,7 @@ namespace SoXPlugins::BaseTypes::Containers {
          * @return  information whether <C>element</C> occurs as element in
          *          tuple
          */
-        bool contains (IN T& element) const
+        Boolean contains (IN T& element) const
         {
             return (position(element) >= 0);
         }
@@ -178,7 +178,7 @@ namespace SoXPlugins::BaseTypes::Containers {
              * @param nameOfType  name of tuple type
              * @return  single string representation of tuple
              */
-            String _toString (IN String nameOfType) const
+            String _toString (IN String& nameOfType) const
             {
                 String result = "";
 

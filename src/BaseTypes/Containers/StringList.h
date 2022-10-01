@@ -8,21 +8,23 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include "GenericSequence.h"
-#include "MyString.h"
+
+/*--------------------*/
+
+using BaseTypes::Primitives::String_toString;
 
 /*====================*/
 
-using SoXPlugins::BaseTypes::Primitives::String;
-using SoXPlugins::BaseTypes::Primitives::String_toString;
-
-/*====================*/
-
-namespace SoXPlugins::BaseTypes::Containers {
+namespace BaseTypes::Containers {
 
     /**
      * A <C>StringList</C> object is a sequence of string values with

@@ -7,15 +7,19 @@
  * @date   2020-08
  */
 
+/*====================*/
+
 #pragma once
 
-/*====================*/
+/*=========*/
+/* IMPORTS */
+/*=========*/
 
 #include <set>
 
 /*====================*/
 
-namespace SoXPlugins::BaseTypes::Primitives {
+namespace BaseTypes::Primitives {
 
     /**
      * The <C>Object</C> type is the root class for all pointer
@@ -30,4 +34,18 @@ namespace SoXPlugins::BaseTypes::Primitives {
      */
     using ObjectSet = std::set<Object>;
 
+}
+
+/*--------------------*/
+
+/**
+ * Converts <C>object</C> - a void pointer - to a type reference.
+ * 
+ * @param[in] object  object to be converted to reference
+ * @return reference of appropriate type
+ */
+template <typename Type>
+Type& TOREFERENCE (BaseTypes::Primitives::Object object)
+{
+    return *((Type*) object);
 }

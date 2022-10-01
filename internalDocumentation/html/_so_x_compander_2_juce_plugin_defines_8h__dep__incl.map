@@ -1,0 +1,7 @@
+<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXCompander/JucePluginDefines.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXCompander/JucePluginDefines.h">
+<area shape="rect" id="node1" title="The JucePluginDefines sets up effect parameters for the JUCE framework." alt="" coords="473,5,740,81"/>
+<area shape="rect" id="node2" href="$_so_x_compander_2_so_x_plugin-_standalone_8cpp.html" title="The SoXPlugin&#45;Standalone connects to the JUCE framework client functions for standalone applications ..." alt="" coords="5,129,312,205"/>
+<area shape="rect" id="node3" href="$_so_x_compander_2_so_x_plugin-util_8cpp.html" title="The SoXPlugin&#45;util connects to the JUCE framework utilities for a plugin." alt="" coords="337,129,589,205"/>
+<area shape="rect" id="node4" href="$_so_x_compander_2_so_x_plugin-_v_s_t__1_8cpp.html" title="The SoXPlugin&#45;VST_1 connects to the JUCE framework client functions for a VST3 plugin." alt="" coords="613,129,891,205"/>
+<area shape="rect" id="node5" href="$_so_x_compander_2_so_x_plugin-_v_s_t__2_8cpp.html" title="The SoXPlugin&#45;VST_2 connects to the JUCE framework client functions for a VST3 plugin." alt="" coords="915,129,1194,205"/>
+</map>

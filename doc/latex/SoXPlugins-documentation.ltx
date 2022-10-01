@@ -202,8 +202,8 @@
   \large
   \begin{tabular}{>{\bf}p{3cm}p{9cm}}
     Author:&Dr.~Thomas Tensi\\
-    Date:&2021-08-01\\
-    Version:&0.93\\
+    Date:&2022-10-01\\
+    Version:&0.95\\
     Platforms:&VST3 on Windows~x64,\\
               &VST3 \& AU on MacOSX (x86\_64)\\
               &VST3 on Linux (x86\_64)\\
@@ -244,10 +244,10 @@ original \SoX\ algorithms nevertheless aiming at producing
 achieved: when rendering some audio externally via \SoX\ and
 internally with the plugins, there is almost no difference. After
 rendering and subtracting the results (see
-chapter~\ref{section:regressionTest}) those cancel out with typically a
-residual noise of less than -120dBFS due to rounding or precision
+chapter~\ref{section:regressionTest}) those cancel out with typically
+a residual noise of less than -140dBFS due to rounding or precision
 errors (SoX often uses 32bit integer processing, while
-\SoXPlugins\ always uses double floating point processing).
+\SoXPlugins\ always uses double precision floating point processing).
 
 The main motivation for this package is to be able to play around with
 effects in a DAW and be sure that any external rendering by \SoX\ will
@@ -402,9 +402,9 @@ The installation is as follows:
 As mentioned in the introduction this package provides several audio
 tools written in C++ for emulating \SoX\ bit-exactly.
 
-This goal is reached up to a certain precision (of about -120dBFS),
-because \SoX\ often uses 32bit integer processing while \SoXPlugins\ uses
-64bit float processing.
+This goal is reached up to a certain precision (of about -140dBFS),
+because \SoX\ often uses 32bit integer processing while
+\SoXPlugins\ uses double precision float processing.
 
 Where noted in the following description, some simplifications have
 been done to take care of the limited user interface and also some
@@ -1189,8 +1189,8 @@ To test that the effects of \SoXPlugins\ really are bit-identical to
 \SoX, a little test suite has been set up for checking DAW versus the
 command-line.
 
-The suite assumes that command-line \SoX\ is installed in the Windows
-search path.
+The suite assumes that command-line \SoX\ is installed in the search
+path of your operating system.
 
 If so, a simple batch script sets up raw audio test files and
 ---~externally via the command line~--- applies \SoX\ effects to them
@@ -1198,7 +1198,8 @@ producing audio result files.  The parameters used are a bit exotic to
 ensure that algorithmic differences between \SoX\ and
 \SoXPlugins\ will show up.  The batch script can be found in the
 \embeddedCode{test} subdirectory and is called
-\embeddedCode{makeTestFiles.bat}
+\embeddedCode{makeTestFiles.bat} (for Windows) or
+\embeddedCode{makeTestFiles.sh} (for MacOS and Linux).
 
 Since there are so many DAWs available, it is hard to provide a test
 project for each of those.  The distribution just contains a Reaper
@@ -1220,11 +1221,14 @@ When subtracting the rendered audio in Reaper and the externally
 rendered audio from \SoX, they (almost) cancel out.  This can be
 checked by a spectrum analyser in the master channel, which is shown
 in figure~\ref{figure:regressionTestNoiseFloor}.  It shows a noise
-floor of typically less than -140dB.  This comes from rounding or
-precision errors ---~SoX often uses 32bit integer processing, while
-the SoX-Plugins always use double floating point processing~--- and
-the 24~bit sample depth used in the FLAC files of the test suite;
-increasing that sample depth would even lead to less residual noise.
+floor of typically less than -120dB.
+
+Surprisingly the tracks do not completely cancel out, but this comes
+from rounding or precision errors ---~SoX often uses 32bit integer
+processing, while the \SoXPlugins\ always use double precision
+floating point processing~--- and also the 24~bit sample depth used in
+the FLAC files of the test suite; increasing that sample depth would
+even lead to less residual noise.
 
 \begin{centeredFigure}
   \centeredExternalPicture{0.5}{noiseFloor.png}
@@ -1241,13 +1245,13 @@ increasing that sample depth would even lead to less residual noise.
 \section{Overview}
 %-----------------
 
-The implementation of the \SoXPlugins-plugins is done in C++ and
-relies on the JUCE library~\cite{reference:juce}.  The algorithms of
-SoX have not been copied, but significantly refined and reordered in
-an object-oriented manner.  Also redundancies between different
-modules have (as far as possible) been eliminated, and the processing
-adapted to double precision floating point numerics where command-line
-SoX only uses 32bit integer processing for a faster processing.
+The implementation of the \SoXPlugins\ is done in C++ and relies on
+the JUCE library~\cite{reference:juce}.  The algorithms of SoX have
+not been copied, but significantly refined and reordered in an
+object-oriented manner.  Also redundancies in the different modules
+have (as far as possible) been eliminated, and the processing adapted
+to double precision floating point numerics where command-line SoX
+only uses 32bit integer processing.
 
 Those changes have been done with the goal in mind to produce
 \emph{bit-exact reproductions} of the original algorithms.  As shown
@@ -1281,18 +1285,18 @@ Minimum prerequisites for building are:
     JUCE~\cite{reference:juce} with version 5 or later,
     
   \item some C++ compiler suite for your platform (e.g. Visual Studio,
-    XCode, clang or gcc), and
+        XCode, clang or gcc), and
     
   \item an installation of the build automation platform
-    CMAKE~\cite{reference:cmake} with version 3.10 or later
+        CMAKE~\cite{reference:cmake} with version 3.10 or later
 
 \end{itemize}
 
 For documentation generation you can \emph{optionally} install:
 \begin{itemize}
 
-  \item a \LaTeX\ installation ---~like e.g. MikTeX~--- (for the
-    manual), and
+  \item a \LaTeX\ installation ---~like e.g. MikTeX for Windows or
+        texlive-latex-extra in Linux/MacOS~--- (for the manual), and
 
   \item doxygen~\cite{reference:doxygen} and
     graphviz~\cite{reference:graphviz} for the internal program
@@ -1363,7 +1367,7 @@ Figure~\ref{figure:doxygenDocumentation} gives an impression how such
 an HTML page looks like for the namespaces in \SoXPlugins.
 
 \begin{centeredFigure}
-  \centeredExternalPicture{0.4}{doxygenDocumentation}
+  \centeredExternalPicture{0.4}{doxygenDocumentation.png}
   \caption{Example Namespace Page for Plugins from doxygen}
   \label{figure:doxygenDocumentation}
 \end{centeredFigure}
@@ -1390,8 +1394,8 @@ To trigger regeneration, it suffices to delete the file
 \section{Available Build Targets}
 %--------------------------------
 
-Figure~\ref{figure:doxygenDocumentation} shows the available CMAKE
-targets. They can be used as
+Figure~\ref{figure:buildTargets} shows the available CMAKE targets.
+They can be used as
 \begin{commandLine}
 cmake --build . --config Release --target XXX
 \end{commandLine}
