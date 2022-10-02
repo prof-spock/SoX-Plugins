@@ -48,6 +48,18 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
+         * Initializes natural from integer <C>i</C>.
+         *
+         * @param[in] i  integer value
+         */
+        Natural (IN int i)
+        {
+            _value = i;
+        }
+
+        /*--------------------*/
+
+        /**
          * Initializes natural from unsigned <C>n</C>.
          *
          * @param[in] n  unsigned value
@@ -88,7 +100,8 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as a floating point value.
+         * Returns the current value as a floating point value upon
+         * explicit conversion.
          *
          * @return current value as a floating point value
          */
@@ -100,7 +113,8 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as a floating point value.
+         * Returns the current value as a floating point value upon
+         * explicit conversion.
          *
          * @return current value as a floating point value
          */
@@ -112,7 +126,8 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as an integer value.
+         * Returns the current value as an integer value upon
+         * explicit conversion.
          *
          * @return current value as an integer value
          */
@@ -135,6 +150,19 @@ namespace BaseTypes::Primitives {
         Natural operator % (IN Natural other) const
         {
             return Natural{_value % other._value};
+        }
+
+        /*--------------------*/
+        /**
+         * Returns the modulus of current value and <C>other</C>.
+         *
+         * @param[in] other  other natural value to be used as
+         *                   divisor
+         * @return  modulus of current and <C>other</C>.
+         */
+        void operator %= (IN Natural other)
+        {
+            _value = _value % other._value;
         }
 
         /*--------------------*/

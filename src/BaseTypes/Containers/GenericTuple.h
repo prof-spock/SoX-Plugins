@@ -132,7 +132,7 @@ namespace BaseTypes::Containers {
 
             for (Natural i = 0;  i < elementCount;  i++) {
                 if (at(i) == element) {
-                    result = Integer{(int) i};
+                    result = Integer{i};
                     break;
                 }
             }

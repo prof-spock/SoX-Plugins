@@ -82,7 +82,8 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as a char value.
+         * Returns the current value as a char value upon
+         * explicit conversion.
          *
          * @return current value as a char value
          */
@@ -94,7 +95,8 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as a natural value.
+         * Returns the current value as a natural value upon
+         * explicit conversion.
          *
          * @return current value as a natural value
          */

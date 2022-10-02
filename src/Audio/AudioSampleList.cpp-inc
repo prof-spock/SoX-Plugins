@@ -33,12 +33,18 @@ String AudioSampleList::toString (IN AudioSampleList& list)
 /*--------------------*/
 
 INLINE
-void AudioSampleList::setToZero ()
+void AudioSampleList::setToZero (IN Natural position,
+                                 IN Natural count)
 {
     const Natural currentLength = length();
-    AudioSample* sample = asArray();
 
-    for (Natural count = 0;  count < currentLength;  count++) {
-        *sample++ = 0.0;
+    if (position < currentLength) {
+        const Natural effectiveCount =
+            Natural::minimum(currentLength - position, count);
+        AudioSample* samplePtr = asArray(position);
+
+        for (Natural i = 0;  i < effectiveCount;  i++) {
+            *samplePtr++ = 0.0;
+        }
     }
 }

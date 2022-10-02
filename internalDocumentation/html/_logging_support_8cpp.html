@@ -131,17 +131,16 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logging_support_8cpp.html#ae7c48614d1cdab121e5b4703f3f96835">StdLib_atexit</a>&#160;&#160;&#160;atexit</td></tr>
 <tr class="memdesc:ae7c48614d1cdab121e5b4703f3f96835"><td class="mdescLeft">&#160;</td><td class="mdescRight">qualified version of atexit from stdlib <br /></td></tr>
 <tr class="separator:ae7c48614d1cdab121e5b4703f3f96835"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memItemLeft" align="right" valign="top"><a id="a94692cc5c1eac2402cbeff7e1eaa95cd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logging_support_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd">expand</a>&#160;&#160;&#160;StringUtil::expand</td></tr>
-<tr class="memdesc:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil::expand <br /></td></tr>
-<tr class="separator:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0d58671e981a2c57f2ff48bd7563019"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logging_support_8cpp.html#ad0d58671e981a2c57f2ff48bd7563019">_expand</a>&#160;&#160;&#160;<a class="el" href="_so_x_audio_processor_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd">StringUtil::expand</a></td></tr>
+<tr class="memdesc:ad0d58671e981a2c57f2ff48bd7563019"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviated name for string expansion routine  <a href="_logging_support_8cpp.html#ad0d58671e981a2c57f2ff48bd7563019">More...</a><br /></td></tr>
+<tr class="separator:ad0d58671e981a2c57f2ff48bd7563019"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a68af595a6a2728c5427f71992f11a0bd"><td class="memItemLeft" align="right" valign="top"><a id="a68af595a6a2728c5427f71992f11a0bd"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logging_support_8cpp.html#a68af595a6a2728c5427f71992f11a0bd">Timestamp</a> = uint64_t</td></tr>
-<tr class="memdesc:a68af595a6a2728c5427f71992f11a0bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">the timestamp type as provided by the system call <br /></td></tr>
-<tr class="separator:a68af595a6a2728c5427f71992f11a0bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ec9a8615bb4c91e73b5190b70ac2c87"><td class="memItemLeft" align="right" valign="top"><a id="a9ec9a8615bb4c91e73b5190b70ac2c87"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logging_support_8cpp.html#a9ec9a8615bb4c91e73b5190b70ac2c87">Timestamp</a> = <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a></td></tr>
+<tr class="memdesc:a9ec9a8615bb4c91e73b5190b70ac2c87"><td class="mdescLeft">&#160;</td><td class="mdescRight">the timestamp type as provided by the system call <br /></td></tr>
+<tr class="separator:a9ec9a8615bb4c91e73b5190b70ac2c87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -155,7 +154,7 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4790e291ab04c20505ec9c65a99ccbb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logging_support_8cpp.html#a4790e291ab04c20505ec9c65a99ccbb6">_appendEntryToBuffer</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;functionSignature, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="_logging_support_8cpp.html#a68af595a6a2728c5427f71992f11a0bd">Timestamp</a> time, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;message)</td></tr>
+<tr class="memitem:a4790e291ab04c20505ec9c65a99ccbb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_logging_support_8cpp.html#a4790e291ab04c20505ec9c65a99ccbb6">_appendEntryToBuffer</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;functionSignature, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="_logging_support_8cpp.html#a9ec9a8615bb4c91e73b5190b70ac2c87">Timestamp</a> time, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;message)</td></tr>
 <tr class="memdesc:a4790e291ab04c20505ec9c65a99ccbb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new entry consisting of <code>functionSignature</code>, <code>time</code> and <code>message</code> to buffer.  <a href="_logging_support_8cpp.html#a4790e291ab04c20505ec9c65a99ccbb6">More...</a><br /></td></tr>
 <tr class="separator:a4790e291ab04c20505ec9c65a99ccbb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -163,7 +162,25 @@ Functions</h2></td></tr>
 <div class="textblock"><p>The <code>LoggingSupport</code> body implements a class for simple entry/exit logging to a file; this logging relies on trace calls at the beginning or end of a function with prefices "&gt;&gt;" and "&lt;&lt;" as well as intermediate log lines with prefix "--"; the name of the function is also logged to give a fully bracketed log. </p>
 <dl class="section author"><dt>Author</dt><dd>Dr. Thomas Tensi </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-01 </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ad0d58671e981a2c57f2ff48bd7563019"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0d58671e981a2c57f2ff48bd7563019">&#9670;&nbsp;</a></span>_expand</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _expand&#160;&#160;&#160;<a class="el" href="_so_x_audio_processor_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd">StringUtil::expand</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>abbreviated name for string expansion routine </p>
+<p>abbreviation for StringUtil::expand </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a4790e291ab04c20505ec9c65a99ccbb6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4790e291ab04c20505ec9c65a99ccbb6">&#9670;&nbsp;</a></span>_appendEntryToBuffer()</h2>
 
@@ -179,7 +196,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="_logging_support_8cpp.html#a68af595a6a2728c5427f71992f11a0bd">Timestamp</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="_logging_support_8cpp.html#a9ec9a8615bb4c91e73b5190b70ac2c87">Timestamp</a>&#160;</td>
           <td class="paramname"><em>time</em>, </td>
         </tr>
         <tr>

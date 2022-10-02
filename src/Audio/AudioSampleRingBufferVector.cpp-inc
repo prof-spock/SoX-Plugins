@@ -45,7 +45,7 @@ static Natural _effectiveIndex (IN Boolean hasTwoRingBuffersPerChannel,
                                 IN Natural channelIndex,
                                 IN Natural position)
 {
-    return (Natural{(size_t) (hasTwoRingBuffersPerChannel ? 2 : 1)}
+    return (Natural{hasTwoRingBuffersPerChannel ? 2 : 1}
             * channelIndex + position);
 }
 

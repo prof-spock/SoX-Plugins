@@ -37,12 +37,12 @@ using BaseTypes::Containers::Dictionary;
 using BaseTypes::Containers::GenericSequence;
 
 /** the timestamp type as provided by the system call */
-using Timestamp = uint64_t;
+using Timestamp = Natural;
 
 /* aliases for function names */
 
 /** abbreviation for StringUtil::expand */
-#define expand  StringUtil::expand
+#define _expand  StringUtil::expand
 
 /*====================*/
 
@@ -184,10 +184,10 @@ namespace BaseModules {
                 } else {
                     _previousSystemTime = systemTime;
                     result = systemTime;
-                    result %= (size_t) _millisecondsPerDay;
-                    result += (size_t) _timeOffsetInMilliseconds;
-                    result += (size_t) _effectiveDSTOffsetInMilliseconds;
-                    result /= (1000 / (size_t) _timeFactor);
+                    result %= _millisecondsPerDay;
+                    result += _timeOffsetInMilliseconds;
+                    result += _effectiveDSTOffsetInMilliseconds;
+                    result /= (Natural{1000} / _timeFactor);
                     _previousTimeOfDay = result;
                     _previousTimeOfDayString = "";
                 }
@@ -215,11 +215,11 @@ namespace BaseModules {
                 } else {
                     _previousTimeOfDay = timeOfDay;
                     Timestamp time = timeOfDay;
-                    Natural fractionalPart = (Natural) time % _timeFactor;
-                    time /= (int) _timeFactor;
-                    const Natural seconds = (Natural) time % 60;
-                    const Natural minutes = (Natural) (time / 60) % 60;
-                    const Natural hours   = (Natural) (time / 3600) % 24;
+                    Natural fractionalPart = time % _timeFactor;
+                    time /= _timeFactor;
+                    const Natural seconds = time % 60;
+                    const Natural minutes = (time / 60) % 60;
+                    const Natural hours   = (time / 3600) % 24;
                     result = (TOSTRING(hours, 2)
                               + TOSTRING(minutes, 2)
                               + TOSTRING(seconds, 2));
@@ -249,7 +249,7 @@ namespace BaseModules {
                 const system_clock::duration d =
                     system_clock::now().time_since_epoch();
                 Timestamp result =
-                    duration_cast<milliseconds>(d).count();
+                    (size_t) duration_cast<milliseconds>(d).count();
                 return result;
             }
                
@@ -380,15 +380,15 @@ static String _bufferEntryToString (_LoggingBufferEntry& bufferEntry)
         const String functionName =
             _functionNameFromSignature(functionSignature,
                                        _ignoredFunctionNamePrefix);
-        const Natural messageLength = (Natural) message.size();
+        const Natural messageLength{message.size()};
 
         String timeString;
 
         if (_timeIsLogged) {
             Timestamp timeOfDay =
                 _loggingTime.adaptToTimeOfDay(systemTime);
-            timeString = expand(" (%1)",
-                                _loggingTime.asDayString(timeOfDay));
+            timeString = _expand(" (%1)",
+                                 _loggingTime.asDayString(timeOfDay));
         }
 
         /* ensure that message starts with a known prefix */
@@ -473,7 +473,7 @@ static void _openOrCreateFile (IN Boolean isNew)
         String mode = (isNew ? "w" : "a");
         Boolean isOkay = _file.open(_fileName, mode);
         Assertion_check(isOkay,
-                        expand("file must be writable: %1", _fileName));
+                        _expand("file must be writable: %1", _fileName));
     }
 }
 
@@ -513,8 +513,8 @@ Logging::initializeWithDefaults (IN String& fileNameStem,
     String fileName = fileNameStem + ".log";
     StringUtil::replace(fileName, " ", "");
     const String loggingFilePath =
-        expand("%1/%2",
-               OperatingSystem::temporaryDirectoryPath(), fileName);
+        _expand("%1/%2",
+                OperatingSystem::temporaryDirectoryPath(), fileName);
     setFileName(loggingFilePath, false);
     setIgnoredFunctionNamePrefix(ignoredFunctionNamePrefix);
     setTracingWithTime(true, 2);
@@ -544,7 +544,7 @@ void Logging::setFileName (IN String& fileName,
 {
     if (_fileName == fileName) {
         const String message =
-            expand("logging file %1 already open => skip", fileName);
+            _expand("logging file %1 already open => skip", fileName);
         _appendEntryToBuffer("", 0, message);
     } else {
         _loggingState = (writeThroughIsActive

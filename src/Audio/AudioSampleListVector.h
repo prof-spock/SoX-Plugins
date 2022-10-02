@@ -43,9 +43,17 @@ namespace Audio {
         /*--------------------*/
 
         /**
-         * Sets all entries in sample buffer to 0
+         * Sets all entries in sample buffer to zero starting at
+         * <C>position</C> with a count of <C>count</C>.
+         *
+         * @param[in]  position  the index of the first element in
+         *                       each list to be reset
+         * @param[in]  count     the number of elements in each list
+         *                       to be reset
          */
-        void setToZero ();
+        void setToZero (IN Natural position = 0,
+                        IN Natural count = Natural::maximumValue());
+
     };
 
 }

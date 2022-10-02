@@ -54,7 +54,8 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as a primitive value.
+         * Returns the current value as a primitive value upon
+         * explicit conversion.
          *
          * @return current value
          */

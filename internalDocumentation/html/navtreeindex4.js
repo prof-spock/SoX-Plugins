@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a7e5c79e8830e18f6466a0c5a3c03b6ec":[1,0,3,0,5,4,5],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a921b82dd6d9604786a4472ec496c4891":[1,0,3,0,5,4,2],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a9ac458b45cd764d0b6630ba594b96128":[1,0,3,0,5,4,1],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#aaf4a513580431117c703ae74fd293a8b":[1,0,3,0,5,4,4],

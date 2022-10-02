@@ -39,7 +39,7 @@ namespace BaseTypes::Containers {
      * @return array with <C>count</C> entries of type <C>ElementType</C>
      */
     #define makeLocalArray(ElementType, count) \
-        (ElementType*) alloca(((int) (count)) * sizeof(ElementType))
+        (ElementType*) alloca(((size_t) (count)) * sizeof(ElementType))
 
     /*--------------------*/
 

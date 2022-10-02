@@ -45,17 +45,6 @@ namespace BaseModules {
     struct StringUtil {
 
         /**
-         * Returns character at <C>position</C> in <C>st</C>.
-         *
-         * @param[in] st        the string to be indexed
-         * @param[in] position  the character index (starting at 0)
-         * @return  character at position
-         */
-        static Character at (IN String& st, IN Natural position);
-
-        /*--------------------*/
-
-        /**
          * Tells whether <C>st</C> ends with <C>prefix</C>.
          *
          * @param[in] st      the string to be checked for suffix

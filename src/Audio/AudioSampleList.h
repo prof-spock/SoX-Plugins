@@ -58,9 +58,16 @@ namespace Audio {
         /*--------------------*/
 
         /**
-         * Sets all entries in sample list to 0
+         * Sets all entries in sample list to zero starting at
+         * <C>position</C> with a count of <C>count</C>.
+         *
+         * @param[in]  position  the index of the first element in
+         *                       list to be reset
+         * @param[in]  count     the number of elements in list to
+         *                       be reset
          */
-        void setToZero ();
+        void setToZero (IN Natural position = 0,
+                        IN Natural count = Natural::maximumValue());
 
     };
 

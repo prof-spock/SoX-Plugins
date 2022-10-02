@@ -100,7 +100,8 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as a floating point value.
+         * Returns the current value as a floating point value upon
+         * explicit conversion.
          *
          * @return current value as a floating point value
          */
@@ -112,7 +113,8 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as a floating point value.
+         * Returns the current value as a floating point value upon
+         * explicit conversion.
          *
          * @return current value as a floating point value
          */
@@ -124,13 +126,27 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as a size_t value.
+         * Returns the current value as a size_t value upon
+         * explicit conversion.
          *
          * @return current value as a size_t value
          */
         explicit operator size_t () const
         {
             return (size_t) _value;
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns the current value as a natural value upon
+         * explicit conversion.
+         *
+         * @return current value as a natural value
+         */
+        explicit operator Natural () const
+        {
+            return Natural{(int) _value};
         }
 
         /*--------------------*/

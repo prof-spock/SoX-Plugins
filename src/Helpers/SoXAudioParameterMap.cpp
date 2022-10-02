@@ -102,8 +102,7 @@ static void _splitParameterName (IN String parameterName,
             substring(parameterName, position + separatorLength);
         nominalPageIndex =
             StringUtil::toInteger(prefix(parameterName, position));
-        pageIndex = (nominalPageIndex < 0 ? Natural{0}
-                     : Natural{(size_t) nominalPageIndex});
+        pageIndex = (Natural) Integer::maximum(nominalPageIndex, 0);
     }
 }
 

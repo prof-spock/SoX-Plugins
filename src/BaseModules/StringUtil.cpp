@@ -38,14 +38,24 @@ static const Character _decimalPointCharacter{'.'};
  *  (when a conversion to real fails) */
 static const Real _undefinedReal = Real::maximumValue();
 
+
 /*--------------------*/
+/* INTERNAL ROUTINES  */
 /*--------------------*/
 
-Character StringUtil::at (IN String& st, IN Natural position)
+/**
+ * Returns character at <C>position</C> in <C>st</C>.
+ *
+ * @param[in] st        the string to be indexed
+ * @param[in] position  the character index (starting at 0)
+ * @return  character at position
+ */
+static Character _at (IN String& st, IN Natural position)
 {
     return Character{st[(size_t) position]};
 }
 
+/*--------------------*/
 /*--------------------*/
 
 Boolean StringUtil::endsWith (IN String& st, IN String& suffix)
@@ -117,7 +127,7 @@ Boolean StringUtil::isNatural (IN String& st)
     Boolean result = (stringLength > 0);
 
     for (Natural i = 0;  i < stringLength;  i++) {
-        if (!isdigit((char) at(st, i))) {
+        if (!isdigit((char) _at(st, i))) {
             result = false;
             break;
         }
@@ -133,7 +143,7 @@ Boolean StringUtil::isInt (IN String& st)
     Boolean result = false;
 
     if (st > "") {
-        Natural firstIndex = (at(st, 0) == _minusCharacter ? 1 : 0);
+        Natural firstIndex = (_at(st, 0) == _minusCharacter ? 1 : 0);
         result = isNatural(substring(st, firstIndex));
     }
 
@@ -149,15 +159,15 @@ Boolean StringUtil::isReal (IN String& st)
 
     if (stringLength == 0) {
         result = false;
-    } else if (stringLength == 1 && at(st, 0) == _minusCharacter) {
+    } else if (stringLength == 1 && _at(st, 0) == _minusCharacter) {
         result = false;
     } else {
         result = true;
         Boolean isBeforeDecimalPoint = true;
-        const Natural firstIndex = (at(st, 0) == _minusCharacter ? 1 : 0);
+        const Natural firstIndex = (_at(st, 0) == _minusCharacter ? 1 : 0);
 
         for (Natural i = firstIndex; i < stringLength;  i++) {
-            const Character ch{at(st, i)};
+            const Character ch{_at(st, i)};
 
             if (ch == _decimalPointCharacter && isBeforeDecimalPoint) {
                 isBeforeDecimalPoint = false;
@@ -264,7 +274,7 @@ String StringUtil::strip (IN String& st)
     Natural i;
 
     for (i = stringLength;  i > 0; i--) {
-        if (whiteSpace.find((char) at(st, i - 1)) == _notFound) {
+        if (whiteSpace.find((char) _at(st, i - 1)) == _notFound) {
             break;
         }
     }
@@ -272,7 +282,7 @@ String StringUtil::strip (IN String& st)
     const Natural lastRelevantIndex = i - Natural{1};
 
     for (i = 0;  i < stringLength;  i++) {
-        if (whiteSpace.find((char) at(st, i)) == _notFound) {
+        if (whiteSpace.find((char) _at(st, i)) == _notFound) {
             break;
         }
     }

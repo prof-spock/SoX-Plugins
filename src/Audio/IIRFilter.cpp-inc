@@ -188,7 +188,7 @@ void IIRFilter::apply (IN AudioSampleRingBuffer& inputBuffer,
         AudioSample* outputBufferAsArray =
             makeLocalArray(AudioSample, _order);
         const AudioSample* dataAsArray = _data.asArray();
-        const AudioSample* otherDataAsArray = dataAsArray + (int) _order;
+        const AudioSample* otherDataAsArray = _data.asArray(_order);
         inputBuffer.toArray(inputBufferAsArray);
         outputBuffer.toArray(outputBufferAsArray);
 
@@ -197,7 +197,7 @@ void IIRFilter::apply (IN AudioSampleRingBuffer& inputBuffer,
         otherDataAsArray++;
         outputBufferAsArray++;
 
-        for (int i = 1;  i < (int) _order;  i++) {
+        for (Natural i = 1;  i < _order;  i++) {
             outputValue +=
                 (*dataAsArray++ * *inputBufferAsArray++
                  - *otherDataAsArray++ * *outputBufferAsArray++);

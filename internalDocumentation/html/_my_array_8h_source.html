@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('_my_array_8h_source.html',''); initRes
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_base_types_1_1_containers.html">BaseTypes::Containers</a> {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="_my_array_8h.html#adede199e40286fbec7786ebdc3b1b299">   41</a></span>&#160;<span class="preprocessor">    #define makeLocalArray(ElementType, count) \</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">        (ElementType*) alloca(((int) (count)) * sizeof(ElementType))</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">        (ElementType*) alloca(((size_t) (count)) * sizeof(ElementType))</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">/*--------------------*/</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>

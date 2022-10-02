@@ -142,7 +142,8 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as a double value.
+         * Returns the current value as a double value upon
+         * explicit conversion.
          *
          * @return current value as double
          */
@@ -154,7 +155,8 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as a float value.
+         * Returns the current value as a float value upon
+         * explicit conversion.
          *
          * @return current value as float
          */
@@ -166,7 +168,8 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as an int value.
+         * Returns the current value as an int value upon
+         * explicit conversion.
          *
          * @return current value as int
          */
@@ -178,7 +181,8 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as an integer value.
+         * Returns the current value as an integer value upon
+         * explicit conversion.
          *
          * @return current value as integer
          */
@@ -190,7 +194,8 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
-         * Returns the current value as a natural value.
+         * Returns the current value as a natural value upon
+         * explicit conversion.
          *
          * @return current value as natural
          */

@@ -22,7 +22,8 @@
     /** qualified version of fputs from stdio */
     #define StdIO_fputs   fputs
     /** qualified version of fread from stdio */
-    #define StdIO_fread   fread
+    #define StdIO_fread(ptr, tSize, count, stream) \
+            fread(ptr, (size_t) tSize, (size_t) count, stream)
     /** qualified version of fseek from stdio */
     #define StdIO_fseek   fseek
     /** qualified version of ftell from stdio */
@@ -98,7 +99,7 @@ Natural File::read (INOUT ByteList& byteList,
     FilePointer file = (FilePointer) _descriptor;
     char* characterArray = (char*) byteList.asArray();
     Natural result =
-        StdIO_fread(characterArray, 1, (size_t) count, file);
+        StdIO_fread(characterArray, 1, count, file);
     return result;
 }
 

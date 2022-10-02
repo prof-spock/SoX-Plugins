@@ -1,8 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"_so_x_gain_2_juce_plugin_defines_8h.html#a0aa9dd2f988ba4b664b637abb830eed6":[2,0,0,3,2,0,12],
-"_so_x_gain_2_juce_plugin_defines_8h.html#a2e20a8325daeba8628695c776c66498b":[2,0,0,3,2,0,11],
-"_so_x_gain_2_juce_plugin_defines_8h.html#a3798879af405157dad670867e14e33a2":[2,0,0,3,2,0,0],
 "_so_x_gain_2_juce_plugin_defines_8h.html#a63703b2d4cde9aebc90083be61142199":[2,0,0,3,2,0,4],
 "_so_x_gain_2_juce_plugin_defines_8h.html#a7ea0aae73bd9068752aab30c6883d965":[2,0,0,3,2,0,10],
 "_so_x_gain_2_juce_plugin_defines_8h.html#a816e1882d3e163c2ec9e757b6f8d8b77":[2,0,0,3,2,0,3],
@@ -224,8 +221,8 @@ var NAVTREEINDEX1 =
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html":[0,0,3,0,0],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html":[0,0,3,0,1],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html":[1,0,3,0,1],
-"namespace_so_x_plugins_1_1_effects_1_1_so_x_gain.html":[1,0,3,0,2],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_gain.html":[0,0,3,0,2],
+"namespace_so_x_plugins_1_1_effects_1_1_so_x_gain.html":[1,0,3,0,2],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive.html":[0,0,3,0,3],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive.html":[1,0,3,0,3],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html":[0,0,3,0,4],
@@ -249,5 +246,8 @@ var NAVTREEINDEX1 =
 "struct_audio_1_1___wave_form_descriptor.html#a217fbcd01b0035f18ec09dc7370b9f91":[1,0,0,0,4],
 "struct_audio_1_1___wave_form_descriptor.html#a2f6a9971f4dc49c9e0ba4c3cb2720c28":[1,0,0,0,1],
 "struct_audio_1_1___wave_form_descriptor.html#a3226fb8c26b806d5ecf71b096a29837b":[1,0,0,0,0],
-"struct_audio_1_1___wave_form_descriptor.html#a3666aa4b4707304acbe8899e34aa453e":[1,0,0,0,7]
+"struct_audio_1_1___wave_form_descriptor.html#a3666aa4b4707304acbe8899e34aa453e":[1,0,0,0,7],
+"struct_audio_1_1___wave_form_descriptor.html#ac430ce0a757c9764ea15413526dda83c":[1,0,0,0,6],
+"struct_audio_1_1___wave_form_descriptor.html#ac88a1aac2433c3e1eddf85bda7a97d3d":[1,0,0,0,3],
+"struct_audio_1_1___wave_form_descriptor.html#aeddb0b796ac3772b6d9fc773fb3e14f1":[1,0,0,0,8]
 };

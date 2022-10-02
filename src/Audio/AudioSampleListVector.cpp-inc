@@ -27,7 +27,8 @@ String AudioSampleListVector::toString () const
 /*--------------------*/
 
 INLINE
-void AudioSampleListVector::setToZero ()
+void AudioSampleListVector::setToZero (IN Natural position,
+                                       IN Natural count)
 {
     for (AudioSampleList& list : *this) {
         list.setToZero();

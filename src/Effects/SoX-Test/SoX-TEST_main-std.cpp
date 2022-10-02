@@ -18,6 +18,7 @@
 #include <fstream>
 
 #include "Logging.h"
+#include "OperatingSystem.h"
 #include "SoXCompander_AudioEffect.h"
 #include "SoXFilter_AudioEffect.h"
 #include "SoXPhaserAndTremolo_AudioEffect.h"
@@ -28,6 +29,7 @@
 using std::cout;
 
 using Audio::AudioSample;
+using BaseModules::OperatingSystem;
 using SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect;
 using SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect;
 using SoXPlugins::Effects::SoXPhaserAndTremolo
@@ -118,7 +120,7 @@ void _fillBuffer (OUT AudioSampleListVector& buffer,
                   IN Integer sampleRate) {
     Logging_trace1(">>: sampleRate = %1", TOSTRING(sampleRate));
 
-    Natural bufferLength = Natural{(size_t) sampleRate} / _blocksPerSecond;
+    Natural bufferLength = (Natural) sampleRate / _blocksPerSecond;
     buffer.clear();
 
     for (Natural channel = 0;  channel < _channelCount;
@@ -272,11 +274,13 @@ void _runForEffect (IN String& audioEffectKind,
 
 int main (int argc, char* argv[]) {
     Logging_initialize();
-    Logging_setFileName("C:/temp/logs/SoXTest.log", false);
+    String temporaryDirectoryPath =
+        OperatingSystem::temporaryDirectoryPath();
+    Logging_setFileName(temporaryDirectoryPath + "/SoXTest.log", false);
     Logging_setIgnoredFunctionNamePrefix("SoXPlugins.");
     Logging_setTracingWithTime(true, 2);
     Logging_trace(">>");
-    _outputFile.open("C:/temp/logs/SoXTest.txt");
+    _outputFile.open(temporaryDirectoryPath + "/SoXTest.txt");
 
     const Integer sampleRate = 44100;
     String effectName;

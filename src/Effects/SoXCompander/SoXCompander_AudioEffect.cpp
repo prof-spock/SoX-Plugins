@@ -44,10 +44,10 @@ using SoXPlugins::Effects::SoXCompander::SoXMultibandCompander;
 /*====================*/
 
 /** maximum number of bands in a multiband compressor */
-constexpr int _maxBandCount = 10;
+#define _maxBandCount  (10)
 
 /** maximum top frequency in a compander band */
-constexpr double _maxTopFrequency = 25000.0;
+const Real _maxTopFrequency{25000.0};
 
 /** function to adjust a bandindex to range of 1 to maximum band count */
 #define _adjustBandIndex(bandIndex) \
@@ -493,7 +493,8 @@ void SoXCompander_AudioEffect::setDefaultValues ()
         _audioParameterMap.setValue(pagedName(parameterName_dBGain),
                                     "5");
         const Real topFrequency =
-          (_maxTopFrequency * ((size_t) bandIndex + 1)) / _maxBandCount;
+            (_maxTopFrequency * (bandIndex + Natural{1}))
+              / Real{Natural{_maxBandCount}};
         _audioParameterMap.setValue(pagedName(parameterName_topFrequency),
                                     TOSTRING(topFrequency));
     }

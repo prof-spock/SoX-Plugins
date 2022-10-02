@@ -614,12 +614,13 @@ namespace SoXPlugins::Effects::SoXCompander {
      * kind of audio sample streams relevant for a compander band:
      * input, lowOutput and highOutput as input for the next band
     */
-    enum class _CompanderStreamKind : int {
-        inputStream = 0, lowOutputStream = 1, highOutputStream = 2
-    };
+    typedef size_t _CompanderStreamKind;
+    static _CompanderStreamKind _kindInputStream      = 0;
+    static _CompanderStreamKind _kindLowOutputStream  = 1;
+    static _CompanderStreamKind _kindHighOutputStream = 2;
 
     /** the count of stream kinds */
-    constexpr int _companderStreamKindCount = 3;
+    constexpr size_t _companderStreamKindCount = 3;
 
     /** a map from stream kind to string */
     String _streamKindAsString[] = { "input", "lowOutput", "highOutput" };
@@ -1547,7 +1548,7 @@ namespace SoXPlugins::Effects::SoXCompander {
                                     IN _CompanderStreamKind stream,
                                     AudioSampleRingBuffer* buffer)
     {
-        _buffer[channel][(int) stream] = buffer;
+        _buffer[channel][stream] = buffer;
     }
 
     /*--------------------*/
@@ -1558,7 +1559,7 @@ namespace SoXPlugins::Effects::SoXCompander {
             const _CompanderSampleBufferEntry& bufferEntry =
                 _buffer[channel];
             const AudioSampleRingBuffer* outputBufferLow =
-                bufferEntry[(int) _CompanderStreamKind::lowOutputStream];
+                bufferEntry[_kindLowOutputStream];
             AudioSample inputSample = outputBufferLow->first();
             _inputSampleList[channel] = inputSample;
         }
@@ -1572,11 +1573,11 @@ namespace SoXPlugins::Effects::SoXCompander {
     {
         for (_CompanderSampleBufferEntry& bufferEntry : _buffer) {
             const AudioSampleRingBuffer* inputBuffer =
-                bufferEntry[(int) _CompanderStreamKind::inputStream];
+                bufferEntry[_kindInputStream];
             AudioSampleRingBuffer* outputBufferLow =
-                bufferEntry[(int) _CompanderStreamKind::lowOutputStream];
+                bufferEntry[_kindLowOutputStream];
             AudioSampleRingBuffer* outputBufferHigh =
-                bufferEntry[(int) _CompanderStreamKind::highOutputStream];
+                bufferEntry[_kindHighOutputStream];
 
             _crossoverFilter.apply(*inputBuffer,
                                    *outputBufferLow,
@@ -1704,14 +1705,14 @@ void SoXMultibandCompander::resize (IN Natural bandCount,
 
         for (_MCompanderBand& companderBand : *companderBandList) {
             companderBand.setBuffer(channel,
-                                    _CompanderStreamKind::inputStream,
+                                    _kindInputStream,
                                     &_sampleRingBufferVector.at(channel, i));
             companderBand.setBuffer(channel,
-                                    _CompanderStreamKind::lowOutputStream,
+                                    _kindLowOutputStream,
                                     &_sampleRingBufferVector.at(channel,
                                                                 i + 1));
             companderBand.setBuffer(channel,
-                                    _CompanderStreamKind::highOutputStream,
+                                    _kindHighOutputStream,
                                     &_sampleRingBufferVector.at(channel,
                                                                 i + 2));
             // take care of single overlapping buffer between the bands

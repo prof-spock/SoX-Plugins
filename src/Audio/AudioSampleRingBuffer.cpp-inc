@@ -221,17 +221,16 @@ INLINE
 void AudioSampleRingBuffer::toArray (OUT AudioSample* elementArray) const
 {
     // directly access the underlying arrays
-    const AudioSample* sourcePtr = _data.data();
     AudioSample* targetPtr = elementArray;
-    const AudioSample* sPtr;
+    const AudioSample* sourcePtr;
 
     // copy first segment from firstIndex to end
     const Natural segmentLengthA = _length - _firstIndex;
-    sPtr = &sourcePtr[(int)_firstIndex];
-    copyArray(targetPtr, sPtr, segmentLengthA);
+    sourcePtr = _data.asArray(_firstIndex);
+    copyArray(targetPtr, sourcePtr, segmentLengthA);
 
     // copy second segment from 0 to (firstIndex - 1)
     const Natural segmentLengthB = _firstIndex;
-    sPtr = sourcePtr;
-    copyArray(targetPtr, sPtr, segmentLengthB);
+    sourcePtr = _data.asArray();
+    copyArray(targetPtr, sourcePtr, segmentLengthB);
 }

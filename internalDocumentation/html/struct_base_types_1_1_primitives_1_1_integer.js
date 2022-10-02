@@ -6,6 +6,7 @@ var struct_base_types_1_1_primitives_1_1_integer =
     [ "mod", "struct_base_types_1_1_primitives_1_1_integer.html#a048e9a34cb85eeb39a1d4941c0490e27", null ],
     [ "operator double", "struct_base_types_1_1_primitives_1_1_integer.html#abad328088c0b4da05ae09f9420ee2d5a", null ],
     [ "operator float", "struct_base_types_1_1_primitives_1_1_integer.html#adde9cd4020a2d1c8a49a1fdf4401938c", null ],
+    [ "operator Natural", "struct_base_types_1_1_primitives_1_1_integer.html#a4548fa1b8d3b01d73b3abe3df87ccffa", null ],
     [ "operator size_t", "struct_base_types_1_1_primitives_1_1_integer.html#a906372363ee0d8109d7330b1ad631db3", null ],
     [ "operator%", "struct_base_types_1_1_primitives_1_1_integer.html#a1e3e3ce6cc44996126f7449ee71db23c", null ],
     [ "operator++", "struct_base_types_1_1_primitives_1_1_integer.html#ac5a85449c16c98eeb070db3f82845113", null ],

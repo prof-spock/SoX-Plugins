@@ -45,7 +45,6 @@ namespace BaseTypes::Containers {
     template <typename T, String elementToString (IN T&) = nullptr>
     struct GenericSequence : public vector<T>
     {
-
         /*--------------------*/
         /* con-/destruction   */
         /*--------------------*/
@@ -109,25 +108,27 @@ namespace BaseTypes::Containers {
         /*--------------------*/
 
         /**
-         * Returns pointer to first element of sequence.
+         * Returns pointer to <C>n</C>-th element of sequence.
          *
-         * @return  pointer to first element
+         * @param n  first position to be addressed
+         * @return  pointer to n-th element
          */
-        T* asArray ()
+        T* asArray (IN Natural position = 0)
         {
-            return vector<T>::data();
+            return &(vector<T>::data()[(size_t) position]);
         }
 
         /*--------------------*/
 
         /**
-         * Returns read pointer to first element of sequence.
+         * Returns read pointer to <C>n</C>-th element of sequence.
          *
-         * @return  read pointer to first element
+         * @param n  first position to be addressed
+         * @return  read pointer to n-th element
          */
-        const T* asArray () const
+        const T* asArray (IN Natural position = 0) const
         {
-            return vector<T>::data();
+            return &(vector<T>::data()[(size_t) position]);
         }
 
         /*--------------------*/
@@ -242,6 +243,21 @@ namespace BaseTypes::Containers {
         /*--------------------*/
 
         /**
+         * Checks that sequence has at least <C>requiredLength</C>
+         * elements.
+         *
+         * @param[in] requiredLength  required length of sequence
+         */
+        void ensureLength (IN Natural requiredLength)
+        {
+            if (requiredLength < length()) {
+                setLength(requiredLength);
+            }
+        }
+
+        /*--------------------*/
+
+        /**
          * Prepends <C>element</C> as first element.
          * @param[in] element  element to be prepended to sequence
          */
@@ -346,6 +362,18 @@ namespace BaseTypes::Containers {
         /*--------------------*/
 
         /**
+         * Returns the length of sequence.
+         *
+         * @return  length of sequence
+         */
+        Natural length () const
+        {
+            return Natural{vector<T>::size()};
+        }
+        
+        /*--------------------*/
+
+        /**
          * Tells first position where sequence contains <C>element</C>;
          * returns -1 when not found
          *
@@ -359,7 +387,7 @@ namespace BaseTypes::Containers {
 
             for (Natural i = 0;  i < this->size();  i++) {
                 if (at(i) == element) {
-                    result = Integer{(int) i};
+                    result = Integer{i};
                     break;
                 }
             }
@@ -367,18 +395,6 @@ namespace BaseTypes::Containers {
             return result;
         }
 
-        /*--------------------*/
-
-        /**
-         * Returns the length of sequence.
-         *
-         * @return  length of sequence
-         */
-        Natural length () const
-        {
-            return Natural{vector<T>::size()};
-        }
-        
         /*--------------------*/
         /*--------------------*/
 
