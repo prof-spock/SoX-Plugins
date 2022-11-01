@@ -82,9 +82,11 @@ Boolean File::open (IN String& fileName, IN String& mode)
 
 void File::close ()
 {
-    FilePointer file = (FilePointer) _descriptor;
-    StdIO_fclose(file);
-    _descriptor = NULL;
+    if (_descriptor != NULL) {
+        FilePointer file = (FilePointer) _descriptor;
+        StdIO_fclose(file);
+        _descriptor = NULL;
+    }
 }
 
 /*--------------------*/

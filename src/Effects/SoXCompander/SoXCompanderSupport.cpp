@@ -22,16 +22,11 @@
 
 /*====================*/
 
-#include "SoXCompanderSupport.h"
-
 #include <array>
 
-#include "AudioSampleRingBuffer.h"
 #include "IIRFilter.h"
 #include "Logging.h"
-#include "GenericSequence.h"
-#include "RealList.h"
-#include "StringUtil.h"
+#include "SoXCompanderSupport.h"
 
 /*====================*/
 
@@ -39,9 +34,7 @@ using std::array;
 
 using Audio::IIRFilter;
 using BaseTypes::Containers::GenericSequence;
-using BaseTypes::Containers::RealList;
 using SoXPlugins::Effects::SoXCompander::SoXMultibandCompander;
-using BaseModules::StringUtil;
 
 /*============================================================*/
 

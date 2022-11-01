@@ -10,16 +10,12 @@
 
 /*====================*/
 
-#include "AudioSampleRingBufferVector.h"
-
 #include "Assertion.h"
 #include "Logging.h"
-#include "StringUtil.h"
 
 /*====================*/
 
 using Audio::AudioSampleRingBufferVector;
-using BaseModules::StringUtil;
 
 /*====================*/
 

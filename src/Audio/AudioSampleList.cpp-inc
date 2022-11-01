@@ -12,7 +12,12 @@
 /* IMPORTS */
 /*=========*/
 
+#include "MyArray.h"
+
+/*--------------------*/
+
 using Audio::AudioSampleList;
+using BaseTypes::Containers::copyArray;
 
 /*====================*/
 
@@ -41,10 +46,30 @@ void AudioSampleList::setToZero (IN Natural position,
     if (position < currentLength) {
         const Natural effectiveCount =
             Natural::minimum(currentLength - position, count);
-        AudioSample* samplePtr = asArray(position);
-
-        for (Natural i = 0;  i < effectiveCount;  i++) {
-            *samplePtr++ = 0.0;
-        }
+        AudioSample* sampleArray = asArray(position);
+        clearArray(sampleArray, AudioSample, effectiveCount);
     }
+}
+
+/*--------------------*/
+
+INLINE
+void AudioSampleList::extend (IN AudioSampleList& other,
+                              IN Natural count)
+{
+    const Natural effectiveCount =
+        Natural::minimum(count, other.length());
+
+    if (effectiveCount > 0) {
+        const Natural currentLength = length();
+
+        /* ensure that length is sufficient for storing remaining
+         * elements */
+        ensureLength(currentLength + effectiveCount);
+
+        AudioSample* targetArray = asArray(currentLength);
+        const AudioSample* sourceArray = other.asArray();
+        copyArray(targetArray, sourceArray,
+                  effectiveCount);
+  }
 }

@@ -2,29 +2,29 @@
 
 <AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
   <!--
-    primitives types of SoX plugins
+    primitives types
     -->
-  <Type Name="SoXPlugins::BaseTypes::Primitives::Boolean">
+  <Type Name="BaseTypes::Primitives::Boolean">
 	<DisplayString>{_value}</DisplayString>
   </Type>
 
-  <Type Name="SoXPlugins::BaseTypes::Primitives::Byte">
+  <Type Name="BaseTypes::Primitives::Byte">
 	<DisplayString>{_value}</DisplayString>
   </Type>
 
-  <Type Name="SoXPlugins::BaseTypes::Primitives::Character">
+  <Type Name="BaseTypes::Primitives::Character">
 	<DisplayString>{_value}</DisplayString>
   </Type>
 
-  <Type Name="SoXPlugins::BaseTypes::Primitives::Natural">
+  <Type Name="BaseTypes::Primitives::Natural">
 	<DisplayString>{_value}</DisplayString>
   </Type>
 
-  <Type Name="SoXPlugins::BaseTypes::Primitives::Integer">
+  <Type Name="BaseTypes::Primitives::Integer">
       <DisplayString>{_value}</DisplayString>
   </Type>
 
-  <Type Name="SoXPlugins::BaseTypes::Primitives::Real">
+  <Type Name="BaseTypes::Primitives::Real">
 	  <DisplayString>{_value}</DisplayString>
   </Type>
 

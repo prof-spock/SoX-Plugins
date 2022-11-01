@@ -1,8 +1,7 @@
 <map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Audio/AudioSampleRingBufferVector.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Audio/AudioSampleRingBufferVector.h">
-<area shape="rect" id="node1" title="The AudioSampleRingBufferVector specification defines a two&#45;dimensional list of ring buffers for audi..." alt="" coords="445,5,680,81"/>
+<area shape="rect" id="node1" title="The AudioSampleRingBufferVector specification defines a two&#45;dimensional list of ring buffers for audi..." alt="" coords="421,5,656,81"/>
 <area shape="rect" id="node2" href="$_audio_sample_ring_buffer_vector_8cpp.html" title="The AudioSampleRingBufferVector body implements a two&#45;dimensional list of ring buffers for audio samp..." alt="" coords="5,137,256,213"/>
-<area shape="rect" id="node3" href="$_audio_sample_ring_buffer_vector_8cpp-inc.html" title="The AudioSampleRingBufferVector body implements a two&#45;dimensional list of ring buffers for audio samp..." alt="" coords="280,137,555,213"/>
-<area shape="rect" id="node4" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="579,137,837,213"/>
-<area shape="rect" id="node5" href="$_so_x_overdrive___audio_effect_8cpp.html" title="The SoXOverdrive_AudioEffect body implements the SoX overdrive plugin distorting an input signal with..." alt="" coords="861,129,1072,221"/>
-<area shape="rect" id="node6" href="$_so_x_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXPhaserAndTremolo_AudioEffect body implements the SoX phaser and tremolo modulation effects tha..." alt="" coords="1096,129,1432,221"/>
+<area shape="rect" id="node3" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="280,137,539,213"/>
+<area shape="rect" id="node4" href="$_so_x_overdrive___audio_effect_8cpp.html" title="The SoXOverdrive_AudioEffect body implements the SoX overdrive plugin distorting an input signal with..." alt="" coords="563,129,773,221"/>
+<area shape="rect" id="node5" href="$_so_x_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXPhaserAndTremolo_AudioEffect body implements the SoX phaser and tremolo modulation effects tha..." alt="" coords="797,129,1133,221"/>
 </map>

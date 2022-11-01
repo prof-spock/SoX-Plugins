@@ -63,10 +63,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_assertion_8h.html",
-"_so_x_gain_2_juce_plugin_defines_8h.html#a63703b2d4cde9aebc90083be61142199",
-"struct_audio_1_1___wave_form_descriptor.html#afac37e0e1f96c931fe0fb76b4b8208ac",
-"struct_base_types_1_1_primitives_1_1_real.html#a45c06cd2034670d1d0c89862ee52bc98",
-"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a7e5c79e8830e18f6466a0c5a3c03b6ec"
+"_so_x_gain_2_juce_plugin_defines_8h.html#a2e20a8325daeba8628695c776c66498b",
+"struct_audio_1_1___wave_form_descriptor.html#ac88a1aac2433c3e1eddf85bda7a97d3d",
+"struct_base_types_1_1_primitives_1_1_real.html#a083c00fdc9a89ad5cb59f8be1cddc2ea",
+"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_channel.html#aa66c759f4ed9b4946e71201ae6a1752d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

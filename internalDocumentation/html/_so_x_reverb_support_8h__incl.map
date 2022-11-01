@@ -1,30 +1,30 @@
 <map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXReverb/SoXReverbSupport.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXReverb/SoXReverbSupport.h">
-<area shape="rect" id="node1" title="The SoXReverbSupport specification defines support classes for the freeverb algorithm and provides a ..." alt="" coords="499,5,740,81"/>
-<area shape="rect" id="node2" href="$_audio_sample_ring_buffer_8h.html" title="The AudioSampleRingBuffer specification defines a ring buffer for audio samples with left and right s..." alt="" coords="525,129,714,157"/>
-<area shape="rect" id="node25" href="$_percentage_8h.html" title="The Percentage specification and body provides a simple percentage type." alt="" coords="407,357,517,385"/>
-<area shape="rect" id="node27" href="$_object_8h.html" title="The Object specification and body provides the root object type." alt="" coords="750,129,827,157"/>
-<area shape="rect" id="node3" href="$_audio_sample_list_8h.html" title="The AudioSampleList specification defines sequences of audio samples with zero&#45;based arbitrary indexe..." alt="" coords="244,281,387,309"/>
-<area shape="rect" id="node19" href="$_audio_sample_ring_buffer_8cpp-inc.html" title="The AudioSampleRingBuffer body implements a ring buffer for audio samples with left and right shifts ..." alt="" coords="517,205,746,233"/>
-<area shape="rect" id="node4" href="$_generic_sequence_8h.html" title="The GenericSequence specification and body defines a generic sequence type of values with zero&#45;based ..." alt="" coords="564,433,715,461"/>
-<area shape="rect" id="node16" href="$_audio_sample_8h.html" title="The AudioSample specification and body provides the definition of the audio sample (a real value)." alt="" coords="213,357,333,385"/>
-<area shape="rect" id="node18" href="$_audio_sample_list_8cpp-inc.html" title="The AudioSampleList body implements a simple list of audio samples (this is the effective code includ..." alt="" coords="5,357,188,385"/>
-<area shape="rect" id="node5" title=" " alt="" coords="608,509,671,537"/>
-<area shape="rect" id="node6" href="$_boolean_8h.html" title="The Boolean specification and body provides a value object type for boolean values." alt="" coords="833,737,920,765"/>
-<area shape="rect" id="node10" href="$_integer_8h.html" title="The Integer specification and body provides a value object type for ints." alt="" coords="419,509,497,537"/>
-<area shape="rect" id="node7" href="$_my_string_8h.html" title="The String specification defines a standard string type." alt="" coords="725,813,815,841"/>
-<area shape="rect" id="node8" title=" " alt="" coords="683,889,742,917"/>
-<area shape="rect" id="node9" href="$_global_macros_8h.html" title="The GlobalMacros specification defines simple macros (e.g. for parameter modes)." alt="" coords="766,889,889,917"/>
-<area shape="rect" id="node11" title=" " alt="" coords="560,661,623,689"/>
-<area shape="rect" id="node12" title=" " alt="" coords="469,585,554,613"/>
-<area shape="rect" id="node13" href="$_natural_8h.html" title="The Natural specification and body provides a value object type for naturals (positive integers with ..." alt="" coords="679,585,759,613"/>
-<area shape="rect" id="node14" href="$_generic_number_8h.html" title="The GenericNumber specification and body defines a template for wrapper objects for elementary numeri..." alt="" coords="707,661,844,689"/>
-<area shape="rect" id="node15" title=" " alt="" coords="747,737,803,765"/>
-<area shape="rect" id="node17" href="$_real_8h.html" title="The Real specification defines a value object type for real values." alt="" coords="387,433,451,461"/>
-<area shape="rect" id="node20" href="$_my_array_8h.html" title="The MyArray specification and body defines a generic array type for stack allocated arrays represente..." alt="" coords="811,281,897,309"/>
-<area shape="rect" id="node22" href="$_string_util_8h.html" title="The StringUtil specification defines several string routines not included in the standard C++ library..." alt="" coords="587,281,679,309"/>
-<area shape="rect" id="node21" title=" " alt="" coords="891,357,958,385"/>
-<area shape="rect" id="node23" href="$_byte_8h.html" title="The Byte specification and body provides a value object type for byte values." alt="" coords="521,509,584,537"/>
-<area shape="rect" id="node24" href="$_character_8h.html" title="The Character specification and body provides a value object type for character values." alt="" coords="695,509,794,537"/>
-<area shape="rect" id="node26" href="$_string_list_8h.html" title="The StringList specification defines sequences of string values with zero&#45;based arbitrary indexed acc..." alt="" coords="592,357,687,385"/>
-<area shape="rect" id="node28" title=" " alt="" coords="770,205,813,233"/>
+<area shape="rect" id="node1" title="The SoXReverbSupport specification defines support classes for the freeverb algorithm and provides a ..." alt="" coords="245,5,486,81"/>
+<area shape="rect" id="node2" href="$_audio_sample_ring_buffer_8h.html" title="The AudioSampleRingBuffer specification defines a ring buffer for audio samples with left and right s..." alt="" coords="271,129,460,157"/>
+<area shape="rect" id="node25" href="$_percentage_8h.html" title="The Percentage specification and body provides a simple percentage type." alt="" coords="5,357,115,385"/>
+<area shape="rect" id="node27" href="$_object_8h.html" title="The Object specification and body provides the root object type." alt="" coords="511,129,588,157"/>
+<area shape="rect" id="node3" href="$_audio_sample_list_8h.html" title="The AudioSampleList specification defines sequences of audio samples with zero&#45;based arbitrary indexe..." alt="" coords="479,281,622,309"/>
+<area shape="rect" id="node21" href="$_audio_sample_ring_buffer_8cpp-inc.html" title="The AudioSampleRingBuffer body implements a ring buffer for audio samples with left and right shifts ..." alt="" coords="237,205,467,233"/>
+<area shape="rect" id="node4" href="$_generic_sequence_8h.html" title="The GenericSequence specification and body defines a generic sequence type of values with zero&#45;based ..." alt="" coords="499,433,650,461"/>
+<area shape="rect" id="node16" href="$_audio_sample_8h.html" title="The AudioSample specification and body provides the definition of the audio sample (a real value)." alt="" coords="297,357,417,385"/>
+<area shape="rect" id="node18" href="$_audio_sample_list_8cpp-inc.html" title="The AudioSampleList body implements a simple list of audio samples (this is the effective code includ..." alt="" coords="613,357,795,385"/>
+<area shape="rect" id="node5" title=" " alt="" coords="554,509,617,537"/>
+<area shape="rect" id="node6" href="$_boolean_8h.html" title="The Boolean specification and body provides a value object type for boolean values." alt="" coords="501,737,587,765"/>
+<area shape="rect" id="node10" href="$_integer_8h.html" title="The Integer specification and body provides a value object type for ints." alt="" coords="327,509,406,537"/>
+<area shape="rect" id="node7" href="$_my_string_8h.html" title="The String specification defines a standard string type." alt="" coords="579,813,669,841"/>
+<area shape="rect" id="node8" title=" " alt="" coords="537,889,596,917"/>
+<area shape="rect" id="node9" href="$_global_macros_8h.html" title="The GlobalMacros specification defines simple macros (e.g. for parameter modes)." alt="" coords="620,889,743,917"/>
+<area shape="rect" id="node11" title=" " alt="" coords="278,661,341,689"/>
+<area shape="rect" id="node12" title=" " alt="" coords="347,585,432,613"/>
+<area shape="rect" id="node13" href="$_natural_8h.html" title="The Natural specification and body provides a value object type for naturals (positive integers with ..." alt="" coords="507,585,587,613"/>
+<area shape="rect" id="node14" href="$_generic_number_8h.html" title="The GenericNumber specification and body defines a template for wrapper objects for elementary numeri..." alt="" coords="478,661,615,689"/>
+<area shape="rect" id="node15" title=" " alt="" coords="612,737,668,765"/>
+<area shape="rect" id="node17" href="$_real_8h.html" title="The Real specification defines a value object type for real values." alt="" coords="240,433,304,461"/>
+<area shape="rect" id="node19" href="$_my_array_8h.html" title="The MyArray specification and body defines a generic array type for stack allocated arrays represente..." alt="" coords="717,433,803,461"/>
+<area shape="rect" id="node20" title=" " alt="" coords="692,509,759,537"/>
+<area shape="rect" id="node22" href="$_string_util_8h.html" title="The StringUtil specification defines several string routines not included in the standard C++ library..." alt="" coords="181,281,273,309"/>
+<area shape="rect" id="node23" href="$_byte_8h.html" title="The Byte specification and body provides a value object type for byte values." alt="" coords="241,509,303,537"/>
+<area shape="rect" id="node24" href="$_character_8h.html" title="The Character specification and body provides a value object type for character values." alt="" coords="431,509,529,537"/>
+<area shape="rect" id="node26" href="$_string_list_8h.html" title="The StringList specification defines sequences of string values with zero&#45;based arbitrary indexed acc..." alt="" coords="442,357,537,385"/>
+<area shape="rect" id="node28" title=" " alt="" coords="541,205,584,233"/>
 </map>

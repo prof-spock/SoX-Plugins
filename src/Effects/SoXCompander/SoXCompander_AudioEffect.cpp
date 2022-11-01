@@ -11,30 +11,18 @@
 /*====================*/
 
 #include "Logging.h"
-#include "Integer.h"
-#include "Natural.h"
-#include "Real.h"
 #include "GenericTuple.h"
 #include "RealList.h"
 #include "SoXAudioHelper.h"
 #include "SoXAudioParameterMap.h"
-#include "SoXAudioValueChangeKind.h"
 #include "SoXCompander_AudioEffect.h"
 #include "SoXCompanderSupport.h"
-#include "StringUtil.h"
 
 /*====================*/
 
-using BaseModules::StringUtil;
 using BaseTypes::Containers::GenericTuple;
 using BaseTypes::Containers::RealList;
-using BaseTypes::Containers::StringList;
-using BaseTypes::Primitives::Integer;
-using BaseTypes::Primitives::Natural;
-using BaseTypes::Primitives::Real;
-using BaseTypes::Primitives::String;
 using SoXPlugins::Helpers::SoXAudioParameterMap;
-using SoXPlugins::Helpers::SoXAudioValueChangeKind;
 using SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect;
 using SoXPlugins::Effects::SoXCompander::SoXMultibandCompander;
 

@@ -1,13 +1,19 @@
 var NAVTREEINDEX2 =
 {
+"struct_audio_1_1___wave_form_descriptor.html#ac88a1aac2433c3e1eddf85bda7a97d3d":[1,0,0,0,3],
+"struct_audio_1_1___wave_form_descriptor.html#aeddb0b796ac3772b6d9fc773fb3e14f1":[1,0,0,0,8],
 "struct_audio_1_1___wave_form_descriptor.html#afac37e0e1f96c931fe0fb76b4b8208ac":[1,0,0,0,5],
 "struct_audio_1_1___wave_form_descriptor.html#afdf5168ef41c975412ccdbe70766bcae":[1,0,0,0,9],
 "struct_audio_1_1_audio_sample_list.html":[1,0,0,1],
-"struct_audio_1_1_audio_sample_list.html#a69b109f31354e668e284065921b8f629":[1,0,0,1,1],
-"struct_audio_1_1_audio_sample_list.html#a8ae2200c977ce9fff93217f5b0b8c13d":[1,0,0,1,0],
+"struct_audio_1_1_audio_sample_list.html#a69b109f31354e668e284065921b8f629":[1,0,0,1,2],
+"struct_audio_1_1_audio_sample_list.html#a8ae2200c977ce9fff93217f5b0b8c13d":[1,0,0,1,1],
+"struct_audio_1_1_audio_sample_list.html#ae9f5f0fb7099ef633066a64f42318a22":[1,0,0,1,0],
 "struct_audio_1_1_audio_sample_list_vector.html":[1,0,0,2],
-"struct_audio_1_1_audio_sample_list_vector.html#a38da4baff291c282719adf8c147bf377":[1,0,0,2,0],
-"struct_audio_1_1_audio_sample_list_vector.html#acd0e8edeb750ade444da7be7badc7447":[1,0,0,2,1],
+"struct_audio_1_1_audio_sample_list_vector.html#a38da4baff291c282719adf8c147bf377":[1,0,0,2,3],
+"struct_audio_1_1_audio_sample_list_vector.html#a49950791abe78d776d372ed20bcd7f3a":[1,0,0,2,0],
+"struct_audio_1_1_audio_sample_list_vector.html#a7b7250c3dd80ac89e03bffa2211aadec":[1,0,0,2,4],
+"struct_audio_1_1_audio_sample_list_vector.html#aaa806d9bd9e95b3daf0adf60fa62064b":[1,0,0,2,2],
+"struct_audio_1_1_audio_sample_list_vector.html#ab78b6113aa137915c37d170c49573cf0":[1,0,0,2,1],
 "struct_audio_1_1_audio_sample_ring_buffer.html":[1,0,0,3],
 "struct_audio_1_1_audio_sample_ring_buffer.html#a09a1162cb52b4438077ffab6db6d068b":[1,0,0,3,12],
 "struct_audio_1_1_audio_sample_ring_buffer.html#a1e374a5f6bde0af9d1f62cb9b0884e0c":[1,0,0,3,16],
@@ -243,11 +249,5 @@ var NAVTREEINDEX2 =
 "struct_base_types_1_1_primitives_1_1_radians.html#a1585daeddbd7c11074c9ccd004c85183":[1,0,2,1,8,0],
 "struct_base_types_1_1_primitives_1_1_radians.html#a95435de980033e6b615051a28939af3b":[1,0,2,1,8,1],
 "struct_base_types_1_1_primitives_1_1_radians.html#aae8a4e40fdd2f034cefebbe55b9df5e6":[1,0,2,1,8,2],
-"struct_base_types_1_1_primitives_1_1_real.html":[1,0,2,1,9],
-"struct_base_types_1_1_primitives_1_1_real.html#a083c00fdc9a89ad5cb59f8be1cddc2ea":[1,0,2,1,9,20],
-"struct_base_types_1_1_primitives_1_1_real.html#a13d2172ce7521642dacf4caa4ad07193":[1,0,2,1,9,25],
-"struct_base_types_1_1_primitives_1_1_real.html#a1f7e10d11c664ab578b6467b6445cd03":[1,0,2,1,9,1],
-"struct_base_types_1_1_primitives_1_1_real.html#a299a9c6eeef5cab4bf8ae3894f503f7a":[1,0,2,1,9,17],
-"struct_base_types_1_1_primitives_1_1_real.html#a33da8621e61e7505e9560c1a9edc0c7b":[1,0,2,1,9,21],
-"struct_base_types_1_1_primitives_1_1_real.html#a347e56bb039e39376adcb1edc92b9995":[1,0,2,1,9,7]
+"struct_base_types_1_1_primitives_1_1_real.html":[1,0,2,1,9]
 };

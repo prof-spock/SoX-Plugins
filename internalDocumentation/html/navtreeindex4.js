@@ -1,5 +1,11 @@
 var NAVTREEINDEX4 =
 {
+"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_channel.html#aa66c759f4ed9b4946e71201ae6a1752d":[1,0,3,0,5,3,3],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_channel.html#aaf3560fc568766767838a5ff84e4b69c":[1,0,3,0,5,3,2],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_channel.html#ad173cd531dcfc57303a017246a4e1140":[1,0,3,0,5,3,6],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html":[1,0,3,0,5,4],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a31a970af5cf25ed14248a0df63afb045":[1,0,3,0,5,4,7],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a4c9ee4c396a800d35041eba11f4f1ec7":[1,0,3,0,5,4,0],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a7e5c79e8830e18f6466a0c5a3c03b6ec":[1,0,3,0,5,4,5],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a921b82dd6d9604786a4472ec496c4891":[1,0,3,0,5,4,2],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a9ac458b45cd764d0b6630ba594b96128":[1,0,3,0,5,4,1],

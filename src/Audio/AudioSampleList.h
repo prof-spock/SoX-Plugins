@@ -69,6 +69,20 @@ namespace Audio {
         void setToZero (IN Natural position = 0,
                         IN Natural count = Natural::maximumValue());
 
+        /*--------------------*/
+
+        /**
+         * Appends samples from <C>other</C> with a count of
+         * <C>count</C> to current sample list.
+         *
+         * @param[in] other  list to be appended to current list
+         * @param[in] count  the number of samples to be appended;
+         *                   if missing, all samples from other will
+         *                   be used
+         */
+        void extend (IN AudioSampleList& other,
+                     IN Natural count = Natural::maximumValue());
+
     };
 
 }

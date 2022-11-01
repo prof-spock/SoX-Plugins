@@ -108,9 +108,9 @@ namespace BaseTypes::Containers {
         /*--------------------*/
 
         /**
-         * Returns pointer to <C>n</C>-th element of sequence.
+         * Returns pointer to n-th element of sequence.
          *
-         * @param n  first position to be addressed
+         * @param position  first position to be addressed
          * @return  pointer to n-th element
          */
         T* asArray (IN Natural position = 0)
@@ -121,9 +121,9 @@ namespace BaseTypes::Containers {
         /*--------------------*/
 
         /**
-         * Returns read pointer to <C>n</C>-th element of sequence.
+         * Returns read pointer to n-th element of sequence.
          *
-         * @param n  first position to be addressed
+         * @param position  first position to be addressed
          * @return  read pointer to n-th element
          */
         const T* asArray (IN Natural position = 0) const
@@ -250,7 +250,7 @@ namespace BaseTypes::Containers {
          */
         void ensureLength (IN Natural requiredLength)
         {
-            if (requiredLength < length()) {
+            if (requiredLength > length()) {
                 setLength(requiredLength);
             }
         }

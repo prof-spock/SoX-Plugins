@@ -1,20 +1,22 @@
 <map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Audio/AudioSampleListVector.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Audio/AudioSampleListVector.h">
-<area shape="rect" id="node1" title="The AudioSampleListVector specification defines the communication buffer structure for the block proc..." alt="" coords="253,5,452,81"/>
-<area shape="rect" id="node2" href="$_audio_sample_list_8h.html" title="The AudioSampleList specification defines sequences of audio samples with zero&#45;based arbitrary indexe..." alt="" coords="177,129,320,157"/>
-<area shape="rect" id="node18" href="$_audio_sample_list_vector_8cpp-inc.html" title="The AudioSampleListVector body implements the communication buffer structure for the block processing..." alt="" coords="344,129,569,157"/>
-<area shape="rect" id="node3" href="$_generic_sequence_8h.html" title="The GenericSequence specification and body defines a generic sequence type of values with zero&#45;based ..." alt="" coords="51,281,201,309"/>
-<area shape="rect" id="node15" href="$_audio_sample_8h.html" title="The AudioSample specification and body provides the definition of the audio sample (a real value)." alt="" coords="189,205,309,233"/>
-<area shape="rect" id="node17" href="$_audio_sample_list_8cpp-inc.html" title="The AudioSampleList body implements a simple list of audio samples (this is the effective code includ..." alt="" coords="333,205,516,233"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,357,68,385"/>
-<area shape="rect" id="node5" href="$_boolean_8h.html" title="The Boolean specification and body provides a value object type for boolean values." alt="" coords="93,585,180,613"/>
-<area shape="rect" id="node9" href="$_integer_8h.html" title="The Integer specification and body provides a value object type for ints." alt="" coords="256,357,335,385"/>
-<area shape="rect" id="node6" href="$_my_string_8h.html" title="The String specification defines a standard string type." alt="" coords="193,661,283,689"/>
-<area shape="rect" id="node7" title=" " alt="" coords="151,737,210,765"/>
-<area shape="rect" id="node8" href="$_global_macros_8h.html" title="The GlobalMacros specification defines simple macros (e.g. for parameter modes)." alt="" coords="234,737,357,765"/>
-<area shape="rect" id="node10" title=" " alt="" coords="363,509,425,537"/>
-<area shape="rect" id="node11" title=" " alt="" coords="271,433,357,461"/>
-<area shape="rect" id="node12" href="$_natural_8h.html" title="The Natural specification and body provides a value object type for naturals (positive integers with ..." alt="" coords="167,433,247,461"/>
-<area shape="rect" id="node13" href="$_generic_number_8h.html" title="The GenericNumber specification and body defines a template for wrapper objects for elementary numeri..." alt="" coords="144,509,281,537"/>
-<area shape="rect" id="node14" title=" " alt="" coords="205,585,261,613"/>
-<area shape="rect" id="node16" href="$_real_8h.html" title="The Real specification defines a value object type for real values." alt="" coords="263,281,327,309"/>
+<area shape="rect" id="node1" title="The AudioSampleListVector specification defines the communication buffer structure for the block proc..." alt="" coords="245,5,444,81"/>
+<area shape="rect" id="node2" href="$_audio_sample_list_8h.html" title="The AudioSampleList specification defines sequences of audio samples with zero&#45;based arbitrary indexe..." alt="" coords="169,129,312,157"/>
+<area shape="rect" id="node20" href="$_audio_sample_list_vector_8cpp-inc.html" title="The AudioSampleListVector body implements the communication buffer structure for the block processing..." alt="" coords="336,129,561,157"/>
+<area shape="rect" id="node3" href="$_generic_sequence_8h.html" title="The GenericSequence specification and body defines a generic sequence type of values with zero&#45;based ..." alt="" coords="165,281,316,309"/>
+<area shape="rect" id="node15" href="$_audio_sample_8h.html" title="The AudioSample specification and body provides the definition of the audio sample (a real value)." alt="" coords="66,205,186,233"/>
+<area shape="rect" id="node17" href="$_audio_sample_list_8cpp-inc.html" title="The AudioSampleList body implements a simple list of audio samples (this is the effective code includ..." alt="" coords="285,205,468,233"/>
+<area shape="rect" id="node4" title=" " alt="" coords="209,357,272,385"/>
+<area shape="rect" id="node5" href="$_boolean_8h.html" title="The Boolean specification and body provides a value object type for boolean values." alt="" coords="249,585,336,613"/>
+<area shape="rect" id="node9" href="$_integer_8h.html" title="The Integer specification and body provides a value object type for ints." alt="" coords="77,357,156,385"/>
+<area shape="rect" id="node6" href="$_my_string_8h.html" title="The String specification defines a standard string type." alt="" coords="146,661,237,689"/>
+<area shape="rect" id="node7" title=" " alt="" coords="105,737,163,765"/>
+<area shape="rect" id="node8" href="$_global_macros_8h.html" title="The GlobalMacros specification defines simple macros (e.g. for parameter modes)." alt="" coords="187,737,310,765"/>
+<area shape="rect" id="node10" title=" " alt="" coords="5,509,68,537"/>
+<area shape="rect" id="node11" title=" " alt="" coords="74,433,159,461"/>
+<area shape="rect" id="node12" href="$_natural_8h.html" title="The Natural specification and body provides a value object type for naturals (positive integers with ..." alt="" coords="183,433,263,461"/>
+<area shape="rect" id="node13" href="$_generic_number_8h.html" title="The GenericNumber specification and body defines a template for wrapper objects for elementary numeri..." alt="" coords="149,509,287,537"/>
+<area shape="rect" id="node14" title=" " alt="" coords="169,585,225,613"/>
+<area shape="rect" id="node16" href="$_real_8h.html" title="The Real specification defines a value object type for real values." alt="" coords="77,281,141,309"/>
+<area shape="rect" id="node18" href="$_my_array_8h.html" title="The MyArray specification and body defines a generic array type for stack allocated arrays represente..." alt="" coords="340,281,427,309"/>
+<area shape="rect" id="node19" title=" " alt="" coords="413,357,479,385"/>
 </map>

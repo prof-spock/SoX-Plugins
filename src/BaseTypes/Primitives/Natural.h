@@ -154,11 +154,11 @@ namespace BaseTypes::Primitives {
 
         /*--------------------*/
         /**
-         * Returns the modulus of current value and <C>other</C>.
+         * Sets current value to modulus of current value and
+         * <C>other</C>.
          *
          * @param[in] other  other natural value to be used as
          *                   divisor
-         * @return  modulus of current and <C>other</C>.
          */
         void operator %= (IN Natural other)
         {

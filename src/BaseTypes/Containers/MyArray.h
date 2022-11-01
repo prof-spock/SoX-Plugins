@@ -17,8 +17,10 @@
 /*=========*/
 
 #include <cstring>
-    /** a qualified version of imported function */
+    /** a qualified version of memcpy */
     #define CString_memcpy  memcpy
+    /** a qualified version of memset */
+    #define CString_memset  memset
 
 #include "Natural.h"
 
@@ -39,7 +41,20 @@ namespace BaseTypes::Containers {
      * @return array with <C>count</C> entries of type <C>ElementType</C>
      */
     #define makeLocalArray(ElementType, count) \
-        (ElementType*) alloca(((size_t) (count)) * sizeof(ElementType))
+        (ElementType*) alloca((int) (count) * sizeof(ElementType))
+
+    /*--------------------*/
+
+    /**
+     * Sets all elements in <C>array</C> of <C>count</C> elements of
+     * type <C>ElementType</C> to zero.
+     *
+     * @param array        element array to be cleared
+     * @param ElementType  type of element
+     * @param count        count of elements to be cleared
+     */
+    #define clearArray(array, ElementType, count) \
+        CString_memset(array, 0, (int) (count) * sizeof(ElementType))
 
     /*--------------------*/
 

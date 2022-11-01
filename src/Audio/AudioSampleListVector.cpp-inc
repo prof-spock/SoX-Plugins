@@ -19,9 +19,54 @@ using Audio::AudioSampleListVector;
 /*====================*/
 
 INLINE
-String AudioSampleListVector::toString () const
+String AudioSampleListVector::toString (IN Natural frameCount,
+                                        IN Boolean isGroupedByFrames) const
 {
-    return _toString("AudioSampleListVector");
+    const Natural effectiveFrameCount =
+        Natural::minimum(frameCount, this->frameCount());
+    const Natural listCount = length();
+    const Natural elementCountInGroup =
+        (isGroupedByFrames ? listCount : effectiveFrameCount);
+    const Natural groupCount =
+        (isGroupedByFrames ? effectiveFrameCount : listCount);
+    String result = "AudioSampleListVector(";
+    
+    for (Natural i = 0;  i < groupCount;  i++) {
+        result += (i > 0 ? ", " : "");
+        result += "(";
+
+        for (Natural j = 0;  j < elementCountInGroup;  j++) {
+            result += (j > 0 ? ", " : "");
+            AudioSample value = (isGroupedByFrames
+                                 ? at(j).at(i)
+                                 : at(i).at(j));
+            result += value.toString();
+        }
+
+        result += ")";
+    }
+
+    result += ")";
+    return result;
+}
+
+/*--------------------*/
+
+INLINE
+Natural AudioSampleListVector::frameCount () const
+{
+    Natural result = (length() == 0 ? 0 : at(0).length());
+    return result;
+}
+
+/*--------------------*/
+
+INLINE
+void AudioSampleListVector::setFrameCount (IN Natural newFrameCount)
+{
+    for (AudioSampleList& list : *this) {
+        list.setLength(newFrameCount);
+    }
 }
 
 /*--------------------*/
@@ -31,6 +76,21 @@ void AudioSampleListVector::setToZero (IN Natural position,
                                        IN Natural count)
 {
     for (AudioSampleList& list : *this) {
-        list.setToZero();
+        list.setToZero(position, count);
+    }
+}
+
+/*--------------------*/
+
+INLINE
+void AudioSampleListVector::extend (IN AudioSampleListVector& other,
+                                    IN Natural frameCount)
+{
+    const Natural channelCount = length();
+    
+    for (Natural i = 0;  i < channelCount;  i++) {
+        AudioSampleList& currentList = at(i);
+        const AudioSampleList& otherList = other.at(i);
+        currentList.extend(otherList, frameCount);
     }
 }

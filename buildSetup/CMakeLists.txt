@@ -10,12 +10,6 @@ PROJECT(SoXPlugins
         VERSION 1.0
         LANGUAGES CXX)
 
-IF(NOT CMAKE_BUILD_TYPE)
-    SET(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
-ENDIF()
-
-MESSAGE(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
-
 # =============================
 # === program configuration ===
 # =============================
@@ -58,6 +52,9 @@ SET(effectNameList
 
 # a command line test program for optimization
 SET(testProgramName "ZZZ_Test-SoXPlugins")
+
+# the subdirectory for the configuration used
+SET(configurationSubdirectory $<$<PLATFORM_ID:Windows>:/$<CONFIG>>)
 
 # ===================
 # === directories ===
@@ -577,7 +574,7 @@ FUNCTION(makeEffectVSTTarget effectName libraryName targetName)
 
         SET(libraryFileName ${libraryName}${libraryNameExtension})
         SET(libraryFileDirectory
-            ${buildDirectory}$<$<PLATFORM_ID:Windows>:/$<CONFIG>>)
+            ${buildDirectory}${configurationSubdirectory})
         SET(vst3Directory
             ${buildDirectory}/${libraryName}/Contents/${vst3PlatformName})
         
@@ -634,13 +631,16 @@ FUNCTION(makeLaTeXDocumentationTarget targetName)
     # does a two phase compilation to get the TOC and AUX files
     # correct
 
-    SET(pdfLaTeXCommandA
-        ${PDFLATEX_COMPILER} -draftmode -interaction=nonstopmode
+    SET(commonLaTeXParameters
+        -c-style-errors
+        -interaction=nonstopmode
         --output-directory=${buildDirectory})
 
+    SET(pdfLaTeXCommandA
+        ${PDFLATEX_COMPILER} -draftmode ${commonLaTeXParameters})
+
     SET(pdfLaTeXCommandB
-        ${PDFLATEX_COMPILER} -interaction=nonstopmode
-        --output-directory=${buildDirectory})
+        ${PDFLATEX_COMPILER} ${commonLaTeXParameters})
 
     SET(docLaTeXFileNameStemBuildPath
         ${buildDirectory}/${docLaTeXFileNameStem})
@@ -734,6 +734,9 @@ ENDFUNCTION(shortNameForEffect)
 ###########
 
 INCLUDE_DIRECTORIES(${standardIncludeDirectoryList})
+
+# compile with logging enabled globally for a debug configuration
+ADD_COMPILE_DEFINITIONS($<$<CONFIG:Debug>:LOGGING_IS_ACTIVE>)
 
 # ==================================
 # === intermediate library files ===
@@ -880,6 +883,9 @@ ENDIF()
 # === INSTALLATION ===
 # ====================
 
+SET(platformTargetSubdirectory
+    ${platformTargetDirectory}/${platformName}${configurationSubdirectory})
+
 IF(MSVC)
     # make installation part of build in MSVC
     SET(CMAKE_VS_INCLUDE_INSTALL_TO_DEFAULT_BUILD 1)
@@ -903,8 +909,7 @@ INSTALL(FILES ${regressionTestFileList}
 # --- install the VST3 plugins to platform directory ---
 FOREACH(effectName ${effectNameList})
     SET(libraryName SoX${effectName})
-    SET(targetVST3Directory
-        ${platformTargetDirectory}/${platformName}/VST3)
+    SET(targetVST3Directory ${platformTargetSubdirectory}/VST3)
     FILE(REMOVE_RECURSE ${targetVST3Directory})
 
     IF(NOT MACOSX)
@@ -924,7 +929,7 @@ IF(MACOSX)
         SET(libraryName SoX${effectName})
         SET(targetName ${libraryName}_AU)
         SET(specificTargetDirectory
-            ${platformTargetDirectory}/${platformName}/AU)
+            ${platformTargetDirectory}/${platformName}/${cmakeBuildType}/AU)
         FILE(REMOVE_RECURSE ${specificTargetDirectory})
         INSTALL(TARGETS ${targetName}
                 DESTINATION ${specificTargetDirectory})

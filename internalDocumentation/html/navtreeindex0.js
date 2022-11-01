@@ -101,10 +101,12 @@ var NAVTREEINDEX0 =
 "_logging_support_8h.html":[2,0,0,1,6],
 "_logging_support_8h_source.html":[2,0,0,1,6],
 "_my_array_8h.html":[2,0,0,2,0,9],
-"_my_array_8h.html#a92f67422dae01fc66ac6cbf525c5c95c":[2,0,0,2,0,9,0],
-"_my_array_8h.html#ad9ff90b44a90517d01b1c510f881b26a":[2,0,0,2,0,9,2],
-"_my_array_8h.html#adede199e40286fbec7786ebdc3b1b299":[2,0,0,2,0,9,1],
-"_my_array_8h.html#afced1b14c2210243df502d894a7e9483":[2,0,0,2,0,9,3],
+"_my_array_8h.html#a3f996aa5982ac689e87f52c3e5160f02":[2,0,0,2,0,9,0],
+"_my_array_8h.html#a92f67422dae01fc66ac6cbf525c5c95c":[2,0,0,2,0,9,1],
+"_my_array_8h.html#ab241783868f9b5adc8c13be5d8ca9626":[2,0,0,2,0,9,2],
+"_my_array_8h.html#ad9ff90b44a90517d01b1c510f881b26a":[2,0,0,2,0,9,4],
+"_my_array_8h.html#adede199e40286fbec7786ebdc3b1b299":[2,0,0,2,0,9,3],
+"_my_array_8h.html#afced1b14c2210243df502d894a7e9483":[2,0,0,2,0,9,5],
 "_my_array_8h_source.html":[2,0,0,2,0,9],
 "_my_string_8cpp.html":[2,0,0,2,1,6],
 "_my_string_8cpp.html#a537d2530f5c26feae7d1c1858ae5112e":[2,0,0,2,1,6,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "_so_x_filter___audio_processor_8cpp.html#ad8f2c863bffc2e87f6f3dc7a500b94f9":[2,0,0,3,1,3,1],
 "_so_x_gain_2_juce_plugin_defines_8h.html":[2,0,0,3,2,0],
 "_so_x_gain_2_juce_plugin_defines_8h.html#a0a2cbe873c426ffdd1ea95961bb92acb":[2,0,0,3,2,0,13],
-"_so_x_gain_2_juce_plugin_defines_8h.html#a0aa9dd2f988ba4b664b637abb830eed6":[2,0,0,3,2,0,12],
-"_so_x_gain_2_juce_plugin_defines_8h.html#a2e20a8325daeba8628695c776c66498b":[2,0,0,3,2,0,11],
-"_so_x_gain_2_juce_plugin_defines_8h.html#a3798879af405157dad670867e14e33a2":[2,0,0,3,2,0,0]
+"_so_x_gain_2_juce_plugin_defines_8h.html#a0aa9dd2f988ba4b664b637abb830eed6":[2,0,0,3,2,0,12]
 };

@@ -12,19 +12,14 @@
 
 /*====================*/
 
-#include "GlobalMacros.h"
 #include "Real.h"
 #include "SoXAudioEffect.h"
-#include "SoXAudioValueChangeKind.h"
 #include "MyString.h"
 
 /*====================*/
 
-using Audio::AudioSampleListVector;
 using BaseTypes::Primitives::Real;
-using BaseTypes::Primitives::String;
 using SoXPlugins::Effects::SoXAudioEffect;
-using SoXPlugins::Helpers::SoXAudioValueChangeKind;
 
 /*====================*/
 
