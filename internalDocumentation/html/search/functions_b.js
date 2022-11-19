@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kind_998',['kind',['../struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_parameter_map.html#afe67891acf6bf9df06e88f1322823ee7',1,'SoXPlugins::Helpers::SoXAudioParameterMap']]]
+  ['kind_896',['kind',['../struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html#a6b0ba6435d25f7e8d595721362fe36e6',1,'SoXPlugins::Helpers::SoXEffectParameterMap']]]
 ];

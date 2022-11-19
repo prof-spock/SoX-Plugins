@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['logging_734',['Logging',['../struct_base_modules_1_1_logging.html',1,'BaseModules']]]
+  ['natural_648',['Natural',['../struct_base_types_1_1_primitives_1_1_natural.html',1,'BaseTypes::Primitives']]],
+  ['naturallist_649',['NaturalList',['../struct_base_types_1_1_containers_1_1_natural_list.html',1,'BaseTypes::Containers']]]
 ];

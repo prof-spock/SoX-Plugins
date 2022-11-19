@@ -1,5 +1,5 @@
-<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXReverb/SoXReverbSupport.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXReverb/SoXReverbSupport.h">
-<area shape="rect" id="node1" title="The SoXReverbSupport specification defines support classes for the freeverb algorithm and provides a ..." alt="" coords="177,5,418,81"/>
-<area shape="rect" id="node2" href="$_so_x_reverb___audio_effect_8cpp.html" title="The SoXReverb_AudioEffect body implements the SoX reverb plugin using the freeverb algorithm for room..." alt="" coords="5,129,293,205"/>
-<area shape="rect" id="node3" href="$_so_x_reverb_support_8cpp.html" title="The SoXReverbSupport body implements support classes for the freeverb algorithm and provides a single..." alt="" coords="318,129,575,205"/>
+<map id="SoXReverbSupport.h" name="SoXReverbSupport.h">
+<area shape="rect" id="node1" title="The SoXReverbSupport specification defines support classes for the freeverb algorithm and provides a ..." alt="" coords="136,5,295,33"/>
+<area shape="rect" id="node2" href="$_so_x_reverb___audio_effect_8cpp.html" title="The SoXReverb_AudioEffect body implements the SoX reverb plugin using the freeverb algorithm for room..." alt="" coords="5,81,212,109"/>
+<area shape="rect" id="node3" href="$_so_x_reverb_support_8cpp.html" title="The SoXReverbSupport body implements support classes for the freeverb algorithm and provides a single..." alt="" coords="236,81,411,109"/>
 </map>

@@ -33,8 +33,11 @@
 using std::array;
 
 using Audio::IIRFilter;
-using BaseTypes::Containers::GenericSequence;
+using BaseTypes::GenericTypes::GenericList;
 using SoXPlugins::Effects::SoXCompander::SoXMultibandCompander;
+
+/** abbreviation for StringUtil::expand */
+#define expand  StringUtil::expand
 
 /*============================================================*/
 
@@ -58,6 +61,7 @@ namespace SoXPlugins::Effects::SoXCompander {
         /** the y-coordinate of the point */
         Real y;
 
+        /*--------------------*/
         /*--------------------*/
 
         /**
@@ -144,6 +148,24 @@ namespace SoXPlugins::Effects::SoXCompander {
      */
     struct _TfSegment {
 
+        /** tells whether current segment is a straight line */
+        Boolean isStraightLine;
+
+        /** the start point of the segment */
+        _Point2D startPoint;
+
+        /** the end point of the segment */
+        _Point2D endPoint;
+
+        /** coefficient a2 of a quadratic function */
+        Real a2;
+
+        /** coefficients a1 of a quadratic function */
+        Real a1;
+
+        /*--------------------*/
+        /*--------------------*/
+
         /**
          * Returns string representation of current segment
          *
@@ -203,24 +225,6 @@ namespace SoXPlugins::Effects::SoXCompander {
          */
         _Point2D interpolate (IN Real position) const;
 
-        /*--------------------*/
-        /*--------------------*/
-
-        /** tells whether current segment is a straight line */
-        Boolean isStraightLine;
-
-        /** the start point of the segment */
-        _Point2D startPoint;
-
-        /** the end point of the segment */
-        _Point2D endPoint;
-
-        /** coefficient a2 of a quadratic function */
-        Real a2;
-
-        /** coefficients a1 of a quadratic function */
-        Real a1;
-
     };
 
     /*================================*/
@@ -230,7 +234,7 @@ namespace SoXPlugins::Effects::SoXCompander {
     /**
      * A <C>_TfSegmentList</C> is a list of transfer function segments.
      */
-    using _TfSegmentList = GenericSequence<_TfSegment>;
+    using _TfSegmentList = GenericList<_TfSegment>;
 
     /*===================*/
     /* Transfer Function */
@@ -501,6 +505,7 @@ namespace SoXPlugins::Effects::SoXCompander {
         static const Natural order;
 
         /*--------------------*/
+        /*--------------------*/
 
         /**
          * Constructs a 4th order Linkwitz-Riley filter as an IIR
@@ -638,7 +643,7 @@ namespace SoXPlugins::Effects::SoXCompander {
      * the previous crossover band
      */
     using _CompanderSampleBuffer =
-        GenericSequence<_CompanderSampleBufferEntry>;
+        GenericList<_CompanderSampleBufferEntry>;
 
     /*=================*/
     /* _MCompanderBand */
@@ -792,7 +797,7 @@ namespace SoXPlugins::Effects::SoXCompander {
     /**
      * A <C>_MCompanderBandList</C> is a list of compander bands.
      */
-    using _MCompanderBandList = GenericSequence<_MCompanderBand>;
+    using _MCompanderBandList = GenericList<_MCompanderBand>;
 
     /*============================================================*/
     /*============================================================*/
@@ -814,11 +819,9 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     String _Point2D::toString () const {
-        String st = ("_Point2D("
-                     + TOSTRING(x)
-                     + ", " + TOSTRING(y)
-                     + ")");
-
+        String st =
+            expand("_Point2D(%1, %2)",
+                   TOSTRING(x), TOSTRING(y));
         return st;
     }
 
@@ -861,13 +864,15 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*============================================================*/
 
     String _TfSegment::toString () const {
-        String st = "_TfSegment(";
-        st += "isLine = " + TOSTRING(isStraightLine);
-        st += ", start = " + startPoint.toString();
-        st += ", end = " + endPoint.toString();
-        st += ", a2 = " + TOSTRING(a2);
-        st += ", a1 = " + TOSTRING(a1);
-        st += ")";
+        String st =
+            expand("_TfSegment("
+                   "isLine = %1, start = %2, end = %3,"
+                   " a2 = %4, a1 = %5)",
+                   TOSTRING(isStraightLine),
+                   startPoint.toString(),
+                   endPoint.toString(),
+                   TOSTRING(a2),
+                   TOSTRING(a1));
 
         return st;
     }
@@ -894,6 +899,8 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     void _TfSegment::adaptCoefficients (IN _Point2D point) {
+        Logging_trace1(">>: %1", point.toString());
+
         if (length() == 0.0) {
             a1 = 0.0;
             a2 = 0.0;
@@ -905,11 +912,15 @@ namespace SoXPlugins::Effects::SoXCompander {
             a2 = (outB / inB - outA / inA) / (inB - inA);
             a1 = outA / inA - a2 * inA;
         }
+
+        Logging_trace1("<<: %1", toString());
     }
 
     /*--------------------*/
 
     _Point2D _TfSegment::interpolate (IN Real position) const {
+        Logging_trace1(">>: %1", TOSTRING(position));
+
         const Real segmentLength = length();
         Real relativePosition;
 
@@ -924,6 +935,7 @@ namespace SoXPlugins::Effects::SoXCompander {
         result.scale(relativePosition);
         result.add(startPoint);
 
+        Logging_trace1("<<: %1", result.toString());
         return result;
     }
 
@@ -934,6 +946,8 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     void _TransferFunction::_adaptCurvesInSegmentList () {
+        Logging_trace(">>");
+
         const Real radius = _dBKnee * log(10) / 20.0;
         const Natural segmentCount = _segmentList.size();
 
@@ -975,11 +989,16 @@ namespace SoXPlugins::Effects::SoXCompander {
                 }
             }
         }
+
+        Logging_trace1("<<: %1", toString());
     }
 
     /*--------------------*/
 
-    void _TransferFunction::_shiftScaleSegmentList () {
+    void _TransferFunction::_shiftScaleSegmentList ()
+    {
+        Logging_trace(">>");
+
         Real factor = log(10) / 20;
 
         for (_TfSegment& segment : _segmentList) {
@@ -993,11 +1012,16 @@ namespace SoXPlugins::Effects::SoXCompander {
                 segment.a1 = segment.gradient();
             }
         }
+
+        Logging_trace1("<<: %1", toString());
     }
 
     /*--------------------*/
 
-    void _TransferFunction::_updateSegmentListEnds () {
+    void _TransferFunction::_updateSegmentListEnds ()
+    {
+        Logging_trace(">>");
+
         Natural segmentCount = _segmentList.size();
 
         for (Natural i = 0;  i < segmentCount - 1;  i++) {
@@ -1005,11 +1029,15 @@ namespace SoXPlugins::Effects::SoXCompander {
             const _TfSegment& nextSegment = _segmentList[i+1];
             segment.endPoint = nextSegment.startPoint;
         }
+
+        Logging_trace1("<<: %1", toString());
     }
 
     /*--------------------*/
 
     void _TransferFunction::_updateSegmentListKinds () {
+        Logging_trace(">>");
+
         Natural segmentCount = _segmentList.size();
 
         if (segmentCount >= 2) {
@@ -1028,11 +1056,14 @@ namespace SoXPlugins::Effects::SoXCompander {
                 isLastSegment = false;
             }
         }
+
+        Logging_trace1("<<: %1", toString());
     }
 
     /*--------------------*/
 
     void _TransferFunction::_updateSegmentList () {
+        Logging_trace(">>");
         // pass 1: fill all segments with kind and start values
         _updateSegmentListKinds();
 
@@ -1046,6 +1077,8 @@ namespace SoXPlugins::Effects::SoXCompander {
 
         // pass 4: adapt transfer function knees
         _adaptCurvesInSegmentList();
+
+        Logging_trace1("<<: %1", toString());
     }
 
     /*--------------------*/
@@ -1064,13 +1097,7 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     String _TransferFunction::toString () const {
-        String st = "TransferFct(";
-        st += "minLin = " + TOSTRING(_minimumLinearInValue);
-        st += ", minOut = " + TOSTRING(_minimumLinearOutValue);
-        st += ", dBGain = "  + TOSTRING(_dBGain);
-        st += ", dBKnee = " + TOSTRING(_dBKnee);
-
-        st += ", segments = (";
+        String st;
         bool isFirst = true;
 
         for (const _TfSegment& segment : _segmentList) {
@@ -1079,7 +1106,13 @@ namespace SoXPlugins::Effects::SoXCompander {
             isFirst = false;
         }
 
-        st += "))";
+        st = expand("TransferFct("
+                    "minLin = %1, minOut = %2, dBGain = %3dB,"
+                    " dBKnee = %4dB, segments = (%5))",
+                    TOSTRING(_minimumLinearInValue),
+                    TOSTRING(_minimumLinearOutValue),
+                    TOSTRING(_dBGain), TOSTRING(_dBKnee),
+                    st);
         return st;
     }
 
@@ -1172,14 +1205,16 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     String _Compander::toString () const {
-        String st = "_Compander(";
-        st += "transferFunction = " + _transferFunction.toString();
-        st += (", _channelsAreAggregated = "
-               + TOSTRING(_channelsAreAggregated));
-        st += ", _attackTimeList = " + _attackTimeList.toString();
-        st += ", _releaseTimeList = " + _releaseTimeList.toString();
-        st += ", _volumeList = " + _volumeList.toString();
-        st += ")";
+        String st =
+            expand("_Compander("
+                   "transferFunction = %1, _channelsAreAggregated = %2,"
+                   " _attackTimeList = %3, _releaseTimeList = %4,"
+                   " _volumeList = %5",
+                   _transferFunction.toString(),
+                   TOSTRING(_channelsAreAggregated),
+                   _attackTimeList.toString(),
+                   _releaseTimeList.toString(),
+                   _volumeList.toString());
 
         return st;
     }
@@ -1192,7 +1227,8 @@ namespace SoXPlugins::Effects::SoXCompander {
                             IN Real dBKnee,
                             IN Real dBThreshold,
                             IN Real ratio,
-                            IN Real dBGain) {
+                            IN Real dBGain)
+    {
         Logging_trace7(">>: sampleRate = %1, attack = %2, release = %3,"
                        " dBKnee = %4, dBThreshold = %5, ratio = %6,"
                        " dBGain = %7",
@@ -1217,7 +1253,10 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     void _Compander::apply (IN AudioSampleList& inputSampleList,
                             OUT AudioSampleList& outputSampleList,
-                            IN bool outputValuesAreSummed) {
+                            IN bool outputValuesAreSummed)
+    {
+        Logging_trace(">>");
+
         Natural channel;
         const Natural channelCount = inputSampleList.size();
 
@@ -1247,12 +1286,18 @@ namespace SoXPlugins::Effects::SoXCompander {
 
             outputSampleList[channel] = outputSample;
         }
+
+        Logging_trace("<<");
     }
 
     /*--------------------*/
 
     void _Compander::_integrateVolume (IN Natural channel,
-                                       IN Real inputVolume) {
+                                       IN Real inputVolume)
+    {
+        Logging_trace2(">>: channel = %1, volume = %2",
+                       TOSTRING(channel), TOSTRING(inputVolume));
+
         Real volume = _volumeList[channel];
         const Real delta = inputVolume - volume;
         const RealList& timeList = (delta > 0.0
@@ -1267,6 +1312,8 @@ namespace SoXPlugins::Effects::SoXCompander {
         } else {
             _volumeList[channel] = volume;
         }
+
+        Logging_trace1("<<: volume = %1", TOSTRING(volume));
     }
 
     /*--------------------*/
@@ -1417,8 +1464,10 @@ namespace SoXPlugins::Effects::SoXCompander {
                                OUT AudioSampleRingBuffer& outputBufferLow,
                                OUT AudioSampleRingBuffer& outputBufferHigh)
     {
+        Logging_trace(">>");
         _lowpassFilter.apply(inputBuffer, outputBufferLow);
         _highpassFilter.apply(inputBuffer, outputBufferHigh);
+        Logging_trace("<<");
     }
 
     /*--------------------*/
@@ -1438,7 +1487,7 @@ namespace SoXPlugins::Effects::SoXCompander {
     static String _sampleBufferToString (IN _CompanderSampleBuffer& buffer)
     {
         const Natural channelCount = buffer.size();
-        String st = "_CompanderSampleBuffer(";
+        String st;
 
         for (Natural channel = 0;  channel < channelCount;  channel++) {
             st += (channel == 0 ? "" : ", ");
@@ -1449,14 +1498,14 @@ namespace SoXPlugins::Effects::SoXCompander {
                     buffer[channel][stream];
                 const String bufferAsString =
                     (ringBuffer == NULL ? "NULL" : ringBuffer->toString());
-                st += ("channel_" + TOSTRING(channel) +
-                       + "_" + _streamKindAsString[stream] + " = (");
-                st += bufferAsString;
-                st += ")";
+                st += expand("channel_%1_%2 = (%3)",
+                             TOSTRING(channel) +
+                             _streamKindAsString[stream],
+                             bufferAsString);
             }
         }
 
-        st += ")";
+        st = expand("_CompanderSampleBuffer(%1)", st);
 
         return st;
     }
@@ -1483,15 +1532,15 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     String _MCompanderBand::toString () const
     {
-        String st = "_MCompanderBand(";
-
-        st += "_channelCount = " + TOSTRING(_channelCount);
-        st += ", _topFrequency = " + TOSTRING(_topFrequency) + "Hz";
-        st += ", _crossoverFilter = " + _crossoverFilter.toString();
-        st += ", _compander = " + _compander.toString();
-        st += ", _buffer = " + _sampleBufferToString(_buffer);
-        st += ", _inputSampleList = " + _inputSampleList.toString();
-        st += ")";
+        String st =
+            expand("_MCompanderBand("
+                   "_channelCount = %1, _topFrequency = %2Hz,"
+                   " _crossoverFilter = %3, _compander = %4,"
+                   " _buffer = %5, _inputSampleList = %6)",
+                   TOSTRING(_channelCount), TOSTRING(_topFrequency),
+                   _crossoverFilter.toString(), _compander.toString(),
+                   _sampleBufferToString(_buffer),
+                   _inputSampleList.toString());
 
         return st;
     }
@@ -1541,13 +1590,17 @@ namespace SoXPlugins::Effects::SoXCompander {
                                     IN _CompanderStreamKind stream,
                                     AudioSampleRingBuffer* buffer)
     {
+        Logging_trace1(">>: channel = %1", TOSTRING(channel));
         _buffer[channel][stream] = buffer;
+        Logging_trace("<<");
     }
 
     /*--------------------*/
 
     void _MCompanderBand::apply (OUT AudioSampleList& outputSampleList)
     {
+        Logging_trace(">>");
+
         for (Natural channel = 0;  channel < _channelCount;  channel++) {
             const _CompanderSampleBufferEntry& bufferEntry =
                 _buffer[channel];
@@ -1558,12 +1611,15 @@ namespace SoXPlugins::Effects::SoXCompander {
         }
 
         _compander.apply(_inputSampleList, outputSampleList, true);
+        Logging_trace("<<");
     }
 
     /*--------------------*/
 
     void _MCompanderBand::calculateCrossover ()
     {
+        Logging_trace(">>");
+
         for (_CompanderSampleBufferEntry& bufferEntry : _buffer) {
             const AudioSampleRingBuffer* inputBuffer =
                 bufferEntry[_kindInputStream];
@@ -1576,6 +1632,8 @@ namespace SoXPlugins::Effects::SoXCompander {
                                    *outputBufferLow,
                                    *outputBufferHigh);
         }
+
+        Logging_trace("<<");
     }
 
     /*============================================================*/
@@ -1583,15 +1641,15 @@ namespace SoXPlugins::Effects::SoXCompander {
     static String _mCompanderBandListToString (IN _MCompanderBandList& list)
     {
         const Natural bandCount = list.size();
-        String st = "_MCompanderBandList(";
+        String st;
 
         for (Natural bandIndex = 0;  bandIndex < bandCount;  bandIndex++) {
             st += (bandIndex == 0 ? "" : ", ");
-            st += "band_" + TOSTRING(bandIndex) + " = ";
-            st += list[bandIndex].toString();
+            st += expand("band_%1 = %2",
+                         TOSTRING(bandIndex), list[bandIndex].toString());
         }
 
-        st += ")";
+        st = expand("_MCompanderBandList(%1)", st);
         return st;
 
     }
@@ -1625,13 +1683,13 @@ SoXMultibandCompander::~SoXMultibandCompander () {
 String SoXMultibandCompander::toString () const {
     const _MCompanderBandList* companderBandList =
         (_MCompanderBandList*) _companderBandList;
-    String st = "SoXMultibandCompander(";
-    st += "_allocatedBandCount = " + TOSTRING(_allocatedBandCount);
-    st += ", _effectiveBandCount = " + TOSTRING(_bandCount);
-    st += ", _channelCount = " + TOSTRING(_channelCount);
-    st += (", _companderBandList = "
-           + _mCompanderBandListToString(*companderBandList));
-    st += ")";
+    String st =
+        expand("SoXMultibandCompander("
+               "_allocatedBandCount = %1, _effectiveBandCount = %2,"
+               " _channelCount = %3, _companderBandList = %4)",
+               TOSTRING(_allocatedBandCount), TOSTRING(_bandCount),
+               TOSTRING(_channelCount),
+               _mCompanderBandListToString(*companderBandList));
 
     return st;
 }
@@ -1738,6 +1796,8 @@ void
 SoXMultibandCompander::apply (IN AudioSampleList& inputSampleList,
                               OUT AudioSampleList& outputSampleList)
 {
+    Logging_trace(">>");
+
     outputSampleList.setToZero();
     const Natural bufferCountPerChannel = _bandCount * 2 + 1;
 
@@ -1780,4 +1840,6 @@ SoXMultibandCompander::apply (IN AudioSampleList& inputSampleList,
             _sampleRingBufferVector.at(channel, bufferCountPerChannel - 1);
         outputBuffer.setFirst(outputSample);
     }
+
+    Logging_trace("<<");
 }

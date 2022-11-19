@@ -12,22 +12,70 @@
 /* IMPORTS */
 /*=========*/
 
-#include "MyArray.h"
+#include "GenericSet.h"
 #include "Logging.h"
+#include "MyArray.h"
 #include "SoXAudioEditor.h"
 
 /*--------------------*/
 
 using Audio::AudioSampleListVector;
-using SoXPlugins::Helpers::SoXAudioParameterKind;
-using SoXPlugins::ViewAndController::SoXAudioEditor;
-using SoXPlugins::ViewAndController::_SoXAudioEditorPtrSet;
 using BaseTypes::Containers::convertArray;
+using BaseTypes::GenericTypes::GenericSet;
+using SoXPlugins::Helpers::SoXEffectParameterKind;
+using SoXPlugins::ViewAndController::SoXAudioEditor;
 
 /** abbreviated form of function name */
 #define expand StringUtil::expand
 /** abbreviated form of function name */
 #define replace StringUtil::replace
+
+/** a set of audio editor pointers */
+typedef GenericSet<SoXAudioEditor*> _SoXAudioEditorPtrSet;
+
+/*============================================================*/
+
+/**
+ * Returns value from interval <C>lowValue</C> to <C>highValue</C>
+ * defined by unit interval factor <C>unitIntervalValue</C>.
+ *
+ * @param[in] unitIntervalValue  value between 0 and 1
+ * @param[in] lowValue           lower bound value of target interval
+ * @param[in] highValue          higher bound value of target interval
+ * @return  scaled value in target interval
+ */
+static Real _stretchToRealInterval (IN Real unitIntervalValue,
+                                          IN Real lowValue,
+                                          IN Real highValue)
+{
+    Assertion_pre(unitIntervalValue.isInInterval(Real::zero, Real::one),
+                  expand("value must be in unit interval- %1",
+                         TOSTRING(unitIntervalValue)));
+    return lowValue + unitIntervalValue * (highValue - lowValue);
+}
+
+/*--------------------*/
+
+/**
+ * Returns value from interval <C>lowValue</C> to <C>highValue</C>
+ * defined by unit interval factor <C>unitIntervalValue</C>.
+ *
+ * @param[in] unitIntervalValue  value between 0 and 1
+ * @param[in] lowValue           lower bound value of target interval
+ * @param[in] highValue          higher bound value of target interval
+ * @return  scaled value in target interval
+ */
+static Integer _stretchToIntegerInterval (IN Real unitIntervalValue,
+                                          IN Integer lowValue,
+                                          IN Integer highValue)
+{
+    Assertion_pre(unitIntervalValue.isInInterval(Real::zero, Real::one),
+                  expand("value must be in unit interval- %1",
+                         TOSTRING(unitIntervalValue)));
+    const Real stretchedValue =
+        _stretchToRealInterval(unitIntervalValue, lowValue, highValue + 1);
+    return (Integer) Real::floor(stretchedValue);
+}
 
 /*============================================================*/
 
@@ -40,7 +88,196 @@ namespace SoXPlugins::ViewAndController {
     static const Natural decimalPlaceCount = 5;
 
     /*--------------------*/
+
+    /** a listener for effect parameters */
+    struct _EffectParameterListener
+        : juce::AudioProcessorParameter::Listener {
+
+        /** the associated processor for this listener */
+        SoXAudioProcessor* processor;
+
+        /*--------------------*/
+
+        void parameterValueChanged (int paramIndex,
+                                    float fValue) override;
+
+        /*--------------------*/
+
+        void parameterGestureChanged (int, bool) override;
+
+    };
+
+    /*--------------------*/
+
+    void
+    _EffectParameterListener::parameterValueChanged (int paramIndex,
+                                                     float newValue)
+    {
+        const Natural parameterIndex{paramIndex};
+        const Real unitIntervalValue{newValue};
+        Logging_trace2(">>: parameterIndex = %1, value = %2",
+                       TOSTRING(parameterIndex),
+                       TOSTRING(unitIntervalValue));
+
+        /* find associated parameter */
+        const juce::AudioProcessorParameter* parameter =
+            processor->getParameters()[(int) parameterIndex];
+        const String parameterName{parameter->getName(1000).toStdString()};
+        Logging_trace1("--: parameterName = %1", parameterName);
+        SoXEffectParameterMap& parameterMap =
+            processor->effectParameterMap();
+
+        if (parameterMap.contains(parameterName)) {
+            String value;
+            const SoXEffectParameterKind kind =
+                parameterMap.kind(parameterName);
+            Logging_trace1("--: parameterKind = %1",
+                           effectParameterKindToString(kind));
+
+            if (kind == SoXEffectParameterKind::realKind) {
+                Real lowValue, highValue, delta;
+                parameterMap.valueRangeReal(parameterName,
+                                            lowValue, highValue, delta);
+                /* scale to range */
+                value =
+                    TOSTRING(_stretchToRealInterval(unitIntervalValue,
+                                                    lowValue, highValue));
+            } else if (kind == SoXEffectParameterKind::intKind) {
+                Integer lowValue, highValue, delta;
+                parameterMap.valueRangeInt(parameterName,
+                                           lowValue, highValue, delta);
+                /* scale to range */
+                value =
+                    TOSTRING(_stretchToIntegerInterval(unitIntervalValue,
+                                                       lowValue, highValue));
+            } else if (kind == SoXEffectParameterKind::enumKind) {
+                StringList enumValueList;
+                parameterMap.valueRangeEnum(parameterName, enumValueList);
+                Integer elementCount{(int) enumValueList.size()};
+                Natural valueIndex =
+                    Natural{_stretchToIntegerInterval(unitIntervalValue,
+                                                      0, elementCount - 1)};
+                value = enumValueList.at(valueIndex);
+            } else {
+                Logging_traceError1("cannot happen, kind = %1",
+                                    effectParameterKindToString(kind));
+            }
+
+            if (value > "") {
+                /* lock the juce message manager for updating */
+                const juce::MessageManagerLock mutex;
+                processor->setValue(parameterName, value, false);
+            }
+        }
+
+        Logging_trace("<<");
+    }
+
+    /*--------------------*/
+
+    void _EffectParameterListener::parameterGestureChanged (int, bool)
+    {
+    }
+
+    /*--------------------*/
+    /*--------------------*/
+
+    /** the associated descriptor type for an audio processor */
+    struct _SoXAudioProcessorDescriptor {
+
+        /** the associated effect */
+        SoXAudioEffect* effect{NULL};
+
+        /** the set of observers to be notified on a value change */
+        _SoXAudioEditorPtrSet observerSet;
+
+        /** a listener for the effect parameters */
+        _EffectParameterListener listener;
+
+    };
+
+    /*--------------------*/
     /* internal routines  */
+    /*--------------------*/
+
+    /**
+     * Constructs juce parameter object from <C>parameterName</C> with
+     * data taken from <C>effectParameterMap</C>.
+     *
+     * @param[in] parameterName      name of audio parameter in map
+     * @param[in] effectParameterMap  map of all audio parameters to
+     *                               associated attributes
+     * @return  juce audio parameter object
+     */
+    static juce::AudioProcessorParameter*
+    _constructParameterObject (IN String& parameterName,
+                               IN SoXEffectParameterMap& effectParameterMap)
+    {
+        Logging_trace1(">>: %1", parameterName);
+
+        const SoXEffectParameterKind kind =
+            effectParameterMap.kind(parameterName);
+        const String value = effectParameterMap.value(parameterName);
+
+        const juce::String juceParameterName = juce::String(parameterName);
+        const juce::ParameterID juceParameterID = juceParameterName;
+        juce::AudioProcessorParameter* result = NULL;
+
+        if (kind == SoXEffectParameterKind::realKind) {
+            Real lowValue, highValue, delta;
+            effectParameterMap.valueRangeReal(parameterName,
+                                             lowValue, highValue, delta);
+            juce::NormalisableRange<float> range((float) lowValue,
+                                                 (float) highValue,
+                                                 (float) delta);
+            const Real defaultValue = StringUtil::toReal(value);
+            result =
+                new juce::AudioParameterFloat(juceParameterID,
+                                              juceParameterName,
+                                              range,
+                                              (float) defaultValue, "");
+        } else if (kind == SoXEffectParameterKind::intKind) {
+            Integer lowValue, highValue, delta;
+            effectParameterMap.valueRangeInt(parameterName,
+                                            lowValue, highValue, delta);
+            const Integer defaultValue = StringUtil::toInteger(value);
+            result =
+                new juce::AudioParameterInt(juceParameterID,
+                                            juceParameterName,
+                                            (int) lowValue, (int) highValue,
+                                            (int) defaultValue);
+        } else if (kind == SoXEffectParameterKind::enumKind) {
+            StringList enumValueList;
+            effectParameterMap.valueRangeEnum(parameterName, enumValueList);
+            juce::StringArray juceChoiceList;
+            Natural parameterIndex = 0;
+            Boolean isFound = false;
+
+            for (const String& enumValue : enumValueList) {
+                juceChoiceList.add(juce::String(enumValue));
+                isFound = isFound || (value == enumValue);
+
+                if (isFound) {
+                    parameterIndex++;
+                }
+            }
+
+            /* workaround */
+            while (juceChoiceList.size() < 2) {
+                juceChoiceList.add("x");
+            }
+
+            result =
+                new juce::AudioParameterChoice(juceParameterID,
+                                               juceParameterName,
+                                               juceChoiceList,
+                                               (int) parameterIndex);
+        }
+
+        Logging_trace1("<<: %1", (result == NULL ? "NULL" : "OKAY"));
+        return result;
+    }
+
     /*--------------------*/
 
     /**
@@ -67,7 +304,7 @@ namespace SoXPlugins::ViewAndController {
      * @param[in] title         title for audio processor parameter
      *                          serialization
      */
-    static String _convertMapToString (IN SoXAudioParameterMap& parameterMap,
+    static String _convertMapToString (IN SoXEffectParameterMap& parameterMap,
                                        IN String& title)
     {
         Logging_trace2(">>: map = %1, title = %2",
@@ -78,14 +315,14 @@ namespace SoXPlugins::ViewAndController {
 
         for (Natural i = 0;  i < parameterNameList.size();  i++) {
             const String parameterName = parameterNameList[i];
-            const SoXAudioParameterKind kind =
+            const SoXEffectParameterKind kind =
                 parameterMap.kind(parameterName);
             String parameterValue = parameterMap.value(parameterName);
 
-            if (kind == SoXAudioParameterKind::enumKind) {
+            if (kind == SoXEffectParameterKind::enumKind) {
                 parameterValue =
                     quoteCharacter + parameterValue + quoteCharacter;
-            } else if (kind == SoXAudioParameterKind::realKind) {
+            } else if (kind == SoXEffectParameterKind::realKind) {
                 const Real r = StringUtil::toReal(parameterValue);
                 parameterValue = r.toString();
             }
@@ -113,7 +350,7 @@ namespace SoXPlugins::ViewAndController {
      */
     static void
     _readKeyValueMapString (INOUT SoXAudioProcessor* audioProcessor,
-                            INOUT SoXAudioParameterMap& parameterMap,
+                            INOUT SoXEffectParameterMap& parameterMap,
                             IN String& st)
     {
         Logging_trace1(">>: st = %1", st);
@@ -136,7 +373,7 @@ namespace SoXPlugins::ViewAndController {
                 String labelName;
                 const String parameterName = StringUtil::strip(partList[0]);
                 String value = StringUtil::strip(partList[1]);
-                SoXAudioParameterMap::splitParameterName(parameterName,
+                SoXEffectParameterMap::splitParameterName(parameterName,
                                                          labelName,
                                                          pageNumber);
 
@@ -203,10 +440,13 @@ namespace SoXPlugins::ViewAndController {
 SoXAudioProcessor::SoXAudioProcessor ()
      : juce::AudioProcessor(BusesProperties()
               .withInput("Input", juce::AudioChannelSet::stereo(), true)
-              .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
-       _effect{NULL}
+              .withOutput("Output", juce::AudioChannelSet::stereo(), true))
 {
     Logging_trace(">>");
+    _descriptor = new _SoXAudioProcessorDescriptor();
+    _SoXAudioProcessorDescriptor& descriptor =
+        TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
+    descriptor.listener.processor = this;
     Logging_trace("<<");
 }
 
@@ -215,6 +455,9 @@ SoXAudioProcessor::SoXAudioProcessor ()
 SoXAudioProcessor::~SoXAudioProcessor ()
 {
     Logging_trace(">>");
+    _SoXAudioProcessorDescriptor* descriptor =
+        (_SoXAudioProcessorDescriptor*) _descriptor;
+    delete descriptor;
     Logging_trace("<<");
     Logging_finalize();
 }
@@ -331,7 +574,7 @@ void SoXAudioProcessor::getStateInformation (OUT juce::MemoryBlock& destData)
 
     // stores state of audio processor in <destData>
     const String title = getName().toStdString();
-    const String st = _convertMapToString(audioParameterMap(), title);
+    const String st = _convertMapToString(effectParameterMap(), title);
     const Natural sizeInBytes = st.size();
     destData.setSize((int) sizeInBytes);
     destData.copyFrom(st.c_str(), 0, (int) sizeInBytes);
@@ -346,22 +589,29 @@ void SoXAudioProcessor::setStateInformation (IN void* data,
 {
     Logging_trace(">>");
 
+    _SoXAudioProcessorDescriptor& descriptor =
+        TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
+    SoXAudioEffect* effect = descriptor.effect;
+
     // restores state of audio processor from <data>
     String st((char *) data, sizeInBytes);
-    _readKeyValueMapString(this, audioParameterMap(), st);
-    _effect->setParameterValidity(true);
+    _readKeyValueMapString(this, effectParameterMap(), st);
+    effect->setParameterValidity(true);
 
     Logging_trace2("<<: data = %1, processor = %2",
-                   _normalize(st), _effect->toString());
+                   _normalize(st), effect->toString());
 }
 
 /*--------------------*/
 /* parameter map      */
 /*--------------------*/
 
-SoXAudioParameterMap& SoXAudioProcessor::audioParameterMap () const
+SoXEffectParameterMap& SoXAudioProcessor::effectParameterMap () const
 {
-    return _effect->audioParameterMap();
+    _SoXAudioProcessorDescriptor& descriptor =
+        TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
+    SoXAudioEffect* effect = descriptor.effect;
+    return effect->effectParameterMap();
 }
 
 /*--------------------*/
@@ -375,14 +625,17 @@ void SoXAudioProcessor::setValue (IN String& parameterName,
                    parameterName, value,
                    TOSTRING(recalculationIsSuppressed));
 
-    const SoXAudioValueChangeKind changeKind =
-        _effect->setValue(parameterName, value, recalculationIsSuppressed);
+    _SoXAudioProcessorDescriptor& descriptor =
+        TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
+    SoXAudioEffect* effect = descriptor.effect;
+    const SoXParameterValueChangeKind changeKind =
+        effect->setValue(parameterName, value, recalculationIsSuppressed);
 
-    if (changeKind != SoXAudioValueChangeKind::parameterChange) {
+    if (changeKind != SoXParameterValueChangeKind::parameterChange) {
         _notifyObserversAboutChange(changeKind, parameterName);
     }
 
-    _notifyObserversAboutChange(SoXAudioValueChangeKind::parameterChange,
+    _notifyObserversAboutChange(SoXParameterValueChangeKind::parameterChange,
                                 parameterName);
 
     Logging_trace("<<");
@@ -407,32 +660,70 @@ void SoXAudioProcessor::setValues (IN Dictionary& dictionary)
 }
 
 /*--------------------*/
+
+void SoXAudioProcessor::_setAssociatedEffect (IN SoXAudioEffect* effect)
+{
+    Logging_trace(">>");
+
+    _SoXAudioProcessorDescriptor& descriptor =
+        TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
+    descriptor.effect = (SoXAudioEffect*) effect;
+
+    const SoXEffectParameterMap parameterMap = effectParameterMap();
+    Logging_trace1("--: parameterMap = %1", parameterMap.toString());
+    const StringList parameterNameList = parameterMap.parameterNameList();
+
+    for (const String& parameterName : parameterNameList) {
+        juce::AudioProcessorParameter* parameter =
+            _constructParameterObject(parameterName, parameterMap);
+
+        if (parameter != NULL) {
+            addParameter(parameter);
+            parameter->addListener(&descriptor.listener);
+        }
+    }
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
 /* observer mgmt      */
 /*--------------------*/
 
-void SoXAudioProcessor::registerObserver (INOUT SoXAudioEditor* observer)
+void SoXAudioProcessor::registerObserver (INOUT Object observer)
 {
-    _observerSet.insert(observer);
+    _SoXAudioProcessorDescriptor& descriptor =
+        TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
+    SoXAudioEditor* editor = (SoXAudioEditor*) observer;
+    descriptor.observerSet.add(editor);
 }
 
 /*--------------------*/
 
-void SoXAudioProcessor::unregisterObserver (INOUT SoXAudioEditor* observer)
+void SoXAudioProcessor::unregisterObserver (INOUT Object observer)
 {
-    _observerSet.erase(observer);
+    _SoXAudioProcessorDescriptor& descriptor =
+        TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
+    SoXAudioEditor* editor = (SoXAudioEditor*) observer;
+    descriptor.observerSet.remove(editor);
 }
 
 /*--------------------*/
 
 void
 SoXAudioProcessor::_notifyObserversAboutChange
-                       (IN SoXAudioValueChangeKind kind,
+                       (IN SoXParameterValueChangeKind kind,
                         IN String& parameterName)
 {
     Logging_trace2(">>: kind = %1, parameterName = %2",
-                   SoXAudioValueChangeKind_toString(kind), parameterName);
+                   SoXParameterValueChangeKind_toString(kind),
+                   parameterName);
 
-    for (SoXAudioEditor* editor : _observerSet) {
+    _SoXAudioProcessorDescriptor& descriptor =
+        TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
+    _SoXAudioEditorPtrSet observerSet = descriptor.observerSet;
+
+    for (SoXAudioEditor* editor : observerSet) {
         if (editor != nullptr) {
             editor->notifyAboutChange(kind, parameterName);
         }
@@ -450,12 +741,16 @@ void SoXAudioProcessor::prepareToPlay (IN double sampleRate, IN int)
     Logging_trace1(">>: sampleRate = %1",
                    TOSTRING(Real{sampleRate}));
 
-    if (!_effect->hasValidParameters()) {
-        _effect->setDefaultValues();
-        _effect->setParameterValidity(true);
+    _SoXAudioProcessorDescriptor& descriptor =
+        TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
+    SoXAudioEffect* effect = descriptor.effect;
+
+    if (!effect->hasValidParameters()) {
+        effect->setDefaultValues();
+        effect->setParameterValidity(true);
     }
 
-    _effect->prepareToPlay(sampleRate);
+    effect->prepareToPlay(sampleRate);
 
     Logging_trace("<<");
 }
@@ -465,7 +760,10 @@ void SoXAudioProcessor::prepareToPlay (IN double sampleRate, IN int)
 void SoXAudioProcessor::releaseResources ()
 {
     Logging_trace(">>");
-    _effect->releaseResources();
+    _SoXAudioProcessorDescriptor& descriptor =
+        TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
+    SoXAudioEffect* effect = descriptor.effect;
+    effect->releaseResources();
     Logging_trace("<<");
 }
 
@@ -474,6 +772,10 @@ void SoXAudioProcessor::releaseResources ()
 void SoXAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
                                       juce::MidiBuffer&)
 {
+    _SoXAudioProcessorDescriptor& descriptor =
+        TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
+    SoXAudioEffect* effect = descriptor.effect;
+
     const Natural channelCount = getTotalNumInputChannels();
     const Natural outputChannelCount = getTotalNumOutputChannels();
     const Natural sampleCount = (Natural) buffer.getNumSamples();
@@ -494,7 +796,7 @@ void SoXAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     }
 
     const Real currentTimePosition = _readTime(getPlayHead());
-    _effect->processBlock(currentTimePosition, audioSampleBuffer);
+    effect->processBlock(currentTimePosition, audioSampleBuffer);
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
         float* outputPtr = buffer.getWritePointer((int) channel);

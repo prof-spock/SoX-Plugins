@@ -85,7 +85,6 @@ $(document).ready(function(){initNavTree('namespace_so_x_plugins_1_1_effects_1_1
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">SoXPlugins::Effects::SoXCompander Namespace Reference</div>  </div>
@@ -137,13 +136,13 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ac8765ded7791a2b7d076153f3e56640a"><td class="memItemLeft" align="right" valign="top"><a id="ac8765ded7791a2b7d076153f3e56640a"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ac8765ded7791a2b7d076153f3e56640a">_BandIndexToCompanderDataMap</a> = <a class="el" href="struct_base_types_1_1_containers_1_1_generic_tuple.html">GenericTuple</a>&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander_band_parameter_data.html">_CompanderBandParameterData</a>, <a class="el" href="_so_x_compander___audio_effect_8cpp.html#a2651eaed0ec92fd791856abe29e0f16d">_maxBandCount</a> &gt;</td></tr>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ac8765ded7791a2b7d076153f3e56640a">_BandIndexToCompanderDataMap</a> = GenericTuple&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander_band_parameter_data.html">_CompanderBandParameterData</a>, <a class="el" href="_so_x_compander___audio_effect_8cpp.html#a2651eaed0ec92fd791856abe29e0f16d">_maxBandCount</a> &gt;</td></tr>
 <tr class="memdesc:ac8765ded7791a2b7d076153f3e56640a"><td class="mdescLeft">&#160;</td><td class="mdescRight">fixed-length mapping from natural to compander data <br /></td></tr>
 <tr class="separator:ac8765ded7791a2b7d076153f3e56640a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d1c14f26713e206e553c255a2b1b872"><td class="memItemLeft" align="right" valign="top"><a id="a3d1c14f26713e206e553c255a2b1b872"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a3d1c14f26713e206e553c255a2b1b872">_TfSegmentList</a> = <a class="el" href="struct_base_types_1_1_containers_1_1_generic_sequence.html">GenericSequence</a>&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html">_TfSegment</a> &gt;</td></tr>
-<tr class="memdesc:a3d1c14f26713e206e553c255a2b1b872"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_TfSegmentList</code> is a list of transfer function segments. <br /></td></tr>
-<tr class="separator:a3d1c14f26713e206e553c255a2b1b872"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aede722d417c87dcbd4fd4b7a960c57b3"><td class="memItemLeft" align="right" valign="top"><a id="aede722d417c87dcbd4fd4b7a960c57b3"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#aede722d417c87dcbd4fd4b7a960c57b3">_TfSegmentList</a> = GenericList&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html">_TfSegment</a> &gt;</td></tr>
+<tr class="memdesc:aede722d417c87dcbd4fd4b7a960c57b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_TfSegmentList</code> is a list of transfer function segments. <br /></td></tr>
+<tr class="separator:aede722d417c87dcbd4fd4b7a960c57b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04ac9b5b15f96dc2803ffba37facc0c3"><td class="memItemLeft" align="right" valign="top"><a id="a04ac9b5b15f96dc2803ffba37facc0c3"></a>
 typedef size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a04ac9b5b15f96dc2803ffba37facc0c3">_CompanderStreamKind</a></td></tr>
 <tr class="memdesc:a04ac9b5b15f96dc2803ffba37facc0c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <code>_CompanderStreamKind</code> type is an enumeration for the kind of audio sample streams relevant for a compander band: input, lowOutput and highOutput as input for the next band. <br /></td></tr>
@@ -152,20 +151,14 @@ typedef size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a0bb739d775a51382d227d17cc9f2a9d8">_CompanderSampleBufferEntry</a> = array&lt; <a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html">AudioSampleRingBuffer</a> *, <a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#aba315deadaf1e3fa986162eb4f7aa5a2">_companderStreamKindCount</a> &gt;</td></tr>
 <tr class="memdesc:a0bb739d775a51382d227d17cc9f2a9d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_CompanderSampleBufferEntry</code> object contains pointers to a buffer for input, low and high output samples; it is the element type in a <b>_CompanderSampleBuffer</b>. <br /></td></tr>
 <tr class="separator:a0bb739d775a51382d227d17cc9f2a9d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d1b4a9a33e7563a0b05d34ffe9fd36c"><td class="memItemLeft" align="right" valign="top"><a id="a5d1b4a9a33e7563a0b05d34ffe9fd36c"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a5d1b4a9a33e7563a0b05d34ffe9fd36c">_CompanderSampleBuffer</a> = <a class="el" href="struct_base_types_1_1_containers_1_1_generic_sequence.html">GenericSequence</a>&lt; <a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a0bb739d775a51382d227d17cc9f2a9d8">_CompanderSampleBufferEntry</a> &gt;</td></tr>
-<tr class="memdesc:a5d1b4a9a33e7563a0b05d34ffe9fd36c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_CompanderSampleBuffer</code> object contains pointers to the buffers for input, low and high output samples for each channel in a crossover band; the input buffer of the first band contain the input samples, the following bands use the high output of the previous crossover band. <br /></td></tr>
-<tr class="separator:a5d1b4a9a33e7563a0b05d34ffe9fd36c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed0870a138d834f65624eb5425c1d669"><td class="memItemLeft" align="right" valign="top"><a id="aed0870a138d834f65624eb5425c1d669"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#aed0870a138d834f65624eb5425c1d669">_MCompanderBandList</a> = <a class="el" href="struct_base_types_1_1_containers_1_1_generic_sequence.html">GenericSequence</a>&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html">_MCompanderBand</a> &gt;</td></tr>
-<tr class="memdesc:aed0870a138d834f65624eb5425c1d669"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_MCompanderBandList</code> is a list of compander bands. <br /></td></tr>
-<tr class="separator:aed0870a138d834f65624eb5425c1d669"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a452125dd51065c5165b098dd49df425e"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a452125dd51065c5165b098dd49df425e">_descriptorToString</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___effect_descriptor___c_m_p_d.html">_EffectDescriptor_CMPD</a> *effectDescriptor)</td></tr>
-<tr class="memdesc:a452125dd51065c5165b098dd49df425e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns string representation of <code>effectDescriptor</code>.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a452125dd51065c5165b098dd49df425e">More...</a><br /></td></tr>
-<tr class="separator:a452125dd51065c5165b098dd49df425e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2be8de21409b66f92991ceab669e1351"><td class="memItemLeft" align="right" valign="top"><a id="a2be8de21409b66f92991ceab669e1351"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a2be8de21409b66f92991ceab669e1351">_CompanderSampleBuffer</a> = GenericList&lt; <a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a0bb739d775a51382d227d17cc9f2a9d8">_CompanderSampleBufferEntry</a> &gt;</td></tr>
+<tr class="memdesc:a2be8de21409b66f92991ceab669e1351"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_CompanderSampleBuffer</code> object contains pointers to the buffers for input, low and high output samples for each channel in a crossover band; the input buffer of the first band contain the input samples, the following bands use the high output of the previous crossover band. <br /></td></tr>
+<tr class="separator:a2be8de21409b66f92991ceab669e1351"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82d3df6f576351be3f58333a5730161c"><td class="memItemLeft" align="right" valign="top"><a id="a82d3df6f576351be3f58333a5730161c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a82d3df6f576351be3f58333a5730161c">_MCompanderBandList</a> = GenericList&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html">_MCompanderBand</a> &gt;</td></tr>
+<tr class="memdesc:a82d3df6f576351be3f58333a5730161c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_MCompanderBandList</code> is a list of compander bands. <br /></td></tr>
+<tr class="separator:a82d3df6f576351be3f58333a5730161c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -192,35 +185,7 @@ String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="na
 <li>"mcompand_xover.h" by Rob Sewell for the crossover function, and</li>
 <li>"mcompand.c" by Daniel Pouzzner for the mcompander effect. </li>
 </ul>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a452125dd51065c5165b098dd49df425e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a452125dd51065c5165b098dd49df425e">&#9670;&nbsp;</a></span>_descriptorToString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">String SoXPlugins::Effects::SoXCompander::_descriptorToString </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___effect_descriptor___c_m_p_d.html">_EffectDescriptor_CMPD</a> *&#160;</td>
-          <td class="paramname"><em>effectDescriptor</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns string representation of <code>effectDescriptor</code>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">effectDescriptor</td><td>effect descriptor to be converted </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>string representation </dd></dl>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

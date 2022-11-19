@@ -37,11 +37,15 @@ namespace SoXPlugins::Effects::SoXFilter {
      */
     struct SoXFilter_AudioEffect : public SoXAudioEffect {
 
-        /*--------------------*/
-        /* setup              */
-        /*--------------------*/
+        /*---------------------*/
+        /* setup & destruction */
+        /*---------------------*/
 
         SoXFilter_AudioEffect ();
+
+        /*--------------------*/
+
+        ~SoXFilter_AudioEffect ();
 
         /*-----------------------*/
         /* string representation */
@@ -84,7 +88,7 @@ namespace SoXPlugins::Effects::SoXFilter {
 
             /*--------------------*/
 
-            SoXAudioValueChangeKind
+            SoXParameterValueChangeKind
             _setValueInternal (IN String& parameterName,
                                IN String& value,
                                IN Boolean recalculationIsSuppressed)

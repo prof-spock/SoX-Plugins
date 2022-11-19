@@ -1,6 +1,6 @@
-<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Primitives/Radians.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Primitives/Radians.h">
-<area shape="rect" id="node1" title="The Radians specification and body provides a simple radians type." alt="" coords="131,5,369,81"/>
-<area shape="rect" id="node2" href="$_wave_form_8h.html" title="The WaveForm specification defines common services for (LFO) wave forms." alt="" coords="151,129,349,205"/>
-<area shape="rect" id="node3" href="$_wave_form_8cpp.html" title="The WaveForm body implements common services for (LFO) wave forms." alt="" coords="5,261,204,337"/>
-<area shape="rect" id="node4" href="$_so_x_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXPhaserAndTremolo_AudioEffect body implements the SoX phaser and tremolo modulation effects tha..." alt="" coords="229,253,565,345"/>
+<map id="Radians.h" name="Radians.h">
+<area shape="rect" id="node1" title="The Radians specification and body provides a simple radians type." alt="" coords="109,5,197,33"/>
+<area shape="rect" id="node2" href="$_wave_form_8h.html" title="The WaveForm specification defines common services for (LFO) wave forms." alt="" coords="100,81,207,109"/>
+<area shape="rect" id="node3" href="$_wave_form_8cpp.html" title="The WaveForm body implements common services for (LFO) wave forms." alt="" coords="5,165,128,193"/>
+<area shape="rect" id="node4" href="$_so_x_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXPhaserAndTremolo_AudioEffect body implements the SoX phaser and tremolo modulation effects tha..." alt="" coords="153,157,327,201"/>
 </map>

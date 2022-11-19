@@ -1,0 +1,8 @@
+/**
+ * The package <C>GenericTypes</C> provides generic primitive and
+ * container types like generic numbers and enumerations for
+ * primitives and generic lists, maps, matrices and tuples for
+ * containers.
+ */
+namespace BaseTypes::GenericTypes {
+}

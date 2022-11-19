@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['ratio_1273',['ratio',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander_band_parameter_data.html#ac9ec6e7d3f1eebd3fb5aa34457231b04',1,'SoXPlugins::Effects::SoXCompander::_CompanderBandParameterData']]],
-  ['reverb_1274',['reverb',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#af3f8594e5c45da812599febffc1105c0',1,'SoXPlugins::Effects::SoXReverb::_EffectDescriptor_RVRB']]],
-  ['reverbchannellist_1275',['reverbChannelList',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a7e5c79e8830e18f6466a0c5a3c03b6ec',1,'SoXPlugins::Effects::SoXReverb::_ReverbEffectParameterData']]],
-  ['reverberance_1276',['reverberance',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#ab4bc30cd587df8839bb35e3e9162d362',1,'SoXPlugins::Effects::SoXReverb::_EffectDescriptor_RVRB']]],
-  ['roomscale_1277',['roomScale',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#a61367b5b9721ba622df7a069be5e0175',1,'SoXPlugins::Effects::SoXReverb::_EffectDescriptor_RVRB::roomScale()'],['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#afdb8c38968e7ec6b8989cecfd46d6cbe',1,'SoXPlugins::Effects::SoXReverb::_ReverbEffectParameterData::roomScale()']]]
+  ['pi_1144',['pi',['../struct_base_types_1_1_primitives_1_1_real.html#aece9d89ae96401d163bac836918812b5',1,'BaseTypes::Primitives::Real']]],
+  ['position_1145',['position',['../struct_audio_1_1___wave_form_descriptor.html#a3666aa4b4707304acbe8899e34aa453e',1,'Audio::_WaveFormDescriptor']]],
+  ['predelay_1146',['predelay',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#aaf4a513580431117c703ae74fd293a8b',1,'SoXPlugins::Effects::SoXReverb::_ReverbEffectParameterData']]],
+  ['predelayinms_1147',['preDelayInMs',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#a776852d1afb322a8ebcdb99dd783da76',1,'SoXPlugins::Effects::SoXReverb::_EffectDescriptor_RVRB']]],
+  ['processor_1148',['processor',['../struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html#a29abdc28aefe4d7ec110f05658279c7b',1,'SoXPlugins::ViewAndController::_EffectParameterListener']]]
 ];

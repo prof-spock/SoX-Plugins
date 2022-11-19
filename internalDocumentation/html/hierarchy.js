@@ -18,6 +18,7 @@ var hierarchy =
     [ "SoXPlugins::Effects::SoXReverb::_ReverbChannel", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_channel.html", null ],
     [ "SoXPlugins::Effects::SoXReverb::_ReverbEffectParameterData", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html", null ],
     [ "SoXPlugins::Effects::SoXReverb::_ReverbLine", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html", null ],
+    [ "SoXPlugins::ViewAndController::_SoXAudioProcessorDescriptor", "struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html", null ],
     [ "SoXPlugins::Effects::SoXReverb::_SoXReverb", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___so_x_reverb.html", null ],
     [ "SoXPlugins::Effects::SoXCompander::_TfSegment", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html", null ],
     [ "SoXPlugins::Effects::SoXCompander::_TransferFunction", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html", null ],
@@ -39,33 +40,14 @@ var hierarchy =
     [ "Audio::AudioSampleRingBufferVector", "struct_audio_1_1_audio_sample_ring_buffer_vector.html", null ],
     [ "BaseTypes::Primitives::Boolean", "struct_base_types_1_1_primitives_1_1_boolean.html", null ],
     [ "BaseModules::File", "struct_base_modules_1_1_file.html", null ],
-    [ "BaseTypes::Primitives::GenericEnumeration< Type, ElementaryType >", "struct_base_types_1_1_primitives_1_1_generic_enumeration.html", null ],
-    [ "BaseTypes::Containers::GenericMatrix< T >", "struct_base_types_1_1_containers_1_1_generic_matrix.html", null ],
-    [ "BaseTypes::Containers::GenericMatrix< AudioSampleRingBuffer >", "struct_base_types_1_1_containers_1_1_generic_matrix.html", null ],
-    [ "BaseTypes::Primitives::GenericNumber< Type, ElementaryType >", "struct_base_types_1_1_primitives_1_1_generic_number.html", null ],
-    [ "BaseTypes::Primitives::GenericNumber< Byte, uint8_t >", "struct_base_types_1_1_primitives_1_1_generic_number.html", [
-      [ "BaseTypes::Primitives::Byte", "struct_base_types_1_1_primitives_1_1_byte.html", null ]
-    ] ],
-    [ "BaseTypes::Primitives::GenericNumber< Character, char >", "struct_base_types_1_1_primitives_1_1_generic_number.html", [
-      [ "BaseTypes::Primitives::Character", "struct_base_types_1_1_primitives_1_1_character.html", null ]
-    ] ],
-    [ "BaseTypes::Primitives::GenericNumber< Integer, int >", "struct_base_types_1_1_primitives_1_1_generic_number.html", [
-      [ "BaseTypes::Primitives::Integer", "struct_base_types_1_1_primitives_1_1_integer.html", null ]
-    ] ],
-    [ "BaseTypes::Primitives::GenericNumber< Natural, size_t >", "struct_base_types_1_1_primitives_1_1_generic_number.html", [
-      [ "BaseTypes::Primitives::Natural", "struct_base_types_1_1_primitives_1_1_natural.html", null ]
-    ] ],
-    [ "BaseTypes::Primitives::GenericNumber< Real, double >", "struct_base_types_1_1_primitives_1_1_generic_number.html", [
-      [ "BaseTypes::Primitives::Real", "struct_base_types_1_1_primitives_1_1_real.html", [
-        [ "BaseTypes::Primitives::Percentage", "struct_base_types_1_1_primitives_1_1_percentage.html", null ],
-        [ "BaseTypes::Primitives::Radians", "struct_base_types_1_1_primitives_1_1_radians.html", null ]
-      ] ]
-    ] ],
     [ "Audio::IIRFilter", "struct_audio_1_1_i_i_r_filter.html", [
       [ "SoXPlugins::Effects::SoXCompander::_LRFilter", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_filter.html", null ]
     ] ],
     [ "Listener", null, [
       [ "SoXPlugins::ViewAndController::EventDispatcher", "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html", null ]
+    ] ],
+    [ "Listener", null, [
+      [ "SoXPlugins::ViewAndController::_EffectParameterListener", "struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html", null ]
     ] ],
     [ "Listener", null, [
       [ "SoXPlugins::ViewAndController::EventDispatcher", "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html", null ]
@@ -82,53 +64,33 @@ var hierarchy =
       [ "SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html", null ]
     ] ],
     [ "SoXPlugins::Helpers::SoXAudioHelper", "struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_helper.html", null ],
-    [ "SoXPlugins::Helpers::SoXAudioParameterMap", "struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_parameter_map.html", null ],
+    [ "SoXPlugins::Helpers::SoXEffectParameterMap", "struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html", null ],
     [ "SoXPlugins::Effects::SoXCompander::SoXMultibandCompander", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html", null ],
     [ "BaseModules::StringUtil", "struct_base_modules_1_1_string_util.html", null ],
     [ "Audio::WaveForm", "struct_audio_1_1_wave_form.html", null ],
-    [ "array", null, [
-      [ "BaseTypes::Containers::GenericTuple< T, elementCount, elementToString >", "struct_base_types_1_1_containers_1_1_generic_tuple.html", null ],
-      [ "BaseTypes::Containers::GenericTuple< _CompanderBandParameterData, _maxBandCount >", "struct_base_types_1_1_containers_1_1_generic_tuple.html", null ],
-      [ "BaseTypes::Containers::GenericTuple< SoXPlugins::Effects::SoXReverb::_AllpassFilter *, _lineAllpassFilterCount >", "struct_base_types_1_1_containers_1_1_generic_tuple.html", null ],
-      [ "BaseTypes::Containers::GenericTuple< SoXPlugins::Effects::SoXReverb::_CombFilter *, _lineCombFilterCount >", "struct_base_types_1_1_containers_1_1_generic_tuple.html", null ]
+    [ "GenericList", null, [
+      [ "Audio::AudioSampleList", "struct_audio_1_1_audio_sample_list.html", null ],
+      [ "Audio::AudioSampleListVector", "struct_audio_1_1_audio_sample_list_vector.html", null ],
+      [ "BaseTypes::Containers::ByteList", "struct_base_types_1_1_containers_1_1_byte_list.html", null ],
+      [ "BaseTypes::Containers::IntegerList", "struct_base_types_1_1_containers_1_1_integer_list.html", null ],
+      [ "BaseTypes::Containers::NaturalList", "struct_base_types_1_1_containers_1_1_natural_list.html", null ],
+      [ "BaseTypes::Containers::RealList", "struct_base_types_1_1_containers_1_1_real_list.html", null ],
+      [ "BaseTypes::Containers::StringList", "struct_base_types_1_1_containers_1_1_string_list.html", null ]
     ] ],
-    [ "map", null, [
+    [ "GenericMap", null, [
       [ "BaseTypes::Containers::Dictionary", "struct_base_types_1_1_containers_1_1_dictionary.html", null ]
     ] ],
-    [ "set", null, [
-      [ "BaseTypes::Containers::StringSet", "struct_base_types_1_1_containers_1_1_string_set.html", null ]
-    ] ],
-    [ "vector", null, [
-      [ "BaseTypes::Containers::GenericSequence< T, elementToString >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", null ],
-      [ "BaseTypes::Containers::GenericSequence< _CompanderSampleBufferEntry >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", null ],
-      [ "BaseTypes::Containers::GenericSequence< _ReverbChannel * >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", null ],
-      [ "BaseTypes::Containers::GenericSequence< _TfSegment >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", null ],
-      [ "BaseTypes::Containers::GenericSequence< Audio::AudioSampleRingBuffer >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", null ],
-      [ "BaseTypes::Containers::GenericSequence< AudioSample >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", null ],
-      [ "BaseTypes::Containers::GenericSequence< AudioSample, AudioSample::toString >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", [
-        [ "Audio::AudioSampleList", "struct_audio_1_1_audio_sample_list.html", null ]
-      ] ],
-      [ "BaseTypes::Containers::GenericSequence< AudioSampleList, AudioSampleList::toString >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", [
-        [ "Audio::AudioSampleListVector", "struct_audio_1_1_audio_sample_list_vector.html", null ]
-      ] ],
-      [ "BaseTypes::Containers::GenericSequence< BaseTypes::Containers::GenericSequence< AudioSampleRingBuffer > >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", null ],
-      [ "BaseTypes::Containers::GenericSequence< BaseTypes::Containers::GenericSequence< T > >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", null ],
-      [ "BaseTypes::Containers::GenericSequence< Byte, Byte::toString >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", [
-        [ "BaseTypes::Containers::ByteList", "struct_base_types_1_1_containers_1_1_byte_list.html", null ]
-      ] ],
-      [ "BaseTypes::Containers::GenericSequence< Integer, Integer::toString >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", [
-        [ "BaseTypes::Containers::IntegerList", "struct_base_types_1_1_containers_1_1_integer_list.html", null ]
-      ] ],
-      [ "BaseTypes::Containers::GenericSequence< Natural, Natural::toString >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", [
-        [ "BaseTypes::Containers::NaturalList", "struct_base_types_1_1_containers_1_1_natural_list.html", null ]
-      ] ],
-      [ "BaseTypes::Containers::GenericSequence< Real, Real::toString >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", [
-        [ "BaseTypes::Containers::RealList", "struct_base_types_1_1_containers_1_1_real_list.html", null ]
-      ] ],
-      [ "BaseTypes::Containers::GenericSequence< SoXAudioEditorWidget * >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", null ],
-      [ "BaseTypes::Containers::GenericSequence< SoXPlugins::Effects::SoXReverb::_ReverbLine * >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", null ],
-      [ "BaseTypes::Containers::GenericSequence< String, String_toString >", "struct_base_types_1_1_containers_1_1_generic_sequence.html", [
-        [ "BaseTypes::Containers::StringList", "struct_base_types_1_1_containers_1_1_string_list.html", null ]
+    [ "GenericNumber", null, [
+      [ "BaseTypes::Primitives::Byte", "struct_base_types_1_1_primitives_1_1_byte.html", null ],
+      [ "BaseTypes::Primitives::Character", "struct_base_types_1_1_primitives_1_1_character.html", null ],
+      [ "BaseTypes::Primitives::Integer", "struct_base_types_1_1_primitives_1_1_integer.html", null ],
+      [ "BaseTypes::Primitives::Natural", "struct_base_types_1_1_primitives_1_1_natural.html", null ],
+      [ "BaseTypes::Primitives::Real", "struct_base_types_1_1_primitives_1_1_real.html", [
+        [ "BaseTypes::Primitives::Percentage", "struct_base_types_1_1_primitives_1_1_percentage.html", null ],
+        [ "BaseTypes::Primitives::Radians", "struct_base_types_1_1_primitives_1_1_radians.html", null ]
       ] ]
+    ] ],
+    [ "GenericSet", null, [
+      [ "BaseTypes::Containers::StringSet", "struct_base_types_1_1_containers_1_1_string_set.html", null ]
     ] ]
 ];

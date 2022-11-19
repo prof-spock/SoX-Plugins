@@ -33,15 +33,15 @@ namespace SoXPlugins::Effects::SoXCompander {
      */
     struct SoXCompander_AudioEffect : public SoXAudioEffect {
 
-        /*--------------------*/
-        /* setup              */
-        /*--------------------*/
+        /*---------------------*/
+        /* setup & destruction */
+        /*---------------------*/
 
         SoXCompander_AudioEffect ();
 
         /*--------------------*/
 
-        ~SoXCompander_AudioEffect () override;
+        ~SoXCompander_AudioEffect ();
 
         /*-----------------------*/
         /* string representation */
@@ -84,7 +84,7 @@ namespace SoXPlugins::Effects::SoXCompander {
 
             /*--------------------*/
 
-            SoXAudioValueChangeKind
+            SoXParameterValueChangeKind
             _setValueInternal (IN String& parameterName,
                                IN String& value,
                                IN Boolean recalculationIsSuppressed)

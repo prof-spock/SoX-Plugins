@@ -1,5 +1,5 @@
 <map id="SoXPlugins::Effects::SoXGain::SoXGain_AudioProcessor" name="SoXPlugins::Effects::SoXGain::SoXGain_AudioProcessor">
-<area shape="rect" id="node1" title="A SoXGain_AudioProcessor is the JUCE wrapper for the SoX gain plugin amplifying or attenuating the in..." alt="" coords="15,472,279,585"/>
-<area shape="rect" id="node2" href="$struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html" title="A SoXAudioProcessor object provides an audio effect wrapper for a plugin responsible for the communic..." alt="" coords="5,135,288,424"/>
+<area shape="rect" id="node1" title="A SoXGain_AudioProcessor is the JUCE wrapper for the SoX gain plugin amplifying or attenuating the in..." alt="" coords="15,488,279,601"/>
+<area shape="rect" id="node2" href="$struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html" title="A SoXAudioProcessor object provides an audio effect wrapper for a plugin responsible for the communic..." alt="" coords="5,135,288,440"/>
 <area shape="rect" id="node3" title=" " alt="" coords="66,5,227,87"/>
 </map>

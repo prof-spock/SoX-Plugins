@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['myarray_2eh_820',['MyArray.h',['../_my_array_8h.html',1,'']]],
-  ['mystring_2ecpp_821',['MyString.cpp',['../_my_string_8cpp.html',1,'']]],
-  ['mystring_2eh_822',['MyString.h',['../_my_string_8h.html',1,'']]]
+  ['natural_2eh_730',['Natural.h',['../_natural_8h.html',1,'']]],
+  ['naturallist_2ecpp_731',['NaturalList.cpp',['../_natural_list_8cpp.html',1,'']]],
+  ['naturallist_2eh_732',['NaturalList.h',['../_natural_list_8h.html',1,'']]]
 ];

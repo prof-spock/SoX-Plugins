@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "SoXPlugins", "index.html", [
+    [ "SoXPlugins - SoX Effects for DAWs", "index.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -43,8 +44,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Typedefs", "functions_type.html", null ]
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -63,10 +63,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_assertion_8h.html",
-"_so_x_gain_2_juce_plugin_defines_8h.html#a2e20a8325daeba8628695c776c66498b",
-"struct_audio_1_1___wave_form_descriptor.html#ac88a1aac2433c3e1eddf85bda7a97d3d",
-"struct_base_types_1_1_primitives_1_1_real.html#a083c00fdc9a89ad5cb59f8be1cddc2ea",
-"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_channel.html#aa66c759f4ed9b4946e71201ae6a1752d"
+"_so_x_gain_2_sox_plugin-_v_s_t__1_8cpp.html",
+"struct_audio_1_1_audio_sample_ring_buffer.html#a2857052ad78d8c1141abe9b056f79d98",
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html#abbf42a843b25415ce53466a1ed2a5731",
+"struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#a7653fa859b60da5599f0ec6f5e33d3ec"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

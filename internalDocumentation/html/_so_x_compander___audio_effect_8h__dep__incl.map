@@ -1,5 +1,5 @@
-<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXCompander/SoXCompander_AudioEffect.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXCompander/SoXCompander_AudioEffect.h">
-<area shape="rect" id="node1" title="The SoXCompander_AudioEffect specification defines the SoX compand and mcompand audio effects; a simp..." alt="" coords="136,5,375,97"/>
-<area shape="rect" id="node2" href="$_so_x_compander___audio_effect_8cpp.html" title="The SoXCompander_AudioEffect body implements the SoX compand and mcompand audio effects; a simple com..." alt="" coords="5,145,244,237"/>
-<area shape="rect" id="node3" href="$_so_x_compander___audio_processor_8cpp.html" title="The SoXCompander_AudioProcessor module provides boilerplate code for a plugin for the combined SoX co..." alt="" coords="268,145,507,237"/>
+<map id="SoXCompander_AudioEffect.h" name="SoXCompander_AudioEffect.h">
+<area shape="rect" id="node1" title="The SoXCompander_AudioEffect specification defines the SoX compand and mcompand audio effects; a simp..." alt="" coords="151,5,371,33"/>
+<area shape="rect" id="node2" href="$_so_x_compander___audio_effect_8cpp.html" title="The SoXCompander_AudioEffect body implements the SoX compand and mcompand audio effects; a simple com..." alt="" coords="5,81,241,109"/>
+<area shape="rect" id="node3" href="$_so_x_compander___audio_processor_8cpp.html" title="The SoXCompander_AudioProcessor module provides boilerplate code for a plugin for the combined SoX co..." alt="" coords="266,81,533,109"/>
 </map>

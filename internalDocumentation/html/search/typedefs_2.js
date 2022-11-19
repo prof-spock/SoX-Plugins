@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['comparator_1309',['Comparator',['../struct_base_types_1_1_containers_1_1_generic_sequence.html#a2343ff2995ee6119b72b20a9c4571f51',1,'BaseTypes::Containers::GenericSequence']]]
+  ['filepointer_1187',['FilePointer',['../_file_8cpp.html#aa99fc14e9abd46ef7ab808983ee4a876',1,'File.cpp']]]
 ];

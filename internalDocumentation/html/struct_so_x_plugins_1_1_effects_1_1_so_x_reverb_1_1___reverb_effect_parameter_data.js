@@ -1,5 +1,6 @@
 var struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data =
 [
+    [ "toString", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a52bb26bd41bcbac401dfead300ee3a7f", null ],
     [ "channelCount", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a4c9ee4c396a800d35041eba11f4f1ec7", null ],
     [ "feedback", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a9ac458b45cd764d0b6630ba594b96128", null ],
     [ "hfDamping", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a921b82dd6d9604786a4472ec496c4891", null ],

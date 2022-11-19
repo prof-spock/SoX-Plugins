@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['waveform_1290',['waveForm',['../struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#a238479d0e86fa52783c8a3b123681664',1,'SoXPlugins::Effects::SoXPhaserAndTremolo::_EffectDescriptor_PHTR']]],
-  ['waveformkind_1291',['waveFormKind',['../struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#a797ca26ac1cfc494233e8b6f8d39f611',1,'SoXPlugins::Effects::SoXPhaserAndTremolo::_EffectDescriptor_PHTR']]],
-  ['wavetablelength_1292',['waveTableLength',['../struct_audio_1_1___wave_form_descriptor.html#afdf5168ef41c975412ccdbe70766bcae',1,'Audio::_WaveFormDescriptor']]],
-  ['wetdbgain_1293',['wetDbGain',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#a2d4625be5b269c0da325b8294b79a522',1,'SoXPlugins::Effects::SoXReverb::_EffectDescriptor_RVRB']]],
-  ['wetgain_1294',['wetGain',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#ae2e81a18c1e9266e0b54c7a3eec28258',1,'SoXPlugins::Effects::SoXReverb::_ReverbEffectParameterData']]],
-  ['widgetpageseparator_1295',['widgetPageSeparator',['../struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_parameter_map.html#a1d83463f557b883cfad683e874bd19ae',1,'SoXPlugins::Helpers::SoXAudioParameterMap']]]
+  ['unknownvalue_1164',['unknownValue',['../struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html#a96e4337bf5db75724f5bcf2ac738a060',1,'SoXPlugins::Helpers::SoXEffectParameterMap']]],
+  ['usesconstantskirtgain_1165',['usesConstantSkirtGain',['../struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a49cf010a076dc4c865fed836e748dcb2',1,'SoXPlugins::Effects::SoXFilter::_EffectDescriptor_FLTR']]],
+  ['usesunpitchedaudiomode_1166',['usesUnpitchedAudioMode',['../struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#aba72d52c807847ab3b2bb42c476c4ce4',1,'SoXPlugins::Effects::SoXFilter::_EffectDescriptor_FLTR']]]
 ];

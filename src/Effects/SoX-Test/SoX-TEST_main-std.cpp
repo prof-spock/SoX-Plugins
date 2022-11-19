@@ -205,25 +205,25 @@ SoXAudioEffect* _makeNewEffect (IN String& audioEffectKind,
                                 INOUT Natural& testLengthInSeconds) {
     Logging_trace1(">>: %1", audioEffectKind);
 
-    SoXAudioEffect* audioEffect = nullptr;
+    SoXAudioEffect* audioEffect;
 
     testLengthInSeconds = 50000;
     
-    if (audioEffectKind == _effectName_compander) {
-        audioEffect = new SoXCompander_AudioEffect{};
-    } else if (audioEffectKind == _effectName_filter) {
+    if (audioEffectKind == _effectName_filter) {
         audioEffect = new SoXFilter_AudioEffect{};
     } else if (audioEffectKind == _effectName_reverb) {
         testLengthInSeconds = 50;
         audioEffect = new SoXReverb_AudioEffect{};
     } else if (audioEffectKind == _effectName_tremolo) {
         audioEffect = new SoXPhaserAndTremolo_AudioEffect{};
+    } else {
+        audioEffect = new SoXCompander_AudioEffect{};
     }
 
     _initializeEffect(audioEffectKind, audioEffect);
 
     Logging_trace2("<<: testLength = %1s, effect = %2",
-                   testLengthInSeconds, audioEffect->toString());
+                   TOSTRING(testLengthInSeconds), audioEffect->toString());
     return audioEffect;
 }
 

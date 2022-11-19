@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['juceplugindefines_2eh_816',['JucePluginDefines.h',['../_so_x_compander_2_juce_plugin_defines_8h.html',1,'(Global Namespace)'],['../_so_x_filter_2_juce_plugin_defines_8h.html',1,'(Global Namespace)'],['../_so_x_gain_2_juce_plugin_defines_8h.html',1,'(Global Namespace)'],['../_so_x_overdrive_2_juce_plugin_defines_8h.html',1,'(Global Namespace)'],['../_so_x_phaser_and_tremolo_2_juce_plugin_defines_8h.html',1,'(Global Namespace)'],['../_so_x_reverb_2_juce_plugin_defines_8h.html',1,'(Global Namespace)']]]
+  ['logging_2eh_724',['Logging.h',['../_logging_8h.html',1,'']]],
+  ['loggingsupport_2ecpp_725',['LoggingSupport.cpp',['../_logging_support_8cpp.html',1,'']]],
+  ['loggingsupport_2eh_726',['LoggingSupport.h',['../_logging_support_8h.html',1,'']]]
 ];

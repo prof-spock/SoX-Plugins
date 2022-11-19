@@ -33,7 +33,7 @@ namespace SoXPlugins::Effects::SoXGain {
         SoXGain_AudioProcessor ()
         {
             Logging_initializeWithDefaults("SoXGain", "SoXPlugins.");
-            _effect = new SoXGain_AudioEffect{};
+            _setAssociatedEffect(new SoXGain_AudioEffect{});
         }
 
         /*--------------------*/

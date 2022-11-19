@@ -33,7 +33,7 @@ namespace SoXPlugins::Effects::SoXReverb {
         SoXReverb_AudioProcessor ()
         {
             Logging_initializeWithDefaults("SoXReverb", "SoXPlugins.");
-            _effect = new SoXReverb_AudioEffect{};
+            _setAssociatedEffect(new SoXReverb_AudioEffect{});
         }
 
         /*--------------------*/

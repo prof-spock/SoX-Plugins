@@ -1,5 +1,6 @@
 var struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r =
 [
+    [ "toString", "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#ac136cab9a6c0bf46157611c5545851b2", null ],
     [ "decay", "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#a5823eb896cdf9fd0227b46505917b9b7", null ],
     [ "delay", "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#a34583254eb8df034fe6bd366f14a4a97", null ],
     [ "delayRingBufferIndex", "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#a10f1ea513bcd7b4c20449509d03bfd6a", null ],

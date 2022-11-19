@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['soxaudioparameterkind_1319',['SoXAudioParameterKind',['../namespace_so_x_plugins_1_1_helpers.html#aa9c0f8a05d063c7c2adccfa7db912402',1,'SoXPlugins::Helpers']]],
-  ['soxaudiovaluechangekind_1320',['SoXAudioValueChangeKind',['../namespace_so_x_plugins_1_1_helpers.html#af2013ffd1a0d121ca0a2858accbf3f31',1,'SoXPlugins::Helpers']]]
+  ['soxeffectparameterkind_1195',['SoXEffectParameterKind',['../namespace_so_x_plugins_1_1_helpers.html#a782a7054af4fe4d3821edfd71bb275d3',1,'SoXPlugins::Helpers']]],
+  ['soxparametervaluechangekind_1196',['SoXParameterValueChangeKind',['../namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716',1,'SoXPlugins::Helpers']]]
 ];

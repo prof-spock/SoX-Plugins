@@ -27,13 +27,15 @@ using SoXPlugins::Effects::SoXAudioEffect;
 SoXAudioEffect::SoXAudioEffect ()
      : _sampleRate{100.0},
        _channelCount{0},
-       _audioParameterMap{},
+       _effectParameterMap{},
        _effectDescriptor{},
        _currentTimePosition{Real::infinity},
        _expectedNextTimePosition{Real::infinity},
        _timePositionHasMoved{true},
        _parametersAreValid{false}
 {
+    Logging_trace(">>");
+    Logging_trace("<<");
 }
 
 /*--------------------*/
@@ -71,7 +73,7 @@ String SoXAudioEffect::_asRawString () const
     st += (", _timePositionHasMoved = "
            + TOSTRING(_timePositionHasMoved));
     st += ", _parametersAreValid = " + TOSTRING(_parametersAreValid);
-    st += ", _audioParameterMap = " + _audioParameterMap.toString();
+    st += ", _effectParameterMap = " + _effectParameterMap.toString();
     st += ", _effectDescriptor = " + _effectDescriptorToString();
 
     return st;
@@ -97,14 +99,14 @@ String SoXAudioEffect::name () const
 /* parameter map      */
 /*--------------------*/
 
-SoXAudioParameterMap& SoXAudioEffect::audioParameterMap () const
+SoXEffectParameterMap& SoXAudioEffect::effectParameterMap () const
 {
-    return (SoXAudioParameterMap &) _audioParameterMap;
+    return (SoXEffectParameterMap &) _effectParameterMap;
 }
 
 /*--------------------*/
 
-SoXAudioValueChangeKind
+SoXParameterValueChangeKind
 SoXAudioEffect::setValue (IN String& parameterName,
                           IN String& value,
                           IN Boolean recalculationIsSuppressed)
@@ -114,22 +116,22 @@ SoXAudioEffect::setValue (IN String& parameterName,
                    parameterName, value,
                    TOSTRING(recalculationIsSuppressed));
 
-    SoXAudioValueChangeKind result =
-        SoXAudioValueChangeKind::parameterChange;
+    SoXParameterValueChangeKind result =
+        SoXParameterValueChangeKind::parameterChange;
 
-    if (value == _audioParameterMap.value(parameterName)) {
+    if (value == _effectParameterMap.value(parameterName)) {
         // break cycles: if value is already known, ignore this
         // request
-    } else if (!_audioParameterMap
+    } else if (!_effectParameterMap
                .isAllowedValue(parameterName, value)) {
         // do not store a bad value
     } else {
-        _audioParameterMap.setValue(parameterName, value);
+        _effectParameterMap.setValue(parameterName, value);
         result = _setValueInternal(parameterName, value,
                                    recalculationIsSuppressed);
     }
 
-    Logging_trace1("<<: %1", SoXAudioValueChangeKind_toString(result));
+    Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));
     return result;
 }
 

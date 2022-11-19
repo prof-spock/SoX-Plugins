@@ -10,7 +10,7 @@ var struct_base_types_1_1_primitives_1_1_real =
     [ "cos", "struct_base_types_1_1_primitives_1_1_real.html#a347e56bb039e39376adcb1edc92b9995", null ],
     [ "exp", "struct_base_types_1_1_primitives_1_1_real.html#acc41395a66e2c336db164cb2acb62404", null ],
     [ "floor", "struct_base_types_1_1_primitives_1_1_real.html#ace1392f195ef07fda7b9a51b27af3ac1", null ],
-    [ "forceToRange", "struct_base_types_1_1_primitives_1_1_real.html#a45c06cd2034670d1d0c89862ee52bc98", null ],
+    [ "forceToInterval", "struct_base_types_1_1_primitives_1_1_real.html#abdb4c21abd467c57f165c121d46f4e80", null ],
     [ "fractionalPart", "struct_base_types_1_1_primitives_1_1_real.html#ae99ff5b0651c18986f8f8e9d756c08b7", null ],
     [ "log", "struct_base_types_1_1_primitives_1_1_real.html#a7b2e2aef5a183f13634f2ce753aa5234", null ],
     [ "mod", "struct_base_types_1_1_primitives_1_1_real.html#abbd9397b071059ce38845f0e23f0e37a", null ],

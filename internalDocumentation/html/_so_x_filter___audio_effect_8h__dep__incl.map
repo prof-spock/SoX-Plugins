@@ -1,5 +1,5 @@
-<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXFilter/SoXFilter_AudioEffect.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXFilter/SoXFilter_AudioEffect.h">
-<area shape="rect" id="node1" title="The SoXFilter_AudioEffect specification defines a universal SoX filter plugin representing different ..." alt="" coords="161,5,404,81"/>
-<area shape="rect" id="node2" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="5,129,264,205"/>
-<area shape="rect" id="node3" href="$_so_x_filter___audio_processor_8cpp.html" title="The SoXFilter_AudioProcessor module provides boilerplate code for a plugin for several SoX filter eff..." alt="" coords="288,129,576,205"/>
+<map id="SoXFilter_AudioEffect.h" name="SoXFilter_AudioEffect.h">
+<area shape="rect" id="node1" title="The SoXFilter_AudioEffect specification defines a universal SoX filter plugin representing different ..." alt="" coords="128,5,303,33"/>
+<area shape="rect" id="node2" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="5,81,196,109"/>
+<area shape="rect" id="node3" href="$_so_x_filter___audio_processor_8cpp.html" title="The SoXFilter_AudioProcessor module provides boilerplate code for a plugin for several SoX filter eff..." alt="" coords="221,81,442,109"/>
 </map>

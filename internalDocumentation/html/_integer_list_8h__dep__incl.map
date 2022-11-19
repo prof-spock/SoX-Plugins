@@ -1,4 +1,4 @@
-<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Containers/IntegerList.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Containers/IntegerList.h">
-<area shape="rect" id="node1" title="The IntegerList specification defines sequences of integer values with zero&#45;based arbitrary indexed a..." alt="" coords="5,5,243,81"/>
-<area shape="rect" id="node2" href="$_integer_list_8cpp.html" title="The IntegerList body implements sequences of integer values with zero&#45;based arbitrary indexed access ..." alt="" coords="5,129,243,205"/>
+<map id="IntegerList.h" name="IntegerList.h">
+<area shape="rect" id="node1" title="The IntegerList specification defines sequences of integer values with zero&#45;based arbitrary indexed a..." alt="" coords="13,5,115,33"/>
+<area shape="rect" id="node2" href="$_integer_list_8cpp.html" title="The IntegerList body implements lists of integer values with zero&#45;based arbitrary indexed access to p..." alt="" coords="5,81,123,109"/>
 </map>

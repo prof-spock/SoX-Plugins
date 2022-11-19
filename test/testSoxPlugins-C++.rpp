@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "6.66/win64" 1664637434
+<REAPER_PROJECT 0.1 "6.69/win64" 1667948406
   <NOTES 0 0
     |midiFilePath = generated
   >
@@ -82,9 +82,9 @@
     <JS analysis/gfxanalyzer ""
       8 -200 0 0.39 500 0 1000 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "cancellation control -200dB"
     >
-    JS_DIMS 518 365
+    JS_DIMS 325 244
     PRESETNAME "cancellation control -200dB"
-    FLOAT 1058 304 540 421
+    FLOAT 686 260 343 291
     FXID {015FB90E-B38D-47AB-829B-BA23135FBC34}
     WAK 0 0
   >

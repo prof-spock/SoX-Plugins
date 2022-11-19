@@ -1,6 +1,6 @@
-<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Containers/NaturalList.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Containers/NaturalList.h">
-<area shape="rect" id="node1" title="The NaturalList specification defines sequences of non&#45;negative integer values with zero&#45;based arbitr..." alt="" coords="277,5,515,81"/>
-<area shape="rect" id="node2" href="$_natural_list_8cpp.html" title="The NaturalList body implements sequences of non&#45;negative integer values with zero&#45;based arbitrary in..." alt="" coords="5,129,243,205"/>
-<area shape="rect" id="node3" href="$_so_x_reverb_support_8cpp.html" title="The SoXReverbSupport body implements support classes for the freeverb algorithm and provides a single..." alt="" coords="267,129,525,205"/>
-<area shape="rect" id="node4" href="$_so_x_audio_editor_8cpp.html" title="The SoXAudioEditor body implements the audio editor for a plugin, represented by a display window con..." alt="" coords="549,129,832,205"/>
+<map id="NaturalList.h" name="NaturalList.h">
+<area shape="rect" id="node1" title="The NaturalList specification defines lists of non&#45;negative integer values with zero&#45;based arbitrary ..." alt="" coords="184,5,287,33"/>
+<area shape="rect" id="node2" href="$_natural_list_8cpp.html" title="The NaturalList body implements lists of non&#45;negative integer values with zero&#45;based arbitrary indexe..." alt="" coords="5,81,124,109"/>
+<area shape="rect" id="node3" href="$_so_x_reverb_support_8cpp.html" title="The SoXReverbSupport body implements support classes for the freeverb algorithm and provides a single..." alt="" coords="148,81,323,109"/>
+<area shape="rect" id="node4" href="$_so_x_audio_editor_8cpp.html" title="The SoXAudioEditor body implements the audio editor for a plugin, represented by a display window con..." alt="" coords="347,81,497,109"/>
 </map>

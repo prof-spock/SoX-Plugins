@@ -94,9 +94,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>_asRawString()
 : <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#aac9c8bfc52b9844b76501c2e87eb00e6">SoXPlugins::Effects::SoXAudioEffect</a>
 </li>
-<li>_audioParameterMap
-: <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#afeda30d6441a1fd00456c32b3fb4688a">SoXPlugins::Effects::SoXAudioEffect</a>
-</li>
 <li>_channelCount
 : <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ab211499efb61d7b4bba13c2563dc0900">SoXPlugins::Effects::SoXAudioEffect</a>
 </li>
@@ -124,14 +121,14 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>_data
 : <a class="el" href="struct_audio_1_1_i_i_r_filter.html#abae3786e5afd227bfc06fc9873a430df">Audio::IIRFilter</a>
 </li>
-<li>_effect
-: <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ae15ac266bd58b6b0dbb8f6186766b127">SoXPlugins::ViewAndController::SoXAudioProcessor</a>
+<li>_descriptor
+: <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a0ec7ec3f36a6e6d469a2d46ff2272189">SoXPlugins::ViewAndController::SoXAudioProcessor</a>
 </li>
 <li>_effectDescriptor
 : <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a601e402242d5c10229e28b9fb5fb6735">SoXPlugins::Effects::SoXAudioEffect</a>
 </li>
 <li>_effectDescriptorToString()
-: <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a6846edf1d6af8abf8617cf5f443f126e">SoXPlugins::Effects::SoXAudioEffect</a>
+: <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a20e39646998503586643b6f35729e533">SoXPlugins::Effects::SoXAudioEffect</a>
 , <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#ad62653eb5b6f044fe12974533b9f96d1">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>
 , <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a7a7a56f6a5f0fb2e55d9bf6d845b7864">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>
 , <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#ac693df8a8257e645ee22e4790146b3b6">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>
@@ -142,11 +139,17 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>_effectParameterData
 : <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___so_x_reverb.html#a97bf1df3dd5607c35f518ccad1d2d9f1">SoXPlugins::Effects::SoXReverb::_SoXReverb</a>
 </li>
+<li>_effectParameterMap
+: <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a2d4b7833355d68aade5ca9a751b32472">SoXPlugins::Effects::SoXAudioEffect</a>
+</li>
 <li>_eventDispatcher
 : <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#a253f0db19b6429b57ae90189451000cc">SoXPlugins::ViewAndController::SoXAudioEditorWidget</a>
 </li>
 <li>_expectedNextTimePosition
 : <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a13a9e5797e58625cf5d5a63ece4c024a">SoXPlugins::Effects::SoXAudioEffect</a>
+</li>
+<li>_handleParameterChangeFromHost()
+: <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a4be1c93f28d7ed87d9cfe765a48e87d6">SoXPlugins::ViewAndController::SoXAudioProcessor</a>
 </li>
 <li>_inputSampleRingBuffer
 : <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_channel.html#a21bf662676f7fa17062831c299ff8453">SoXPlugins::Effects::SoXReverb::_ReverbChannel</a>
@@ -176,10 +179,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a1dfadb811794919b0cea4141821a7768">SoXPlugins::Effects::SoXCompander::_MCompanderBand</a>
 </li>
 <li>_notifyObserversAboutChange()
-: <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a609d809f0df8d11950e5bbf27ed79326">SoXPlugins::ViewAndController::SoXAudioProcessor</a>
-</li>
-<li>_observerSet
-: <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a11dd94d4a7c8c96acc271f0e0a8a2d77">SoXPlugins::ViewAndController::SoXAudioProcessor</a>
+: <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#aeb7549f01a47b906fcc96c523e0670bd">SoXPlugins::ViewAndController::SoXAudioProcessor</a>
 </li>
 <li>_order
 : <a class="el" href="struct_audio_1_1_i_i_r_filter.html#acc472b81485a2283db5c2eb6c81bffd3">Audio::IIRFilter</a>
@@ -188,7 +188,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#ac572f0b49ec3e94717a5bd9c430047e7">SoXPlugins::ViewAndController::SoXAudioEditorWidget</a>
 </li>
 <li>_parameterMap
-: <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#ac3511509ef6c42fcc883ba107b201240">SoXPlugins::ViewAndController::SoXAudioEditorWidget</a>
+: <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#a3728ecdf2f7652f09d21cbf356fef4d8">SoXPlugins::ViewAndController::SoXAudioEditorWidget</a>
 </li>
 <li>_parameterName
 : <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#abea8a90d584ae476f55eccba31f2426d">SoXPlugins::ViewAndController::SoXAudioEditorWidget</a>
@@ -197,7 +197,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a5cd71c383fb66ae989dc44f7cf19eaa7">SoXPlugins::Effects::SoXAudioEffect</a>
 </li>
 <li>_Point2D()
-: <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html#a9cf892a0437e93569c0b65398622b3f9">SoXPlugins::Effects::SoXCompander::_Point2D</a>
+: <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html#abbf42a843b25415ce53466a1ed2a5731">SoXPlugins::Effects::SoXCompander::_Point2D</a>
 </li>
 <li>_processor
 : <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#afe49fc1a792cc7495a92f175fc836838">SoXPlugins::ViewAndController::SoXAudioEditor</a>
@@ -215,7 +215,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_channel.html#ad173cd531dcfc57303a017246a4e1140">SoXPlugins::Effects::SoXReverb::_ReverbChannel</a>
 </li>
 <li>_reverbLineList
-: <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_channel.html#a24e2048571828470fe4169c4846d6157">SoXPlugins::Effects::SoXReverb::_ReverbChannel</a>
+: <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_channel.html#a67dd1589412d4df896cf6c98d8c52ea5">SoXPlugins::Effects::SoXReverb::_ReverbChannel</a>
 </li>
 <li>_rowGapPercentage
 : <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#a4d9a6bd22cd68ce1bba53b03177da18f">SoXPlugins::ViewAndController::SoXAudioEditorWidget</a>
@@ -236,14 +236,16 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>_separationPercentage
 : <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#a5e2361ca6169d5ac3a5aced17806dd76">SoXPlugins::ViewAndController::SoXAudioEditorWidget</a>
 </li>
+<li>_setAssociatedEffect()
+: <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ab56cb7be8d7d72c9d36638292ab0578e">SoXPlugins::ViewAndController::SoXAudioProcessor</a>
+</li>
 <li>_setValueInternal()
-: <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#aa3d662aabd949cd148e05827e03bb50e">SoXPlugins::Effects::SoXAudioEffect</a>
-, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#a9f106c82d3a83a9ae069eab46ed0f9bd">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>
-, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a11b51527fdb8db0b77491d478aa15982">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>
-, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#a460054ddbd73cb1f3555970c111de1d9">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>
-, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a350c7b44e3c932573a7ba433d3d9daea">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>
-, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html#a2dff9e3b6758b81d5b45c1ed98f4b614">SoXPlugins::Effects::SoXPhaserAndTremolo::SoXPhaserAndTremolo_AudioEffect</a>
-, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html#adbfea8147e8c8efa0510c5ce9f26c50f">SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect</a>
+: <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a7612f9c3eea9043ccd3885de1b6b8086">SoXPlugins::Effects::SoXAudioEffect</a>
+, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#a0de4c9ba2c571aeb4207aff2264c5faa">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>
+, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#ac7f002c2e4be6d86ce9877cd76bdf2ff">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>
+, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#a7141488d65b49886a7754b6108353af2">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>
+, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#aa2ddeaba6d038e2a50b027004f2714e7">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>
+, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html#a39cb17fe5743ac4bda6363566548ff54">SoXPlugins::Effects::SoXPhaserAndTremolo::SoXPhaserAndTremolo_AudioEffect</a>
 </li>
 <li>_SoXReverb()
 : <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___so_x_reverb.html#a8018305692dc9b2b10fa27683dd27b72">SoXPlugins::Effects::SoXReverb::_SoXReverb</a>
@@ -257,16 +259,8 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>_topGapPercentage
 : <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#add80b62a3bd0b5dc3f964048665c9368">SoXPlugins::ViewAndController::SoXAudioEditorWidget</a>
 </li>
-<li>_toString()
-: <a class="el" href="struct_base_types_1_1_containers_1_1_generic_sequence.html#a3dff87e0c5869c340c7748e3423137cd">BaseTypes::Containers::GenericSequence&lt; T, elementToString &gt;</a>
-, <a class="el" href="struct_base_types_1_1_containers_1_1_generic_tuple.html#a305389de2fdbd4f62c23115ffe48df1e">BaseTypes::Containers::GenericTuple&lt; T, elementCount, elementToString &gt;</a>
-</li>
 <li>_TransferFunction()
 : <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#ac2e1b19e5f073037b5291cf3d0765862">SoXPlugins::Effects::SoXCompander::_TransferFunction</a>
-</li>
-<li>_value
-: <a class="el" href="struct_base_types_1_1_primitives_1_1_generic_enumeration.html#a7ba2e89f867bd0d07b5739c2432e6012">BaseTypes::Primitives::GenericEnumeration&lt; Type, ElementaryType &gt;</a>
-, <a class="el" href="struct_base_types_1_1_primitives_1_1_generic_number.html#aa958ac8c11978ec9de464f5bbfcc28c8">BaseTypes::Primitives::GenericNumber&lt; Type, ElementaryType &gt;</a>
 </li>
 <li>_valueFieldPercentage
 : <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#a2e87ec7f307d9694eaa98f95da7ba602">SoXPlugins::ViewAndController::SoXAudioEditorWidget</a>

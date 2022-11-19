@@ -37,7 +37,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
         {
             Logging_initializeWithDefaults("SoXPhaserAndTremolo",
                                            "SoXPlugins.");
-            _effect = new SoXPhaserAndTremolo_AudioEffect{};
+            _setAssociatedEffect(new SoXPhaserAndTremolo_AudioEffect{});
         }
 
         /*--------------------*/

@@ -19,16 +19,18 @@
 #include "SoXOverdrive_AudioEffect.h"
 
 #include <cmath>
-#include "StringUtil.h"
+#include "Logging.h"
 #include "AudioSampleRingBufferVector.h"
 #include "SoXAudioHelper.h"
 
 /*--------------------*/
 
 using Audio::AudioSampleRingBufferVector;
-using BaseModules::StringUtil;
 using SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect;
 using SoXPlugins::Helpers::SoXAudioHelper;
+
+/** abbreviation for expand */
+#define expand StringUtil::expand
 
 /*====================*/
 
@@ -51,6 +53,27 @@ namespace SoXPlugins::Effects::SoXOverdrive {
 
         /** the list of samples ring buffers for input and output */
         AudioSampleRingBufferVector sampleRingBufferVector;
+
+        /*--------------------*/
+        /*--------------------*/
+
+        /**
+         * Returns string representation of effect descriptor.
+         *
+         * @return  string representation
+         */
+        String toString () const
+        {
+            String st =
+                expand("gain = %1dB, colour = %2,"
+                       " sampleRingBufferVector = %3",
+                       TOSTRING(gain), TOSTRING(colour),
+                       sampleRingBufferVector.toString());
+ 
+            st = expand("_EffectDescriptor_OVRD(%1)", st);
+            return st;
+        }
+
     };
 
     /*====================*/
@@ -75,44 +98,49 @@ namespace SoXPlugins::Effects::SoXOverdrive {
      */
     static _EffectDescriptor_OVRD* _createEffectDescriptor ()
     {
+        Logging_trace(">>");
+
         _EffectDescriptor_OVRD* result =
             new _EffectDescriptor_OVRD{
                 SoXAudioHelper::dBToLinear(0.0),  // gain
-                Real{20.0} * colourFactor,               // colour
-                {2, true, 1}                             // sampleRingBufferVector
+                Real{20.0} * colourFactor,        // colour
+                {2, true, 1}                      // sampleRingBufferVector
             };
 
+        Logging_trace1("<<: %1", result->toString());
         return result;
-    }
-
-    /*--------------------*/
-
-    /**
-     * Sets up all audio editor parameters in <parameterMap> for effect
-     *
-     * @param[in] parameterMap  audio parameter map of overdrive effect
-     *                          to be initialized
-     */
-    static
-    void _initializeAllParameters (INOUT SoXAudioParameterMap& parameterMap)
-    {
-        parameterMap.setKindAndValueInt(parameterName_gain, 0, 100, 1, 20);
-        parameterMap.setKindAndValueInt(parameterName_colour, 0, 100, 1, 20);
     }
 
 }
 
 /*============================================================*/
 
-/*--------------------*/
-/* setup              */
-/*--------------------*/
+/*---------------------*/
+/* setup & destruction */
+/*---------------------*/
 
 SoXOverdrive_AudioEffect::SoXOverdrive_AudioEffect ()
-    : SoXAudioEffect()
 {
+    Logging_trace(">>");
+
+    /* initialize descriptor */
     _effectDescriptor = _createEffectDescriptor();
-    _initializeAllParameters(_audioParameterMap);
+
+    /* initialize parameters */
+    _effectParameterMap.setKindAndValueInt(parameterName_gain,
+                                           0, 100, 1, 20);
+    _effectParameterMap.setKindAndValueInt(parameterName_colour,
+                                           0, 100, 1, 20);
+    Logging_trace1("<<: %1", toString());
+}
+
+/*--------------------*/
+
+SoXOverdrive_AudioEffect::~SoXOverdrive_AudioEffect ()
+{
+    Logging_trace(">>");
+    delete (_EffectDescriptor_OVRD*) _effectDescriptor;
+    Logging_trace("<<");
 }
 
 /*-----------------------*/
@@ -132,17 +160,9 @@ String SoXOverdrive_AudioEffect::toString () const
 
 String SoXOverdrive_AudioEffect::_effectDescriptorToString () const
 {
-    _EffectDescriptor_OVRD* effectDescriptor =
-        static_cast<_EffectDescriptor_OVRD*>(_effectDescriptor);
-
-    String st = "_EffectDescriptor_OVRD(";
-    st += "gain = " + StringUtil::toString(effectDescriptor->gain);
-    st += ", colour = " + StringUtil::toString(effectDescriptor->colour);
-    st += (", sampleRingBufferVector = "
-           + effectDescriptor->sampleRingBufferVector.toString());
-    st += ")";
-
-    return st;
+    _EffectDescriptor_OVRD& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_OVRD>(_effectDescriptor);
+    return effectDescriptor.toString();
 }
 
 /*--------------------*/
@@ -158,31 +178,41 @@ String SoXOverdrive_AudioEffect::name() const
 /* parameter change   */
 /*--------------------*/
 
-SoXAudioValueChangeKind
+SoXParameterValueChangeKind
 SoXOverdrive_AudioEffect::_setValueInternal
                               (IN String& parameterName,
                                IN String& value,
                                IN Boolean recalculationIsSuppressed)
 {
-    _EffectDescriptor_OVRD* effectDescriptor =
-        static_cast<_EffectDescriptor_OVRD*>(_effectDescriptor);
+    Logging_trace3(">>: parameterName = %1, value = %2,"
+                   " recalcIsSuppressed = %3",
+                   parameterName, value,
+                   TOSTRING(recalculationIsSuppressed));
+
+    _EffectDescriptor_OVRD& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_OVRD>(_effectDescriptor);
+    SoXParameterValueChangeKind result =
+        SoXParameterValueChangeKind::parameterChange;
 
     if (parameterName == parameterName_gain) {
         const Real dBGain = StringUtil::toReal(value);
-        effectDescriptor->gain = SoXAudioHelper::dBToLinear(dBGain);
+        effectDescriptor.gain = SoXAudioHelper::dBToLinear(dBGain);
     } else if (parameterName == parameterName_colour) {
-        effectDescriptor->colour = (StringUtil::toReal(value)
-                                    * colourFactor);
+        effectDescriptor.colour = (StringUtil::toReal(value)
+                                   * colourFactor);
     }
 
-    return SoXAudioValueChangeKind::parameterChange;
+    Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));
+    return result;
 }
 
 /*--------------------*/
 
 void SoXOverdrive_AudioEffect::setDefaultValues () {
-    _audioParameterMap.setValue(parameterName_gain, "20");
-    _audioParameterMap.setValue(parameterName_colour, "20");
+    Logging_trace(">>");
+    _effectParameterMap.setValue(parameterName_gain, "20");
+    _effectParameterMap.setValue(parameterName_colour, "20");
+    Logging_trace1("<<: %1", toString());
 }
 
 /*--------------------*/
@@ -193,15 +223,17 @@ void
 SoXOverdrive_AudioEffect::processBlock (IN Real timePosition,
                                         INOUT AudioSampleListVector& buffer)
 {
+    Logging_trace1(">>: %1", TOSTRING(timePosition));
+
     SoXAudioEffect::processBlock(timePosition, buffer);
-    _EffectDescriptor_OVRD* effectDescriptor =
-        static_cast<_EffectDescriptor_OVRD*>(_effectDescriptor);
+    _EffectDescriptor_OVRD& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_OVRD>(_effectDescriptor);
 
     const Natural sampleCount = buffer[0].size();
-    const Real gain   = effectDescriptor->gain;
-    const Real colour = effectDescriptor->colour;
+    const Real gain   = effectDescriptor.gain;
+    const Real colour = effectDescriptor.colour;
     AudioSampleRingBufferVector& sampleRingBufferVector =
-        effectDescriptor->sampleRingBufferVector;
+        effectDescriptor.sampleRingBufferVector;
 
     for (Natural channel = 0;  channel < _channelCount;
          channel++) {
@@ -221,16 +253,18 @@ SoXOverdrive_AudioEffect::processBlock (IN Real timePosition,
             AudioSample newValue;
 
             newValue = (AudioSample) (inputSample * gain + colour);
-            newValue = newValue.forceToRange(-1.0, 1.0);
+            newValue = newValue.forceToInterval(-1.0, 1.0);
             newValue = (newValue - (newValue * newValue * newValue)
                         / Real{3.0});
             const AudioSample outputSample =
                 (newValue - previousInputSample
                  + Real{0.995}  * previousOutputSample);
-            outputList[i] = (inputSample / Real{2.0}
+            outputList[i] = (inputSample / Real::two
                              + outputSample * Real{0.75});
             inputSampleRingBuffer.setFirst(newValue);
             outputSampleRingBuffer.setFirst(outputSample);
         }
     }
+
+    Logging_trace("<<");
 }

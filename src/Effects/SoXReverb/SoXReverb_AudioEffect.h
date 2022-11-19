@@ -34,11 +34,15 @@ namespace SoXPlugins::Effects::SoXReverb {
      */
     struct SoXReverb_AudioEffect : public SoXAudioEffect {
 
-        /*--------------------*/
-        /* setup              */
-        /*--------------------*/
+        /*---------------------*/
+        /* setup & destruction */
+        /*---------------------*/
 
         SoXReverb_AudioEffect ();
+
+        /*--------------------*/
+
+        ~SoXReverb_AudioEffect ();
 
         /*-----------------------*/
         /* string representation */
@@ -76,7 +80,7 @@ namespace SoXPlugins::Effects::SoXReverb {
 
             /*--------------------*/
 
-            SoXAudioValueChangeKind
+            SoXParameterValueChangeKind
             _setValueInternal (IN String& parameterName,
                                IN String& value,
                                IN Boolean recalculationIsSuppressed)

@@ -1,5 +1,5 @@
-<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXOverdrive/SoXOverdrive_AudioEffect.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Effects/SoXOverdrive/SoXOverdrive_AudioEffect.h">
-<area shape="rect" id="node1" title="The SoXOverdrive_AudioEffect specification defines the SoX overdrive plugin distorting an input signa..." alt="" coords="123,5,333,97"/>
-<area shape="rect" id="node2" href="$_so_x_overdrive___audio_effect_8cpp.html" title="The SoXOverdrive_AudioEffect body implements the SoX overdrive plugin distorting an input signal with..." alt="" coords="5,145,216,237"/>
-<area shape="rect" id="node3" href="$_so_x_overdrive___audio_processor_8cpp.html" title="The SoXOverdrive_AudioProcessor module provides boilerplate code for a plugin for the SoX overdrive e..." alt="" coords="240,145,451,237"/>
+<map id="SoXOverdrive_AudioEffect.h" name="SoXOverdrive_AudioEffect.h">
+<area shape="rect" id="node1" title="The SoXOverdrive_AudioEffect specification defines the SoX overdrive plugin distorting an input signa..." alt="" coords="144,5,351,33"/>
+<area shape="rect" id="node2" href="$_so_x_overdrive___audio_effect_8cpp.html" title="The SoXOverdrive_AudioEffect body implements the SoX overdrive plugin distorting an input signal with..." alt="" coords="5,81,228,109"/>
+<area shape="rect" id="node3" href="$_so_x_overdrive___audio_processor_8cpp.html" title="The SoXOverdrive_AudioProcessor module provides boilerplate code for a plugin for the SoX overdrive e..." alt="" coords="252,81,504,109"/>
 </map>

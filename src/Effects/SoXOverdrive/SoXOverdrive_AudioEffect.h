@@ -34,11 +34,15 @@ namespace SoXPlugins::Effects::SoXOverdrive {
      */
     struct SoXOverdrive_AudioEffect : public SoXAudioEffect {
 
-        /*--------------------*/
-        /* setup              */
-        /*--------------------*/
+        /*---------------------*/
+        /* setup & destruction */
+        /*---------------------*/
 
         SoXOverdrive_AudioEffect ();
+
+        /*--------------------*/
+
+        ~SoXOverdrive_AudioEffect ();
 
         /*-----------------------*/
         /* string representation */
@@ -76,7 +80,7 @@ namespace SoXPlugins::Effects::SoXOverdrive {
 
             /*--------------------*/
 
-            SoXAudioValueChangeKind
+            SoXParameterValueChangeKind
             _setValueInternal (IN String& parameterName,
                                IN String& value,
                                IN Boolean recalculationIsSuppressed)

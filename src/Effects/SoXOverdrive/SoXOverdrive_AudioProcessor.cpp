@@ -34,7 +34,7 @@ namespace SoXPlugins::Effects::SoXOverdrive {
         SoXOverdrive_AudioProcessor ()
         {
             Logging_initializeWithDefaults("SoXOverdrive", "SoXPlugins.");
-            _effect = new SoXOverdrive_AudioEffect{};
+            _setAssociatedEffect(new SoXOverdrive_AudioEffect{});
         }
 
         /*--------------------*/

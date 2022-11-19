@@ -99,39 +99,39 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_helper.html">SoXAudioHelper</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_helper.html" title="The package SoXAudioHelper defines several audio helper routines (like, for example,...">SoXAudioHelper</a></code> defines several audio helper routines (like, for example, converting decibels to linear factor).  <a href="struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_helper.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_parameter_map.html">SoXAudioParameterMap</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_parameter_map.html" title="A SoXAudioParameterMap object is a map of string keys and associated values of SoXAudioParameterKind;...">SoXAudioParameterMap</a></code> object is a map of string keys and associated values of <code>SoXAudioParameterKind</code>; those values can be set and queried: this provides an interpretative coupling between audio processors and audio editors.  <a href="struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_parameter_map.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html" title="A SoXEffectParameterMap object is a map of string keys and associated values of SoXEffectParameterKin...">SoXEffectParameterMap</a></code> object is a map of string keys and associated values of <code>SoXEffectParameterKind</code>; those values can be set and queried: this provides an interpretative coupling between audio processors and audio editors.  <a href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:aa9c0f8a05d063c7c2adccfa7db912402"><td class="memItemLeft" align="right" valign="top"><a id="aa9c0f8a05d063c7c2adccfa7db912402"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aa9c0f8a05d063c7c2adccfa7db912402">SoXAudioParameterKind</a> { <b>realKind</b>, 
+<tr class="memitem:a782a7054af4fe4d3821edfd71bb275d3"><td class="memItemLeft" align="right" valign="top"><a id="a782a7054af4fe4d3821edfd71bb275d3"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_helpers.html#a782a7054af4fe4d3821edfd71bb275d3">SoXEffectParameterKind</a> { <b>realKind</b>, 
 <b>intKind</b>, 
 <b>enumKind</b>, 
 <b>unknownKind</b>
  }</td></tr>
-<tr class="memdesc:aa9c0f8a05d063c7c2adccfa7db912402"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <code>SoXAudioParameterKind</code> is an enumeration type for the kind of parameter for an audio processor parameter. <br /></td></tr>
-<tr class="separator:aa9c0f8a05d063c7c2adccfa7db912402"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2013ffd1a0d121ca0a2858accbf3f31"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_helpers.html#af2013ffd1a0d121ca0a2858accbf3f31">SoXAudioValueChangeKind</a> : short { <a class="el" href="namespace_so_x_plugins_1_1_helpers.html#af2013ffd1a0d121ca0a2858accbf3f31ab6c1503bf3ca26a7932d2f6227ec2ba3">SoXAudioValueChangeKind::globalChange</a> = 1, 
-<a class="el" href="namespace_so_x_plugins_1_1_helpers.html#af2013ffd1a0d121ca0a2858accbf3f31a2c581a6ab7d343813e8926b1db2dabba">SoXAudioValueChangeKind::pageChange</a> = 2, 
-<a class="el" href="namespace_so_x_plugins_1_1_helpers.html#af2013ffd1a0d121ca0a2858accbf3f31a6865c555494c8184927c5f3a80e6cde7">SoXAudioValueChangeKind::pageCountChange</a> = 3, 
-<a class="el" href="namespace_so_x_plugins_1_1_helpers.html#af2013ffd1a0d121ca0a2858accbf3f31ad099a3a097d6349d897c64f783e1239d">SoXAudioValueChangeKind::parameterChange</a> = 4
+<tr class="memdesc:a782a7054af4fe4d3821edfd71bb275d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <code>SoXEffectParameterKind</code> is an enumeration type for the kind of parameter for an audio processor parameter. <br /></td></tr>
+<tr class="separator:a782a7054af4fe4d3821edfd71bb275d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb3d6a9a55d48b23c0f515258422f716"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716">SoXParameterValueChangeKind</a> : short { <a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716ab6c1503bf3ca26a7932d2f6227ec2ba3">SoXParameterValueChangeKind::globalChange</a> = 1, 
+<a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716a2c581a6ab7d343813e8926b1db2dabba">SoXParameterValueChangeKind::pageChange</a> = 2, 
+<a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716a6865c555494c8184927c5f3a80e6cde7">SoXParameterValueChangeKind::pageCountChange</a> = 3, 
+<a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716ad099a3a097d6349d897c64f783e1239d">SoXParameterValueChangeKind::parameterChange</a> = 4
  }</td></tr>
-<tr class="memdesc:af2013ffd1a0d121ca0a2858accbf3f31"><td class="mdescLeft">&#160;</td><td class="mdescRight">kind of change in a parameter value to be reported to observers  <a href="namespace_so_x_plugins_1_1_helpers.html#af2013ffd1a0d121ca0a2858accbf3f31">More...</a><br /></td></tr>
-<tr class="separator:af2013ffd1a0d121ca0a2858accbf3f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:aeb3d6a9a55d48b23c0f515258422f716"><td class="mdescLeft">&#160;</td><td class="mdescRight">kind of change in a single parameter value to be reported to observers with its consequences (e.g.  <a href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716">More...</a><br /></td></tr>
+<tr class="separator:aeb3d6a9a55d48b23c0f515258422f716"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a16d5b6d69c747d8b97a327e2d30da194"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_helpers.html#a16d5b6d69c747d8b97a327e2d30da194">audioParameterKindToString</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aa9c0f8a05d063c7c2adccfa7db912402">SoXAudioParameterKind</a> &amp;kind)</td></tr>
-<tr class="memdesc:a16d5b6d69c747d8b97a327e2d30da194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts <code>kind</code> to a string.  <a href="namespace_so_x_plugins_1_1_helpers.html#a16d5b6d69c747d8b97a327e2d30da194">More...</a><br /></td></tr>
-<tr class="separator:a16d5b6d69c747d8b97a327e2d30da194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae93620731c315c64e04114c04b0598e6"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_helpers.html#ae93620731c315c64e04114c04b0598e6">effectParameterKindToString</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_so_x_plugins_1_1_helpers.html#a782a7054af4fe4d3821edfd71bb275d3">SoXEffectParameterKind</a> &amp;kind)</td></tr>
+<tr class="memdesc:ae93620731c315c64e04114c04b0598e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts <code>kind</code> to a string.  <a href="namespace_so_x_plugins_1_1_helpers.html#ae93620731c315c64e04114c04b0598e6">More...</a><br /></td></tr>
+<tr class="separator:ae93620731c315c64e04114c04b0598e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The package <code><a class="el" href="namespace_so_x_plugins_1_1_helpers.html" title="The package Helpers provides some simple support types for the DAW plugins like e....">Helpers</a></code> provides some simple support types for the DAW plugins like e.g. </p>
 <p>a component with utility functions like decibels calculation or the handling of the parameter map to be used by effects. </p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="af2013ffd1a0d121ca0a2858accbf3f31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2013ffd1a0d121ca0a2858accbf3f31">&#9670;&nbsp;</a></span>SoXAudioValueChangeKind</h2>
+<a id="aeb3d6a9a55d48b23c0f515258422f716"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb3d6a9a55d48b23c0f515258422f716">&#9670;&nbsp;</a></span>SoXParameterValueChangeKind</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -140,7 +140,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="namespace_so_x_plugins_1_1_helpers.html#af2013ffd1a0d121ca0a2858accbf3f31">SoXPlugins::Helpers::SoXAudioValueChangeKind</a> : short</td>
+          <td class="memname">enum <a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716">SoXPlugins::Helpers::SoXParameterValueChangeKind</a> : short</td>
         </tr>
       </table>
   </td>
@@ -150,31 +150,32 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>kind of change in a parameter value to be reported to observers </p>
+<p>kind of change in a single parameter value to be reported to observers with its consequences (e.g. </p>
+<p>a global change of all parameter data) </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af2013ffd1a0d121ca0a2858accbf3f31ab6c1503bf3ca26a7932d2f6227ec2ba3"></a>globalChange&#160;</td><td class="fielddoc"><p>the global change in all parameters </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aeb3d6a9a55d48b23c0f515258422f716ab6c1503bf3ca26a7932d2f6227ec2ba3"></a>globalChange&#160;</td><td class="fielddoc"><p>the global change in all parameters </p>
 </td></tr>
-<tr><td class="fieldname"><a id="af2013ffd1a0d121ca0a2858accbf3f31a2c581a6ab7d343813e8926b1db2dabba"></a>pageChange&#160;</td><td class="fielddoc"><p>the page change in the parameter set </p>
+<tr><td class="fieldname"><a id="aeb3d6a9a55d48b23c0f515258422f716a2c581a6ab7d343813e8926b1db2dabba"></a>pageChange&#160;</td><td class="fielddoc"><p>the page change in the parameter set </p>
 </td></tr>
-<tr><td class="fieldname"><a id="af2013ffd1a0d121ca0a2858accbf3f31a6865c555494c8184927c5f3a80e6cde7"></a>pageCountChange&#160;</td><td class="fielddoc"><p>the change of the page count in the parameter set </p>
+<tr><td class="fieldname"><a id="aeb3d6a9a55d48b23c0f515258422f716a6865c555494c8184927c5f3a80e6cde7"></a>pageCountChange&#160;</td><td class="fielddoc"><p>the change of the page count in the parameter set </p>
 </td></tr>
-<tr><td class="fieldname"><a id="af2013ffd1a0d121ca0a2858accbf3f31ad099a3a097d6349d897c64f783e1239d"></a>parameterChange&#160;</td><td class="fielddoc"><p>a simple change of a single parameter in the parameter set </p>
+<tr><td class="fieldname"><a id="aeb3d6a9a55d48b23c0f515258422f716ad099a3a097d6349d897c64f783e1239d"></a>parameterChange&#160;</td><td class="fielddoc"><p>a simple change of a single parameter in the parameter set </p>
 </td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a16d5b6d69c747d8b97a327e2d30da194"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16d5b6d69c747d8b97a327e2d30da194">&#9670;&nbsp;</a></span>audioParameterKindToString()</h2>
+<a id="ae93620731c315c64e04114c04b0598e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae93620731c315c64e04114c04b0598e6">&#9670;&nbsp;</a></span>effectParameterKindToString()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">String SoXPlugins::Helpers::audioParameterKindToString </td>
+          <td class="memname">String SoXPlugins::Helpers::effectParameterKindToString </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aa9c0f8a05d063c7c2adccfa7db912402">SoXAudioParameterKind</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_so_x_plugins_1_1_helpers.html#a782a7054af4fe4d3821edfd71bb275d3">SoXEffectParameterKind</a> &amp;&#160;</td>
           <td class="paramname"><em>kind</em></td><td>)</td>
           <td></td>
         </tr>

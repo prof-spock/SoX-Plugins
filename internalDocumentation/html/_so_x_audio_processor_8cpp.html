@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SoXPlugins: C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/ViewAndController/SoXAudioProcessor.cpp File Reference</title>
+<title>SoXPlugins: SoXAudioProcessor.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,8 +83,10 @@ $(document).ready(function(){initNavTree('_so_x_audio_processor_8cpp.html',''); 
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
 <div class="title">SoXAudioProcessor.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -92,16 +94,28 @@ $(document).ready(function(){initNavTree('_so_x_audio_processor_8cpp.html',''); 
 
 <p>The <code>SoXAudioProcessor</code> body implements an audio effect wrapper for a plugin responsible for the communication to the enclosing plugin host.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_my_array_8h_source.html">MyArray.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;GenericSet.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="_logging_8h_source.html">Logging.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_my_array_8h_source.html">MyArray.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_so_x_audio_editor_8h_source.html">SoXAudioEditor.h</a>&quot;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Include dependency graph for SoXAudioProcessor.cpp:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_so_x_audio_processor_8cpp__incl.svg" width="1232" height="1151"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for SoXAudioProcessor.cpp:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="_so_x_audio_processor_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html">SoXPlugins::ViewAndController::_EffectParameterListener</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">a listener for effect parameters  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html">SoXPlugins::ViewAndController::_SoXAudioProcessorDescriptor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">the associated descriptor type for an audio processor  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_so_x_plugins"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins.html">SoXPlugins</a></td></tr>
@@ -121,6 +135,13 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a88537a4214e315cc3e1c300bd0d0eb1c">replace</a>&#160;&#160;&#160;StringUtil::replace</td></tr>
 <tr class="memdesc:a88537a4214e315cc3e1c300bd0d0eb1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviated form of function name <br /></td></tr>
 <tr class="separator:a88537a4214e315cc3e1c300bd0d0eb1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ad9be64afd7f4e12d76d70c7de111ebe8"><td class="memItemLeft" align="right" valign="top"><a id="ad9be64afd7f4e12d76d70c7de111ebe8"></a>
+typedef GenericSet&lt; <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html">SoXAudioEditor</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#ad9be64afd7f4e12d76d70c7de111ebe8">_SoXAudioEditorPtrSet</a></td></tr>
+<tr class="memdesc:ad9be64afd7f4e12d76d70c7de111ebe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">a set of audio editor pointers <br /></td></tr>
+<tr class="separator:ad9be64afd7f4e12d76d70c7de111ebe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXAudioProcessor</code> body implements an audio effect wrapper for a plugin responsible for the communication to the enclosing plugin host. </p>

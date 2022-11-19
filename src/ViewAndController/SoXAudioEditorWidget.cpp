@@ -17,10 +17,10 @@
 
 /*--------------------*/
 
-using SoXPlugins::Helpers::SoXAudioParameterKind;
+using SoXPlugins::Helpers::SoXEffectParameterKind;
 using SoXPlugins::ViewAndController::SoXAudioEditor;
 
-using SoXPlugins::Helpers::audioParameterKindToString;
+using SoXPlugins::Helpers::effectParameterKindToString;
 
 /*============================================================*/
 
@@ -118,24 +118,24 @@ namespace SoXPlugins::ViewAndController {
      * @param[in] eventDispatcher  the associated event dispatcher for this
      *                             editor
      */
-    static juce::Component* _makeWidget (IN SoXAudioParameterMap& map,
+    static juce::Component* _makeWidget (IN SoXEffectParameterMap& map,
                                          IN String& parameterName,
-                                         IN SoXAudioParameterKind& kind,
+                                         IN SoXEffectParameterKind& kind,
                                          EventDispatcher* eventDispatcher)
     {
         Logging_trace2(">>: name = %1, kind = %2",
-                       parameterName, audioParameterKindToString(kind));
+                       parameterName, effectParameterKindToString(kind));
 
         juce::Component* result;
         const juce::String componentName = juce::String(parameterName);
         const String currentValue = map.value(parameterName);
 
-        if (kind == SoXAudioParameterKind::unknownKind) {
+        if (kind == SoXEffectParameterKind::unknownKind) {
             const juce::String lText("????");
             juce::Label* label = new juce::Label(componentName);
             label->setText(lText, noNotification);
             result = label;
-        } else if (kind == SoXAudioParameterKind::enumKind) {
+        } else if (kind == SoXEffectParameterKind::enumKind) {
             StringList valueList;
             juce::ComboBox* comboBox = new juce::ComboBox(componentName);
             map.valueRangeEnum(parameterName, valueList);
@@ -155,7 +155,7 @@ namespace SoXPlugins::ViewAndController {
             Real lowValue, highValue, delta;
             juce::Slider* slider = new juce::Slider(componentName);
 
-            if (kind == SoXAudioParameterKind::realKind) {
+            if (kind == SoXEffectParameterKind::realKind) {
                 map.valueRangeReal(parameterName,
                                    lowValue, highValue, delta);
             } else {
@@ -188,7 +188,7 @@ namespace SoXPlugins::ViewAndController {
 /*--------------------*/
 
 SoXAudioEditorWidget::SoXAudioEditorWidget (INOUT juce::Component* parent,
-                                            IN SoXAudioParameterMap& map,
+                                            IN SoXEffectParameterMap& map,
                                             IN String& parameterName,
                                             IN String& labelText)
     : _parameterName(parameterName),
@@ -197,7 +197,7 @@ SoXAudioEditorWidget::SoXAudioEditorWidget (INOUT juce::Component* parent,
 {
     Logging_trace2(">>: name = %1, label = %2", parameterName, labelText);
 
-    const SoXAudioParameterKind kind = map.kind(parameterName);
+    const SoXEffectParameterKind kind = map.kind(parameterName);
     const juce::String lText(labelText);
     SoXAudioEditor* editor = dynamic_cast<SoXAudioEditor*>(parent);
     EventDispatcher* eventDispatcher = new EventDispatcher(editor);

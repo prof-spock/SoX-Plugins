@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['order_1266',['order',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_filter.html#a0cce75a69d95a1cd16ee66820830b7fe',1,'SoXPlugins::Effects::SoXCompander::_LRFilter']]],
-  ['outgain_1267',['outGain',['../struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#a6d9fcf682b2bbf1d02f27a8f448c1590',1,'SoXPlugins::Effects::SoXPhaserAndTremolo::_EffectDescriptor_PHTR']]],
-  ['outputsamplelist_1268',['outputSampleList',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___effect_descriptor___c_m_p_d.html#a7acd558a43711a7697213a6e50d1930e',1,'SoXPlugins::Effects::SoXCompander::_EffectDescriptor_CMPD']]]
+  ['maximumvalue_1134',['maximumValue',['../struct_audio_1_1___wave_form_descriptor.html#afac37e0e1f96c931fe0fb76b4b8208ac',1,'Audio::_WaveFormDescriptor']]],
+  ['maxtopfrequency_1135',['maxTopFrequency',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a6f243d2faa1d264b527d5b046f36826e',1,'SoXPlugins::Effects::SoXCompander::_MCompanderBand']]],
+  ['message_1136',['message',['../struct_base_modules_1_1___logging_buffer_entry.html#a8ab220a6ba829a22826ccf20f23e5660',1,'BaseModules::_LoggingBufferEntry']]],
+  ['minimumvalue_1137',['minimumValue',['../struct_audio_1_1___wave_form_descriptor.html#ac430ce0a757c9764ea15413526dda83c',1,'Audio::_WaveFormDescriptor']]],
+  ['multibandcompander_1138',['multibandCompander',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___effect_descriptor___c_m_p_d.html#abfbfa053bf0b9690a390762a19195475',1,'SoXPlugins::Effects::SoXCompander::_EffectDescriptor_CMPD']]]
 ];

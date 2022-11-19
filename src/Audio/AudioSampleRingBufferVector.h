@@ -201,8 +201,8 @@ namespace Audio {
              * channel are used in matrix */
             Boolean _hasTwoRingBuffersPerChannel;
 
-            /** the sequence of sample ring buffers */
-            GenericSequence<AudioSampleRingBuffer> _data;
+            /** the list of sample ring buffers */
+            GenericList<AudioSampleRingBuffer> _data;
 
     };
 

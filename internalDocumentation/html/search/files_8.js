@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['logging_2eh_817',['Logging.h',['../_logging_8h.html',1,'']]],
-  ['loggingsupport_2ecpp_818',['LoggingSupport.cpp',['../_logging_support_8cpp.html',1,'']]],
-  ['loggingsupport_2eh_819',['LoggingSupport.h',['../_logging_support_8h.html',1,'']]]
+  ['myarray_2eh_727',['MyArray.h',['../_my_array_8h.html',1,'']]],
+  ['mystring_2ecpp_728',['MyString.cpp',['../_my_string_8cpp.html',1,'']]],
+  ['mystring_2eh_729',['MyString.h',['../_my_string_8h.html',1,'']]]
 ];

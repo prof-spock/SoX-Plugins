@@ -70,8 +70,9 @@ SET(srcAudioDirectory              ${srcDirectory}/Audio)
 SET(srcBaseModulesDirectory        ${srcDirectory}/BaseModules)
 SET(srcBaseTypesDirectory          ${srcDirectory}/BaseTypes)
 SET(srcHelpersDirectory            ${srcDirectory}/Helpers)
-SET(srcPrimitivesDirectory         ${srcBaseTypesDirectory}/Primitives)
 SET(srcContainersDirectory         ${srcBaseTypesDirectory}/Containers)
+SET(srcGenericTypesDirectory       ${srcBaseTypesDirectory}/GenericTypes)
+SET(srcPrimitivesDirectory         ${srcBaseTypesDirectory}/Primitives)
 SET(srcJuceFacadeDirectory         ${srcDirectory}/Libraries/JuceFacade)
 SET(srcViewAndControllerDirectory  ${srcDirectory}/ViewAndController)
 SET(srcEffectsDirectory            ${srcDirectory}/Effects)
@@ -95,8 +96,9 @@ SET(juceModulesDirectory ${JUCE_DIR}/modules)
 SET(standardIncludeDirectoryList
     ${srcAudioDirectory}
     ${srcBaseModulesDirectory}
-    ${srcBaseTypesDirectory}/Primitives
-    ${srcBaseTypesDirectory}/Containers
+    ${srcContainersDirectory}
+    ${srcGenericTypesDirectory}
+    ${srcPrimitivesDirectory}
     ${srcEffectsDirectory}
     ${srcHelpersDirectory}
     ${srcViewAndControllerDirectory})
@@ -159,14 +161,13 @@ SET(srcContainersFileList
     ${srcContainersDirectory}/IntegerList.cpp
     ${srcContainersDirectory}/NaturalList.cpp
     ${srcContainersDirectory}/RealList.cpp
-    ${srcContainersDirectory}/StringList.cpp
-    ${srcContainersDirectory}/StringSet.cpp)
+    ${srcContainersDirectory}/StringList.cpp)
 
 SET(srcEffectsBaseFileList
     ${srcEffectsDirectory}/SoXAudioEffect.cpp)
 
 SET(srcHelpersFileList
-    ${srcHelpersDirectory}/SoXAudioParameterMap.cpp)
+    ${srcHelpersDirectory}/SoXEffectParameterMap.cpp)
 
 SET(srcPrimitivesFileList ${srcPrimitivesDirectory}/MyString.cpp)
 
@@ -736,7 +737,7 @@ ENDFUNCTION(shortNameForEffect)
 INCLUDE_DIRECTORIES(${standardIncludeDirectoryList})
 
 # compile with logging enabled globally for a debug configuration
-ADD_COMPILE_DEFINITIONS($<$<CONFIG:Debug>:LOGGING_IS_ACTIVE>)
+# ADD_COMPILE_DEFINITIONS($<$<CONFIG:Debug>:LOGGING_IS_ACTIVE>)
 
 # ==================================
 # === intermediate library files ===

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['object_1311',['Object',['../namespace_base_types_1_1_primitives.html#ae4ec4f5b067a6d6ad32fffce5dd749ad',1,'BaseTypes::Primitives']]],
-  ['objectset_1312',['ObjectSet',['../namespace_base_types_1_1_primitives.html#a8cb2e28ed65963870538525bb5be5af3',1,'BaseTypes::Primitives']]]
+  ['soxaudioeditorwidgetptrlist_1189',['SoXAudioEditorWidgetPtrList',['../namespace_so_x_plugins_1_1_view_and_controller.html#ab7d202f208acc41c1cfaaf15088baa57',1,'SoXPlugins::ViewAndController']]],
+  ['string_1190',['String',['../namespace_base_types_1_1_primitives.html#aa1174c1e7bedd8df69fc98453595a127',1,'BaseTypes::Primitives']]]
 ];

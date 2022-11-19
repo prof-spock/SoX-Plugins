@@ -34,7 +34,7 @@ namespace SoXPlugins::Effects::SoXCompander {
 
         SoXCompander_AudioProcessor () {
             Logging_initializeWithDefaults("SoXCompander", "SoXPlugins.");
-            _effect = new SoXCompander_AudioEffect{};
+            _setAssociatedEffect(new SoXCompander_AudioEffect{});
         }
 
         /*--------------------*/

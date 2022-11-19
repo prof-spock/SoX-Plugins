@@ -146,8 +146,8 @@ _addWidgetsToList (INOUT SoXAudioEditor* currentEditor,
 {
     Logging_trace(">>");
 
-    const SoXAudioParameterMap& parameterMap =
-        currentEditor->audioParameterMap();
+    const SoXEffectParameterMap& parameterMap =
+        currentEditor->effectParameterMap();
     const StringList parameterNameList =
         parameterMap.parameterNameList();
 
@@ -155,11 +155,13 @@ _addWidgetsToList (INOUT SoXAudioEditor* currentEditor,
     Natural fixedWidgetCount = 0;
 
     for (const String& parameterName : parameterNameList) {
-        Natural pageNumber;
-        String labelName;
-        SoXAudioParameterMap::splitParameterName(parameterName,
-                                                 labelName, pageNumber);
-        fixedWidgetCount += (pageNumber == 0 ? 1 : 0);
+        if (parameterMap.isActive(parameterName)) {
+            Natural pageNumber;
+            String labelName;
+            SoXEffectParameterMap::splitParameterName(parameterName,
+                                                     labelName, pageNumber);
+            fixedWidgetCount += (pageNumber == 0 ? 1 : 0);
+        }
     }
 
     // generate widgets
@@ -170,26 +172,29 @@ _addWidgetsToList (INOUT SoXAudioEditor* currentEditor,
     Logging_trace1("--: fixedWidgetCount = %1", TOSTRING(fixedWidgetCount));
 
     for (const String& parameterName : parameterNameList) {
-        Natural pageNumber;
-        String labelName;
-        SoXAudioParameterMap::splitParameterName(parameterName,
-                                                 labelName, pageNumber);
+        if (parameterMap.isActive(parameterName)) {
+            Natural pageNumber;
+            String labelName;
+            SoXEffectParameterMap::splitParameterName(parameterName,
+                                                     labelName, pageNumber);
 
-        if (pageNumber >= pageCount) {
-            pageCount = pageNumber + 1;
-            pageNumberToWidgetCountMap.setLength(pageCount, Natural{0});
+            if (pageNumber >= pageCount) {
+                pageCount = pageNumber + 1;
+                pageNumberToWidgetCountMap.setLength(pageCount, 0);
+            }
+
+            SoXAudioEditorWidget* widget =
+                new SoXAudioEditorWidget(currentEditor, parameterMap,
+                                         parameterName, labelName);
+            widgetList.append(widget);
+            const Natural positionInPage =
+                (pageNumberToWidgetCountMap[pageNumber]++
+                 + (pageNumber > 0 ? fixedWidgetCount : Natural{0}));
+            widget->setPageAndRow(pageNumber, positionInPage);
+            maximumWidgetCountOnPage =
+                Natural::maximum(positionInPage + 1,
+                                 maximumWidgetCountOnPage);
         }
-
-        SoXAudioEditorWidget* widget =
-            new SoXAudioEditorWidget(currentEditor, parameterMap,
-                                     parameterName, labelName);
-        widgetList.append(widget);
-        const Natural positionInPage =
-            (pageNumberToWidgetCountMap[pageNumber]++
-             + (pageNumber > 0 ? fixedWidgetCount : Natural{0}));
-        widget->setPageAndRow(pageNumber, positionInPage);
-        maximumWidgetCountOnPage =
-            Natural::maximum(positionInPage + 1, maximumWidgetCountOnPage);
     }
 
     NaturalList result = NaturalList::fromList({fixedWidgetCount,
@@ -257,8 +262,8 @@ static NaturalList _findPageIndices (INOUT SoXAudioEditor* currentEditor)
 {
     Logging_trace(">>");
 
-    const SoXAudioParameterMap& parameterMap =
-        currentEditor->audioParameterMap();
+    const SoXEffectParameterMap& parameterMap =
+        currentEditor->effectParameterMap();
     const StringList parameterNameList =
         parameterMap.parameterNameList();
 
@@ -266,23 +271,26 @@ static NaturalList _findPageIndices (INOUT SoXAudioEditor* currentEditor)
     Natural pageCount = 0;
 
     for (const String& parameterName : parameterNameList) {
-        Natural pageNumber;
-        String labelName;
-        Integer nominalPageNumber;
-        SoXAudioParameterMap::splitParameterName(parameterName,
-                                                 labelName, pageNumber,
-                                                 nominalPageNumber);
-        if (nominalPageNumber < 0) {
-            const String value = parameterMap.value(parameterName);
-            Logging_trace2("--: nominalPageNumber = %1, value = %2",
-                           nominalPageNumber.toString(), value);
-            const Natural v =
-                Natural::maximum(1, toNatural(value, 1));
+        if (parameterMap.isActive(parameterName)) {
+            Natural pageNumber;
+            String labelName;
+            Integer nominalPageNumber;
+            SoXEffectParameterMap::splitParameterName(parameterName,
+                                                     labelName, pageNumber,
+                                                     nominalPageNumber);
 
-            if (nominalPageNumber == -1) {
-                pageIndex = v;
-            } else {
-                pageCount = v;
+            if (nominalPageNumber < 0) {
+                const String value = parameterMap.value(parameterName);
+                Logging_trace2("--: nominalPageNumber = %1, value = %2",
+                               nominalPageNumber.toString(), value);
+                const Natural v =
+                    Natural::maximum(1, toNatural(value, 1));
+
+                if (nominalPageNumber == -1) {
+                    pageIndex = v;
+                } else {
+                    pageCount = v;
+                }
             }
         }
     }
@@ -413,9 +421,9 @@ void SoXAudioEditor::resized ()
 
 /*--------------------*/
 
-const SoXAudioParameterMap& SoXAudioEditor::audioParameterMap () const
+const SoXEffectParameterMap& SoXAudioEditor::effectParameterMap () const
 {
-    return _processor.audioParameterMap();
+    return _processor.effectParameterMap();
 }
 
 /*--------------------*/
@@ -430,20 +438,21 @@ void SoXAudioEditor::setValue (IN String& parameterName,
 
 /*--------------------*/
 
-void SoXAudioEditor::notifyAboutChange (IN SoXAudioValueChangeKind kind,
-                                        IN String& data)
+void
+SoXAudioEditor::notifyAboutChange (IN SoXParameterValueChangeKind kind,
+                                   IN String& data)
 {
     Logging_trace2(">>: kind = %1, data = %2",
-                   SoXAudioValueChangeKind_toString(kind), data);
+                   SoXParameterValueChangeKind_toString(kind), data);
     Boolean repaintIsNecessary = false;
 
-    if (kind == SoXAudioValueChangeKind::globalChange) {
+    if (kind == SoXParameterValueChangeKind::globalChange) {
         _resetAppearance();
-    } else if (kind == SoXAudioValueChangeKind::pageChange) {
+    } else if (kind == SoXParameterValueChangeKind::pageChange) {
         repaintIsNecessary = true;
     } else {
         const String parameterName = data;
-        const String value = audioParameterMap().value(parameterName);
+        const String value = effectParameterMap().value(parameterName);
         Logging_trace2("--: parameterName = %1, value = %2",
                        parameterName, value);
 
@@ -453,10 +462,10 @@ void SoXAudioEditor::notifyAboutChange (IN SoXAudioValueChangeKind kind,
             }
         }
 
-        if (kind == SoXAudioValueChangeKind::pageCountChange) {
+        if (kind == SoXParameterValueChangeKind::pageCountChange) {
             _lastEditorPageIndex = Natural::maximum(1, toNatural(value, 1));
             repaintIsNecessary = true;
-        } else if (SoXAudioParameterMap::isPageSelector(parameterName)) {
+        } else if (SoXEffectParameterMap::isPageSelector(parameterName)) {
             _currentEditorPageIndex =
                 Natural::maximum(1, toNatural(value, 1));
             repaintIsNecessary = true;

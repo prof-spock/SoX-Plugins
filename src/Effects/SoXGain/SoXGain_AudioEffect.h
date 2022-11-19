@@ -33,11 +33,15 @@ namespace SoXPlugins::Effects::SoXGain {
      */
     struct SoXGain_AudioEffect : public SoXAudioEffect {
 
-        /*--------------------*/
-        /* setup              */
-        /*--------------------*/
+        /*---------------------*/
+        /* setup & destruction */
+        /*---------------------*/
 
         SoXGain_AudioEffect ();
+
+        /*--------------------*/
+
+        ~SoXGain_AudioEffect ();
 
         /*-----------------------*/
         /* string representation */
@@ -75,7 +79,7 @@ namespace SoXPlugins::Effects::SoXGain {
 
             /*--------------------*/
 
-            SoXAudioValueChangeKind
+            SoXParameterValueChangeKind
             _setValueInternal (IN String& parameterName,
                                IN String& value,
                                IN Boolean recalculationIsSuppressed)

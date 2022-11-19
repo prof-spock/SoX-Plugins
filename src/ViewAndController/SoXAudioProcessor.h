@@ -30,19 +30,6 @@ using SoXPlugins::Effects::SoXAudioEffect;
 
 namespace SoXPlugins::ViewAndController {
 
-    /** prototype class declaration */
-    struct SoXAudioEditor;
-
-    /*--------------------*/
-
-    /**
-     * A <C>_SoXAudioEditorPtrSet</C> is a set of pointers to SoX
-     * audio editors.
-     */
-    using _SoXAudioEditorPtrSet = set<SoXAudioEditor*>;
-
-    /*--------------------*/
-
     /**
      * A <C>SoXAudioProcessor</C> object provides an audio effect
      * wrapper for a plugin responsible for the communication to the
@@ -209,12 +196,12 @@ namespace SoXPlugins::ViewAndController {
         /*--------------------*/
 
         /**
-         * Returns the mapping from audio parameter name onto
+         * Returns the mapping from effect parameter name onto
          * currently associated value.
          *
          * @return  map (from parameter name to associated data)
          */
-        SoXAudioParameterMap& audioParameterMap () const;
+        SoXEffectParameterMap& effectParameterMap () const;
 
         /*--------------------*/
 
@@ -261,7 +248,7 @@ namespace SoXPlugins::ViewAndController {
          * @param[in] observer  editor to be added as observer for
          *                      this processor
          */
-        void registerObserver (INOUT SoXAudioEditor* observer);
+        void registerObserver (INOUT Object observer);
 
         /*--------------------*/
 
@@ -273,7 +260,7 @@ namespace SoXPlugins::ViewAndController {
          * @param[in] observer  editor to be removed as observer for
          *                      this processor
          */
-        void unregisterObserver (INOUT SoXAudioEditor* observer);
+        void unregisterObserver (INOUT Object observer);
 
         /*--------------------*/
         /* event handling     */
@@ -347,12 +334,9 @@ namespace SoXPlugins::ViewAndController {
 
         protected:
 
-            /** the internally associated effect */
-            SoXAudioEffect* _effect;
-
-            /** the set of observers to be notified on parameter
-             * change */
-            _SoXAudioEditorPtrSet _observerSet;
+            /** the object containing the internal data of
+                the audio processor */
+            Object _descriptor;
 
             /*--------------------*/
 
@@ -364,8 +348,35 @@ namespace SoXPlugins::ViewAndController {
              * @param[in] data  associated data for change
              */
             void _notifyObserversAboutChange
-                     (IN SoXAudioValueChangeKind kind,
+                     (IN SoXParameterValueChangeKind kind,
                       IN String& data = "");
+
+            /*--------------------*/
+
+            /**
+             * Handles a change for some parameter object from host
+             * given by <C>parameterIndex</C> to <C>newValue</C>.
+             *
+             * @param[in] parameterIndex  index into list of parameter
+             *                            objects of current processor
+             * @param[in] newValue        real value describing the
+             *                            data update
+             */
+            void
+            _handleParameterChangeFromHost (IN Natural parameterIndex,
+                                            IN Real newValue);
+
+            /*--------------------*/
+
+            /**
+             * Sets associated audio effect to <C>effect</C>, collects
+             * all effect parameters from it and creates corresponding
+             * audio parameter objects for communication with host.
+             *
+             * @param[in] effect  associated audio effect for this
+             *                    processor
+             */
+            void _setAssociatedEffect (IN SoXAudioEffect* effect);
 
         private:
 

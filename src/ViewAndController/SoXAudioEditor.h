@@ -16,13 +16,13 @@
 /* IMPORTS */
 /*=========*/
 
-#include "GenericSequence.h"
+#include "GenericList.h"
 #include "SoXAudioEditorWidget.h"
 #include "SoXAudioProcessor.h"
 
 /*--------------------*/
 
-using BaseTypes::Containers::GenericSequence;
+using BaseTypes::GenericTypes::GenericList;
 using SoXPlugins::ViewAndController::SoXAudioProcessor;
 using SoXPlugins::ViewAndController::SoXAudioEditorWidget;
 
@@ -31,8 +31,7 @@ using SoXPlugins::ViewAndController::SoXAudioEditorWidget;
 namespace SoXPlugins::ViewAndController {
 
     /** a list of audio editor widgets */
-    using SoXAudioEditorWidgetPtrList =
-        GenericSequence<SoXAudioEditorWidget*>;
+    using SoXAudioEditorWidgetPtrList = GenericList<SoXAudioEditorWidget*>;
 
     /*--------------------*/
 
@@ -80,12 +79,12 @@ namespace SoXPlugins::ViewAndController {
         /*--------------------*/
 
         /**
-         * Returns the current audio parameter map from associated
+         * Returns the current effect parameter map from associated
          * audio processor.
          *
          * @return  map (from parameter name to associated data)
          */
-        const SoXAudioParameterMap& audioParameterMap () const;
+        const SoXEffectParameterMap& effectParameterMap () const;
 
         /*--------------------*/
 
@@ -108,7 +107,7 @@ namespace SoXPlugins::ViewAndController {
          * @param[in] kind  change kind
          * @param[in] data  data depending on change kind
          */
-        virtual void notifyAboutChange (IN SoXAudioValueChangeKind kind,
+        virtual void notifyAboutChange (IN SoXParameterValueChangeKind kind,
                                         IN String& data="");
 
         /*--------------------*/

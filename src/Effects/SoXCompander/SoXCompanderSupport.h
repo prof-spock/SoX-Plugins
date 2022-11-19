@@ -26,7 +26,7 @@
 using Audio::AudioSampleRingBuffer;
 using BaseTypes::Primitives::Object;
 using BaseTypes::Primitives::Real;
-using BaseTypes::Containers::GenericMatrix;
+using BaseTypes::GenericTypes::GenericMatrix;
 
 /*====================*/
 

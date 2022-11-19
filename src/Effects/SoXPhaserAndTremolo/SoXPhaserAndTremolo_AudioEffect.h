@@ -34,11 +34,15 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
      */
     struct SoXPhaserAndTremolo_AudioEffect : public SoXAudioEffect {
 
-        /*--------------------*/
-        /* setup              */
-        /*--------------------*/
+        /*---------------------*/
+        /* setup & destruction */
+        /*---------------------*/
 
         SoXPhaserAndTremolo_AudioEffect ();
+
+        /*--------------------*/
+
+        ~SoXPhaserAndTremolo_AudioEffect ();
 
         /*-----------------------*/
         /* string representation */
@@ -76,7 +80,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
 
             /*--------------------*/
 
-            SoXAudioValueChangeKind
+            SoXParameterValueChangeKind
             _setValueInternal (IN String& parameterName,
                                IN String& value,
                                IN Boolean recalculationIsSuppressed)

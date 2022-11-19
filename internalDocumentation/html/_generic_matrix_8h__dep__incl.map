@@ -1,6 +1,0 @@
-<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Containers/GenericMatrix.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/BaseTypes/Containers/GenericMatrix.h">
-<area shape="rect" id="node1" title="The GenericMatrix specification defines a generic matrix type with a single element type parameter T." alt="" coords="157,5,394,81"/>
-<area shape="rect" id="node2" href="$_so_x_compander_support_8h.html" title="The SoXCompanderSupport specification defines support classes for the compander algorithm and provide..." alt="" coords="125,129,426,205"/>
-<area shape="rect" id="node3" href="$_so_x_compander___audio_effect_8cpp.html" title="The SoXCompander_AudioEffect body implements the SoX compand and mcompand audio effects; a simple com..." alt="" coords="5,253,244,345"/>
-<area shape="rect" id="node4" href="$_so_x_compander_support_8cpp.html" title="The SoXCompanderSupport body implements several internal compander classes for the compander algorith..." alt="" coords="269,261,586,337"/>
-</map>

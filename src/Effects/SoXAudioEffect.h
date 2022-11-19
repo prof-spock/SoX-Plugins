@@ -15,12 +15,10 @@
 /* IMPORTS */
 /*=========*/
 
-#include <vector>
-
 #include "Object.h"
 #include "AudioSampleListVector.h"
-#include "SoXAudioParameterMap.h"
-#include "SoXAudioValueChangeKind.h"
+#include "SoXEffectParameterMap.h"
+#include "SoXParameterValueChangeKind.h"
 
 /*--------------------*/
 
@@ -28,8 +26,8 @@ using Audio::AudioSampleList;
 using Audio::AudioSampleListVector;
 using BaseTypes::Primitives::Object;
 using BaseTypes::Primitives::String;
-using SoXPlugins::Helpers::SoXAudioParameterMap;
-using SoXPlugins::Helpers::SoXAudioValueChangeKind;
+using SoXPlugins::Helpers::SoXEffectParameterMap;
+using SoXPlugins::Helpers::SoXParameterValueChangeKind;
 
 /*====================*/
 
@@ -80,12 +78,12 @@ namespace SoXPlugins::Effects {
         /*--------------------*/
 
         /**
-         * Returns the mapping from audio parameter name onto
+         * Returns the mapping from effect parameter name onto
          * parameter data (e.g. the current value).
          *
          * @return  parameter map of audio effect
          */
-        SoXAudioParameterMap& audioParameterMap () const;
+        SoXEffectParameterMap& effectParameterMap () const;
 
         /*--------------------*/
 
@@ -105,7 +103,7 @@ namespace SoXPlugins::Effects {
          *                                       should be done
          * @return  change kind of value (e.g. parameter change)
          */
-        SoXAudioValueChangeKind
+        SoXParameterValueChangeKind
         setValue (IN String& parameterName,
                   IN String& value,
                   IN Boolean recalculationIsSuppressed = false);
@@ -192,7 +190,7 @@ namespace SoXPlugins::Effects {
              * @return  string representation of internal effect 
              *          descriptor
              */
-            virtual String _effectDescriptorToString () const;
+            virtual String _effectDescriptorToString () const = 0;
 
             /*--------------------*/
 
@@ -213,7 +211,7 @@ namespace SoXPlugins::Effects {
              *                                       should be done
              * @return  value change kind to be reported to observers
              */
-            virtual SoXAudioValueChangeKind
+            virtual SoXParameterValueChangeKind
             _setValueInternal (IN String& parameterName,
                                IN String& value,
                                IN Boolean recalculationIsSuppressed) = 0;
@@ -226,8 +224,8 @@ namespace SoXPlugins::Effects {
             /** the count of channels in this effect */
             Natural _channelCount;
 
-            /** the map of audio parameters */
-            SoXAudioParameterMap _audioParameterMap;
+            /** the map of effect parameters */
+            SoXEffectParameterMap _effectParameterMap;
 
             /** the specific parameters for this effect (private
              * type) */

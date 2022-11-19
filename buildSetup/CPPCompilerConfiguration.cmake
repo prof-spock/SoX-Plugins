@@ -125,7 +125,8 @@ SET(cppDefineClauseList
 IF(MSVC)
     # --- list of warning number to be ignored
     SET(warningNumberList
-        4100 4244 4505 4723 5105 26439 26451 26495 26498 26812 28182)
+        4100 4180 4244 4505 4723 4996 5105 6255
+        26439 26451 26495 26498 26812 26819 28182)
   
     STRING(JOIN " " cppFlagsCommon
            /arch:AVX            # enable AVX vectorization instructions
@@ -172,6 +173,7 @@ IF(MSVC)
 
     STRING(JOIN " " cppFlagsDebug
            /DDEBUG       # debugging on
+           /Od           # no optimization
            /Zi           # debug information in database
            /fp:fast      # fast floating point calculation
     )

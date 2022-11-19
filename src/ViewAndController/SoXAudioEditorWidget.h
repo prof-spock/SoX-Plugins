@@ -20,13 +20,13 @@
 
 #include "Object.h"
 #include "Percentage.h"
-#include "SoXAudioParameterMap.h"
+#include "SoXEffectParameterMap.h"
 
 /*--------------------*/
 
 using BaseTypes::Primitives::Object;
 using BaseTypes::Primitives::Percentage;
-using SoXPlugins::Helpers::SoXAudioParameterMap;
+using SoXPlugins::Helpers::SoXEffectParameterMap;
 
 /*====================*/
 
@@ -63,7 +63,7 @@ namespace SoXPlugins::ViewAndController {
          *                            widget for this parameter
          */
         SoXAudioEditorWidget (INOUT juce::Component* parent,
-                              IN SoXAudioParameterMap& map,
+                              IN SoXEffectParameterMap& map,
                               IN String& parameterName,
                               IN String& labelName);
 
@@ -213,7 +213,7 @@ namespace SoXPlugins::ViewAndController {
             Object _eventDispatcher;
 
             /** the underlying parameter map */
-            const SoXAudioParameterMap& _parameterMap;
+            const SoXEffectParameterMap& _parameterMap;
 
             /*====================*/
             /* class wide params  */

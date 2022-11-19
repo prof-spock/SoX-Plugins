@@ -1,3 +1,10 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$struct_audio_1_1_audio_sample_ring_buffer.html" title="A AudioSampleRingBuffer object is a ring buffer for audio samples with left and right shifts and acce..." alt="" coords="5,5,227,33"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,185,101,213"/>
+<area shape="rect" id="node2" href="$struct_audio_1_1_audio_sample_list.html" title="An AudioSampleList object is a list of audio samples with arbitrary indexed access to positions in th..." alt="" coords="171,5,345,33"/>
+<area shape="rect" id="node3" href="$struct_audio_1_1_audio_sample_list_vector.html" title="A AudioSampleListVector object is a buffer of audio sample lists containing the input samples and the..." alt="" coords="149,57,367,85"/>
+<area shape="rect" id="node4" href="$struct_base_types_1_1_containers_1_1_byte_list.html" title="A ByteList object is a list of byte values with arbitrary indexed access to positions in the list." alt="" coords="171,109,345,153"/>
+<area shape="rect" id="node5" href="$struct_base_types_1_1_containers_1_1_integer_list.html" title="An IntegerList object is a list of integer values with arbitrary indexed access to positions in the l..." alt="" coords="171,177,345,221"/>
+<area shape="rect" id="node6" href="$struct_base_types_1_1_containers_1_1_natural_list.html" title="A NaturalList object is a list of non&#45;negative integer values with arbitrary indexed access to positi..." alt="" coords="171,245,345,289"/>
+<area shape="rect" id="node7" href="$struct_base_types_1_1_containers_1_1_real_list.html" title="A RealList object is a list of real values with arbitrary indexed access to positions in the list." alt="" coords="171,313,345,357"/>
+<area shape="rect" id="node8" href="$struct_base_types_1_1_containers_1_1_string_list.html" title="A StringList object is a list of string values with arbitrary indexed access to positions in the list..." alt="" coords="171,381,345,425"/>
 </map>

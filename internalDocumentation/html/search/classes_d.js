@@ -1,6 +1,25 @@
 var searchData=
 [
-  ['radians_739',['Radians',['../struct_base_types_1_1_primitives_1_1_radians.html',1,'BaseTypes::Primitives']]],
-  ['real_740',['Real',['../struct_base_types_1_1_primitives_1_1_real.html',1,'BaseTypes::Primitives']]],
-  ['reallist_741',['RealList',['../struct_base_types_1_1_containers_1_1_real_list.html',1,'BaseTypes::Containers']]]
+  ['soxaudioeditor_655',['SoXAudioEditor',['../struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html',1,'SoXPlugins::ViewAndController']]],
+  ['soxaudioeditorwidget_656',['SoXAudioEditorWidget',['../struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html',1,'SoXPlugins::ViewAndController']]],
+  ['soxaudioeffect_657',['SoXAudioEffect',['../struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html',1,'SoXPlugins::Effects']]],
+  ['soxaudiohelper_658',['SoXAudioHelper',['../struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_helper.html',1,'SoXPlugins::Helpers']]],
+  ['soxaudioprocessor_659',['SoXAudioProcessor',['../struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html',1,'SoXPlugins::ViewAndController']]],
+  ['soxcompander_5faudioeffect_660',['SoXCompander_AudioEffect',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html',1,'SoXPlugins::Effects::SoXCompander']]],
+  ['soxcompander_5faudioprocessor_661',['SoXCompander_AudioProcessor',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_processor.html',1,'SoXPlugins::Effects::SoXCompander']]],
+  ['soxeffectparametermap_662',['SoXEffectParameterMap',['../struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html',1,'SoXPlugins::Helpers']]],
+  ['soxfilter_5faudioeffect_663',['SoXFilter_AudioEffect',['../struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html',1,'SoXPlugins::Effects::SoXFilter']]],
+  ['soxfilter_5faudioprocessor_664',['SoXFilter_AudioProcessor',['../struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_processor.html',1,'SoXPlugins::Effects::SoXFilter']]],
+  ['soxgain_5faudioeffect_665',['SoXGain_AudioEffect',['../struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html',1,'SoXPlugins::Effects::SoXGain']]],
+  ['soxgain_5faudioprocessor_666',['SoXGain_AudioProcessor',['../struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_processor.html',1,'SoXPlugins::Effects::SoXGain']]],
+  ['soxmultibandcompander_667',['SoXMultibandCompander',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html',1,'SoXPlugins::Effects::SoXCompander']]],
+  ['soxoverdrive_5faudioeffect_668',['SoXOverdrive_AudioEffect',['../struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html',1,'SoXPlugins::Effects::SoXOverdrive']]],
+  ['soxoverdrive_5faudioprocessor_669',['SoXOverdrive_AudioProcessor',['../struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor.html',1,'SoXPlugins::Effects::SoXOverdrive']]],
+  ['soxphaserandtremolo_5faudioeffect_670',['SoXPhaserAndTremolo_AudioEffect',['../struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html',1,'SoXPlugins::Effects::SoXPhaserAndTremolo']]],
+  ['soxphaserandtremolo_5faudioprocessor_671',['SoXPhaserAndTremolo_AudioProcessor',['../struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_processor.html',1,'SoXPlugins::Effects::SoXPhaserAndTremolo']]],
+  ['soxreverb_5faudioeffect_672',['SoXReverb_AudioEffect',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html',1,'SoXPlugins::Effects::SoXReverb']]],
+  ['soxreverb_5faudioprocessor_673',['SoXReverb_AudioProcessor',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_processor.html',1,'SoXPlugins::Effects::SoXReverb']]],
+  ['stringlist_674',['StringList',['../struct_base_types_1_1_containers_1_1_string_list.html',1,'BaseTypes::Containers']]],
+  ['stringset_675',['StringSet',['../struct_base_types_1_1_containers_1_1_string_set.html',1,'BaseTypes::Containers']]],
+  ['stringutil_676',['StringUtil',['../struct_base_modules_1_1_string_util.html',1,'BaseModules']]]
 ];

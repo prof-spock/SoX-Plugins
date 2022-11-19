@@ -96,10 +96,13 @@ $(document).ready(function(){initNavTree('struct_so_x_plugins_1_1_view_and_contr
  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_so_x_audio_processor_8h_source.html">SoXAudioProcessor.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for SoXPlugins::ViewAndController::SoXAudioProcessor:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor__inherit__graph.svg" width="1539" height="639"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for SoXPlugins::ViewAndController::SoXAudioProcessor:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -150,21 +153,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1a4979529489d4edbdfad65f6780b24f"><td class="memItemLeft" align="right" valign="top">virtual String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a1a4979529489d4edbdfad65f6780b24f">name</a> () const</td></tr>
 <tr class="memdesc:a1a4979529489d4edbdfad65f6780b24f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets name of this plugin.  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a1a4979529489d4edbdfad65f6780b24f">More...</a><br /></td></tr>
 <tr class="separator:a1a4979529489d4edbdfad65f6780b24f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47078ed26e21095fefa2ffde27fabc64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_parameter_map.html">SoXAudioParameterMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a47078ed26e21095fefa2ffde27fabc64">audioParameterMap</a> () const</td></tr>
-<tr class="memdesc:a47078ed26e21095fefa2ffde27fabc64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the mapping from audio parameter name onto currently associated value.  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a47078ed26e21095fefa2ffde27fabc64">More...</a><br /></td></tr>
-<tr class="separator:a47078ed26e21095fefa2ffde27fabc64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24e3b81c46e9223bc80d34ad267c21bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a24e3b81c46e9223bc80d34ad267c21bf">effectParameterMap</a> () const</td></tr>
+<tr class="memdesc:a24e3b81c46e9223bc80d34ad267c21bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the mapping from effect parameter name onto currently associated value.  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a24e3b81c46e9223bc80d34ad267c21bf">More...</a><br /></td></tr>
+<tr class="separator:a24e3b81c46e9223bc80d34ad267c21bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7e666e52d95ec8fcdaebd6f02390e1a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ad7e666e52d95ec8fcdaebd6f02390e1a">setValue</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;value, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> recalculationIsSuppressed=false)</td></tr>
 <tr class="memdesc:ad7e666e52d95ec8fcdaebd6f02390e1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets parameter named <code>parameterName</code> to <code>value</code>.  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ad7e666e52d95ec8fcdaebd6f02390e1a">More...</a><br /></td></tr>
 <tr class="separator:ad7e666e52d95ec8fcdaebd6f02390e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad664379bbe7a506197cf94fd1dbc695b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ad664379bbe7a506197cf94fd1dbc695b">setValues</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_containers_1_1_dictionary.html">Dictionary</a> &amp;dictionary)</td></tr>
 <tr class="memdesc:ad664379bbe7a506197cf94fd1dbc695b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets all parameters for audio processor to values defined by <code>dictionary</code>  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ad664379bbe7a506197cf94fd1dbc695b">More...</a><br /></td></tr>
 <tr class="separator:ad664379bbe7a506197cf94fd1dbc695b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0a5373b6455d69fdf46db0df11e6c70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ab0a5373b6455d69fdf46db0df11e6c70">registerObserver</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html">SoXAudioEditor</a> *observer)</td></tr>
-<tr class="memdesc:ab0a5373b6455d69fdf46db0df11e6c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers <code>observer</code> as object to be notified about parameter change; nothing will happen when observer is already registered.  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ab0a5373b6455d69fdf46db0df11e6c70">More...</a><br /></td></tr>
-<tr class="separator:ab0a5373b6455d69fdf46db0df11e6c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56c74ddcf3ebc337aebde12bebc0a024"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a56c74ddcf3ebc337aebde12bebc0a024">unregisterObserver</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html">SoXAudioEditor</a> *observer)</td></tr>
-<tr class="memdesc:a56c74ddcf3ebc337aebde12bebc0a024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes registration of <code>observer</code> as object to be notified about parameter change; nothing will happen when observer is not registered.  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a56c74ddcf3ebc337aebde12bebc0a024">More...</a><br /></td></tr>
-<tr class="separator:a56c74ddcf3ebc337aebde12bebc0a024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab06c0dcb89ee6828b6987121d89c31d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ab06c0dcb89ee6828b6987121d89c31d7">registerObserver</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> Object observer)</td></tr>
+<tr class="memdesc:ab06c0dcb89ee6828b6987121d89c31d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers <code>observer</code> as object to be notified about parameter change; nothing will happen when observer is already registered.  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ab06c0dcb89ee6828b6987121d89c31d7">More...</a><br /></td></tr>
+<tr class="separator:ab06c0dcb89ee6828b6987121d89c31d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad75b67d398bf20e919bdc6e59dc003e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ad75b67d398bf20e919bdc6e59dc003e2">unregisterObserver</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> Object observer)</td></tr>
+<tr class="memdesc:ad75b67d398bf20e919bdc6e59dc003e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes registration of <code>observer</code> as object to be notified about parameter change; nothing will happen when observer is not registered.  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ad75b67d398bf20e919bdc6e59dc003e2">More...</a><br /></td></tr>
+<tr class="separator:ad75b67d398bf20e919bdc6e59dc003e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8668739e1560f9531a175dc0648a395f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a8668739e1560f9531a175dc0648a395f">prepareToPlay</a> (double sampleRate, int maximumExpectedSamplesPerBlock) override</td></tr>
 <tr class="memdesc:a8668739e1560f9531a175dc0648a395f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Informs the processor to be prepared for playback.  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a8668739e1560f9531a175dc0648a395f">More...</a><br /></td></tr>
 <tr class="separator:a8668739e1560f9531a175dc0648a395f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,26 +187,73 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a609d809f0df8d11950e5bbf27ed79326"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a609d809f0df8d11950e5bbf27ed79326">_notifyObserversAboutChange</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> SoXAudioValueChangeKind kind, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;data=&quot;&quot;)</td></tr>
-<tr class="memdesc:a609d809f0df8d11950e5bbf27ed79326"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tells all observers about change of kind <code>kind</code> using (optional) <code>data</code>.  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a609d809f0df8d11950e5bbf27ed79326">More...</a><br /></td></tr>
-<tr class="separator:a609d809f0df8d11950e5bbf27ed79326"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb7549f01a47b906fcc96c523e0670bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#aeb7549f01a47b906fcc96c523e0670bd">_notifyObserversAboutChange</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> SoXParameterValueChangeKind kind, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;data=&quot;&quot;)</td></tr>
+<tr class="memdesc:aeb7549f01a47b906fcc96c523e0670bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tells all observers about change of kind <code>kind</code> using (optional) <code>data</code>.  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#aeb7549f01a47b906fcc96c523e0670bd">More...</a><br /></td></tr>
+<tr class="separator:aeb7549f01a47b906fcc96c523e0670bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4be1c93f28d7ed87d9cfe765a48e87d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a4be1c93f28d7ed87d9cfe765a48e87d6">_handleParameterChangeFromHost</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> parameterIndex, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> newValue)</td></tr>
+<tr class="memdesc:a4be1c93f28d7ed87d9cfe765a48e87d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles a change for some parameter object from host given by <code>parameterIndex</code> to <code>newValue</code>.  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a4be1c93f28d7ed87d9cfe765a48e87d6">More...</a><br /></td></tr>
+<tr class="separator:a4be1c93f28d7ed87d9cfe765a48e87d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab56cb7be8d7d72c9d36638292ab0578e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ab56cb7be8d7d72c9d36638292ab0578e">_setAssociatedEffect</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html">SoXAudioEffect</a> *effect)</td></tr>
+<tr class="memdesc:ab56cb7be8d7d72c9d36638292ab0578e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets associated audio effect to <code>effect</code>, collects all effect parameters from it and creates corresponding audio parameter objects for communication with host.  <a href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ab56cb7be8d7d72c9d36638292ab0578e">More...</a><br /></td></tr>
+<tr class="separator:ab56cb7be8d7d72c9d36638292ab0578e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ae15ac266bd58b6b0dbb8f6186766b127"><td class="memItemLeft" align="right" valign="top"><a id="ae15ac266bd58b6b0dbb8f6186766b127"></a>
-<a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html">SoXAudioEffect</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ae15ac266bd58b6b0dbb8f6186766b127">_effect</a></td></tr>
-<tr class="memdesc:ae15ac266bd58b6b0dbb8f6186766b127"><td class="mdescLeft">&#160;</td><td class="mdescRight">the internally associated effect <br /></td></tr>
-<tr class="separator:ae15ac266bd58b6b0dbb8f6186766b127"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11dd94d4a7c8c96acc271f0e0a8a2d77"><td class="memItemLeft" align="right" valign="top"><a id="a11dd94d4a7c8c96acc271f0e0a8a2d77"></a>
-<a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#a04f480ea88c411f643b1e89e02fb4ad7">_SoXAudioEditorPtrSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a11dd94d4a7c8c96acc271f0e0a8a2d77">_observerSet</a></td></tr>
-<tr class="memdesc:a11dd94d4a7c8c96acc271f0e0a8a2d77"><td class="mdescLeft">&#160;</td><td class="mdescRight">the set of observers to be notified on parameter change <br /></td></tr>
-<tr class="separator:a11dd94d4a7c8c96acc271f0e0a8a2d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ec7ec3f36a6e6d469a2d46ff2272189"><td class="memItemLeft" align="right" valign="top"><a id="a0ec7ec3f36a6e6d469a2d46ff2272189"></a>
+Object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a0ec7ec3f36a6e6d469a2d46ff2272189">_descriptor</a></td></tr>
+<tr class="memdesc:a0ec7ec3f36a6e6d469a2d46ff2272189"><td class="mdescLeft">&#160;</td><td class="mdescRight">the object containing the internal data of the audio processor <br /></td></tr>
+<tr class="separator:a0ec7ec3f36a6e6d469a2d46ff2272189"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html" title="A SoXAudioProcessor object provides an audio effect wrapper for a plugin responsible for the communic...">SoXAudioProcessor</a></code> object provides an audio effect wrapper for a plugin responsible for the communication to the enclosing plugin host. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a609d809f0df8d11950e5bbf27ed79326"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a609d809f0df8d11950e5bbf27ed79326">&#9670;&nbsp;</a></span>_notifyObserversAboutChange()</h2>
+<a id="a4be1c93f28d7ed87d9cfe765a48e87d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4be1c93f28d7ed87d9cfe765a48e87d6">&#9670;&nbsp;</a></span>_handleParameterChangeFromHost()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SoXPlugins::ViewAndController::SoXAudioProcessor::_handleParameterChangeFromHost </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td>
+          <td class="paramname"><em>parameterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramname"><em>newValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Handles a change for some parameter object from host given by <code>parameterIndex</code> to <code>newValue</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">parameterIndex</td><td>index into list of parameter objects of current processor </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">newValue</td><td>real value describing the data update </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aeb7549f01a47b906fcc96c523e0670bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb7549f01a47b906fcc96c523e0670bd">&#9670;&nbsp;</a></span>_notifyObserversAboutChange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -214,7 +264,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void SoXAudioProcessor::_notifyObserversAboutChange </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> SoXAudioValueChangeKind&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> SoXParameterValueChangeKind&#160;</td>
           <td class="paramname"><em>kind</em>, </td>
         </tr>
         <tr>
@@ -247,6 +297,40 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ab56cb7be8d7d72c9d36638292ab0578e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab56cb7be8d7d72c9d36638292ab0578e">&#9670;&nbsp;</a></span>_setAssociatedEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SoXAudioProcessor::_setAssociatedEffect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html">SoXAudioEffect</a> *&#160;</td>
+          <td class="paramname"><em>effect</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets associated audio effect to <code>effect</code>, collects all effect parameters from it and creates corresponding audio parameter objects for communication with host. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">effect</td><td>associated audio effect for this processor </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="aab61c8cfada9d26a64585075c476e2a5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aab61c8cfada9d26a64585075c476e2a5">&#9670;&nbsp;</a></span>acceptsMidi()</h2>
 
@@ -272,26 +356,6 @@ Protected Attributes</h2></td></tr>
 
 <p>Tells whether this processor accepts MIDI data. </p>
 <dl class="section return"><dt>Returns</dt><dd>information whether this processor accepts MIDI data (false) </dd></dl>
-
-</div>
-</div>
-<a id="a47078ed26e21095fefa2ffde27fabc64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47078ed26e21095fefa2ffde27fabc64">&#9670;&nbsp;</a></span>audioParameterMap()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_parameter_map.html">SoXAudioParameterMap</a> &amp; SoXAudioProcessor::audioParameterMap </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the mapping from audio parameter name onto currently associated value. </p>
-<dl class="section return"><dt>Returns</dt><dd>map (from parameter name to associated data) </dd></dl>
 
 </div>
 </div>
@@ -365,6 +429,26 @@ Protected Attributes</h2></td></tr>
 
 <p>Creates an editor for this processor and returns resulting editor. </p>
 <dl class="section return"><dt>Returns</dt><dd>new JUCE editor </dd></dl>
+
+</div>
+</div>
+<a id="a24e3b81c46e9223bc80d34ad267c21bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24e3b81c46e9223bc80d34ad267c21bf">&#9670;&nbsp;</a></span>effectParameterMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp; SoXAudioProcessor::effectParameterMap </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the mapping from effect parameter name onto currently associated value. </p>
+<dl class="section return"><dt>Returns</dt><dd>map (from parameter name to associated data) </dd></dl>
 
 </div>
 </div>
@@ -753,8 +837,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab0a5373b6455d69fdf46db0df11e6c70"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0a5373b6455d69fdf46db0df11e6c70">&#9670;&nbsp;</a></span>registerObserver()</h2>
+<a id="ab06c0dcb89ee6828b6987121d89c31d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab06c0dcb89ee6828b6987121d89c31d7">&#9670;&nbsp;</a></span>registerObserver()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -762,7 +846,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void SoXAudioProcessor::registerObserver </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html">SoXAudioEditor</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> Object&#160;</td>
           <td class="paramname"><em>observer</em></td><td>)</td>
           <td></td>
         </tr>
@@ -965,8 +1049,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a56c74ddcf3ebc337aebde12bebc0a024"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56c74ddcf3ebc337aebde12bebc0a024">&#9670;&nbsp;</a></span>unregisterObserver()</h2>
+<a id="ad75b67d398bf20e919bdc6e59dc003e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad75b67d398bf20e919bdc6e59dc003e2">&#9670;&nbsp;</a></span>unregisterObserver()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -974,7 +1058,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void SoXAudioProcessor::unregisterObserver </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html">SoXAudioEditor</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> Object&#160;</td>
           <td class="paramname"><em>observer</em></td><td>)</td>
           <td></td>
         </tr>
@@ -992,8 +1076,8 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li>C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/ViewAndController/<a class="el" href="_so_x_audio_processor_8h_source.html">SoXAudioProcessor.h</a></li>
-<li>C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/ViewAndController/<a class="el" href="_so_x_audio_processor_8cpp.html">SoXAudioProcessor.cpp</a></li>
+<li><a class="el" href="_so_x_audio_processor_8h_source.html">SoXAudioProcessor.h</a></li>
+<li><a class="el" href="_so_x_audio_processor_8cpp.html">SoXAudioProcessor.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

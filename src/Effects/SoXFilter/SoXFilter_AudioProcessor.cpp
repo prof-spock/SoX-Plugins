@@ -38,7 +38,7 @@ namespace SoXPlugins::Effects::SoXFilter {
         SoXFilter_AudioProcessor ()
         {
             Logging_initializeWithDefaults("SoXFilter", "SoXPlugins.");
-            _effect = new SoXFilter_AudioEffect{};
+            _setAssociatedEffect(new SoXFilter_AudioEffect{});
         }
 
         /*--------------------*/

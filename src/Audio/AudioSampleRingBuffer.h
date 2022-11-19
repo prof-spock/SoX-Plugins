@@ -236,7 +236,7 @@ namespace Audio {
             Natural _firstIndex;
 
             /** the elements of the ring buffer as a vector */
-            GenericSequence<AudioSample> _data;
+            GenericList<AudioSample> _data;
 
     };
 }

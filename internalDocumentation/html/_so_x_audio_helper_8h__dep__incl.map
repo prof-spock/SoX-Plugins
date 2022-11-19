@@ -1,8 +1,8 @@
-<map id="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Helpers/SoXAudioHelper.h" name="C:/_Benutzer/Dr._Thomas_Tensi/Dokument/Quellen/C++/SoXPlugins/src/Helpers/SoXAudioHelper.h">
-<area shape="rect" id="node1" title="The SoXAudioHelper specification defines several audio helper routines (like, for example,..." alt="" coords="573,5,786,81"/>
-<area shape="rect" id="node2" href="$_so_x_compander___audio_effect_8cpp.html" title="The SoXCompander_AudioEffect body implements the SoX compand and mcompand audio effects; a simple com..." alt="" coords="5,129,244,221"/>
-<area shape="rect" id="node3" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="269,137,527,213"/>
-<area shape="rect" id="node4" href="$_so_x_gain___audio_effect_8cpp.html" title="The SoXGain_AudioEffect body implements the SoX gain plugin amplifying or attenuating the input signa..." alt="" coords="552,137,807,213"/>
-<area shape="rect" id="node5" href="$_so_x_overdrive___audio_effect_8cpp.html" title="The SoXOverdrive_AudioEffect body implements the SoX overdrive plugin distorting an input signal with..." alt="" coords="831,129,1042,221"/>
-<area shape="rect" id="node6" href="$_so_x_reverb_support_8cpp.html" title="The SoXReverbSupport body implements support classes for the freeverb algorithm and provides a single..." alt="" coords="1067,137,1324,213"/>
+<map id="SoXAudioHelper.h" name="SoXAudioHelper.h">
+<area shape="rect" id="node1" title="The SoXAudioHelper specification defines several audio helper routines (like, for example,..." alt="" coords="506,5,645,33"/>
+<area shape="rect" id="node2" href="$_so_x_compander___audio_effect_8cpp.html" title="The SoXCompander_AudioEffect body implements the SoX compand and mcompand audio effects; a simple com..." alt="" coords="5,81,241,109"/>
+<area shape="rect" id="node3" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="265,81,456,109"/>
+<area shape="rect" id="node4" href="$_so_x_gain___audio_effect_8cpp.html" title="The SoXGain_AudioEffect body implements the SoX gain plugin amplifying or attenuating the input signa..." alt="" coords="481,81,670,109"/>
+<area shape="rect" id="node5" href="$_so_x_overdrive___audio_effect_8cpp.html" title="The SoXOverdrive_AudioEffect body implements the SoX overdrive plugin distorting an input signal with..." alt="" coords="695,81,917,109"/>
+<area shape="rect" id="node6" href="$_so_x_reverb_support_8cpp.html" title="The SoXReverbSupport body implements support classes for the freeverb algorithm and provides a single..." alt="" coords="941,81,1116,109"/>
 </map>

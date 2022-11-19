@@ -16,16 +16,17 @@
 /* IMPORTS */
 /*=========*/
 
-#include "StringUtil.h"
-
+#include "Logging.h"
 #include "SoXAudioHelper.h"
 #include "SoXGain_AudioEffect.h"
 
 /*--------------------*/
 
-using BaseModules::StringUtil;
 using SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect;
 using SoXPlugins::Helpers::SoXAudioHelper;
+
+/** abbreviated form of function name */
+#define expand StringUtil::expand
 
 /*============================================================*/
 
@@ -41,6 +42,18 @@ namespace SoXPlugins::Effects::SoXGain {
 
         /** the gain (as a real factor) */
         Real gain;
+
+        /*--------------------*/
+        /*--------------------*/
+
+        String toString() const
+        {
+            String st =
+                expand("_EffectDescriptor_GAIN(gain = %1dB)",
+                       TOSTRING(gain));
+            return st;
+        }
+
     };
 
     /*====================*/
@@ -59,43 +72,47 @@ namespace SoXPlugins::Effects::SoXGain {
      */
     static _EffectDescriptor_GAIN* _createEffectDescriptor ()
     {
+        Logging_trace(">>");
+
         _EffectDescriptor_GAIN* result =
             new _EffectDescriptor_GAIN{
                 0.0 // gain
             };
 
+        Logging_trace1("<<: %1", result->toString());
         return result;
-    }
-
-    /*--------------------*/
-
-    /**
-     * Sets up all audio editor parameters in <C>parameterMap</C> for
-     * effect
-     *
-     * @param[in] parameterMap  audio parameter map of gain effect to be
-     *                          initialized
-     */
-    static
-    void _initializeAllParameters (INOUT SoXAudioParameterMap& parameterMap)
-    {
-        parameterMap.setKindReal(parameterName_gain, -10.0, 10.0, 0.001);
     }
 
 }
 
 /*============================================================*/
 
-/*--------------------*/
-/* setup              */
-/*--------------------*/
+/*---------------------*/
+/* setup & destruction */
+/*---------------------*/
 
 SoXGain_AudioEffect::SoXGain_AudioEffect ()
-    : SoXAudioEffect{}
 {
+    Logging_trace(">>");
+
+    /* initialize descriptor */
     _effectDescriptor = _createEffectDescriptor();
-    _audioParameterMap.clear();
-    _initializeAllParameters(_audioParameterMap);
+
+    /* initialize parameters */
+    _effectParameterMap.clear();
+    _effectParameterMap.setKindReal(parameterName_gain,
+                                    -10.0, 10.0, 0.001);
+
+    Logging_trace1("<<: %1", toString());
+}
+
+/*---------------------*/
+
+SoXGain_AudioEffect::~SoXGain_AudioEffect ()
+{
+    Logging_trace(">>");
+    delete (_EffectDescriptor_GAIN*) _effectDescriptor;
+    Logging_trace("<<");
 }
 
 /*-----------------------*/
@@ -115,14 +132,9 @@ String SoXGain_AudioEffect::toString () const
 
 String SoXGain_AudioEffect::_effectDescriptorToString () const
 {
-    _EffectDescriptor_GAIN* effectDescriptor =
-        static_cast<_EffectDescriptor_GAIN*>(_effectDescriptor);
-
-    String st = "_EffectDescriptor_GAIN(";
-    st += "gain = " + TOSTRING(effectDescriptor->gain);
-    st += ")";
-
-    return st;
+    _EffectDescriptor_GAIN& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);
+    return effectDescriptor.toString();
 }
 
 /*--------------------*/
@@ -138,28 +150,39 @@ String SoXGain_AudioEffect::name() const
 /* parameter change   */
 /*--------------------*/
 
-SoXAudioValueChangeKind
+SoXParameterValueChangeKind
 SoXGain_AudioEffect::_setValueInternal
                          (IN String& parameterName,
                           IN String& value,
                           IN Boolean recalculationIsSuppressed)
 {
-    _EffectDescriptor_GAIN* effectDescriptor =
-        static_cast<_EffectDescriptor_GAIN*>(_effectDescriptor);
+    Logging_trace3(">>: parameterName = %1, value = %2,"
+                   " recalculationIsSuppressed = %3",
+                   parameterName, value,
+                   TOSTRING(recalculationIsSuppressed));
+
+    _EffectDescriptor_GAIN& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);
+    SoXParameterValueChangeKind result =
+        SoXParameterValueChangeKind::parameterChange;
+
     SoXAudioEffect::setValue(parameterName, value);
 
     if (parameterName == parameterName_gain) {
         const Real dBGain = StringUtil::toReal(value);
-        effectDescriptor->gain = SoXAudioHelper::dBToLinear(dBGain);
+        effectDescriptor.gain = SoXAudioHelper::dBToLinear(dBGain);
     }
 
-    return SoXAudioValueChangeKind::parameterChange;
+    Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));
+    return result;
 }
 
 /*--------------------*/
 
 void SoXGain_AudioEffect::setDefaultValues () {
-    _audioParameterMap.setValue(parameterName_gain, "0");
+    Logging_trace(">>");
+    _effectParameterMap.setValue(parameterName_gain, "0");
+    Logging_trace1("<<: %1", toString());
 }
 
 /*--------------------*/
@@ -170,12 +193,14 @@ void
 SoXGain_AudioEffect::processBlock (IN Real timePosition,
                                    INOUT AudioSampleListVector& buffer)
 {
+    Logging_trace1(">>: time = %1", TOSTRING(timePosition));
+
     SoXAudioEffect::processBlock(timePosition, buffer);
-    _EffectDescriptor_GAIN* effectDescriptor =
-        static_cast<_EffectDescriptor_GAIN*>(_effectDescriptor);
+    _EffectDescriptor_GAIN& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);
 
     const Natural sampleCount = buffer[0].size();
-    const Real gain = effectDescriptor->gain;
+    const Real gain = effectDescriptor.gain;
 
     for (Natural channel = 0;  channel < _channelCount;
          channel++) {
@@ -188,4 +213,6 @@ SoXGain_AudioEffect::processBlock (IN Real timePosition,
             outputSample = (AudioSample) (inputSample * gain);
         }
     }
+
+    Logging_trace("<<");
 }

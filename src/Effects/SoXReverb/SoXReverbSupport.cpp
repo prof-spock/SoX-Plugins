@@ -21,19 +21,20 @@
 #include "SoXReverbSupport.h"
 
 #include "GenericTuple.h"
+#include "Logging.h"
 #include "NaturalList.h"
-#include "StringUtil.h"
 #include "SoXAudioHelper.h"
 
 /*--------------------*/
 
-
 using Audio::AudioSample;
-using BaseModules::StringUtil;
-using BaseTypes::Containers::GenericTuple;
 using BaseTypes::Containers::NaturalList;
+using BaseTypes::GenericTypes::GenericTuple;
 using SoXPlugins::Effects::SoXReverb::_SoXReverb;
 using SoXPlugins::Helpers::SoXAudioHelper;
+
+/** abbreviation for StringUtil::expand */
+#define expand StringUtil::expand
 
 /*============================================================*/
 
@@ -182,7 +183,7 @@ namespace SoXPlugins::Effects::SoXReverb {
          * @return  output sample of comb filter
          */
         AudioSample apply (IN AudioSample inputSample,
-                              IN Real feedback, IN Real hfDamping);
+                           IN Real feedback, IN Real hfDamping);
 
         /*--------------------*/
         /*--------------------*/
@@ -369,14 +370,14 @@ namespace SoXPlugins::Effects::SoXReverb {
             Natural _reverbLineCount;
 
             /** the list of associated reverb lines */
-            GenericSequence<_ReverbLine*> _reverbLineList;
+            GenericList<_ReverbLine*> _reverbLineList;
 
     };
 
     /*--------------------*/
 
     /** a list of reverb channels */
-    using _ReverbChannelList = GenericSequence<_ReverbChannel*>;
+    using _ReverbChannelList = GenericList<_ReverbChannel*>;
 
     /*====================*/
     /* Reverb             */
@@ -416,6 +417,17 @@ namespace SoXPlugins::Effects::SoXReverb {
 
         /** the list of reverb channels */
         _ReverbChannelList reverbChannelList{};
+
+        /*--------------------*/
+        /*--------------------*/
+
+        /**
+         * Returns string representation of parameter data object.
+         *
+         * @return string representation
+         */
+        String toString () const;
+
     };
 
     /*============================================================*/
@@ -812,34 +824,72 @@ namespace SoXPlugins::Effects::SoXReverb {
         }
     }
 
+    /*--------------------*/
+
+    String _ReverbEffectParameterData::toString () const
+    {
+        String prefix =
+            expand("isWetOnly = %1, feedback = %2,"
+                   " hfDamping = %3%, predelay = %4s"
+                   " stereoDepth = %5%, wetGain = %6dB"
+                   " roomScale = %7%, channelCount = %8)",
+                   TOSTRING(isWetOnly), TOSTRING(feedback),
+                   TOSTRING(hfDamping), TOSTRING(predelay),
+                   TOSTRING(stereoDepth), TOSTRING(wetGain),
+                   TOSTRING(roomScale), TOSTRING(channelCount));
+
+        // add information about reverb channels
+        String channelDataAsString;
+        
+        for (Natural channel = 0;   channel < channelCount; channel++) {
+            _ReverbChannel* reverbChannel = reverbChannelList[channel];
+            channelDataAsString += ((channel == 0 ? "" : ", ")
+                                    + reverbChannel->toString());
+        }
+
+        String st = expand("Reverb(%1, channels = (%2))",
+                           prefix, channelDataAsString);
+        return st;
+    }
+
 }
 
 /*============================================================*/
 
 _SoXReverb::_SoXReverb ()
 {
-    _ReverbEffectParameterData* effectParameterData =
-        new _ReverbEffectParameterData();
-    _effectParameterData = effectParameterData;
+    Logging_trace(">>");
 
-    effectParameterData->isWetOnly    = false;
-    effectParameterData->feedback     = 0.0;
-    effectParameterData->hfDamping    = 0.0;
-    effectParameterData->stereoDepth  = 0.0;
-    effectParameterData->wetGain      = 0.0;
-    effectParameterData->predelay     = 0.0;
-    effectParameterData->roomScale    = 10.0;
-    effectParameterData->channelCount = 0;
-    effectParameterData->reverbChannelList.clear();
+    _effectParameterData = new _ReverbEffectParameterData();
+    _ReverbEffectParameterData& effectParameterData =
+        TOREFERENCE<_ReverbEffectParameterData>(_effectParameterData);
+
+    effectParameterData.isWetOnly    = false;
+    effectParameterData.feedback     = 0.0;
+    effectParameterData.hfDamping    = 0.0;
+    effectParameterData.stereoDepth  = 0.0;
+    effectParameterData.wetGain      = 0.0;
+    effectParameterData.predelay     = 0.0;
+    effectParameterData.roomScale    = 10.0;
+    effectParameterData.channelCount = 0;
+    effectParameterData.reverbChannelList.clear();
+
+    Logging_trace1("<<: %1", toString());
 }
 
 /*--------------------*/
 
 _SoXReverb::~_SoXReverb ()
 {
+    Logging_trace(">>");
     // get rid of all embedded reverb channels by resizing to zero
     // length
     resize(_defaultSampleRate, 0);
+
+    _ReverbEffectParameterData* effectParameterData =
+        (_ReverbEffectParameterData*) _effectParameterData;
+    delete effectParameterData;
+    Logging_trace("<<");
 }
 
 /*--------------------*/
@@ -852,16 +902,25 @@ void _SoXReverb::setParameters (IN Boolean isWetOnly,
                                 IN Real cPredelay,
                                 IN Real cWetDbGain)
 {
-    _ReverbEffectParameterData* effectParameterData =
-        static_cast<_ReverbEffectParameterData*>(_effectParameterData);
+    Logging_trace7(">>: isWetOnly = %1, reverberance = %2,"
+                   " hfDamping = %3, roomScale = %4,"
+                   " stereoDepth = %5, predelay = %6,"
+                   " wetDbGain = %7",
+                   TOSTRING(isWetOnly), TOSTRING(cReverberance),
+                   TOSTRING(cHfDamping), TOSTRING(cRoomScale),
+                   TOSTRING(cStereoDepth), TOSTRING(cPredelay),
+                   TOSTRING(cWetDbGain));
+    
+    _ReverbEffectParameterData& effectParameterData =
+        TOREFERENCE<_ReverbEffectParameterData>(_effectParameterData);
 
     // adjust parameter value ranges
     const Percentage reverberance = cReverberance.forceToPercentage();
     const Percentage hfDamping = cHfDamping.forceToPercentage();
     const Percentage roomScale = cRoomScale.forceToPercentage();
     const Percentage stereoDepth = cStereoDepth.forceToPercentage();
-    const Real predelay = cPredelay.forceToRange(0.0, _maximumPredelay);
-    const Real wetDbGain = cWetDbGain.forceToRange(-10.0, 10.0);
+    const Real predelay = cPredelay.forceToInterval(0.0, _maximumPredelay);
+    const Real wetDbGain = cWetDbGain.forceToInterval(-10.0, 10.0);
 
     // calculate technical parameters
     const Real minimumFeedback =  -1 / log(1 - 0.3);
@@ -869,16 +928,18 @@ void _SoXReverb::setParameters (IN Boolean isWetOnly,
         (Real{100.0} / (Real{1 - 0.98}.log() * minimumFeedback + 1.0));
 
     // set reverb parameters
-    effectParameterData->isWetOnly   = isWetOnly;
-    effectParameterData->feedback    =
-        Real{1.0} - Real::exp((Real{reverberance} - maximumFeedback)
+    effectParameterData.isWetOnly   = isWetOnly;
+    effectParameterData.feedback    =
+        Real::one - Real::exp((Real{reverberance} - maximumFeedback)
                             / (minimumFeedback * maximumFeedback));
-    effectParameterData->hfDamping   = hfDamping / 100.0 * 0.3 + 0.2;
-    effectParameterData->predelay    = predelay;
-    effectParameterData->stereoDepth = stereoDepth / 100.0;
-    effectParameterData->roomScale   = roomScale / 100.0 * 0.9 + 0.1;
-    effectParameterData->wetGain     =
+    effectParameterData.hfDamping   = hfDamping / 100.0 * 0.3 + 0.2;
+    effectParameterData.predelay    = predelay;
+    effectParameterData.stereoDepth = stereoDepth / 100.0;
+    effectParameterData.roomScale   = roomScale / 100.0 * 0.9 + 0.1;
+    effectParameterData.wetGain     =
         SoXAudioHelper::dBToLinear(wetDbGain) * 0.015;
+
+    Logging_trace1("<<: %1", toString());
 }
 
 /*--------------------*/
@@ -886,12 +947,15 @@ void _SoXReverb::setParameters (IN Boolean isWetOnly,
 void _SoXReverb::resize (IN Real sampleRate,
                          IN Natural channelCount)
 {
-    _ReverbEffectParameterData* effectParameterData =
-        static_cast<_ReverbEffectParameterData*>(_effectParameterData);
+    Logging_trace2(">>: sampleRate = %1, channelCount = %2",
+                   TOSTRING(sampleRate), TOSTRING(channelCount));
 
-    effectParameterData->channelCount = channelCount;
+    _ReverbEffectParameterData& effectParameterData =
+        TOREFERENCE<_ReverbEffectParameterData>(_effectParameterData);
+
+    effectParameterData.channelCount = channelCount;
     _ReverbChannelList& reverbChannelList =
-        effectParameterData->reverbChannelList;
+        effectParameterData.reverbChannelList;
 
     const Natural oldChannelCount = reverbChannelList.size();
 
@@ -912,10 +976,12 @@ void _SoXReverb::resize (IN Real sampleRate,
     for (_ReverbChannel* reverbChannel : reverbChannelList) {
         reverbChannel->adjustRingBufferLengths
                            (sampleRate,
-                            effectParameterData->predelay,
-                            effectParameterData->roomScale,
-                            effectParameterData->stereoDepth);
+                            effectParameterData.predelay,
+                            effectParameterData.roomScale,
+                            effectParameterData.stereoDepth);
     }
+
+    Logging_trace("<<");
 }
 
 /*--------------------*/
@@ -923,13 +989,15 @@ void _SoXReverb::resize (IN Real sampleRate,
 void _SoXReverb::apply (IN AudioSampleRingBuffer& inputSampleList,
                         OUT AudioSampleRingBuffer& outputSampleList)
 {
-    _ReverbEffectParameterData* effectParameterData =
-        static_cast<_ReverbEffectParameterData*>(_effectParameterData);
+    Logging_trace(">>");
+
+    _ReverbEffectParameterData& effectParameterData =
+        TOREFERENCE<_ReverbEffectParameterData>(_effectParameterData);
 
     AudioSample inputSample;
     _ReverbChannelList& reverbChannelList =
-        effectParameterData->reverbChannelList;
-    const Natural channelCount = effectParameterData->channelCount;
+        effectParameterData.reverbChannelList;
+    const Natural channelCount = effectParameterData.channelCount;
     GenericTuple<_SamplePair, _maxChannelCount> wetSamplePairList;
 
     // when stereo depth is non-zero for a reverb, each reverb channel
@@ -941,15 +1009,15 @@ void _SoXReverb::apply (IN AudioSampleRingBuffer& inputSampleList,
         _ReverbChannel* reverbChannel = reverbChannelList[channel];
         inputSample = inputSampleList[channel];
         reverbChannel->apply(inputSample,
-                             effectParameterData->feedback,
-                             effectParameterData->hfDamping,
-                             effectParameterData->wetGain,
+                             effectParameterData.feedback,
+                             effectParameterData.hfDamping,
+                             effectParameterData.wetGain,
                              wetSamplePair);
     }
 
     // combine wet sample pairs with input samples
     const Boolean hasMultipleLines =
-        (effectParameterData->stereoDepth > 0.0 && channelCount == 2);
+        (effectParameterData.stereoDepth > 0.0 && channelCount == 2);
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
         _SamplePair& wetSamplePair = wetSamplePairList[channel];
@@ -965,41 +1033,19 @@ void _SoXReverb::apply (IN AudioSampleRingBuffer& inputSampleList,
         }
 
         inputSample  = inputSampleList[channel];
-        outputSample += (effectParameterData->isWetOnly ? 0.0
+        outputSample += (effectParameterData.isWetOnly ? 0.0
                          : inputSample);
         outputSampleList[channel] = outputSample;
     }
+
+    Logging_trace("<<");
 }
 
 /*--------------------*/
 
 String _SoXReverb::toString () const
 {
-    _ReverbEffectParameterData* effectParameterData =
-        static_cast<_ReverbEffectParameterData*>(_effectParameterData);
-
-    const Natural channelCount =
-        effectParameterData->channelCount;
-    String st =
-        ("Reverb("
-         "isWetOnly = " + TOSTRING(effectParameterData->isWetOnly)
-         + ", feedback = " + TOSTRING(effectParameterData->feedback)
-         + ", hfDamping = " + TOSTRING(effectParameterData->hfDamping)
-         + ", predelay = " + TOSTRING(effectParameterData->predelay)
-         + ", stereoDepth = " + TOSTRING(effectParameterData->stereoDepth)
-         + ", wetGain = " + TOSTRING(effectParameterData->wetGain)
-         + ", roomScale = " + TOSTRING(effectParameterData->roomScale)
-         + ", channelCount = " + TOSTRING(channelCount)
-         + ", channels = (");
-
-    // add information about reverb channels
-    for (Natural channel = 0;   channel < channelCount;
-         channel++) {
-        _ReverbChannel* reverbChannel =
-            effectParameterData->reverbChannelList[channel];
-        st += (channel == 0 ? "" : ", ") + reverbChannel->toString();
-    }
-
-    st += "))";
-    return st;
+    _ReverbEffectParameterData& effectParameterData =
+        TOREFERENCE<_ReverbEffectParameterData>(_effectParameterData);
+    return effectParameterData.toString();
 }
