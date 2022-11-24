@@ -129,7 +129,7 @@ IF(MSVC)
         26439 26451 26495 26498 26812 26819 28182)
   
     STRING(JOIN " " cppFlagsCommon
-           /arch:AVX            # enable AVX vectorization instructions
+           /arch:avx            # enable AVX extensions
            /bigobj              # increases number of addressable sections
            /diagnostics:column  # format of diagnostics message
            /EHsc                # exception handling: stack unwinding
@@ -159,16 +159,18 @@ IF(MSVC)
   
     STRING(JOIN " " cppFlagsRelease
            /DNDEBUG      # no debugging
-           /O2           # generate fast code
            /fp:fast      # fast floating point calculation
            /Gw           # global program optimization
+           /O2           # generate fast code
+           /Qpar         # enables loop parallelization
     )
 
     STRING(JOIN " " cppFlagsReleaseWithDebugInfo
            /DNDEBUG      # no debugging
-           /O2           # generate fast code
            /fp:fast      # fast floating point calculation
            /Gw           # global program optimization
+           /O2           # generate fast code
+           /Qpar         # enables loop parallelization
     )
 
     STRING(JOIN " " cppFlagsDebug
@@ -180,12 +182,12 @@ IF(MSVC)
 ELSE()
     STRING(JOIN " " cppFlagsCommon
            -ffast-math             # fast floating point calculation
-           -mavx                   # enable AVX vectorization instructions
-           -O0                     # no optimization
+           -msse4                  # use SSE4 vectoring
            -Ofast                  # favors fast code
            -pedantic               # set strict standard conformance
            -Wall                   # warning level: all
            -Wno-delete-incomplete  # remove warning for void deletion
+           -Wno-ignored-qualifiers # remove warning for ignored qualifiers
            -Wno-unused-function    # remove warning for unused function
            )
 
@@ -217,16 +219,16 @@ ELSE()
     )
 
     STRING(JOIN " " cppFlagsDebug
-           -DLOGGING_IS_ACTIVE  # logging on
            -DDEBUG              # debugging on
+           -Og                  # debugging compatible optimization
            -g                   # debug information in object files
     )
 ENDIF()
 
 SET(CMAKE_CXX_FLAGS ${cppFlagsCommon} CACHE STRING "" FORCE)
 SET(CMAKE_CXX_FLAGS_RELEASE ${cppFlagsRelease} CACHE STRING "" FORCE)
-#SET(CMAKE_CXX_FLAGS_RELWITHDEBINFO ${cppFlagsReleaseWithDebugInfo}
-#    CACHE STRING "" FORCE)
+SET(CMAKE_CXX_FLAGS_RELWITHDEBINFO ${cppFlagsReleaseWithDebugInfo}
+    CACHE STRING "" FORCE)
 SET(CMAKE_CXX_FLAGS_DEBUG ${cppFlagsDebug} CACHE STRING "" FORCE)
 
 SET(CMAKE_SHARED_LINKER_FLAGS ${cppLinkerFlagsCommon}

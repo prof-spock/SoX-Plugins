@@ -109,6 +109,8 @@ SET(additionalIncludeDirectoryList
     ${juceModulesDirectory}/juce_audio_processors/format_types/VST3_SDK)
 
 IF(MACOSX)
+    SET(auIncludeFile
+        ${juceModulesDirectory}/juce_audio_plugin_client/juce_audio_plugin_client_AU.r)
     SET(additionalIncludeDirectoryList
         ${additionalIncludeDirectoryList}
         /Developer/Headers/FlatCarbon)
@@ -224,7 +226,7 @@ IF(MACOSX)
             ${effectDirectory}/SoXPlugin-util.cpp
             ${effectDirectory}/SoXPlugin-AU_1.mm
             ${effectDirectory}/SoXPlugin-AU_2.mm
-            ${srcJuceFacadeDirectory}/include_juce_audio_plugin_client_AU.r
+            ${auIncludeFile}
             ${effectDirectory}/SoXPlugin-Standalone.cpp)
 
         SET(allSrcFileList ${allSrcFileList} ${${fileListName}})
@@ -353,7 +355,8 @@ ELSE()
     SET(frameworkNameList
         Accelerate AudioToolbox AudioUnit Carbon
         Cocoa CoreAudio CoreAudioKit CoreMIDI
-        DiscRecording Foundation IOKit QuartzCore WebKit)
+        DiscRecording Foundation IOKit Metal MetalKit
+	QuartzCore WebKit)
 
     # bundle settings
     SET(MACOSX_BUNDLE_BUNDLE_VERSION "1.0")
@@ -411,8 +414,7 @@ FUNCTION(addEffectRsrcFileForAUTarget
     # effect with <libraryName>
 
     SET(targetRsrcFileName ${resourcePath}/${libraryName}.rsrc)
-    SET(resourceFileName
-        ${srcJuceFacadeDirectory}/include_juce_audio_plugin_client_AU.r)
+    SET(resourceFileName ${auIncludeFile})
 
     ADD_CUSTOM_COMMAND(TARGET ${targetName} POST_BUILD
                        COMMAND rez ${resourceFileName}

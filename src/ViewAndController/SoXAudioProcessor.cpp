@@ -256,10 +256,7 @@ namespace SoXPlugins::ViewAndController {
             for (const String& enumValue : enumValueList) {
                 juceChoiceList.add(juce::String(enumValue));
                 isFound = isFound || (value == enumValue);
-
-                if (isFound) {
-                    parameterIndex++;
-                }
+                parameterIndex += (isFound ? 0 : 1);
             }
 
             /* workaround */

@@ -381,7 +381,6 @@ SoXPhaserAndTremolo_AudioEffect::SoXPhaserAndTremolo_AudioEffect ()
 
     /* initialize parameters */
     const String effectKind = _kindList[0];
-    const Boolean isTremolo = (effectKind == _tremoloEffectKind);
     const StringList waveFormKindValueList =
         StringList::makeBySplit("Sine/Triangle", separator);
 
