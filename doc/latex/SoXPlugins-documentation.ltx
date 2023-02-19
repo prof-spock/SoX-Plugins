@@ -2,6 +2,7 @@
   \usepackage[utf8]{inputenc}
   \usepackage[T1]{fontenc}
 
+  \usepackage{amsmath}         % ==> align
   \usepackage{amssymb}         % ==> for N
   \usepackage{array}           % ==> for > in tabular column
   \usepackage{caption}         % ==> captionof
@@ -203,7 +204,7 @@
   \begin{tabular}{>{\bf}p{3cm}p{9cm}}
     Author:&Dr.~Thomas Tensi\\
     Date:&2022-10-01\\
-    Version:&0.95\\
+    Version:&0.96\\
     Platforms:&VST3 on Windows~x64,\\
               &VST3 \& AU on MacOSX (x86\_64)\\
               &VST3 on Linux (x86\_64)\\
@@ -372,22 +373,30 @@ The installation is as follows:
 \begin{enumerate}
 
    \item Copy the plugins from the appropriate subdirectory for your
-     platform of \embeddedCode{\_DISTRIBUTION/targetPlatforms}
-     directory in \cite{reference:soxPluginsRepository} into the
-     directory for VST or AU plugins of your DAW.
+         platform of \embeddedCode{\_DISTRIBUTION/targetPlatforms}
+         directory in \cite{reference:soxPluginsRepository} into the
+         directory for VST or AU plugins of your DAW.
 
    \item The distribution also contains this documentation pdf file in
-     subdirectory \embeddedCode{doc} and test files in subdirectory
-     \embeddedCode{test} (see section~\ref{section:regressionTest}).
+         subdirectory \embeddedCode{doc} and test files in
+         subdirectory \embeddedCode{test} (see
+         section~\ref{section:regressionTest}).
 
-   \item When installing the MacOSX plugins, note that those are
-     \textbf{not signed}; so you have to explicitly remove the
-     quarantine flag from them (e.g.\ by applying the command
-     \embeddedCode{sudo xattr -rd com.apple.quarantine «vstPath»}).
+   \item When installing the plugins on MacOSX, note that those are
+         \textbf{not signed}; so you have to explicitly remove the
+         quarantine flag from them (e.g.\ by applying the command
+         \embeddedCode{sudo xattr -rd com.apple.quarantine
+         «vstPath»}).
+
+   \item When installing the plugins on Windows, they require the
+         so-called Microsoft Visual C++ Redistributable
+         library~\ref{reference:visualCLibrary}.  Very often this is
+         already installed on your system; if not, you have to install
+         it from the Microsoft site.
 
    \item Restart your DAW and rescan the plugins.  You should now be
-     able to select all the \SoXPlugins (they are all prefixed by
-     "SoX").
+         able to select all the \SoXPlugins (they are all prefixed by
+         "SoX").
 
 \end{enumerate}
 
@@ -689,7 +698,7 @@ Equalizer'').
 This effect implements a compander to compress or expand the dynamic
 range of the audio.  A compander and multiband compander are both
 variants of the plugin \embeddedCode{SoXCompander} where a simple
-compander is a multiband compander with just one page.
+compander is a multiband compander with just one band.
 
 \embeddedCode{Band Count} tells the number of bands in a multiband
 compander, for a single band compander this must be set to 1.
@@ -915,7 +924,7 @@ The double-pole filters are described in detail in
 
 Compander and multiband compander are both variants of the plugin
 \embeddedCode{SoXCompander} where a simple compander is a multiband
-compander with just one page.  For a general multi-band compander the
+compander with just one band.  For a general multi-band compander the
 audio is first divided into bands using Linkwitz-Riley cross-over
 filters and later separately specifiable compander run on every band
 (see the compand effect in~\ref{section:effect-compand} for the
@@ -955,8 +964,8 @@ be modified; note that it is possible to modify any band, but the
 \end{parameterTable}
 
 This effect implements an tanh overdrive.  \embeddedCode{Gain} gives
-the input gain in decibels, The parameter \embeddedCode{Colour}
-controls the amount of even harmonic content in the over-driven
+the input gain in decibels, the parameter \embeddedCode{Colour}
+controls the amount of even harmonic content in the overdriven
 output.
 
 %----------------------
@@ -970,11 +979,11 @@ output.
                      {the kind of the modulation (here: \textbf{Phaser})}
                      {\SoXPTKindList}
   \parameterTableLine{In Gain}
-                     {the gain before processing}
-                     {dB}
+                     {the gain factor before processing}
+                     {---}
   \parameterTableLine{Out Gain}
-                     {the gain applied after processing}
-                     {dB}
+                     {the gain factor applied after processing}
+                     {---}
   \parameterTableLine{Delay}
                      {the predelay of the effect}
                      {ms}
@@ -997,17 +1006,21 @@ This effect is a variant of the plugin
 \embeddedCode{SoxPhaserAndTremolo} and implements a phaser effect to
 the audio.
 
-\embeddedCode{In Gain} is the amplification factor for the input in
-decibels.  \embeddedCode{Delay} gives the delay in milliseconds,
+\embeddedCode{In Gain} is the amplification factor for the input.
+\embeddedCode{Delay} gives the delay in milliseconds,
 \embeddedCode{Decay} a factor for the decay within the phaser and
 \embeddedCode{Frequency} gives the modulation frequency in Hz. The
 \embeddedCode{Waveform} of the modulation is either sinusoidal
 —--~preferable for multiple instruments~--- or triangular —--~gives
-single instruments a sharper phasing effect~---.
-\embeddedCode{Out Gain} is the volume of the output.
+single instruments a sharper phasing effect~---.  \embeddedCode{Out
+    Gain} is the amplification factor of the output.
 
 The decay should be less than 0.5 to avoid feedback, and usually no
-less than 0.1.
+less than 0.1.  The (unchecked!) recommendation is to have
+\begin{align*}
+  in\_gain  &< 1 - decay^2\\
+  out\_gain &< \frac{1 - decay}{in\_gain}\\
+\end{align*}
 
 \embeddedCode{Time Offset} shows that this effect is time-locked.  For
 details refer to section~\ref{section:timelocking}.
@@ -1085,9 +1098,9 @@ The parameters are as follows:
 \begin{itemize}
 
   \item \embeddedCode{Gain} gives the gain at a frequency whichever is
-    the lower of 22kHz and the Nyquist frequency (for treble).  Its
-    useful range is about -20 (for a large cut) to +20 (for a large
-    boost).  Beware of clipping when using a positive gain.
+    the lower of 22kHz and the Nyquist frequency.  Its useful range is
+    about -20 (for a large cut) to +20 (for a large boost).  Beware of
+    clipping when using a positive gain.
 
   \item \embeddedCode{Frequency} sets the filter's central frequency
     and can be used to extend or reduce the frequency range to be
@@ -1151,7 +1164,7 @@ normally in another phase.
 
 Hence when looking at the behaviour at a specific point in time, those
 time-variant effects would behave differently when the effect start
-time is varied.
+time were varied.
 
 For example, assume a phaser with a 0.25Hz modulation (one cycle every
 4s): when you start the effect 1s later, its modulation is now off by
@@ -1537,6 +1550,11 @@ All logging files go to the directory specified by the
     Dr. Thomas Tensi.\\
     \textit{SoX VST Plugins.}\\
     \hyperlink{\gitPluginPath}
+
+  \bibitem[VCCLib]{reference:visualCLibrary}
+    Microsoft.\\
+    \textit{Visual C++ Redistributable.}\\
+    \hyperlink{https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist}
 
 \end{thebibliography}
 \end{document}

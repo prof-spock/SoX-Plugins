@@ -216,7 +216,8 @@ static void _changeLookAndFeel (INOUT juce::LookAndFeel& lookAndFeel)
 {
     Logging_trace(">>");
 
-    lookAndFeel.setDefaultSansSerifTypefaceName("Arial");
+    // just use the default sans serif typeface
+    // lookAndFeel.setDefaultSansSerifTypefaceName("Arial");
 
     // combo boxes
     lookAndFeel.setColour(juce::ComboBox::backgroundColourId,

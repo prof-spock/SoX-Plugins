@@ -831,34 +831,8 @@ SoXFilter_AudioEffect::SoXFilter_AudioEffect ()
     /* initialize descriptor */
     _effectDescriptor = _createEffectDescriptor();
 
-
-    /* initialize parameters */
+    /* calculate list of bandwidth units */
     const String filterKind = _kindList[0];
-    _effectParameterMap.clear();
-
-    // first of all define kind of filter and all parameter names
-    _effectParameterMap.setKindAndValueEnum(parameterName_kind,
-                                            _kindList, filterKind);
-    _effectParameterMap.setKindAndValueReal(parameterName_bandwidth,
-                                            0.001, 20000.0, 0.001, 1.0);
-    _effectParameterMap.setKindAndValueReal(parameterName_dBGain,
-                                            -25.0, 25.0, 0.01, 0.0);
-    _effectParameterMap.setKindAndValueEnum(parameterName_cstSkirtGain,
-                                            _yesNoList, "No");
-    _effectParameterMap.setKindAndValueReal(parameterName_frequency,
-                                            10.0, 20000.0, 0.01, 1000.0);
-    _effectParameterMap.setKindAndValueReal(parameterName_equGain,
-                                            -25.0, 25.0, 0.01, 0.0);
-    _effectParameterMap.setKindAndValueReal(parameterName_poleCount,
-                                            1.0, 2.0, 1.0, 1.0);
-    _effectParameterMap.setKindAndValueEnum(parameterName_unpitchedMode,
-                                            _yesNoList, "No");
-
-    for (String parameterName : _biquadFilterParameterNameList) {
-        _effectParameterMap.setKindAndValueReal(parameterName,
-                                                -10.0, 10.0, 1e-6, 0.0);
-    }
-
     const StringList unitCodeList = _unitCodeListForKind(filterKind);
     StringList bwUnitTextList;
 
@@ -872,9 +846,34 @@ SoXFilter_AudioEffect::SoXFilter_AudioEffect ()
         }
     }
 
+    /* initialize parameters */
+    _effectParameterMap.clear();
+
+    // first of all define kind of filter and all parameter names
+    _effectParameterMap.setKindAndValueEnum(parameterName_kind,
+                                            _kindList, filterKind);
+    _effectParameterMap.setKindAndValueReal(parameterName_frequency,
+                                            10.0, 20000.0, 0.01, 1000.0);
+    _effectParameterMap.setKindAndValueReal(parameterName_bandwidth,
+                                            0.001, 20000.0, 0.001, 1.0);
     _effectParameterMap.setKindAndValueEnum(parameterName_bandwidthUnit,
                                             bwUnitTextList,
                                             _bwUnitText_quality);
+    _effectParameterMap.setKindAndValueReal(parameterName_dBGain,
+                                            -25.0, 25.0, 0.01, 0.0);
+    _effectParameterMap.setKindAndValueEnum(parameterName_cstSkirtGain,
+                                            _yesNoList, "No");
+    _effectParameterMap.setKindAndValueReal(parameterName_equGain,
+                                            -25.0, 25.0, 0.01, 0.0);
+    _effectParameterMap.setKindAndValueReal(parameterName_poleCount,
+                                            1.0, 2.0, 1.0, 1.0);
+    _effectParameterMap.setKindAndValueEnum(parameterName_unpitchedMode,
+                                            _yesNoList, "No");
+
+    for (String parameterName : _biquadFilterParameterNameList) {
+        _effectParameterMap.setKindAndValueReal(parameterName,
+                                                -10.0, 10.0, 1e-6, 0.0);
+    }
 
     Logging_trace1("<<: %1", toString());
 }

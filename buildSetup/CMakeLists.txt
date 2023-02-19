@@ -292,7 +292,7 @@ ENDFOREACH(effectName)
 # -------------------------------------------------------------------
 
 SET(srcEffectsTestFileList
-    ${srcEffectsTestDirectory}/SoX-TEST_main-std.cpp)
+    ${srcEffectsTestDirectory}/SoX-Test_main-std.cpp)
 
 SET(allSrcFileList ${allSrcFileList} ${srcEffectsTestFileList})
 
@@ -325,10 +325,15 @@ SET(docDoxygenFileTemplate
 SET(docDoxygenFileName SoXPlugins-doxygen-FULL.cfg)
 
 # --- regression test sources ---
-SET(regressionTestFileList
-    ${testFileDirectory}/makeTestFiles.bat
-    ${testFileDirectory}/makeTestFiles.sh
-    "${testFileDirectory}/testSoxPlugins-C++.RPP")
+IF(WINDOWS)
+    SET(regressionTestFileList
+        ${testFileDirectory}/makeTestFiles.bat
+        "${testFileDirectory}/testSoxPlugins-C++.RPP")
+ELSE()
+    SET(regressionTestFileList
+        ${testFileDirectory}/makeTestFiles.sh
+        "${testFileDirectory}/testSoxPlugins-C++.RPP")
+ENDIF()
 
 # --- Windows specific files ---
 IF(MSVC)
@@ -356,7 +361,7 @@ ELSE()
         Accelerate AudioToolbox AudioUnit Carbon
         Cocoa CoreAudio CoreAudioKit CoreMIDI
         DiscRecording Foundation IOKit Metal MetalKit
-	QuartzCore WebKit)
+        QuartzCore WebKit)
 
     # bundle settings
     SET(MACOSX_BUNDLE_BUNDLE_VERSION "1.0")
@@ -795,7 +800,7 @@ SET(targetName ${testProgramName})
 
 SET(testProgramFileList
     ${commonSrcFileList}
-    ${srcEffectsDirectory}/SoX-Test/SoX-TEST_main-std.cpp
+    ${srcEffectsDirectory}/SoX-Test/SoX-Test_main-std.cpp
     ${debuggerVisualizationFileName})
 
 ADD_EXECUTABLE(${targetName} ${testProgramFileList})

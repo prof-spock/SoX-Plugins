@@ -84,10 +84,10 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
     static const String parameterName_frequency    = "Modulation [Hz]";
 
     /** the name for the input gain parameter */
-    static const String parameterName_inGain       = "In Gain [dB]";
+    static const String parameterName_inGain       = "In Gain";
 
     /** the name for the output gain parameter */
-    static const String parameterName_outGain      = "Out Gain [dB]";
+    static const String parameterName_outGain      = "Out Gain";
 
     /** the name for the time offset parameter */
     static const String parameterName_timeOffset   = "Time Offset [s]";
@@ -387,10 +387,6 @@ SoXPhaserAndTremolo_AudioEffect::SoXPhaserAndTremolo_AudioEffect ()
     _effectParameterMap.clear();
     _effectParameterMap.setKindAndValueEnum(parameterName_effectKind,
                                             _kindList, effectKind);
-    _effectParameterMap.setKindReal(parameterName_timeOffset,
-                                    -1E5, 1E5, 0.0001);
-    _effectParameterMap.setKindReal(parameterName_depth,
-                                    0.0, 100.0, 0.001);
     _effectParameterMap.setKindReal(parameterName_inGain,
                                     0.0, 1.0, 0.001);
     _effectParameterMap.setKindReal(parameterName_outGain,
@@ -399,10 +395,14 @@ SoXPhaserAndTremolo_AudioEffect::SoXPhaserAndTremolo_AudioEffect ()
                                     0.0, 5.0, 0.001);
     _effectParameterMap.setKindReal(parameterName_decay,
                                     0.0, 0.99, 0.001);
-    _effectParameterMap.setKindEnum(parameterName_waveFormKind,
-                                    waveFormKindValueList);
+    _effectParameterMap.setKindReal(parameterName_depth,
+                                    0.0, 100.0, 0.001);
     _effectParameterMap.setKindReal(parameterName_frequency,
                                     0.1, 2.0, 0.001);
+    _effectParameterMap.setKindEnum(parameterName_waveFormKind,
+                                    waveFormKindValueList);
+    _effectParameterMap.setKindReal(parameterName_timeOffset,
+                                    -1E5, 1E5, 0.0001);
 
     Logging_trace1("<<: %1", toString());
 }

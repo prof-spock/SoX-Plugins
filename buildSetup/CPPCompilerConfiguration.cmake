@@ -127,15 +127,17 @@ IF(MSVC)
     SET(warningNumberList
         4100 4180 4244 4505 4723 4996 5105 6255
         26439 26451 26495 26498 26812 26819 28182)
+
+    # select static MSVC library instead of dynamic library
+    # SET(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
   
     STRING(JOIN " " cppFlagsCommon
-           /arch:avx            # enable AVX extensions
+           /arch:AVX            # enable AVX extensions
            /bigobj              # increases number of addressable sections
            /diagnostics:column  # format of diagnostics message
            /EHsc                # exception handling: stack unwinding
            /Gd                  # cdecl calling convention
            /GS                  # buffers security check
-           /MDd                 # creates debug multithreaded DLL
            /MP                  # multi processor compilation
            /nologo              # suppresses display of banner
            /permissive-         # set strict standard conformance

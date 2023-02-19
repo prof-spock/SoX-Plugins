@@ -151,7 +151,12 @@ The installation is as follows:
       flag from them (e.g. by applying the command `sudo xattr -rd
       com.apple.quarantine «vstPath»`).
 
-   4. Restart your DAW and rescan the plugins.  You should now be
+   4. When installing the plugins on Windows, they require the
+      so-called *Microsoft Visual C++ Redistributable* library.  Very
+      often this is already installed on your system; if not, you have
+      to install it from the [Microsoft][VCCLib] site.
+
+   5. Restart your DAW and rescan the plugins.  You should now be
       able to select the SoXPlugins (they are all prefixed with
       "SoX").
 
@@ -202,9 +207,6 @@ Details
 The detailed user manual can be found
  *[here](./_DISTRIBUTION/doc/SoXPlugins-documentation.pdf)*.
 
-[JUCE]: http://www.juce.com/
-[SoX]: http://sox.sourceforge.net/
-
 Acknowledgements
 ----------------
 
@@ -217,3 +219,6 @@ Hence my thanks go to Chris Bagwell, Nick Bailey, Daniel Pouzzner,
 Måns Rullgård, Rob Sewell and all the other contributors of the SoX
 project: without your effort this would not have been possible!
 
+[JUCE]: http://www.juce.com/
+[SoX]: http://sox.sourceforge.net/
+[VCCLib]: https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist

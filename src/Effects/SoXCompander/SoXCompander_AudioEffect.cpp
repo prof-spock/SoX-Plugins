@@ -343,7 +343,6 @@ SoXCompander_AudioEffect::SoXCompander_AudioEffect ()
 
     effectDescriptor.bandCount = 1;
     _updateSettings(effectDescriptor, _sampleRate, 2);
-    _effectParameterMap.changeActivenessByPage(effectDescriptor.bandCount);
 
     Logging_trace1("<<: %1", toString());
 }
@@ -416,7 +415,6 @@ SoXParameterValueChangeKind SoXCompander_AudioEffect
         effectDescriptor.bandCount = bandCount;
         effectDescriptor.multibandCompander.setEffectiveSize(bandCount);
         _effectParameterMap.setValue(bandCountParam, TOSTRING(bandCount));
-        _effectParameterMap.changeActivenessByPage(bandCount);
         _updateSettings(effectDescriptor, _sampleRate, _channelCount);
         result = SoXParameterValueChangeKind::pageCountChange;
     } else if (StringUtil::endsWith(parameterName, bandIndexParam)) {
