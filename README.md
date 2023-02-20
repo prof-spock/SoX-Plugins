@@ -137,14 +137,14 @@ Installation
 
 The installation is as follows:
 
-   1. Copy the plugins from the appropriate subdirectory of
-      [_DISTRIBUTION/targetPlatforms](./_DISTRIBUTION/targetPlatforms)
-      directory into the directory for VST plugins of your DAW.
+   1. Expand the appropriate binary archive of the <TT>SoXPlugins</TT>
+      for your platform from this [repository](../../releases) into
+      the directory for VST plugins of your DAW.
 
-   2. The distribution also contains a documentation pdf file in
-      subdirectory [doc](./_DISTRIBUTION/doc) and test files in
-      subdirectory [test](./_DISTRIBUTION/test) (for details on
-      the regression test see below).
+   2. The distribution also contains a documentation [pdf
+      file](./SoXPlugins-documentation.pdf) in subdirectory doc and
+      test files in subdirectory test (for details on the regression
+      test see below).
 
    3. When installing the plugins on MacOSX, note that those are
       **not signed**; so you have to explicitly remove the quarantine
@@ -205,7 +205,7 @@ Details
 -------
 
 The detailed user manual can be found
- *[here](./_DISTRIBUTION/doc/SoXPlugins-documentation.pdf)*.
+*[here](./SoXPlugins-documentation.pdf)*.
 
 Acknowledgements
 ----------------

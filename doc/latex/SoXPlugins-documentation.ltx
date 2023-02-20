@@ -372,10 +372,10 @@ project: without your effort this would not have been possible!
 The installation is as follows:
 \begin{enumerate}
 
-   \item Copy the plugins from the appropriate subdirectory for your
-         platform of \embeddedCode{\_DISTRIBUTION/targetPlatforms}
-         directory in \cite{reference:soxPluginsRepository} into the
-         directory for VST or AU plugins of your DAW.
+   \item Expand the appropriate binary archive from the releases path
+         in the SoXPlugins repository
+         \cite{reference:soxPluginsRepository} into the directory for
+         VST or AU plugins of your DAW.
 
    \item The distribution also contains this documentation pdf file in
          subdirectory \embeddedCode{doc} and test files in
@@ -1350,9 +1350,9 @@ cmake --build . --config Release
         \end{commandLine}
 
   \item Install the plugins into a architecture-specific subfolder in
-    the \embeddedCode{\_DISTRIBUTION/targetPlatforms} directory and
-    install also the documentation into the
-    \embeddedCode{\_DISTRIBUTION} directory via
+        the \embeddedCode{\_DISTRIBUTION/targetPlatforms} directory and
+        install also the documentation into the
+       \embeddedCode{\_DISTRIBUTION} directory via
 
         \begin{commandLine}
 cmake --build . --config Release --target install
