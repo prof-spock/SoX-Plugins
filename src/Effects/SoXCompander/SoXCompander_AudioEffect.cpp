@@ -394,12 +394,12 @@ String SoXCompander_AudioEffect::name() const
 SoXParameterValueChangeKind SoXCompander_AudioEffect
 ::_setValueInternal (IN String& parameterName,
                      IN String& value,
-                     IN Boolean recalculationIsSuppressed)
+                     IN Boolean recalculationIsForced)
 {
     Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalcIsSuppressed = %3",
+                   " recalcIsForced = %3",
                    parameterName, value,
-                   TOSTRING(recalculationIsSuppressed));
+                   TOSTRING(recalculationIsForced));
 
     SoXParameterValueChangeKind result =
         SoXParameterValueChangeKind::parameterChange;
@@ -451,7 +451,7 @@ SoXParameterValueChangeKind SoXCompander_AudioEffect
                 data.topFrequency = StringUtil::toReal(value);
             }
 
-            if (!recalculationIsSuppressed) {
+            if (recalculationIsForced) {
                 _updateSettings(effectDescriptor, _sampleRate, _channelCount);
             }
         }

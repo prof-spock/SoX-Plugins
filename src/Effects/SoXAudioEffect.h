@@ -90,23 +90,24 @@ namespace SoXPlugins::Effects {
         /**
          * Sets parameter named <C>parameterName</C> to <C>value</C>.
          * If value has wrong kind, it is ignored; if
-         * <C>recalculationIsSuppressed</C> is set, the recalculation
-         * of dependent internal settings is suppressed; returns
-         * change kind of value to be reported to observers
+         * <C>recalculationIsForced</C> is set, the recalculation of
+         * dependent internal settings is forced (otherwise it is
+         * suppressed); returns change kind of value to be reported to
+         * observers
          *
-         * @param[in] parameterName              name of parameter to
-         *                                       be set
-         * @param[in] value                      associated value of
-         *                                       parameter
-         * @param[in] recalculationIsSuppressed  flag to tell whether
-         *                                       complex recalculations
-         *                                       should be done
+         * @param[in] parameterName          name of parameter to
+         *                                   be set
+         * @param[in] value                  associated value of
+         *                                   parameter
+         * @param[in] recalculationIsForced  flag to tell whether
+         *                                   complex recalculations
+         *                                   should be done
          * @return  change kind of value (e.g. parameter change)
          */
         SoXParameterValueChangeKind
         setValue (IN String& parameterName,
                   IN String& value,
-                  IN Boolean recalculationIsSuppressed = false);
+                  IN Boolean recalculationIsForced = true);
 
         /*--------------------*/
 
@@ -197,24 +198,24 @@ namespace SoXPlugins::Effects {
             /**
              * Sets parameter named <C>parameterName</C> to
              * <C>value</C>.  If value has wrong kind, it is ignored;
-             * if <C>recalculationIsSuppressed</C> is set, the
-             * recalculation of dependent internal settings is
-             * suppressed; returns kind of value change to be reported
-             * to observers
+             * if <C>recalculationIsForced</C> is set, the
+             * recalculation of dependent internal settings is forced
+             * (otherwise it it suppressed); returns kind of value
+             * change to be reported to observers
              *
-             * @param[in] parameterName              name of parameter to
-             *                                       be set
-             * @param[in] value                      associated value of
-             *                                       parameter
-             * @param[in] recalculationIsSuppressed  flag to tell whether
-             *                                       complex recalculations
-             *                                       should be done
+             * @param[in] parameterName          name of parameter to
+             *                                   be set
+             * @param[in] value                  associated value of
+             *                                   parameter
+             * @param[in] recalculationIsForced  flag to tell whether
+             *                                   complex recalculations
+             *                                   should be done
              * @return  value change kind to be reported to observers
              */
             virtual SoXParameterValueChangeKind
             _setValueInternal (IN String& parameterName,
                                IN String& value,
-                               IN Boolean recalculationIsSuppressed) = 0;
+                               IN Boolean recalculationIsForced) = 0;
 
             /*--------------------*/
 

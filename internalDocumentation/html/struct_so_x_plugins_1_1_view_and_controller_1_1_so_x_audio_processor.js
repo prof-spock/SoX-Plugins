@@ -2,7 +2,6 @@ var struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor =
 [
     [ "SoXAudioProcessor", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a4ad21b97f68ac64644a6e3ff60841258", null ],
     [ "~SoXAudioProcessor", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ad7ccd0b8bf9100ea16064c99cc100479", null ],
-    [ "_handleParameterChangeFromHost", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a4be1c93f28d7ed87d9cfe765a48e87d6", null ],
     [ "_notifyObserversAboutChange", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#aeb7549f01a47b906fcc96c523e0670bd", null ],
     [ "_setAssociatedEffect", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ab56cb7be8d7d72c9d36638292ab0578e", null ],
     [ "acceptsMidi", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#aab61c8cfada9d26a64585075c476e2a5", null ],
@@ -25,7 +24,7 @@ var struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor =
     [ "releaseResources", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a8d19677c7dd53805d4216efdb88d21df", null ],
     [ "setCurrentProgram", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ad5dfe3ba20f4c871c51080a8db6b2ab3", null ],
     [ "setStateInformation", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a599b48658bc1229462dcade5a3f9036a", null ],
-    [ "setValue", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ad7e666e52d95ec8fcdaebd6f02390e1a", null ],
+    [ "setValue", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a1853609594ced9ae07402b30813abce1", null ],
     [ "setValues", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ad664379bbe7a506197cf94fd1dbc695b", null ],
     [ "supportsDoublePrecisionProcessing", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#a03de4870a001fb4ef197730b6618a86d", null ],
     [ "unregisterObserver", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html#ad75b67d398bf20e919bdc6e59dc003e2", null ],

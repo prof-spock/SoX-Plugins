@@ -109,12 +109,12 @@ SoXEffectParameterMap& SoXAudioEffect::effectParameterMap () const
 SoXParameterValueChangeKind
 SoXAudioEffect::setValue (IN String& parameterName,
                           IN String& value,
-                          IN Boolean recalculationIsSuppressed)
+                          IN Boolean recalculationIsForced)
 {
     Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalcIsSuppressed = %3",
+                   " recalcIsForced = %3",
                    parameterName, value,
-                   TOSTRING(recalculationIsSuppressed));
+                   TOSTRING(recalculationIsForced));
 
     SoXParameterValueChangeKind result =
         SoXParameterValueChangeKind::parameterChange;
@@ -128,7 +128,7 @@ SoXAudioEffect::setValue (IN String& parameterName,
     } else {
         _effectParameterMap.setValue(parameterName, value);
         result = _setValueInternal(parameterName, value,
-                                   recalculationIsSuppressed);
+                                   recalculationIsForced);
     }
 
     Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));

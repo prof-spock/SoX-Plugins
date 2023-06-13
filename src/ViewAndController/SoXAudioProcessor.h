@@ -208,21 +208,21 @@ namespace SoXPlugins::ViewAndController {
         /**
          * Sets parameter named <C>parameterName</C> to
          * <C>value</C>.  If value has wrong kind, it is ignored;
-         * if <C>recalculationIsSuppressed</C> is set, the
+         * if <C>recalculationIsForced</C> is set, the
          * recalculation of dependent internal settings is
-         * suppressed.
+         * forced (otherwise it is suppressed).
          *
          * @param[in] parameterName              name of parameter to
          *                                       be set
          * @param[in] value                      new value of parameter
-         * @param[in] recalculationIsSuppressed  tells whether some
+         * @param[in] recalculationIsForced  tells whether some
          *                                       internal recalculation
          *                                       of associated effect
          *                                       must be done
          */
         virtual void setValue (IN String& parameterName,
                                IN String& value,
-                               IN Boolean recalculationIsSuppressed=false);
+                               IN Boolean recalculationIsForced = true);
 
         /*--------------------*/
 
@@ -350,21 +350,6 @@ namespace SoXPlugins::ViewAndController {
             void _notifyObserversAboutChange
                      (IN SoXParameterValueChangeKind kind,
                       IN String& data = "");
-
-            /*--------------------*/
-
-            /**
-             * Handles a change for some parameter object from host
-             * given by <C>parameterIndex</C> to <C>newValue</C>.
-             *
-             * @param[in] parameterIndex  index into list of parameter
-             *                            objects of current processor
-             * @param[in] newValue        real value describing the
-             *                            data update
-             */
-            void
-            _handleParameterChangeFromHost (IN Natural parameterIndex,
-                                            IN Real newValue);
 
             /*--------------------*/
 

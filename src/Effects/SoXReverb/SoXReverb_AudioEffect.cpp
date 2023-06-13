@@ -275,12 +275,12 @@ SoXParameterValueChangeKind
 SoXReverb_AudioEffect::_setValueInternal
                            (IN String& parameterName,
                             IN String& value,
-                            IN Boolean recalculationIsSuppressed)
+                            IN Boolean recalculationIsForced)
 {
     Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalculationIsSuppressed = %3",
+                   " recalculationIsForced = %3",
                    parameterName, value,
-                   TOSTRING(recalculationIsSuppressed));
+                   TOSTRING(recalculationIsForced));
 
     _EffectDescriptor_RVRB& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_RVRB>(_effectDescriptor);
@@ -303,7 +303,7 @@ SoXReverb_AudioEffect::_setValueInternal
         effectDescriptor.wetDbGain = StringUtil::toReal(value);
     }
 
-    if (!recalculationIsSuppressed) {
+    if (recalculationIsForced) {
         _updateSettings(effectDescriptor, _sampleRate, _channelCount);
     }
 

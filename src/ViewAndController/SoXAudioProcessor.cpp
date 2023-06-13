@@ -33,6 +33,9 @@ using SoXPlugins::ViewAndController::SoXAudioEditor;
 /** a set of audio editor pointers */
 typedef GenericSet<SoXAudioEditor*> _SoXAudioEditorPtrSet;
 
+/** a mapping from string to natural */
+typedef GenericMap<String, Natural> StringToNaturalMap;
+
 /*============================================================*/
 
 /**
@@ -73,8 +76,8 @@ static Integer _stretchToIntegerInterval (IN Real unitIntervalValue,
                   expand("value must be in unit interval- %1",
                          TOSTRING(unitIntervalValue)));
     const Real stretchedValue =
-        _stretchToRealInterval(unitIntervalValue, lowValue, highValue + 1);
-    return (Integer) Real::floor(stretchedValue);
+        _stretchToRealInterval(unitIntervalValue, lowValue, highValue);
+    return (Integer) Real::round(stretchedValue);
 }
 
 /*============================================================*/
@@ -124,7 +127,7 @@ namespace SoXPlugins::ViewAndController {
             processor->getParameters()[(int) parameterIndex];
         const String parameterName{parameter->getName(1000).toStdString()};
         Logging_trace1("--: parameterName = %1", parameterName);
-        SoXEffectParameterMap& parameterMap =
+        const SoXEffectParameterMap& parameterMap =
             processor->effectParameterMap();
 
         if (parameterMap.contains(parameterName)) {
@@ -194,6 +197,9 @@ namespace SoXPlugins::ViewAndController {
         /** a listener for the effect parameters */
         _EffectParameterListener listener;
 
+        /** a map from parameter name to index within parameter
+         * list */
+        StringToNaturalMap parameterNameToIndexMap;
     };
 
     /*--------------------*/
@@ -380,13 +386,12 @@ namespace SoXPlugins::ViewAndController {
                     value = value.substr(1, value.length() - 2);
                 }
 
-                // the recalculation is suppressed when the value is
-                // within a page and not the last value of the
-                // sequence
+                // the recalculation is forced when the value is
+                // outside a page or the last value of the sequence
                 const Boolean isOnSamePage =
                     (previousPageNumber == pageNumber);
-                const Boolean recalculationIsSuppressed =
-                  (i < lastIndex && isOnSamePage);
+                const Boolean recalculationIsForced =
+                  (i == lastIndex || !isOnSamePage);
 
                 // make sure that the value in parameter map does not
                 // match the new value
@@ -396,7 +401,7 @@ namespace SoXPlugins::ViewAndController {
 
                 parameterMap.invalidateValue(parameterName);
                 audioProcessor->setValue(parameterName, value,
-                                         recalculationIsSuppressed);
+                                         recalculationIsForced);
             }
         }
 
@@ -426,6 +431,57 @@ namespace SoXPlugins::ViewAndController {
         return currentTime;
     }
 
+    /*--------------------*/
+
+    /**
+     * Update juce parameter object <C>parameter</C> named
+     * <C>parameterName</C> to <C>value</C> using data taken from
+     * <C>effectParameterMap</C>.
+     *
+     * @param[inout] parameter           juce audio parameter object
+     * @param[in]    parameterName       name of audio parameter in map
+     * @param[in]    effectParameterMap  map of all audio parameters to
+     *                                   associated attributes
+     * @param[in]    value               new value for parameter
+     */
+    static void
+    _updateAudioProcessorParameter
+            (INOUT juce::AudioProcessorParameter* parameter,
+             IN String& parameterName,
+             IN SoXEffectParameterMap& effectParameterMap,
+             IN String& value)
+    {
+        Logging_trace2(">>: parameterName = %1, value = %2",
+                       parameterName, value);
+
+        const SoXEffectParameterKind kind =
+            effectParameterMap.kind(parameterName);
+
+        if (kind == SoXEffectParameterKind::realKind) {
+            const float realValue = (float) StringUtil::toReal(value);
+            juce::AudioParameterFloat& fParameter =
+                TOREFERENCE<juce::AudioParameterFloat>(parameter);
+            fParameter = realValue;
+        } else if (kind == SoXEffectParameterKind::intKind) {
+            const int intValue = (int) StringUtil::toInteger(value);
+            juce::AudioParameterInt& iParameter =
+                TOREFERENCE<juce::AudioParameterInt>(parameter);
+            iParameter = intValue;
+        } else if (kind == SoXEffectParameterKind::enumKind) {
+            StringList enumValueList;
+            effectParameterMap.valueRangeEnum(parameterName, enumValueList);
+            int valueIndex =
+                (int) Integer::maximum(0,
+                                       enumValueList.position(value));
+            juce::AudioParameterChoice& cParameter =
+                TOREFERENCE<juce::AudioParameterChoice>(parameter);
+            cParameter = (int) valueIndex;
+        }
+
+        
+        Logging_trace("<<");
+    }
+    
 }
 
 /*============================================================*/
@@ -581,7 +637,7 @@ void SoXAudioProcessor::getStateInformation (OUT juce::MemoryBlock& destData)
 
 /*--------------------*/
 
-void SoXAudioProcessor::setStateInformation (IN void* data,
+void SoXAudioProcessor::setStateInformation (const void* data,
                                              int sizeInBytes)
 {
     Logging_trace(">>");
@@ -615,25 +671,50 @@ SoXEffectParameterMap& SoXAudioProcessor::effectParameterMap () const
 
 void SoXAudioProcessor::setValue (IN String& parameterName,
                                   IN String& value,
-                                  IN Boolean recalculationIsSuppressed)
+                                  IN Boolean recalculationIsForced)
 {
     Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalcIsSuppressed = %3",
+                   " recalcIsForced = %3",
                    parameterName, value,
-                   TOSTRING(recalculationIsSuppressed));
+                   TOSTRING(recalculationIsForced));
 
     _SoXAudioProcessorDescriptor& descriptor =
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
-    SoXAudioEffect* effect = descriptor.effect;
-    const SoXParameterValueChangeKind changeKind =
-        effect->setValue(parameterName, value, recalculationIsSuppressed);
+    const SoXEffectParameterMap& parameterMap = effectParameterMap();
 
-    if (changeKind != SoXParameterValueChangeKind::parameterChange) {
-        _notifyObserversAboutChange(changeKind, parameterName);
+    if (!parameterMap.contains(parameterName)) {
+        Logging_trace1("--: bad parameter - %1", parameterName);
+    } else {
+        const String oldValue = parameterMap.value(parameterName);
+
+        if (value != oldValue) {
+            // update effect and parameter map
+            SoXAudioEffect* effect = descriptor.effect;
+            const SoXParameterValueChangeKind changeKind =
+                effect->setValue(parameterName, value,
+                                 recalculationIsForced);
+
+            // notify listeners
+            SoXParameterValueChangeKind parameterChange = 
+                SoXParameterValueChangeKind::parameterChange;
+        
+            if (changeKind != parameterChange) {
+                _notifyObserversAboutChange(changeKind, parameterName);
+            }
+
+            _notifyObserversAboutChange(parameterChange, parameterName);
+
+            // update juce parameter object
+            Natural parameterIndex =
+                descriptor.parameterNameToIndexMap.at(parameterName);
+            juce::AudioProcessorParameter* parameter =
+                getParameters()[(int) parameterIndex];
+            _updateAudioProcessorParameter(parameter,
+                                           parameterName,
+                                           parameterMap,
+                                           value);
+        }
     }
-
-    _notifyObserversAboutChange(SoXParameterValueChangeKind::parameterChange,
-                                parameterName);
 
     Logging_trace("<<");
 }
@@ -649,8 +730,8 @@ void SoXAudioProcessor::setValues (IN Dictionary& dictionary)
     for (auto& entry : dictionary) {
         const String parameterName = entry.first;
         const String value         = entry.second;
-        const Boolean recalculationIsSuppressed = (--count > 0);
-        setValue(parameterName, value, recalculationIsSuppressed);
+        const Boolean recalculationIsForced = (--count == 0);
+        setValue(parameterName, value, recalculationIsForced);
     }
 
     Logging_trace("<<");
@@ -666,7 +747,7 @@ void SoXAudioProcessor::_setAssociatedEffect (IN SoXAudioEffect* effect)
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
     descriptor.effect = (SoXAudioEffect*) effect;
 
-    const SoXEffectParameterMap parameterMap = effectParameterMap();
+    const SoXEffectParameterMap& parameterMap = effectParameterMap();
     Logging_trace1("--: parameterMap = %1", parameterMap.toString());
     const StringList parameterNameList = parameterMap.parameterNameList();
 
@@ -676,6 +757,9 @@ void SoXAudioProcessor::_setAssociatedEffect (IN SoXAudioEffect* effect)
 
         if (parameter != NULL) {
             addParameter(parameter);
+            Natural parameterIndex = parameter->getParameterIndex();
+            descriptor.parameterNameToIndexMap.set(parameterName,
+                                                   parameterIndex);
             parameter->addListener(&descriptor.listener);
         }
     }
@@ -733,7 +817,7 @@ SoXAudioProcessor::_notifyObserversAboutChange
 /* event handling     */
 /*--------------------*/
 
-void SoXAudioProcessor::prepareToPlay (IN double sampleRate, IN int)
+void SoXAudioProcessor::prepareToPlay (double sampleRate, int)
 {
     Logging_trace1(">>: sampleRate = %1",
                    TOSTRING(Real{sampleRate}));

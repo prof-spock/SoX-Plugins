@@ -91,7 +91,7 @@ namespace SoXPlugins::Effects::SoXFilter {
             SoXParameterValueChangeKind
             _setValueInternal (IN String& parameterName,
                                IN String& value,
-                               IN Boolean recalculationIsSuppressed)
+                               IN Boolean recalculationIsForced)
                 override;
 
     };

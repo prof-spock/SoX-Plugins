@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"_so_x_gain_2_so_x_plugin-util_8cpp.html":[3,0,91],
 "_so_x_gain_2_sox_plugin-_v_s_t__1_8cpp.html":[3,0,96],
 "_so_x_gain___audio_effect_8cpp.html":[3,0,73],
 "_so_x_gain___audio_effect_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd":[3,0,73,1],
@@ -213,8 +214,8 @@ var NAVTREEINDEX1 =
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html":[2,0,3,0,4],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html":[1,0,3,0,5],
 "namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html":[2,0,3,0,5],
-"namespace_so_x_plugins_1_1_helpers.html":[1,0,3,1],
 "namespace_so_x_plugins_1_1_helpers.html":[2,0,3,1],
+"namespace_so_x_plugins_1_1_helpers.html":[1,0,3,1],
 "namespace_so_x_plugins_1_1_view_and_controller.html":[2,0,3,2],
 "namespace_so_x_plugins_1_1_view_and_controller.html":[1,0,3,2],
 "namespacemembers.html":[1,1,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "struct_audio_1_1_audio_sample_list_vector.html#ab78b6113aa137915c37d170c49573cf0":[2,0,0,2,1],
 "struct_audio_1_1_audio_sample_ring_buffer.html":[2,0,0,3],
 "struct_audio_1_1_audio_sample_ring_buffer.html#a09a1162cb52b4438077ffab6db6d068b":[2,0,0,3,12],
-"struct_audio_1_1_audio_sample_ring_buffer.html#a1e374a5f6bde0af9d1f62cb9b0884e0c":[2,0,0,3,16],
-"struct_audio_1_1_audio_sample_ring_buffer.html#a27ad23a983a88d2bb6738476d18ed653":[2,0,0,3,3]
+"struct_audio_1_1_audio_sample_ring_buffer.html#a1e374a5f6bde0af9d1f62cb9b0884e0c":[2,0,0,3,16]
 };

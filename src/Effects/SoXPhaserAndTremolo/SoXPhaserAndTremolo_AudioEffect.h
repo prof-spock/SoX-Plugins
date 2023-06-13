@@ -83,7 +83,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
             SoXParameterValueChangeKind
             _setValueInternal (IN String& parameterName,
                                IN String& value,
-                               IN Boolean recalculationIsSuppressed)
+                               IN Boolean recalculationIsForced)
                 override;
 
     };

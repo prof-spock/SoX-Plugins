@@ -143,6 +143,7 @@ var NAVTREEINDEX0 =
 "_so_x_audio_helper_8h.html":[3,0,60],
 "_so_x_audio_helper_8h_source.html":[3,0,60],
 "_so_x_audio_processor_8cpp.html":[3,0,61],
+"_so_x_audio_processor_8cpp.html#a159291a215bac17ba80d19973f63fdec":[3,0,61,5],
 "_so_x_audio_processor_8cpp.html#a88537a4214e315cc3e1c300bd0d0eb1c":[3,0,61,3],
 "_so_x_audio_processor_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd":[3,0,61,2],
 "_so_x_audio_processor_8cpp.html#ad9be64afd7f4e12d76d70c7de111ebe8":[3,0,61,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "_so_x_gain_2_juce_plugin_defines_8h.html#af30fd2a9b08620cb4b69da37f35c376a":[3,0,33,7],
 "_so_x_gain_2_juce_plugin_defines_8h_source.html":[3,0,33],
 "_so_x_gain_2_so_x_plugin-_standalone_8cpp.html":[3,0,85],
-"_so_x_gain_2_so_x_plugin-_v_s_t__2_8cpp.html":[3,0,103],
-"_so_x_gain_2_so_x_plugin-util_8cpp.html":[3,0,91]
+"_so_x_gain_2_so_x_plugin-_v_s_t__2_8cpp.html":[3,0,103]
 };

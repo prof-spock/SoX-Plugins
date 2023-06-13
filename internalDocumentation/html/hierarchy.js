@@ -44,10 +44,10 @@ var hierarchy =
       [ "SoXPlugins::Effects::SoXCompander::_LRFilter", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_filter.html", null ]
     ] ],
     [ "Listener", null, [
-      [ "SoXPlugins::ViewAndController::EventDispatcher", "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html", null ]
+      [ "SoXPlugins::ViewAndController::_EffectParameterListener", "struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html", null ]
     ] ],
     [ "Listener", null, [
-      [ "SoXPlugins::ViewAndController::_EffectParameterListener", "struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html", null ]
+      [ "SoXPlugins::ViewAndController::EventDispatcher", "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html", null ]
     ] ],
     [ "Listener", null, [
       [ "SoXPlugins::ViewAndController::EventDispatcher", "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html", null ]

@@ -455,12 +455,12 @@ SoXParameterValueChangeKind
 SoXPhaserAndTremolo_AudioEffect::_setValueInternal
                                       (IN String& parameterName,
                                        IN String& value,
-                                       IN Boolean recalculationIsSuppressed)
+                                       IN Boolean recalculationIsForced)
 {
     Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalculationIsSuppressed = %3",
+                   " recalculationIsForced = %3",
                    parameterName, value,
-                   TOSTRING(recalculationIsSuppressed));
+                   TOSTRING(recalculationIsForced));
 
     _EffectDescriptor_PHTR& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_PHTR>(_effectDescriptor);
@@ -473,7 +473,7 @@ SoXPhaserAndTremolo_AudioEffect::_setValueInternal
         result = SoXParameterValueChangeKind::globalChange;
     } else {
         Boolean effectIsUpdated =
-            (!recalculationIsSuppressed
+            (recalculationIsForced
              && _effectParameterMap.isActive(parameterName));
 
         if (parameterName == parameterName_decay) {

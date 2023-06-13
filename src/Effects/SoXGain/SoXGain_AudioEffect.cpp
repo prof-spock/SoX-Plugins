@@ -154,12 +154,12 @@ SoXParameterValueChangeKind
 SoXGain_AudioEffect::_setValueInternal
                          (IN String& parameterName,
                           IN String& value,
-                          IN Boolean recalculationIsSuppressed)
+                          IN Boolean recalculationIsForced)
 {
     Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalculationIsSuppressed = %3",
+                   " recalculationIsForced = %3",
                    parameterName, value,
-                   TOSTRING(recalculationIsSuppressed));
+                   TOSTRING(recalculationIsForced));
 
     _EffectDescriptor_GAIN& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);

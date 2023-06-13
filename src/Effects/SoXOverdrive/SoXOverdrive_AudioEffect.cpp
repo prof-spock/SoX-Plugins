@@ -182,12 +182,12 @@ SoXParameterValueChangeKind
 SoXOverdrive_AudioEffect::_setValueInternal
                               (IN String& parameterName,
                                IN String& value,
-                               IN Boolean recalculationIsSuppressed)
+                               IN Boolean recalculationIsForced)
 {
     Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalcIsSuppressed = %3",
+                   " recalcIsForced = %3",
                    parameterName, value,
-                   TOSTRING(recalculationIsSuppressed));
+                   TOSTRING(recalculationIsForced));
 
     _EffectDescriptor_OVRD& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_OVRD>(_effectDescriptor);

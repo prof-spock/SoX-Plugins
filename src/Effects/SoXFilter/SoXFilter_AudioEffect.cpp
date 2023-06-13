@@ -926,12 +926,12 @@ SoXParameterValueChangeKind
 SoXFilter_AudioEffect::_setValueInternal
                            (IN String& parameterName,
                             IN String& value,
-                            IN Boolean recalculationIsSuppressed)
+                            IN Boolean recalculationIsForced)
 {
     Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalculationIsSuppressed = %3",
+                   " recalculationIsForced = %3",
                    parameterName, value,
-                   TOSTRING(recalculationIsSuppressed));
+                   TOSTRING(recalculationIsForced));
 
     _EffectDescriptor_FLTR& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_FLTR>(_effectDescriptor);
@@ -944,7 +944,7 @@ SoXFilter_AudioEffect::_setValueInternal
         result = SoXParameterValueChangeKind::globalChange;
     } else {
         Boolean effectIsUpdated =
-            (!recalculationIsSuppressed
+            (recalculationIsForced
              && _effectParameterMap.isActive(parameterName));
 
         if (parameterName == "a0") {
