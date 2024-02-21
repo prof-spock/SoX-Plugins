@@ -1,5 +1,16 @@
 var NAVTREEINDEX3 =
 {
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html":[2,0,3,0,0,5],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a0097286fcedf90c82cda350928daebdb":[2,0,3,0,0,5,3],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a05d1ac2420fe8619471585598bdf1f9d":[2,0,3,0,0,5,2],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a1dfadb811794919b0cea4141821a7768":[2,0,3,0,0,5,0],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#a958ce0138a76d75da5b102343b10a1a8":[2,0,3,0,0,5,4],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#aa6064f5d8d6efae62a9edd8cfdfe239a":[2,0,3,0,0,5,7],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#aa631a99f019c27c3ac414222c21a221d":[2,0,3,0,0,5,5],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#afaffd0453884f889d5f4a8749fd9ac69":[2,0,3,0,0,5,6],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html#afe3eb330d2d923f8bca0aa3852ab454b":[2,0,3,0,0,5,1],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html":[2,0,3,0,0,6],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html#a07d4543f2d0cb81ab535ef402bde7220":[2,0,3,0,0,6,2],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html#a084c47595efb958f6bcc38aa5c2511e5":[2,0,3,0,0,6,4],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html#a323bdf7cb17197360dfac5c37278331f":[2,0,3,0,0,6,9],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html#a52a45627eccdac5a63b0a975e77818d9":[2,0,3,0,0,6,8],
@@ -238,16 +249,5 @@ var NAVTREEINDEX3 =
 "struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html#ace4ee82e778dfeed867d4c23781d4271":[2,0,3,1,1,17],
 "struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html#ad00414f6c1c5ec9981fc9149eb9a8918":[2,0,3,1,1,19],
 "struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html#add67cb2304049075536c52892381027b":[2,0,3,1,1,5],
-"struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html#ae673f1a56abd7ead952fa13d7b13c467":[2,0,3,1,1,10],
-"struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html#af120a918b63b4332ab9c53543f59f938":[2,0,3,1,1,12],
-"struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html":[2,0,3,2,0],
-"struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html#a29abdc28aefe4d7ec110f05658279c7b":[2,0,3,2,0,2],
-"struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html#a666cbce689f853fd06c1a3375dac8a21":[2,0,3,2,0,1],
-"struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html#a9e472aa1f6a57fa1cfb396c10c8581e8":[2,0,3,2,0,0],
-"struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html":[2,0,3,2,1],
-"struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html#a03324f15df59142bb2d2c885c81b7aa2":[2,0,3,2,1,2],
-"struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html#a3b06584e27a0770a1ad1ca7cbd0d60e8":[2,0,3,2,1,0],
-"struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html#aad278fb2461b172d497b5586fbcfc703":[2,0,3,2,1,3],
-"struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html#aadf697a833460d2f1871cc2a2a1c2f5a":[2,0,3,2,1,1],
-"struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html":[2,0,3,2,2]
+"struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html#ae673f1a56abd7ead952fa13d7b13c467":[2,0,3,1,1,10]
 };

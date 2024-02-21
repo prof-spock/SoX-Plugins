@@ -4,7 +4,7 @@
 # Dr. Thomas Tensi, 2022-09             #
 #########################################
 
-CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
 
 PROJECT(SoXPlugins
         VERSION 1.0
@@ -26,7 +26,7 @@ ENDIF()
 SET(platformName ${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR})
 
 # --- compiler ---
-SET(CMAKE_CXX_STANDARD 17)
+SET(CMAKE_CXX_STANDARD 20)
 SET(CMAKE_CXX_STANDARD_REQUIRED True)
 INCLUDE(CPPCompilerConfiguration.cmake)
 

@@ -14,5 +14,6 @@ var struct_base_types_1_1_primitives_1_1_natural =
     [ "operator--", "struct_base_types_1_1_primitives_1_1_natural.html#af8effa72b677732d44f8c080d9185193", null ],
     [ "operator--", "struct_base_types_1_1_primitives_1_1_natural.html#ac30e8160f061dfa92bf85c0981ce03da", null ],
     [ "power", "struct_base_types_1_1_primitives_1_1_natural.html#a44e366bb3581f12f64dfd420d1e8dc50", null ],
-    [ "toString", "struct_base_types_1_1_primitives_1_1_natural.html#aa031f66ebf2d5cf33c418ddaa64ec0fe", null ]
+    [ "toString", "struct_base_types_1_1_primitives_1_1_natural.html#a76bca3077eb8da29eb6aad98daeafe72", null ],
+    [ "toStringWithBase", "struct_base_types_1_1_primitives_1_1_natural.html#a4f570a00378732b8088fe6de71b331a4", null ]
 ];

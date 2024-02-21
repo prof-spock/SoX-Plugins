@@ -174,8 +174,8 @@ AudioSample AudioSampleRingBuffer::last () const
 /*--------------------*/
 
 INLINE
-void AudioSampleRingBuffer::setAt (IN Natural position,
-                                   IN AudioSample sample)
+void AudioSampleRingBuffer::set (IN Natural position,
+                                 IN AudioSample sample)
 {
     Natural i = SQ_effectiveIndex(position);
     _data[i] = sample;

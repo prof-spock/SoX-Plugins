@@ -26,8 +26,8 @@ using BaseTypes::Containers::StringSet;
 using SoXPlugins::ViewAndController::SoXAudioEditor;
 using SoXPlugins::ViewAndController::SoXAudioEditorWidgetPtrList;
 
-/** abbreviated form of function name */
-#define toNatural StringUtil::toNatural
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*====================*/
 
@@ -285,7 +285,7 @@ static NaturalList _findPageIndices (INOUT SoXAudioEditor* currentEditor)
                 Logging_trace2("--: nominalPageNumber = %1, value = %2",
                                nominalPageNumber.toString(), value);
                 const Natural v =
-                    Natural::maximum(1, toNatural(value, 1));
+                    Natural::maximum(1, STR::toNatural(value, 1));
 
                 if (nominalPageNumber == -1) {
                     pageIndex = v;
@@ -464,11 +464,12 @@ SoXAudioEditor::notifyAboutChange (IN SoXParameterValueChangeKind kind,
         }
 
         if (kind == SoXParameterValueChangeKind::pageCountChange) {
-            _lastEditorPageIndex = Natural::maximum(1, toNatural(value, 1));
+            _lastEditorPageIndex =
+                Natural::maximum(1, STR::toNatural(value, 1));
             repaintIsNecessary = true;
         } else if (SoXEffectParameterMap::isPageSelector(parameterName)) {
             _currentEditorPageIndex =
-                Natural::maximum(1, toNatural(value, 1));
+                Natural::maximum(1, STR::toNatural(value, 1));
             repaintIsNecessary = true;
         }
     }

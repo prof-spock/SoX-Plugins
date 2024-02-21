@@ -25,8 +25,8 @@
 using SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect;
 using SoXPlugins::Helpers::SoXAudioHelper;
 
-/** abbreviated form of function name */
-#define expand StringUtil::expand
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
@@ -49,8 +49,8 @@ namespace SoXPlugins::Effects::SoXGain {
         String toString() const
         {
             String st =
-                expand("_EffectDescriptor_GAIN(gain = %1dB)",
-                       TOSTRING(gain));
+                STR::expand("_EffectDescriptor_GAIN(gain = %1dB)",
+                            TOSTRING(gain));
             return st;
         }
 
@@ -169,7 +169,7 @@ SoXGain_AudioEffect::_setValueInternal
     SoXAudioEffect::setValue(parameterName, value);
 
     if (parameterName == parameterName_gain) {
-        const Real dBGain = StringUtil::toReal(value);
+        const Real dBGain = STR::toReal(value);
         effectDescriptor.gain = SoXAudioHelper::dBToLinear(dBGain);
     }
 

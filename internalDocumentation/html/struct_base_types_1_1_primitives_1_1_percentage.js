@@ -8,5 +8,5 @@ var struct_base_types_1_1_primitives_1_1_percentage =
     [ "of", "struct_base_types_1_1_primitives_1_1_percentage.html#a19efa163ab6efb03a895956de45add12", null ],
     [ "operator+", "struct_base_types_1_1_primitives_1_1_percentage.html#ab01cb7bb92a71435be1c01fefa07edc1", null ],
     [ "operator-", "struct_base_types_1_1_primitives_1_1_percentage.html#a55892ba3c34142e3c7759cb4e2756992", null ],
-    [ "toString", "struct_base_types_1_1_primitives_1_1_percentage.html#a0f50c786c94ed6fc17663ebf97bc3236", null ]
+    [ "toString", "struct_base_types_1_1_primitives_1_1_percentage.html#a0f3426bda6f5d4406fb9e4b960d258ed", null ]
 ];

@@ -19,8 +19,10 @@
 
 using SoXPlugins::Helpers::SoXEffectParameterKind;
 using SoXPlugins::ViewAndController::SoXAudioEditor;
-
 using SoXPlugins::Helpers::effectParameterKindToString;
+
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
@@ -168,7 +170,7 @@ namespace SoXPlugins::ViewAndController {
 
             slider->setRange((double) lowValue, (double) highValue,
                              (double) delta);
-            slider->setValue((double) StringUtil::toReal(currentValue),
+            slider->setValue((double) STR::toReal(currentValue),
                              noNotification);
             slider->setVelocityBasedMode(true);
             slider->addListener(eventDispatcher);
@@ -250,7 +252,7 @@ void SoXAudioEditorWidget::setValue (IN String value)
             dynamic_cast<juce::ComboBox*>(_controlWidget);
 
         if (slider != nullptr) {
-            slider->setValue((double) StringUtil::toReal(value),
+            slider->setValue((double) STR::toReal(value),
                              noNotification);
         } else if (comboBox != nullptr) {
             StringList valueList;

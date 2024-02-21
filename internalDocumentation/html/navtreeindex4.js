@@ -1,5 +1,16 @@
 var NAVTREEINDEX4 =
 {
+"struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html#af120a918b63b4332ab9c53543f59f938":[2,0,3,1,1,12],
+"struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html":[2,0,3,2,0],
+"struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html#a29abdc28aefe4d7ec110f05658279c7b":[2,0,3,2,0,2],
+"struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html#a666cbce689f853fd06c1a3375dac8a21":[2,0,3,2,0,1],
+"struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html#a9e472aa1f6a57fa1cfb396c10c8581e8":[2,0,3,2,0,0],
+"struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html":[2,0,3,2,1],
+"struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html#a03324f15df59142bb2d2c885c81b7aa2":[2,0,3,2,1,2],
+"struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html#a3b06584e27a0770a1ad1ca7cbd0d60e8":[2,0,3,2,1,0],
+"struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html#aad278fb2461b172d497b5586fbcfc703":[2,0,3,2,1,3],
+"struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html#aadf697a833460d2f1871cc2a2a1c2f5a":[2,0,3,2,1,1],
+"struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html":[2,0,3,2,2],
 "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html#a2fb060415168e88eda03ca262630758a":[2,0,3,2,2,1],
 "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html#a38c03460176a14843d424158de7b5062":[2,0,3,2,2,0],
 "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html#aa5e36e17b51568675054ee9a79a8efda":[2,0,3,2,2,2],

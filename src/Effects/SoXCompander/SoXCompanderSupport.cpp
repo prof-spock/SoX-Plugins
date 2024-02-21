@@ -36,8 +36,8 @@ using Audio::IIRFilter;
 using BaseTypes::GenericTypes::GenericList;
 using SoXPlugins::Effects::SoXCompander::SoXMultibandCompander;
 
-/** abbreviation for StringUtil::expand */
-#define expand  StringUtil::expand
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
@@ -820,8 +820,8 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     String _Point2D::toString () const {
         String st =
-            expand("_Point2D(%1, %2)",
-                   TOSTRING(x), TOSTRING(y));
+            STR::expand("_Point2D(%1, %2)",
+                        TOSTRING(x), TOSTRING(y));
         return st;
     }
 
@@ -865,14 +865,14 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     String _TfSegment::toString () const {
         String st =
-            expand("_TfSegment("
-                   "isLine = %1, start = %2, end = %3,"
-                   " a2 = %4, a1 = %5)",
-                   TOSTRING(isStraightLine),
-                   startPoint.toString(),
-                   endPoint.toString(),
-                   TOSTRING(a2),
-                   TOSTRING(a1));
+            STR::expand("_TfSegment("
+                        "isLine = %1, start = %2, end = %3,"
+                        " a2 = %4, a1 = %5)",
+                        TOSTRING(isStraightLine),
+                        startPoint.toString(),
+                        endPoint.toString(),
+                        TOSTRING(a2),
+                        TOSTRING(a1));
 
         return st;
     }
@@ -1106,13 +1106,13 @@ namespace SoXPlugins::Effects::SoXCompander {
             isFirst = false;
         }
 
-        st = expand("TransferFct("
-                    "minLin = %1, minOut = %2, dBGain = %3dB,"
-                    " dBKnee = %4dB, segments = (%5))",
-                    TOSTRING(_minimumLinearInValue),
-                    TOSTRING(_minimumLinearOutValue),
-                    TOSTRING(_dBGain), TOSTRING(_dBKnee),
-                    st);
+        st = STR::expand("TransferFct("
+                         "minLin = %1, minOut = %2, dBGain = %3dB,"
+                         " dBKnee = %4dB, segments = (%5))",
+                         TOSTRING(_minimumLinearInValue),
+                         TOSTRING(_minimumLinearOutValue),
+                         TOSTRING(_dBGain), TOSTRING(_dBKnee),
+                         st);
         return st;
     }
 
@@ -1206,15 +1206,15 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     String _Compander::toString () const {
         String st =
-            expand("_Compander("
-                   "transferFunction = %1, _channelsAreAggregated = %2,"
-                   " _attackTimeList = %3, _releaseTimeList = %4,"
-                   " _volumeList = %5",
-                   _transferFunction.toString(),
-                   TOSTRING(_channelsAreAggregated),
-                   _attackTimeList.toString(),
-                   _releaseTimeList.toString(),
-                   _volumeList.toString());
+            STR::expand("_Compander("
+                        "transferFunction = %1, _channelsAreAggregated = %2,"
+                        " _attackTimeList = %3, _releaseTimeList = %4,"
+                        " _volumeList = %5",
+                        _transferFunction.toString(),
+                        TOSTRING(_channelsAreAggregated),
+                        _attackTimeList.toString(),
+                        _releaseTimeList.toString(),
+                        _volumeList.toString());
 
         return st;
     }
@@ -1498,14 +1498,14 @@ namespace SoXPlugins::Effects::SoXCompander {
                     buffer[channel][stream];
                 const String bufferAsString =
                     (ringBuffer == NULL ? "NULL" : ringBuffer->toString());
-                st += expand("channel_%1_%2 = (%3)",
-                             TOSTRING(channel) +
-                             _streamKindAsString[stream],
-                             bufferAsString);
+                st += STR::expand("channel_%1_%2 = (%3)",
+                                  TOSTRING(channel) +
+                                  _streamKindAsString[stream],
+                                  bufferAsString);
             }
         }
 
-        st = expand("_CompanderSampleBuffer(%1)", st);
+        st = STR::expand("_CompanderSampleBuffer(%1)", st);
 
         return st;
     }
@@ -1533,14 +1533,14 @@ namespace SoXPlugins::Effects::SoXCompander {
     String _MCompanderBand::toString () const
     {
         String st =
-            expand("_MCompanderBand("
-                   "_channelCount = %1, _topFrequency = %2Hz,"
-                   " _crossoverFilter = %3, _compander = %4,"
-                   " _buffer = %5, _inputSampleList = %6)",
-                   TOSTRING(_channelCount), TOSTRING(_topFrequency),
-                   _crossoverFilter.toString(), _compander.toString(),
-                   _sampleBufferToString(_buffer),
-                   _inputSampleList.toString());
+            STR::expand("_MCompanderBand("
+                        "_channelCount = %1, _topFrequency = %2Hz,"
+                        " _crossoverFilter = %3, _compander = %4,"
+                        " _buffer = %5, _inputSampleList = %6)",
+                        TOSTRING(_channelCount), TOSTRING(_topFrequency),
+                        _crossoverFilter.toString(), _compander.toString(),
+                        _sampleBufferToString(_buffer),
+                        _inputSampleList.toString());
 
         return st;
     }
@@ -1645,11 +1645,12 @@ namespace SoXPlugins::Effects::SoXCompander {
 
         for (Natural bandIndex = 0;  bandIndex < bandCount;  bandIndex++) {
             st += (bandIndex == 0 ? "" : ", ");
-            st += expand("band_%1 = %2",
-                         TOSTRING(bandIndex), list[bandIndex].toString());
+            st += STR::expand("band_%1 = %2",
+                              TOSTRING(bandIndex),
+                              list[bandIndex].toString());
         }
 
-        st = expand("_MCompanderBandList(%1)", st);
+        st = STR::expand("_MCompanderBandList(%1)", st);
         return st;
 
     }
@@ -1684,12 +1685,12 @@ String SoXMultibandCompander::toString () const {
     const _MCompanderBandList* companderBandList =
         (_MCompanderBandList*) _companderBandList;
     String st =
-        expand("SoXMultibandCompander("
-               "_allocatedBandCount = %1, _effectiveBandCount = %2,"
-               " _channelCount = %3, _companderBandList = %4)",
-               TOSTRING(_allocatedBandCount), TOSTRING(_bandCount),
-               TOSTRING(_channelCount),
-               _mCompanderBandListToString(*companderBandList));
+        STR::expand("SoXMultibandCompander("
+                    "_allocatedBandCount = %1, _effectiveBandCount = %2,"
+                    " _channelCount = %3, _companderBandList = %4)",
+                    TOSTRING(_allocatedBandCount), TOSTRING(_bandCount),
+                    TOSTRING(_channelCount),
+                    _mCompanderBandListToString(*companderBandList));
 
     return st;
 }

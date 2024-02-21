@@ -33,8 +33,8 @@ using BaseTypes::GenericTypes::GenericTuple;
 using SoXPlugins::Effects::SoXReverb::_SoXReverb;
 using SoXPlugins::Helpers::SoXAudioHelper;
 
-/** abbreviation for StringUtil::expand */
-#define expand StringUtil::expand
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
@@ -829,14 +829,14 @@ namespace SoXPlugins::Effects::SoXReverb {
     String _ReverbEffectParameterData::toString () const
     {
         String prefix =
-            expand("isWetOnly = %1, feedback = %2,"
-                   " hfDamping = %3%, predelay = %4s"
-                   " stereoDepth = %5%, wetGain = %6dB"
-                   " roomScale = %7%, channelCount = %8)",
-                   TOSTRING(isWetOnly), TOSTRING(feedback),
-                   TOSTRING(hfDamping), TOSTRING(predelay),
-                   TOSTRING(stereoDepth), TOSTRING(wetGain),
-                   TOSTRING(roomScale), TOSTRING(channelCount));
+            STR::expand("isWetOnly = %1, feedback = %2,"
+                        " hfDamping = %3%, predelay = %4s"
+                        " stereoDepth = %5%, wetGain = %6dB"
+                        " roomScale = %7%, channelCount = %8)",
+                        TOSTRING(isWetOnly), TOSTRING(feedback),
+                        TOSTRING(hfDamping), TOSTRING(predelay),
+                        TOSTRING(stereoDepth), TOSTRING(wetGain),
+                        TOSTRING(roomScale), TOSTRING(channelCount));
 
         // add information about reverb channels
         String channelDataAsString;
@@ -847,8 +847,8 @@ namespace SoXPlugins::Effects::SoXReverb {
                                     + reverbChannel->toString());
         }
 
-        String st = expand("Reverb(%1, channels = (%2))",
-                           prefix, channelDataAsString);
+        String st = STR::expand("Reverb(%1, channels = (%2))",
+                                prefix, channelDataAsString);
         return st;
     }
 

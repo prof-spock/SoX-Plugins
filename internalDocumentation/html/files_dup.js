@@ -18,7 +18,7 @@ var files_dup =
       [ "AudioSampleRingBuffer", "struct_audio_1_1_audio_sample_ring_buffer.html", "struct_audio_1_1_audio_sample_ring_buffer" ]
     ] ],
     [ "AudioSampleRingBufferVector.cpp", "_audio_sample_ring_buffer_vector_8cpp.html", null ],
-    [ "AudioSampleRingBufferVector.cpp-inc", "_audio_sample_ring_buffer_vector_8cpp-inc.html", null ],
+    [ "AudioSampleRingBufferVector.cpp-inc", "_audio_sample_ring_buffer_vector_8cpp-inc.html", "_audio_sample_ring_buffer_vector_8cpp-inc" ],
     [ "AudioSampleRingBufferVector.h", "_audio_sample_ring_buffer_vector_8h.html", [
       [ "AudioSampleRingBufferVector", "struct_audio_1_1_audio_sample_ring_buffer_vector.html", "struct_audio_1_1_audio_sample_ring_buffer_vector" ]
     ] ],
@@ -35,9 +35,9 @@ var files_dup =
     [ "Character.h", "_character_8h.html", [
       [ "Character", "struct_base_types_1_1_primitives_1_1_character.html", "struct_base_types_1_1_primitives_1_1_character" ]
     ] ],
-    [ "Dictionary.cpp", "_dictionary_8cpp.html", null ],
+    [ "Dictionary.cpp", "_dictionary_8cpp.html", "_dictionary_8cpp" ],
     [ "Dictionary.h", "_dictionary_8h.html", [
-      [ "Dictionary", "struct_base_types_1_1_containers_1_1_dictionary.html", "struct_base_types_1_1_containers_1_1_dictionary" ]
+      [ "Dictionary", "struct_base_types_1_1_containers_1_1_dictionary.html", null ]
     ] ],
     [ "File.cpp", "_file_8cpp.html", "_file_8cpp" ],
     [ "File.h", "_file_8h.html", [
@@ -65,16 +65,14 @@ var files_dup =
     [ "SoXReverb/JucePluginDefines.h", "_so_x_reverb_2_juce_plugin_defines_8h.html", "_so_x_reverb_2_juce_plugin_defines_8h" ],
     [ "Logging.h", "_logging_8h.html", null ],
     [ "LoggingSupport.cpp", "_logging_support_8cpp.html", "_logging_support_8cpp" ],
-    [ "LoggingSupport.h", "_logging_support_8h.html", [
-      [ "Logging", "struct_base_modules_1_1_logging.html", null ]
-    ] ],
+    [ "LoggingSupport.h", "_logging_support_8h.html", "_logging_support_8h" ],
     [ "MyArray.h", "_my_array_8h.html", "_my_array_8h" ],
     [ "MyString.cpp", "_my_string_8cpp.html", "_my_string_8cpp" ],
     [ "MyString.h", "_my_string_8h.html", "_my_string_8h" ],
     [ "Natural.h", "_natural_8h.html", [
       [ "Natural", "struct_base_types_1_1_primitives_1_1_natural.html", "struct_base_types_1_1_primitives_1_1_natural" ]
     ] ],
-    [ "NaturalList.cpp", "_natural_list_8cpp.html", null ],
+    [ "NaturalList.cpp", "_natural_list_8cpp.html", "_natural_list_8cpp" ],
     [ "NaturalList.h", "_natural_list_8h.html", [
       [ "NaturalList", "struct_base_types_1_1_containers_1_1_natural_list.html", "struct_base_types_1_1_containers_1_1_natural_list" ]
     ] ],
@@ -178,14 +176,14 @@ var files_dup =
     [ "SoXReverbSupport.h", "_so_x_reverb_support_8h.html", [
       [ "_SoXReverb", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___so_x_reverb.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___so_x_reverb" ]
     ] ],
-    [ "StringList.cpp", "_string_list_8cpp.html", null ],
+    [ "StringList.cpp", "_string_list_8cpp.html", "_string_list_8cpp" ],
     [ "StringList.h", "_string_list_8h.html", [
       [ "StringList", "struct_base_types_1_1_containers_1_1_string_list.html", "struct_base_types_1_1_containers_1_1_string_list" ]
     ] ],
     [ "StringSet.h", "_string_set_8h.html", [
-      [ "StringSet", "struct_base_types_1_1_containers_1_1_string_set.html", "struct_base_types_1_1_containers_1_1_string_set" ]
+      [ "StringSet", "struct_base_types_1_1_containers_1_1_string_set.html", null ]
     ] ],
-    [ "StringUtil.cpp", "_string_util_8cpp.html", null ],
+    [ "StringUtil.cpp", "_string_util_8cpp.html", "_string_util_8cpp" ],
     [ "StringUtil.h", "_string_util_8h.html", "_string_util_8h" ],
     [ "WaveForm.cpp", "_wave_form_8cpp.html", "_wave_form_8cpp" ],
     [ "WaveForm.h", "_wave_form_8h.html", "_wave_form_8h" ]

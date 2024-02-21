@@ -567,7 +567,7 @@ namespace SoXPlugins::Helpers {
 
             /** the mapping from parameter name to audio parameter
              *  kind */
-            GenericMap<String,SoXEffectParameterKind> _parameterNameToKindMap;
+            GenericMap<String, SoXEffectParameterKind> _parameterNameToKindMap;
 
             /** the set of parameter names considered active */
             StringSet _activeParameterNameSet;

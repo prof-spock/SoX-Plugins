@@ -21,8 +21,8 @@
 using SoXPlugins::Effects::SoXReverb::_SoXReverb;
 using SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect;
 
-/** abbreviation for StringUtil::expand */
-#define expand StringUtil::expand
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
@@ -82,17 +82,17 @@ namespace SoXPlugins::Effects::SoXReverb {
         String toString () const
         {
             String st =
-                expand("_EffectDescriptor_RVRB("
-                       "isWetOnly = %1, reverberance = %2%,"
-                       " hfDamping = %3%, roomScale = %4%,"
-                       " stereoDepth = %5%, preDelayInMs = %6ms,"
-                       " wetDbGain = %7dB, channelCount = %8,"
-                       " reverb = %9)",
-                       TOSTRING(isWetOnly), TOSTRING(reverberance),
-                       TOSTRING(hfDamping), TOSTRING(roomScale),
-                       TOSTRING(stereoDepth), TOSTRING(preDelayInMs),
-                       TOSTRING(wetDbGain), TOSTRING(channelCount),
-                       reverb.toString());
+                STR::expand("_EffectDescriptor_RVRB("
+                            "isWetOnly = %1, reverberance = %2%,"
+                            " hfDamping = %3%, roomScale = %4%,"
+                            " stereoDepth = %5%, preDelayInMs = %6ms,"
+                            " wetDbGain = %7dB, channelCount = %8,"
+                            " reverb = %9)",
+                            TOSTRING(isWetOnly), TOSTRING(reverberance),
+                            TOSTRING(hfDamping), TOSTRING(roomScale),
+                            TOSTRING(stereoDepth), TOSTRING(preDelayInMs),
+                            TOSTRING(wetDbGain), TOSTRING(channelCount),
+                            reverb.toString());
 
             return st;
         }
@@ -290,17 +290,17 @@ SoXReverb_AudioEffect::_setValueInternal
     if (parameterName == parameterName_isWetOnly) {
         effectDescriptor.isWetOnly = (value == "Yes");
     } else if (parameterName == parameterName_reverberance) {
-        effectDescriptor.reverberance = StringUtil::toPercentage(value);
+        effectDescriptor.reverberance = STR::toPercentage(value);
     } else if (parameterName == parameterName_hfDamping) {
-        effectDescriptor.hfDamping = StringUtil::toPercentage(value);
+        effectDescriptor.hfDamping = STR::toPercentage(value);
     } else if (parameterName == parameterName_roomScale) {
-        effectDescriptor.roomScale = StringUtil::toPercentage(value);
+        effectDescriptor.roomScale = STR::toPercentage(value);
     } else if (parameterName == parameterName_stereoDepth) {
-        effectDescriptor.stereoDepth = StringUtil::toPercentage(value);
+        effectDescriptor.stereoDepth = STR::toPercentage(value);
     } else if (parameterName == parameterName_preDelay) {
-        effectDescriptor.preDelayInMs = StringUtil::toReal(value);
+        effectDescriptor.preDelayInMs = STR::toReal(value);
     } else if (parameterName == parameterName_wetGain) {
-        effectDescriptor.wetDbGain = StringUtil::toReal(value);
+        effectDescriptor.wetDbGain = STR::toReal(value);
     }
 
     if (recalculationIsForced) {

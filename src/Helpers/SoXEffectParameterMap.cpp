@@ -25,12 +25,8 @@ using SoXPlugins::Helpers::SoXEffectParameterMap;
 
 namespace Helpers = SoXPlugins::Helpers;
 
-/** abbreviated form of function name */
-#define prefix StringUtil::prefix
-/** abbreviated form of function name */
-#define stringMapToStringExplicit StringUtil::stringMapToStringExplicit
-/** abbreviated form of function name */
-#define substring StringUtil::substring
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*====================*/
 
@@ -90,7 +86,7 @@ static void _splitParameterName (IN String parameterName,
 {
     const Natural notFound = Natural::maximumValue();
     const String separator = SoXEffectParameterMap::widgetPageSeparator;
-    const Natural position = StringUtil::find(parameterName, separator);
+    const Natural position = STR::find(parameterName, separator);
     const Natural separatorLength = separator.length();
 
     if (position == notFound) {
@@ -99,9 +95,9 @@ static void _splitParameterName (IN String parameterName,
         nominalPageIndex = Integer{0};
     } else {
         effectiveParameterName =
-            substring(parameterName, position + separatorLength);
+            STR::substring(parameterName, position + separatorLength);
         nominalPageIndex =
-            StringUtil::toInteger(prefix(parameterName, position));
+            STR::toInteger(STR::prefix(parameterName, position));
         pageIndex = (Natural) Integer::maximum(nominalPageIndex, 0);
     }
 }
@@ -187,7 +183,7 @@ SoXEffectParameterMap::~SoXEffectParameterMap ()
 String SoXEffectParameterMap::toString () const
 {
     const String parameterNameToKindRepr =
-        stringMapToStringExplicit<
+        STR::stringMapToStringExplicit<
             map<String, SoXEffectParameterKind>,
             SoXEffectParameterKind,
             effectParameterKindToString
@@ -313,9 +309,9 @@ void SoXEffectParameterMap::valueRangeInt (IN String& parameterName,
         highValue = Integer{0};
         delta     = Integer{0};
     } else {
-        lowValue  = StringUtil::toInteger(rangeValueList[0]);
-        highValue = StringUtil::toInteger(rangeValueList[1]);
-        delta     = StringUtil::toInteger(rangeValueList[2]);
+        lowValue  = STR::toInteger(rangeValueList[0]);
+        highValue = STR::toInteger(rangeValueList[1]);
+        delta     = STR::toInteger(rangeValueList[2]);
     }
 
     Logging_trace3("<<: (%1, %2, %3)",
@@ -342,9 +338,9 @@ void SoXEffectParameterMap::valueRangeReal (IN String& parameterName,
         highValue = 0.0;
         delta     = 0.0;
     } else {
-        lowValue  = StringUtil::toReal(rangeValueList[0]);
-        highValue = StringUtil::toReal(rangeValueList[1]);
-        delta     = StringUtil::toReal(rangeValueList[2]);
+        lowValue  = STR::toReal(rangeValueList[0]);
+        highValue = STR::toReal(rangeValueList[1]);
+        delta     = STR::toReal(rangeValueList[2]);
     }
 
     Logging_trace3("<<: (%1, %2, %3)",
@@ -369,9 +365,9 @@ Boolean SoXEffectParameterMap::isAllowedValue (IN String& parameterName,
             _parameterNameToKindMap.at(parameterName);
 
         if (kind == SoXEffectParameterKind::intKind) {
-            isOkay = StringUtil::isInt(value);
+            isOkay = STR::isInt(value);
         } else if (kind == SoXEffectParameterKind::realKind) {
-            isOkay = StringUtil::isReal(value);
+            isOkay = STR::isReal(value);
         } else if (kind == SoXEffectParameterKind::enumKind) {
             StringList valueList;
             valueRangeEnum(parameterName, valueList);
@@ -383,14 +379,14 @@ Boolean SoXEffectParameterMap::isAllowedValue (IN String& parameterName,
         if (isOkay && kind != SoXEffectParameterKind::enumKind) {
             // do the range check
             if (kind == SoXEffectParameterKind::intKind) {
-                const Integer currentValue = StringUtil::toInteger(value);
+                const Integer currentValue = STR::toInteger(value);
                 Integer lowValue, highValue, delta;
                 valueRangeInt(parameterName, lowValue, highValue, delta);
                 isOkay = (lowValue <= currentValue
                           && currentValue <= highValue
                           && (currentValue - lowValue) % delta == 0);
             } else {
-                const Real currentValue = StringUtil::toReal(value);
+                const Real currentValue = STR::toReal(value);
                 Real lowValue, highValue, delta;
                 valueRangeReal(parameterName, lowValue, highValue, delta);
                 isOkay = (lowValue <= currentValue

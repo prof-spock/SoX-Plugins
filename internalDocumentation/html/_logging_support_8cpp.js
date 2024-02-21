@@ -2,8 +2,8 @@ var _logging_support_8cpp =
 [
     [ "_LoggingBufferEntry", "struct_base_modules_1_1___logging_buffer_entry.html", "struct_base_modules_1_1___logging_buffer_entry" ],
     [ "_LoggingTime", "class_base_modules_1_1___logging_time.html", "class_base_modules_1_1___logging_time" ],
-    [ "_expand", "_logging_support_8cpp.html#ad0d58671e981a2c57f2ff48bd7563019", null ],
     [ "StdLib_atexit", "_logging_support_8cpp.html#ae7c48614d1cdab121e5b4703f3f96835", null ],
+    [ "STR", "_logging_support_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c", null ],
     [ "Timestamp", "_logging_support_8cpp.html#a9ec9a8615bb4c91e73b5190b70ac2c87", null ],
     [ "_LoggingState", "_logging_support_8cpp.html#ae1d9048d43db9507aa672f29446e5c14", [
       [ "inLimbo", "_logging_support_8cpp.html#ae1d9048d43db9507aa672f29446e5c14ad3a350a1569ff8298d83b63f49cfc0f7", null ],

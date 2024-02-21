@@ -81,7 +81,7 @@
 <!-- Node14 -->
 <g id="node14" class="node">
 <title>Node14</title>
-<g id="a_node14"><a xlink:href="_logging_support_8cpp.html" target="_top" xlink:title="The LoggingSupport body implements a class for simple entry/exit logging to a file; this logging reli...">
+<g id="a_node14"><a xlink:href="_logging_support_8cpp.html" target="_top" xlink:title="The LoggingSupport body implements a class for simple entry/exit logging to a file or via a callback ...">
 <polygon fill="white" stroke="black" points="3662,-189.5 3662,-209.5 3776,-209.5 3776,-189.5 3662,-189.5"/>
 <text text-anchor="middle" x="3719" y="-196.7" font-family="Helvetica,sans-Serif" font-size="11.00">LoggingSupport.cpp</text>
 </a>
@@ -298,7 +298,7 @@
 <!-- Node19 -->
 <g id="node19" class="node">
 <title>Node19</title>
-<g id="a_node19"><a xlink:href="_logging_support_8h.html" target="_top" xlink:title="The LoggingSupport specification defines a class for simple entry/exit logging to a file; this loggin...">
+<g id="a_node19"><a xlink:href="_logging_support_8h.html" target="_top" xlink:title="The LoggingSupport specification defines a class for simple entry/exit logging to a file or via an ar...">
 <polygon fill="white" stroke="black" points="3237,-309.5 3237,-329.5 3339,-329.5 3339,-309.5 3237,-309.5"/>
 <text text-anchor="middle" x="3288" y="-316.7" font-family="Helvetica,sans-Serif" font-size="11.00">LoggingSupport.h</text>
 </a>
@@ -355,18 +355,18 @@
 <path fill="none" stroke="midnightblue" d="M3328.11,-425.36C3393.36,-413.75 3520.49,-391.12 3573.21,-381.74"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="3327.42,-421.93 3318.19,-427.13 3328.65,-428.82 3327.42,-421.93"/>
 </g>
-<!-- Node65 -->
+<!-- Node66 -->
 <g id="node49" class="node">
-<title>Node65</title>
+<title>Node66</title>
 <g id="a_node49"><a xlink:href="_integer_8h.html" target="_top" xlink:title="The Integer specification and body provides a value object type for ints.">
 <polygon fill="white" stroke="black" points="3102.5,-366.5 3102.5,-386.5 3161.5,-386.5 3161.5,-366.5 3102.5,-366.5"/>
 <text text-anchor="middle" x="3132" y="-373.7" font-family="Helvetica,sans-Serif" font-size="11.00">Integer.h</text>
 </a>
 </g>
 </g>
-<!-- Node17&#45;&gt;Node65 -->
+<!-- Node17&#45;&gt;Node66 -->
 <g id="edge72" class="edge">
-<title>Node17&#45;&gt;Node65</title>
+<title>Node17&#45;&gt;Node66</title>
 <path fill="none" stroke="midnightblue" d="M3252.51,-419.99C3223.57,-409.79 3183.39,-395.62 3157.54,-386.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="3251.64,-423.39 3262.24,-423.42 3253.97,-416.79 3251.64,-423.39"/>
 </g>
@@ -890,18 +890,18 @@
 <path fill="none" stroke="midnightblue" d="M3717.86,-249.5C3679.56,-237.76 3622.07,-220.14 3587.48,-209.54"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="3717.05,-252.91 3727.64,-252.5 3719.1,-246.22 3717.05,-252.91"/>
 </g>
-<!-- Node66 -->
+<!-- Node67 -->
 <g id="node50" class="node">
-<title>Node66</title>
+<title>Node67</title>
 <g id="a_node50"><a xlink:href="_real_8h.html" target="_top" xlink:title="The Real specification defines a value object type for real values.">
 <polygon fill="white" stroke="red" points="3087,-309.5 3087,-329.5 3135,-329.5 3135,-309.5 3087,-309.5"/>
 <text text-anchor="middle" x="3111" y="-316.7" font-family="Helvetica,sans-Serif" font-size="11.00">Real.h</text>
 </a>
 </g>
 </g>
-<!-- Node65&#45;&gt;Node66 -->
+<!-- Node66&#45;&gt;Node67 -->
 <g id="edge73" class="edge">
-<title>Node65&#45;&gt;Node66</title>
+<title>Node66&#45;&gt;Node67</title>
 <path fill="none" stroke="midnightblue" d="M3124.93,-356.98C3121.43,-347.83 3117.38,-337.2 3114.54,-329.78"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="3121.7,-358.32 3128.53,-366.42 3128.23,-355.83 3121.7,-358.32"/>
 </g>

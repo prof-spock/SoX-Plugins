@@ -34,14 +34,8 @@ using BaseTypes::Containers::Dictionary;
 using SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect;
 using SoXPlugins::Helpers::SoXAudioHelper;
 
-/** abbreviation for StringList::makeBySplit */
-#define makeBySplit StringList::makeBySplit
-
-/** abbreviation for StringUtil::expand */
-#define expand StringUtil::expand
-
-/** abbreviation for StringUtil::toReal */
-#define toReal StringUtil::toReal
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
@@ -116,29 +110,29 @@ namespace SoXPlugins::Effects::SoXFilter {
         String toString () const
         {
             String st1 =
-                expand("kind = %1, frequency = %2Hz,"
-                       " bandwidth = %3%4,"
-                       " dBGain = %5dB, equGain = %6dB,"
-                       " usesUnpitchedAudioMode = %7,"
-                       " usesConstantSkirtGain = %8,"
-                       " isSinglePole = %9",
-                       kind, TOSTRING(frequency),
-                       TOSTRING(bandwidth), _bwUnitToString(bandwidthUnit),
-                       TOSTRING(dBGain), TOSTRING(equGain),
-                       TOSTRING(usesUnpitchedAudioMode),
-                       TOSTRING(usesConstantSkirtGain),
-                       TOSTRING(isSinglePole));
+                STR::expand("kind = %1, frequency = %2Hz,"
+                            " bandwidth = %3%4,"
+                            " dBGain = %5dB, equGain = %6dB,"
+                            " usesUnpitchedAudioMode = %7,"
+                            " usesConstantSkirtGain = %8,"
+                            " isSinglePole = %9",
+                            kind, TOSTRING(frequency),
+                            TOSTRING(bandwidth), _bwUnitToString(bandwidthUnit),
+                            TOSTRING(dBGain), TOSTRING(equGain),
+                            TOSTRING(usesUnpitchedAudioMode),
+                            TOSTRING(usesConstantSkirtGain),
+                            TOSTRING(isSinglePole));
 
             String st2 =
-                expand("b0 = %1, b1 = %2, b2 = %3,"
-                       " a0 = %4, a1 = %5, a2 = %6,"
-                       " filter = %7, sampleRingBufferVector = %8",
-                       TOSTRING(b0), TOSTRING(b1), TOSTRING(b2),
-                       TOSTRING(a0), TOSTRING(a1), TOSTRING(a2),
-                       filter.toString(),
-                       sampleRingBufferVector.toString());
+                STR::expand("b0 = %1, b1 = %2, b2 = %3,"
+                            " a0 = %4, a1 = %5, a2 = %6,"
+                            " filter = %7, sampleRingBufferVector = %8",
+                            TOSTRING(b0), TOSTRING(b1), TOSTRING(b2),
+                            TOSTRING(a0), TOSTRING(a1), TOSTRING(a2),
+                            filter.toString(),
+                            sampleRingBufferVector.toString());
 
-            return expand("_EffectDescriptor_FLTR(%1, %2)", st1, st2);
+            return STR::expand("_EffectDescriptor_FLTR(%1, %2)", st1, st2);
         }
         
     };
@@ -163,7 +157,8 @@ namespace SoXPlugins::Effects::SoXFilter {
     static const String comma = ",";
 
     /** the list of answers in a yes-no-combobox (in English language) */
-    static const StringList _yesNoList = makeBySplit("Yes/No", separator);
+    static const StringList _yesNoList =
+        StringList::makeBySplit("Yes/No", separator);
 
     /** the list of all filter kinds as a string (in English language) */
     static const StringList _kindList =
@@ -298,7 +293,7 @@ namespace SoXPlugins::Effects::SoXFilter {
     */
     static const Dictionary _filterKindToWidgetDataMap =
         Dictionary::makeFromList(
-            makeBySplit(
+            StringList::makeBySplit(
                 filterKind_allpass    + comma + "F/B"   + comma +
                 filterKind_band       + comma + "U/F/B" + comma +
                 filterKind_bandpass   + comma + "C/F/B" + comma +
@@ -339,7 +334,7 @@ namespace SoXPlugins::Effects::SoXFilter {
      */
     static const Dictionary _filterKindToUnitMap =
         Dictionary::makeFromList(
-            makeBySplit(
+            StringList::makeBySplit(
                 filterKind_allpass    + comma + "f/o/q/b"   + comma +
                 filterKind_band       + comma + "f/o/q/b"   + comma +
                 filterKind_bandpass   + comma + "f/o/q/b"   + comma +
@@ -355,7 +350,7 @@ namespace SoXPlugins::Effects::SoXFilter {
     /** mapping from unit code letter to text for combo boxes */
     static const Dictionary _unitCodeToTextMap =
         Dictionary::makeFromList(
-            makeBySplit(
+            StringList::makeBySplit(
                 "b" + comma + _bwUnitText_butterworth + comma +
                 "f" + comma + _bwUnitText_frequency   + comma +
                 "o" + comma + _bwUnitText_octave      + comma +
@@ -573,8 +568,8 @@ namespace SoXPlugins::Effects::SoXFilter {
         const String unitCodeListAsString =
             _filterKindToUnitMap.atWithDefault(filterKind, "");
 
-        if (StringUtil::contains(unitCodeListAsString, separator)) {
-            result = makeBySplit(unitCodeListAsString, separator);
+        if (STR::contains(unitCodeListAsString, separator)) {
+            result = StringList::makeBySplit(unitCodeListAsString, separator);
         }
 
         Logging_trace1("<<: %1", result.toString());
@@ -783,7 +778,7 @@ namespace SoXPlugins::Effects::SoXFilter {
         const String widgetDataString =
             _filterKindToWidgetDataMap.at(filterKind);
         const StringList widgetCodeList =
-            makeBySplit(widgetDataString, separator);
+            StringList::makeBySplit(widgetDataString, separator);
 
         isActive = widgetCodeList.contains(paramFlag_biquad);
         
@@ -948,31 +943,31 @@ SoXFilter_AudioEffect::_setValueInternal
              && _effectParameterMap.isActive(parameterName));
 
         if (parameterName == "a0") {
-            effectDescriptor.a0 = toReal(value);
+            effectDescriptor.a0 = STR::toReal(value);
         } else if (parameterName == "a1") {
-            effectDescriptor.a1 = toReal(value);
+            effectDescriptor.a1 = STR::toReal(value);
         } else if (parameterName == "a2") {
-            effectDescriptor.a2 = toReal(value);
+            effectDescriptor.a2 = STR::toReal(value);
         } else if (parameterName == "b0") {
-            effectDescriptor.b0 = toReal(value);
+            effectDescriptor.b0 = STR::toReal(value);
         } else if (parameterName == "b1") {
-            effectDescriptor.b1 = toReal(value);
+            effectDescriptor.b1 = STR::toReal(value);
         } else if (parameterName == "b2") {
-            effectDescriptor.b2 = toReal(value);
+            effectDescriptor.b2 = STR::toReal(value);
         } else if (parameterName == parameterName_bandwidth) {
-            effectDescriptor.bandwidth = toReal(value);
+            effectDescriptor.bandwidth = STR::toReal(value);
         } else if (parameterName == parameterName_bandwidthUnit) {
             effectDescriptor.bandwidthUnit = _toBWUnit(value);
         } else if (parameterName == parameterName_cstSkirtGain) {
             effectDescriptor.usesConstantSkirtGain = (value == "Yes");
         } else if (parameterName == parameterName_dBGain) {
-            effectDescriptor.dBGain = toReal(value);
+            effectDescriptor.dBGain = STR::toReal(value);
         } else if (parameterName == parameterName_equGain) {
-            effectDescriptor.equGain = toReal(value);
+            effectDescriptor.equGain = STR::toReal(value);
         } else if (parameterName == parameterName_frequency) {
-            effectDescriptor.frequency = toReal(value);
+            effectDescriptor.frequency = STR::toReal(value);
         } else if (parameterName == parameterName_poleCount) {
-            effectDescriptor.isSinglePole = (toReal(value) == 1.0);
+            effectDescriptor.isSinglePole = (STR::toReal(value) == 1.0);
         } else if (parameterName == parameterName_unpitchedMode) {
             effectDescriptor.usesUnpitchedAudioMode = (value == "Yes");
         }

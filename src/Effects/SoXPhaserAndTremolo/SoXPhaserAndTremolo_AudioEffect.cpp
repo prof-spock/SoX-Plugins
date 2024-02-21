@@ -41,8 +41,8 @@ using BaseTypes::Primitives::Percentage;
 using SoXPlugins::Effects::SoXPhaserAndTremolo
       ::SoXPhaserAndTremolo_AudioEffect;
 
-/** abbreviated form of function name */
-#define expand StringUtil::expand
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
@@ -194,24 +194,27 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
         String toString () const
         {
             String st1 =
-                expand("isPhaser = %1, frequency = %2Hz, timeOffset = %3s,"
-                       " inGain = %4, outGain = %5,"
-                       " delay = %6s, decay = %7s, depth = %8%",
-                       TOSTRING(isPhaser), TOSTRING(frequency),
-                       TOSTRING(timeOffset),
-                       TOSTRING(inGain), TOSTRING(outGain),
-                       TOSTRING(delay), TOSTRING(decay), TOSTRING(depth));
+                STR::expand("isPhaser = %1, frequency = %2Hz,"
+                            " timeOffset = %3s, inGain = %4,"
+                            " outGain = %5, delay = %6s,"
+                            " decay = %7s, depth = %8%",
+                            TOSTRING(isPhaser), TOSTRING(frequency),
+                            TOSTRING(timeOffset), TOSTRING(inGain),
+                            TOSTRING(outGain), TOSTRING(delay),
+                            TOSTRING(decay), TOSTRING(depth));
 
             String st2 =
-                expand(" waveForm = %1, delayRingBufferLength = %2,"
-                       " delayRingBufferIndex = %3, delayRingBufferList = %4",
-                       waveForm.toString(),
-                       TOSTRING(delayRingBufferLength),
-                       TOSTRING(delayRingBufferIndex),
-                       delayRingBufferList.toString());
+                STR::expand(" waveForm = %1,"
+                            " delayRingBufferLength = %2,"
+                            " delayRingBufferIndex = %3,"
+                            " delayRingBufferList = %4",
+                            waveForm.toString(),
+                            TOSTRING(delayRingBufferLength),
+                            TOSTRING(delayRingBufferIndex),
+                            delayRingBufferList.toString());
 
-            return expand("_EffectDescriptor_PHTR(%1, %2)",
-                          st1, st2);
+            return STR::expand("_EffectDescriptor_PHTR(%1, %2)",
+                               st1, st2);
         }
 
     };
@@ -477,23 +480,23 @@ SoXPhaserAndTremolo_AudioEffect::_setValueInternal
              && _effectParameterMap.isActive(parameterName));
 
         if (parameterName == parameterName_decay) {
-            effectDescriptor.decay = StringUtil::toReal(value);
+            effectDescriptor.decay = STR::toReal(value);
         } else if (parameterName == parameterName_delayInMs) {
-            effectDescriptor.delay = StringUtil::toReal(value) / 1000.0;
+            effectDescriptor.delay = STR::toReal(value) / 1000.0;
         } else if (parameterName == parameterName_depth) {
-            effectDescriptor.depth = StringUtil::toPercentage(value);
+            effectDescriptor.depth = STR::toPercentage(value);
         } else if (parameterName == parameterName_frequency) {
-            effectDescriptor.frequency = StringUtil::toReal(value);
+            effectDescriptor.frequency = STR::toReal(value);
         } else if (parameterName == parameterName_inGain) {
-            effectDescriptor.inGain = StringUtil::toReal(value);
+            effectDescriptor.inGain = STR::toReal(value);
         } else if (parameterName == parameterName_outGain) {
-            effectDescriptor.outGain = StringUtil::toReal(value);
+            effectDescriptor.outGain = STR::toReal(value);
         } else if (parameterName == parameterName_waveFormKind) {
             effectDescriptor.waveFormKind = (value == "Sine"
                                               ? WaveFormKind::sine
                                               : WaveFormKind::triangle);
         } else if (parameterName == parameterName_timeOffset) {
-            effectDescriptor.timeOffset = StringUtil::toReal(value);
+            effectDescriptor.timeOffset = STR::toReal(value);
         }
 
         if (effectIsUpdated) {

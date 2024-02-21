@@ -58,7 +58,7 @@ var sectionId = 'dynsection-1';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="The LoggingSupport specification defines a class for simple entry/exit logging to a file; this loggin...">
+<g id="a_node1"><a xlink:title="The LoggingSupport specification defines a class for simple entry/exit logging to a file or via an ar...">
 <polygon fill="#bfbfbf" stroke="black" points="1665.5,-252.5 1665.5,-272.5 1767.5,-272.5 1767.5,-252.5 1665.5,-252.5"/>
 <text text-anchor="middle" x="1716.5" y="-259.7" font-family="Helvetica,sans-Serif" font-size="11.00">LoggingSupport.h</text>
 </a>
@@ -82,7 +82,7 @@ var sectionId = 'dynsection-1';
 <!-- Node30 -->
 <g id="node30" class="node">
 <title>Node30</title>
-<g id="a_node30"><a xlink:href="_logging_support_8cpp.html" target="_top" xlink:title="The LoggingSupport body implements a class for simple entry/exit logging to a file; this logging reli...">
+<g id="a_node30"><a xlink:href="_logging_support_8cpp.html" target="_top" xlink:title="The LoggingSupport body implements a class for simple entry/exit logging to a file or via a callback ...">
 <polygon fill="white" stroke="black" points="1713.5,-195.5 1713.5,-215.5 1827.5,-215.5 1827.5,-195.5 1713.5,-195.5"/>
 <text text-anchor="middle" x="1770.5" y="-202.7" font-family="Helvetica,sans-Serif" font-size="11.00">LoggingSupport.cpp</text>
 </a>

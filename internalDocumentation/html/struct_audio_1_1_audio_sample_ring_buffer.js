@@ -10,7 +10,7 @@ var struct_audio_1_1_audio_sample_ring_buffer =
     [ "length", "struct_audio_1_1_audio_sample_ring_buffer.html#a287e08f64b5313c8e7a94a0bf1c1a75c", null ],
     [ "operator[]", "struct_audio_1_1_audio_sample_ring_buffer.html#a78c2146b20a61d7304c58ed80a84ee20", null ],
     [ "operator[]", "struct_audio_1_1_audio_sample_ring_buffer.html#a79e5b66ba818367ad080e85479ba86fa", null ],
-    [ "setAt", "struct_audio_1_1_audio_sample_ring_buffer.html#a33c43a92740acc426fb6e6c04e8e6f9c", null ],
+    [ "set", "struct_audio_1_1_audio_sample_ring_buffer.html#af3a0453cbf4441320b67f211af403475", null ],
     [ "setFirst", "struct_audio_1_1_audio_sample_ring_buffer.html#a4f2bbeb0dcba926d80a15068a29d6ba1", null ],
     [ "setLast", "struct_audio_1_1_audio_sample_ring_buffer.html#a09a1162cb52b4438077ffab6db6d068b", null ],
     [ "setLength", "struct_audio_1_1_audio_sample_ring_buffer.html#ade2282a32ef47eb6d499044994e7ee73", null ],
