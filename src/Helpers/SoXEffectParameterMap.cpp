@@ -15,6 +15,7 @@
 
 #include "SoXEffectParameterMap.h"
 
+#include <cmath>
 #include "Assertion.h"
 #include "Logging.h"
 
@@ -38,6 +39,38 @@ const String SoXEffectParameterMap::unknownValue = "???";
 const String SoXEffectParameterMap::widgetPageSeparator = "#";
 
 /*--------------------*/
+/*--------------------*/
+
+/**
+ * Checks and adapts string <C>value</C> for a real parameter named
+ * to precision <C>delta</C> of that parameter.
+ *
+ * @param[inout] value          value of real parameter to be adapted
+ * @param[in]    delta          the delta value for this parameter
+ */
+void _adaptRealValueToPrecision (INOUT String& value,
+                                 IN Real delta)
+{
+    Logging_trace2(">>: value = %1, delta = %2",
+                   value, TOSTRING(delta));
+
+    Real v = STR::toReal(value);
+    Real integralDigitCount =
+        Real::maximum(Real::one,
+                      Real::one + (log10((float) v.abs())));
+    Real fractionalDigitCount = Real{-log10((double) delta)}.round();
+
+    if (fractionalDigitCount > Real::zero) {
+        Natural precision =
+            (Natural) (integralDigitCount + fractionalDigitCount);
+        value = STR::toString(v,
+                              precision,
+                              (Natural) fractionalDigitCount);
+    }
+    
+    Logging_trace1("<<: value = %1", value)
+}
+
 /*--------------------*/
 
 /**
@@ -135,7 +168,8 @@ StringList _splitRangeData (IN SoXEffectParameterMap* parameterMap,
 /* EXPORTED ROUTINES  */
 /*--------------------*/
 
-String Helpers::effectParameterKindToString (IN SoXEffectParameterKind& kind)
+String Helpers::effectParameterKindToString
+                    (IN SoXEffectParameterKind& kind)
 {
     String result;
 
@@ -272,7 +306,7 @@ SoXEffectParameterKind SoXEffectParameterMap::kind
 /*--------------------*/
 
 void SoXEffectParameterMap::valueRangeEnum (IN String& parameterName,
-                                           OUT StringList& result)
+                                            OUT StringList& result)
     const
 {
     Logging_trace1(">>: %1", parameterName);
@@ -293,9 +327,9 @@ void SoXEffectParameterMap::valueRangeEnum (IN String& parameterName,
 /*--------------------*/
 
 void SoXEffectParameterMap::valueRangeInt (IN String& parameterName,
-                                          OUT Integer& lowValue,
-                                          OUT Integer& highValue,
-                                          OUT Integer& delta)
+                                           OUT Integer& lowValue,
+                                           OUT Integer& highValue,
+                                           OUT Integer& delta)
     const
 {
     Logging_trace1(">>: %1", parameterName);
@@ -322,9 +356,9 @@ void SoXEffectParameterMap::valueRangeInt (IN String& parameterName,
 /*--------------------*/
 
 void SoXEffectParameterMap::valueRangeReal (IN String& parameterName,
-                                           OUT Real& lowValue,
-                                           OUT Real& highValue,
-                                           OUT Real& delta)
+                                            OUT Real& lowValue,
+                                            OUT Real& highValue,
+                                            OUT Real& delta)
     const
 {
     Logging_trace1(">>: %1", parameterName);
@@ -351,7 +385,7 @@ void SoXEffectParameterMap::valueRangeReal (IN String& parameterName,
 /*--------------------*/
 
 Boolean SoXEffectParameterMap::isAllowedValue (IN String& parameterName,
-                                              IN String& value) const
+                                               IN String& value) const
 {
     Logging_trace2(">>: parameterName = %1, value = %2",
                    parameterName, value);
@@ -377,7 +411,7 @@ Boolean SoXEffectParameterMap::isAllowedValue (IN String& parameterName,
         }
 
         if (isOkay && kind != SoXEffectParameterKind::enumKind) {
-            // do the range check
+            /* do the range check */
             if (kind == SoXEffectParameterKind::intKind) {
                 const Integer currentValue = STR::toInteger(value);
                 Integer lowValue, highValue, delta;
@@ -402,7 +436,7 @@ Boolean SoXEffectParameterMap::isAllowedValue (IN String& parameterName,
 /*--------------------*/
 
 Boolean SoXEffectParameterMap::adaptValueEnum (IN String& parameterName,
-                                              INOUT String& value) const
+                                               INOUT String& value) const
 {
     Logging_trace2(">>: parameterName = %1, value = %2",
                    parameterName, value);
@@ -429,7 +463,7 @@ Boolean SoXEffectParameterMap::adaptValueEnum (IN String& parameterName,
 /*--------------------*/
 
 Boolean SoXEffectParameterMap::adaptValueInt (IN String& parameterName,
-                                             INOUT Integer& value) const
+                                              INOUT Integer& value) const
 {
     Logging_trace2(">>: parameterName = %1, value = %2",
                    parameterName, value.toString());
@@ -455,7 +489,7 @@ Boolean SoXEffectParameterMap::adaptValueInt (IN String& parameterName,
 /*--------------------*/
 
 Boolean SoXEffectParameterMap::adaptValueReal (IN String& parameterName,
-                                              INOUT Real& value) const
+                                               INOUT Real& value) const
 {
     Logging_trace2(">>: parameterName = %1, value = %2",
                    parameterName, TOSTRING(value));
@@ -468,9 +502,12 @@ Boolean SoXEffectParameterMap::adaptValueReal (IN String& parameterName,
         Real lowValue, highValue, delta;
         valueRangeReal(parameterName, lowValue, highValue, delta);
         isOkay = (lowValue <= value && value <= highValue);
-        value = (value < lowValue ? lowValue
-                 : (value > highValue ? highValue
-                    : value));
+        value = Real::maximum(lowValue, Real::minimum(value, highValue));
+
+        /* bring value onto raster */
+        Real fp = value.fractionalPart();
+        fp = Real::round(fp / delta) * delta;
+        value = value.integralPart() + fp;
     }
 
     Logging_trace2("<<: isOkay = %1, value = %2",
@@ -479,11 +516,39 @@ Boolean SoXEffectParameterMap::adaptValueReal (IN String& parameterName,
 }
 
 /*--------------------*/
+
+Boolean SoXEffectParameterMap::valueIsDifferent (IN String& parameterName,
+                                                 IN String value) const
+{
+    Logging_trace2(">>: parameterName = %1, value = %2",
+                   parameterName, TOSTRING(value));
+
+    Boolean isDifferent;
+    const Boolean isRealValue =
+        (kind(parameterName) == SoXEffectParameterKind::realKind);
+    String storedValue = _parameterNameToValueMap.at(parameterName);
+
+    if (!isRealValue) {
+        isDifferent = (storedValue != value);
+    } else {
+        Real lowValue, highValue, delta;
+        valueRangeReal(parameterName, lowValue, highValue, delta);
+        Real sV = STR::toReal(storedValue);
+        Real v  = STR::toReal(value);
+        isDifferent = (Real::abs(sV - v) >= delta);
+    }
+    
+    Logging_trace2("<<: %1 (storedValue = '%2')",
+                   TOSTRING(isDifferent), storedValue);
+    return isDifferent;
+}
+
+/*--------------------*/
 /* active state       */
 /*--------------------*/
 
 void SoXEffectParameterMap::setActiveness (IN String& parameterName,
-                                          IN Boolean isActive)
+                                           IN Boolean isActive)
 {
     Logging_trace2(">>: parameterName = %1, isActive = %2",
                    parameterName, TOSTRING(isActive));
@@ -553,12 +618,23 @@ void SoXEffectParameterMap::changeActivenessByPage (IN Natural lastPageIndex)
 /*--------------------*/
 
 void SoXEffectParameterMap::setValue (IN String& parameterName,
-                                     IN String& value)
+                                      IN String& value)
 {
-    Logging_trace2(">>: parameterName = %1, value = %2", parameterName, value);
+    Logging_trace2(">>: parameterName = %1, value = %2",
+                   parameterName, value);
+    String adaptedValue = value;
 
-    if (isAllowedValue(parameterName, value)) {
-        _parameterNameToValueMap[parameterName] = value;
+    if (isAllowedValue(parameterName, adaptedValue)) {
+        Boolean isRealValue =
+            (kind(parameterName) == SoXEffectParameterKind::realKind);
+
+        if (isRealValue) {
+            Real lowValue, highValue, delta;
+            valueRangeReal(parameterName, lowValue, highValue, delta);
+            _adaptRealValueToPrecision(adaptedValue, delta);
+        }
+
+        _parameterNameToValueMap[parameterName] = adaptedValue;
     }
 
     Logging_trace("<<");
@@ -593,9 +669,9 @@ String SoXEffectParameterMap::value (IN String& parameterName) const
 /*--------------------*/
 
 void SoXEffectParameterMap::setKindInt (IN String& parameterName,
-                                       IN Integer lowValue,
-                                       IN Integer highValue,
-                                       IN Integer delta)
+                                        IN Integer lowValue,
+                                        IN Integer highValue,
+                                        IN Integer delta)
 {
     Assertion_pre(lowValue <= highValue, "interval must be non-empty");
     Assertion_pre(delta != 0, "delta must be non-zero");
@@ -620,9 +696,9 @@ void SoXEffectParameterMap::setKindInt (IN String& parameterName,
 /*--------------------*/
 
 void SoXEffectParameterMap::setKindReal (IN String& parameterName,
-                                        IN Real lowValue,
-                                        IN Real highValue,
-                                        IN Real delta)
+                                         IN Real lowValue,
+                                         IN Real highValue,
+                                         IN Real delta)
 {
     Assertion_pre(lowValue <= highValue, "interval must be non-empty");
     Assertion_pre(delta > 1E-9, "delta must be greater than zero");
@@ -638,7 +714,7 @@ void SoXEffectParameterMap::setKindReal (IN String& parameterName,
     const String rangeAsString =
         (lowValueAsString + rangeListSeparator
          + TOSTRING(highValue) + rangeListSeparator
-         + TOSTRING(delta));
+         + STR::toString(delta, 0, 15, "0", true));
     _parameterNameToValueRangeMap[parameterName] = rangeAsString;
     setValue(parameterName, lowValueAsString);
 
@@ -648,7 +724,7 @@ void SoXEffectParameterMap::setKindReal (IN String& parameterName,
 /*--------------------*/
 
 void SoXEffectParameterMap::setKindEnum (IN String& parameterName,
-                                        IN StringList& valueList)
+                                         IN StringList& valueList)
 {
     Assertion_pre(valueList.size() > 0, "value list must be non-empty");
     Logging_trace2(">>: %1, range = %2",
@@ -720,7 +796,7 @@ void SoXEffectParameterMap::setKindAndValueEnum
 
 String
 SoXEffectParameterMap::pagedParameterName (IN String parameterName,
-                                          IN Natural pageIndex)
+                                           IN Natural pageIndex)
 {
     Logging_trace2(">>: parameterName = %1, page = %2",
                    parameterName, TOSTRING(pageIndex));

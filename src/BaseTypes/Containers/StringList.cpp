@@ -17,14 +17,17 @@
 
 /*--------------------*/
 
-using BaseModules::StringUtil;
 using BaseTypes::Primitives::String;
-using BaseTypes::Primitives::String_toString;
 
 /** abbreviation for StringUtil */
 using STR = BaseModules::StringUtil;
 
 /*====================*/
+
+String BaseTypes::Containers::_stringListTypeName ()
+{
+    return "StringList";
+}
 
 /*--------------------*/
 /* constructors       */
@@ -67,6 +70,23 @@ StringList StringList::makeBySplit (IN String& st,
     } while (position != undefined);
 
     return result;
+}
+
+
+/*--------------------*/
+/* type conversions   */
+/*--------------------*/
+
+String StringList::toString () const
+{
+    return GenericList::toString();
+}
+
+/*--------------------*/
+
+String StringList::toString (IN StringList& list)
+{
+    return list.toString();
 }
 
 /*--------------------*/

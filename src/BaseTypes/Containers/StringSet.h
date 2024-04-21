@@ -28,6 +28,15 @@ using BaseTypes::GenericTypes::GenericSet;
 namespace BaseTypes::Containers {
 
     /**
+     * Returns name of string set type
+     *
+     * @return type name
+     */
+    String _stringSetTypeName ();
+    
+    /*--------------------*/
+
+    /**
      * A <C>StringSet</C> object is a set of string values with no
      * duplicates and only simple containment access and the ability
      * to add and remove elements.
@@ -35,7 +44,7 @@ namespace BaseTypes::Containers {
     struct StringSet
         : public GenericSet<String,
                             String_toString,
-                            StringLiteral{"StringSet"}> {
+                            _stringSetTypeName > {
 
         /*--------------------*/
         /* constructors       */

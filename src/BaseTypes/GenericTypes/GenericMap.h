@@ -40,7 +40,7 @@ namespace BaseTypes::GenericTypes {
     template <typename KeyType, typename ValueType,
               ElementToStringProc<KeyType> keyToString   = nullptr,
               ElementToStringProc<ValueType> valueToString = nullptr,
-              StringLiteral nameOfType = "Map"> 
+              StringProc nameOfType = nullptr> 
     struct GenericMap : public map<KeyType, ValueType>
     {
 
@@ -108,7 +108,9 @@ namespace BaseTypes::GenericTypes {
                         : (*valueToString)(value)));
             }
 
-            result = nameOfType.toString() + "(" + result + ")";
+            String typeName = (nameOfType == nullptr ? "Map"
+                               : (*nameOfType)());
+            result = StringUtil::expand("%1(%2)", typeName, result);
             return result;
         }
 

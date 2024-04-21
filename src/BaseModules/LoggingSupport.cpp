@@ -22,7 +22,6 @@
     #define StdLib_atexit atexit
 
 #include "Assertion.h"
-#include "Dictionary.h"
 #include "File.h"
 #include "LoggingSupport.h"
 #include "OperatingSystem.h"
@@ -35,7 +34,6 @@ using namespace std::chrono;
 using BaseModules::File;
 using BaseModules::Logging;
 using BaseModules::OperatingSystem;
-using BaseTypes::Containers::Dictionary;
 using BaseTypes::GenericTypes::GenericList;
 
 /** abbreviation for StringUtil */
@@ -349,7 +347,7 @@ static Boolean _timeIsLogged{false};
 /*--------------------*/
 
 /** flag to tell whether logging is active or suppressed */
-static Boolean _isActive{false};
+static Boolean _isActive{true};
 
 /*--------------------*/
 
@@ -556,6 +554,7 @@ void Logging::initialize ()
 {
     StdLib_atexit(finalize);
     _buffer.clear();
+    _isActive = true;
     _appendEntryToBuffer("", 0, "START LOGGING -*- coding: utf-8 -*-");
 }
 

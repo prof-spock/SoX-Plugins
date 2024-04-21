@@ -13,9 +13,6 @@
 /*=========*/
 
 #include <cstdlib>
-    /** qualified version of getenv from stdlib */
-    #define StdLib_getenv getenv
-
 #include <filesystem>
 
 #include <stdio.h>
@@ -28,6 +25,15 @@
 #include "Logging.h"
 #include "OperatingSystem.h"
 
+/*====================*/
+
+#ifdef _WIN32
+    #include "MyWindows.h"
+#else
+    #include <unistd.h>
+    #include <dlfcn.h>
+#endif
+
 /*--------------------*/
 
 using BaseModules::File;
@@ -37,6 +43,81 @@ namespace FileSystem = std::filesystem;
 
 /** abbreviation for StringUtil */
 using STR = BaseModules::StringUtil;
+
+/*====================*/
+
+#ifdef _WIN32
+
+    /**
+     * Returns path of directory of current library or executable
+     * file.
+     *
+     * @param[in] isExecutable  tells whether this is a library
+     *                          or an executable
+     * @return  path of executable or library
+     */
+    String _executableDirectoryPath (IN Boolean isExecutable)
+    {
+        Windows::HMODULE component;
+
+        if (isExecutable) {
+            component = NULL;
+        } else {
+            Windows::DWORD flags =
+                (GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | 
+                 GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT);
+            Windows::LPWSTR address =
+                (Windows::LPWSTR) &_executableDirectoryPath;
+            Windows::GetModuleHandleExW(flags, address, &component);
+        }
+        
+        Windows::WCHAR wResult[MAX_PATH];
+        Windows::GetModuleFileNameW(component, wResult, MAX_PATH);
+        String result = TOSTRING(std::wstring(wResult));
+        result = OperatingSystem::dirname(result);
+        return result;
+    }
+
+#else
+
+    /*========================*/
+    /* UNIX/MACOS DEFINITIONS */
+    /*========================*/
+
+    /**
+     * Returns path of directory of current library or executable
+     * file.
+     *
+     * @param[in] isExecutable  tells whether this is a library
+     *                          or an executable
+     * @return  path of executable or library
+     */
+    String _executableDirectoryPath (IN Boolean isExecutable)
+    {
+        String result;
+
+        if (isExecutable) {
+            size_t effectiveLength;
+            constexpr size_t length = 1000;
+            char executablePath[length];
+            effectiveLength = readlink("/proc/self/exe", executablePath,
+                                       length);
+            result = std::string(executablePath);
+
+            if (effectiveLength < 0 || effectiveLength == length) {
+                Logging_traceError("--: readlink failed");
+            }
+        } else {
+            Dl_info libraryData;
+            Boolean isOkay =
+                (dladdr((void*) &_executableDirectoryPath, &libraryData) != 0);
+            result = isOkay ? TOSTRING(libraryData.dli_fname) : "";
+        }
+
+        return result;
+    }
+
+#endif  
 
 /*====================*/
 
@@ -94,7 +175,8 @@ String OperatingSystem::basename (IN String& fileName)
     Natural bPosition = STR::findFromEnd(fileName, "\\");
     Natural position =
         (bPosition == undefined ? aPosition
-         : (aPosition < bPosition ? bPosition : aPosition));
+         : (aPosition == undefined ? bPosition
+            : Natural::maximum(aPosition, bPosition)));
 
     if (position == undefined) {
         result = fileName;
@@ -119,7 +201,8 @@ String OperatingSystem::dirname (IN String& fileName)
     Natural bPosition = STR::findFromEnd(fileName, "\\");
     Natural position =
         (bPosition == undefined ? aPosition
-         : (aPosition < bPosition ? bPosition : aPosition));
+         : (aPosition == undefined ? bPosition
+            : Natural::maximum(aPosition, bPosition)));
 
     if (position == undefined) {
         result = ".";
@@ -133,20 +216,10 @@ String OperatingSystem::dirname (IN String& fileName)
 
 /*--------------------*/
 
-String OperatingSystem::environmentValue (IN String variableName,
-                                          IN String defaultValue)
+String OperatingSystem::executableDirectoryPath (IN Boolean isExecutable)
 {
-    Logging_trace2(">>: variable = '%1', default = '%2'",
-                   variableName, defaultValue);
-    char* value = (char*) StdLib_getenv((char*) variableName.c_str());
-    String result;
-
-    if (value == NULL) {
-        result = defaultValue;
-    } else {
-        result = String(value);
-    }
-
+    Logging_trace(">>");
+    String result = _executableDirectoryPath(isExecutable);
     Logging_trace1("<<: %1", result);
     return result;
 }
@@ -157,9 +230,9 @@ String OperatingSystem::temporaryDirectoryPath ()
 {
     Logging_trace(">>");
 
-    char* environmentPath = (char*) StdLib_getenv("tmp");
+    char* environmentPath = std::getenv("tmp");
     environmentPath = (environmentPath != NULL ? environmentPath
-                       : (char*) StdLib_getenv("temp"));
+                       : std::getenv("temp"));
     environmentPath = (environmentPath != NULL ? environmentPath
                        : (char*) "/tmp");
     String result = String(environmentPath);

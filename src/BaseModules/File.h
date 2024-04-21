@@ -18,13 +18,11 @@
 
 #include "Boolean.h"
 #include "ByteList.h"
-#include "StringList.h"
 #include "Object.h"
 
 /*--------------------*/
 
 using BaseTypes::Containers::ByteList;
-using BaseTypes::Containers::StringList;
 using BaseTypes::Primitives::Boolean;
 using BaseTypes::Primitives::Object;
 using BaseTypes::Primitives::String;

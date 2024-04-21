@@ -271,6 +271,19 @@ namespace SoXPlugins::Helpers {
         Boolean adaptValueReal (IN String& parameterName,
                                 INOUT Real& value) const;
 
+
+        /*--------------------*/
+
+        /**
+         * Tells whether <C>value</C> for <C>parameterName</C> is
+         * different to stored value.
+         *
+         * @param[in] parameterName   name of affected parameter
+         * @param[in] value           value to be stored in parameter
+         */
+        Boolean valueIsDifferent (IN String& parameterName,
+                                  IN String value) const;
+
         /*--------------------*/
         /* active state       */
         /*--------------------*/

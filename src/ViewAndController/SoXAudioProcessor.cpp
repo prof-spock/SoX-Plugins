@@ -241,7 +241,7 @@ namespace SoXPlugins::ViewAndController {
                 new juce::AudioParameterFloat(juceParameterID,
                                               juceParameterName,
                                               range,
-                                              (float) defaultValue, "");
+                                              (float) defaultValue);
         } else if (kind == SoXEffectParameterKind::intKind) {
             Integer lowValue, highValue, delta;
             effectParameterMap.valueRangeInt(parameterName,
@@ -325,12 +325,9 @@ namespace SoXPlugins::ViewAndController {
             if (kind == SoXEffectParameterKind::enumKind) {
                 STR::prepend(parameterValue, quoteCharacter);
                 STR::append(parameterValue, quoteCharacter);
-            } else if (kind == SoXEffectParameterKind::realKind) {
-                const Real r = STR::toReal(parameterValue);
-                parameterValue = r.toString();
             }
 
-            // write each entry as a line
+            /* write each entry as a line */
             result += (parameterName + " = " + parameterValue + "\n");
         }
 
@@ -358,11 +355,11 @@ namespace SoXPlugins::ViewAndController {
     {
         Logging_trace1(">>: st = %1", st);
 
-        // read the data as written by the string conversion
+        /* read the data as written by the string conversion */
         const StringList lineList = StringList::makeBySplit(st, "\n");
 
-        // throw away empty last line and title => first index is 1, last
-        // index is lineCount - 1
+        /* throw away empty last line and title => first index is 1,
+           last index is lineCount - 1 */
         const Natural firstIndex = 1;
         const Natural lastIndex  = lineList.size() - 2;
         Natural previousPageNumber = Natural::maximumValue();
@@ -386,15 +383,15 @@ namespace SoXPlugins::ViewAndController {
                     value = value.substr(1, value.length() - 2);
                 }
 
-                // the recalculation is forced when the value is
-                // outside a page or the last value of the sequence
+                /* the recalculation is forced when the value is
+                   outside a page or the last value of the sequence */
                 const Boolean isOnSamePage =
                     (previousPageNumber == pageNumber);
                 const Boolean recalculationIsForced =
                   (i == lastIndex || !isOnSamePage);
 
-                // make sure that the value in parameter map does not
-                // match the new value
+                /* make sure that the value in parameter map does not
+                   match the new value */
                 if (!parameterMap.isAllowedValue(parameterName, value)) {
                     value = parameterMap.value(parameterName);
                 }
@@ -579,7 +576,7 @@ int SoXAudioProcessor::getCurrentProgram ()
 
 void SoXAudioProcessor::setCurrentProgram (int)
 {
-    // does not apply
+    /* does not apply */
 }
 
 /*--------------------*/
@@ -593,7 +590,7 @@ const juce::String SoXAudioProcessor::getProgramName (int)
 
 void SoXAudioProcessor::changeProgramName (int, const juce::String&)
 {
-    // does not apply
+    /* does not apply */
 }
 
 /*--------------------*/
@@ -625,7 +622,7 @@ void SoXAudioProcessor::getStateInformation (OUT juce::MemoryBlock& destData)
 {
     Logging_trace(">>");
 
-    // stores state of audio processor in <destData>
+    /* stores state of audio processor in <destData> */
     const String title = getName().toStdString();
     const String st = _convertMapToString(effectParameterMap(), title);
     const Natural sizeInBytes = st.size();
@@ -646,7 +643,7 @@ void SoXAudioProcessor::setStateInformation (const void* data,
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
     SoXAudioEffect* effect = descriptor.effect;
 
-    // restores state of audio processor from <data>
+    /* restores state of audio processor from <data> */
     String st((char *) data, sizeInBytes);
     _readKeyValueMapString(this, effectParameterMap(), st);
     effect->setParameterValidity(true);
@@ -685,16 +682,14 @@ void SoXAudioProcessor::setValue (IN String& parameterName,
     if (!parameterMap.contains(parameterName)) {
         Logging_trace1("--: bad parameter - %1", parameterName);
     } else {
-        const String oldValue = parameterMap.value(parameterName);
-
-        if (value != oldValue) {
-            // update effect and parameter map
+        if (parameterMap.valueIsDifferent(parameterName, value)) {
+            /* update effect and parameter map */
             SoXAudioEffect* effect = descriptor.effect;
             const SoXParameterValueChangeKind changeKind =
                 effect->setValue(parameterName, value,
                                  recalculationIsForced);
 
-            // notify listeners
+            /* notify listeners */
             SoXParameterValueChangeKind parameterChange = 
                 SoXParameterValueChangeKind::parameterChange;
         
@@ -704,7 +699,7 @@ void SoXAudioProcessor::setValue (IN String& parameterName,
 
             _notifyObserversAboutChange(parameterChange, parameterName);
 
-            // update juce parameter object
+            /* update juce parameter object */
             Natural parameterIndex =
                 descriptor.parameterNameToIndexMap.at(parameterName);
             juce::AudioProcessorParameter* parameter =
@@ -861,8 +856,8 @@ void SoXAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     const Natural outputChannelCount = getTotalNumOutputChannels();
     const Natural sampleCount = (Natural) buffer.getNumSamples();
 
-    // In case we have more outputs than inputs, this code clears any
-    // output channels that didn't contain input data
+    /* In case we have more outputs than inputs, this code clears any
+       output channels that didn't contain input data */
     for (Natural i = channelCount;  i < outputChannelCount;  i++) {
         buffer.clear((int) i, 0, (int) sampleCount);
     }

@@ -6,13 +6,13 @@
 	<array>
 		<dict>
 			<key>description</key>
-			<string>SoX${effectName}</string>
+			<string>${JUCE_auPluginName}</string>
 			<key>factoryFunction</key>
-			<string>SoX${effectName}AUFactory</string>
+			<string>${JUCE_auPluginName}AUFactory</string>
 			<key>manufacturer</key>
 			<string>${JUCE_manufacturerName}</string>
 			<key>name</key>
-			<string>${JUCE_manufacturerName}: SoX ${effectName}</string>
+			<string>${JUCE_auLongPluginName}</string>
 			<key>sandboxSafe</key>
 			<true/>
 			<key>subtype</key>
@@ -28,11 +28,11 @@
 	<key>CFBundleDevelopmentRegion</key>
             <string>English</string>
 	<key>CFBundleExecutable</key>
-            <string>SoX${effectName}</string>
+            <string>${JUCE_auPluginName}</string>
 	<key>CFBundleIdentifier</key>
-	    <string>eu.tensi.thomas.SoXPlugins.SoX${effectName}</string>
+	    <string>${JUCE_bundlePrefix}.${JUCE_auPluginName}</string>
 	<key>CFBundleName</key>
-            <string>SoX${effectName}</string>
+            <string>${JUCE_auPluginName}</string>
 	<key>CFBundlePackageType</key>
             <string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
@@ -44,12 +44,13 @@
 	<key>CFBundleVersion</key>
             <string>1.0</string>
 	<key>CSResourcesFileMapped</key> <true/>
-        <key>LSMinimumSystemVersion</key><string>10.11</string>
+        <key>LSMinimumSystemVersion</key>
+	    <string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSHumanReadableCopyright</key>
 	    <string></string>
 	<key>NSMainNibFile</key>
 	    <string>RecentFilesMenuTemplate.nib</string>
 	<key>NSPrincipalClass</key>
-	    <string>SoX${effectName}</string>
+	    <string>SoX${pluginName}</string>
 </dict>
 </plist>

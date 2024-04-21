@@ -28,4 +28,11 @@
 	  <DisplayString>{_value}</DisplayString>
   </Type>
 
+  <!--
+   expanded types
+   -->
+  <Type Name="MIDI::MidiEvent">
+	<DisplayString>MidiEvent(_descriptor = {_descriptor})</DisplayString>
+  </Type>
+
 </AutoVisualizer>

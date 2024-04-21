@@ -21,6 +21,11 @@ using BaseTypes::Containers::IntegerList;
 
 /*====================*/
 
+String BaseTypes::Containers::_integerListTypeName ()
+{
+    return "IntegerList";
+}
+
 /*--------------------*/
 /* constructors       */
 /*--------------------*/

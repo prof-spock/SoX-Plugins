@@ -17,18 +17,17 @@
 /*=========*/
 
 #include <set>
-#include "Boolean.h"
 #include "ElementToStringProc.h"
 #include "Natural.h"
-#include "StringLiteral.h"
+#include "StringProc.h"
+#include "StringUtil.h"
 
 /*--------------------*/
 
 using std::set;
+using BaseModules::StringUtil;
 using BaseTypes::GenericTypes::ElementToStringProc;
-using BaseTypes::GenericTypes::StringLiteral;
-using BaseTypes::Primitives::Boolean;
-using BaseTypes::Primitives::Natural;
+using BaseTypes::GenericTypes::StringProc;
 
 /*====================*/
 
@@ -43,7 +42,7 @@ namespace BaseTypes::GenericTypes {
      */
     template <typename ElementType,
               ElementToStringProc<ElementType> elementToString = nullptr,
-              StringLiteral nameOfType = "Set">
+              StringProc nameOfType = nullptr>
     struct GenericSet : public set<ElementType> {
 
         /*--------------------------*/
@@ -95,7 +94,9 @@ namespace BaseTypes::GenericTypes {
                 i++;
             }
 
-            result = nameOfType.toString() + "(" + result + ")";
+            String typeName = (nameOfType == nullptr ? "Set"
+                               : (*nameOfType)());
+            result = StringUtil::expand("%1(%2)", typeName, result);
             return result;
         }
 
@@ -110,7 +111,7 @@ namespace BaseTypes::GenericTypes {
          */
         Boolean isEmpty () const
         {
-            return set<ElementType>.length() == 0;
+            return set<ElementType>::length() == 0;
         }
 
         /*--------------------*/

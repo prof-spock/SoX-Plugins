@@ -185,10 +185,10 @@ WaveForm::WaveForm ()
     Logging_trace(">>");
 
     if (!_isInitialized) {
-        // inititalize static variables
+        /* inititalize static variables */
 
-        // for a triangle wave with linear interpolation four
-        // equidistant sampling points are enough
+        /* for a triangle wave with linear interpolation four
+           equidistant sampling points are enough */
         const Natural _sineWaveTableLength     = 10000;
         const Natural _triangleWaveTableLength = 4;
 
@@ -297,9 +297,9 @@ Real WaveForm::current () const
                                               descriptor->position);
     value = minimumValue + value * scalingFactor;
 
-    //  does not distribute integer values equally over their
-    // range: the maximum value only gets 50% coverage of all the
-    // other values
+    /* does not distribute integer values equally over their range:
+       the maximum value only gets 50% coverage of all the other
+       values */
     value = (hasIntegerValues ? value.round() : value);
     return value;
 }

@@ -229,12 +229,12 @@ namespace SoXPlugins::Effects::SoXCompander {
 
         _EffectDescriptor_CMPD* effectDescriptor =
             new _EffectDescriptor_CMPD{
-                bandCount,  // bandCount
-                0,          // channelCount
-                {},         // multibandCompander
-                {},         // indexToCompanderBandParamDataMap
-                {},         // inputSampleList
-                {}          // outputSampleList
+                bandCount,  /* bandCount */
+                0,          /* channelCount */
+                {},         /* multibandCompander */
+                {},         /* indexToCompanderBandParamDataMap */
+                {},         /* inputSampleList */
+                {}          /* outputSampleList */
             };
 
         Logging_trace1("<<: %1", effectDescriptor->toString());
@@ -520,7 +520,7 @@ void SoXCompander_AudioEffect::prepareToPlay (IN Real sampleRate)
         _EffectDescriptor_CMPD& effectDescriptor =
             TOREFERENCE<_EffectDescriptor_CMPD>(_effectDescriptor);
         _sampleRate = sampleRate;
-        // compander has to be recalculated
+        /* compander has to be recalculated */
         _updateSettings(effectDescriptor, _sampleRate, _channelCount);
     }
 
@@ -560,7 +560,7 @@ SoXCompander_AudioEffect::processBlock
 
         compander.apply(inputSampleList, outputSampleList);
 
-        // write output sample list onto all channels
+        /* write output sample list onto all channels */
         for (Natural channel = 0;  channel < _channelCount;  channel++) {
             AudioSampleList& outputList = buffer[channel];
             outputList[i] = outputSampleList[channel];

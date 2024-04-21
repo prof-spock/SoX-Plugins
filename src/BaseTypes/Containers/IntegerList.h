@@ -29,6 +29,15 @@ using BaseTypes::GenericTypes::GenericList;
 namespace BaseTypes::Containers {
 
     /**
+     * Returns name of integer list type
+     *
+     * @return type name
+     */
+    String _integerListTypeName ();
+    
+    /*--------------------*/
+
+    /**
      * An <C>IntegerList</C> object is a list of integer values
      * with arbitrary indexed access to positions in the list.
      * Indexing starts at zero and is consecutive.  Lists also allow
@@ -37,7 +46,7 @@ namespace BaseTypes::Containers {
     struct IntegerList
         : public GenericList<Integer,
                              Integer::toString,
-                             StringLiteral{"IntegerList"}> {
+                             _integerListTypeName > {
 
         /*--------------------*/
         /* constructors       */

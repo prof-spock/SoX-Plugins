@@ -31,6 +31,15 @@ using BaseTypes::Primitives::Real;
 namespace BaseTypes::Containers {
 
     /**
+     * Returns name of real list type
+     *
+     * @return type name
+     */
+    String _realListTypeName ();
+    
+    /*--------------------*/
+
+    /**
      * A <C>RealList</C> object is a list of real values with
      * arbitrary indexed access to positions in the list.
      * Indexing starts at zero and is consecutive.  Lists also allow
@@ -39,7 +48,7 @@ namespace BaseTypes::Containers {
     struct RealList
         : public GenericList<Real,
                              Real::toString,
-                             StringLiteral{"RealList"}> {
+                             _realListTypeName > {
 
         /*--------------------*/
         /* constructors       */

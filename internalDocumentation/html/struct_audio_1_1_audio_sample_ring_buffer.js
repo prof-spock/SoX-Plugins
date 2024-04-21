@@ -18,5 +18,9 @@ var struct_audio_1_1_audio_sample_ring_buffer =
     [ "shiftLeft", "struct_audio_1_1_audio_sample_ring_buffer.html#ac53edfcefbc3f37565dd853e7cbd5d03", null ],
     [ "shiftRight", "struct_audio_1_1_audio_sample_ring_buffer.html#a1e374a5f6bde0af9d1f62cb9b0884e0c", null ],
     [ "toArray", "struct_audio_1_1_audio_sample_ring_buffer.html#a8f23e94ff96ac4a9c399d496674be1e0", null ],
-    [ "toString", "struct_audio_1_1_audio_sample_ring_buffer.html#a2857052ad78d8c1141abe9b056f79d98", null ]
+    [ "toString", "struct_audio_1_1_audio_sample_ring_buffer.html#a2857052ad78d8c1141abe9b056f79d98", null ],
+    [ "_allocatedLength", "struct_audio_1_1_audio_sample_ring_buffer.html#aa1ebc6b47070c1e73d61b3a72fccba04", null ],
+    [ "_data", "struct_audio_1_1_audio_sample_ring_buffer.html#a5999f99a84e18356d92c921e9dbd2e35", null ],
+    [ "_firstIndex", "struct_audio_1_1_audio_sample_ring_buffer.html#a492739ac449b9a004ff416c8f364b919", null ],
+    [ "_length", "struct_audio_1_1_audio_sample_ring_buffer.html#a8c8a8d87d06e0a939ed9655895818197", null ]
 ];

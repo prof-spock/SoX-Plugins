@@ -27,6 +27,15 @@ using BaseTypes::Containers::StringList;
 namespace BaseTypes::Containers {
 
     /**
+     * Returns name of natural list type
+     *
+     * @return type name
+     */
+    String _naturalListTypeName ();
+    
+    /*--------------------*/
+
+    /**
      * A <C>NaturalList</C> object is a list of non-negative
      * integer values with arbitrary indexed access to positions in
      * the list.  Indexing starts at zero and is consecutive.
@@ -35,7 +44,7 @@ namespace BaseTypes::Containers {
     struct NaturalList
         : public GenericList<Natural,
                              Natural::toString,
-                             StringLiteral{"NaturalList"}> {
+                             _naturalListTypeName > {
 
         /*--------------------*/
         /* constructors       */

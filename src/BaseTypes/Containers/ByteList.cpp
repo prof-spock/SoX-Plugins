@@ -20,6 +20,11 @@ using BaseTypes::Containers::ByteList;
 
 /*====================*/
 
+String BaseTypes::Containers::_byteListTypeName ()
+{
+    return "ByteList";
+}
+    
 /*--------------------*/
 /* constructors       */
 /*--------------------*/

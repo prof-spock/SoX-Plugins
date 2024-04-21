@@ -25,6 +25,11 @@ using STR = BaseModules::StringUtil;
 
 /*====================*/
 
+String BaseTypes::Containers::_naturalListTypeName ()
+{
+    return "NaturalList";
+}
+
 /*--------------------*/
 /* constructors       */
 /*--------------------*/

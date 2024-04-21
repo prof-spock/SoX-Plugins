@@ -470,18 +470,18 @@ namespace SoXPlugins::Effects::SoXFilter {
 
         _EffectDescriptor_FLTR* result =
             new _EffectDescriptor_FLTR{
-                filterKind_biquad,              // kind
-                0.0, 0.0, 0.0, 0.0, 0.0, 0.0,   // coefficients
-                {2, true, _biquadFilterOrder},  // sampleRingBufferVector
-                {_biquadFilterOrder},           // filter
-                1000.0,                         // frequency
-                1.5,                            // bandwidth
-                FilterBandwidthUnit::slope,     // bandwidthUnit
-                0.0,                            // dBGain
-                0.0,                            // equGain
-                false,                          // usesUnpitchedAudioMode
-                false,                          // usesConstantSkirtGain
-                true,                           // isSinglePole
+                filterKind_biquad,              /* kind */
+                0.0, 0.0, 0.0, 0.0, 0.0, 0.0,   /* coefficients */
+                {2, true, _biquadFilterOrder},  /* sampleRingBufferVector */
+                {_biquadFilterOrder},           /* filter */
+                1000.0,                         /* frequency */
+                1.5,                            /* bandwidth */
+                FilterBandwidthUnit::slope,     /* bandwidthUnit */
+                0.0,                            /* dBGain */
+                0.0,                            /* equGain */
+                false,                          /* usesUnpitchedAudioMode */
+                false,                          /* usesConstantSkirtGain */
+                true,                           /* isSinglePole */
             };
 
         Logging_trace1("<<: %1", result->toString());
@@ -601,8 +601,8 @@ namespace SoXPlugins::Effects::SoXFilter {
         Real a2 = 0.0;
 
         if (effectDescriptor.kind == filterKind_biquad) {
-            // we can just keep the direct coefficients, no calculation
-            // is necessary
+            /* we can just keep the direct coefficients, no
+               calculation is necessary */
             b0 = effectDescriptor.b0;
             b1 = effectDescriptor.b1;
             b2 = effectDescriptor.b2;
@@ -739,7 +739,7 @@ namespace SoXPlugins::Effects::SoXFilter {
                 }
             }
 
-            // update the internal variables
+            /* update the internal variables */
             effectDescriptor.b0 = b0;
             effectDescriptor.b1 = b1;
             effectDescriptor.b2 = b2;
@@ -773,7 +773,7 @@ namespace SoXPlugins::Effects::SoXFilter {
 
         _setBandwidthUnitParameter(parameterMap, filterKind);
 
-        // activate or deactivate parameter names
+        /* activate or deactivate parameter names */
         Boolean isActive;
         const String widgetDataString =
             _filterKindToWidgetDataMap.at(filterKind);
@@ -844,7 +844,7 @@ SoXFilter_AudioEffect::SoXFilter_AudioEffect ()
     /* initialize parameters */
     _effectParameterMap.clear();
 
-    // first of all define kind of filter and all parameter names
+    /* first of all define kind of filter and all parameter names */
     _effectParameterMap.setKindAndValueEnum(parameterName_kind,
                                             _kindList, filterKind);
     _effectParameterMap.setKindAndValueReal(parameterName_frequency,
@@ -1004,7 +1004,7 @@ void SoXFilter_AudioEffect::prepareToPlay (IN Real sampleRate)
             TOREFERENCE<_EffectDescriptor_FLTR>(_effectDescriptor);
         _sampleRate = sampleRate;
 
-        // filter has to be recalculated
+        /* filter has to be recalculated */
         _updateFilterCoefficients(effectDescriptor, _sampleRate);
     }
 

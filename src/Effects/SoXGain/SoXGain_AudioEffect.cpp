@@ -76,7 +76,7 @@ namespace SoXPlugins::Effects::SoXGain {
 
         _EffectDescriptor_GAIN* result =
             new _EffectDescriptor_GAIN{
-                0.0 // gain
+                0.0 /* gain */
             };
 
         Logging_trace1("<<: %1", result->toString());

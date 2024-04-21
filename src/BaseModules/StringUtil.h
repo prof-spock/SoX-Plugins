@@ -285,6 +285,36 @@ namespace BaseModules {
         /*--------------------*/
 
         /**
+         * Returns string padded to the left with <C>ch</C> to a
+         * length of <C>desiredLength</C>.
+         *
+         * @param[in] st             the string to be padded
+         * @param[in] desiredLength  target length after padding
+         * @param[in] ch             pad character
+         * @return padded string
+         */
+        static String paddedLeft (IN String& st,
+                                  IN Natural desiredLength,
+                                  IN String& ch);
+
+        /*--------------------*/
+
+        /**
+         * Returns string padded to the right with <C>ch</C> to a
+         * length of <C>desiredLength</C>.
+         *
+         * @param[in] st             the string to be padded
+         * @param[in] desiredLength  target length after padding
+         * @param[in] ch             pad character
+         * @return padded string
+         */
+        static String paddedRight (IN String& st,
+                                   IN Natural desiredLength,
+                                   IN String& ch);
+
+        /*--------------------*/
+
+        /**
          * Returns prefix with at most <C>count</C> characters of
          * <C>st</C>.
          *
@@ -292,7 +322,8 @@ namespace BaseModules {
          * @param[in] count  number of characters to extract from front
          * @return  prefix with at most <C>count</C> characters
          */
-        static String prefix (IN String& st, IN Natural count);
+        static String prefix (IN String& st,
+                              IN Natural count);
 
         /*--------------------*/
 
@@ -302,7 +333,8 @@ namespace BaseModules {
          * @param[inout] st  the string to be altered
          * @param[in]    ch  character to be put before string
          */
-        static void prepend (INOUT String& st, IN Character ch);
+        static void prepend (INOUT String& st,
+                             IN Character ch);
 
         /*--------------------*/
 
@@ -599,17 +631,37 @@ namespace BaseModules {
          * Converts real value <C>n</C> to string with <C>precision</C>,
          * <C>fractionalDigitCount</C>and padding information.
          *
-         * @param[in] n                     natural value to be converted
-         * @param[in] precision             minimum width of characters
-         * @param[in] fractionalDigitCount  minimum number of valid digits
-         * @param[in] padString             string to use for left
-         *                                  padding
+         * @param[in] r                           real value to be
+         *                                        converted
+         * @param[in] precision                   minimum count of
+         *                                        characters
+         * @param[in] fractionalDigitCount        minimum number of
+         *                                        valid digits
+         * @param[in] padString                   string to use for
+         *                                        left and right padding
+         * @param[in] scientificNotationIsForced  tells whether number
+         *                                        must be formatted
+         *                                        using scientific
+         *                                        notation
          * @return  string representation of real
          */
         static String toString (IN Real r,
                                 IN Natural precision,
                                 IN Natural fractionalDigitCount,
-                                IN String padString = "0");
+                                IN String padString = "0",
+                                IN Boolean scientificNotationIsForced = false);
+
+        /*--------------------*/
+
+        /**
+         * Converts wide string <C>st</C> to standard string using
+         * UTF8 encoding
+         *
+         * @param[in] st  the wide string to be converted to a standard
+         *                string
+         * @return  standard string representation of string
+         */
+        static String toString (IN std::wstring& st);
 
         /*--------------------*/
 
@@ -657,6 +709,18 @@ namespace BaseModules {
          * @return  upper case version of string
          */
         static String toUppercase (IN String& st);
+
+        /*--------------------*/
+
+        /**
+         * Converts string <C>st</C> to wide string assuming UTF8
+         * encoding
+         *
+         * @param[in] st  the standard string to be converted to a wide
+         *                string
+         * @return  wide string representation of string
+         */
+        static std::wstring toWideString (IN String& st);
 
         /*--------------------*/
         /* GENERIC FUNCTIONS  */

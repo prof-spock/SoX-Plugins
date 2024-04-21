@@ -84,6 +84,9 @@ $(document).ready(function(){initNavTree('struct_so_x_plugins_1_1_effects_1_1_so
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">SoXPlugins::Effects::SoXCompander::_TransferFunction Struct Reference</div>  </div>
@@ -108,6 +111,59 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0c76b004e52da5a4f5b3189957678a1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#a0c76b004e52da5a4f5b3189957678a1c">apply</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> value) const</td></tr>
 <tr class="memdesc:a0c76b004e52da5a4f5b3189957678a1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies transfer function to  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#a0c76b004e52da5a4f5b3189957678a1c">More...</a><br /></td></tr>
 <tr class="separator:a0c76b004e52da5a4f5b3189957678a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a800bc0e3c909857caa857ced27fa8809"><td class="memItemLeft" align="right" valign="top"><a id="a800bc0e3c909857caa857ced27fa8809"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#a800bc0e3c909857caa857ced27fa8809">_adaptCurvesInSegmentList</a> ()</td></tr>
+<tr class="memdesc:a800bc0e3c909857caa857ced27fa8809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adapts curve segments in current transfer function by the dBKnee value. <br /></td></tr>
+<tr class="separator:a800bc0e3c909857caa857ced27fa8809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59449ed0d9a5a55d851b0ecce686627d"><td class="memItemLeft" align="right" valign="top"><a id="a59449ed0d9a5a55d851b0ecce686627d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#a59449ed0d9a5a55d851b0ecce686627d">_shiftScaleSegmentList</a> ()</td></tr>
+<tr class="memdesc:a59449ed0d9a5a55d851b0ecce686627d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adapts values of current transfer function segments in segment list by dBGain and makes values natural logarithms. <br /></td></tr>
+<tr class="separator:a59449ed0d9a5a55d851b0ecce686627d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2c200d2891dcc595a89117c507a6016"><td class="memItemLeft" align="right" valign="top"><a id="ae2c200d2891dcc595a89117c507a6016"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#ae2c200d2891dcc595a89117c507a6016">_updateSegmentListEnds</a> ()</td></tr>
+<tr class="memdesc:ae2c200d2891dcc595a89117c507a6016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adapts start values and kinds of transfer function segments in segment list. <br /></td></tr>
+<tr class="separator:ae2c200d2891dcc595a89117c507a6016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b790121166865fc579a673ce3459c74"><td class="memItemLeft" align="right" valign="top"><a id="a0b790121166865fc579a673ce3459c74"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#a0b790121166865fc579a673ce3459c74">_updateSegmentListKinds</a> ()</td></tr>
+<tr class="memdesc:a0b790121166865fc579a673ce3459c74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adapts start values and kinds of SoX compander transfer segments in segment list. <br /></td></tr>
+<tr class="separator:a0b790121166865fc579a673ce3459c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97e8eb2092b87e4b05910db39930a451"><td class="memItemLeft" align="right" valign="top"><a id="a97e8eb2092b87e4b05910db39930a451"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#a97e8eb2092b87e4b05910db39930a451">_updateSegmentList</a> ()</td></tr>
+<tr class="memdesc:a97e8eb2092b87e4b05910db39930a451"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adapts values of transfer function segments. <br /></td></tr>
+<tr class="separator:a97e8eb2092b87e4b05910db39930a451"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aa5337aa69ed01f755e9fea66b68daabe"><td class="memItemLeft" align="right" valign="top"><a id="aa5337aa69ed01f755e9fea66b68daabe"></a>
+<a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#aede722d417c87dcbd4fd4b7a960c57b3">_TfSegmentList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#aa5337aa69ed01f755e9fea66b68daabe">_segmentList</a></td></tr>
+<tr class="memdesc:aa5337aa69ed01f755e9fea66b68daabe"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of segments in this transfer function <br /></td></tr>
+<tr class="separator:aa5337aa69ed01f755e9fea66b68daabe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab43bfc1773d3a3175bfecfb69560ad23"><td class="memItemLeft" align="right" valign="top"><a id="ab43bfc1773d3a3175bfecfb69560ad23"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#ab43bfc1773d3a3175bfecfb69560ad23">_minimumLinearInValue</a></td></tr>
+<tr class="memdesc:ab43bfc1773d3a3175bfecfb69560ad23"><td class="mdescLeft">&#160;</td><td class="mdescRight">the minimum input value for this transfer function <br /></td></tr>
+<tr class="separator:ab43bfc1773d3a3175bfecfb69560ad23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61dac733cad14d2e0ebbe2eb3176c2bd"><td class="memItemLeft" align="right" valign="top"><a id="a61dac733cad14d2e0ebbe2eb3176c2bd"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#a61dac733cad14d2e0ebbe2eb3176c2bd">_minimumLinearOutValue</a></td></tr>
+<tr class="memdesc:a61dac733cad14d2e0ebbe2eb3176c2bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">the minimum output value for this transfer function <br /></td></tr>
+<tr class="separator:a61dac733cad14d2e0ebbe2eb3176c2bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1506bfc97059ed75fb2d5fee68abbcc5"><td class="memItemLeft" align="right" valign="top"><a id="a1506bfc97059ed75fb2d5fee68abbcc5"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#a1506bfc97059ed75fb2d5fee68abbcc5">_dBGain</a></td></tr>
+<tr class="memdesc:a1506bfc97059ed75fb2d5fee68abbcc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the global gain value in decibels for this transfer function <br /></td></tr>
+<tr class="separator:a1506bfc97059ed75fb2d5fee68abbcc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a176a0ebfd24affc2c29d211ead8b2a"><td class="memItemLeft" align="right" valign="top"><a id="a0a176a0ebfd24affc2c29d211ead8b2a"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#a0a176a0ebfd24affc2c29d211ead8b2a">_dBKnee</a></td></tr>
+<tr class="memdesc:a0a176a0ebfd24affc2c29d211ead8b2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the global knee value in decibels for this transfer function <br /></td></tr>
+<tr class="separator:a0a176a0ebfd24affc2c29d211ead8b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a9c97c42ff1126b90426f0ccd1e1dbc36"><td class="memItemLeft" align="right" valign="top"><a id="a9c97c42ff1126b90426f0ccd1e1dbc36"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#a9c97c42ff1126b90426f0ccd1e1dbc36">_leftDbOffset</a> = 10.0</td></tr>
+<tr class="memdesc:a9c97c42ff1126b90426f0ccd1e1dbc36"><td class="mdescLeft">&#160;</td><td class="mdescRight">initial offset of first segment relative to threshold point <br /></td></tr>
+<tr class="separator:a9c97c42ff1126b90426f0ccd1e1dbc36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html" title="A _TransferFunction object represents the transfer function of a compander consisting of several segm...">_TransferFunction</a></code> object represents the transfer function of a compander consisting of several segments (either linear or quadratic). </p>

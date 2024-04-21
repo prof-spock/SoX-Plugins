@@ -85,7 +85,9 @@ $(document).ready(function(){initNavTree('_so_x_gain___audio_effect_8cpp.html','
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">SoXGain_AudioEffect.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -96,6 +98,13 @@ $(document).ready(function(){initNavTree('_so_x_gain___audio_effect_8cpp.html','
 <div class="textblock"><code>#include &quot;<a class="el" href="_logging_8h_source.html">Logging.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_so_x_audio_helper_8h_source.html">SoXAudioHelper.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_so_x_gain___audio_effect_8h_source.html">SoXGain_AudioEffect.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for SoXGain_AudioEffect.cpp:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="_so_x_gain___audio_effect_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -121,6 +130,19 @@ Typedefs</h2></td></tr>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_gain___audio_effect_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c">STR</a> = <a class="el" href="struct_base_modules_1_1_string_util.html">BaseModules::StringUtil</a></td></tr>
 <tr class="memdesc:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil <br /></td></tr>
 <tr class="separator:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a5cd620ac9f0a4976e02ee5e4b7ea3986"><td class="memItemLeft" align="right" valign="top">static _EffectDescriptor_GAIN *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_gain.html#a5cd620ac9f0a4976e02ee5e4b7ea3986">SoXPlugins::Effects::SoXGain::_createEffectDescriptor</a> ()</td></tr>
+<tr class="memdesc:a5cd620ac9f0a4976e02ee5e4b7ea3986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up a new gain effect descriptor and returns it.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_gain.html#a5cd620ac9f0a4976e02ee5e4b7ea3986">More...</a><br /></td></tr>
+<tr class="separator:a5cd620ac9f0a4976e02ee5e4b7ea3986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aa0cc61b37725fe8d5a206ce2de0d3c0a"><td class="memItemLeft" align="right" valign="top"><a id="aa0cc61b37725fe8d5a206ce2de0d3c0a"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_gain.html#aa0cc61b37725fe8d5a206ce2de0d3c0a">SoXPlugins::Effects::SoXGain::parameterName_gain</a> = &quot;Gain [dB]&quot;</td></tr>
+<tr class="memdesc:aa0cc61b37725fe8d5a206ce2de0d3c0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the gain parameter <br /></td></tr>
+<tr class="separator:aa0cc61b37725fe8d5a206ce2de0d3c0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXGain_AudioEffect</code> body implements the SoX <b>gain</b> plugin amplifying or attenuating the input signal by a specific dB amount. </p>

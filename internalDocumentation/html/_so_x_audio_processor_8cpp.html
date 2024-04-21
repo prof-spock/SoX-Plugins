@@ -85,7 +85,9 @@ $(document).ready(function(){initNavTree('_so_x_audio_processor_8cpp.html',''); 
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">SoXAudioProcessor.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -97,6 +99,13 @@ $(document).ready(function(){initNavTree('_so_x_audio_processor_8cpp.html',''); 
 <code>#include &quot;<a class="el" href="_logging_8h_source.html">Logging.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_my_array_8h_source.html">MyArray.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_so_x_audio_editor_8h_source.html">SoXAudioEditor.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for SoXAudioProcessor.cpp:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="_so_x_audio_processor_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -130,12 +139,157 @@ typedef GenericSet&lt; <a class="el" href="struct_so_x_plugins_1_1_view_and_cont
 typedef GenericMap&lt; String, <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a159291a215bac17ba80d19973f63fdec">StringToNaturalMap</a></td></tr>
 <tr class="memdesc:a159291a215bac17ba80d19973f63fdec"><td class="mdescLeft">&#160;</td><td class="mdescRight">a mapping from string to natural <br /></td></tr>
 <tr class="separator:a159291a215bac17ba80d19973f63fdec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a7c30130b4cdda2b7f9313411e74fee48"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a7c30130b4cdda2b7f9313411e74fee48">_stretchToRealInterval</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> unitIntervalValue, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> lowValue, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> highValue)</td></tr>
+<tr class="memdesc:a7c30130b4cdda2b7f9313411e74fee48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns value from interval <code>lowValue</code> to <code>highValue</code> defined by unit interval factor <code>unitIntervalValue</code>.  <a href="_so_x_audio_processor_8cpp.html#a7c30130b4cdda2b7f9313411e74fee48">More...</a><br /></td></tr>
+<tr class="separator:a7c30130b4cdda2b7f9313411e74fee48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f639bc3b4ab0d90034e1bb79a3d6ab1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_integer.html">Integer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a3f639bc3b4ab0d90034e1bb79a3d6ab1">_stretchToIntegerInterval</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> unitIntervalValue, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_integer.html">Integer</a> lowValue, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_integer.html">Integer</a> highValue)</td></tr>
+<tr class="memdesc:a3f639bc3b4ab0d90034e1bb79a3d6ab1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns value from interval <code>lowValue</code> to <code>highValue</code> defined by unit interval factor <code>unitIntervalValue</code>.  <a href="_so_x_audio_processor_8cpp.html#a3f639bc3b4ab0d90034e1bb79a3d6ab1">More...</a><br /></td></tr>
+<tr class="separator:a3f639bc3b4ab0d90034e1bb79a3d6ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac40c8e82e1d81445df26ebf254ae9e8e"><td class="memItemLeft" align="right" valign="top">static juce::AudioProcessorParameter *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#ac40c8e82e1d81445df26ebf254ae9e8e">SoXPlugins::ViewAndController::_constructParameterObject</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;effectParameterMap)</td></tr>
+<tr class="memdesc:ac40c8e82e1d81445df26ebf254ae9e8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs juce parameter object from <code>parameterName</code> with data taken from <code>effectParameterMap</code>.  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#ac40c8e82e1d81445df26ebf254ae9e8e">More...</a><br /></td></tr>
+<tr class="separator:ac40c8e82e1d81445df26ebf254ae9e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6d933280a605069185330af0f337ecd"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#ab6d933280a605069185330af0f337ecd">SoXPlugins::ViewAndController::_normalize</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;st)</td></tr>
+<tr class="memdesc:ab6d933280a605069185330af0f337ecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces all newline in <code>st</code> by another character and returns result.  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#ab6d933280a605069185330af0f337ecd">More...</a><br /></td></tr>
+<tr class="separator:ab6d933280a605069185330af0f337ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcf9d2d9ea1286cfb9f6309d9126ed3d"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#abcf9d2d9ea1286cfb9f6309d9126ed3d">SoXPlugins::ViewAndController::_convertMapToString</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;parameterMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;title)</td></tr>
+<tr class="memdesc:abcf9d2d9ea1286cfb9f6309d9126ed3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts audio parameter in <code>map</code> to serialized string form; <code>title</code> is added for reference as the first line.  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#abcf9d2d9ea1286cfb9f6309d9126ed3d">More...</a><br /></td></tr>
+<tr class="separator:abcf9d2d9ea1286cfb9f6309d9126ed3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a418ec70762fae62f2497026385d358f3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#a418ec70762fae62f2497026385d358f3">SoXPlugins::ViewAndController::_readKeyValueMapString</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html">SoXAudioProcessor</a> *audioProcessor, <a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;parameterMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;st)</td></tr>
+<tr class="memdesc:a418ec70762fae62f2497026385d358f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads value settings from serialized form in <code>st</code> to <code>audioProcessor</code> and into <code>parameterMap</code>  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#a418ec70762fae62f2497026385d358f3">More...</a><br /></td></tr>
+<tr class="separator:a418ec70762fae62f2497026385d358f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19375c785a4f562f89f2dee11f0be928"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#a19375c785a4f562f89f2dee11f0be928">SoXPlugins::ViewAndController::_readTime</a> (juce::AudioPlayHead *playHead)</td></tr>
+<tr class="memdesc:a19375c785a4f562f89f2dee11f0be928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads current time and returns its value.  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#a19375c785a4f562f89f2dee11f0be928">More...</a><br /></td></tr>
+<tr class="separator:a19375c785a4f562f89f2dee11f0be928"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab586d8c0b077c3214db3cc8ff2fe6f2c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#ab586d8c0b077c3214db3cc8ff2fe6f2c">SoXPlugins::ViewAndController::_updateAudioProcessorParameter</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> juce::AudioProcessorParameter *parameter, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;effectParameterMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;value)</td></tr>
+<tr class="memdesc:ab586d8c0b077c3214db3cc8ff2fe6f2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update juce parameter object <code>parameter</code> named <code>parameterName</code> to <code>value</code> using data taken from <code>effectParameterMap</code>.  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#ab586d8c0b077c3214db3cc8ff2fe6f2c">More...</a><br /></td></tr>
+<tr class="separator:ab586d8c0b077c3214db3cc8ff2fe6f2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:af4ab15d0c88bb9a7da586dca959fd8f3"><td class="memItemLeft" align="right" valign="top"><a id="af4ab15d0c88bb9a7da586dca959fd8f3"></a>
+static const Character&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#af4ab15d0c88bb9a7da586dca959fd8f3">SoXPlugins::ViewAndController::quoteCharacter</a> = '&quot;'</td></tr>
+<tr class="memdesc:af4ab15d0c88bb9a7da586dca959fd8f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the double quote character <br /></td></tr>
+<tr class="separator:af4ab15d0c88bb9a7da586dca959fd8f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6dfbf5240ea5d5ad1924ecb51bf1852"><td class="memItemLeft" align="right" valign="top"><a id="aa6dfbf5240ea5d5ad1924ecb51bf1852"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#aa6dfbf5240ea5d5ad1924ecb51bf1852">SoXPlugins::ViewAndController::decimalPlaceCount</a> = 5</td></tr>
+<tr class="memdesc:aa6dfbf5240ea5d5ad1924ecb51bf1852"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of decimal places for reals in serialized form <br /></td></tr>
+<tr class="separator:aa6dfbf5240ea5d5ad1924ecb51bf1852"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXAudioProcessor</code> body implements an audio effect wrapper for a plugin responsible for the communication to the enclosing plugin host. </p>
 <dl class="section author"><dt>Author</dt><dd>Dr. Thomas Tensi </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020-06 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a3f639bc3b4ab0d90034e1bb79a3d6ab1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f639bc3b4ab0d90034e1bb79a3d6ab1">&#9670;&nbsp;</a></span>_stretchToIntegerInterval()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_base_types_1_1_primitives_1_1_integer.html">Integer</a> _stretchToIntegerInterval </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramname"><em>unitIntervalValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_integer.html">Integer</a>&#160;</td>
+          <td class="paramname"><em>lowValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_integer.html">Integer</a>&#160;</td>
+          <td class="paramname"><em>highValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns value from interval <code>lowValue</code> to <code>highValue</code> defined by unit interval factor <code>unitIntervalValue</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">unitIntervalValue</td><td>value between 0 and 1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">lowValue</td><td>lower bound value of target interval </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">highValue</td><td>higher bound value of target interval </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>scaled value in target interval </dd></dl>
+
+</div>
+</div>
+<a id="a7c30130b4cdda2b7f9313411e74fee48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c30130b4cdda2b7f9313411e74fee48">&#9670;&nbsp;</a></span>_stretchToRealInterval()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> _stretchToRealInterval </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramname"><em>unitIntervalValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramname"><em>lowValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramname"><em>highValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns value from interval <code>lowValue</code> to <code>highValue</code> defined by unit interval factor <code>unitIntervalValue</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">unitIntervalValue</td><td>value between 0 and 1 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">lowValue</td><td>lower bound value of target interval </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">highValue</td><td>higher bound value of target interval </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>scaled value in target interval </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

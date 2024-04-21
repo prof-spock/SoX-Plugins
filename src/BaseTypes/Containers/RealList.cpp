@@ -21,6 +21,11 @@ using BaseTypes::Containers::RealList;
 
 /*====================*/
 
+String BaseTypes::Containers::_realListTypeName ()
+{
+    return "RealList";
+}
+
 /*--------------------*/
 /* constructors       */
 /*--------------------*/

@@ -17,10 +17,12 @@
 /*=========*/
 
 #include "Boolean.h"
+#include "Dictionary.h"
 #include "Natural.h"
 
 /*--------------------*/
 
+using BaseTypes::Containers::Dictionary;
 using BaseTypes::Primitives::Boolean;
 using BaseTypes::Primitives::Natural;
 using BaseTypes::Primitives::String;
@@ -100,16 +102,14 @@ namespace BaseModules {
         /*--------------------*/
 
         /**
-         * Returns associated value for <C>variableName</C> as string
-         * from the environment.
+         * Returns path of directory of current library or executable
+         * file.
          *
-         * @param[in] variableName  name of environment variable
-         * @param[in] defaultValue  value to be returned when
-         *                          environment variable is not set
-         * @return  associated environment value as string
+         * @param[in] isExecutable  tells whether this is a library
+         *                          or an executable
+         * @return  path of executable or library
          */
-        static String environmentValue (IN String variableName,
-                                        IN String defaultValue = "???");
+        static String executableDirectoryPath (IN Boolean isExecutable);
 
         /*--------------------*/
 

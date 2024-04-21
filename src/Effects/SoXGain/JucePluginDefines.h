@@ -9,7 +9,7 @@
 
 #pragma once
 
-// Plugin Settings
+/* Plugin Settings */
 
 /** the fully qualified name of the plugin */
 #define _PluginPathName                  eu.tensi.SoXPlugins.Gain
@@ -23,7 +23,7 @@
 /** the four byte code for the plugin 'gain' */
 #define JucePlugin_PluginCode            0x6761696e
 
-// Settings for the Different Plugin Kinds
+/* Settings for the Different Plugin Kinds */
 
 /** the name of the plugin for AAX */
 #define JucePlugin_AAXIdentifier         _PluginPathName

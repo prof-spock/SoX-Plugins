@@ -16,22 +16,26 @@
 /* IMPORTS */
 /*=========*/
 
-#include <initializer_list>
 #include "Byte.h"
-#include "GenericList.h"
 #include "StringList.h"
 
 /*--------------------*/
 
-using std::initializer_list;
-
 using BaseTypes::Containers::StringList;
-using BaseTypes::GenericTypes::GenericList;
 using BaseTypes::Primitives::Byte;
 
 /*====================*/
 
 namespace BaseTypes::Containers {
+
+    /**
+     * Returns name of byte list type
+     *
+     * @return type name
+     */
+    String _byteListTypeName ();
+    
+    /*--------------------*/
 
     /**
      * A <C>ByteList</C> object is a list of byte values with
@@ -42,7 +46,7 @@ namespace BaseTypes::Containers {
     struct ByteList :
         public GenericList<Byte,
                            Byte::toString,
-                           StringLiteral{"ByteList"}> {
+                           _byteListTypeName > {
 
         /*--------------------*/
         /* constructors       */

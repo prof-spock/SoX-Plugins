@@ -628,11 +628,11 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*========================*/
 
     /**
-     * A <C>_CompanderSampleBufferEntry</C> object contains pointers
+     * A <C>_CompanderSampleBufferElement</C> object contains pointers
      * to a buffer for input, low and high output samples; it is the
      * element type in a <B>_CompanderSampleBuffer</B>.
      */
-    using _CompanderSampleBufferEntry =
+    using _CompanderSampleBufferElement =
         array<AudioSampleRingBuffer*, _companderStreamKindCount>;
 
     /**
@@ -643,7 +643,7 @@ namespace SoXPlugins::Effects::SoXCompander {
      * the previous crossover band
      */
     using _CompanderSampleBuffer =
-        GenericList<_CompanderSampleBufferEntry>;
+        GenericList<_CompanderSampleBufferElement>;
 
     /*=================*/
     /* _MCompanderBand */
@@ -966,25 +966,25 @@ namespace SoXPlugins::Effects::SoXCompander {
                     _Point2D& segmentStartPoint = segment->startPoint;
                     _Point2D& segmentEndPoint = segment->endPoint;
 
-                    // adapt curve segment to the left
+                    /* adapt curve segment to the left */
                     Real length = previousSegment->length();
                     Real position = Real::maximum(0.0, length - radius);
                     segmentStartPoint = previousSegment->interpolate(position);
                     previousSegment->endPoint = segmentStartPoint;
 
-                    // adapt curve segment to the right
+                    /* adapt curve segment to the right */
                     length = nextSegment->length();
                     position = Real::minimum(radius, length / 2.0);
                     segmentEndPoint = nextSegment->interpolate(position);
                     nextSegment->startPoint = segmentEndPoint;
 
-                    // find some intermediate point
+                    /* find some intermediate point */
                     _Point2D intermediatePoint = segmentStartPoint;
                     intermediatePoint.add(segmentEndPoint);
                     intermediatePoint.add(originalNextSegmentStartPoint);
                     intermediatePoint.scale(1/3.0);
 
-                    // set coefficients of curve
+                    /* set coefficients of curve */
                     segment->adaptCoefficients(intermediatePoint);
                 }
             }
@@ -1064,18 +1064,18 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     void _TransferFunction::_updateSegmentList () {
         Logging_trace(">>");
-        // pass 1: fill all segments with kind and start values
+        /* pass 1: fill all segments with kind and start values */
         _updateSegmentListKinds();
 
-        // pass 2: fill all segments with end values and gradient
-        //         for the straight lines
+        /* pass 2: fill all segments with end values and gradient
+                   for the straight lines */
         _updateSegmentListEnds();
 
-        // pass 3: adapt transfer function by output gain and make
-        //         values natural logarithms
+        /* pass 3: adapt transfer function by output gain and make
+                   values natural logarithms */
         _shiftScaleSegmentList();
 
-        // pass 4: adapt transfer function knees
+        /* pass 4: adapt transfer function knees */
         _adaptCurvesInSegmentList();
 
         Logging_trace1("<<: %1", toString());
@@ -1132,7 +1132,7 @@ namespace SoXPlugins::Effects::SoXCompander {
         _dBKnee = Real::maximum(0.0, dBKnee);
         _dBGain = dBGain;
 
-        // set data for the straight segments
+        /* set data for the straight segments */
         _Point2D& segmentStart = _segmentList[0].startPoint;
         segmentStart = _Point2D(dBThreshold - _leftDbOffset, 0.0);
 
@@ -1261,7 +1261,8 @@ namespace SoXPlugins::Effects::SoXCompander {
         const Natural channelCount = inputSampleList.size();
 
         if (_channelsAreAggregated) {
-            // use settings of first channel to represent all channels
+            /* use settings of first channel to represent all
+               channels */
             channel = 0;
             const AudioSample maximumSample =
                 _maximumAbsoluteSample(inputSampleList);
@@ -1307,7 +1308,7 @@ namespace SoXPlugins::Effects::SoXCompander {
         volume += (delta * increment);
 
         if (_channelsAreAggregated) {
-            // volume represents all channels
+            /* volume represents all channels */
             _volumeList.fill(volume);
         } else {
             _volumeList[channel] = volume;
@@ -1427,22 +1428,22 @@ namespace SoXPlugins::Effects::SoXCompander {
             RealList coefficientListB{Natural{3}};
             RealList coefficientListC{Natural{3}};
 
-            // biquad lowpass filter numerator
+            /* biquad lowpass filter numerator */
             coefficientListA[0] = (Real{1.0} - cosW0) / Real{2.0};
             coefficientListA[1] = Real{1.0} - cosW0;
             coefficientListA[2] = coefficientListA[0];
 
-            // biquad highpass filter numerator
+            /* biquad highpass filter numerator */
             coefficientListB[0] = (Real{1.0} + cosW0) / Real{2.0};
             coefficientListB[1] = -Real{1.0} - cosW0;
             coefficientListB[2] = coefficientListB[0];
 
-            // biquad LP/HP filter denominator
+            /* biquad LP/HP filter denominator */
             coefficientListC[0] = Real{1.0} + alpha;
             coefficientListC[1] = -Real{2.0} *cosW0;
             coefficientListC[2] = Real{1.0} - alpha;
 
-            // normalize coefficients
+            /* normalize coefficients */
             Real referenceValue = Real{1.0} / coefficientListC[0];
             coefficientListA.multiply(referenceValue);
             coefficientListB.multiply(referenceValue);
@@ -1492,15 +1493,15 @@ namespace SoXPlugins::Effects::SoXCompander {
         for (Natural channel = 0;  channel < channelCount;  channel++) {
             st += (channel == 0 ? "" : ", ");
 
-            for (int stream = 0;  stream < _companderStreamKindCount;
+            for (Natural stream = 0;  stream < _companderStreamKindCount;
                  stream++) {
                 const AudioSampleRingBuffer* ringBuffer =
-                    buffer[channel][stream];
+                    buffer[channel][(size_t) stream];
                 const String bufferAsString =
                     (ringBuffer == NULL ? "NULL" : ringBuffer->toString());
                 st += STR::expand("channel_%1_%2 = (%3)",
                                   TOSTRING(channel) +
-                                  _streamKindAsString[stream],
+                                  _streamKindAsString[(size_t) stream],
                                   bufferAsString);
             }
         }
@@ -1602,10 +1603,10 @@ namespace SoXPlugins::Effects::SoXCompander {
         Logging_trace(">>");
 
         for (Natural channel = 0;  channel < _channelCount;  channel++) {
-            const _CompanderSampleBufferEntry& bufferEntry =
+            const _CompanderSampleBufferElement& bufferElement =
                 _buffer[channel];
             const AudioSampleRingBuffer* outputBufferLow =
-                bufferEntry[_kindLowOutputStream];
+                bufferElement[_kindLowOutputStream];
             AudioSample inputSample = outputBufferLow->first();
             _inputSampleList[channel] = inputSample;
         }
@@ -1620,13 +1621,13 @@ namespace SoXPlugins::Effects::SoXCompander {
     {
         Logging_trace(">>");
 
-        for (_CompanderSampleBufferEntry& bufferEntry : _buffer) {
+        for (_CompanderSampleBufferElement& bufferElement : _buffer) {
             const AudioSampleRingBuffer* inputBuffer =
-                bufferEntry[_kindInputStream];
+                bufferElement[_kindInputStream];
             AudioSampleRingBuffer* outputBufferLow =
-                bufferEntry[_kindLowOutputStream];
+                bufferElement[_kindLowOutputStream];
             AudioSampleRingBuffer* outputBufferHigh =
-                bufferEntry[_kindHighOutputStream];
+                bufferElement[_kindHighOutputStream];
 
             _crossoverFilter.apply(*inputBuffer,
                                    *outputBufferLow,
@@ -1739,7 +1740,7 @@ void SoXMultibandCompander::resize (IN Natural bandCount,
     _bandCount          = Natural::minimum(bandCount, _bandCount);
     _channelCount       = channelCount;
 
-    // setup all compander bands
+    /* setup all compander bands */
     _MCompanderBandList* companderBandList =
         (_MCompanderBandList*) _companderBandList;
     companderBandList->setLength(_allocatedBandCount);
@@ -1752,7 +1753,8 @@ void SoXMultibandCompander::resize (IN Natural bandCount,
     _sampleRingBufferVector.resize(_channelCount, bufferCountPerChannel);
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
-        // connect the compander buffers to the sample buffer matrix
+        /* connect the compander buffers to the sample buffer
+           matrix */
         Natural i = 0;
 
         for (_MCompanderBand& companderBand : *companderBandList) {
@@ -1767,7 +1769,8 @@ void SoXMultibandCompander::resize (IN Natural bandCount,
                                     _kindHighOutputStream,
                                     &_sampleRingBufferVector.at(channel,
                                                                 i + 2));
-            // take care of single overlapping buffer between the bands
+            /* take care of single overlapping buffer between the
+               bands */
             i += 2;
         }
 
@@ -1809,7 +1812,7 @@ SoXMultibandCompander::apply (IN AudioSampleList& inputSampleList,
             sampleBuffer.shiftRight(0.0);
         }
 
-        // setup sample buffer for processing
+        /* setup sample buffer for processing */
         AudioSampleRingBuffer& inputBuffer =
             _sampleRingBufferVector.at(channel, 0);
         AudioSample inputSample = inputSampleList[channel];
@@ -1819,22 +1822,22 @@ SoXMultibandCompander::apply (IN AudioSampleList& inputSampleList,
     _MCompanderBandList* companderBandList =
         (_MCompanderBandList*) _companderBandList;
 
-    // calculate crossover filtering from input buffers into
-    // low and high outputs
+    /* calculate crossover filtering from input buffers into
+       low and high outputs */
     for (Natural bandIndex = 0;  bandIndex < _bandCount;  bandIndex++) {
         _MCompanderBand& companderBand =
             companderBandList->at(bandIndex);
         companderBand.calculateCrossover();
     }
 
-    // do compression across all bands
+    /* do compression across all bands */
     for (Natural bandIndex = 0;  bandIndex < _bandCount;  bandIndex++) {
         _MCompanderBand& companderBand =
             companderBandList->at(bandIndex);
         companderBand.apply(outputSampleList);
     }
 
-    // write all output channel samples to buffer
+    /* write all output channel samples to buffer */
     for (Natural channel = 0;  channel < _channelCount;  channel++) {
         const AudioSample outputSample = outputSampleList[channel];
         AudioSampleRingBuffer& outputBuffer =

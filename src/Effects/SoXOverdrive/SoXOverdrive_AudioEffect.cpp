@@ -102,9 +102,9 @@ namespace SoXPlugins::Effects::SoXOverdrive {
 
         _EffectDescriptor_OVRD* result =
             new _EffectDescriptor_OVRD{
-                SoXAudioHelper::dBToLinear(0.0),  // gain
-                Real{20.0} * colourFactor,        // colour
-                {2, true, 1}                      // sampleRingBufferVector
+                SoXAudioHelper::dBToLinear(0.0),  /* gain */
+                Real{20.0} * colourFactor,        /* colour */
+                {2, true, 1}                      /* sampleRingBufferVector */
             };
 
         Logging_trace1("<<: %1", result->toString());

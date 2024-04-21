@@ -84,6 +84,9 @@ $(document).ready(function(){initNavTree('struct_so_x_plugins_1_1_effects_1_1_so
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">SoXPlugins::Effects::SoXCompander::_Compander Struct Reference</div>  </div>
@@ -111,10 +114,174 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6d05bee5939128601b39de914bbfaacb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#a6d05bee5939128601b39de914bbfaacb">setLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> channelCount)</td></tr>
 <tr class="memdesc:a6d05bee5939128601b39de914bbfaacb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets number of channels to <code>channelCount</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#a6d05bee5939128601b39de914bbfaacb">More...</a><br /></td></tr>
 <tr class="separator:a6d05bee5939128601b39de914bbfaacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:abd0bda483284bfd096bda0f562e53cb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#abd0bda483284bfd096bda0f562e53cb1">_integrateVolume</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> channel, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> inputVolume)</td></tr>
+<tr class="memdesc:abd0bda483284bfd096bda0f562e53cb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adapts current volume of compander for <code>channel</code> within attack-release curve from <code>inputVolume</code> by some integration.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#abd0bda483284bfd096bda0f562e53cb1">More...</a><br /></td></tr>
+<tr class="separator:abd0bda483284bfd096bda0f562e53cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a2b190ede5c392ad0fb8c6b4df49d2989"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#a2b190ede5c392ad0fb8c6b4df49d2989">_adaptEnvelopeTime</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> t, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate)</td></tr>
+<tr class="memdesc:a2b190ede5c392ad0fb8c6b4df49d2989"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adapts envelope time <code>t</code> in seconds into a delta value relative to <code>sampleRate</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#a2b190ede5c392ad0fb8c6b4df49d2989">More...</a><br /></td></tr>
+<tr class="separator:a2b190ede5c392ad0fb8c6b4df49d2989"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5170d347ae0ae33aa4a671e98a803036"><td class="memItemLeft" align="right" valign="top">static AudioSample&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#a5170d347ae0ae33aa4a671e98a803036">_maximumAbsoluteSample</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_audio_1_1_audio_sample_list.html">AudioSampleList</a> &amp;sampleList)</td></tr>
+<tr class="memdesc:a5170d347ae0ae33aa4a671e98a803036"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds and returns maximum absolute sample among all samples in <code>sampleList</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#a5170d347ae0ae33aa4a671e98a803036">More...</a><br /></td></tr>
+<tr class="separator:a5170d347ae0ae33aa4a671e98a803036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a216c25231a4e5e1207e58ba13072650e"><td class="memItemLeft" align="right" valign="top"><a id="a216c25231a4e5e1207e58ba13072650e"></a>
+<a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html">_TransferFunction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#a216c25231a4e5e1207e58ba13072650e">_transferFunction</a></td></tr>
+<tr class="memdesc:a216c25231a4e5e1207e58ba13072650e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the transfer function to be applied <br /></td></tr>
+<tr class="separator:a216c25231a4e5e1207e58ba13072650e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7585e204706fd3b67ae6eee89f38ffd7"><td class="memItemLeft" align="right" valign="top"><a id="a7585e204706fd3b67ae6eee89f38ffd7"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#a7585e204706fd3b67ae6eee89f38ffd7">_channelsAreAggregated</a></td></tr>
+<tr class="memdesc:a7585e204706fd3b67ae6eee89f38ffd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">tells whether all channels are combined for compression <br /></td></tr>
+<tr class="separator:a7585e204706fd3b67ae6eee89f38ffd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae510b19195947abc1d17fcd6c75b02bf"><td class="memItemLeft" align="right" valign="top"><a id="ae510b19195947abc1d17fcd6c75b02bf"></a>
+<a class="el" href="struct_base_types_1_1_containers_1_1_real_list.html">RealList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#ae510b19195947abc1d17fcd6c75b02bf">_attackTimeList</a></td></tr>
+<tr class="memdesc:ae510b19195947abc1d17fcd6c75b02bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of attack times for all channels <br /></td></tr>
+<tr class="separator:ae510b19195947abc1d17fcd6c75b02bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b2e0131ef046e1838c4430d09aa3c2f"><td class="memItemLeft" align="right" valign="top"><a id="a0b2e0131ef046e1838c4430d09aa3c2f"></a>
+<a class="el" href="struct_base_types_1_1_containers_1_1_real_list.html">RealList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#a0b2e0131ef046e1838c4430d09aa3c2f">_releaseTimeList</a></td></tr>
+<tr class="memdesc:a0b2e0131ef046e1838c4430d09aa3c2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of release times for all channels <br /></td></tr>
+<tr class="separator:a0b2e0131ef046e1838c4430d09aa3c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb6f495ae401feee70d16966f6a0aceb"><td class="memItemLeft" align="right" valign="top"><a id="aeb6f495ae401feee70d16966f6a0aceb"></a>
+<a class="el" href="struct_base_types_1_1_containers_1_1_real_list.html">RealList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#aeb6f495ae401feee70d16966f6a0aceb">_volumeList</a></td></tr>
+<tr class="memdesc:aeb6f495ae401feee70d16966f6a0aceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of volumes for all channels <br /></td></tr>
+<tr class="separator:aeb6f495ae401feee70d16966f6a0aceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html" title="A _Compander object is a simple compander for several channels integrating the sample volumes and app...">_Compander</a></code> object is a simple compander for several channels integrating the sample volumes and applying a transfer function to them; as opposed to a <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___m_compander_band.html" title="A _MCompanderBand object is a single band in a multiband compander consisting of a compander and samp...">_MCompanderBand</a></code> there is no crossover filtering done here, but a compander band uses the basic functionality of a compander and splits its output into a local and propagated result list. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2b190ede5c392ad0fb8c6b4df49d2989"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b190ede5c392ad0fb8c6b4df49d2989">&#9670;&nbsp;</a></span>_adaptEnvelopeTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> SoXPlugins::Effects::SoXCompander::_Compander::_adaptEnvelopeTime </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramname"><em>sampleRate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adapts envelope time <code>t</code> in seconds into a delta value relative to <code>sampleRate</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>envelope time in seconds </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">sampleRate</td><td>sample rate of effect </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>delta value relative to sample rate </dd></dl>
+
+</div>
+</div>
+<a id="abd0bda483284bfd096bda0f562e53cb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd0bda483284bfd096bda0f562e53cb1">&#9670;&nbsp;</a></span>_integrateVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SoXPlugins::Effects::SoXCompander::_Compander::_integrateVolume </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
+          <td class="paramname"><em>inputVolume</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adapts current volume of compander for <code>channel</code> within attack-release curve from <code>inputVolume</code> by some integration. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">channel</td><td>compander channel to be integrated </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">inputVolume</td><td>current input volume </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5170d347ae0ae33aa4a671e98a803036"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5170d347ae0ae33aa4a671e98a803036">&#9670;&nbsp;</a></span>_maximumAbsoluteSample()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AudioSample SoXPlugins::Effects::SoXCompander::_Compander::_maximumAbsoluteSample </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_audio_1_1_audio_sample_list.html">AudioSampleList</a> &amp;&#160;</td>
+          <td class="paramname"><em>sampleList</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Finds and returns maximum absolute sample among all samples in <code>sampleList</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">sampleList</td><td>audio sample list to be scanned </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>maximum absolute sample value </dd></dl>
+
+</div>
+</div>
 <a id="a525bf2c0cc4e69ca015b5b1f5167ef8b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a525bf2c0cc4e69ca015b5b1f5167ef8b">&#9670;&nbsp;</a></span>adapt()</h2>
 

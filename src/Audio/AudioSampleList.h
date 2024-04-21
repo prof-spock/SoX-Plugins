@@ -29,6 +29,15 @@ using BaseTypes::GenericTypes::GenericList;
 namespace Audio {
 
     /**
+     * Returns name of audio sample list type
+     *
+     * @return type name
+     */
+    String _audioSampleListTypeName ();
+    
+    /*--------------------*/
+
+    /**
      * An <C>AudioSampleList</C> object is a list of audio
      * samples with arbitrary indexed access to positions in the
      * list.  Indexing starts at zero and is consecutive.  Lists
@@ -37,7 +46,7 @@ namespace Audio {
     struct AudioSampleList
         : public GenericList<AudioSample,
                              AudioSample::toString,
-                             StringLiteral{"AudioSampleList"}>
+                             _audioSampleListTypeName >
     {
 
         /*--------------------*/

@@ -8,5 +8,9 @@ var struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor =
     [ "paint", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#ab808cca23fb0396e2fee0735363129aa", null ],
     [ "resized", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#a3431283de8306558657789c6b777e210", null ],
     [ "setValue", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#a7cce766106bb4a4c5e4f4c446334da6f", null ],
-    [ "_processor", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#afe49fc1a792cc7495a92f175fc836838", null ]
+    [ "_currentEditorPageIndex", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#a1a8b7195cc304b397505b8d3544f39c2", null ],
+    [ "_fixedWidgetPercentage", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#ac1a450b84dbb41934ebce352ffe05ebb", null ],
+    [ "_lastEditorPageIndex", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#a42ebb1fb23bdad67b235080e7cc50f0c", null ],
+    [ "_processor", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#afe49fc1a792cc7495a92f175fc836838", null ],
+    [ "_widgetList", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#a35604af565699f8336bbeba14257c53b", null ]
 ];

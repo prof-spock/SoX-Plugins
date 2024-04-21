@@ -390,7 +390,7 @@ The installation is as follows:
 
    \item When installing the plugins on Windows, they require the
          so-called Microsoft Visual C++ Redistributable
-         library~\ref{reference:visualCLibrary}.  Very often this is
+         library~\cite{reference:visualCLibrary}.  Very often this is
          already installed on your system; if not, you have to install
          it from the Microsoft site.
 
@@ -1436,12 +1436,12 @@ where XXX is the target name.
         the AU libraries for all the effects (only on MacOSX)\\\hline
       SupportLibraries&
         the static libraries supporting the effects\\\hline
+      \subTarget CommonProjectLibrary&
+        the static library with utility classes (like e.g. lists or
+        logging)\\\hline
       \subTarget JuceFramework&
         the static library with utility classes from the JUCE
         framework\\\hline
-      \subTarget SoXCommon&
-        the static library with utility classes (like e.g. lists or
-        logging)\\\hline
       \subTarget SoXViewAndController&
         the static library with plugin UI and plugin wrapper (like e.g.\ 
         \embeddedCode{SoXAudioEditor} or \embeddedCode{SoXAudioProcessor})\\

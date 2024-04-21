@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('struct_so_x_plugins_1_1_effects_1_1_so
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">SoXPlugins::Effects::SoXCompander::SoXMultibandCompander Struct Reference</div>  </div>
@@ -116,6 +117,28 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac5b8717061f00227d7959c16c2e5b649"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html#ac5b8717061f00227d7959c16c2e5b649">apply</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_audio_1_1_audio_sample_list.html">AudioSampleList</a> &amp;inputSampleList, <a class="el" href="_global_macros_8h.html#aec78e7a9e90a406a56f859ee456e8eae">OUT</a> <a class="el" href="struct_audio_1_1_audio_sample_list.html">AudioSampleList</a> &amp;outputSampleList)</td></tr>
 <tr class="memdesc:ac5b8717061f00227d7959c16c2e5b649"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes samples from <code>inputSampleList</code> by multiband compander and returns output in <code>outputSampleList</code>; updates internal buffers for low and high output of each band and sums up to output.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html#ac5b8717061f00227d7959c16c2e5b649">More...</a><br /></td></tr>
 <tr class="separator:ac5b8717061f00227d7959c16c2e5b649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:afdc1d609c554f1973f83d5a883acc142"><td class="memItemLeft" align="right" valign="top"><a id="afdc1d609c554f1973f83d5a883acc142"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html#afdc1d609c554f1973f83d5a883acc142">_allocatedBandCount</a></td></tr>
+<tr class="memdesc:afdc1d609c554f1973f83d5a883acc142"><td class="mdescLeft">&#160;</td><td class="mdescRight">the allocated number of bands in this multiband compander <br /></td></tr>
+<tr class="separator:afdc1d609c554f1973f83d5a883acc142"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d4f6fef76a774db4712e6e4f267e3e3"><td class="memItemLeft" align="right" valign="top"><a id="a4d4f6fef76a774db4712e6e4f267e3e3"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html#a4d4f6fef76a774db4712e6e4f267e3e3">_bandCount</a></td></tr>
+<tr class="memdesc:a4d4f6fef76a774db4712e6e4f267e3e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the effective number of bands in this multiband compander <br /></td></tr>
+<tr class="separator:a4d4f6fef76a774db4712e6e4f267e3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb1413c3ef8712dbf6498fc9f4e5f029"><td class="memItemLeft" align="right" valign="top"><a id="afb1413c3ef8712dbf6498fc9f4e5f029"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html#afb1413c3ef8712dbf6498fc9f4e5f029">_channelCount</a></td></tr>
+<tr class="memdesc:afb1413c3ef8712dbf6498fc9f4e5f029"><td class="mdescLeft">&#160;</td><td class="mdescRight">the number of channels in this multiband compander <br /></td></tr>
+<tr class="separator:afb1413c3ef8712dbf6498fc9f4e5f029"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e26c4bc1edc59ad22489e29580760ba"><td class="memItemLeft" align="right" valign="top"><a id="a4e26c4bc1edc59ad22489e29580760ba"></a>
+Object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html#a4e26c4bc1edc59ad22489e29580760ba">_companderBandList</a></td></tr>
+<tr class="memdesc:a4e26c4bc1edc59ad22489e29580760ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of compander bands in this multiband compander <br /></td></tr>
+<tr class="separator:a4e26c4bc1edc59ad22489e29580760ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa06c78070ba82e6da6d10000cae55db7"><td class="memItemLeft" align="right" valign="top">GenericMatrix&lt; <a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html">AudioSampleRingBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html#aa06c78070ba82e6da6d10000cae55db7">_sampleRingBufferVector</a></td></tr>
+<tr class="memdesc:aa06c78070ba82e6da6d10000cae55db7"><td class="mdescLeft">&#160;</td><td class="mdescRight">the vector of sample ring buffers shared between the bands  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html#aa06c78070ba82e6da6d10000cae55db7">More...</a><br /></td></tr>
+<tr class="separator:aa06c78070ba82e6da6d10000cae55db7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html" title="A SoXMultibandCompander object is a complete multiband compander with several compander bands separat...">SoXMultibandCompander</a></code> object is a complete multiband compander with several compander bands separated by fifth-order Linkwitz-Riley crossover filters. </p>
@@ -323,6 +346,32 @@ Public Member Functions</h2></td></tr>
 
 <p>Return string representation of multiband compander. </p>
 <dl class="section return"><dt>Returns</dt><dd>string representation </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa06c78070ba82e6da6d10000cae55db7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa06c78070ba82e6da6d10000cae55db7">&#9670;&nbsp;</a></span>_sampleRingBufferVector</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GenericMatrix&lt;<a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html">AudioSampleRingBuffer</a>&gt; SoXPlugins::Effects::SoXCompander::SoXMultibandCompander::_sampleRingBufferVector</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the vector of sample ring buffers shared between the bands </p>
+<p>each channel contains (2 * bandCount + 1) sample ring buffers where each band covers a window of three entries overlapping in one entry </p>
 
 </div>
 </div>

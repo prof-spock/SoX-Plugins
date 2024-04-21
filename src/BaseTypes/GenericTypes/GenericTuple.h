@@ -19,16 +19,16 @@
 #include <array>
 #include "ElementToStringProc.h"
 #include "Integer.h"
-#include "StringLiteral.h"
+#include "StringProc.h"
+#include "StringUtil.h"
 
 /*--------------------*/
 
 using std::array;
 
 using BaseTypes::GenericTypes::ElementToStringProc;
-using BaseTypes::GenericTypes::StringLiteral;
-using BaseTypes::Primitives::Natural;
-using BaseTypes::Primitives::Integer;
+using BaseTypes::GenericTypes::StringProc;
+using BaseModules::StringUtil;
 
 /*====================*/
 
@@ -46,7 +46,7 @@ namespace BaseTypes::GenericTypes {
     template <typename ElementType,
               size_t elementCount,
               ElementToStringProc<ElementType> elementToString = nullptr,
-              StringLiteral nameOfType = "Tuple">
+              StringProc nameOfType = nullptr>
     struct GenericTuple : public array<ElementType, elementCount>
     {
 
@@ -77,7 +77,9 @@ namespace BaseTypes::GenericTypes {
                 }
             }
 
-            result = nameOfType.toString() + "(" + result + ")";
+            String typeName = (nameOfType == nullptr ? "Tuple"
+                               : (*nameOfType)());
+            result = StringUtil::expand("%1(%2)", typeName, result);
             return result;
         }
 

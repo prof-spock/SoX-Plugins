@@ -3,6 +3,21 @@
 
 # ============================================================
 
+function _popd () {
+    # popd directory stack without output
+    popd >/dev/null
+}
+
+#--------------------
+
+function _pushd () {
+    # pushd directory stack without output
+    pushd $1 >/dev/null
+}
+
+#--------------------
+#--------------------
+
 function performTest() {
     # Performs test on source file given by <sourceStem>
     # for effect kind <category> with <soxCommands>
@@ -42,6 +57,10 @@ function makeBurstFile() {
 
 # ============================================================
 
+_pushd "$(dirname -- "$0")"
+scriptDirectory="$PWD"
+_popd
+
 # --- sox command path ---
 sox=sox
 
@@ -54,6 +73,8 @@ durationInSeconds="16"
 # ==========================
 # === prepare test files ===
 # ==========================
+
+_pushd ${scriptDirectory}
 
 echo "=== preparing test files ==="
 soxCommandsSuffix=(fade 0.1 -0 pad 1 1)
@@ -134,3 +155,6 @@ performTest noise treble
 
 soxCommands=(tremolo 0.395 94.67)
 performTest sine-sweep tremolo
+
+_popd
+

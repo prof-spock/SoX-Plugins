@@ -12,6 +12,7 @@
 /* IMPORTS */
 /*=========*/
 
+#include <cstring>
 #include <stdio.h>
     /** qualified version of FILE from stdio */
     #define StdIO_FILE    FILE
@@ -113,7 +114,7 @@ Natural File::read (INOUT ByteList& byteList,
                                 bytesToRead, file)};
 
         if (listSize < position + totalBytesRead + bytesRead) {
-            // extend list to take another bytesRead bytes
+            /* extend list to take another bytesRead bytes */
             byteList.setLength(listSize + bytesRead);
         }
         

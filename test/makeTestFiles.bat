@@ -1,6 +1,11 @@
 @ECHO OFF
 REM generate SOX test files for cancellation test
 
+SET scriptDirectory=%~dp0.
+
+SET configuration=Release
+IF NOT "%1"=="" SET configuration=%1
+
 REM --- sox command path ---
 SET sox=sox
 
@@ -14,6 +19,7 @@ REM ==========================
 REM === prepare test files ===
 REM ==========================
 
+PUSHD %scriptDirectory%
 ECHO === preparing test files ===
 
 SET soxCommandsSuffix=fade 0.1 -0 pad 1 1
@@ -91,6 +97,7 @@ CALL :performTest noise treble
 SET soxCommands=tremolo 0.395 94.67
 CALL :performTest sine-sweep tremolo
 
+POPD
 GOTO :EOF
 
 REM ============================================================

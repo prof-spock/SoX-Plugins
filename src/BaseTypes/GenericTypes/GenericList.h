@@ -21,13 +21,13 @@
 #include "Boolean.h"
 #include "ElementToStringProc.h"
 #include "Integer.h"
-#include "StringLiteral.h"
+#include "StringProc.h"
 
 /*--------------------*/
 
 using std::vector;
 using BaseTypes::GenericTypes::ElementToStringProc;
-using BaseTypes::GenericTypes::StringLiteral;
+using BaseTypes::GenericTypes::StringProc;
 using BaseTypes::Primitives::Boolean;
 using BaseTypes::Primitives::Natural;
 using BaseTypes::Primitives::Integer;
@@ -46,7 +46,7 @@ namespace BaseTypes::GenericTypes {
      */
     template <typename ElementType,
               ElementToStringProc<ElementType> elementToString = nullptr,
-              StringLiteral nameOfType = "List">
+              StringProc nameOfType = nullptr>
     struct GenericList : public vector<ElementType>
     {
 
@@ -166,7 +166,9 @@ namespace BaseTypes::GenericTypes {
                 }
             }
 
-            result = nameOfType.toString() + "(" + result + ")";
+            String typeName = (nameOfType == nullptr ? "List"
+                               : (*nameOfType)());
+            result = typeName + "(" + result + ")";
             return result;
         }
 
@@ -373,7 +375,7 @@ namespace BaseTypes::GenericTypes {
                 const Natural listLength = length();
                 setLength(listLength + otherLength);
 
-                // shift original data to the right
+                /* shift original data to the right */
                 for (Natural i = listLength;  i > 0;) {
                     i--;
                     set(i + otherLength, at(i));
@@ -532,7 +534,7 @@ namespace BaseTypes::GenericTypes {
             Integer result{-1};
 
             if (otherLength <= currentLength) {
-                // do a naive search
+                /* do a naive search */
                 for (Natural i = 0;  i <= currentLength - otherLength;  i++) {
                     Boolean isFound = true;
 

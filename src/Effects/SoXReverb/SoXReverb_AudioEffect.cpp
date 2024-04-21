@@ -141,15 +141,15 @@ namespace SoXPlugins::Effects::SoXReverb {
 
         _EffectDescriptor_RVRB* result =
             new _EffectDescriptor_RVRB{
-                false, // isWetOnly
-                50.0,  // reverberance
-                50.0,  // hfDamping
-                100.0, // roomScale
-                100.0, // stereoDepth
-                0.0,   // preDelayInMs
-                0.0,   // wetDbGain
-                0,     // channelCount
-                {}     // reverb
+                false, /* isWetOnly */
+                50.0,  /* reverberance */
+                50.0,  /* hfDamping */
+                100.0, /* roomScale */
+                100.0, /* stereoDepth */
+                0.0,   /* preDelayInMs */
+                0.0,   /* wetDbGain */
+                0,     /* channelCount */
+                {}     /* reverb */
             };
 
         Logging_trace1("<<: %1", result->toString());
@@ -340,7 +340,7 @@ void SoXReverb_AudioEffect::processBlock
 
     SoXAudioEffect::processBlock(timePosition, buffer);
 
-    // apply the effect
+    /* apply the effect */
     _EffectDescriptor_RVRB& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_RVRB>(_effectDescriptor);
 
@@ -355,7 +355,7 @@ void SoXReverb_AudioEffect::processBlock
     AudioSampleRingBuffer outputSampleList{_channelCount};
 
     for (Natural i = 0;  i < sampleCount;  i++) {
-        // read all channel samples into one list
+        /* read all channel samples into one list */
         for (Natural channel = 0;  channel < _channelCount;
              channel++) {
             const AudioSampleList& inputList = buffer[channel];
@@ -364,7 +364,7 @@ void SoXReverb_AudioEffect::processBlock
 
         reverb.apply(inputSampleList, outputSampleList);
 
-        // write output sample list onto all channels
+        /* write output sample list onto all channels */
         for (Natural channel = 0;  channel < _channelCount;
              channel++) {
             AudioSampleList& outputList = buffer[channel];

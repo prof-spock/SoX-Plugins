@@ -30,6 +30,15 @@ using BaseTypes::Primitives::String_toString;
 namespace BaseTypes::Containers {
 
     /**
+     * Returns name of string list type
+     *
+     * @return type name
+     */
+    String _stringListTypeName ();
+    
+    /*--------------------*/
+
+    /**
      * A <C>StringList</C> object is a list of string values with
      * arbitrary indexed access to positions in the list.
      * Indexing starts at zero and is consecutive.  Lists also allow
@@ -38,7 +47,7 @@ namespace BaseTypes::Containers {
     struct StringList
         : public GenericList<String,
                              String_toString,
-                             StringLiteral{"StringList"}> {
+                             _stringListTypeName > {
 
         /*--------------------*/
         /* constructors       */
@@ -67,6 +76,30 @@ namespace BaseTypes::Containers {
         static StringList makeBySplit (IN String& st,
                                        IN String& separator);
 
+        /*--------------------*/
+        /* type conversions   */
+        /*--------------------*/
+
+        /*--------------------*/
+
+        /**
+         * Converts list to linear string representation prefixed
+         *
+         * @return  single string representation of list
+         */
+        String toString () const;
+
+        /*--------------------*/
+
+        /**
+         * Returns string representation of string list <C>list</C>.
+         *
+         * @param[in] list  list value to be converted to a string
+         * @return  string representation
+         */
+        static String toString (IN StringList& list);
+
+        
         /*--------------------*/
         /* functions          */
         /*--------------------*/
