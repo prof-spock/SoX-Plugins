@@ -101,7 +101,7 @@ SoXGain_AudioEffect::SoXGain_AudioEffect ()
     /* initialize parameters */
     _effectParameterMap.clear();
     _effectParameterMap.setKindReal(parameterName_gain,
-                                    -10.0, 10.0, 0.001);
+                                    -100.0, 100.0, 0.001);
 
     Logging_trace1("<<: %1", toString());
 }

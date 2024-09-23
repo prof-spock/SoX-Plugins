@@ -7,7 +7,7 @@ SET configuration=Release
 IF NOT "%1"=="" SET configuration=%1
 
 REM --- sox command path ---
-SET sox=sox
+SET sox=CALL sox
 
 REM --- internal configuration ---
 SET soxFileType=.flac

@@ -17,7 +17,7 @@ IF(NOT DOXYGEN_FOUND)
     SET(DOXYGEN_FOUND 1)
 
     # graphviz support
-    SET(DOXYGEN_DOT_PATH ${programDirectory}/Büro/Graphviz/bin)
+    SET(DOXYGEN_DOT_PATH ${programDirectory}/Graphviz/bin)
     SET(DOXYGEN_HAVE_DOT YES)
 ENDIF()
 

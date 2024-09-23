@@ -124,8 +124,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
         StringList::fromList({parameterName_depth,
                               parameterName_effectKind,
                               parameterName_frequency,
-                              parameterName_timeOffset,
-                              parameterName_waveFormKind});
+                              parameterName_timeOffset});
   
     /*--------------------*/
     /* internal routines  */
@@ -246,7 +245,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
                 true,                                  /* phaser */
 
                 0.5,                                   /* frequency */
-                WaveFormKind::triangle,                /* waveFormKind */
+                WaveFormKind::sine,                    /* waveFormKind */
                 {},                                    /* waveForm */
                 0.0,                                   /* timeOffset */
 
