@@ -29,8 +29,8 @@ using Audio::AudioSampleRingBufferVector;
 using SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect;
 using SoXPlugins::Helpers::SoXAudioHelper;
 
-/** abbreviation for expand */
-#define expand StringUtil::expand
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*====================*/
 
@@ -65,12 +65,12 @@ namespace SoXPlugins::Effects::SoXOverdrive {
         String toString () const
         {
             String st =
-                expand("gain = %1dB, colour = %2,"
-                       " sampleRingBufferVector = %3",
-                       TOSTRING(gain), TOSTRING(colour),
-                       sampleRingBufferVector.toString());
+                STR::expand("gain = %1dB, colour = %2,"
+                            " sampleRingBufferVector = %3",
+                            TOSTRING(gain), TOSTRING(colour),
+                            sampleRingBufferVector.toString());
  
-            st = expand("_EffectDescriptor_OVRD(%1)", st);
+            st = STR::expand("_EffectDescriptor_OVRD(%1)", st);
             return st;
         }
 
@@ -102,9 +102,9 @@ namespace SoXPlugins::Effects::SoXOverdrive {
 
         _EffectDescriptor_OVRD* result =
             new _EffectDescriptor_OVRD{
-                SoXAudioHelper::dBToLinear(0.0),  // gain
-                Real{20.0} * colourFactor,        // colour
-                {2, true, 1}                      // sampleRingBufferVector
+                SoXAudioHelper::dBToLinear(0.0),  /* gain */
+                Real{20.0} * colourFactor,        /* colour */
+                {2, true, 1}                      /* sampleRingBufferVector */
             };
 
         Logging_trace1("<<: %1", result->toString());
@@ -195,11 +195,10 @@ SoXOverdrive_AudioEffect::_setValueInternal
         SoXParameterValueChangeKind::parameterChange;
 
     if (parameterName == parameterName_gain) {
-        const Real dBGain = StringUtil::toReal(value);
+        const Real dBGain = STR::toReal(value);
         effectDescriptor.gain = SoXAudioHelper::dBToLinear(dBGain);
     } else if (parameterName == parameterName_colour) {
-        effectDescriptor.colour = (StringUtil::toReal(value)
-                                   * colourFactor);
+        effectDescriptor.colour = STR::toReal(value) * colourFactor;
     }
 
     Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));

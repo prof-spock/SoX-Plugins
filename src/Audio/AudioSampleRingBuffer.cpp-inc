@@ -174,8 +174,8 @@ AudioSample AudioSampleRingBuffer::last () const
 /*--------------------*/
 
 INLINE
-void AudioSampleRingBuffer::setAt (IN Natural position,
-                                   IN AudioSample sample)
+void AudioSampleRingBuffer::set (IN Natural position,
+                                 IN AudioSample sample)
 {
     Natural i = SQ_effectiveIndex(position);
     _data[i] = sample;
@@ -220,16 +220,16 @@ void AudioSampleRingBuffer::shiftRight (IN AudioSample sample)
 INLINE
 void AudioSampleRingBuffer::toArray (OUT AudioSample* elementArray) const
 {
-    // directly access the underlying arrays
+    /* directly access the underlying arrays */
     AudioSample* targetPtr = elementArray;
     const AudioSample* sourcePtr;
 
-    // copy first segment from firstIndex to end
+    /* copy first segment from firstIndex to end */
     const Natural segmentLengthA = _length - _firstIndex;
     sourcePtr = _data.asArray(_firstIndex);
     copyArray(targetPtr, sourcePtr, segmentLengthA);
 
-    // copy second segment from 0 to (firstIndex - 1)
+    /* copy second segment from 0 to (firstIndex - 1) */
     const Natural segmentLengthB = _firstIndex;
     sourcePtr = _data.asArray();
     copyArray(targetPtr, sourcePtr, segmentLengthB);

@@ -182,7 +182,7 @@ void IIRFilter::apply (IN AudioSampleRingBuffer& inputBuffer,
 
         outputBuffer.setFirst(outputValue);
     #else
-        // support vectorization by using arrays for the buffers
+        /* support vectorization by using arrays for the buffers */
         AudioSample* inputBufferAsArray  =
             makeLocalArray(AudioSample, _order);
         AudioSample* outputBufferAsArray =

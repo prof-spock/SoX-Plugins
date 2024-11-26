@@ -25,10 +25,10 @@ using BaseTypes::GenericTypes::GenericSet;
 using SoXPlugins::Helpers::SoXEffectParameterKind;
 using SoXPlugins::ViewAndController::SoXAudioEditor;
 
-/** abbreviated form of function name */
-#define expand StringUtil::expand
-/** abbreviated form of function name */
-#define replace StringUtil::replace
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
+
+/*============================================================*/
 
 /** a set of audio editor pointers */
 typedef GenericSet<SoXAudioEditor*> _SoXAudioEditorPtrSet;
@@ -48,12 +48,12 @@ typedef GenericMap<String, Natural> StringToNaturalMap;
  * @return  scaled value in target interval
  */
 static Real _stretchToRealInterval (IN Real unitIntervalValue,
-                                          IN Real lowValue,
-                                          IN Real highValue)
+                                    IN Real lowValue,
+                                    IN Real highValue)
 {
     Assertion_pre(unitIntervalValue.isInInterval(Real::zero, Real::one),
-                  expand("value must be in unit interval- %1",
-                         TOSTRING(unitIntervalValue)));
+                  STR::expand("value must be in unit interval- %1",
+                              TOSTRING(unitIntervalValue)));
     return lowValue + unitIntervalValue * (highValue - lowValue);
 }
 
@@ -73,8 +73,8 @@ static Integer _stretchToIntegerInterval (IN Real unitIntervalValue,
                                           IN Integer highValue)
 {
     Assertion_pre(unitIntervalValue.isInInterval(Real::zero, Real::one),
-                  expand("value must be in unit interval- %1",
-                         TOSTRING(unitIntervalValue)));
+                  STR::expand("value must be in unit interval- %1",
+                              TOSTRING(unitIntervalValue)));
     const Real stretchedValue =
         _stretchToRealInterval(unitIntervalValue, lowValue, highValue);
     return (Integer) Real::round(stretchedValue);
@@ -85,7 +85,7 @@ static Integer _stretchToIntegerInterval (IN Real unitIntervalValue,
 namespace SoXPlugins::ViewAndController {
 
     /** the double quote character */
-    static const char quoteCharacter = '"';
+    static const Character quoteCharacter = '"';
 
     /** number of decimal places for reals in serialized form */
     static const Natural decimalPlaceCount = 5;
@@ -236,17 +236,17 @@ namespace SoXPlugins::ViewAndController {
             juce::NormalisableRange<float> range((float) lowValue,
                                                  (float) highValue,
                                                  (float) delta);
-            const Real defaultValue = StringUtil::toReal(value);
+            const Real defaultValue = STR::toReal(value);
             result =
                 new juce::AudioParameterFloat(juceParameterID,
                                               juceParameterName,
                                               range,
-                                              (float) defaultValue, "");
+                                              (float) defaultValue);
         } else if (kind == SoXEffectParameterKind::intKind) {
             Integer lowValue, highValue, delta;
             effectParameterMap.valueRangeInt(parameterName,
                                             lowValue, highValue, delta);
-            const Integer defaultValue = StringUtil::toInteger(value);
+            const Integer defaultValue = STR::toInteger(value);
             result =
                 new juce::AudioParameterInt(juceParameterID,
                                             juceParameterName,
@@ -293,7 +293,7 @@ namespace SoXPlugins::ViewAndController {
     static String _normalize (IN String& st)
     {
         String result = st;
-        replace(result, "\n", "§");
+        STR::replace(result, "\n", "§");
         return result;
     }
 
@@ -323,14 +323,11 @@ namespace SoXPlugins::ViewAndController {
             String parameterValue = parameterMap.value(parameterName);
 
             if (kind == SoXEffectParameterKind::enumKind) {
-                parameterValue =
-                    quoteCharacter + parameterValue + quoteCharacter;
-            } else if (kind == SoXEffectParameterKind::realKind) {
-                const Real r = StringUtil::toReal(parameterValue);
-                parameterValue = r.toString();
+                STR::prepend(parameterValue, quoteCharacter);
+                STR::append(parameterValue, quoteCharacter);
             }
 
-            // write each entry as a line
+            /* write each entry as a line */
             result += (parameterName + " = " + parameterValue + "\n");
         }
 
@@ -358,11 +355,11 @@ namespace SoXPlugins::ViewAndController {
     {
         Logging_trace1(">>: st = %1", st);
 
-        // read the data as written by the string conversion
+        /* read the data as written by the string conversion */
         const StringList lineList = StringList::makeBySplit(st, "\n");
 
-        // throw away empty last line and title => first index is 1, last
-        // index is lineCount - 1
+        /* throw away empty last line and title => first index is 1,
+           last index is lineCount - 1 */
         const Natural firstIndex = 1;
         const Natural lastIndex  = lineList.size() - 2;
         Natural previousPageNumber = Natural::maximumValue();
@@ -374,27 +371,27 @@ namespace SoXPlugins::ViewAndController {
             if (partList.size() == 2) {
                 Natural pageNumber;
                 String labelName;
-                const String parameterName = StringUtil::strip(partList[0]);
-                String value = StringUtil::strip(partList[1]);
+                const String parameterName = STR::strip(partList[0]);
+                String value = STR::strip(partList[1]);
                 SoXEffectParameterMap::splitParameterName(parameterName,
                                                          labelName,
                                                          pageNumber);
 
                 if (value.length() >= 2
-                    && value[0] == quoteCharacter
-                    && StringUtil::lastChar(value) == quoteCharacter) {
+                    && STR::firstCharacter(value) == quoteCharacter
+                    && STR::lastCharacter(value) == quoteCharacter) {
                     value = value.substr(1, value.length() - 2);
                 }
 
-                // the recalculation is forced when the value is
-                // outside a page or the last value of the sequence
+                /* the recalculation is forced when the value is
+                   outside a page or the last value of the sequence */
                 const Boolean isOnSamePage =
                     (previousPageNumber == pageNumber);
                 const Boolean recalculationIsForced =
                   (i == lastIndex || !isOnSamePage);
 
-                // make sure that the value in parameter map does not
-                // match the new value
+                /* make sure that the value in parameter map does not
+                   match the new value */
                 if (!parameterMap.isAllowedValue(parameterName, value)) {
                     value = parameterMap.value(parameterName);
                 }
@@ -458,12 +455,12 @@ namespace SoXPlugins::ViewAndController {
             effectParameterMap.kind(parameterName);
 
         if (kind == SoXEffectParameterKind::realKind) {
-            const float realValue = (float) StringUtil::toReal(value);
+            const float realValue = (float) STR::toReal(value);
             juce::AudioParameterFloat& fParameter =
                 TOREFERENCE<juce::AudioParameterFloat>(parameter);
             fParameter = realValue;
         } else if (kind == SoXEffectParameterKind::intKind) {
-            const int intValue = (int) StringUtil::toInteger(value);
+            const int intValue = (int) STR::toInteger(value);
             juce::AudioParameterInt& iParameter =
                 TOREFERENCE<juce::AudioParameterInt>(parameter);
             iParameter = intValue;
@@ -579,7 +576,7 @@ int SoXAudioProcessor::getCurrentProgram ()
 
 void SoXAudioProcessor::setCurrentProgram (int)
 {
-    // does not apply
+    /* does not apply */
 }
 
 /*--------------------*/
@@ -593,7 +590,7 @@ const juce::String SoXAudioProcessor::getProgramName (int)
 
 void SoXAudioProcessor::changeProgramName (int, const juce::String&)
 {
-    // does not apply
+    /* does not apply */
 }
 
 /*--------------------*/
@@ -625,7 +622,7 @@ void SoXAudioProcessor::getStateInformation (OUT juce::MemoryBlock& destData)
 {
     Logging_trace(">>");
 
-    // stores state of audio processor in <destData>
+    /* stores state of audio processor in <destData> */
     const String title = getName().toStdString();
     const String st = _convertMapToString(effectParameterMap(), title);
     const Natural sizeInBytes = st.size();
@@ -646,7 +643,7 @@ void SoXAudioProcessor::setStateInformation (const void* data,
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
     SoXAudioEffect* effect = descriptor.effect;
 
-    // restores state of audio processor from <data>
+    /* restores state of audio processor from <data> */
     String st((char *) data, sizeInBytes);
     _readKeyValueMapString(this, effectParameterMap(), st);
     effect->setParameterValidity(true);
@@ -685,16 +682,14 @@ void SoXAudioProcessor::setValue (IN String& parameterName,
     if (!parameterMap.contains(parameterName)) {
         Logging_trace1("--: bad parameter - %1", parameterName);
     } else {
-        const String oldValue = parameterMap.value(parameterName);
-
-        if (value != oldValue) {
-            // update effect and parameter map
+        if (parameterMap.valueIsDifferent(parameterName, value)) {
+            /* update effect and parameter map */
             SoXAudioEffect* effect = descriptor.effect;
             const SoXParameterValueChangeKind changeKind =
                 effect->setValue(parameterName, value,
                                  recalculationIsForced);
 
-            // notify listeners
+            /* notify listeners */
             SoXParameterValueChangeKind parameterChange = 
                 SoXParameterValueChangeKind::parameterChange;
         
@@ -704,7 +699,7 @@ void SoXAudioProcessor::setValue (IN String& parameterName,
 
             _notifyObserversAboutChange(parameterChange, parameterName);
 
-            // update juce parameter object
+            /* update juce parameter object */
             Natural parameterIndex =
                 descriptor.parameterNameToIndexMap.at(parameterName);
             juce::AudioProcessorParameter* parameter =
@@ -861,8 +856,8 @@ void SoXAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     const Natural outputChannelCount = getTotalNumOutputChannels();
     const Natural sampleCount = (Natural) buffer.getNumSamples();
 
-    // In case we have more outputs than inputs, this code clears any
-    // output channels that didn't contain input data
+    /* In case we have more outputs than inputs, this code clears any
+       output channels that didn't contain input data */
     for (Natural i = channelCount;  i < outputChannelCount;  i++) {
         buffer.clear((int) i, 0, (int) sampleCount);
     }

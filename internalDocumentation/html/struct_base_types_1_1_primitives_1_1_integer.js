@@ -3,6 +3,11 @@ var struct_base_types_1_1_primitives_1_1_integer =
     [ "Integer", "struct_base_types_1_1_primitives_1_1_integer.html#a4e03d9446760f94842cdb563b48145b3", null ],
     [ "Integer", "struct_base_types_1_1_primitives_1_1_integer.html#a9a41778e1ad878d9132b958170b43d69", null ],
     [ "Integer", "struct_base_types_1_1_primitives_1_1_integer.html#a4181f72f43bac1f672a42988999783db", null ],
+    [ "abs", "struct_base_types_1_1_primitives_1_1_integer.html#adf8a3c55289883d18c6d4fe0f970c346", null ],
+    [ "abs", "struct_base_types_1_1_primitives_1_1_integer.html#ab5fdc560e69ae6e2583fff5f450234a1", null ],
+    [ "ceiling", "struct_base_types_1_1_primitives_1_1_integer.html#a92ba7e94c9be242d901bf0bf9fa8c1d0", null ],
+    [ "floor", "struct_base_types_1_1_primitives_1_1_integer.html#ac52a3e662743a3f54e94c953f95a7bf3", null ],
+    [ "mod", "struct_base_types_1_1_primitives_1_1_integer.html#a0af78fb1bde213f979532a63cd543e30", null ],
     [ "mod", "struct_base_types_1_1_primitives_1_1_integer.html#a048e9a34cb85eeb39a1d4941c0490e27", null ],
     [ "operator double", "struct_base_types_1_1_primitives_1_1_integer.html#abad328088c0b4da05ae09f9420ee2d5a", null ],
     [ "operator float", "struct_base_types_1_1_primitives_1_1_integer.html#adde9cd4020a2d1c8a49a1fdf4401938c", null ],
@@ -13,6 +18,10 @@ var struct_base_types_1_1_primitives_1_1_integer =
     [ "operator++", "struct_base_types_1_1_primitives_1_1_integer.html#a8c7a68cfb87319f1874a433137267b69", null ],
     [ "operator--", "struct_base_types_1_1_primitives_1_1_integer.html#a190d1bf038400d1eb6bb975d74346adc", null ],
     [ "operator--", "struct_base_types_1_1_primitives_1_1_integer.html#a5b0849f289da00d8af936f4fc4a2e133", null ],
+    [ "power", "struct_base_types_1_1_primitives_1_1_integer.html#ad78dc4573887a8db9c7ea586a7e7b8f7", null ],
     [ "power", "struct_base_types_1_1_primitives_1_1_integer.html#a27fd672f34995610e8dda55cbffef9cb", null ],
-    [ "toString", "struct_base_types_1_1_primitives_1_1_integer.html#a0d2610599adcdb4ba9c4b81a16dc0929", null ]
+    [ "round", "struct_base_types_1_1_primitives_1_1_integer.html#ac52dfc0e4d1ccde962df73ef3b5b91d7", null ],
+    [ "toNatural", "struct_base_types_1_1_primitives_1_1_integer.html#a862545d2dd5b6782f4e0a555cca2190d", null ],
+    [ "toString", "struct_base_types_1_1_primitives_1_1_integer.html#a91152c820d079bc7fd3203d0334bc125", null ],
+    [ "toString", "struct_base_types_1_1_primitives_1_1_integer.html#a5a3b77a0a47247c0218ca1c7737426f0", null ]
 ];

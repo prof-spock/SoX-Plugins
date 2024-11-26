@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['makebysplit_1242',['makeBySplit',['../_so_x_filter___audio_effect_8cpp.html#ada76036def11df3eb7ffcf6fb2dd0f4c',1,'SoXFilter_AudioEffect.cpp']]],
-  ['makelocalarray_1243',['makeLocalArray',['../_my_array_8h.html#adede199e40286fbec7786ebdc3b1b299',1,'MyArray.h']]]
+  ['out_1811',['OUT',['../_global_macros_8h.html#aec78e7a9e90a406a56f859ee456e8eae',1,'GlobalMacros.h']]]
 ];

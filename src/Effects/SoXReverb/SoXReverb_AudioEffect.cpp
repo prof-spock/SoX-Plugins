@@ -21,8 +21,8 @@
 using SoXPlugins::Effects::SoXReverb::_SoXReverb;
 using SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect;
 
-/** abbreviation for StringUtil::expand */
-#define expand StringUtil::expand
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
@@ -82,17 +82,17 @@ namespace SoXPlugins::Effects::SoXReverb {
         String toString () const
         {
             String st =
-                expand("_EffectDescriptor_RVRB("
-                       "isWetOnly = %1, reverberance = %2%,"
-                       " hfDamping = %3%, roomScale = %4%,"
-                       " stereoDepth = %5%, preDelayInMs = %6ms,"
-                       " wetDbGain = %7dB, channelCount = %8,"
-                       " reverb = %9)",
-                       TOSTRING(isWetOnly), TOSTRING(reverberance),
-                       TOSTRING(hfDamping), TOSTRING(roomScale),
-                       TOSTRING(stereoDepth), TOSTRING(preDelayInMs),
-                       TOSTRING(wetDbGain), TOSTRING(channelCount),
-                       reverb.toString());
+                STR::expand("_EffectDescriptor_RVRB("
+                            "isWetOnly = %1, reverberance = %2%,"
+                            " hfDamping = %3%, roomScale = %4%,"
+                            " stereoDepth = %5%, preDelayInMs = %6ms,"
+                            " wetDbGain = %7dB, channelCount = %8,"
+                            " reverb = %9)",
+                            TOSTRING(isWetOnly), TOSTRING(reverberance),
+                            TOSTRING(hfDamping), TOSTRING(roomScale),
+                            TOSTRING(stereoDepth), TOSTRING(preDelayInMs),
+                            TOSTRING(wetDbGain), TOSTRING(channelCount),
+                            reverb.toString());
 
             return st;
         }
@@ -141,15 +141,15 @@ namespace SoXPlugins::Effects::SoXReverb {
 
         _EffectDescriptor_RVRB* result =
             new _EffectDescriptor_RVRB{
-                false, // isWetOnly
-                50.0,  // reverberance
-                50.0,  // hfDamping
-                100.0, // roomScale
-                100.0, // stereoDepth
-                0.0,   // preDelayInMs
-                0.0,   // wetDbGain
-                0,     // channelCount
-                {}     // reverb
+                false, /* isWetOnly */
+                50.0,  /* reverberance */
+                50.0,  /* hfDamping */
+                100.0, /* roomScale */
+                100.0, /* stereoDepth */
+                0.0,   /* preDelayInMs */
+                0.0,   /* wetDbGain */
+                0,     /* channelCount */
+                {}     /* reverb */
             };
 
         Logging_trace1("<<: %1", result->toString());
@@ -290,17 +290,17 @@ SoXReverb_AudioEffect::_setValueInternal
     if (parameterName == parameterName_isWetOnly) {
         effectDescriptor.isWetOnly = (value == "Yes");
     } else if (parameterName == parameterName_reverberance) {
-        effectDescriptor.reverberance = StringUtil::toPercentage(value);
+        effectDescriptor.reverberance = STR::toPercentage(value);
     } else if (parameterName == parameterName_hfDamping) {
-        effectDescriptor.hfDamping = StringUtil::toPercentage(value);
+        effectDescriptor.hfDamping = STR::toPercentage(value);
     } else if (parameterName == parameterName_roomScale) {
-        effectDescriptor.roomScale = StringUtil::toPercentage(value);
+        effectDescriptor.roomScale = STR::toPercentage(value);
     } else if (parameterName == parameterName_stereoDepth) {
-        effectDescriptor.stereoDepth = StringUtil::toPercentage(value);
+        effectDescriptor.stereoDepth = STR::toPercentage(value);
     } else if (parameterName == parameterName_preDelay) {
-        effectDescriptor.preDelayInMs = StringUtil::toReal(value);
+        effectDescriptor.preDelayInMs = STR::toReal(value);
     } else if (parameterName == parameterName_wetGain) {
-        effectDescriptor.wetDbGain = StringUtil::toReal(value);
+        effectDescriptor.wetDbGain = STR::toReal(value);
     }
 
     if (recalculationIsForced) {
@@ -340,7 +340,7 @@ void SoXReverb_AudioEffect::processBlock
 
     SoXAudioEffect::processBlock(timePosition, buffer);
 
-    // apply the effect
+    /* apply the effect */
     _EffectDescriptor_RVRB& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_RVRB>(_effectDescriptor);
 
@@ -355,7 +355,7 @@ void SoXReverb_AudioEffect::processBlock
     AudioSampleRingBuffer outputSampleList{_channelCount};
 
     for (Natural i = 0;  i < sampleCount;  i++) {
-        // read all channel samples into one list
+        /* read all channel samples into one list */
         for (Natural channel = 0;  channel < _channelCount;
              channel++) {
             const AudioSampleList& inputList = buffer[channel];
@@ -364,7 +364,7 @@ void SoXReverb_AudioEffect::processBlock
 
         reverb.apply(inputSampleList, outputSampleList);
 
-        // write output sample list onto all channels
+        /* write output sample list onto all channels */
         for (Natural channel = 0;  channel < _channelCount;
              channel++) {
             AudioSampleList& outputList = buffer[channel];

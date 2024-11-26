@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('struct_audio_1_1_audio_sample_ring_buf
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="struct_audio_1_1_audio_sample_ring_buffer_vector-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Audio::AudioSampleRingBufferVector Struct Reference</div>  </div>
@@ -138,6 +139,17 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 <tr class="memitem:a84ddbaa3e63cfe287ef31962f205f8e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html">AudioSampleRingBuffer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer_vector.html#a84ddbaa3e63cfe287ef31962f205f8e4">last</a> ()</td></tr>
 <tr class="memdesc:a84ddbaa3e63cfe287ef31962f205f8e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns reference to last sample ring buffer in list.  <a href="struct_audio_1_1_audio_sample_ring_buffer_vector.html#a84ddbaa3e63cfe287ef31962f205f8e4">More...</a><br /></td></tr>
 <tr class="separator:a84ddbaa3e63cfe287ef31962f205f8e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a8d97744e3dd2d8ea7f8ed2ed03cff30d"><td class="memItemLeft" align="right" valign="top"><a id="a8d97744e3dd2d8ea7f8ed2ed03cff30d"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer_vector.html#a8d97744e3dd2d8ea7f8ed2ed03cff30d">_hasTwoRingBuffersPerChannel</a></td></tr>
+<tr class="memdesc:a8d97744e3dd2d8ea7f8ed2ed03cff30d"><td class="mdescLeft">&#160;</td><td class="mdescRight">flag to tell whether one or two ring buffers per channel are used in matrix <br /></td></tr>
+<tr class="separator:a8d97744e3dd2d8ea7f8ed2ed03cff30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefda41ff1b12690da0ce696d7c75e718"><td class="memItemLeft" align="right" valign="top"><a id="aefda41ff1b12690da0ce696d7c75e718"></a>
+GenericList&lt; <a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html">AudioSampleRingBuffer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer_vector.html#aefda41ff1b12690da0ce696d7c75e718">_data</a></td></tr>
+<tr class="memdesc:aefda41ff1b12690da0ce696d7c75e718"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of sample ring buffers <br /></td></tr>
+<tr class="separator:aefda41ff1b12690da0ce696d7c75e718"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer_vector.html" title="A AudioSampleRingBufferVector object is a list of ring buffers for audio samples with selection by in...">AudioSampleRingBufferVector</a></code> object is a list of ring buffers for audio samples with selection by index and left or right rotation on the individual buffers. </p>

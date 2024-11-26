@@ -1,7 +1,7 @@
 <map id="LoggingSupport.h" name="LoggingSupport.h">
-<area shape="rect" id="node1" title="The LoggingSupport specification defines a class for simple entry/exit logging to a file; this loggin..." alt="" coords="2226,5,2362,33"/>
+<area shape="rect" id="node1" title="The LoggingSupport specification defines a class for simple entry/exit logging to a file or via an ar..." alt="" coords="2226,5,2362,33"/>
 <area shape="rect" id="node2" href="$_logging_8h.html" title="The Logging specification defines macros for entry&#45;, exit&#45; and intermediate logging of functions into..." alt="" coords="2181,81,2266,109"/>
-<area shape="rect" id="node30" href="$_logging_support_8cpp.html" title="The LoggingSupport body implements a class for simple entry/exit logging to a file; this logging reli..." alt="" coords="2290,81,2442,109"/>
+<area shape="rect" id="node30" href="$_logging_support_8cpp.html" title="The LoggingSupport body implements a class for simple entry/exit logging to a file or via a callback ..." alt="" coords="2290,81,2442,109"/>
 <area shape="rect" id="node3" href="$_audio_sample_ring_buffer_vector_8cpp-inc.html" title="The AudioSampleRingBufferVector body implements a two&#45;dimensional list of ring buffers for audio samp..." alt="" coords="457,165,728,193"/>
 <area shape="rect" id="node6" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="721,333,912,361"/>
 <area shape="rect" id="node7" href="$_so_x_overdrive___audio_effect_8cpp.html" title="The SoXOverdrive_AudioEffect body implements the SoX overdrive plugin distorting an input signal with..." alt="" coords="5,333,228,361"/>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zero_603',['zero',['../struct_base_types_1_1_primitives_1_1_real.html#a9174f9563a3bc7195ec2988fbda14758',1,'BaseTypes::Primitives::Real']]]
+  ['y_884',['y',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html#a323bdf7cb17197360dfac5c37278331f',1,'SoXPlugins::Effects::SoXCompander::_Point2D']]]
 ];

@@ -17,6 +17,9 @@
 
 using Audio::AudioSampleRingBufferVector;
 
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
+
 /*====================*/
 
 /*--------------------*/
@@ -100,7 +103,7 @@ AudioSampleRingBufferVector::toString (IN Boolean sampleDataIsShown,
         }
     }
 
-    result = StringUtil::expand("AudioSampleRingBufferVector(%1)", result);
+    result = STR::expand("AudioSampleRingBufferVector(%1)", result);
     return result;
 }
 

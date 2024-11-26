@@ -4,9 +4,7 @@ var files_dup =
     [ "AudioSample.h", "_audio_sample_8h.html", "_audio_sample_8h" ],
     [ "AudioSampleList.cpp", "_audio_sample_list_8cpp.html", null ],
     [ "AudioSampleList.cpp-inc", "_audio_sample_list_8cpp-inc.html", null ],
-    [ "AudioSampleList.h", "_audio_sample_list_8h.html", [
-      [ "AudioSampleList", "struct_audio_1_1_audio_sample_list.html", "struct_audio_1_1_audio_sample_list" ]
-    ] ],
+    [ "AudioSampleList.h", "_audio_sample_list_8h.html", "_audio_sample_list_8h" ],
     [ "AudioSampleListVector.cpp", "_audio_sample_list_vector_8cpp.html", null ],
     [ "AudioSampleListVector.cpp-inc", "_audio_sample_list_vector_8cpp-inc.html", null ],
     [ "AudioSampleListVector.h", "_audio_sample_list_vector_8h.html", [
@@ -18,7 +16,7 @@ var files_dup =
       [ "AudioSampleRingBuffer", "struct_audio_1_1_audio_sample_ring_buffer.html", "struct_audio_1_1_audio_sample_ring_buffer" ]
     ] ],
     [ "AudioSampleRingBufferVector.cpp", "_audio_sample_ring_buffer_vector_8cpp.html", null ],
-    [ "AudioSampleRingBufferVector.cpp-inc", "_audio_sample_ring_buffer_vector_8cpp-inc.html", null ],
+    [ "AudioSampleRingBufferVector.cpp-inc", "_audio_sample_ring_buffer_vector_8cpp-inc.html", "_audio_sample_ring_buffer_vector_8cpp-inc" ],
     [ "AudioSampleRingBufferVector.h", "_audio_sample_ring_buffer_vector_8h.html", [
       [ "AudioSampleRingBufferVector", "struct_audio_1_1_audio_sample_ring_buffer_vector.html", "struct_audio_1_1_audio_sample_ring_buffer_vector" ]
     ] ],
@@ -29,16 +27,12 @@ var files_dup =
       [ "Byte", "struct_base_types_1_1_primitives_1_1_byte.html", "struct_base_types_1_1_primitives_1_1_byte" ]
     ] ],
     [ "ByteList.cpp", "_byte_list_8cpp.html", null ],
-    [ "ByteList.h", "_byte_list_8h.html", [
-      [ "ByteList", "struct_base_types_1_1_containers_1_1_byte_list.html", "struct_base_types_1_1_containers_1_1_byte_list" ]
-    ] ],
+    [ "ByteList.h", "_byte_list_8h.html", "_byte_list_8h" ],
     [ "Character.h", "_character_8h.html", [
       [ "Character", "struct_base_types_1_1_primitives_1_1_character.html", "struct_base_types_1_1_primitives_1_1_character" ]
     ] ],
-    [ "Dictionary.cpp", "_dictionary_8cpp.html", null ],
-    [ "Dictionary.h", "_dictionary_8h.html", [
-      [ "Dictionary", "struct_base_types_1_1_containers_1_1_dictionary.html", "struct_base_types_1_1_containers_1_1_dictionary" ]
-    ] ],
+    [ "Dictionary.cpp", "_dictionary_8cpp.html", "_dictionary_8cpp" ],
+    [ "Dictionary.h", "_dictionary_8h.html", "_dictionary_8h" ],
     [ "File.cpp", "_file_8cpp.html", "_file_8cpp" ],
     [ "File.h", "_file_8h.html", [
       [ "File", "struct_base_modules_1_1_file.html", "struct_base_modules_1_1_file" ]
@@ -54,9 +48,7 @@ var files_dup =
       [ "Integer", "struct_base_types_1_1_primitives_1_1_integer.html", "struct_base_types_1_1_primitives_1_1_integer" ]
     ] ],
     [ "IntegerList.cpp", "_integer_list_8cpp.html", null ],
-    [ "IntegerList.h", "_integer_list_8h.html", [
-      [ "IntegerList", "struct_base_types_1_1_containers_1_1_integer_list.html", "struct_base_types_1_1_containers_1_1_integer_list" ]
-    ] ],
+    [ "IntegerList.h", "_integer_list_8h.html", "_integer_list_8h" ],
     [ "SoXCompander/JucePluginDefines.h", "_so_x_compander_2_juce_plugin_defines_8h.html", "_so_x_compander_2_juce_plugin_defines_8h" ],
     [ "SoXFilter/JucePluginDefines.h", "_so_x_filter_2_juce_plugin_defines_8h.html", "_so_x_filter_2_juce_plugin_defines_8h" ],
     [ "SoXGain/JucePluginDefines.h", "_so_x_gain_2_juce_plugin_defines_8h.html", "_so_x_gain_2_juce_plugin_defines_8h" ],
@@ -65,23 +57,20 @@ var files_dup =
     [ "SoXReverb/JucePluginDefines.h", "_so_x_reverb_2_juce_plugin_defines_8h.html", "_so_x_reverb_2_juce_plugin_defines_8h" ],
     [ "Logging.h", "_logging_8h.html", null ],
     [ "LoggingSupport.cpp", "_logging_support_8cpp.html", "_logging_support_8cpp" ],
-    [ "LoggingSupport.h", "_logging_support_8h.html", [
-      [ "Logging", "struct_base_modules_1_1_logging.html", null ]
-    ] ],
+    [ "LoggingSupport.h", "_logging_support_8h.html", "_logging_support_8h" ],
     [ "MyArray.h", "_my_array_8h.html", "_my_array_8h" ],
     [ "MyString.cpp", "_my_string_8cpp.html", "_my_string_8cpp" ],
     [ "MyString.h", "_my_string_8h.html", "_my_string_8h" ],
+    [ "MyWindows.h", "_my_windows_8h.html", "_my_windows_8h" ],
     [ "Natural.h", "_natural_8h.html", [
       [ "Natural", "struct_base_types_1_1_primitives_1_1_natural.html", "struct_base_types_1_1_primitives_1_1_natural" ]
     ] ],
-    [ "NaturalList.cpp", "_natural_list_8cpp.html", null ],
-    [ "NaturalList.h", "_natural_list_8h.html", [
-      [ "NaturalList", "struct_base_types_1_1_containers_1_1_natural_list.html", "struct_base_types_1_1_containers_1_1_natural_list" ]
-    ] ],
+    [ "NaturalList.cpp", "_natural_list_8cpp.html", "_natural_list_8cpp" ],
+    [ "NaturalList.h", "_natural_list_8h.html", "_natural_list_8h" ],
     [ "Object.h", "_object_8h.html", "_object_8h" ],
     [ "OperatingSystem.cpp", "_operating_system_8cpp.html", "_operating_system_8cpp" ],
     [ "OperatingSystem.h", "_operating_system_8h.html", [
-      [ "OperatingSystem", "struct_base_modules_1_1_operating_system.html", null ]
+      [ "OperatingSystem", "struct_base_modules_1_1_operating_system.html", "struct_base_modules_1_1_operating_system" ]
     ] ],
     [ "Percentage.h", "_percentage_8h.html", [
       [ "Percentage", "struct_base_types_1_1_primitives_1_1_percentage.html", "struct_base_types_1_1_primitives_1_1_percentage" ]
@@ -89,13 +78,12 @@ var files_dup =
     [ "Radians.h", "_radians_8h.html", [
       [ "Radians", "struct_base_types_1_1_primitives_1_1_radians.html", "struct_base_types_1_1_primitives_1_1_radians" ]
     ] ],
+    [ "Real.cpp", "_real_8cpp.html", "_real_8cpp" ],
     [ "Real.h", "_real_8h.html", [
       [ "Real", "struct_base_types_1_1_primitives_1_1_real.html", "struct_base_types_1_1_primitives_1_1_real" ]
     ] ],
     [ "RealList.cpp", "_real_list_8cpp.html", null ],
-    [ "RealList.h", "_real_list_8h.html", [
-      [ "RealList", "struct_base_types_1_1_containers_1_1_real_list.html", "struct_base_types_1_1_containers_1_1_real_list" ]
-    ] ],
+    [ "RealList.h", "_real_list_8h.html", "_real_list_8h" ],
     [ "SoXAudioEditor.cpp", "_so_x_audio_editor_8cpp.html", "_so_x_audio_editor_8cpp" ],
     [ "SoXAudioEditor.h", "_so_x_audio_editor_8h.html", "_so_x_audio_editor_8h" ],
     [ "SoXAudioEditorWidget.cpp", "_so_x_audio_editor_widget_8cpp.html", "_so_x_audio_editor_widget_8cpp" ],
@@ -107,7 +95,7 @@ var files_dup =
       [ "SoXAudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect" ]
     ] ],
     [ "SoXAudioHelper.h", "_so_x_audio_helper_8h.html", [
-      [ "SoXAudioHelper", "struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_helper.html", null ]
+      [ "SoXAudioHelper", "struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_helper.html", "struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_helper" ]
     ] ],
     [ "SoXAudioProcessor.cpp", "_so_x_audio_processor_8cpp.html", "_so_x_audio_processor_8cpp" ],
     [ "SoXAudioProcessor.h", "_so_x_audio_processor_8h.html", [
@@ -157,18 +145,12 @@ var files_dup =
     [ "SoXOverdrive/SoXPlugin-util.cpp", "_so_x_overdrive_2_so_x_plugin-util_8cpp.html", null ],
     [ "SoXPhaserAndTremolo/SoXPlugin-util.cpp", "_so_x_phaser_and_tremolo_2_so_x_plugin-util_8cpp.html", null ],
     [ "SoXReverb/SoXPlugin-util.cpp", "_so_x_reverb_2_so_x_plugin-util_8cpp.html", null ],
+    [ "SoXCompander/SoXPlugin-VST_1.cpp", "_so_x_compander_2_so_x_plugin-_v_s_t__1_8cpp.html", null ],
+    [ "SoXOverdrive/SoXPlugin-VST_1.cpp", "_so_x_overdrive_2_so_x_plugin-_v_s_t__1_8cpp.html", null ],
     [ "SoXFilter/SoxPlugin-VST_1.cpp", "_so_x_filter_2_sox_plugin-_v_s_t__1_8cpp.html", null ],
     [ "SoXGain/SoxPlugin-VST_1.cpp", "_so_x_gain_2_sox_plugin-_v_s_t__1_8cpp.html", null ],
     [ "SoXPhaserAndTremolo/SoxPlugin-VST_1.cpp", "_so_x_phaser_and_tremolo_2_sox_plugin-_v_s_t__1_8cpp.html", null ],
     [ "SoXReverb/SoxPlugin-VST_1.cpp", "_so_x_reverb_2_sox_plugin-_v_s_t__1_8cpp.html", null ],
-    [ "SoXCompander/SoXPlugin-VST_1.cpp", "_so_x_compander_2_so_x_plugin-_v_s_t__1_8cpp.html", null ],
-    [ "SoXOverdrive/SoXPlugin-VST_1.cpp", "_so_x_overdrive_2_so_x_plugin-_v_s_t__1_8cpp.html", null ],
-    [ "SoXCompander/SoXPlugin-VST_2.cpp", "_so_x_compander_2_so_x_plugin-_v_s_t__2_8cpp.html", null ],
-    [ "SoXFilter/SoXPlugin-VST_2.cpp", "_so_x_filter_2_so_x_plugin-_v_s_t__2_8cpp.html", null ],
-    [ "SoXGain/SoXPlugin-VST_2.cpp", "_so_x_gain_2_so_x_plugin-_v_s_t__2_8cpp.html", null ],
-    [ "SoXOverdrive/SoXPlugin-VST_2.cpp", "_so_x_overdrive_2_so_x_plugin-_v_s_t__2_8cpp.html", null ],
-    [ "SoXPhaserAndTremolo/SoXPlugin-VST_2.cpp", "_so_x_phaser_and_tremolo_2_so_x_plugin-_v_s_t__2_8cpp.html", null ],
-    [ "SoXReverb/SoXPlugin-VST_2.cpp", "_so_x_reverb_2_so_x_plugin-_v_s_t__2_8cpp.html", null ],
     [ "SoXReverb_AudioEffect.cpp", "_so_x_reverb___audio_effect_8cpp.html", "_so_x_reverb___audio_effect_8cpp" ],
     [ "SoXReverb_AudioEffect.h", "_so_x_reverb___audio_effect_8h.html", [
       [ "SoXReverb_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect" ]
@@ -178,14 +160,11 @@ var files_dup =
     [ "SoXReverbSupport.h", "_so_x_reverb_support_8h.html", [
       [ "_SoXReverb", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___so_x_reverb.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___so_x_reverb" ]
     ] ],
-    [ "StringList.cpp", "_string_list_8cpp.html", null ],
-    [ "StringList.h", "_string_list_8h.html", [
-      [ "StringList", "struct_base_types_1_1_containers_1_1_string_list.html", "struct_base_types_1_1_containers_1_1_string_list" ]
-    ] ],
-    [ "StringSet.h", "_string_set_8h.html", [
-      [ "StringSet", "struct_base_types_1_1_containers_1_1_string_set.html", "struct_base_types_1_1_containers_1_1_string_set" ]
-    ] ],
-    [ "StringUtil.cpp", "_string_util_8cpp.html", null ],
+    [ "StringList.cpp", "_string_list_8cpp.html", "_string_list_8cpp" ],
+    [ "StringList.h", "_string_list_8h.html", "_string_list_8h" ],
+    [ "StringSet.cpp", "_string_set_8cpp.html", null ],
+    [ "StringSet.h", "_string_set_8h.html", "_string_set_8h" ],
+    [ "StringUtil.cpp", "_string_util_8cpp.html", "_string_util_8cpp" ],
     [ "StringUtil.h", "_string_util_8h.html", "_string_util_8h" ],
     [ "WaveForm.cpp", "_wave_form_8cpp.html", "_wave_form_8cpp" ],
     [ "WaveForm.h", "_wave_form_8h.html", "_wave_form_8h" ]

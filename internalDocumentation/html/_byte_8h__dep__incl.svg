@@ -59,8 +59,8 @@ var sectionId = 'dynsection-1';
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="The Byte specification and body provides a value object type for byte values.">
-<polygon fill="#bfbfbf" stroke="black" points="648,-354.5 648,-374.5 695,-374.5 695,-354.5 648,-354.5"/>
-<text text-anchor="middle" x="671.5" y="-361.7" font-family="Helvetica,sans-Serif" font-size="11.00">Byte.h</text>
+<polygon fill="#bfbfbf" stroke="black" points="756,-354.5 756,-374.5 803,-374.5 803,-354.5 756,-354.5"/>
+<text text-anchor="middle" x="779.5" y="-361.7" font-family="Helvetica,sans-Serif" font-size="11.00">Byte.h</text>
 </a>
 </g>
 </g>
@@ -68,61 +68,61 @@ var sectionId = 'dynsection-1';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="_byte_list_8h.html" target="_top" xlink:title="The ByteList specification defines lists of byte values with zero&#45;based arbitrary indexed access to p...">
-<polygon fill="white" stroke="black" points="595,-297.5 595,-317.5 660,-317.5 660,-297.5 595,-297.5"/>
-<text text-anchor="middle" x="627.5" y="-304.7" font-family="Helvetica,sans-Serif" font-size="11.00">ByteList.h</text>
+<polygon fill="white" stroke="black" points="703,-297.5 703,-317.5 768,-317.5 768,-297.5 703,-297.5"/>
+<text text-anchor="middle" x="735.5" y="-304.7" font-family="Helvetica,sans-Serif" font-size="11.00">ByteList.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M657.85,-346.44C650.29,-336.98 641.18,-325.6 634.92,-317.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="655.25,-348.8 664.23,-354.42 660.72,-344.42 655.25,-348.8"/>
+<path fill="none" stroke="midnightblue" d="M765.85,-346.44C758.29,-336.98 749.18,-325.6 742.92,-317.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="763.25,-348.8 772.23,-354.42 768.72,-344.42 763.25,-348.8"/>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
 <g id="a_node8"><a xlink:href="_character_8h.html" target="_top" xlink:title="The Character specification and body provides a value object type for character values.">
-<polygon fill="white" stroke="black" points="679.5,-297.5 679.5,-317.5 753.5,-317.5 753.5,-297.5 679.5,-297.5"/>
-<text text-anchor="middle" x="716.5" y="-304.7" font-family="Helvetica,sans-Serif" font-size="11.00">Character.h</text>
+<polygon fill="white" stroke="black" points="787.5,-297.5 787.5,-317.5 861.5,-317.5 861.5,-297.5 787.5,-297.5"/>
+<text text-anchor="middle" x="824.5" y="-304.7" font-family="Helvetica,sans-Serif" font-size="11.00">Character.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node8 -->
 <g id="edge7" class="edge">
 <title>Node1&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M685.46,-346.44C693.2,-336.98 702.51,-325.6 708.91,-317.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="682.55,-344.46 678.93,-354.42 687.97,-348.89 682.55,-344.46"/>
+<path fill="none" stroke="midnightblue" d="M793.46,-346.44C801.2,-336.98 810.51,-325.6 816.91,-317.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="790.55,-344.46 786.93,-354.42 795.97,-348.89 790.55,-344.46"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="_file_8h.html" target="_top" xlink:title="The File specification defines a class for simple file handling based on C stdio.">
-<polygon fill="white" stroke="black" points="493,-240.5 493,-260.5 536,-260.5 536,-240.5 493,-240.5"/>
-<text text-anchor="middle" x="514.5" y="-247.7" font-family="Helvetica,sans-Serif" font-size="11.00">File.h</text>
+<polygon fill="white" stroke="black" points="529,-240.5 529,-260.5 572,-260.5 572,-240.5 529,-240.5"/>
+<text text-anchor="middle" x="550.5" y="-247.7" font-family="Helvetica,sans-Serif" font-size="11.00">File.h</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M599.6,-292.92C578.91,-282.85 551.27,-269.4 533.19,-260.6"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="598.32,-296.19 608.84,-297.42 601.38,-289.89 598.32,-296.19"/>
+<path fill="none" stroke="midnightblue" d="M695.26,-294.54C657.43,-283.29 602.25,-266.89 572.12,-257.93"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="694.37,-297.92 704.95,-297.42 696.36,-291.21 694.37,-297.92"/>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:href="_byte_list_8cpp.html" target="_top" xlink:title="The ByteList body implements sequences of byte values with zero&#45;based arbitrary indexed access to pos...">
-<polygon fill="white" stroke="black" points="589,-240.5 589,-260.5 666,-260.5 666,-240.5 589,-240.5"/>
-<text text-anchor="middle" x="627.5" y="-247.7" font-family="Helvetica,sans-Serif" font-size="11.00">ByteList.cpp</text>
+<polygon fill="white" stroke="black" points="697,-240.5 697,-260.5 774,-260.5 774,-240.5 697,-240.5"/>
+<text text-anchor="middle" x="735.5" y="-247.7" font-family="Helvetica,sans-Serif" font-size="11.00">ByteList.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node2&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M627.5,-287.38C627.5,-278.37 627.5,-268.04 627.5,-260.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="624,-287.42 627.5,-297.42 631,-287.42 624,-287.42"/>
+<path fill="none" stroke="midnightblue" d="M735.5,-287.38C735.5,-278.37 735.5,-268.04 735.5,-260.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="732,-287.42 735.5,-297.42 739,-287.42 732,-287.42"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
@@ -136,13 +136,13 @@ var sectionId = 'dynsection-1';
 <!-- Node3&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node3&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M538.04,-234.95C554.14,-225 574.99,-212.12 588.78,-203.6"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="535.86,-232.18 529.2,-240.42 539.54,-238.14 535.86,-232.18"/>
+<path fill="none" stroke="midnightblue" d="M566.39,-233.01C575.6,-223.45 586.87,-211.76 594.56,-203.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="563.67,-230.79 559.25,-240.42 568.71,-235.65 563.67,-230.79"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="_logging_support_8cpp.html" target="_top" xlink:title="The LoggingSupport body implements a class for simple entry/exit logging to a file; this logging reli...">
+<g id="a_node5"><a xlink:href="_logging_support_8cpp.html" target="_top" xlink:title="The LoggingSupport body implements a class for simple entry/exit logging to a file or via a callback ...">
 <polygon fill="white" stroke="black" points="302.5,-183.5 302.5,-203.5 416.5,-203.5 416.5,-183.5 302.5,-183.5"/>
 <text text-anchor="middle" x="359.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">LoggingSupport.cpp</text>
 </a>
@@ -151,8 +151,8 @@ var sectionId = 'dynsection-1';
 <!-- Node3&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node3&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M483.34,-238.44C454.43,-228.18 411.92,-213.1 384.99,-203.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="482.35,-241.81 492.95,-241.85 484.69,-235.21 482.35,-241.81"/>
+<path fill="none" stroke="midnightblue" d="M519.17,-240.48C483.79,-230.29 426.56,-213.81 391.08,-203.59"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="518.38,-243.89 528.96,-243.3 520.32,-237.17 518.38,-243.89"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
@@ -166,29 +166,29 @@ var sectionId = 'dynsection-1';
 <!-- Node3&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node3&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M508.34,-230.68C505.37,-221.6 501.94,-211.12 499.54,-203.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="505.09,-232 511.53,-240.42 511.74,-229.83 505.09,-232"/>
+<path fill="none" stroke="midnightblue" d="M534.31,-233.01C524.92,-223.45 513.44,-211.76 505.61,-203.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="532.08,-235.73 541.58,-240.42 537.07,-230.83 532.08,-235.73"/>
 </g>
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
 <g id="a_node9"><a xlink:href="_string_util_8h.html" target="_top" xlink:title="The StringUtil specification defines several string routines not included in the standard C++ library...">
-<polygon fill="white" stroke="black" points="701,-240.5 701,-260.5 770,-260.5 770,-240.5 701,-240.5"/>
-<text text-anchor="middle" x="735.5" y="-247.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringUtil.h</text>
+<polygon fill="white" stroke="black" points="846,-240.5 846,-260.5 915,-260.5 915,-240.5 846,-240.5"/>
+<text text-anchor="middle" x="880.5" y="-247.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringUtil.h</text>
 </a>
 </g>
 </g>
 <!-- Node8&#45;&gt;Node9 -->
 <g id="edge8" class="edge">
 <title>Node8&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M723,-287.68C726.14,-278.6 729.76,-268.12 732.29,-260.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="719.59,-286.82 719.64,-297.42 726.21,-289.11 719.59,-286.82"/>
+<path fill="none" stroke="midnightblue" d="M841,-290.3C850.79,-280.68 862.85,-268.83 871.05,-260.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="838.43,-287.91 833.75,-297.42 843.33,-292.91 838.43,-287.91"/>
 </g>
 <!-- Node9&#45;&gt;Node4 -->
 <g id="edge27" class="edge">
 <title>Node9&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M704.21,-236.46C679.91,-226.34 646.84,-212.56 625.33,-203.6"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="703.13,-239.8 713.7,-240.42 705.82,-233.34 703.13,-239.8"/>
+<path fill="none" stroke="midnightblue" d="M835.65,-241.88C787.31,-233.46 708.18,-219.09 640.5,-204 637.52,-203.34 634.42,-202.6 631.33,-201.85"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="835.33,-245.38 845.78,-243.64 836.52,-238.48 835.33,-245.38"/>
 </g>
 <!-- Node10 -->
 <g id="node10" class="node">
@@ -202,8 +202,8 @@ var sectionId = 'dynsection-1';
 <!-- Node9&#45;&gt;Node10 -->
 <g id="edge9" class="edge">
 <title>Node9&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M735.5,-230.38C735.5,-221.37 735.5,-211.04 735.5,-203.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="732,-230.42 735.5,-240.42 739,-230.42 732,-230.42"/>
+<path fill="none" stroke="midnightblue" d="M847.19,-236.87C820.41,-226.71 783.42,-212.68 759.48,-203.6"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="845.96,-240.14 856.56,-240.42 848.45,-233.6 845.96,-240.14"/>
 </g>
 <!-- Node26 -->
 <g id="node26" class="node">
@@ -217,23 +217,53 @@ var sectionId = 'dynsection-1';
 <!-- Node9&#45;&gt;Node26 -->
 <g id="edge28" class="edge">
 <title>Node9&#45;&gt;Node26</title>
-<path fill="none" stroke="midnightblue" d="M768.81,-236.87C795.59,-226.71 832.58,-212.68 856.52,-203.6"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="767.55,-233.6 759.44,-240.42 770.04,-240.14 767.55,-233.6"/>
+<path fill="none" stroke="midnightblue" d="M880.5,-230.38C880.5,-221.37 880.5,-211.04 880.5,-203.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="877,-230.42 880.5,-240.42 884,-230.42 877,-230.42"/>
 </g>
 <!-- Node27 -->
 <g id="node27" class="node">
 <title>Node27</title>
-<g id="a_node27"><a xlink:href="_string_list_8cpp.html" target="_top" xlink:title="The StringList body implements lists of string values with zero&#45;based arbitrary indexed access to pos...">
-<polygon fill="white" stroke="black" points="939,-183.5 939,-203.5 1022,-203.5 1022,-183.5 939,-183.5"/>
-<text text-anchor="middle" x="980.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringList.cpp</text>
+<g id="a_node27"><a xlink:href="_natural_list_8cpp.html" target="_top" xlink:title="The NaturalList body implements lists of non&#45;negative integer values with zero&#45;based arbitrary indexe...">
+<polygon fill="white" stroke="black" points="939,-183.5 939,-203.5 1028,-203.5 1028,-183.5 939,-183.5"/>
+<text text-anchor="middle" x="983.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">NaturalList.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node27 -->
 <g id="edge29" class="edge">
 <title>Node9&#45;&gt;Node27</title>
-<path fill="none" stroke="midnightblue" d="M780.01,-239.51C825.76,-229.24 896.34,-213.39 940.4,-203.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="779.07,-236.13 770.08,-241.74 780.61,-242.96 779.07,-236.13"/>
+<path fill="none" stroke="midnightblue" d="M906.45,-235.65C925.25,-225.61 950.13,-212.32 966.47,-203.6"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="904.68,-232.62 897.51,-240.42 907.98,-238.79 904.68,-232.62"/>
+</g>
+<!-- Node28 -->
+<g id="node28" class="node">
+<title>Node28</title>
+<g id="a_node28"><a xlink:href="_string_list_8cpp.html" target="_top" xlink:title="The StringList body implements lists of string values with zero&#45;based arbitrary indexed access to pos...">
+<polygon fill="white" stroke="black" points="1046,-183.5 1046,-203.5 1129,-203.5 1129,-183.5 1046,-183.5"/>
+<text text-anchor="middle" x="1087.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringList.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node9&#45;&gt;Node28 -->
+<g id="edge30" class="edge">
+<title>Node9&#45;&gt;Node28</title>
+<path fill="none" stroke="midnightblue" d="M924.6,-237.78C963.18,-227.53 1018.41,-212.86 1053.61,-203.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="923.45,-234.47 914.68,-240.42 925.25,-241.23 923.45,-234.47"/>
+</g>
+<!-- Node29 -->
+<g id="node29" class="node">
+<title>Node29</title>
+<g id="a_node29"><a xlink:href="_real_8cpp.html" target="_top" xlink:title="The Real body implements a value object type for real values.">
+<polygon fill="white" stroke="black" points="1147.5,-183.5 1147.5,-203.5 1207.5,-203.5 1207.5,-183.5 1147.5,-183.5"/>
+<text text-anchor="middle" x="1177.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">Real.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node9&#45;&gt;Node29 -->
+<g id="edge31" class="edge">
+<title>Node9&#45;&gt;Node29</title>
+<path fill="none" stroke="midnightblue" d="M925.23,-242.39C976.62,-234.03 1063.4,-219.34 1137.5,-204 1140.72,-203.33 1144.07,-202.6 1147.4,-201.85"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="924.44,-238.97 915.12,-244.02 925.55,-245.88 924.44,-238.97"/>
 </g>
 <!-- Node11 -->
 <g id="node11" class="node">

@@ -21,7 +21,6 @@
 
 /*--------------------*/
 
-using BaseTypes::Primitives::String_toString;
 using BaseTypes::GenericTypes::GenericSet;
 
 /*====================*/
@@ -29,13 +28,26 @@ using BaseTypes::GenericTypes::GenericSet;
 namespace BaseTypes::Containers {
 
     /**
+     * Returns name of string set type
+     *
+     * @return type name
+     */
+    String _stringSetTypeName ();
+    
+    /*--------------------*/
+
+    /**
      * A <C>StringSet</C> object is a set of string values with no
      * duplicates and only simple containment access and the ability
      * to add and remove elements.
      */
     struct StringSet
-        : public GenericSet<String> {
+        : public GenericSet<String,
+                            String_toString,
+                            _stringSetTypeName > {
 
+        /*--------------------*/
+        /* constructors       */
         /*--------------------*/
 
         /**
@@ -53,13 +65,6 @@ namespace BaseTypes::Containers {
             }
 
             return result;
-        }
-
-        /*--------------------*/
-
-        String toString () const
-        {
-            return _toString("StringSet", String_toString);
         }
 
     };

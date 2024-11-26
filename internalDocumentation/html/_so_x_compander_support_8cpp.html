@@ -85,8 +85,8 @@ $(document).ready(function(){initNavTree('_so_x_compander_support_8cpp.html','')
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">SoXCompanderSupport.cpp File Reference</div>  </div>
@@ -143,15 +143,12 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespace_so_x_plugins_1_1_effects_1_1_so_x_compander"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html" title="The package SoXCompander provides classes for the SoX compand and mcompand audio effects.">SoXCompander</a></code> provides classes for the SoX <b>compand</b> and <b>mcompand</b> audio effects. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memItemLeft" align="right" valign="top"><a id="a94692cc5c1eac2402cbeff7e1eaa95cd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander_support_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd">expand</a>&#160;&#160;&#160;StringUtil::expand</td></tr>
-<tr class="memdesc:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil::expand <br /></td></tr>
-<tr class="separator:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memItemLeft" align="right" valign="top"><a id="a5b6f88d1249b396e351c4a85bcb35b2c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander_support_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c">STR</a> = <a class="el" href="struct_base_modules_1_1_string_util.html">BaseModules::StringUtil</a></td></tr>
+<tr class="memdesc:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil <br /></td></tr>
+<tr class="separator:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aede722d417c87dcbd4fd4b7a960c57b3"><td class="memItemLeft" align="right" valign="top"><a id="aede722d417c87dcbd4fd4b7a960c57b3"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#aede722d417c87dcbd4fd4b7a960c57b3">SoXPlugins::Effects::SoXCompander::_TfSegmentList</a> = GenericList&lt; _TfSegment &gt;</td></tr>
 <tr class="memdesc:aede722d417c87dcbd4fd4b7a960c57b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_TfSegmentList</code> is a list of transfer function segments. <br /></td></tr>
@@ -160,18 +157,28 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nam
 typedef size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a04ac9b5b15f96dc2803ffba37facc0c3">SoXPlugins::Effects::SoXCompander::_CompanderStreamKind</a></td></tr>
 <tr class="memdesc:a04ac9b5b15f96dc2803ffba37facc0c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <code>_CompanderStreamKind</code> type is an enumeration for the kind of audio sample streams relevant for a compander band: input, lowOutput and highOutput as input for the next band. <br /></td></tr>
 <tr class="separator:a04ac9b5b15f96dc2803ffba37facc0c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bb739d775a51382d227d17cc9f2a9d8"><td class="memItemLeft" align="right" valign="top"><a id="a0bb739d775a51382d227d17cc9f2a9d8"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a0bb739d775a51382d227d17cc9f2a9d8">SoXPlugins::Effects::SoXCompander::_CompanderSampleBufferEntry</a> = array&lt; <a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html">AudioSampleRingBuffer</a> *, _companderStreamKindCount &gt;</td></tr>
-<tr class="memdesc:a0bb739d775a51382d227d17cc9f2a9d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_CompanderSampleBufferEntry</code> object contains pointers to a buffer for input, low and high output samples; it is the element type in a <b>_CompanderSampleBuffer</b>. <br /></td></tr>
-<tr class="separator:a0bb739d775a51382d227d17cc9f2a9d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2be8de21409b66f92991ceab669e1351"><td class="memItemLeft" align="right" valign="top"><a id="a2be8de21409b66f92991ceab669e1351"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a2be8de21409b66f92991ceab669e1351">SoXPlugins::Effects::SoXCompander::_CompanderSampleBuffer</a> = GenericList&lt; _CompanderSampleBufferEntry &gt;</td></tr>
-<tr class="memdesc:a2be8de21409b66f92991ceab669e1351"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_CompanderSampleBuffer</code> object contains pointers to the buffers for input, low and high output samples for each channel in a crossover band; the input buffer of the first band contain the input samples, the following bands use the high output of the previous crossover band. <br /></td></tr>
-<tr class="separator:a2be8de21409b66f92991ceab669e1351"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4f6668f6a7c54a2f7f81b687c3dca38"><td class="memItemLeft" align="right" valign="top"><a id="ae4f6668f6a7c54a2f7f81b687c3dca38"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ae4f6668f6a7c54a2f7f81b687c3dca38">SoXPlugins::Effects::SoXCompander::_CompanderSampleBufferElement</a> = array&lt; <a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html">AudioSampleRingBuffer</a> *, _companderStreamKindCount &gt;</td></tr>
+<tr class="memdesc:ae4f6668f6a7c54a2f7f81b687c3dca38"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_CompanderSampleBufferElement</code> object contains pointers to a buffer for input, low and high output samples; it is the element type in a <b>_CompanderSampleBuffer</b>. <br /></td></tr>
+<tr class="separator:ae4f6668f6a7c54a2f7f81b687c3dca38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0b51728e456109c3c9d1f048544ce84"><td class="memItemLeft" align="right" valign="top"><a id="aa0b51728e456109c3c9d1f048544ce84"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#aa0b51728e456109c3c9d1f048544ce84">SoXPlugins::Effects::SoXCompander::_CompanderSampleBuffer</a> = GenericList&lt; _CompanderSampleBufferElement &gt;</td></tr>
+<tr class="memdesc:aa0b51728e456109c3c9d1f048544ce84"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_CompanderSampleBuffer</code> object contains pointers to the buffers for input, low and high output samples for each channel in a crossover band; the input buffer of the first band contain the input samples, the following bands use the high output of the previous crossover band. <br /></td></tr>
+<tr class="separator:aa0b51728e456109c3c9d1f048544ce84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82d3df6f576351be3f58333a5730161c"><td class="memItemLeft" align="right" valign="top"><a id="a82d3df6f576351be3f58333a5730161c"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a82d3df6f576351be3f58333a5730161c">SoXPlugins::Effects::SoXCompander::_MCompanderBandList</a> = GenericList&lt; _MCompanderBand &gt;</td></tr>
 <tr class="memdesc:a82d3df6f576351be3f58333a5730161c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_MCompanderBandList</code> is a list of compander bands. <br /></td></tr>
 <tr class="separator:a82d3df6f576351be3f58333a5730161c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:af04ba3299f56da3d4a74a2bf6250cfef"><td class="memItemLeft" align="right" valign="top"><a id="af04ba3299f56da3d4a74a2bf6250cfef"></a>
+static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#af04ba3299f56da3d4a74a2bf6250cfef">SoXPlugins::Effects::SoXCompander::_sampleBufferToString</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> _CompanderSampleBuffer &amp;buffer)</td></tr>
+<tr class="memdesc:af04ba3299f56da3d4a74a2bf6250cfef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns string representation of <code>buffer</code>. <br /></td></tr>
+<tr class="separator:af04ba3299f56da3d4a74a2bf6250cfef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94747270fc3ae114e6d7eafffdc00bcd"><td class="memItemLeft" align="right" valign="top"><a id="a94747270fc3ae114e6d7eafffdc00bcd"></a>
+static String&#160;</td><td class="memItemRight" valign="bottom"><b>SoXPlugins::Effects::SoXCompander::_mCompanderBandListToString</b> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> _MCompanderBandList &amp;list)</td></tr>
+<tr class="separator:a94747270fc3ae114e6d7eafffdc00bcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -179,6 +186,15 @@ Variables</h2></td></tr>
 const <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a03d18776f0fa01892f32d55bfba5dbe2">SoXPlugins::Effects::SoXCompander::_maximumChannelCount</a> = 10</td></tr>
 <tr class="memdesc:a03d18776f0fa01892f32d55bfba5dbe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the maximum number of channels supported <br /></td></tr>
 <tr class="separator:a03d18776f0fa01892f32d55bfba5dbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d605dfc59e1c9ab45f8d66618321b35"><td class="memItemLeft" align="right" valign="top"><a id="a5d605dfc59e1c9ab45f8d66618321b35"></a>
+static _CompanderStreamKind&#160;</td><td class="memItemRight" valign="bottom"><b>SoXPlugins::Effects::SoXCompander::_kindInputStream</b> = 0</td></tr>
+<tr class="separator:a5d605dfc59e1c9ab45f8d66618321b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a832fb343ddc1e19694d8768a526537ca"><td class="memItemLeft" align="right" valign="top"><a id="a832fb343ddc1e19694d8768a526537ca"></a>
+static _CompanderStreamKind&#160;</td><td class="memItemRight" valign="bottom"><b>SoXPlugins::Effects::SoXCompander::_kindLowOutputStream</b> = 1</td></tr>
+<tr class="separator:a832fb343ddc1e19694d8768a526537ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86e11bd2be4f4ccd6fe63ef67d029df1"><td class="memItemLeft" align="right" valign="top"><a id="a86e11bd2be4f4ccd6fe63ef67d029df1"></a>
+static _CompanderStreamKind&#160;</td><td class="memItemRight" valign="bottom"><b>SoXPlugins::Effects::SoXCompander::_kindHighOutputStream</b> = 2</td></tr>
+<tr class="separator:a86e11bd2be4f4ccd6fe63ef67d029df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba315deadaf1e3fa986162eb4f7aa5a2"><td class="memItemLeft" align="right" valign="top"><a id="aba315deadaf1e3fa986162eb4f7aa5a2"></a>
 constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#aba315deadaf1e3fa986162eb4f7aa5a2">SoXPlugins::Effects::SoXCompander::_companderStreamKindCount</a> = 3</td></tr>
 <tr class="memdesc:aba315deadaf1e3fa986162eb4f7aa5a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the count of stream kinds <br /></td></tr>

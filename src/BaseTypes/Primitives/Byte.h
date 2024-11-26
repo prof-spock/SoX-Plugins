@@ -16,6 +16,7 @@
 /*=========*/
 
 #include <cmath>
+#include <cstdint>
 #include "Natural.h"
 
 /*====================*/
@@ -107,6 +108,33 @@ namespace BaseTypes::Primitives {
 
         /*--------------------*/
         /* operators          */
+        /*--------------------*/
+
+        /**
+         * Returns the modulus of current value and <C>other</C>.
+         *
+         * @param[in] other  other byte value to be used as
+         *                   divisor
+         * @return  modulus of current and <C>other</C>.
+         */
+        Byte operator % (IN Byte other) const
+        {
+            return Byte{_value % other._value};
+        }
+
+        /*--------------------*/
+        /**
+         * Sets current value to modulus of current value and
+         * <C>other</C>.
+         *
+         * @param[in] other  other byte value to be used as
+         *                   divisor
+         */
+        void operator %= (IN Byte other)
+        {
+            _value = _value % other._value;
+        }
+
         /*--------------------*/
 
         /**

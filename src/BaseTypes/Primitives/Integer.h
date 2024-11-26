@@ -77,12 +77,12 @@ namespace BaseTypes::Primitives {
          * Returns string representation of integer with precision and
          * padding information.
          *
-         * @param[in] precision     minimum number of valid digits
-         * @param[in] padCharacter  character to use for left padding
+         * @param[in] precision  minimum number of valid digits
+         * @param[in] padString  string to use for left padding
          * @return  string representation
          */
         String toString (IN Natural precision = Natural{0},
-                         IN String padCharacter = "0") const
+                         IN String padString = "0") const
         {
             String result = std::to_string(_value);
             const Natural length{result.size()};
@@ -90,7 +90,7 @@ namespace BaseTypes::Primitives {
                 (precision > length ? precision - length : 0);
 
             while (padCount > 0) {
-                result = padCharacter + result;
+                result = padString + result;
                 padCount--;
             }
 
@@ -147,6 +147,39 @@ namespace BaseTypes::Primitives {
         explicit operator Natural () const
         {
             return Natural{(int) _value};
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns string representation of integer <C>i</C> with
+         * default precision and padding information.
+         *
+         * @param[in] i  integer value to be converted to a string
+         * @return  string representation
+         */
+        static String toString (IN Integer& i)
+        {
+            return i.toString();
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns natural representation of integer <C>i</C>; fails
+         * when integer is negative.
+         *
+         * @param[in] i  integer value to be converted to a natural
+         * @return  natural representation
+         */
+        static Natural toNatural (IN Integer& i)
+        {
+            if (i < 0) {
+                throw std::range_error("negative value not "
+                                       "allowed for natural");
+            }
+
+            return Natural{(size_t) (int) i};
         }
 
         /*--------------------*/
@@ -218,6 +251,19 @@ namespace BaseTypes::Primitives {
         /*-----------------------------*/
 
         /**
+         * Returns the absolute value of <C>x</C> as integer value.
+         *
+         * @param[in] i  some integer value
+         * @return  the absolute value of <C>i</C>
+         */
+        static Integer abs (IN Integer i)
+        {
+            return Integer{std::abs((int) i)};
+        }
+
+        /*--------------------*/
+
+        /**
          * Returns the ceiling of <C>x</C> as integer value.
          *
          * @param[in] x  some real value
@@ -269,7 +315,8 @@ namespace BaseTypes::Primitives {
          * @param[in] exponent  some integer value
          * @return  base^exponent
          */
-        static Integer power (IN Integer base, IN Integer exponent)
+        static Integer power (IN Integer base,
+                              IN Integer exponent)
         {
             return Integer{(int) pow(base._value, exponent._value)};
         }
@@ -288,39 +335,20 @@ namespace BaseTypes::Primitives {
         }
 
         /*--------------------*/
-
-        /**
-         * Returns string representation of integer <C>i</C> with
-         * default precision and padding information.
-         *
-         * @param[in] i  integer value to be converted to a string
-         * @return  string representation
-         */
-        static String toString (IN Integer& i)
-        {
-            return i.toString();
-        }
-
-        /*--------------------*/
-
-        /**
-         * Returns natural representation of integer <C>i</C>; fails
-         * when integer is negative.
-         *
-         * @param[in] i  integer value to be converted to a natural
-         * @return  natural representation
-         */
-        static Natural toNatural (IN Integer& i)
-        {
-            if (i < 0) {
-                throw std::range_error("negative value not allowed for natural");
-            }
-
-            return Natural{(size_t) (int) i};
-        }
-
-        /*--------------------*/
         /* advanced methods   */
+        /*--------------------*/
+
+        /**
+         * Returns the absolute value of current value as integer
+         * value.
+         *
+         * @return  the absolute value of current value
+         */
+        Integer abs ()
+        {
+            return Integer::abs(*this);
+        }
+
         /*--------------------*/
 
         /**

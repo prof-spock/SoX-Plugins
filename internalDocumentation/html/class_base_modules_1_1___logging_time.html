@@ -84,6 +84,8 @@ $(document).ready(function(){initNavTree('class_base_modules_1_1___logging_time.
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_base_modules_1_1___logging_time-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">BaseModules::_LoggingTime Class Reference</div>  </div>
@@ -111,10 +113,71 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abbe64720f730901fb60610f56566cc66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_modules_1_1___logging_time.html#abbe64720f730901fb60610f56566cc66">setFractionalDigitCount</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> fractionalDigitCount)</td></tr>
 <tr class="memdesc:abbe64720f730901fb60610f56566cc66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the number of digits after decimal point for time indications to <code>fractionalDigitCount</code>.  <a href="class_base_modules_1_1___logging_time.html#abbe64720f730901fb60610f56566cc66">More...</a><br /></td></tr>
 <tr class="separator:abbe64720f730901fb60610f56566cc66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a1ec0918c896b1734c23a02830438ea78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_modules_1_1___logging_time.html#a1ec0918c896b1734c23a02830438ea78">_isDST</a> ()</td></tr>
+<tr class="memdesc:a1ec0918c896b1734c23a02830438ea78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tells whether DST is applicable (very imprecisely)  <a href="class_base_modules_1_1___logging_time.html#a1ec0918c896b1734c23a02830438ea78">More...</a><br /></td></tr>
+<tr class="separator:a1ec0918c896b1734c23a02830438ea78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aa6cca8a60a7c408e205b1ed62237e9f7"><td class="memItemLeft" align="right" valign="top"><a id="aa6cca8a60a7c408e205b1ed62237e9f7"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_modules_1_1___logging_time.html#aa6cca8a60a7c408e205b1ed62237e9f7">_timeFractionalDigitCount</a></td></tr>
+<tr class="memdesc:aa6cca8a60a7c408e205b1ed62237e9f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">the number of digits after decimal point for time indications <br /></td></tr>
+<tr class="separator:aa6cca8a60a7c408e205b1ed62237e9f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0340ba73c2ff8e69d0756b2a2ef46232"><td class="memItemLeft" align="right" valign="top"><a id="a0340ba73c2ff8e69d0756b2a2ef46232"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_modules_1_1___logging_time.html#a0340ba73c2ff8e69d0756b2a2ef46232">_timeFactor</a></td></tr>
+<tr class="memdesc:a0340ba73c2ff8e69d0756b2a2ef46232"><td class="mdescLeft">&#160;</td><td class="mdescRight">factor 10^<code>timeFractionalDigitCount</code> <br /></td></tr>
+<tr class="separator:a0340ba73c2ff8e69d0756b2a2ef46232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83867169e63f5bc786fb614d15f0fca1"><td class="memItemLeft" align="right" valign="top"><a id="a83867169e63f5bc786fb614d15f0fca1"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_modules_1_1___logging_time.html#a83867169e63f5bc786fb614d15f0fca1">_effectiveDSTOffsetInMilliseconds</a></td></tr>
+<tr class="memdesc:a83867169e63f5bc786fb614d15f0fca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the effective offset in milliseconds for DST (either 0 or 1h) <br /></td></tr>
+<tr class="separator:a83867169e63f5bc786fb614d15f0fca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd450a9dc98ca559126dd79b80f9ced0"><td class="memItemLeft" align="right" valign="top"><a id="acd450a9dc98ca559126dd79b80f9ced0"></a>
+<a class="el" href="_logging_support_8cpp.html#a9ec9a8615bb4c91e73b5190b70ac2c87">Timestamp</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_modules_1_1___logging_time.html#acd450a9dc98ca559126dd79b80f9ced0">_previousSystemTime</a></td></tr>
+<tr class="memdesc:acd450a9dc98ca559126dd79b80f9ced0"><td class="mdescLeft">&#160;</td><td class="mdescRight">the previous time stamp returned by the system <br /></td></tr>
+<tr class="separator:acd450a9dc98ca559126dd79b80f9ced0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79574399833c55c34293d709f90a297b"><td class="memItemLeft" align="right" valign="top"><a id="a79574399833c55c34293d709f90a297b"></a>
+<a class="el" href="_logging_support_8cpp.html#a9ec9a8615bb4c91e73b5190b70ac2c87">Timestamp</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_modules_1_1___logging_time.html#a79574399833c55c34293d709f90a297b">_previousTimeOfDay</a></td></tr>
+<tr class="memdesc:a79574399833c55c34293d709f90a297b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the time stamp of the previous log line as time of day. <br /></td></tr>
+<tr class="separator:a79574399833c55c34293d709f90a297b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5408b3a12036e6f5221d0a640c9fe250"><td class="memItemLeft" align="right" valign="top"><a id="a5408b3a12036e6f5221d0a640c9fe250"></a>
+String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_modules_1_1___logging_time.html#a5408b3a12036e6f5221d0a640c9fe250">_previousTimeOfDayString</a></td></tr>
+<tr class="memdesc:a5408b3a12036e6f5221d0a640c9fe250"><td class="mdescLeft">&#160;</td><td class="mdescRight">the previous time of day formatted as a string. <br /></td></tr>
+<tr class="separator:a5408b3a12036e6f5221d0a640c9fe250"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code><a class="el" href="class_base_modules_1_1___logging_time.html" title="A _LoggingTime object provides simple time related services like caching the current time string to s...">_LoggingTime</a></code> object provides simple time related services like caching the current time string to speed up tracing output. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1ec0918c896b1734c23a02830438ea78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ec0918c896b1734c23a02830438ea78">&#9670;&nbsp;</a></span>_isDST()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> BaseModules::_LoggingTime::_isDST </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tells whether DST is applicable (very imprecisely) </p>
+<dl class="section return"><dt>Returns</dt><dd>information about being in DST </dd></dl>
+
+</div>
+</div>
 <a id="a0e6fbed19754ff454d709232b3faac04"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0e6fbed19754ff454d709232b3faac04">&#9670;&nbsp;</a></span>adaptToTimeOfDay()</h2>
 

@@ -85,7 +85,9 @@ $(document).ready(function(){initNavTree('_so_x_filter___audio_effect_8cpp.html'
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">SoXFilter_AudioEffect.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -127,20 +129,223 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespace_so_x_plugins_1_1_effects_1_1_so_x_filter"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html" title="The package SoXFilter provides classes for the SoX audio effects for IIR filters; those are allpass,...">SoXFilter</a></code> provides classes for the SoX audio effects for IIR filters; those are <b>allpass</b>, <b>band</b>, <b>bandpass</b>, <b>bandreject</b>, <b>bass</b>, <b>biquad</b>, <b>equalizer</b>, <b>highpass</b>, <b>lowpass</b> and <b>treble</b> filters that are combined into a single plugin. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ada76036def11df3eb7ffcf6fb2dd0f4c"><td class="memItemLeft" align="right" valign="top"><a id="ada76036def11df3eb7ffcf6fb2dd0f4c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_filter___audio_effect_8cpp.html#ada76036def11df3eb7ffcf6fb2dd0f4c">makeBySplit</a>&#160;&#160;&#160;StringList::makeBySplit</td></tr>
-<tr class="memdesc:ada76036def11df3eb7ffcf6fb2dd0f4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringList::makeBySplit <br /></td></tr>
-<tr class="separator:ada76036def11df3eb7ffcf6fb2dd0f4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memItemLeft" align="right" valign="top"><a id="a94692cc5c1eac2402cbeff7e1eaa95cd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_filter___audio_effect_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd">expand</a>&#160;&#160;&#160;StringUtil::expand</td></tr>
-<tr class="memdesc:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil::expand <br /></td></tr>
-<tr class="separator:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2f934dc46ced224d042cec4cb06d073"><td class="memItemLeft" align="right" valign="top"><a id="ac2f934dc46ced224d042cec4cb06d073"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_filter___audio_effect_8cpp.html#ac2f934dc46ced224d042cec4cb06d073">toReal</a>&#160;&#160;&#160;StringUtil::toReal</td></tr>
-<tr class="memdesc:ac2f934dc46ced224d042cec4cb06d073"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil::toReal <br /></td></tr>
-<tr class="separator:ac2f934dc46ced224d042cec4cb06d073"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memItemLeft" align="right" valign="top"><a id="a5b6f88d1249b396e351c4a85bcb35b2c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_filter___audio_effect_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c">STR</a> = <a class="el" href="struct_base_modules_1_1_string_util.html">BaseModules::StringUtil</a></td></tr>
+<tr class="memdesc:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil <br /></td></tr>
+<tr class="separator:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ae7e540a657e87595aee321cb67816c3c"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ae7e540a657e87595aee321cb67816c3c">SoXPlugins::Effects::SoXFilter::_bwUnitToString</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> FilterBandwidthUnit value)</td></tr>
+<tr class="memdesc:ae7e540a657e87595aee321cb67816c3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns string representation of band width unit <code>value</code>.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ae7e540a657e87595aee321cb67816c3c">More...</a><br /></td></tr>
+<tr class="separator:ae7e540a657e87595aee321cb67816c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a524ce9d2cb6abdfa4338c83063dc6f7b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a524ce9d2cb6abdfa4338c83063dc6f7b">SoXPlugins::Effects::SoXFilter::_unitCodeListForKind</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;filterKind)</td></tr>
+<tr class="memdesc:a524ce9d2cb6abdfa4338c83063dc6f7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns list of bandwidth unit codes for given <code>filterKind</code>.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a524ce9d2cb6abdfa4338c83063dc6f7b">More...</a><br /></td></tr>
+<tr class="separator:a524ce9d2cb6abdfa4338c83063dc6f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a992eeeb13dad178e54b708e41614d04a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a992eeeb13dad178e54b708e41614d04a">SoXPlugins::Effects::SoXFilter::_alphaForBandwidth</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> bandwidth, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> FilterBandwidthUnit unit, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> frequency, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> dBGain)</td></tr>
+<tr class="memdesc:a992eeeb13dad178e54b708e41614d04a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the alpha for given <code>bandwidth</code> measured as <code>unit</code> with <code>frequency</code> and <code>dBgain</code>; <code>sampleRate</code> gives the current samplerate for the effect.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a992eeeb13dad178e54b708e41614d04a">More...</a><br /></td></tr>
+<tr class="separator:a992eeeb13dad178e54b708e41614d04a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afeaa26daa630c52d2bd1519d87b62c10"><td class="memItemLeft" align="right" valign="top">static _EffectDescriptor_FLTR *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#afeaa26daa630c52d2bd1519d87b62c10">SoXPlugins::Effects::SoXFilter::_createEffectDescriptor</a> ()</td></tr>
+<tr class="memdesc:afeaa26daa630c52d2bd1519d87b62c10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up a new filter effect descriptor and returns it.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#afeaa26daa630c52d2bd1519d87b62c10">More...</a><br /></td></tr>
+<tr class="separator:afeaa26daa630c52d2bd1519d87b62c10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5071eb946d51e3c8cbe2be432222dea3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a5071eb946d51e3c8cbe2be432222dea3">SoXPlugins::Effects::SoXFilter::_setBandwidthUnitParameter</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;parameterMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;filterKind)</td></tr>
+<tr class="memdesc:a5071eb946d51e3c8cbe2be432222dea3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up bandwidth unit parameter in <code>parameterMap</code> for filter kind given as <code>filterKind</code>.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a5071eb946d51e3c8cbe2be432222dea3">More...</a><br /></td></tr>
+<tr class="separator:a5071eb946d51e3c8cbe2be432222dea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfc86c7ab8fb80b5711487f38d4b15be"><td class="memItemLeft" align="right" valign="top">static FilterBandwidthUnit&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#abfc86c7ab8fb80b5711487f38d4b15be">SoXPlugins::Effects::SoXFilter::_toBWUnit</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;value)</td></tr>
+<tr class="memdesc:abfc86c7ab8fb80b5711487f38d4b15be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts string <code>value</code> to bandwidth unit.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#abfc86c7ab8fb80b5711487f38d4b15be">More...</a><br /></td></tr>
+<tr class="separator:abfc86c7ab8fb80b5711487f38d4b15be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13e45e195a51ffb2bf59b0b56d78c3e5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a13e45e195a51ffb2bf59b0b56d78c3e5">SoXPlugins::Effects::SoXFilter::_updateFilterCoefficients</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> _EffectDescriptor_FLTR &amp;effectDescriptor, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate)</td></tr>
+<tr class="memdesc:a13e45e195a51ffb2bf59b0b56d78c3e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recalculates IIR filter coefficients from other parameters and <code>sampleRate</code> and updates IIR filter <code>effectDescriptor</code> accordingly.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a13e45e195a51ffb2bf59b0b56d78c3e5">More...</a><br /></td></tr>
+<tr class="separator:a13e45e195a51ffb2bf59b0b56d78c3e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab641514d0ead1af5555a048650a46b81"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ab641514d0ead1af5555a048650a46b81">SoXPlugins::Effects::SoXFilter::_updateParametersForKind</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;parameterMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;filterKind)</td></tr>
+<tr class="memdesc:ab641514d0ead1af5555a048650a46b81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates effect parameters in <code>parameterMap</code> for filter kind given as <code>filterKind</code>.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ab641514d0ead1af5555a048650a46b81">More...</a><br /></td></tr>
+<tr class="separator:ab641514d0ead1af5555a048650a46b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a3be29e80591e93ec80c048cbd362ff77"><td class="memItemLeft" align="right" valign="top"><a id="a3be29e80591e93ec80c048cbd362ff77"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a3be29e80591e93ec80c048cbd362ff77">SoXPlugins::Effects::SoXFilter::_biquadFilterOrder</a> = 3</td></tr>
+<tr class="memdesc:a3be29e80591e93ec80c048cbd362ff77"><td class="mdescLeft">&#160;</td><td class="mdescRight">the filter order of a biquad filter <br /></td></tr>
+<tr class="separator:a3be29e80591e93ec80c048cbd362ff77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abed8d6ac800cb4b8927140a9b40be4eb"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#abed8d6ac800cb4b8927140a9b40be4eb">SoXPlugins::Effects::SoXFilter::_biquadFilterParameterNameList</a></td></tr>
+<tr class="memdesc:abed8d6ac800cb4b8927140a9b40be4eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter names of a biquad filter  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#abed8d6ac800cb4b8927140a9b40be4eb">More...</a><br /></td></tr>
+<tr class="separator:abed8d6ac800cb4b8927140a9b40be4eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c00ffd2ab6a77400f49da039efd87c5"><td class="memItemLeft" align="right" valign="top"><a id="a5c00ffd2ab6a77400f49da039efd87c5"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a5c00ffd2ab6a77400f49da039efd87c5">SoXPlugins::Effects::SoXFilter::separator</a> = &quot;/&quot;</td></tr>
+<tr class="memdesc:a5c00ffd2ab6a77400f49da039efd87c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the universal separator character <br /></td></tr>
+<tr class="separator:a5c00ffd2ab6a77400f49da039efd87c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6b89510b902635c7765ba1ca5d23e8b"><td class="memItemLeft" align="right" valign="top"><a id="ae6b89510b902635c7765ba1ca5d23e8b"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ae6b89510b902635c7765ba1ca5d23e8b">SoXPlugins::Effects::SoXFilter::comma</a> = &quot;,&quot;</td></tr>
+<tr class="memdesc:ae6b89510b902635c7765ba1ca5d23e8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the comma character <br /></td></tr>
+<tr class="separator:ae6b89510b902635c7765ba1ca5d23e8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a869c5ba8f4aa5fcb8761b8017038f386"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a869c5ba8f4aa5fcb8761b8017038f386">SoXPlugins::Effects::SoXFilter::_yesNoList</a></td></tr>
+<tr class="memdesc:a869c5ba8f4aa5fcb8761b8017038f386"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of answers in a yes-no-combobox (in English language)  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a869c5ba8f4aa5fcb8761b8017038f386">More...</a><br /></td></tr>
+<tr class="separator:a869c5ba8f4aa5fcb8761b8017038f386"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7553f9e209527c4061f1500e8e7c2c4c"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a7553f9e209527c4061f1500e8e7c2c4c">SoXPlugins::Effects::SoXFilter::_kindList</a></td></tr>
+<tr class="memdesc:a7553f9e209527c4061f1500e8e7c2c4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of all filter kinds as a string (in English language)  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a7553f9e209527c4061f1500e8e7c2c4c">More...</a><br /></td></tr>
+<tr class="separator:a7553f9e209527c4061f1500e8e7c2c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e64e3f8b76a0eb65fb1cf1d061a5c55"><td class="memItemLeft" align="right" valign="top"><a id="a2e64e3f8b76a0eb65fb1cf1d061a5c55"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a2e64e3f8b76a0eb65fb1cf1d061a5c55">SoXPlugins::Effects::SoXFilter::filterKind_allpass</a> = &quot;Allpass&quot;</td></tr>
+<tr class="memdesc:a2e64e3f8b76a0eb65fb1cf1d061a5c55"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the allpass filter <br /></td></tr>
+<tr class="separator:a2e64e3f8b76a0eb65fb1cf1d061a5c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60c34c8e140da37bc8ebf5c6b5ba971a"><td class="memItemLeft" align="right" valign="top"><a id="a60c34c8e140da37bc8ebf5c6b5ba971a"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a60c34c8e140da37bc8ebf5c6b5ba971a">SoXPlugins::Effects::SoXFilter::filterKind_band</a> = &quot;Band&quot;</td></tr>
+<tr class="memdesc:a60c34c8e140da37bc8ebf5c6b5ba971a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the band filter <br /></td></tr>
+<tr class="separator:a60c34c8e140da37bc8ebf5c6b5ba971a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b2e90cfed34fa35d498f46421e428ec"><td class="memItemLeft" align="right" valign="top"><a id="a6b2e90cfed34fa35d498f46421e428ec"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a6b2e90cfed34fa35d498f46421e428ec">SoXPlugins::Effects::SoXFilter::filterKind_bass</a> = &quot;Bass&quot;</td></tr>
+<tr class="memdesc:a6b2e90cfed34fa35d498f46421e428ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the bass filter <br /></td></tr>
+<tr class="separator:a6b2e90cfed34fa35d498f46421e428ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7b94340c246dab059cf7fe69deb8bbd"><td class="memItemLeft" align="right" valign="top"><a id="ad7b94340c246dab059cf7fe69deb8bbd"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ad7b94340c246dab059cf7fe69deb8bbd">SoXPlugins::Effects::SoXFilter::filterKind_bandpass</a> = &quot;BandPass&quot;</td></tr>
+<tr class="memdesc:ad7b94340c246dab059cf7fe69deb8bbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the bandpass filter <br /></td></tr>
+<tr class="separator:ad7b94340c246dab059cf7fe69deb8bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7c449b98019a539d638ff565cae07af"><td class="memItemLeft" align="right" valign="top"><a id="ae7c449b98019a539d638ff565cae07af"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ae7c449b98019a539d638ff565cae07af">SoXPlugins::Effects::SoXFilter::filterKind_bandreject</a> = &quot;BandReject&quot;</td></tr>
+<tr class="memdesc:ae7c449b98019a539d638ff565cae07af"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the bandreject filter <br /></td></tr>
+<tr class="separator:ae7c449b98019a539d638ff565cae07af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf6bb7aafa7452baffd2b3c9000540c3"><td class="memItemLeft" align="right" valign="top"><a id="aaf6bb7aafa7452baffd2b3c9000540c3"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#aaf6bb7aafa7452baffd2b3c9000540c3">SoXPlugins::Effects::SoXFilter::filterKind_biquad</a> = &quot;Biquad&quot;</td></tr>
+<tr class="memdesc:aaf6bb7aafa7452baffd2b3c9000540c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the biquad filter <br /></td></tr>
+<tr class="separator:aaf6bb7aafa7452baffd2b3c9000540c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acabe084988bc9a1729821b125752b4b3"><td class="memItemLeft" align="right" valign="top"><a id="acabe084988bc9a1729821b125752b4b3"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#acabe084988bc9a1729821b125752b4b3">SoXPlugins::Effects::SoXFilter::filterKind_equalizer</a> = &quot;Equalizer&quot;</td></tr>
+<tr class="memdesc:acabe084988bc9a1729821b125752b4b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the equalizer filter <br /></td></tr>
+<tr class="separator:acabe084988bc9a1729821b125752b4b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f4d4c95efafcfdafc9f7c2931766e9a"><td class="memItemLeft" align="right" valign="top"><a id="a9f4d4c95efafcfdafc9f7c2931766e9a"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a9f4d4c95efafcfdafc9f7c2931766e9a">SoXPlugins::Effects::SoXFilter::filterKind_highpass</a> = &quot;HighPass&quot;</td></tr>
+<tr class="memdesc:a9f4d4c95efafcfdafc9f7c2931766e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the highpass filter <br /></td></tr>
+<tr class="separator:a9f4d4c95efafcfdafc9f7c2931766e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb09f925b955f9622e39f622745921d1"><td class="memItemLeft" align="right" valign="top"><a id="acb09f925b955f9622e39f622745921d1"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#acb09f925b955f9622e39f622745921d1">SoXPlugins::Effects::SoXFilter::filterKind_lowpass</a> = &quot;LowPass&quot;</td></tr>
+<tr class="memdesc:acb09f925b955f9622e39f622745921d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the lowpass filter <br /></td></tr>
+<tr class="separator:acb09f925b955f9622e39f622745921d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad21bb9f950854ba6852faa79730ef8b4"><td class="memItemLeft" align="right" valign="top"><a id="ad21bb9f950854ba6852faa79730ef8b4"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ad21bb9f950854ba6852faa79730ef8b4">SoXPlugins::Effects::SoXFilter::filterKind_treble</a> = &quot;Treble&quot;</td></tr>
+<tr class="memdesc:ad21bb9f950854ba6852faa79730ef8b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the treble filter <br /></td></tr>
+<tr class="separator:ad21bb9f950854ba6852faa79730ef8b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53a8216981ecc5f9ea4c945a0461cfa1"><td class="memItemLeft" align="right" valign="top"><a id="a53a8216981ecc5f9ea4c945a0461cfa1"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a53a8216981ecc5f9ea4c945a0461cfa1">SoXPlugins::Effects::SoXFilter::parameterName_bandwidth</a> = &quot;Bandwidth&quot;</td></tr>
+<tr class="memdesc:a53a8216981ecc5f9ea4c945a0461cfa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the bandwidth parameter <br /></td></tr>
+<tr class="separator:a53a8216981ecc5f9ea4c945a0461cfa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04273e6b6836e6da658fbc878dd19fd1"><td class="memItemLeft" align="right" valign="top"><a id="a04273e6b6836e6da658fbc878dd19fd1"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a04273e6b6836e6da658fbc878dd19fd1">SoXPlugins::Effects::SoXFilter::parameterName_bandwidthUnit</a> = &quot;Bandwidth Unit&quot;</td></tr>
+<tr class="memdesc:a04273e6b6836e6da658fbc878dd19fd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the bandwidthUnit parameter <br /></td></tr>
+<tr class="separator:a04273e6b6836e6da658fbc878dd19fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8845b84049ac1e11a069616bb281602d"><td class="memItemLeft" align="right" valign="top"><a id="a8845b84049ac1e11a069616bb281602d"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a8845b84049ac1e11a069616bb281602d">SoXPlugins::Effects::SoXFilter::parameterName_cstSkirtGain</a> = &quot;Cst. Skirt Gain?&quot;</td></tr>
+<tr class="memdesc:a8845b84049ac1e11a069616bb281602d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the cstSkirtGain parameter <br /></td></tr>
+<tr class="separator:a8845b84049ac1e11a069616bb281602d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a132d795950d8c5af445db8429f343a8a"><td class="memItemLeft" align="right" valign="top"><a id="a132d795950d8c5af445db8429f343a8a"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a132d795950d8c5af445db8429f343a8a">SoXPlugins::Effects::SoXFilter::parameterName_dBGain</a> = &quot;Gain [dB]&quot;</td></tr>
+<tr class="memdesc:a132d795950d8c5af445db8429f343a8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the dBGain parameter <br /></td></tr>
+<tr class="separator:a132d795950d8c5af445db8429f343a8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a114b3ef829af2c08b44ce8b92fb71f3f"><td class="memItemLeft" align="right" valign="top"><a id="a114b3ef829af2c08b44ce8b92fb71f3f"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a114b3ef829af2c08b44ce8b92fb71f3f">SoXPlugins::Effects::SoXFilter::parameterName_equGain</a> = &quot;Eq. Gain [dB]&quot;</td></tr>
+<tr class="memdesc:a114b3ef829af2c08b44ce8b92fb71f3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the equGain parameter <br /></td></tr>
+<tr class="separator:a114b3ef829af2c08b44ce8b92fb71f3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8f1019b2bd57299f4d09d3923f922bd"><td class="memItemLeft" align="right" valign="top"><a id="ae8f1019b2bd57299f4d09d3923f922bd"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ae8f1019b2bd57299f4d09d3923f922bd">SoXPlugins::Effects::SoXFilter::parameterName_frequency</a> = &quot;Frequency [Hz]&quot;</td></tr>
+<tr class="memdesc:ae8f1019b2bd57299f4d09d3923f922bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the frequency parameter <br /></td></tr>
+<tr class="separator:ae8f1019b2bd57299f4d09d3923f922bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab20c48834a1b1315d4bb3acb9ebb8149"><td class="memItemLeft" align="right" valign="top"><a id="ab20c48834a1b1315d4bb3acb9ebb8149"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ab20c48834a1b1315d4bb3acb9ebb8149">SoXPlugins::Effects::SoXFilter::parameterName_kind</a> = &quot;Filter Kind&quot;</td></tr>
+<tr class="memdesc:ab20c48834a1b1315d4bb3acb9ebb8149"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the kind parameter <br /></td></tr>
+<tr class="separator:ab20c48834a1b1315d4bb3acb9ebb8149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c4787f79552437c1de95629ddcb887a"><td class="memItemLeft" align="right" valign="top"><a id="a3c4787f79552437c1de95629ddcb887a"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a3c4787f79552437c1de95629ddcb887a">SoXPlugins::Effects::SoXFilter::parameterName_poleCount</a> = &quot;Number of Poles&quot;</td></tr>
+<tr class="memdesc:a3c4787f79552437c1de95629ddcb887a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the poleCount parameter <br /></td></tr>
+<tr class="separator:a3c4787f79552437c1de95629ddcb887a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac783efd2095b063e1712d54dc61b79bb"><td class="memItemLeft" align="right" valign="top"><a id="ac783efd2095b063e1712d54dc61b79bb"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ac783efd2095b063e1712d54dc61b79bb">SoXPlugins::Effects::SoXFilter::parameterName_unpitchedMode</a> = &quot;Unpitched Mode?&quot;</td></tr>
+<tr class="memdesc:ac783efd2095b063e1712d54dc61b79bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the unpitchedMode parameter <br /></td></tr>
+<tr class="separator:ac783efd2095b063e1712d54dc61b79bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a539fa9c11d4e5bebd917d7ee07bd578f"><td class="memItemLeft" align="right" valign="top"><a id="a539fa9c11d4e5bebd917d7ee07bd578f"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a539fa9c11d4e5bebd917d7ee07bd578f">SoXPlugins::Effects::SoXFilter::_bwUnitText_butterworth</a> = &quot;Butterworth&quot;</td></tr>
+<tr class="memdesc:a539fa9c11d4e5bebd917d7ee07bd578f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the butterworth bandwidth unit <br /></td></tr>
+<tr class="separator:a539fa9c11d4e5bebd917d7ee07bd578f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9703fe5f6390e83ee194f4983e06246"><td class="memItemLeft" align="right" valign="top"><a id="ad9703fe5f6390e83ee194f4983e06246"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ad9703fe5f6390e83ee194f4983e06246">SoXPlugins::Effects::SoXFilter::_bwUnitText_frequency</a> = &quot;Frequency&quot;</td></tr>
+<tr class="memdesc:ad9703fe5f6390e83ee194f4983e06246"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the frequency bandwidth unit <br /></td></tr>
+<tr class="separator:ad9703fe5f6390e83ee194f4983e06246"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab78e4d2df42568575addd74def1c16cc"><td class="memItemLeft" align="right" valign="top"><a id="ab78e4d2df42568575addd74def1c16cc"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ab78e4d2df42568575addd74def1c16cc">SoXPlugins::Effects::SoXFilter::_bwUnitText_octave</a> = &quot;Octave(s)&quot;</td></tr>
+<tr class="memdesc:ab78e4d2df42568575addd74def1c16cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the octave bandwidth unit <br /></td></tr>
+<tr class="separator:ab78e4d2df42568575addd74def1c16cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad993dcc5382988e7bcb3231f2cca1440"><td class="memItemLeft" align="right" valign="top"><a id="ad993dcc5382988e7bcb3231f2cca1440"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ad993dcc5382988e7bcb3231f2cca1440">SoXPlugins::Effects::SoXFilter::_bwUnitText_quality</a> = &quot;Quality&quot;</td></tr>
+<tr class="memdesc:ad993dcc5382988e7bcb3231f2cca1440"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the quality bandwidth unit <br /></td></tr>
+<tr class="separator:ad993dcc5382988e7bcb3231f2cca1440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cfeb2f149b2338971eac5aec1ffd7c6"><td class="memItemLeft" align="right" valign="top"><a id="a2cfeb2f149b2338971eac5aec1ffd7c6"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a2cfeb2f149b2338971eac5aec1ffd7c6">SoXPlugins::Effects::SoXFilter::_bwUnitText_slope</a> = &quot;Slope&quot;</td></tr>
+<tr class="memdesc:a2cfeb2f149b2338971eac5aec1ffd7c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the slope bandwidth unit <br /></td></tr>
+<tr class="separator:a2cfeb2f149b2338971eac5aec1ffd7c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41b72581af5320d412f86e7f8a7d101d"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a41b72581af5320d412f86e7f8a7d101d">SoXPlugins::Effects::SoXFilter::_defaultBandwidthUnitTextList</a></td></tr>
+<tr class="memdesc:a41b72581af5320d412f86e7f8a7d101d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of all bandwidth units  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a41b72581af5320d412f86e7f8a7d101d">More...</a><br /></td></tr>
+<tr class="separator:a41b72581af5320d412f86e7f8a7d101d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa78910312938256107a65e95ad4bbe44"><td class="memItemLeft" align="right" valign="top"><a id="aa78910312938256107a65e95ad4bbe44"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#aa78910312938256107a65e95ad4bbe44">SoXPlugins::Effects::SoXFilter::paramFlag_bandwidth</a> = &quot;B&quot;</td></tr>
+<tr class="memdesc:aa78910312938256107a65e95ad4bbe44"><td class="mdescLeft">&#160;</td><td class="mdescRight">the character flag for the bandwidth parameter set in a dialog <br /></td></tr>
+<tr class="separator:aa78910312938256107a65e95ad4bbe44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a4ad5ee8d06bebd16f2ecfe96843a36"><td class="memItemLeft" align="right" valign="top"><a id="a4a4ad5ee8d06bebd16f2ecfe96843a36"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a4a4ad5ee8d06bebd16f2ecfe96843a36">SoXPlugins::Effects::SoXFilter::paramFlag_biquad</a> = &quot;Q&quot;</td></tr>
+<tr class="memdesc:a4a4ad5ee8d06bebd16f2ecfe96843a36"><td class="mdescLeft">&#160;</td><td class="mdescRight">the character flag for the biquad parameter set in a dialog <br /></td></tr>
+<tr class="separator:a4a4ad5ee8d06bebd16f2ecfe96843a36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad77549482ae560e0eeeec70e9b7b00e6"><td class="memItemLeft" align="right" valign="top"><a id="ad77549482ae560e0eeeec70e9b7b00e6"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ad77549482ae560e0eeeec70e9b7b00e6">SoXPlugins::Effects::SoXFilter::paramFlag_cstSkirtGain</a> = &quot;C&quot;</td></tr>
+<tr class="memdesc:ad77549482ae560e0eeeec70e9b7b00e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the character flag for the cstSkirtGain parameter set in a dialog <br /></td></tr>
+<tr class="separator:ad77549482ae560e0eeeec70e9b7b00e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad021fde6549015ec1b1a5e51a9232e9e"><td class="memItemLeft" align="right" valign="top"><a id="ad021fde6549015ec1b1a5e51a9232e9e"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ad021fde6549015ec1b1a5e51a9232e9e">SoXPlugins::Effects::SoXFilter::paramFlag_dBGain</a> = &quot;D&quot;</td></tr>
+<tr class="memdesc:ad021fde6549015ec1b1a5e51a9232e9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the character flag for the dBGain parameter set in a dialog <br /></td></tr>
+<tr class="separator:ad021fde6549015ec1b1a5e51a9232e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f2108b4fb3051b4724ea6c069422147"><td class="memItemLeft" align="right" valign="top"><a id="a0f2108b4fb3051b4724ea6c069422147"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a0f2108b4fb3051b4724ea6c069422147">SoXPlugins::Effects::SoXFilter::paramFlag_equGain</a> = &quot;E&quot;</td></tr>
+<tr class="memdesc:a0f2108b4fb3051b4724ea6c069422147"><td class="mdescLeft">&#160;</td><td class="mdescRight">the character flag for the equGain parameter set in a dialog <br /></td></tr>
+<tr class="separator:a0f2108b4fb3051b4724ea6c069422147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83a63d52d1b7e80836d9bc18e50c7ae6"><td class="memItemLeft" align="right" valign="top"><a id="a83a63d52d1b7e80836d9bc18e50c7ae6"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a83a63d52d1b7e80836d9bc18e50c7ae6">SoXPlugins::Effects::SoXFilter::paramFlag_frequency</a> = &quot;F&quot;</td></tr>
+<tr class="memdesc:a83a63d52d1b7e80836d9bc18e50c7ae6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the character flag for the frequency parameter set in a dialog <br /></td></tr>
+<tr class="separator:a83a63d52d1b7e80836d9bc18e50c7ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad82260d26e991bce095afa53c9cad3cb"><td class="memItemLeft" align="right" valign="top"><a id="ad82260d26e991bce095afa53c9cad3cb"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#ad82260d26e991bce095afa53c9cad3cb">SoXPlugins::Effects::SoXFilter::paramFlag_poleCount</a> = &quot;P&quot;</td></tr>
+<tr class="memdesc:ad82260d26e991bce095afa53c9cad3cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">the character flag for the poleCount parameter set in a dialog <br /></td></tr>
+<tr class="separator:ad82260d26e991bce095afa53c9cad3cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a124589fda168193105b678b340365f55"><td class="memItemLeft" align="right" valign="top"><a id="a124589fda168193105b678b340365f55"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a124589fda168193105b678b340365f55">SoXPlugins::Effects::SoXFilter::paramFlag_unpitchedMode</a> = &quot;U&quot;</td></tr>
+<tr class="memdesc:a124589fda168193105b678b340365f55"><td class="mdescLeft">&#160;</td><td class="mdescRight">the character flag for the unpitchedMode parameter set in a dialog <br /></td></tr>
+<tr class="separator:a124589fda168193105b678b340365f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40da2778e9e3e19729754f09f4bee1f2"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_dictionary.html">Dictionary</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a40da2778e9e3e19729754f09f4bee1f2">SoXPlugins::Effects::SoXFilter::_filterKindToWidgetDataMap</a></td></tr>
+<tr class="memdesc:a40da2778e9e3e19729754f09f4bee1f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">mapping from filter kind to a slash-delimited string of code letters: "Q" is the biquad parameter set, "F" the frequency widget, "B" the bandwidth widgets, "U" for the unpitched audio mode etc.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a40da2778e9e3e19729754f09f4bee1f2">More...</a><br /></td></tr>
+<tr class="separator:a40da2778e9e3e19729754f09f4bee1f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa35a6a79467e74fe8a17bab1258c0f7"><td class="memItemLeft" align="right" valign="top"><a id="aaa35a6a79467e74fe8a17bab1258c0f7"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#aaa35a6a79467e74fe8a17bab1258c0f7">SoXPlugins::Effects::SoXFilter::unitFlag_frequency</a> = &quot;f&quot;</td></tr>
+<tr class="memdesc:aaa35a6a79467e74fe8a17bab1258c0f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">the character flag for the frequency bandwidth unit <br /></td></tr>
+<tr class="separator:aaa35a6a79467e74fe8a17bab1258c0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a659ea9c10ff3630c3d778a8a46eac444"><td class="memItemLeft" align="right" valign="top"><a id="a659ea9c10ff3630c3d778a8a46eac444"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a659ea9c10ff3630c3d778a8a46eac444">SoXPlugins::Effects::SoXFilter::unitFlag_octave</a> = &quot;o&quot;</td></tr>
+<tr class="memdesc:a659ea9c10ff3630c3d778a8a46eac444"><td class="mdescLeft">&#160;</td><td class="mdescRight">the character flag for the octave bandwidth unit <br /></td></tr>
+<tr class="separator:a659ea9c10ff3630c3d778a8a46eac444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acddb5b2c6f07180e5d4cd1ebcb6b5a08"><td class="memItemLeft" align="right" valign="top"><a id="acddb5b2c6f07180e5d4cd1ebcb6b5a08"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#acddb5b2c6f07180e5d4cd1ebcb6b5a08">SoXPlugins::Effects::SoXFilter::unitFlag_quality</a> = &quot;q&quot;</td></tr>
+<tr class="memdesc:acddb5b2c6f07180e5d4cd1ebcb6b5a08"><td class="mdescLeft">&#160;</td><td class="mdescRight">the character flag for the quality bandwidth unit <br /></td></tr>
+<tr class="separator:acddb5b2c6f07180e5d4cd1ebcb6b5a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34d1776c90b171f144fb23b3b777e1dc"><td class="memItemLeft" align="right" valign="top"><a id="a34d1776c90b171f144fb23b3b777e1dc"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a34d1776c90b171f144fb23b3b777e1dc">SoXPlugins::Effects::SoXFilter::unitFlag_butterworth</a> = &quot;b&quot;</td></tr>
+<tr class="memdesc:a34d1776c90b171f144fb23b3b777e1dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">the character flag for the butterworth bandwidth unit <br /></td></tr>
+<tr class="separator:a34d1776c90b171f144fb23b3b777e1dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2512e2668c2dd06ee28b11c8968306cf"><td class="memItemLeft" align="right" valign="top"><a id="a2512e2668c2dd06ee28b11c8968306cf"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a2512e2668c2dd06ee28b11c8968306cf">SoXPlugins::Effects::SoXFilter::unitFlag_slope</a> = &quot;s&quot;</td></tr>
+<tr class="memdesc:a2512e2668c2dd06ee28b11c8968306cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">the character flag for the slope bandwidth unit <br /></td></tr>
+<tr class="separator:a2512e2668c2dd06ee28b11c8968306cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee3aeed64c8fadee2e23590bcc86ed3f"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_dictionary.html">Dictionary</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#aee3aeed64c8fadee2e23590bcc86ed3f">SoXPlugins::Effects::SoXFilter::_filterKindToUnitMap</a></td></tr>
+<tr class="memdesc:aee3aeed64c8fadee2e23590bcc86ed3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">mapping from filter kind to a slash-delimited string of code letters for the acceptable filter units; allowed units are frequency ("f"), octave ("o"), quality ("q"), butterworth ("b") and slope ("s")  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#aee3aeed64c8fadee2e23590bcc86ed3f">More...</a><br /></td></tr>
+<tr class="separator:aee3aeed64c8fadee2e23590bcc86ed3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bba84b29c5e0704f5bcc9072dcbe04b"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_dictionary.html">Dictionary</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a2bba84b29c5e0704f5bcc9072dcbe04b">SoXPlugins::Effects::SoXFilter::_unitCodeToTextMap</a></td></tr>
+<tr class="memdesc:a2bba84b29c5e0704f5bcc9072dcbe04b"><td class="mdescLeft">&#160;</td><td class="mdescRight">mapping from unit code letter to text for combo boxes  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a2bba84b29c5e0704f5bcc9072dcbe04b">More...</a><br /></td></tr>
+<tr class="separator:a2bba84b29c5e0704f5bcc9072dcbe04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXFilter_AudioEffect</code> body implements a universal SoX filter plugin representing different IIR filters: <b>allpass</b>, <b>band</b>, <b>bandpass</b>, <b>bandreject</b>, <b>bass</b>, <b>biquad</b>, <b>equalizer</b>, <b>highpass</b>, <b>lowpass</b> and <b>treble</b>. </p>

@@ -17,10 +17,12 @@
 /*=========*/
 
 #include "Boolean.h"
+#include "Dictionary.h"
 #include "Natural.h"
 
 /*--------------------*/
 
+using BaseTypes::Containers::Dictionary;
 using BaseTypes::Primitives::Boolean;
 using BaseTypes::Primitives::Natural;
 using BaseTypes::Primitives::String;
@@ -38,13 +40,52 @@ namespace BaseModules {
     struct OperatingSystem {
 
         /**
-         * Checks whether file names <C>fileName</C> exists.
+         * Checks whether directory named <C>directoryName</C> exists.
+         *
+         * @param[in] directoryName  name of directory to be checked
+         *                           for existence
+         * @return  information whether directory exists
+         */
+        static Boolean directoryExists (IN String& directoryName);
+
+        /*--------------------*/
+
+        /**
+         * Checks whether file named <C>fileName</C> exists.
          *
          * @param[in] fileName  name of file to be checked for
          *                      existence
          * @return  information whether file exists
          */
         static Boolean fileExists (IN String& fileName);
+
+        /*--------------------*/
+
+        /**
+         * Returns list of files in directory named
+         * <C>directoryName</C>; if <C>plainFilesOnly</C> is set, only
+         * plain files are returned, otherwise only the names of the
+         * sub-directories.
+         *
+         * @param[in] directoryName   name of directory to scan for files
+         * @param[in] plainFilesOnly  tells whether only normal files
+         *                            should be returned
+         * @return  list of file names found (without directory name)
+         */
+        static StringList fileNameList (IN String& directoryName,
+                                        IN Boolean plainFilesOnly = true);
+
+        /*--------------------*/
+
+        /**
+         * Returns the base name of file or directory name
+         * <C>fileName</C>.
+         *
+         * @param[in] fileName  name of file or directory
+         * @return  information on base name of file without
+         *          enclosing directory
+         */
+        static String basename (IN String& fileName);
 
         /*--------------------*/
 
@@ -61,16 +102,14 @@ namespace BaseModules {
         /*--------------------*/
 
         /**
-         * Returns associated value for <C>variableName</C> as string
-         * from the environment.
+         * Returns path of directory of current library or executable
+         * file.
          *
-         * @param[in] variableName  name of environment variable
-         * @param[in] defaultValue  value to be returned when
-         *                          environment variable is not set
-         * @return  associated environment value as string
+         * @param[in] isExecutable  tells whether this is a library
+         *                          or an executable
+         * @return  path of executable or library
          */
-        static String environmentValue (IN String variableName,
-                                        IN String defaultValue = "???");
+        static String executableDirectoryPath (IN Boolean isExecutable);
 
         /*--------------------*/
 

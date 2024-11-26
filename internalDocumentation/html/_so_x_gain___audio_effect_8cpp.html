@@ -85,7 +85,9 @@ $(document).ready(function(){initNavTree('_so_x_gain___audio_effect_8cpp.html','
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">SoXGain_AudioEffect.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -122,12 +124,25 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespace_so_x_plugins_1_1_effects_1_1_so_x_gain"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_gain.html" title="The package SoXGain provides classes for the SoX gain audio effect.">SoXGain</a></code> provides classes for the SoX <b>gain</b> audio effect. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memItemLeft" align="right" valign="top"><a id="a94692cc5c1eac2402cbeff7e1eaa95cd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_gain___audio_effect_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd">expand</a>&#160;&#160;&#160;StringUtil::expand</td></tr>
-<tr class="memdesc:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviated form of function name <br /></td></tr>
-<tr class="separator:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memItemLeft" align="right" valign="top"><a id="a5b6f88d1249b396e351c4a85bcb35b2c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_gain___audio_effect_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c">STR</a> = <a class="el" href="struct_base_modules_1_1_string_util.html">BaseModules::StringUtil</a></td></tr>
+<tr class="memdesc:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil <br /></td></tr>
+<tr class="separator:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a5cd620ac9f0a4976e02ee5e4b7ea3986"><td class="memItemLeft" align="right" valign="top">static _EffectDescriptor_GAIN *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_gain.html#a5cd620ac9f0a4976e02ee5e4b7ea3986">SoXPlugins::Effects::SoXGain::_createEffectDescriptor</a> ()</td></tr>
+<tr class="memdesc:a5cd620ac9f0a4976e02ee5e4b7ea3986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up a new gain effect descriptor and returns it.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_gain.html#a5cd620ac9f0a4976e02ee5e4b7ea3986">More...</a><br /></td></tr>
+<tr class="separator:a5cd620ac9f0a4976e02ee5e4b7ea3986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aa0cc61b37725fe8d5a206ce2de0d3c0a"><td class="memItemLeft" align="right" valign="top"><a id="aa0cc61b37725fe8d5a206ce2de0d3c0a"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_gain.html#aa0cc61b37725fe8d5a206ce2de0d3c0a">SoXPlugins::Effects::SoXGain::parameterName_gain</a> = &quot;Gain [dB]&quot;</td></tr>
+<tr class="memdesc:aa0cc61b37725fe8d5a206ce2de0d3c0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the gain parameter <br /></td></tr>
+<tr class="separator:aa0cc61b37725fe8d5a206ce2de0d3c0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXGain_AudioEffect</code> body implements the SoX <b>gain</b> plugin amplifying or attenuating the input signal by a specific dB amount. </p>

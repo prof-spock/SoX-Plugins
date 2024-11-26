@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['unknownvalue_1171',['unknownValue',['../struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html#a96e4337bf5db75724f5bcf2ac738a060',1,'SoXPlugins::Helpers::SoXEffectParameterMap']]],
-  ['usesconstantskirtgain_1172',['usesConstantSkirtGain',['../struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#a49cf010a076dc4c865fed836e748dcb2',1,'SoXPlugins::Effects::SoXFilter::_EffectDescriptor_FLTR']]],
-  ['usesunpitchedaudiomode_1173',['usesUnpitchedAudioMode',['../struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#aba72d52c807847ab3b2bb42c476c4ce4',1,'SoXPlugins::Effects::SoXFilter::_EffectDescriptor_FLTR']]]
+  ['sampleringbuffervector_1723',['sampleRingBufferVector',['../struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html#afda040ab11e28c3731d9681e1cd3c67b',1,'SoXPlugins::Effects::SoXFilter::_EffectDescriptor_FLTR::sampleRingBufferVector()'],['../struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_v_r_d.html#a5a4aa0c8c95d134d545db9b41d1ce0fc',1,'SoXPlugins::Effects::SoXOverdrive::_EffectDescriptor_OVRD::sampleRingBufferVector()']]],
+  ['separator_1724',['separator',['../namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html#a5c00ffd2ab6a77400f49da039efd87c5',1,'SoXPlugins::Effects::SoXFilter::separator()'],['../namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#aba346b5cc82b04d2ff62fe5c22424aba',1,'SoXPlugins::Effects::SoXPhaserAndTremolo::separator()']]],
+  ['startpoint_1725',['startPoint',['../struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#abe85b6917edb2cf159bd96e2f840bfc3',1,'SoXPlugins::Effects::SoXCompander::_TfSegment']]],
+  ['stepcount_1726',['stepCount',['../struct_audio_1_1___wave_form_descriptor.html#aeddb0b796ac3772b6d9fc773fb3e14f1',1,'Audio::_WaveFormDescriptor']]],
+  ['stereodepth_1727',['stereoDepth',['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#a782c9b0773122d95c8d0464d791d9c3a',1,'SoXPlugins::Effects::SoXReverb::_EffectDescriptor_RVRB::stereoDepth()'],['../struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a31a970af5cf25ed14248a0df63afb045',1,'SoXPlugins::Effects::SoXReverb::_ReverbEffectParameterData::stereoDepth()']]],
+  ['systemtime_1728',['systemTime',['../struct_base_modules_1_1___logging_buffer_entry.html#a12bf265c23454d44b34a6cc18616a3a0',1,'BaseModules::_LoggingBufferEntry']]]
 ];

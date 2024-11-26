@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 971;
+var viewWidth = 871;
 var viewHeight = 656;
 var sectionId = 'dynsection-0';
 </script>
@@ -54,13 +54,13 @@ var sectionId = 'dynsection-0';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>SoXAudioEditorWidget.cpp</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-652 967,-652 967,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-652 866.5,-652 866.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="The SoXAudioEditorWidget body implements an audio editor widget (a slider or a combo box) in a SoX au...">
-<polygon fill="#bfbfbf" stroke="black" points="52,-627.5 52,-647.5 200,-647.5 200,-627.5 52,-627.5"/>
-<text text-anchor="middle" x="126" y="-634.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditorWidget.cpp</text>
+<polygon fill="#bfbfbf" stroke="black" points="1,-627.5 1,-647.5 149,-647.5 149,-627.5 1,-627.5"/>
+<text text-anchor="middle" x="75" y="-634.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditorWidget.cpp</text>
 </a>
 </g>
 </g>
@@ -68,658 +68,649 @@ var sectionId = 'dynsection-0';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="_logging_8h.html" target="_top" xlink:title="The Logging specification defines macros for entry&#45;, exit&#45; and intermediate logging of functions into...">
-<polygon fill="white" stroke="black" points="20,-228.5 20,-248.5 84,-248.5 84,-228.5 20,-228.5"/>
-<text text-anchor="middle" x="52" y="-235.7" font-family="Helvetica,sans-Serif" font-size="11.00">Logging.h</text>
+<polygon fill="white" stroke="black" points="15,-228.5 15,-248.5 79,-248.5 79,-228.5 15,-228.5"/>
+<text text-anchor="middle" x="47" y="-235.7" font-family="Helvetica,sans-Serif" font-size="11.00">Logging.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M114.44,-627.39C93.62,-609.87 52,-569.25 52,-524.5 52,-524.5 52,-524.5 52,-351.5 52,-318.88 52,-280.92 52,-258.62"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="55.5,-258.5 52,-248.5 48.5,-258.5 55.5,-258.5"/>
+<path fill="none" stroke="midnightblue" d="M69.41,-627.29C58.63,-608.62 36,-564.65 36,-524.5 36,-524.5 36,-524.5 36,-351.5 36,-318.89 40.68,-281.19 43.93,-258.9"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="47.43,-259.17 45.47,-248.76 40.51,-258.12 47.43,-259.17"/>
 </g>
 <!-- Node14 -->
 <g id="node14" class="node">
 <title>Node14</title>
 <g id="a_node14"><a xlink:href="_so_x_audio_editor_8h.html" target="_top" xlink:title="The SoXAudioEditor specification defines the audio editor for a plugin, represented by a display wind...">
-<polygon fill="white" stroke="black" points="284.5,-570.5 284.5,-590.5 385.5,-590.5 385.5,-570.5 284.5,-570.5"/>
-<text text-anchor="middle" x="335" y="-577.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditor.h</text>
+<polygon fill="white" stroke="black" points="139.5,-570.5 139.5,-590.5 240.5,-590.5 240.5,-570.5 139.5,-570.5"/>
+<text text-anchor="middle" x="190" y="-577.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditor.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node14 -->
-<g id="edge14" class="edge">
+<g id="edge15" class="edge">
 <title>Node1&#45;&gt;Node14</title>
-<path fill="none" stroke="midnightblue" d="M160.51,-627.42C196.17,-618.04 251.94,-603.36 290.8,-593.13"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="292,-596.43 300.78,-590.5 290.22,-589.66 292,-596.43"/>
+<path fill="none" stroke="midnightblue" d="M93.99,-627.42C112.47,-618.58 140.76,-605.05 161.86,-594.96"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="163.47,-598.07 170.98,-590.6 160.45,-591.75 163.47,-598.07"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="4.5,-171.5 4.5,-191.5 57.5,-191.5 57.5,-171.5 4.5,-171.5"/>
-<text text-anchor="middle" x="31" y="-178.7" font-family="Helvetica,sans-Serif" font-size="11.00">cstdarg</text>
+<polygon fill="white" stroke="#bfbfbf" points="120.5,-171.5 120.5,-191.5 173.5,-191.5 173.5,-171.5 120.5,-171.5"/>
+<text text-anchor="middle" x="147" y="-178.7" font-family="Helvetica,sans-Serif" font-size="11.00">cstdarg</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M48.53,-228.42C45.72,-221.06 41.67,-210.44 38.17,-201.27"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="41.38,-199.87 34.54,-191.78 34.84,-202.37 41.38,-199.87"/>
+<path fill="none" stroke="midnightblue" d="M63.51,-228.42C79.29,-219.74 103.3,-206.53 121.53,-196.51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="123.39,-199.48 130.46,-191.6 120.01,-193.35 123.39,-199.48"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="_logging_support_8h.html" target="_top" xlink:title="The LoggingSupport specification defines a class for simple entry/exit logging to a file; this loggin...">
-<polygon fill="white" stroke="black" points="76,-171.5 76,-191.5 178,-191.5 178,-171.5 76,-171.5"/>
-<text text-anchor="middle" x="127" y="-178.7" font-family="Helvetica,sans-Serif" font-size="11.00">LoggingSupport.h</text>
+<g id="a_node4"><a xlink:href="_logging_support_8h.html" target="_top" xlink:title="The LoggingSupport specification defines a class for simple entry/exit logging to a file or via an ar...">
+<polygon fill="white" stroke="black" points="0,-171.5 0,-191.5 102,-191.5 102,-171.5 0,-171.5"/>
+<text text-anchor="middle" x="51" y="-178.7" font-family="Helvetica,sans-Serif" font-size="11.00">LoggingSupport.h</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node2&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M64.38,-228.42C75.78,-220.06 92.91,-207.5 106.38,-197.62"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="108.6,-200.33 114.6,-191.6 104.46,-194.69 108.6,-200.33"/>
+<path fill="none" stroke="midnightblue" d="M47.66,-228.42C48.18,-221.22 48.93,-210.9 49.59,-201.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="53.09,-202.01 50.33,-191.78 46.11,-201.5 53.09,-202.01"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="_boolean_8h.html" target="_top" xlink:title="The Boolean specification and body provides a value object type for boolean values.">
-<polygon fill="white" stroke="black" points="92.5,-114.5 92.5,-134.5 157.5,-134.5 157.5,-114.5 92.5,-114.5"/>
-<text text-anchor="middle" x="125" y="-121.7" font-family="Helvetica,sans-Serif" font-size="11.00">Boolean.h</text>
+<polygon fill="white" stroke="black" points="26.5,-114.5 26.5,-134.5 91.5,-134.5 91.5,-114.5 26.5,-114.5"/>
+<text text-anchor="middle" x="59" y="-121.7" font-family="Helvetica,sans-Serif" font-size="11.00">Boolean.h</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node4&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M126.67,-171.42C126.41,-164.22 126.03,-153.9 125.7,-144.86"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="129.2,-144.65 125.34,-134.78 122.2,-144.9 129.2,-144.65"/>
+<path fill="none" stroke="midnightblue" d="M52.32,-171.42C53.37,-164.22 54.87,-153.9 56.18,-144.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="59.67,-145.18 57.65,-134.78 52.75,-144.17 59.67,-145.18"/>
 </g>
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
 <g id="a_node9"><a xlink:href="_natural_8h.html" target="_top" xlink:title="The Natural specification and body provides a value object type for naturals (positive integers with ...">
-<polygon fill="white" stroke="black" points="179,-114.5 179,-134.5 239,-134.5 239,-114.5 179,-114.5"/>
-<text text-anchor="middle" x="209" y="-121.7" font-family="Helvetica,sans-Serif" font-size="11.00">Natural.h</text>
+<polygon fill="white" stroke="black" points="266,-114.5 266,-134.5 326,-134.5 326,-114.5 266,-114.5"/>
+<text text-anchor="middle" x="296" y="-121.7" font-family="Helvetica,sans-Serif" font-size="11.00">Natural.h</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node9 -->
 <g id="edge8" class="edge">
 <title>Node4&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M140.54,-171.42C153.12,-162.98 172.09,-150.26 186.87,-140.34"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="189.08,-143.07 195.44,-134.6 185.18,-137.26 189.08,-143.07"/>
+<path fill="none" stroke="midnightblue" d="M91.18,-171.48C136.74,-161.25 210.58,-144.68 256.05,-134.47"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="256.86,-137.87 265.85,-132.27 255.33,-131.04 256.86,-137.87"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="_my_string_8h.html" target="_top" xlink:title="The String specification defines a standard string type.">
-<polygon fill="white" stroke="black" points="87,-57.5 87,-77.5 155,-77.5 155,-57.5 87,-57.5"/>
-<text text-anchor="middle" x="121" y="-64.7" font-family="Helvetica,sans-Serif" font-size="11.00">MyString.h</text>
+<polygon fill="white" stroke="black" points="69,-57.5 69,-77.5 137,-77.5 137,-57.5 69,-57.5"/>
+<text text-anchor="middle" x="103" y="-64.7" font-family="Helvetica,sans-Serif" font-size="11.00">MyString.h</text>
 </a>
 </g>
 </g>
 <!-- Node5&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node5&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M124.34,-114.42C123.82,-107.22 123.07,-96.9 122.41,-87.86"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="125.89,-87.5 121.67,-77.78 118.91,-88.01 125.89,-87.5"/>
+<path fill="none" stroke="midnightblue" d="M66.27,-114.42C72.47,-106.66 81.57,-95.29 89.16,-85.8"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="92.06,-87.77 95.58,-77.78 86.6,-83.4 92.06,-87.77"/>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="110,-0.5 110,-20.5 154,-20.5 154,-0.5 110,-0.5"/>
-<text text-anchor="middle" x="132" y="-7.7" font-family="Helvetica,sans-Serif" font-size="11.00">string</text>
+<polygon fill="white" stroke="#bfbfbf" points="168,-0.5 168,-20.5 212,-20.5 212,-0.5 168,-0.5"/>
+<text text-anchor="middle" x="190" y="-7.7" font-family="Helvetica,sans-Serif" font-size="11.00">string</text>
 </a>
 </g>
 </g>
 <!-- Node6&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node6&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M122.82,-57.42C124.26,-50.22 126.32,-39.9 128.13,-30.86"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="131.61,-31.27 130.14,-20.78 124.75,-29.9 131.61,-31.27"/>
+<path fill="none" stroke="midnightblue" d="M117.37,-57.42C130.84,-48.9 151.22,-36.02 166.96,-26.06"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="169.03,-28.9 175.61,-20.6 165.29,-22.98 169.03,-28.9"/>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
 <g id="a_node8"><a xlink:href="_global_macros_8h.html" target="_top" xlink:title="The GlobalMacros specification defines simple macros (e.g. for parameter modes).">
-<polygon fill="white" stroke="black" points="0,-0.5 0,-20.5 92,-20.5 92,-0.5 0,-0.5"/>
-<text text-anchor="middle" x="46" y="-7.7" font-family="Helvetica,sans-Serif" font-size="11.00">GlobalMacros.h</text>
+<polygon fill="white" stroke="black" points="57,-0.5 57,-20.5 149,-20.5 149,-0.5 57,-0.5"/>
+<text text-anchor="middle" x="103" y="-7.7" font-family="Helvetica,sans-Serif" font-size="11.00">GlobalMacros.h</text>
 </a>
 </g>
 </g>
 <!-- Node6&#45;&gt;Node8 -->
 <g id="edge7" class="edge">
 <title>Node6&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M108.62,-57.42C97.22,-49.06 80.09,-36.5 66.62,-26.62"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="68.54,-23.69 58.4,-20.6 64.4,-29.33 68.54,-23.69"/>
+<path fill="none" stroke="midnightblue" d="M103,-57.42C103,-50.22 103,-39.9 103,-30.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="106.5,-30.78 103,-20.78 99.5,-30.78 106.5,-30.78"/>
 </g>
 <!-- Node9&#45;&gt;Node6 -->
-<g id="edge13" class="edge">
+<g id="edge14" class="edge">
 <title>Node9&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M194.47,-114.42C180.84,-105.9 160.23,-93.02 144.3,-83.06"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="145.89,-79.93 135.55,-77.6 142.18,-85.86 145.89,-79.93"/>
+<path fill="none" stroke="midnightblue" d="M265.84,-114.91C233.28,-105.63 181.19,-90.78 144.71,-80.39"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="145.45,-76.96 134.87,-77.58 143.53,-83.69 145.45,-76.96"/>
 </g>
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
 <g id="a_node10"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="383.5,-57.5 383.5,-77.5 430.5,-77.5 430.5,-57.5 383.5,-57.5"/>
-<text text-anchor="middle" x="407" y="-64.7" font-family="Helvetica,sans-Serif" font-size="11.00">cmath</text>
+<polygon fill="white" stroke="#bfbfbf" points="365.5,-57.5 365.5,-77.5 412.5,-77.5 412.5,-57.5 365.5,-57.5"/>
+<text text-anchor="middle" x="389" y="-64.7" font-family="Helvetica,sans-Serif" font-size="11.00">cmath</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node10 -->
 <g id="edge9" class="edge">
 <title>Node9&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M239.04,-115.47C270.38,-107.05 321.19,-93.27 373.47,-78.4"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="374.59,-81.72 383.25,-75.61 372.67,-74.99 374.59,-81.72"/>
+<path fill="none" stroke="midnightblue" d="M311.36,-114.42C325.9,-105.82 347.95,-92.78 364.85,-82.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="366.79,-85.7 373.62,-77.6 363.23,-79.67 366.79,-85.7"/>
 </g>
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
 <g id="a_node11"><a xlink:href="_assertion_8h.html" target="_top" xlink:title="The Assertion specification defines macros for pre&#45; and postconditions in functions or methods.">
-<polygon fill="white" stroke="black" points="173.5,-57.5 173.5,-77.5 244.5,-77.5 244.5,-57.5 173.5,-57.5"/>
-<text text-anchor="middle" x="209" y="-64.7" font-family="Helvetica,sans-Serif" font-size="11.00">Assertion.h</text>
+<polygon fill="white" stroke="black" points="155.5,-57.5 155.5,-77.5 226.5,-77.5 226.5,-57.5 155.5,-57.5"/>
+<text text-anchor="middle" x="191" y="-64.7" font-family="Helvetica,sans-Serif" font-size="11.00">Assertion.h</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node11 -->
 <g id="edge10" class="edge">
 <title>Node9&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M209,-114.42C209,-107.22 209,-96.9 209,-87.86"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="212.5,-87.78 209,-77.78 205.5,-87.78 212.5,-87.78"/>
+<path fill="none" stroke="midnightblue" d="M278.66,-114.42C262.02,-105.7 236.65,-92.41 217.48,-82.37"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="218.85,-79.14 208.36,-77.6 215.6,-85.34 218.85,-79.14"/>
 </g>
 <!-- Node13 -->
 <g id="node13" class="node">
 <title>Node13</title>
 <g id="a_node13"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="262.5,-57.5 262.5,-77.5 365.5,-77.5 365.5,-57.5 262.5,-57.5"/>
-<text text-anchor="middle" x="314" y="-64.7" font-family="Helvetica,sans-Serif" font-size="11.00">GenericNumber.h</text>
+<polygon fill="white" stroke="#bfbfbf" points="244.5,-57.5 244.5,-77.5 347.5,-77.5 347.5,-57.5 244.5,-57.5"/>
+<text text-anchor="middle" x="296" y="-64.7" font-family="Helvetica,sans-Serif" font-size="11.00">GenericNumber.h</text>
 </a>
 </g>
 </g>
 <!-- Node9&#45;&gt;Node13 -->
-<g id="edge12" class="edge">
+<g id="edge13" class="edge">
 <title>Node9&#45;&gt;Node13</title>
-<path fill="none" stroke="midnightblue" d="M226.34,-114.42C242.98,-105.7 268.35,-92.41 287.52,-82.37"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="289.4,-85.34 296.64,-77.6 286.15,-79.14 289.4,-85.34"/>
+<path fill="none" stroke="midnightblue" d="M296,-114.42C296,-107.22 296,-96.9 296,-87.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="299.5,-87.78 296,-77.78 292.5,-87.78 299.5,-87.78"/>
+</g>
+<!-- Node11&#45;&gt;Node7 -->
+<g id="edge12" class="edge">
+<title>Node11&#45;&gt;Node7</title>
+<path fill="none" stroke="midnightblue" d="M190.83,-57.42C190.7,-50.22 190.52,-39.9 190.35,-30.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="193.85,-30.71 190.17,-20.78 186.85,-30.84 193.85,-30.71"/>
 </g>
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
 <g id="a_node12"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="182.5,-0.5 182.5,-20.5 235.5,-20.5 235.5,-0.5 182.5,-0.5"/>
-<text text-anchor="middle" x="209" y="-7.7" font-family="Helvetica,sans-Serif" font-size="11.00">cassert</text>
+<polygon fill="white" stroke="#bfbfbf" points="319,-0.5 319,-20.5 383,-20.5 383,-0.5 319,-0.5"/>
+<text text-anchor="middle" x="351" y="-7.7" font-family="Helvetica,sans-Serif" font-size="11.00">stdexcept</text>
 </a>
 </g>
 </g>
 <!-- Node11&#45;&gt;Node12 -->
 <g id="edge11" class="edge">
 <title>Node11&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M209,-57.42C209,-50.22 209,-39.9 209,-30.86"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="212.5,-30.78 209,-20.78 205.5,-30.78 212.5,-30.78"/>
+<path fill="none" stroke="midnightblue" d="M217.42,-57.42C244.14,-48.23 285.6,-33.98 315.24,-23.79"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="316.49,-27.06 324.81,-20.5 314.21,-20.45 316.49,-27.06"/>
 </g>
 <!-- Node15 -->
 <g id="node15" class="node">
 <title>Node15</title>
 <g id="a_node15"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="282.5,-228.5 282.5,-248.5 363.5,-248.5 363.5,-228.5 282.5,-228.5"/>
-<text text-anchor="middle" x="323" y="-235.7" font-family="Helvetica,sans-Serif" font-size="11.00">GenericList.h</text>
+<polygon fill="white" stroke="#bfbfbf" points="97.5,-228.5 97.5,-248.5 178.5,-248.5 178.5,-228.5 97.5,-228.5"/>
+<text text-anchor="middle" x="138" y="-235.7" font-family="Helvetica,sans-Serif" font-size="11.00">GenericList.h</text>
 </a>
 </g>
 </g>
 <!-- Node14&#45;&gt;Node15 -->
-<g id="edge15" class="edge">
+<g id="edge16" class="edge">
 <title>Node14&#45;&gt;Node15</title>
-<path fill="none" stroke="midnightblue" d="M325.42,-570.2C302.57,-547.29 245.3,-485.2 225,-420 204.67,-354.72 269.78,-285.96 303.74,-255.57"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="306.39,-257.9 311.63,-248.69 301.79,-252.62 306.39,-257.9"/>
+<path fill="none" stroke="midnightblue" d="M168.18,-570.38C134.58,-554.72 74,-519.29 74,-467.5 74,-467.5 74,-467.5 74,-351.5 74,-320.76 77.49,-311.54 93,-285 99.53,-273.84 109.42,-263.42 118.27,-255.38"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="120.7,-257.9 125.97,-248.71 116.12,-252.61 120.7,-257.9"/>
 </g>
 <!-- Node16 -->
 <g id="node16" class="node">
 <title>Node16</title>
 <g id="a_node16"><a xlink:href="_so_x_audio_editor_widget_8h.html" target="_top" xlink:title="The SoXAudioEditorWidget specification defines an audio editor widget (a slider or a combo box) in a ...">
-<polygon fill="white" stroke="black" points="676,-456.5 676,-476.5 812,-476.5 812,-456.5 676,-456.5"/>
-<text text-anchor="middle" x="744" y="-463.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditorWidget.h</text>
+<polygon fill="white" stroke="black" points="213,-456.5 213,-476.5 349,-476.5 349,-456.5 213,-456.5"/>
+<text text-anchor="middle" x="281" y="-463.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditorWidget.h</text>
 </a>
 </g>
 </g>
 <!-- Node14&#45;&gt;Node16 -->
-<g id="edge16" class="edge">
+<g id="edge17" class="edge">
 <title>Node14&#45;&gt;Node16</title>
-<path fill="none" stroke="midnightblue" d="M385.55,-572.49C433.96,-565.14 508.77,-552.13 572,-534 623.4,-519.26 680.94,-495.45 714.73,-480.68"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="716.28,-483.82 724.02,-476.58 713.45,-477.41 716.28,-483.82"/>
+<path fill="none" stroke="midnightblue" d="M197.45,-570.33C212.64,-551.63 247.44,-508.8 267,-484.73"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="269.86,-486.76 273.45,-476.79 264.43,-482.35 269.86,-486.76"/>
 </g>
-<!-- Node30 -->
-<g id="node30" class="node">
-<title>Node30</title>
-<g id="a_node30"><a xlink:href="_so_x_audio_processor_8h.html" target="_top" xlink:title="The SoXAudioProcessor specification defines an audio effect wrapper for a plugin responsible for the ...">
-<polygon fill="white" stroke="black" points="439,-513.5 439,-533.5 563,-533.5 563,-513.5 439,-513.5"/>
-<text text-anchor="middle" x="501" y="-520.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioProcessor.h</text>
+<!-- Node29 -->
+<g id="node29" class="node">
+<title>Node29</title>
+<g id="a_node29"><a xlink:href="_so_x_audio_processor_8h.html" target="_top" xlink:title="The SoXAudioProcessor specification defines an audio effect wrapper for a plugin responsible for the ...">
+<polygon fill="white" stroke="black" points="286,-513.5 286,-533.5 410,-533.5 410,-513.5 286,-513.5"/>
+<text text-anchor="middle" x="348" y="-520.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioProcessor.h</text>
 </a>
 </g>
 </g>
-<!-- Node14&#45;&gt;Node30 -->
+<!-- Node14&#45;&gt;Node29 -->
 <g id="edge35" class="edge">
-<title>Node14&#45;&gt;Node30</title>
-<path fill="none" stroke="midnightblue" d="M362.41,-570.42C390.25,-561.19 433.52,-546.86 464.3,-536.66"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="465.43,-539.97 473.82,-533.5 463.23,-533.33 465.43,-539.97"/>
+<title>Node14&#45;&gt;Node29</title>
+<path fill="none" stroke="midnightblue" d="M216.09,-570.42C242.36,-561.27 283.06,-547.1 312.31,-536.92"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="313.84,-540.1 322.13,-533.5 311.54,-533.49 313.84,-540.1"/>
 </g>
 <!-- Node17 -->
 <g id="node17" class="node">
 <title>Node17</title>
 <g id="a_node17"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="873,-399.5 873,-419.5 963,-419.5 963,-399.5 873,-399.5"/>
-<text text-anchor="middle" x="918" y="-406.7" font-family="Helvetica,sans-Serif" font-size="11.00">JuceHeaders.h</text>
+<polygon fill="white" stroke="#bfbfbf" points="134,-399.5 134,-419.5 224,-419.5 224,-399.5 134,-399.5"/>
+<text text-anchor="middle" x="179" y="-406.7" font-family="Helvetica,sans-Serif" font-size="11.00">JuceHeaders.h</text>
 </a>
 </g>
 </g>
 <!-- Node16&#45;&gt;Node17 -->
-<g id="edge17" class="edge">
+<g id="edge18" class="edge">
 <title>Node16&#45;&gt;Node17</title>
-<path fill="none" stroke="midnightblue" d="M772.73,-456.42C802.04,-447.15 847.66,-432.73 879.95,-422.53"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="881.03,-425.86 889.51,-419.5 878.92,-419.18 881.03,-425.86"/>
+<path fill="none" stroke="midnightblue" d="M264.16,-456.42C247.99,-447.7 223.35,-434.41 204.72,-424.37"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="206.33,-421.26 195.87,-419.6 203.01,-427.42 206.33,-421.26"/>
 </g>
 <!-- Node18 -->
 <g id="node18" class="node">
 <title>Node18</title>
 <g id="a_node18"><a xlink:href="_object_8h.html" target="_top" xlink:title="The Object specification and body provides the root object type.">
-<polygon fill="white" stroke="black" points="595,-399.5 595,-419.5 653,-419.5 653,-399.5 595,-399.5"/>
-<text text-anchor="middle" x="624" y="-406.7" font-family="Helvetica,sans-Serif" font-size="11.00">Object.h</text>
+<polygon fill="white" stroke="black" points="444,-399.5 444,-419.5 502,-419.5 502,-399.5 444,-399.5"/>
+<text text-anchor="middle" x="473" y="-406.7" font-family="Helvetica,sans-Serif" font-size="11.00">Object.h</text>
 </a>
 </g>
 </g>
 <!-- Node16&#45;&gt;Node18 -->
-<g id="edge18" class="edge">
+<g id="edge19" class="edge">
 <title>Node16&#45;&gt;Node18</title>
-<path fill="none" stroke="midnightblue" d="M724.18,-456.42C704.82,-447.54 675.11,-433.93 653.07,-423.82"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="654.39,-420.58 643.84,-419.6 651.48,-426.94 654.39,-420.58"/>
+<path fill="none" stroke="midnightblue" d="M312.7,-456.42C346,-446.88 398.39,-431.87 434.15,-421.63"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="435.12,-424.99 443.77,-418.87 433.19,-418.26 435.12,-424.99"/>
 </g>
 <!-- Node19 -->
 <g id="node19" class="node">
 <title>Node19</title>
 <g id="a_node19"><a xlink:href="_percentage_8h.html" target="_top" xlink:title="The Percentage specification and body provides a simple percentage type.">
-<polygon fill="white" stroke="black" points="804,-342.5 804,-362.5 886,-362.5 886,-342.5 804,-342.5"/>
-<text text-anchor="middle" x="845" y="-349.7" font-family="Helvetica,sans-Serif" font-size="11.00">Percentage.h</text>
+<polygon fill="white" stroke="black" points="425,-342.5 425,-362.5 507,-362.5 507,-342.5 425,-342.5"/>
+<text text-anchor="middle" x="466" y="-349.7" font-family="Helvetica,sans-Serif" font-size="11.00">Percentage.h</text>
 </a>
 </g>
 </g>
 <!-- Node16&#45;&gt;Node19 -->
-<g id="edge19" class="edge">
+<g id="edge20" class="edge">
 <title>Node16&#45;&gt;Node19</title>
-<path fill="none" stroke="midnightblue" d="M771.69,-456.47C789.62,-449.27 812.13,-437.47 826,-420 836.72,-406.5 841.4,-387.22 843.43,-372.89"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="846.94,-372.99 844.56,-362.67 839.98,-372.22 846.94,-372.99"/>
+<path fill="none" stroke="midnightblue" d="M313.63,-456.49C337.82,-448.94 370.96,-436.7 397,-420 418.3,-406.33 438.66,-385.42 451.66,-370.71"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="454.55,-372.72 458.43,-362.86 449.25,-368.15 454.55,-372.72"/>
 </g>
-<!-- Node23 -->
-<g id="node23" class="node">
-<title>Node23</title>
-<g id="a_node23"><a xlink:href="_so_x_effect_parameter_map_8h.html" target="_top" xlink:title="The SoXEffectParameterMap specification defines a map of string keys and associated values of SoXEffe...">
-<polygon fill="white" stroke="black" points="671,-399.5 671,-419.5 817,-419.5 817,-399.5 671,-399.5"/>
-<text text-anchor="middle" x="744" y="-406.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXEffectParameterMap.h</text>
+<!-- Node22 -->
+<g id="node22" class="node">
+<title>Node22</title>
+<g id="a_node22"><a xlink:href="_so_x_effect_parameter_map_8h.html" target="_top" xlink:title="The SoXEffectParameterMap specification defines a map of string keys and associated values of SoXEffe...">
+<polygon fill="white" stroke="black" points="242,-399.5 242,-419.5 388,-419.5 388,-399.5 242,-399.5"/>
+<text text-anchor="middle" x="315" y="-406.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXEffectParameterMap.h</text>
 </a>
 </g>
 </g>
-<!-- Node16&#45;&gt;Node23 -->
+<!-- Node16&#45;&gt;Node22 -->
 <g id="edge26" class="edge">
-<title>Node16&#45;&gt;Node23</title>
-<path fill="none" stroke="midnightblue" d="M744,-456.42C744,-449.22 744,-438.9 744,-429.86"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="747.5,-429.78 744,-419.78 740.5,-429.78 747.5,-429.78"/>
+<title>Node16&#45;&gt;Node22</title>
+<path fill="none" stroke="midnightblue" d="M286.61,-456.42C291.31,-448.82 298.15,-437.75 303.94,-428.39"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="306.98,-430.13 309.26,-419.78 301.03,-426.45 306.98,-430.13"/>
 </g>
 <!-- Node20 -->
 <g id="node20" class="node">
 <title>Node20</title>
 <g id="a_node20"><a xlink:href="_real_8h.html" target="_top" xlink:title="The Real specification defines a value object type for real values.">
-<polygon fill="white" stroke="black" points="487,-228.5 487,-248.5 535,-248.5 535,-228.5 487,-228.5"/>
-<text text-anchor="middle" x="511" y="-235.7" font-family="Helvetica,sans-Serif" font-size="11.00">Real.h</text>
+<polygon fill="white" stroke="black" points="397,-228.5 397,-248.5 445,-248.5 445,-228.5 397,-228.5"/>
+<text text-anchor="middle" x="421" y="-235.7" font-family="Helvetica,sans-Serif" font-size="11.00">Real.h</text>
 </a>
 </g>
 </g>
 <!-- Node19&#45;&gt;Node20 -->
-<g id="edge20" class="edge">
-<title>Node19&#45;&gt;Node20</title>
-<path fill="none" stroke="midnightblue" d="M840.33,-342.41C832.25,-327.69 814.17,-298.86 790,-285 748.76,-261.35 610.18,-247.44 545.19,-242.07"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="545.29,-238.57 535.05,-241.25 544.73,-245.54 545.29,-238.57"/>
-</g>
-<!-- Node20&#45;&gt;Node10 -->
 <g id="edge21" class="edge">
-<title>Node20&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M512.17,-228.43C514.48,-206.54 517.44,-149.94 492,-114 479.62,-96.51 458.37,-85.14 440.22,-78.14"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="441.39,-74.84 430.8,-74.77 439.04,-81.43 441.39,-74.84"/>
+<title>Node19&#45;&gt;Node20</title>
+<path fill="none" stroke="midnightblue" d="M462.32,-342.33C454.97,-324.04 438.34,-282.67 428.57,-258.34"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="431.71,-256.77 424.73,-248.79 425.21,-259.38 431.71,-256.77"/>
 </g>
 <!-- Node21 -->
 <g id="node21" class="node">
 <title>Node21</title>
 <g id="a_node21"><a xlink:href="_integer_8h.html" target="_top" xlink:title="The Integer specification and body provides a value object type for ints.">
-<polygon fill="white" stroke="black" points="391.5,-171.5 391.5,-191.5 450.5,-191.5 450.5,-171.5 391.5,-171.5"/>
-<text text-anchor="middle" x="421" y="-178.7" font-family="Helvetica,sans-Serif" font-size="11.00">Integer.h</text>
+<polygon fill="white" stroke="black" points="389.5,-171.5 389.5,-191.5 448.5,-191.5 448.5,-171.5 389.5,-171.5"/>
+<text text-anchor="middle" x="419" y="-178.7" font-family="Helvetica,sans-Serif" font-size="11.00">Integer.h</text>
 </a>
 </g>
 </g>
 <!-- Node20&#45;&gt;Node21 -->
 <g id="edge22" class="edge">
 <title>Node20&#45;&gt;Node21</title>
-<path fill="none" stroke="midnightblue" d="M496.14,-228.42C482.2,-219.9 461.12,-207.02 444.83,-197.06"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="446.24,-193.82 435.88,-191.6 442.59,-199.8 446.24,-193.82"/>
+<path fill="none" stroke="midnightblue" d="M420.67,-228.42C420.41,-221.22 420.03,-210.9 419.7,-201.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="423.2,-201.65 419.34,-191.78 416.2,-201.9 423.2,-201.65"/>
 </g>
 <!-- Node21&#45;&gt;Node9 -->
 <g id="edge25" class="edge">
 <title>Node21&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M391.08,-172.74C353.85,-163.08 290.18,-146.56 248.85,-135.84"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="249.67,-132.44 239.12,-133.31 247.92,-139.21 249.67,-132.44"/>
+<path fill="none" stroke="midnightblue" d="M398.69,-171.42C378.75,-162.5 348.11,-148.8 325.49,-138.69"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="326.9,-135.48 316.34,-134.6 324.04,-141.87 326.9,-135.48"/>
 </g>
 <!-- Node21&#45;&gt;Node10 -->
 <g id="edge23" class="edge">
 <title>Node21&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M418.19,-171.19C415.57,-162.07 411.81,-147.71 410,-135 407.76,-119.25 407.06,-101.21 406.9,-87.89"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="410.39,-87.57 406.86,-77.59 403.39,-87.6 410.39,-87.57"/>
+<path fill="none" stroke="midnightblue" d="M416.54,-171.33C411.67,-153.12 400.66,-112.04 394.13,-87.67"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="397.46,-86.55 391.49,-77.79 390.7,-88.36 397.46,-86.55"/>
 </g>
-<!-- Node22 -->
-<g id="node22" class="node">
-<title>Node22</title>
-<g id="a_node22"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="419,-114.5 419,-134.5 483,-134.5 483,-114.5 419,-114.5"/>
-<text text-anchor="middle" x="451" y="-121.7" font-family="Helvetica,sans-Serif" font-size="11.00">stdexcept</text>
-</a>
-</g>
-</g>
-<!-- Node21&#45;&gt;Node22 -->
+<!-- Node21&#45;&gt;Node12 -->
 <g id="edge24" class="edge">
-<title>Node21&#45;&gt;Node22</title>
-<path fill="none" stroke="midnightblue" d="M425.95,-171.42C430.05,-163.9 436.01,-152.98 441.08,-143.68"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="444.22,-145.23 445.94,-134.78 438.08,-141.88 444.22,-145.23"/>
+<title>Node21&#45;&gt;Node12</title>
+<path fill="none" stroke="midnightblue" d="M421.99,-171.41C428.47,-149.95 441.66,-95.07 421,-57 413.3,-42.82 399.07,-32.37 385.43,-25.08"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="386.69,-21.81 376.17,-20.54 383.61,-28.09 386.69,-21.81"/>
 </g>
-<!-- Node23&#45;&gt;Node20 -->
+<!-- Node22&#45;&gt;Node20 -->
 <g id="edge29" class="edge">
-<title>Node23&#45;&gt;Node20</title>
-<path fill="none" stroke="midnightblue" d="M748.87,-399.47C760.17,-377.16 785.13,-318.81 757,-285 730.47,-253.11 606.55,-243.48 545.36,-240.64"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="545.2,-237.13 535.06,-240.2 544.9,-244.13 545.2,-237.13"/>
+<title>Node22&#45;&gt;Node20</title>
+<path fill="none" stroke="midnightblue" d="M330.72,-399.49C343.62,-391.39 361.56,-378.42 373,-363 397.11,-330.49 410.76,-284.32 416.93,-258.63"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="420.39,-259.21 419.19,-248.69 413.56,-257.66 420.39,-259.21"/>
 </g>
-<!-- Node24 -->
-<g id="node24" class="node">
-<title>Node24</title>
-<g id="a_node24"><a xlink:href="_dictionary_8h.html" target="_top" xlink:title="The Dictionary specification defines maps from string keys to string values.">
-<polygon fill="white" stroke="black" points="672,-342.5 672,-362.5 746,-362.5 746,-342.5 672,-342.5"/>
-<text text-anchor="middle" x="709" y="-349.7" font-family="Helvetica,sans-Serif" font-size="11.00">Dictionary.h</text>
+<!-- Node23 -->
+<g id="node23" class="node">
+<title>Node23</title>
+<g id="a_node23"><a xlink:href="_dictionary_8h.html" target="_top" xlink:title="The Dictionary specification defines maps from string keys to string values.">
+<polygon fill="white" stroke="black" points="290,-342.5 290,-362.5 364,-362.5 364,-342.5 290,-342.5"/>
+<text text-anchor="middle" x="327" y="-349.7" font-family="Helvetica,sans-Serif" font-size="11.00">Dictionary.h</text>
 </a>
 </g>
 </g>
-<!-- Node23&#45;&gt;Node24 -->
+<!-- Node22&#45;&gt;Node23 -->
 <g id="edge27" class="edge">
-<title>Node23&#45;&gt;Node24</title>
-<path fill="none" stroke="midnightblue" d="M738.22,-399.42C733.39,-391.82 726.34,-380.75 720.38,-371.39"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="723.23,-369.34 714.91,-362.78 717.32,-373.1 723.23,-369.34"/>
-</g>
-<!-- Node26 -->
-<g id="node26" class="node">
-<title>Node26</title>
-<g id="a_node26"><a xlink:href="_string_set_8h.html" target="_top" xlink:title="The StringSet specification defines sets of string values with no duplicates and only simple containm...">
-<polygon fill="white" stroke="black" points="572.5,-342.5 572.5,-362.5 643.5,-362.5 643.5,-342.5 572.5,-342.5"/>
-<text text-anchor="middle" x="608" y="-349.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringSet.h</text>
-</a>
-</g>
-</g>
-<!-- Node23&#45;&gt;Node26 -->
-<g id="edge30" class="edge">
-<title>Node23&#45;&gt;Node26</title>
-<path fill="none" stroke="midnightblue" d="M721.54,-399.42C699.3,-390.42 665.02,-376.56 639.94,-366.42"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="641.07,-363.1 630.49,-362.6 638.45,-369.59 641.07,-363.1"/>
+<title>Node22&#45;&gt;Node23</title>
+<path fill="none" stroke="midnightblue" d="M316.98,-399.42C318.57,-392.14 320.85,-381.67 322.84,-372.57"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="326.26,-373.3 324.98,-362.78 319.42,-371.8 326.26,-373.3"/>
 </g>
 <!-- Node25 -->
 <g id="node25" class="node">
 <title>Node25</title>
-<g id="a_node25"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="664,-285.5 664,-305.5 748,-305.5 748,-285.5 664,-285.5"/>
-<text text-anchor="middle" x="706" y="-292.7" font-family="Helvetica,sans-Serif" font-size="11.00">GenericMap.h</text>
+<g id="a_node25"><a xlink:href="_string_set_8h.html" target="_top" xlink:title="The StringSet specification defines sets of string values with no duplicates and only simple containm...">
+<polygon fill="white" stroke="black" points="196.5,-342.5 196.5,-362.5 267.5,-362.5 267.5,-342.5 196.5,-342.5"/>
+<text text-anchor="middle" x="232" y="-349.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringSet.h</text>
 </a>
 </g>
 </g>
-<!-- Node24&#45;&gt;Node25 -->
+<!-- Node22&#45;&gt;Node25 -->
+<g id="edge30" class="edge">
+<title>Node22&#45;&gt;Node25</title>
+<path fill="none" stroke="midnightblue" d="M301.29,-399.42C288.56,-390.98 269.36,-378.26 254.4,-368.34"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="256,-365.2 245.73,-362.6 252.13,-371.04 256,-365.2"/>
+</g>
+<!-- Node24 -->
+<g id="node24" class="node">
+<title>Node24</title>
+<g id="a_node24"><a xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="290,-285.5 290,-305.5 374,-305.5 374,-285.5 290,-285.5"/>
+<text text-anchor="middle" x="332" y="-292.7" font-family="Helvetica,sans-Serif" font-size="11.00">GenericMap.h</text>
+</a>
+</g>
+</g>
+<!-- Node23&#45;&gt;Node24 -->
 <g id="edge28" class="edge">
-<title>Node24&#45;&gt;Node25</title>
-<path fill="none" stroke="midnightblue" d="M708.5,-342.42C708.11,-335.22 707.55,-324.9 707.06,-315.86"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="710.55,-315.57 706.51,-305.78 703.56,-315.96 710.55,-315.57"/>
+<title>Node23&#45;&gt;Node24</title>
+<path fill="none" stroke="midnightblue" d="M327.83,-342.42C328.48,-335.22 329.42,-324.9 330.24,-315.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="333.74,-316.06 331.16,-305.78 326.77,-315.42 333.74,-316.06"/>
+</g>
+<!-- Node26 -->
+<g id="node26" class="node">
+<title>Node26</title>
+<g id="a_node26"><a xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="192,-285.5 192,-305.5 272,-305.5 272,-285.5 192,-285.5"/>
+<text text-anchor="middle" x="232" y="-292.7" font-family="Helvetica,sans-Serif" font-size="11.00">GenericSet.h</text>
+</a>
+</g>
+</g>
+<!-- Node25&#45;&gt;Node26 -->
+<g id="edge31" class="edge">
+<title>Node25&#45;&gt;Node26</title>
+<path fill="none" stroke="midnightblue" d="M232,-342.42C232,-335.22 232,-324.9 232,-315.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="235.5,-315.78 232,-305.78 228.5,-315.78 235.5,-315.78"/>
 </g>
 <!-- Node27 -->
 <g id="node27" class="node">
 <title>Node27</title>
-<g id="a_node27"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="566,-285.5 566,-305.5 646,-305.5 646,-285.5 566,-285.5"/>
-<text text-anchor="middle" x="606" y="-292.7" font-family="Helvetica,sans-Serif" font-size="11.00">GenericSet.h</text>
+<g id="a_node27"><a xlink:href="_string_list_8h.html" target="_top" xlink:title="The StringList specification defines lists of string values with zero&#45;based arbitrary indexed access ...">
+<polygon fill="white" stroke="black" points="102.5,-285.5 102.5,-305.5 173.5,-305.5 173.5,-285.5 102.5,-285.5"/>
+<text text-anchor="middle" x="138" y="-292.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringList.h</text>
 </a>
 </g>
 </g>
-<!-- Node26&#45;&gt;Node27 -->
-<g id="edge31" class="edge">
-<title>Node26&#45;&gt;Node27</title>
-<path fill="none" stroke="midnightblue" d="M607.67,-342.42C607.41,-335.22 607.03,-324.9 606.7,-315.86"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="610.2,-315.65 606.34,-305.78 603.2,-315.9 610.2,-315.65"/>
+<!-- Node25&#45;&gt;Node27 -->
+<g id="edge32" class="edge">
+<title>Node25&#45;&gt;Node27</title>
+<path fill="none" stroke="midnightblue" d="M216.48,-342.42C201.78,-333.82 179.49,-320.78 162.41,-310.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="163.94,-307.62 153.55,-305.6 160.41,-313.67 163.94,-307.62"/>
+</g>
+<!-- Node27&#45;&gt;Node15 -->
+<g id="edge34" class="edge">
+<title>Node27&#45;&gt;Node15</title>
+<path fill="none" stroke="midnightblue" d="M138,-285.42C138,-278.22 138,-267.9 138,-258.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="141.5,-258.78 138,-248.78 134.5,-258.78 141.5,-258.78"/>
 </g>
 <!-- Node28 -->
 <g id="node28" class="node">
 <title>Node28</title>
-<g id="a_node28"><a xlink:href="_string_list_8h.html" target="_top" xlink:title="The StringList specification defines lists of string values with zero&#45;based arbitrary indexed access ...">
-<polygon fill="white" stroke="black" points="368.5,-285.5 368.5,-305.5 439.5,-305.5 439.5,-285.5 368.5,-285.5"/>
-<text text-anchor="middle" x="404" y="-292.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringList.h</text>
+<g id="a_node28"><a xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="197,-228.5 197,-248.5 275,-248.5 275,-228.5 197,-228.5"/>
+<text text-anchor="middle" x="236" y="-235.7" font-family="Helvetica,sans-Serif" font-size="11.00">initializer_list</text>
 </a>
 </g>
 </g>
-<!-- Node26&#45;&gt;Node28 -->
-<g id="edge32" class="edge">
-<title>Node26&#45;&gt;Node28</title>
-<path fill="none" stroke="midnightblue" d="M574.31,-342.42C539.51,-333.04 485.08,-318.36 447.14,-308.13"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="447.96,-304.73 437.4,-305.5 446.14,-311.49 447.96,-304.73"/>
-</g>
-<!-- Node28&#45;&gt;Node15 -->
-<g id="edge34" class="edge">
-<title>Node28&#45;&gt;Node15</title>
-<path fill="none" stroke="midnightblue" d="M390.62,-285.42C378.2,-276.98 359.46,-264.26 344.86,-254.34"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="346.63,-251.32 336.4,-248.6 342.7,-257.11 346.63,-251.32"/>
-</g>
-<!-- Node29 -->
-<g id="node29" class="node">
-<title>Node29</title>
-<g id="a_node29"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="382,-228.5 382,-248.5 460,-248.5 460,-228.5 382,-228.5"/>
-<text text-anchor="middle" x="421" y="-235.7" font-family="Helvetica,sans-Serif" font-size="11.00">initializer_list</text>
-</a>
-</g>
-</g>
-<!-- Node28&#45;&gt;Node29 -->
+<!-- Node27&#45;&gt;Node28 -->
 <g id="edge33" class="edge">
-<title>Node28&#45;&gt;Node29</title>
-<path fill="none" stroke="midnightblue" d="M406.81,-285.42C409.06,-278.14 412.29,-267.67 415.11,-258.57"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="418.52,-259.37 418.13,-248.78 411.83,-257.3 418.52,-259.37"/>
+<title>Node27&#45;&gt;Node28</title>
+<path fill="none" stroke="midnightblue" d="M154.18,-285.42C169.65,-276.74 193.18,-263.53 211.04,-253.51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="212.79,-256.54 219.79,-248.6 209.36,-250.44 212.79,-256.54"/>
 </g>
-<!-- Node30&#45;&gt;Node17 -->
+<!-- Node29&#45;&gt;Node17 -->
 <g id="edge37" class="edge">
-<title>Node30&#45;&gt;Node17</title>
-<path fill="none" stroke="midnightblue" d="M563.26,-521.98C629.34,-519.55 735.76,-510.17 821,-477 851.41,-465.16 881.66,-442.18 900.1,-426.59"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="902.89,-428.8 908.15,-419.61 898.3,-423.52 902.89,-428.8"/>
+<title>Node29&#45;&gt;Node17</title>
+<path fill="none" stroke="midnightblue" d="M285.71,-515.33C257.71,-509.23 226.07,-497.92 204,-477 190.87,-464.56 184.58,-444.55 181.6,-429.73"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="185.01,-428.9 179.91,-419.62 178.11,-430.06 185.01,-428.9"/>
+</g>
+<!-- Node30 -->
+<g id="node30" class="node">
+<title>Node30</title>
+<g id="a_node30"><a xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="367,-456.5 367,-476.5 399,-476.5 399,-456.5 367,-456.5"/>
+<text text-anchor="middle" x="383" y="-463.7" font-family="Helvetica,sans-Serif" font-size="11.00">set</text>
+</a>
+</g>
+</g>
+<!-- Node29&#45;&gt;Node30 -->
+<g id="edge36" class="edge">
+<title>Node29&#45;&gt;Node30</title>
+<path fill="none" stroke="midnightblue" d="M353.78,-513.42C358.61,-505.82 365.66,-494.75 371.62,-485.39"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="374.68,-487.1 377.09,-476.78 368.77,-483.34 374.68,-487.1"/>
 </g>
 <!-- Node31 -->
 <g id="node31" class="node">
 <title>Node31</title>
-<g id="a_node31"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="443,-456.5 443,-476.5 475,-476.5 475,-456.5 443,-456.5"/>
-<text text-anchor="middle" x="459" y="-463.7" font-family="Helvetica,sans-Serif" font-size="11.00">set</text>
+<g id="a_node31"><a xlink:href="_so_x_audio_effect_8h.html" target="_top" xlink:title="The SoXAudioEffect specification defines the root class for all SoX audio effects.">
+<polygon fill="white" stroke="black" points="422.5,-456.5 422.5,-476.5 523.5,-476.5 523.5,-456.5 422.5,-456.5"/>
+<text text-anchor="middle" x="473" y="-463.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEffect.h</text>
 </a>
 </g>
 </g>
-<!-- Node30&#45;&gt;Node31 -->
-<g id="edge36" class="edge">
-<title>Node30&#45;&gt;Node31</title>
-<path fill="none" stroke="midnightblue" d="M494.06,-513.42C488.14,-505.66 479.46,-494.29 472.21,-484.8"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="474.94,-482.6 466.09,-476.78 469.37,-486.85 474.94,-482.6"/>
+<!-- Node29&#45;&gt;Node31 -->
+<g id="edge38" class="edge">
+<title>Node29&#45;&gt;Node31</title>
+<path fill="none" stroke="midnightblue" d="M368.64,-513.42C388.91,-504.5 420.04,-490.8 443.03,-480.69"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="444.58,-483.83 452.33,-476.6 441.77,-477.42 444.58,-483.83"/>
+</g>
+<!-- Node31&#45;&gt;Node18 -->
+<g id="edge39" class="edge">
+<title>Node31&#45;&gt;Node18</title>
+<path fill="none" stroke="midnightblue" d="M473,-456.42C473,-449.22 473,-438.9 473,-429.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="476.5,-429.78 473,-419.78 469.5,-429.78 476.5,-429.78"/>
+</g>
+<!-- Node31&#45;&gt;Node22 -->
+<g id="edge50" class="edge">
+<title>Node31&#45;&gt;Node22</title>
+<path fill="none" stroke="midnightblue" d="M446.91,-456.42C420.64,-447.27 379.94,-433.1 350.69,-422.92"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="351.46,-419.49 340.87,-419.5 349.16,-426.1 351.46,-419.49"/>
 </g>
 <!-- Node32 -->
 <g id="node32" class="node">
 <title>Node32</title>
-<g id="a_node32"><a xlink:href="_so_x_audio_effect_8h.html" target="_top" xlink:title="The SoXAudioEffect specification defines the root class for all SoX audio effects.">
-<polygon fill="white" stroke="black" points="493.5,-456.5 493.5,-476.5 594.5,-476.5 594.5,-456.5 493.5,-456.5"/>
-<text text-anchor="middle" x="544" y="-463.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEffect.h</text>
+<g id="a_node32"><a xlink:href="_audio_sample_list_vector_8h.html" target="_top" xlink:title="The AudioSampleListVector specification defines the communication buffer structure for the block proc...">
+<polygon fill="white" stroke="black" points="520.5,-399.5 520.5,-419.5 659.5,-419.5 659.5,-399.5 520.5,-399.5"/>
+<text text-anchor="middle" x="590" y="-406.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleListVector.h</text>
 </a>
 </g>
 </g>
-<!-- Node30&#45;&gt;Node32 -->
-<g id="edge38" class="edge">
-<title>Node30&#45;&gt;Node32</title>
-<path fill="none" stroke="midnightblue" d="M508.1,-513.42C514.16,-505.66 523.06,-494.29 530.47,-484.8"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="533.34,-486.81 536.75,-476.78 527.83,-482.5 533.34,-486.81"/>
-</g>
-<!-- Node32&#45;&gt;Node18 -->
-<g id="edge39" class="edge">
-<title>Node32&#45;&gt;Node18</title>
-<path fill="none" stroke="midnightblue" d="M557.21,-456.42C569.49,-447.98 587.99,-435.26 602.41,-425.34"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="604.51,-428.15 610.77,-419.6 600.55,-422.38 604.51,-428.15"/>
-</g>
-<!-- Node32&#45;&gt;Node23 -->
-<g id="edge50" class="edge">
-<title>Node32&#45;&gt;Node23</title>
-<path fill="none" stroke="midnightblue" d="M577.03,-456.42C611,-447.08 664.06,-432.48 701.23,-422.26"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="702.54,-425.53 711.26,-419.5 700.69,-418.78 702.54,-425.53"/>
-</g>
-<!-- Node33 -->
-<g id="node33" class="node">
-<title>Node33</title>
-<g id="a_node33"><a xlink:href="_audio_sample_list_vector_8h.html" target="_top" xlink:title="The AudioSampleListVector specification defines the communication buffer structure for the block proc...">
-<polygon fill="white" stroke="black" points="437.5,-399.5 437.5,-419.5 576.5,-419.5 576.5,-399.5 437.5,-399.5"/>
-<text text-anchor="middle" x="507" y="-406.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleListVector.h</text>
-</a>
-</g>
-</g>
-<!-- Node32&#45;&gt;Node33 -->
+<!-- Node31&#45;&gt;Node32 -->
 <g id="edge40" class="edge">
-<title>Node32&#45;&gt;Node33</title>
-<path fill="none" stroke="midnightblue" d="M537.89,-456.42C532.73,-448.74 525.18,-437.52 518.84,-428.09"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="521.73,-426.12 513.24,-419.78 515.92,-430.03 521.73,-426.12"/>
-</g>
-<!-- Node40 -->
-<g id="node40" class="node">
-<title>Node40</title>
-<g id="a_node40"><a xlink:href="_so_x_parameter_value_change_kind_8h.html" target="_top" xlink:title="The SoXParameterValueChangeKind specification defines a parameter change kind enumeration for SoX plu...">
-<polygon fill="white" stroke="black" points="234.5,-399.5 234.5,-419.5 419.5,-419.5 419.5,-399.5 234.5,-399.5"/>
-<text text-anchor="middle" x="327" y="-406.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXParameterValueChangeKind.h</text>
-</a>
-</g>
-</g>
-<!-- Node32&#45;&gt;Node40 -->
-<g id="edge51" class="edge">
-<title>Node32&#45;&gt;Node40</title>
-<path fill="none" stroke="midnightblue" d="M508.17,-456.42C470.99,-447 412.75,-432.23 372.38,-422"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="373.08,-418.57 362.53,-419.5 371.36,-425.35 373.08,-418.57"/>
-</g>
-<!-- Node34 -->
-<g id="node34" class="node">
-<title>Node34</title>
-<g id="a_node34"><a xlink:href="_audio_sample_list_8h.html" target="_top" xlink:title="The AudioSampleList specification defines lists of audio samples with zero&#45;based arbitrary indexed ac...">
-<polygon fill="white" stroke="black" points="447.5,-342.5 447.5,-362.5 554.5,-362.5 554.5,-342.5 447.5,-342.5"/>
-<text text-anchor="middle" x="501" y="-349.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleList.h</text>
-</a>
-</g>
-</g>
-<!-- Node33&#45;&gt;Node34 -->
-<g id="edge41" class="edge">
-<title>Node33&#45;&gt;Node34</title>
-<path fill="none" stroke="midnightblue" d="M506.01,-399.42C505.22,-392.22 504.1,-381.9 503.11,-372.86"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="506.58,-372.34 502.01,-362.78 499.62,-373.1 506.58,-372.34"/>
+<title>Node31&#45;&gt;Node32</title>
+<path fill="none" stroke="midnightblue" d="M492.32,-456.42C511.12,-447.58 539.91,-434.05 561.37,-423.96"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="563.09,-427.02 570.65,-419.6 560.11,-420.68 563.09,-427.02"/>
 </g>
 <!-- Node39 -->
 <g id="node39" class="node">
 <title>Node39</title>
-<g id="a_node39"><a xlink:href="_audio_sample_list_vector_8cpp-inc.html" target="_top" xlink:title="The AudioSampleListVector body implements the communication buffer structure for the block processing...">
-<polygon fill="white" stroke="black" points="260.5,-342.5 260.5,-362.5 429.5,-362.5 429.5,-342.5 260.5,-342.5"/>
-<text text-anchor="middle" x="345" y="-349.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleListVector.cpp&#45;inc</text>
+<g id="a_node39"><a xlink:href="_so_x_parameter_value_change_kind_8h.html" target="_top" xlink:title="The SoXParameterValueChangeKind specification defines a parameter change kind enumeration for SoX plu...">
+<polygon fill="white" stroke="black" points="677.5,-399.5 677.5,-419.5 862.5,-419.5 862.5,-399.5 677.5,-399.5"/>
+<text text-anchor="middle" x="770" y="-406.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXParameterValueChangeKind.h</text>
 </a>
 </g>
 </g>
-<!-- Node33&#45;&gt;Node39 -->
-<g id="edge49" class="edge">
-<title>Node33&#45;&gt;Node39</title>
-<path fill="none" stroke="midnightblue" d="M480.25,-399.42C453.2,-390.23 411.22,-375.98 381.2,-365.79"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="382.12,-362.4 371.52,-362.5 379.87,-369.03 382.12,-362.4"/>
+<!-- Node31&#45;&gt;Node39 -->
+<g id="edge51" class="edge">
+<title>Node31&#45;&gt;Node39</title>
+<path fill="none" stroke="midnightblue" d="M521.71,-456.48C573.61,-446.87 655.78,-431.65 711.23,-421.38"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="712.07,-424.79 721.26,-419.53 710.79,-417.9 712.07,-424.79"/>
 </g>
-<!-- Node34&#45;&gt;Node15 -->
-<g id="edge42" class="edge">
-<title>Node34&#45;&gt;Node15</title>
-<path fill="none" stroke="midnightblue" d="M447.2,-343.91C418.77,-337.64 384.75,-326.33 360,-306 344.88,-293.58 334.88,-273.29 329.12,-258.38"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="332.32,-256.91 325.68,-248.66 325.72,-259.26 332.32,-256.91"/>
-</g>
-<!-- Node35 -->
-<g id="node35" class="node">
-<title>Node35</title>
-<g id="a_node35"><a xlink:href="_audio_sample_8h.html" target="_top" xlink:title="The AudioSample specification and body provides the definition of the audio sample (a real value).">
-<polygon fill="white" stroke="black" points="458,-285.5 458,-305.5 548,-305.5 548,-285.5 458,-285.5"/>
-<text text-anchor="middle" x="503" y="-292.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSample.h</text>
+<!-- Node33 -->
+<g id="node33" class="node">
+<title>Node33</title>
+<g id="a_node33"><a xlink:href="_audio_sample_list_8h.html" target="_top" xlink:title="The AudioSampleList specification defines lists of audio samples with zero&#45;based arbitrary indexed ac...">
+<polygon fill="white" stroke="black" points="525.5,-342.5 525.5,-362.5 632.5,-362.5 632.5,-342.5 525.5,-342.5"/>
+<text text-anchor="middle" x="579" y="-349.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleList.h</text>
 </a>
 </g>
 </g>
-<!-- Node34&#45;&gt;Node35 -->
-<g id="edge43" class="edge">
-<title>Node34&#45;&gt;Node35</title>
-<path fill="none" stroke="midnightblue" d="M501.33,-342.42C501.59,-335.22 501.97,-324.9 502.3,-315.86"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="505.8,-315.9 502.66,-305.78 498.8,-315.65 505.8,-315.9"/>
-</g>
-<!-- Node36 -->
-<g id="node36" class="node">
-<title>Node36</title>
-<g id="a_node36"><a xlink:href="_audio_sample_list_8cpp-inc.html" target="_top" xlink:title="The AudioSampleList body implements a simple list of audio samples (this is the effective code includ...">
-<polygon fill="white" stroke="black" points="80.5,-285.5 80.5,-305.5 217.5,-305.5 217.5,-285.5 80.5,-285.5"/>
-<text text-anchor="middle" x="149" y="-292.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleList.cpp&#45;inc</text>
-</a>
-</g>
-</g>
-<!-- Node34&#45;&gt;Node36 -->
-<g id="edge45" class="edge">
-<title>Node34&#45;&gt;Node36</title>
-<path fill="none" stroke="midnightblue" d="M447.16,-343.09C385.33,-333.43 283.82,-317.57 216.7,-307.08"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="217.06,-303.59 206.64,-305.51 215.98,-310.51 217.06,-303.59"/>
-</g>
-<!-- Node35&#45;&gt;Node20 -->
-<g id="edge44" class="edge">
-<title>Node35&#45;&gt;Node20</title>
-<path fill="none" stroke="midnightblue" d="M504.32,-285.42C505.37,-278.22 506.87,-267.9 508.18,-258.86"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="511.67,-259.18 509.65,-248.78 504.75,-258.17 511.67,-259.18"/>
-</g>
-<!-- Node37 -->
-<g id="node37" class="node">
-<title>Node37</title>
-<g id="a_node37"><a xlink:href="_my_array_8h.html" target="_top" xlink:title="The MyArray specification and body defines a generic array type for stack allocated arrays represente...">
-<polygon fill="white" stroke="black" points="175.5,-228.5 175.5,-248.5 240.5,-248.5 240.5,-228.5 175.5,-228.5"/>
-<text text-anchor="middle" x="208" y="-235.7" font-family="Helvetica,sans-Serif" font-size="11.00">MyArray.h</text>
-</a>
-</g>
-</g>
-<!-- Node36&#45;&gt;Node37 -->
-<g id="edge46" class="edge">
-<title>Node36&#45;&gt;Node37</title>
-<path fill="none" stroke="midnightblue" d="M158.74,-285.42C167.4,-277.35 180.26,-265.36 190.67,-255.65"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="193.12,-258.16 198.05,-248.78 188.34,-253.04 193.12,-258.16"/>
-</g>
-<!-- Node37&#45;&gt;Node9 -->
-<g id="edge48" class="edge">
-<title>Node37&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M208.08,-228.33C208.24,-210.2 208.61,-169.41 208.83,-145"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="212.33,-144.82 208.92,-134.79 205.33,-144.76 212.33,-144.82"/>
+<!-- Node32&#45;&gt;Node33 -->
+<g id="edge41" class="edge">
+<title>Node32&#45;&gt;Node33</title>
+<path fill="none" stroke="midnightblue" d="M588.18,-399.42C586.74,-392.22 584.68,-381.9 582.87,-372.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="586.25,-371.9 580.86,-362.78 579.39,-373.27 586.25,-371.9"/>
 </g>
 <!-- Node38 -->
 <g id="node38" class="node">
 <title>Node38</title>
-<g id="a_node38"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="236,-171.5 236,-191.5 286,-191.5 286,-171.5 236,-171.5"/>
-<text text-anchor="middle" x="261" y="-178.7" font-family="Helvetica,sans-Serif" font-size="11.00">cstring</text>
+<g id="a_node38"><a xlink:href="_audio_sample_list_vector_8cpp-inc.html" target="_top" xlink:title="The AudioSampleListVector body implements the communication buffer structure for the block processing...">
+<polygon fill="white" stroke="black" points="650.5,-342.5 650.5,-362.5 819.5,-362.5 819.5,-342.5 650.5,-342.5"/>
+<text text-anchor="middle" x="735" y="-349.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleListVector.cpp&#45;inc</text>
 </a>
 </g>
 </g>
-<!-- Node37&#45;&gt;Node38 -->
+<!-- Node32&#45;&gt;Node38 -->
+<g id="edge49" class="edge">
+<title>Node32&#45;&gt;Node38</title>
+<path fill="none" stroke="midnightblue" d="M613.94,-399.42C637.87,-390.34 674.86,-376.31 701.65,-366.15"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="702.91,-369.41 711.02,-362.6 700.43,-362.87 702.91,-369.41"/>
+</g>
+<!-- Node33&#45;&gt;Node15 -->
+<g id="edge42" class="edge">
+<title>Node33&#45;&gt;Node15</title>
+<path fill="none" stroke="midnightblue" d="M555.8,-342.41C519.45,-328.44 446.63,-301.58 383,-285 300.71,-263.56 276.33,-265.08 188.51,-249.07"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="189.13,-245.62 178.66,-247.24 187.85,-252.5 189.13,-245.62"/>
+</g>
+<!-- Node34 -->
+<g id="node34" class="node">
+<title>Node34</title>
+<g id="a_node34"><a xlink:href="_audio_sample_8h.html" target="_top" xlink:title="The AudioSample specification and body provides the definition of the audio sample (a real value).">
+<polygon fill="white" stroke="black" points="506,-285.5 506,-305.5 596,-305.5 596,-285.5 506,-285.5"/>
+<text text-anchor="middle" x="551" y="-292.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSample.h</text>
+</a>
+</g>
+</g>
+<!-- Node33&#45;&gt;Node34 -->
+<g id="edge43" class="edge">
+<title>Node33&#45;&gt;Node34</title>
+<path fill="none" stroke="midnightblue" d="M574.38,-342.42C570.59,-334.98 565.11,-324.21 560.41,-314.97"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="563.38,-313.1 555.72,-305.78 557.14,-316.28 563.38,-313.1"/>
+</g>
+<!-- Node35 -->
+<g id="node35" class="node">
+<title>Node35</title>
+<g id="a_node35"><a xlink:href="_audio_sample_list_8cpp-inc.html" target="_top" xlink:title="The AudioSampleList body implements a simple list of audio samples (this is the effective code includ...">
+<polygon fill="white" stroke="black" points="614.5,-285.5 614.5,-305.5 751.5,-305.5 751.5,-285.5 614.5,-285.5"/>
+<text text-anchor="middle" x="683" y="-292.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleList.cpp&#45;inc</text>
+</a>
+</g>
+</g>
+<!-- Node33&#45;&gt;Node35 -->
+<g id="edge45" class="edge">
+<title>Node33&#45;&gt;Node35</title>
+<path fill="none" stroke="midnightblue" d="M596.17,-342.42C612.66,-333.7 637.78,-320.41 656.77,-310.37"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="658.6,-313.36 665.8,-305.6 655.32,-307.18 658.6,-313.36"/>
+</g>
+<!-- Node34&#45;&gt;Node20 -->
+<g id="edge44" class="edge">
+<title>Node34&#45;&gt;Node20</title>
+<path fill="none" stroke="midnightblue" d="M529.53,-285.42C508.36,-276.46 475.79,-262.68 451.85,-252.55"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="453.07,-249.27 442.5,-248.6 450.34,-255.72 453.07,-249.27"/>
+</g>
+<!-- Node36 -->
+<g id="node36" class="node">
+<title>Node36</title>
+<g id="a_node36"><a xlink:href="_my_array_8h.html" target="_top" xlink:title="The MyArray specification and body defines a generic array type for stack allocated arrays represente...">
+<polygon fill="white" stroke="black" points="566.5,-228.5 566.5,-248.5 631.5,-248.5 631.5,-228.5 566.5,-228.5"/>
+<text text-anchor="middle" x="599" y="-235.7" font-family="Helvetica,sans-Serif" font-size="11.00">MyArray.h</text>
+</a>
+</g>
+</g>
+<!-- Node35&#45;&gt;Node36 -->
+<g id="edge46" class="edge">
+<title>Node35&#45;&gt;Node36</title>
+<path fill="none" stroke="midnightblue" d="M669.13,-285.42C656.24,-276.98 636.81,-264.26 621.67,-254.34"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="623.17,-251.15 612.89,-248.6 619.34,-257 623.17,-251.15"/>
+</g>
+<!-- Node36&#45;&gt;Node9 -->
+<g id="edge48" class="edge">
+<title>Node36&#45;&gt;Node9</title>
+<path fill="none" stroke="midnightblue" d="M566.35,-235.43C522.21,-231.59 441.92,-220.94 380,-192 353.6,-179.66 328.05,-157.51 312.2,-142.19"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="314.4,-139.44 304.84,-134.88 309.47,-144.41 314.4,-139.44"/>
+</g>
+<!-- Node37 -->
+<g id="node37" class="node">
+<title>Node37</title>
+<g id="a_node37"><a xlink:title=" ">
+<polygon fill="white" stroke="#bfbfbf" points="574,-171.5 574,-191.5 624,-191.5 624,-171.5 574,-171.5"/>
+<text text-anchor="middle" x="599" y="-178.7" font-family="Helvetica,sans-Serif" font-size="11.00">cstring</text>
+</a>
+</g>
+</g>
+<!-- Node36&#45;&gt;Node37 -->
 <g id="edge47" class="edge">
-<title>Node37&#45;&gt;Node38</title>
-<path fill="none" stroke="midnightblue" d="M216.75,-228.42C224.38,-220.5 235.63,-208.82 244.88,-199.23"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="247.64,-201.41 252.06,-191.78 242.6,-196.55 247.64,-201.41"/>
+<title>Node36&#45;&gt;Node37</title>
+<path fill="none" stroke="midnightblue" d="M599,-228.42C599,-221.22 599,-210.9 599,-201.86"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="602.5,-201.78 599,-191.78 595.5,-201.78 602.5,-201.78"/>
 </g>
 </g>
 </svg>

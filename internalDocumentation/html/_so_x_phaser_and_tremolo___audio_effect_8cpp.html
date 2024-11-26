@@ -85,7 +85,9 @@ $(document).ready(function(){initNavTree('_so_x_phaser_and_tremolo___audio_effec
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">SoXPhaserAndTremolo_AudioEffect.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -126,12 +128,90 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html" title="The package SoXPhaserAndTremolo provides classes for the SoX audio modulation effects phaser and trem...">SoXPhaserAndTremolo</a></code> provides classes for the SoX audio modulation effects <b>phaser</b> and <b>tremolo</b> that have similar parameters and hence are combined into a single plugin. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memItemLeft" align="right" valign="top"><a id="a94692cc5c1eac2402cbeff7e1eaa95cd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_phaser_and_tremolo___audio_effect_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd">expand</a>&#160;&#160;&#160;StringUtil::expand</td></tr>
-<tr class="memdesc:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviated form of function name <br /></td></tr>
-<tr class="separator:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memItemLeft" align="right" valign="top"><a id="a5b6f88d1249b396e351c4a85bcb35b2c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_phaser_and_tremolo___audio_effect_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c">STR</a> = <a class="el" href="struct_base_modules_1_1_string_util.html">BaseModules::StringUtil</a></td></tr>
+<tr class="memdesc:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil <br /></td></tr>
+<tr class="separator:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:af1f9682cdcc312ead465c4760481e21c"><td class="memItemLeft" align="right" valign="top">static _EffectDescriptor_PHTR *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#af1f9682cdcc312ead465c4760481e21c">SoXPlugins::Effects::SoXPhaserAndTremolo::_createEffectDescriptor</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate)</td></tr>
+<tr class="memdesc:af1f9682cdcc312ead465c4760481e21c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up a new phaser/tremolo effect descriptor based on <code>sampleRate</code>  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#af1f9682cdcc312ead465c4760481e21c">More...</a><br /></td></tr>
+<tr class="separator:af1f9682cdcc312ead465c4760481e21c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72550c168bf45a0fb60c002a7f9e26ea"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a72550c168bf45a0fb60c002a7f9e26ea">SoXPlugins::Effects::SoXPhaserAndTremolo::_updateParametersForKind</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;parameterMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;effectKind)</td></tr>
+<tr class="memdesc:a72550c168bf45a0fb60c002a7f9e26ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates effect parameters in <code>parameterMap</code> for effect kind given as <code>effectKind</code>.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a72550c168bf45a0fb60c002a7f9e26ea">More...</a><br /></td></tr>
+<tr class="separator:a72550c168bf45a0fb60c002a7f9e26ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1269281dc3d26f304ffb07d5e862c134"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a1269281dc3d26f304ffb07d5e862c134">SoXPlugins::Effects::SoXPhaserAndTremolo::_updateSettings</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> _EffectDescriptor_PHTR &amp;effectDescriptor, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> currentTime)</td></tr>
+<tr class="memdesc:a1269281dc3d26f304ffb07d5e862c134"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recalculates derived parameters in <code>effectDescriptor</code> from parameter map and <code>sampleRate</code> and start time in <code>currentTime</code>.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a1269281dc3d26f304ffb07d5e862c134">More...</a><br /></td></tr>
+<tr class="separator:a1269281dc3d26f304ffb07d5e862c134"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a83dff24be65b7e33cf5ddc10b9d249c1"><td class="memItemLeft" align="right" valign="top"><a id="a83dff24be65b7e33cf5ddc10b9d249c1"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a83dff24be65b7e33cf5ddc10b9d249c1">SoXPlugins::Effects::SoXPhaserAndTremolo::_maximumDelay</a> = 0.005</td></tr>
+<tr class="memdesc:a83dff24be65b7e33cf5ddc10b9d249c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the maximum allowable delay in seconds <br /></td></tr>
+<tr class="separator:a83dff24be65b7e33cf5ddc10b9d249c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba346b5cc82b04d2ff62fe5c22424aba"><td class="memItemLeft" align="right" valign="top"><a id="aba346b5cc82b04d2ff62fe5c22424aba"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#aba346b5cc82b04d2ff62fe5c22424aba">SoXPlugins::Effects::SoXPhaserAndTremolo::separator</a> = &quot;/&quot;</td></tr>
+<tr class="memdesc:aba346b5cc82b04d2ff62fe5c22424aba"><td class="mdescLeft">&#160;</td><td class="mdescRight">the internal separator for lists <br /></td></tr>
+<tr class="separator:aba346b5cc82b04d2ff62fe5c22424aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaa61ce1507c0979e0a56d5b209ffb71"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_primitives_1_1_radians.html">Radians</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#adaa61ce1507c0979e0a56d5b209ffb71">SoXPlugins::Effects::SoXPhaserAndTremolo::_defaultPhase</a></td></tr>
+<tr class="memdesc:adaa61ce1507c0979e0a56d5b209ffb71"><td class="mdescLeft">&#160;</td><td class="mdescRight">the standard starting phase of a phaser (90°)  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#adaa61ce1507c0979e0a56d5b209ffb71">More...</a><br /></td></tr>
+<tr class="separator:adaa61ce1507c0979e0a56d5b209ffb71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60e029b48230aa41123d2a65537bacea"><td class="memItemLeft" align="right" valign="top"><a id="a60e029b48230aa41123d2a65537bacea"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a60e029b48230aa41123d2a65537bacea">SoXPlugins::Effects::SoXPhaserAndTremolo::_tremoloEffectKind</a> = &quot;Tremolo&quot;</td></tr>
+<tr class="memdesc:a60e029b48230aa41123d2a65537bacea"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the tremolo effect <br /></td></tr>
+<tr class="separator:a60e029b48230aa41123d2a65537bacea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7b3c3d1d8f9fe913c5af21a425dd2a3"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#af7b3c3d1d8f9fe913c5af21a425dd2a3">SoXPlugins::Effects::SoXPhaserAndTremolo::_kindList</a></td></tr>
+<tr class="memdesc:af7b3c3d1d8f9fe913c5af21a425dd2a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of effect kinds in this plugin  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#af7b3c3d1d8f9fe913c5af21a425dd2a3">More...</a><br /></td></tr>
+<tr class="separator:af7b3c3d1d8f9fe913c5af21a425dd2a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7aad269fe145e546f434f922df282d3"><td class="memItemLeft" align="right" valign="top"><a id="ac7aad269fe145e546f434f922df282d3"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#ac7aad269fe145e546f434f922df282d3">SoXPlugins::Effects::SoXPhaserAndTremolo::parameterName_decay</a> = &quot;Decay&quot;</td></tr>
+<tr class="memdesc:ac7aad269fe145e546f434f922df282d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the decay parameter <br /></td></tr>
+<tr class="separator:ac7aad269fe145e546f434f922df282d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a224697e4fd43390fe0f94cd1b5555988"><td class="memItemLeft" align="right" valign="top"><a id="a224697e4fd43390fe0f94cd1b5555988"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a224697e4fd43390fe0f94cd1b5555988">SoXPlugins::Effects::SoXPhaserAndTremolo::parameterName_delayInMs</a> = &quot;Delay [ms]&quot;</td></tr>
+<tr class="memdesc:a224697e4fd43390fe0f94cd1b5555988"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the delay parameter <br /></td></tr>
+<tr class="separator:a224697e4fd43390fe0f94cd1b5555988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3051daa5ffa500fd0376c97fafa2f44"><td class="memItemLeft" align="right" valign="top"><a id="ab3051daa5ffa500fd0376c97fafa2f44"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#ab3051daa5ffa500fd0376c97fafa2f44">SoXPlugins::Effects::SoXPhaserAndTremolo::parameterName_depth</a> = &quot;Depth [%]&quot;</td></tr>
+<tr class="memdesc:ab3051daa5ffa500fd0376c97fafa2f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the depth parameter <br /></td></tr>
+<tr class="separator:ab3051daa5ffa500fd0376c97fafa2f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93fd3cf409229961226bad81f38de306"><td class="memItemLeft" align="right" valign="top"><a id="a93fd3cf409229961226bad81f38de306"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a93fd3cf409229961226bad81f38de306">SoXPlugins::Effects::SoXPhaserAndTremolo::parameterName_effectKind</a> = &quot;Effect Kind&quot;</td></tr>
+<tr class="memdesc:a93fd3cf409229961226bad81f38de306"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the effect kind parameter <br /></td></tr>
+<tr class="separator:a93fd3cf409229961226bad81f38de306"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8194d2cc89db92cddc440b35101b515e"><td class="memItemLeft" align="right" valign="top"><a id="a8194d2cc89db92cddc440b35101b515e"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a8194d2cc89db92cddc440b35101b515e">SoXPlugins::Effects::SoXPhaserAndTremolo::parameterName_frequency</a> = &quot;Modulation [Hz]&quot;</td></tr>
+<tr class="memdesc:a8194d2cc89db92cddc440b35101b515e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the frequency parameter <br /></td></tr>
+<tr class="separator:a8194d2cc89db92cddc440b35101b515e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b6190186cebe31f00b7fd4371940add"><td class="memItemLeft" align="right" valign="top"><a id="a1b6190186cebe31f00b7fd4371940add"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a1b6190186cebe31f00b7fd4371940add">SoXPlugins::Effects::SoXPhaserAndTremolo::parameterName_inGain</a> = &quot;In Gain&quot;</td></tr>
+<tr class="memdesc:a1b6190186cebe31f00b7fd4371940add"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the input gain parameter <br /></td></tr>
+<tr class="separator:a1b6190186cebe31f00b7fd4371940add"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f4770fa023d8dae6a7d5e9895a89dad"><td class="memItemLeft" align="right" valign="top"><a id="a1f4770fa023d8dae6a7d5e9895a89dad"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a1f4770fa023d8dae6a7d5e9895a89dad">SoXPlugins::Effects::SoXPhaserAndTremolo::parameterName_outGain</a> = &quot;Out Gain&quot;</td></tr>
+<tr class="memdesc:a1f4770fa023d8dae6a7d5e9895a89dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the output gain parameter <br /></td></tr>
+<tr class="separator:a1f4770fa023d8dae6a7d5e9895a89dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac89d745b737a9ede0bab81afbd6684c2"><td class="memItemLeft" align="right" valign="top"><a id="ac89d745b737a9ede0bab81afbd6684c2"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#ac89d745b737a9ede0bab81afbd6684c2">SoXPlugins::Effects::SoXPhaserAndTremolo::parameterName_timeOffset</a> = &quot;Time Offset [s]&quot;</td></tr>
+<tr class="memdesc:ac89d745b737a9ede0bab81afbd6684c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the time offset parameter <br /></td></tr>
+<tr class="separator:ac89d745b737a9ede0bab81afbd6684c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac42b347c8edca840d927dee2b5bf8dc9"><td class="memItemLeft" align="right" valign="top"><a id="ac42b347c8edca840d927dee2b5bf8dc9"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#ac42b347c8edca840d927dee2b5bf8dc9">SoXPlugins::Effects::SoXPhaserAndTremolo::parameterName_waveFormKind</a> = &quot;Waveform&quot;</td></tr>
+<tr class="memdesc:ac42b347c8edca840d927dee2b5bf8dc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the waveform kind parameter <br /></td></tr>
+<tr class="separator:ac42b347c8edca840d927dee2b5bf8dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade05dd70bf5003f8258f78d0fa6db406"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#ade05dd70bf5003f8258f78d0fa6db406">SoXPlugins::Effects::SoXPhaserAndTremolo::_allParameterNameList</a></td></tr>
+<tr class="memdesc:ade05dd70bf5003f8258f78d0fa6db406"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of all parameter names  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#ade05dd70bf5003f8258f78d0fa6db406">More...</a><br /></td></tr>
+<tr class="separator:ade05dd70bf5003f8258f78d0fa6db406"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86dab12767343be186a9f4ea60b2d797"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a86dab12767343be186a9f4ea60b2d797">SoXPlugins::Effects::SoXPhaserAndTremolo::_phaserParameterNameList</a></td></tr>
+<tr class="memdesc:a86dab12767343be186a9f4ea60b2d797"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of the phaser parameter names  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a86dab12767343be186a9f4ea60b2d797">More...</a><br /></td></tr>
+<tr class="separator:a86dab12767343be186a9f4ea60b2d797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a84e87a0a12562db742bb2478503862"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a8a84e87a0a12562db742bb2478503862">SoXPlugins::Effects::SoXPhaserAndTremolo::_tremoloParameterNameList</a></td></tr>
+<tr class="memdesc:a8a84e87a0a12562db742bb2478503862"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of the tremolo parameter names  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html#a8a84e87a0a12562db742bb2478503862">More...</a><br /></td></tr>
+<tr class="separator:a8a84e87a0a12562db742bb2478503862"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXPhaserAndTremolo_AudioEffect</code> body implements the SoX <b>phaser</b> and <b>tremolo</b> modulation effects that have similar parameters and hence are combined into a single plugin. </p>

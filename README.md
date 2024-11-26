@@ -219,6 +219,16 @@ Hence my thanks go to Chris Bagwell, Nick Bailey, Daniel Pouzzner,
 Måns Rullgård, Rob Sewell and all the other contributors of the SoX
 project: without your effort this would not have been possible!
 
+## License
+
+There are two license models for this project:
+
+  - The source code is provided with an [**MIT license**](./LICENSE.txt).
+
+  - The VST and AU files given in the release are provided with an [**AGPL v3 license**](BINARY_LICENSE.txt) since they contain parts of the JUCE framework.
+
+This means that if you do *not* use the given binaries and compile the source code by yourself, the MIT license applies.  If you *do* use the binaries, then the AGPL v3 license applies.
+
 [JUCE]: http://www.juce.com/
 [SoX]: http://sox.sourceforge.net/
 [VCCLib]: https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist

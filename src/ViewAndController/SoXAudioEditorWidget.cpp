@@ -19,8 +19,10 @@
 
 using SoXPlugins::Helpers::SoXEffectParameterKind;
 using SoXPlugins::ViewAndController::SoXAudioEditor;
-
 using SoXPlugins::Helpers::effectParameterKindToString;
+
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
@@ -168,7 +170,7 @@ namespace SoXPlugins::ViewAndController {
 
             slider->setRange((double) lowValue, (double) highValue,
                              (double) delta);
-            slider->setValue((double) StringUtil::toReal(currentValue),
+            slider->setValue((double) STR::toReal(currentValue),
                              noNotification);
             slider->setVelocityBasedMode(true);
             slider->addListener(eventDispatcher);
@@ -207,7 +209,7 @@ SoXAudioEditorWidget::SoXAudioEditorWidget (INOUT juce::Component* parent,
     _eventDispatcher = eventDispatcher;
     _labelWidget->setText(lText, noNotification);
 
-    // add real widgets to parent
+    /* add real widgets to parent */
     parent->addChildComponent(_labelWidget);
     parent->addChildComponent(_controlWidget);
     Logging_trace("<<");
@@ -250,7 +252,7 @@ void SoXAudioEditorWidget::setValue (IN String value)
             dynamic_cast<juce::ComboBox*>(_controlWidget);
 
         if (slider != nullptr) {
-            slider->setValue((double) StringUtil::toReal(value),
+            slider->setValue((double) STR::toReal(value),
                              noNotification);
         } else if (comboBox != nullptr) {
             StringList valueList;
@@ -270,7 +272,7 @@ void SoXAudioEditorWidget::resized ()
     Logging_trace(">>");
 
     if (_widgetIsActive) {
-        // only resize active widgets
+        /* only resize active widgets */
         const Natural parentWidth  =
             _controlWidget->getParentWidth();
         const Natural parentHeight =
@@ -278,7 +280,7 @@ void SoXAudioEditorWidget::resized ()
         Logging_trace2("--: parentWidth = %1, parentHeight = %2",
                        TOSTRING(parentWidth), TOSTRING(parentHeight));
 
-        // find row position and height
+        /* find row position and height */
         const Natural topGapHeight = _topGapPercentage.of(parentHeight);
         const Natural rowGapHeight = _rowGapPercentage.of(parentHeight);
         const Natural height = _rowHeightPercentage.of(parentHeight);
@@ -299,7 +301,7 @@ void SoXAudioEditorWidget::resized ()
 
         y = ((height + rowGapHeight) * _rowNumber + topGapHeight);
 
-        // label
+        /* label */
         x += leftGapWidth;
         _labelWidget->setBounds((int) x, (int) y,
                                 (int) labelWidth, (int) height);
@@ -307,7 +309,7 @@ void SoXAudioEditorWidget::resized ()
                        TOSTRING(x), TOSTRING(y),
                        TOSTRING(labelWidth), TOSTRING(height));
 
-        // control widget
+        /* control widget */
         x += labelWidth + separatorWidth;
         width = separatorWidth + controlWidgetWidth + valueFieldWidth;
         _controlWidget->setBounds((int) x, (int) y,
@@ -341,7 +343,7 @@ SoXAudioEditorWidget::handlePageChange (IN Natural pageNumber)
     const Boolean isVisible = _widgetIsActive;
     _controlWidget->setVisible(isVisible);
     _labelWidget->setVisible(isVisible);
-    // redraw widgets upon page change
+    /* redraw widgets upon page change */
     resized();
     Logging_trace("<<");
 }
@@ -411,8 +413,8 @@ void SoXAudioEditorWidget::setPartHeightsInPage
 
 Natural SoXAudioEditorWidget::_currentPageNumber = 1;
 
-// initialize to meaningful values (to be overwritten by
-// plugins)
+/* initialize to meaningful values (to be overwritten by
+   plugins) */
 Percentage SoXAudioEditorWidget::_leftGapPercentage     =  3.0;
 Percentage SoXAudioEditorWidget::_labelWidthPercentage  = 20.0;
 Percentage SoXAudioEditorWidget::_separationPercentage  =  3.0;

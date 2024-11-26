@@ -162,8 +162,8 @@ namespace Audio {
          *                      where sample shall be inserted
          * @param[in] sample    the sample to be inserted
          */
-        void setAt (IN Natural position,
-                    IN AudioSample sample);
+        void set (IN Natural position,
+                  IN AudioSample sample);
 
         /*--------------------*/
 

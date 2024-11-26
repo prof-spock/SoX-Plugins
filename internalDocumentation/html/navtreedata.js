@@ -50,7 +50,7 @@ var NAVTREE =
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
+        [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
@@ -62,11 +62,13 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_assertion_8h.html",
-"_so_x_gain_2_so_x_plugin-util_8cpp.html",
-"struct_audio_1_1_audio_sample_ring_buffer.html#a27ad23a983a88d2bb6738476d18ed653",
-"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html#a084c47595efb958f6bcc38aa5c2511e5",
-"struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html#a2fb060415168e88eda03ca262630758a"
+"",
+"_my_windows_8h.html#ad22ea9bf4048982ebe82d945dbe7edb2",
+"_so_x_filter___audio_effect_8cpp.html#a8845b84049ac1e11a069616bb281602d",
+"class_base_modules_1_1___logging_time.html#abbe64720f730901fb60610f56566cc66",
+"struct_base_modules_1_1_string_util.html#a3af812d07fc474751e87a8424907fae1",
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#a0b2e0131ef046e1838c4430d09aa3c2f",
+"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a52bb26bd41bcbac401dfead300ee3a7f"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

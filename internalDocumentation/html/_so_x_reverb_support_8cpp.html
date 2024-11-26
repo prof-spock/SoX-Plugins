@@ -85,8 +85,9 @@ $(document).ready(function(){initNavTree('_so_x_reverb_support_8cpp.html',''); i
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">SoXReverbSupport.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -137,15 +138,12 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html" title="The package SoXReverb provides classes for the SoX reverb audio effect.">SoXReverb</a></code> provides classes for the SoX <b>reverb</b> audio effect. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memItemLeft" align="right" valign="top"><a id="a94692cc5c1eac2402cbeff7e1eaa95cd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_reverb_support_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd">expand</a>&#160;&#160;&#160;StringUtil::expand</td></tr>
-<tr class="memdesc:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil::expand <br /></td></tr>
-<tr class="separator:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memItemLeft" align="right" valign="top"><a id="a5b6f88d1249b396e351c4a85bcb35b2c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_reverb_support_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c">STR</a> = <a class="el" href="struct_base_modules_1_1_string_util.html">BaseModules::StringUtil</a></td></tr>
+<tr class="memdesc:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil <br /></td></tr>
+<tr class="separator:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b950eb2f596bc6b79f1443942e7f802"><td class="memItemLeft" align="right" valign="top"><a id="a7b950eb2f596bc6b79f1443942e7f802"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a7b950eb2f596bc6b79f1443942e7f802">SoXPlugins::Effects::SoXReverb::_SamplePair</a> = GenericTuple&lt; AudioSample, 2 &gt;</td></tr>
 <tr class="memdesc:a7b950eb2f596bc6b79f1443942e7f802"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_SamplePair</code> is a pair of audio samples. <br /></td></tr>
@@ -154,6 +152,64 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="nam
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#aa33806fe429eb97f89dcef76343372fa">SoXPlugins::Effects::SoXReverb::_ReverbChannelList</a> = GenericList&lt; _ReverbChannel * &gt;</td></tr>
 <tr class="memdesc:aa33806fe429eb97f89dcef76343372fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">a list of reverb channels <br /></td></tr>
 <tr class="separator:aa33806fe429eb97f89dcef76343372fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a5c15fec3408e4eda0d4a41c58a1498b2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a5c15fec3408e4eda0d4a41c58a1498b2">SoXPlugins::Effects::SoXReverb::_reverbLineDelayLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> isCreation, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> isCombFilter, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> index, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> cRoomScale, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> stereoDepth)</td></tr>
+<tr class="memdesc:a5c15fec3408e4eda0d4a41c58a1498b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns length of filter delay line for given parameters; if <code>isCreation</code> is set, the maximum length for those parameters is returned.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a5c15fec3408e4eda0d4a41c58a1498b2">More...</a><br /></td></tr>
+<tr class="separator:a5c15fec3408e4eda0d4a41c58a1498b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a596fd00492f59ecccd15d4c8fd6d957b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a596fd00492f59ecccd15d4c8fd6d957b">SoXPlugins::Effects::SoXReverb::_initialReverbLineDelayLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> isCombFilter, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> index, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate)</td></tr>
+<tr class="memdesc:a596fd00492f59ecccd15d4c8fd6d957b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns initial filter delay line maximum length for the sampleRingBuffer for given parameters.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a596fd00492f59ecccd15d4c8fd6d957b">More...</a><br /></td></tr>
+<tr class="separator:a596fd00492f59ecccd15d4c8fd6d957b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea6ea1eddbfa1e4c636d87ae439c9c5f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#aea6ea1eddbfa1e4c636d87ae439c9c5f">SoXPlugins::Effects::SoXReverb::_adjustedReverbLineDelayLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> isCombFilter, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> index, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> roomScale, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> stereoDepth)</td></tr>
+<tr class="memdesc:aea6ea1eddbfa1e4c636d87ae439c9c5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns adapted filter delay line length for the sample ring buffer for given parameters <code>isCombFilter</code>, <code>sampleRate</code>, <code>roomScale</code> and <code>stereoDepth</code> to their effective length.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#aea6ea1eddbfa1e4c636d87ae439c9c5f">More...</a><br /></td></tr>
+<tr class="separator:aea6ea1eddbfa1e4c636d87ae439c9c5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a2f0ff397fa6aace826f5f99855b564ef"><td class="memItemLeft" align="right" valign="top"><a id="a2f0ff397fa6aace826f5f99855b564ef"></a>
+static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a2f0ff397fa6aace826f5f99855b564ef">SoXPlugins::Effects::SoXReverb::_maxChannelCount</a> = 100</td></tr>
+<tr class="memdesc:a2f0ff397fa6aace826f5f99855b564ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">the maximum number of supported channels <br /></td></tr>
+<tr class="separator:a2f0ff397fa6aace826f5f99855b564ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40bc0330171225ab589f996fff92f8d2"><td class="memItemLeft" align="right" valign="top"><a id="a40bc0330171225ab589f996fff92f8d2"></a>
+static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a40bc0330171225ab589f996fff92f8d2">SoXPlugins::Effects::SoXReverb::_lineCombFilterCount</a> = 8</td></tr>
+<tr class="memdesc:a40bc0330171225ab589f996fff92f8d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">the number of freeverb comb filters <br /></td></tr>
+<tr class="separator:a40bc0330171225ab589f996fff92f8d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79d1861b4fb6266a592f21c8b27fa40a"><td class="memItemLeft" align="right" valign="top"><a id="a79d1861b4fb6266a592f21c8b27fa40a"></a>
+static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a79d1861b4fb6266a592f21c8b27fa40a">SoXPlugins::Effects::SoXReverb::_lineAllpassFilterCount</a> = 4</td></tr>
+<tr class="memdesc:a79d1861b4fb6266a592f21c8b27fa40a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the number of freeverb allpass filters <br /></td></tr>
+<tr class="separator:a79d1861b4fb6266a592f21c8b27fa40a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acef06be216946b8a89f6bd41d91494d4"><td class="memItemLeft" align="right" valign="top"><a id="acef06be216946b8a89f6bd41d91494d4"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#acef06be216946b8a89f6bd41d91494d4">SoXPlugins::Effects::SoXReverb::_stereoSpread</a> = 12.0</td></tr>
+<tr class="memdesc:acef06be216946b8a89f6bd41d91494d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the stereo spread in samples in freeverb <br /></td></tr>
+<tr class="separator:acef06be216946b8a89f6bd41d91494d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea57a8c9112b26cd1ba9c4ce8f5f8a5a"><td class="memItemLeft" align="right" valign="top"><a id="aea57a8c9112b26cd1ba9c4ce8f5f8a5a"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#aea57a8c9112b26cd1ba9c4ce8f5f8a5a">SoXPlugins::Effects::SoXReverb::_allpassFactor</a> = 0.5</td></tr>
+<tr class="memdesc:aea57a8c9112b26cd1ba9c4ce8f5f8a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the allpass factor in freeverb <br /></td></tr>
+<tr class="separator:aea57a8c9112b26cd1ba9c4ce8f5f8a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6a1d3ce91f834fcfd319681115048ed"><td class="memItemLeft" align="right" valign="top"><a id="ad6a1d3ce91f834fcfd319681115048ed"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><b>SoXPlugins::Effects::SoXReverb::_maximumRoomScale</b> = 1.0</td></tr>
+<tr class="separator:ad6a1d3ce91f834fcfd319681115048ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a94eadd19818d079bae83539a3ddb05"><td class="memItemLeft" align="right" valign="top"><a id="a8a94eadd19818d079bae83539a3ddb05"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><b>SoXPlugins::Effects::SoXReverb::_maximumStereoDepth</b> = 1.0</td></tr>
+<tr class="separator:a8a94eadd19818d079bae83539a3ddb05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af620563db657ff9aff5331cb1c8ed771"><td class="memItemLeft" align="right" valign="top"><a id="af620563db657ff9aff5331cb1c8ed771"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><b>SoXPlugins::Effects::SoXReverb::_maximumPredelay</b> = 0.5</td></tr>
+<tr class="separator:af620563db657ff9aff5331cb1c8ed771"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc566cd0dcf17e87839161820df7cee7"><td class="memItemLeft" align="right" valign="top"><a id="adc566cd0dcf17e87839161820df7cee7"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#adc566cd0dcf17e87839161820df7cee7">SoXPlugins::Effects::SoXReverb::_defaultSampleRate</a> = 100.0</td></tr>
+<tr class="memdesc:adc566cd0dcf17e87839161820df7cee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">arbitrary default used for construction of delay lines <br /></td></tr>
+<tr class="separator:adc566cd0dcf17e87839161820df7cee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae880519d3db1ce280d521512e72f72e6"><td class="memItemLeft" align="right" valign="top"><a id="ae880519d3db1ce280d521512e72f72e6"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#ae880519d3db1ce280d521512e72f72e6">SoXPlugins::Effects::SoXReverb::_referenceSampleRate</a> = 44100.0</td></tr>
+<tr class="memdesc:ae880519d3db1ce280d521512e72f72e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">reference sample rate for reverb line delays <br /></td></tr>
+<tr class="separator:ae880519d3db1ce280d521512e72f72e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d0fcbc4bf59ecd0804e6b9e517b44b1"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_natural_list.html">NaturalList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a2d0fcbc4bf59ecd0804e6b9e517b44b1">SoXPlugins::Effects::SoXReverb::_combFilterLengthList</a></td></tr>
+<tr class="memdesc:a2d0fcbc4bf59ecd0804e6b9e517b44b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of sample ring buffer lengths for comb filters  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a2d0fcbc4bf59ecd0804e6b9e517b44b1">More...</a><br /></td></tr>
+<tr class="separator:a2d0fcbc4bf59ecd0804e6b9e517b44b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f8b985518ae77f6cf7331849721fc3d"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_natural_list.html">NaturalList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a0f8b985518ae77f6cf7331849721fc3d">SoXPlugins::Effects::SoXReverb::_allpassFilterLengthList</a></td></tr>
+<tr class="memdesc:a0f8b985518ae77f6cf7331849721fc3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of sample ring buffer lengths for allpass filters  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a0f8b985518ae77f6cf7331849721fc3d">More...</a><br /></td></tr>
+<tr class="separator:a0f8b985518ae77f6cf7331849721fc3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXReverbSupport</code> body implements support classes for the freeverb algorithm and provides a single <b>_SoXReverb</b> class as its interface. </p>

@@ -85,7 +85,9 @@ $(document).ready(function(){initNavTree('_so_x_reverb___audio_effect_8cpp.html'
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">SoXReverb_AudioEffect.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -122,12 +124,55 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html" title="The package SoXReverb provides classes for the SoX reverb audio effect.">SoXReverb</a></code> provides classes for the SoX <b>reverb</b> audio effect. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memItemLeft" align="right" valign="top"><a id="a94692cc5c1eac2402cbeff7e1eaa95cd"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_reverb___audio_effect_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd">expand</a>&#160;&#160;&#160;StringUtil::expand</td></tr>
-<tr class="memdesc:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil::expand <br /></td></tr>
-<tr class="separator:a94692cc5c1eac2402cbeff7e1eaa95cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memItemLeft" align="right" valign="top"><a id="a5b6f88d1249b396e351c4a85bcb35b2c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_reverb___audio_effect_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c">STR</a> = <a class="el" href="struct_base_modules_1_1_string_util.html">BaseModules::StringUtil</a></td></tr>
+<tr class="memdesc:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil <br /></td></tr>
+<tr class="separator:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a11ddd270d35746b373caf17f8c67574f"><td class="memItemLeft" align="right" valign="top">static _EffectDescriptor_RVRB *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a11ddd270d35746b373caf17f8c67574f">SoXPlugins::Effects::SoXReverb::_createEffectDescriptor</a> ()</td></tr>
+<tr class="memdesc:a11ddd270d35746b373caf17f8c67574f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up a new effect descriptor.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a11ddd270d35746b373caf17f8c67574f">More...</a><br /></td></tr>
+<tr class="separator:a11ddd270d35746b373caf17f8c67574f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7f8f575d72ac702b3f9f2c2450ae13e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#ac7f8f575d72ac702b3f9f2c2450ae13e">SoXPlugins::Effects::SoXReverb::_updateSettings</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> _EffectDescriptor_RVRB &amp;effectDescriptor, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> channelCount)</td></tr>
+<tr class="memdesc:ac7f8f575d72ac702b3f9f2c2450ae13e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recalculates derived parameters in reverb <code>effectDescriptor</code> from other parameters, <code>sampleRate</code> and <code>channelCount</code>.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#ac7f8f575d72ac702b3f9f2c2450ae13e">More...</a><br /></td></tr>
+<tr class="separator:ac7f8f575d72ac702b3f9f2c2450ae13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a87b1bc565ebe89c25aae96d823cf53b4"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a87b1bc565ebe89c25aae96d823cf53b4">SoXPlugins::Effects::SoXReverb::_yesNoList</a></td></tr>
+<tr class="memdesc:a87b1bc565ebe89c25aae96d823cf53b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the possible values of a yes-no-combobox (in English language)  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a87b1bc565ebe89c25aae96d823cf53b4">More...</a><br /></td></tr>
+<tr class="separator:a87b1bc565ebe89c25aae96d823cf53b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8c2ad6dbe7155ed1c2dcb8f34245bab"><td class="memItemLeft" align="right" valign="top"><a id="ab8c2ad6dbe7155ed1c2dcb8f34245bab"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#ab8c2ad6dbe7155ed1c2dcb8f34245bab">SoXPlugins::Effects::SoXReverb::parameterName_isWetOnly</a> = &quot;Is Wet Only?&quot;</td></tr>
+<tr class="memdesc:ab8c2ad6dbe7155ed1c2dcb8f34245bab"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the isWetOnly parameter <br /></td></tr>
+<tr class="separator:ab8c2ad6dbe7155ed1c2dcb8f34245bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a448ce39923d69f3a17c9aa769377efec"><td class="memItemLeft" align="right" valign="top"><a id="a448ce39923d69f3a17c9aa769377efec"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a448ce39923d69f3a17c9aa769377efec">SoXPlugins::Effects::SoXReverb::parameterName_reverberance</a> = &quot;Reverberance [%]&quot;</td></tr>
+<tr class="memdesc:a448ce39923d69f3a17c9aa769377efec"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the reverberance parameter <br /></td></tr>
+<tr class="separator:a448ce39923d69f3a17c9aa769377efec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa150e353230e73ad872b6ccf7f36aec5"><td class="memItemLeft" align="right" valign="top"><a id="aa150e353230e73ad872b6ccf7f36aec5"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#aa150e353230e73ad872b6ccf7f36aec5">SoXPlugins::Effects::SoXReverb::parameterName_hfDamping</a> = &quot;HF Damping [%]&quot;</td></tr>
+<tr class="memdesc:aa150e353230e73ad872b6ccf7f36aec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the hfDamping parameter <br /></td></tr>
+<tr class="separator:aa150e353230e73ad872b6ccf7f36aec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f64fef761989fc8342866b97bf916c7"><td class="memItemLeft" align="right" valign="top"><a id="a1f64fef761989fc8342866b97bf916c7"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a1f64fef761989fc8342866b97bf916c7">SoXPlugins::Effects::SoXReverb::parameterName_roomScale</a> = &quot;Room Scale [%]&quot;</td></tr>
+<tr class="memdesc:a1f64fef761989fc8342866b97bf916c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the roomScale parameter <br /></td></tr>
+<tr class="separator:a1f64fef761989fc8342866b97bf916c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af97202ea833b2763ffe0a090ba09d81e"><td class="memItemLeft" align="right" valign="top"><a id="af97202ea833b2763ffe0a090ba09d81e"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#af97202ea833b2763ffe0a090ba09d81e">SoXPlugins::Effects::SoXReverb::parameterName_stereoDepth</a> = &quot;Stereo Depth [%]&quot;</td></tr>
+<tr class="memdesc:af97202ea833b2763ffe0a090ba09d81e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the stereoDepth parameter <br /></td></tr>
+<tr class="separator:af97202ea833b2763ffe0a090ba09d81e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba4a1f6ab07983a26220f1552744eff0"><td class="memItemLeft" align="right" valign="top"><a id="aba4a1f6ab07983a26220f1552744eff0"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#aba4a1f6ab07983a26220f1552744eff0">SoXPlugins::Effects::SoXReverb::parameterName_preDelay</a> = &quot;Predelay [ms]&quot;</td></tr>
+<tr class="memdesc:aba4a1f6ab07983a26220f1552744eff0"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the preDelay parameter <br /></td></tr>
+<tr class="separator:aba4a1f6ab07983a26220f1552744eff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ecfc23ee27b4ad39a61bba332661cf9"><td class="memItemLeft" align="right" valign="top"><a id="a9ecfc23ee27b4ad39a61bba332661cf9"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a9ecfc23ee27b4ad39a61bba332661cf9">SoXPlugins::Effects::SoXReverb::parameterName_wetGain</a> = &quot;Wet Gain [dB]&quot;</td></tr>
+<tr class="memdesc:a9ecfc23ee27b4ad39a61bba332661cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name for the wetGain parameter <br /></td></tr>
+<tr class="separator:a9ecfc23ee27b4ad39a61bba332661cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXReverb_AudioEffect</code> body implements the SoX <b>reverb</b> plugin using the freeverb algorithm for room simulation. </p>

@@ -1,7 +1,6 @@
 <map id="JucePluginDefines.h" name="JucePluginDefines.h">
-<area shape="rect" id="node1" title="The JucePluginDefines sets up effect parameters for the JUCE framework." alt="" coords="305,5,460,33"/>
+<area shape="rect" id="node1" title="The JucePluginDefines sets up effect parameters for the JUCE framework." alt="" coords="217,5,372,33"/>
 <area shape="rect" id="node2" href="$_so_x_overdrive_2_so_x_plugin-_standalone_8cpp.html" title="The SoXPlugin&#45;Standalone connects to the JUCE framework client functions for standalone applications ..." alt="" coords="5,81,200,109"/>
 <area shape="rect" id="node3" href="$_so_x_overdrive_2_so_x_plugin-util_8cpp.html" title="The SoXPlugin&#45;util connects to the JUCE framework utilities for a plugin." alt="" coords="225,81,365,109"/>
 <area shape="rect" id="node4" href="$_so_x_overdrive_2_so_x_plugin-_v_s_t__1_8cpp.html" title="The SoXPlugin&#45;VST_1 connects to the JUCE framework client functions for a VST3 plugin." alt="" coords="389,81,555,109"/>
-<area shape="rect" id="node5" href="$_so_x_overdrive_2_so_x_plugin-_v_s_t__2_8cpp.html" title="The SoXPlugin&#45;VST_2 connects to the JUCE framework client functions for a VST3 plugin." alt="" coords="579,81,746,109"/>
 </map>

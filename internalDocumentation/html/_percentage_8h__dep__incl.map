@@ -1,14 +1,16 @@
 <map id="Percentage.h" name="Percentage.h">
-<area shape="rect" id="node1" title="The Percentage specification and body provides a simple percentage type." alt="" coords="562,5,671,33"/>
-<area shape="rect" id="node2" href="$_string_util_8h.html" title="The StringUtil specification defines several string routines not included in the standard C++ library..." alt="" coords="665,81,757,109"/>
+<area shape="rect" id="node1" title="The Percentage specification and body provides a simple percentage type." alt="" coords="645,5,754,33"/>
+<area shape="rect" id="node2" href="$_string_util_8h.html" title="The StringUtil specification defines several string routines not included in the standard C++ library..." alt="" coords="832,81,924,109"/>
 <area shape="rect" id="node10" href="$_so_x_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXPhaserAndTremolo_AudioEffect body implements the SoX phaser and tremolo modulation effects tha..." alt="" coords="435,385,609,429"/>
-<area shape="rect" id="node16" href="$_so_x_reverb_support_8h.html" title="The SoXReverbSupport specification defines support classes for the freeverb algorithm and provides a ..." alt="" coords="285,309,444,337"/>
-<area shape="rect" id="node22" href="$_so_x_audio_editor_widget_8h.html" title="The SoXAudioEditorWidget specification defines an audio editor widget (a slider or a combo box) in a ..." alt="" coords="1062,81,1243,109"/>
-<area shape="rect" id="node3" href="$_audio_sample_ring_buffer_8cpp-inc.html" title="The AudioSampleRingBuffer body implements a ring buffer for audio samples with left and right shifts ..." alt="" coords="925,157,1154,185"/>
-<area shape="rect" id="node19" href="$_file_8cpp.html" title="The File body implements a class for simple file handling based on C stdio." alt="" coords="560,157,633,185"/>
-<area shape="rect" id="node20" href="$_string_util_8cpp.html" title="The StringUtil body implements several string routines not included in the standard C++ library (like..." alt="" coords="657,157,765,185"/>
-<area shape="rect" id="node21" href="$_string_list_8cpp.html" title="The StringList body implements lists of string values with zero&#45;based arbitrary indexed access to pos..." alt="" coords="789,157,900,185"/>
-<area shape="rect" id="node4" href="$_audio_sample_ring_buffer_8h.html" title="The AudioSampleRingBuffer specification defines a ring buffer for audio samples with left and right s..." alt="" coords="945,233,1134,261"/>
+<area shape="rect" id="node16" href="$_so_x_reverb_support_8h.html" title="The SoXReverbSupport specification defines support classes for the freeverb algorithm and provides a ..." alt="" coords="284,309,443,337"/>
+<area shape="rect" id="node24" href="$_so_x_audio_editor_widget_8h.html" title="The SoXAudioEditorWidget specification defines an audio editor widget (a slider or a combo box) in a ..." alt="" coords="1175,81,1357,109"/>
+<area shape="rect" id="node3" href="$_audio_sample_ring_buffer_8cpp-inc.html" title="The AudioSampleRingBuffer body implements a ring buffer for audio samples with left and right shifts ..." alt="" coords="942,157,1171,185"/>
+<area shape="rect" id="node19" href="$_file_8cpp.html" title="The File body implements a class for simple file handling based on C stdio." alt="" coords="1196,157,1269,185"/>
+<area shape="rect" id="node20" href="$_string_util_8cpp.html" title="The StringUtil body implements several string routines not included in the standard C++ library (like..." alt="" coords="1293,157,1401,185"/>
+<area shape="rect" id="node21" href="$_natural_list_8cpp.html" title="The NaturalList body implements lists of non&#45;negative integer values with zero&#45;based arbitrary indexe..." alt="" coords="560,157,679,185"/>
+<area shape="rect" id="node22" href="$_string_list_8cpp.html" title="The StringList body implements lists of string values with zero&#45;based arbitrary indexed access to pos..." alt="" coords="703,157,813,185"/>
+<area shape="rect" id="node23" href="$_real_8cpp.html" title="The Real body implements a value object type for real values." alt="" coords="838,157,918,185"/>
+<area shape="rect" id="node4" href="$_audio_sample_ring_buffer_8h.html" title="The AudioSampleRingBuffer specification defines a ring buffer for audio samples with left and right s..." alt="" coords="983,233,1173,261"/>
 <area shape="rect" id="node5" href="$_audio_sample_ring_buffer_8cpp.html" title="The AudioSampleRingBuffer body implements a ring buffer for audio samples with left and right shifts ..." alt="" coords="1371,309,1577,337"/>
 <area shape="rect" id="node6" href="$_audio_sample_ring_buffer_vector_8h.html" title="The AudioSampleRingBufferVector specification defines a two&#45;dimensional list of ring buffers for audi..." alt="" coords="888,309,1119,337"/>
 <area shape="rect" id="node11" href="$_i_i_r_filter_8h.html" title="The IIRFilter specification defines an infinite impulse response filter." alt="" coords="1643,309,1726,337"/>
@@ -21,8 +23,8 @@
 <area shape="rect" id="node15" href="$_so_x_compander___audio_effect_8cpp.html" title="The SoXCompander_AudioEffect body implements the SoX compand and mcompand audio effects; a simple com..." alt="" coords="1151,393,1387,421"/>
 <area shape="rect" id="node17" href="$_so_x_reverb___audio_effect_8cpp.html" title="The SoXReverb_AudioEffect body implements the SoX reverb plugin using the freeverb algorithm for room..." alt="" coords="5,393,212,421"/>
 <area shape="rect" id="node18" href="$_so_x_reverb_support_8cpp.html" title="The SoXReverbSupport body implements support classes for the freeverb algorithm and provides a single..." alt="" coords="236,393,411,421"/>
-<area shape="rect" id="node23" href="$_so_x_audio_editor_8h.html" title="The SoXAudioEditor specification defines the audio editor for a plugin, represented by a display wind..." alt="" coords="1272,157,1407,185"/>
-<area shape="rect" id="node24" href="$_so_x_audio_editor_8cpp.html" title="The SoXAudioEditor body implements the audio editor for a plugin, represented by a display window con..." alt="" coords="1159,233,1309,261"/>
-<area shape="rect" id="node25" href="$_so_x_audio_editor_widget_8cpp.html" title="The SoXAudioEditorWidget body implements an audio editor widget (a slider or a combo box) in a SoX au..." alt="" coords="1334,233,1531,261"/>
-<area shape="rect" id="node26" href="$_so_x_audio_processor_8cpp.html" title="The SoXAudioProcessor body implements an audio effect wrapper for a plugin responsible for the commun..." alt="" coords="1555,233,1737,261"/>
+<area shape="rect" id="node25" href="$_so_x_audio_editor_8h.html" title="The SoXAudioEditor specification defines the audio editor for a plugin, represented by a display wind..." alt="" coords="1425,157,1560,185"/>
+<area shape="rect" id="node26" href="$_so_x_audio_editor_8cpp.html" title="The SoXAudioEditor body implements the audio editor for a plugin, represented by a display window con..." alt="" coords="1219,233,1369,261"/>
+<area shape="rect" id="node27" href="$_so_x_audio_editor_widget_8cpp.html" title="The SoXAudioEditorWidget body implements an audio editor widget (a slider or a combo box) in a SoX au..." alt="" coords="1394,233,1591,261"/>
+<area shape="rect" id="node28" href="$_so_x_audio_processor_8cpp.html" title="The SoXAudioProcessor body implements an audio effect wrapper for a plugin responsible for the commun..." alt="" coords="1615,233,1797,261"/>
 </map>

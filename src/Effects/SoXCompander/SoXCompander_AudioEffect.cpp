@@ -26,11 +26,8 @@ using SoXPlugins::Helpers::SoXEffectParameterMap;
 using SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect;
 using SoXPlugins::Effects::SoXCompander::SoXMultibandCompander;
 
-/** abbreviation for StringUtil::toNatural */
-#define toNatural  StringUtil::toNatural
-
-/** abbreviation for StringUtil::expand */
-#define expand  StringUtil::expand
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*====================*/
 
@@ -82,15 +79,15 @@ namespace SoXPlugins::Effects::SoXCompander {
         String toString () const
         {
             String st =
-                expand("attack = %1s, decay = %2s, knee = %3dB,"
-                       " threshold = %4dB, ratio = %5, gain = %6dB,"
-                       " topFrequency = %7Hz",
-                       TOSTRING(attack), TOSTRING(decay),
-                       TOSTRING(knee), TOSTRING(threshold),
-                       TOSTRING(ratio), TOSTRING(gain),
-                       TOSTRING(topFrequency));
+                STR::expand("attack = %1s, decay = %2s, knee = %3dB,"
+                            " threshold = %4dB, ratio = %5, gain = %6dB,"
+                            " topFrequency = %7Hz",
+                            TOSTRING(attack), TOSTRING(decay),
+                            TOSTRING(knee), TOSTRING(threshold),
+                            TOSTRING(ratio), TOSTRING(gain),
+                            TOSTRING(topFrequency));
 
-            st = expand("_CompanderBandParameterData(%1)", st);
+            st = STR::expand("_CompanderBandParameterData(%1)", st);
             return st;
         }
     };
@@ -141,8 +138,8 @@ namespace SoXPlugins::Effects::SoXCompander {
         String toString () const
         {
             String prefix =
-                expand("bandCount = %1, channelCount = %2",
-                       TOSTRING(bandCount), TOSTRING(channelCount));
+                STR::expand("bandCount = %1, channelCount = %2",
+                            TOSTRING(bandCount), TOSTRING(channelCount));
 
             String companderBandDataString;
 
@@ -151,20 +148,20 @@ namespace SoXPlugins::Effects::SoXCompander {
                     indexToCompanderBandParamDataMap[bandIndex];
                 companderBandDataString +=
                     ((bandIndex > 0 ? ", " : "")
-                     + expand("bandParameters_%1 = %2",
-                              TOSTRING(bandIndex), data.toString()));
+                     + STR::expand("bandParameters_%1 = %2",
+                                   TOSTRING(bandIndex), data.toString()));
             }
 
             companderBandDataString =
-                expand("indexToCompanderBandParamDataMap = (%1)",
-                       companderBandDataString);
+                STR::expand("indexToCompanderBandParamDataMap = (%1)",
+                            companderBandDataString);
 
             String st =
-                expand("%1, %2, multibandCompander = %3",
-                       prefix, companderBandDataString,
-                       multibandCompander.toString());
+                STR::expand("%1, %2, multibandCompander = %3",
+                            prefix, companderBandDataString,
+                            multibandCompander.toString());
 
-            st = expand("_EffectDescriptor_CMPD(%1)", st);
+            st = STR::expand("_EffectDescriptor_CMPD(%1)", st);
             return st;
         }
 
@@ -232,12 +229,12 @@ namespace SoXPlugins::Effects::SoXCompander {
 
         _EffectDescriptor_CMPD* effectDescriptor =
             new _EffectDescriptor_CMPD{
-                bandCount,  // bandCount
-                0,          // channelCount
-                {},         // multibandCompander
-                {},         // indexToCompanderBandParamDataMap
-                {},         // inputSampleList
-                {}          // outputSampleList
+                bandCount,  /* bandCount */
+                0,          /* channelCount */
+                {},         /* multibandCompander */
+                {},         /* indexToCompanderBandParamDataMap */
+                {},         /* inputSampleList */
+                {}          /* outputSampleList */
             };
 
         Logging_trace1("<<: %1", effectDescriptor->toString());
@@ -408,18 +405,18 @@ SoXParameterValueChangeKind SoXCompander_AudioEffect
     const String bandCountParam = parameterName_bandCount;
     const String bandIndexParam = parameterName_bandIndex;
 
-    if (StringUtil::endsWith(parameterName, bandCountParam)) {
+    if (STR::endsWith(parameterName, bandCountParam)) {
         Logging_trace1("--: new bandCount = %1", value);
         const Natural bandCount =
-            Natural::forceToInterval(toNatural(value), 1, _maxBandCount);
+            Natural::forceToInterval(STR::toNatural(value), 1, _maxBandCount);
         effectDescriptor.bandCount = bandCount;
         effectDescriptor.multibandCompander.setEffectiveSize(bandCount);
         _effectParameterMap.setValue(bandCountParam, TOSTRING(bandCount));
         _updateSettings(effectDescriptor, _sampleRate, _channelCount);
         result = SoXParameterValueChangeKind::pageCountChange;
-    } else if (StringUtil::endsWith(parameterName, bandIndexParam)) {
+    } else if (STR::endsWith(parameterName, bandIndexParam)) {
         const Natural bandIndex =
-            Natural::forceToInterval(toNatural(value),
+            Natural::forceToInterval(STR::toNatural(value),
                                      1, effectDescriptor.bandCount);
         _effectParameterMap.setValue(bandIndexParam, TOSTRING(bandIndex));
         result = SoXParameterValueChangeKind::pageChange;
@@ -436,19 +433,19 @@ SoXParameterValueChangeKind SoXCompander_AudioEffect
                 effectDescriptor.indexToCompanderBandParamDataMap[bandIndex];
 
             if (effectiveParameterName == parameterName_attack) {
-                data.attack = StringUtil::toReal(value);
+                data.attack = STR::toReal(value);
             } else if (effectiveParameterName == parameterName_decay) {
-                data.decay = StringUtil::toReal(value);
+                data.decay = STR::toReal(value);
             } else if (effectiveParameterName == parameterName_dBKnee) {
-                data.knee = StringUtil::toReal(value);
+                data.knee = STR::toReal(value);
             } else if (effectiveParameterName == parameterName_dBThreshold) {
-                data.threshold = StringUtil::toReal(value);
+                data.threshold = STR::toReal(value);
             } else if (effectiveParameterName == parameterName_ratio) {
-                data.ratio = StringUtil::toReal(value);
+                data.ratio = STR::toReal(value);
             } else if (effectiveParameterName == parameterName_dBGain) {
-                data.gain = StringUtil::toReal(value);
+                data.gain = STR::toReal(value);
             } else if (effectiveParameterName == parameterName_topFrequency) {
-                data.topFrequency = StringUtil::toReal(value);
+                data.topFrequency = STR::toReal(value);
             }
 
             if (recalculationIsForced) {
@@ -523,7 +520,7 @@ void SoXCompander_AudioEffect::prepareToPlay (IN Real sampleRate)
         _EffectDescriptor_CMPD& effectDescriptor =
             TOREFERENCE<_EffectDescriptor_CMPD>(_effectDescriptor);
         _sampleRate = sampleRate;
-        // compander has to be recalculated
+        /* compander has to be recalculated */
         _updateSettings(effectDescriptor, _sampleRate, _channelCount);
     }
 
@@ -563,7 +560,7 @@ SoXCompander_AudioEffect::processBlock
 
         compander.apply(inputSampleList, outputSampleList);
 
-        // write output sample list onto all channels
+        /* write output sample list onto all channels */
         for (Natural channel = 0;  channel < _channelCount;  channel++) {
             AudioSampleList& outputList = buffer[channel];
             outputList[i] = outputSampleList[channel];

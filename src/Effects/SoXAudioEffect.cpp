@@ -119,12 +119,12 @@ SoXAudioEffect::setValue (IN String& parameterName,
     SoXParameterValueChangeKind result =
         SoXParameterValueChangeKind::parameterChange;
 
-    if (value == _effectParameterMap.value(parameterName)) {
-        // break cycles: if value is already known, ignore this
-        // request
+    if (!_effectParameterMap.valueIsDifferent(parameterName, value)) {
+        /* break cycles: if value is already known, ignore this
+           request */
     } else if (!_effectParameterMap
                .isAllowedValue(parameterName, value)) {
-        // do not store a bad value
+        /* do not store a bad value */
     } else {
         _effectParameterMap.setValue(parameterName, value);
         result = _setValueInternal(parameterName, value,
@@ -185,7 +185,7 @@ void SoXAudioEffect::processBlock (IN Real timePosition,
     _currentTimePosition = timePosition;
     _channelCount        = buffer.size();
 
-    // check whether timing has changed significantly
+    /* check whether timing has changed significantly */
     const Real absoluteDifference =
         Real::abs(_currentTimePosition - _expectedNextTimePosition);
     _timePositionHasMoved = (absoluteDifference > 1E-3);

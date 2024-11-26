@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['expand_1225',['expand',['../_so_x_compander___audio_effect_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd',1,'expand():&#160;SoXCompander_AudioEffect.cpp'],['../_so_x_compander_support_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd',1,'expand():&#160;SoXCompanderSupport.cpp'],['../_so_x_filter___audio_effect_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd',1,'expand():&#160;SoXFilter_AudioEffect.cpp'],['../_so_x_gain___audio_effect_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd',1,'expand():&#160;SoXGain_AudioEffect.cpp'],['../_so_x_overdrive___audio_effect_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd',1,'expand():&#160;SoXOverdrive_AudioEffect.cpp'],['../_so_x_phaser_and_tremolo___audio_effect_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd',1,'expand():&#160;SoXPhaserAndTremolo_AudioEffect.cpp'],['../_so_x_reverb___audio_effect_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd',1,'expand():&#160;SoXReverb_AudioEffect.cpp'],['../_so_x_reverb_support_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd',1,'expand():&#160;SoXReverbSupport.cpp'],['../_so_x_audio_processor_8cpp.html#a94692cc5c1eac2402cbeff7e1eaa95cd',1,'expand():&#160;SoXAudioProcessor.cpp']]]
+  ['in_1794',['IN',['../_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928',1,'GlobalMacros.h']]],
+  ['inline_1795',['INLINE',['../_global_macros_8h.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116',1,'GlobalMacros.h']]],
+  ['inout_1796',['INOUT',['../_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d',1,'GlobalMacros.h']]]
 ];

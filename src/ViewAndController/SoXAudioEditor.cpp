@@ -26,12 +26,13 @@ using BaseTypes::Containers::StringSet;
 using SoXPlugins::ViewAndController::SoXAudioEditor;
 using SoXPlugins::ViewAndController::SoXAudioEditorWidgetPtrList;
 
-/** abbreviated form of function name */
-#define toNatural StringUtil::toNatural
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*====================*/
 
-// standard colors
+/* standard colors */
+
 /** black color */
 static const juce::Colour _black(0, 0, 0);
 /** blue color */
@@ -51,7 +52,7 @@ static const juce::Colour _white(255, 255, 255);
 /** fully transparent color */
 static const juce::Colour _transparent = juce::Colour();
 
-// levels of grey
+/* levels of grey */
 /** grey colour with  1/16th blackness */
 static const juce::Colour _grey1(240, 240, 240);
 /** grey colour with  2/16th blackness */
@@ -83,13 +84,13 @@ static const juce::Colour _greyE( 32,  32,  32);
 /** grey colour with 15/16th blackness */
 static const juce::Colour _greyF( 16,  16,  16);
 
-// special colors
+/* special colors */
 /** a red colour with 10/16th blackness */
 static const juce::Colour _redA(96, 64, 64);
 /** a grey colour with 5/16th blackness and half transparent */
 static const juce::Colour _semiGrey5 = _grey5.withAlpha(0.5f);
 
-// logical colors
+/* logical colors */
 /** the default editor background color */
 static const juce::Colour _defaultBackgroundColor = _grey2;
 /** the editor background color for the active page */
@@ -151,7 +152,7 @@ _addWidgetsToList (INOUT SoXAudioEditor* currentEditor,
     const StringList parameterNameList =
         parameterMap.parameterNameList();
 
-    // find fixed count of widgets
+    /* find fixed count of widgets */
     Natural fixedWidgetCount = 0;
 
     for (const String& parameterName : parameterNameList) {
@@ -164,7 +165,7 @@ _addWidgetsToList (INOUT SoXAudioEditor* currentEditor,
         }
     }
 
-    // generate widgets
+    /* generate widgets */
     Natural maximumWidgetCountOnPage = fixedWidgetCount;
     NaturalList pageNumberToWidgetCountMap;
     Natural pageCount = 0;
@@ -176,7 +177,7 @@ _addWidgetsToList (INOUT SoXAudioEditor* currentEditor,
             Natural pageNumber;
             String labelName;
             SoXEffectParameterMap::splitParameterName(parameterName,
-                                                     labelName, pageNumber);
+                                                      labelName, pageNumber);
 
             if (pageNumber >= pageCount) {
                 pageCount = pageNumber + 1;
@@ -216,22 +217,21 @@ static void _changeLookAndFeel (INOUT juce::LookAndFeel& lookAndFeel)
 {
     Logging_trace(">>");
 
-    // just use the default sans serif typeface
-    // lookAndFeel.setDefaultSansSerifTypefaceName("Arial");
+    /* just use the default sans serif typeface */
+    /* lookAndFeel.setDefaultSansSerifTypefaceName("Arial"); */
 
-    // combo boxes
+    /* combo boxes */
     lookAndFeel.setColour(juce::ComboBox::backgroundColourId,
                           _grey5);
     lookAndFeel.setColour(juce::ComboBox::arrowColourId, _black);
     lookAndFeel.setColour(juce::ComboBox::buttonColourId, _green);
     lookAndFeel.setColour(juce::ComboBox::textColourId, _black);
 
-    // labels
-    /// lookAndFeel.setColour(juce::Label::backgroundColourId, _grey5);
+    /* labels */
     lookAndFeel.setColour(juce::Label::backgroundColourId, _transparent);
     lookAndFeel.setColour(juce::Label::textColourId, _black);
 
-    // sliders
+    /* sliders */
     lookAndFeel.setColour(juce::Slider::backgroundColourId,
                           _grey5);
     lookAndFeel.setColour(juce::Slider::thumbColourId, _greyC);
@@ -242,7 +242,7 @@ static void _changeLookAndFeel (INOUT juce::LookAndFeel& lookAndFeel)
     lookAndFeel.setColour(juce::Slider::textBoxOutlineColourId,
                           _dimmedBackgroundColor);
 
-    // text entry
+    /* text entry */
     lookAndFeel.setColour(juce::TextEditor::highlightColourId,
                           _black);
     lookAndFeel.setColour(juce::TextEditor::highlightedTextColourId,
@@ -285,7 +285,7 @@ static NaturalList _findPageIndices (INOUT SoXAudioEditor* currentEditor)
                 Logging_trace2("--: nominalPageNumber = %1, value = %2",
                                nominalPageNumber.toString(), value);
                 const Natural v =
-                    Natural::maximum(1, toNatural(value, 1));
+                    Natural::maximum(1, STR::toNatural(value, 1));
 
                 if (nominalPageNumber == -1) {
                     pageIndex = v;
@@ -338,27 +338,27 @@ SoXAudioEditor::SoXAudioEditor (INOUT SoXAudioProcessor& processor)
 
     _changeLookAndFeel(getLookAndFeel());
 
-    // define some default size
+    /* define some default size */
     setSize(50, 50);
 
-    // default width distribution in a widget row
+    /* default width distribution in a widget row */
     SoXAudioEditorWidget::setPartWidthsInRow(Percentage{3.0},
                                              Percentage{20.0},
                                              Percentage{3.0},
                                              Percentage{50.0},
                                              Percentage{15.0});
 
-    // default height distribution in an editor page
+    /* default height distribution in an editor page */
     SoXAudioEditorWidget::setPartHeightsInPage(Percentage{10.0},
                                                Percentage{20.0},
                                                Percentage{10.0});
 
-    // initialize the page indices
+    /* initialize the page indices */
     NaturalList pageIndices = _findPageIndices(this);
     _lastEditorPageIndex    = pageIndices[0];
     _currentEditorPageIndex = pageIndices[1];
 
-    // register at audio processor for change notification
+    /* register at audio processor for change notification */
     _processor.registerObserver(this);
     _resetAppearance();
 
@@ -389,12 +389,12 @@ void SoXAudioEditor::paint (juce::Graphics& graphics)
     Logging_trace2("--: height = %1, y = %2",
                    height.toString(), y.toString());
 
-    // fill fixed part with default background color
+    /* fill fixed part with default background color */
     rectangle.setHeight((int) y);
     graphics.setColour(_defaultBackgroundColor);
     graphics.fillRect(rectangle);
 
-    // fill page part with color depending on activeness of page
+    /* fill page part with color depending on activeness of page */
     const Boolean isActivePage =
         (_currentEditorPageIndex <= _lastEditorPageIndex);
     const juce::Colour pageColor = (isActivePage
@@ -464,11 +464,12 @@ SoXAudioEditor::notifyAboutChange (IN SoXParameterValueChangeKind kind,
         }
 
         if (kind == SoXParameterValueChangeKind::pageCountChange) {
-            _lastEditorPageIndex = Natural::maximum(1, toNatural(value, 1));
+            _lastEditorPageIndex =
+                Natural::maximum(1, STR::toNatural(value, 1));
             repaintIsNecessary = true;
         } else if (SoXEffectParameterMap::isPageSelector(parameterName)) {
             _currentEditorPageIndex =
-                Natural::maximum(1, toNatural(value, 1));
+                Natural::maximum(1, STR::toNatural(value, 1));
             repaintIsNecessary = true;
         }
     }
@@ -494,7 +495,7 @@ void SoXAudioEditor::_resetAppearance ()
     setSize((int) _defaultWidth,
             (int) (_heightPerWidget * maximumWidgetCount));
 
-    // initialize page setup
+    /* initialize page setup */
     const Real rowSpaceFactor = 0.25;
     const Real borderFactor   = 0.5;
     const Real one = 1.0;

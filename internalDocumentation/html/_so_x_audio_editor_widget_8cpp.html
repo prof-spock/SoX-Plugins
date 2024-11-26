@@ -85,7 +85,10 @@ $(document).ready(function(){initNavTree('_so_x_audio_editor_widget_8cpp.html','
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">SoXAudioEditorWidget.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -123,6 +126,25 @@ Macros</h2></td></tr>
 <tr class="memitem:a4920d1a5720f09ee355edfec9077ab0e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#a4920d1a5720f09ee355edfec9077ab0e">_widgetIsActive</a></td></tr>
 <tr class="memdesc:a4920d1a5720f09ee355edfec9077ab0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">tells whether current widget is active because it is on the displayed page or on (always displayed) page 0  <a href="_so_x_audio_editor_widget_8cpp.html#a4920d1a5720f09ee355edfec9077ab0e">More...</a><br /></td></tr>
 <tr class="separator:a4920d1a5720f09ee355edfec9077ab0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memItemLeft" align="right" valign="top"><a id="a5b6f88d1249b396e351c4a85bcb35b2c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c">STR</a> = <a class="el" href="struct_base_modules_1_1_string_util.html">BaseModules::StringUtil</a></td></tr>
+<tr class="memdesc:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil <br /></td></tr>
+<tr class="separator:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ad048dcfb108390149c0495f103fccb01"><td class="memItemLeft" align="right" valign="top">static juce::Component *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#ad048dcfb108390149c0495f103fccb01">SoXPlugins::ViewAndController::_makeWidget</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;map, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> SoXEffectParameterKind &amp;kind, EventDispatcher *eventDispatcher)</td></tr>
+<tr class="memdesc:ad048dcfb108390149c0495f103fccb01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a JUCE widget from <code>map</code> for parameter named <code>parameterName</code> with <code>kind</code> defining either a slider or a combo box; <code>eventDispatcher</code> defines the event handler for the editor.  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#ad048dcfb108390149c0495f103fccb01">More...</a><br /></td></tr>
+<tr class="separator:ad048dcfb108390149c0495f103fccb01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:af16c84e0d09f1a2c346eb1695c995b8f"><td class="memItemLeft" align="right" valign="top">static const juce::NotificationType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#af16c84e0d09f1a2c346eb1695c995b8f">SoXPlugins::ViewAndController::noNotification</a></td></tr>
+<tr class="memdesc:af16c84e0d09f1a2c346eb1695c995b8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the JUCE notification kind that describes that no notifications should be sent by some widget  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#af16c84e0d09f1a2c346eb1695c995b8f">More...</a><br /></td></tr>
+<tr class="separator:af16c84e0d09f1a2c346eb1695c995b8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXAudioEditorWidget</code> body implements an audio editor widget (a slider or a combo box) in a SoX audio editor for editing a single discrete value parameter. </p>

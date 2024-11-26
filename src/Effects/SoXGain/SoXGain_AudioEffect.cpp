@@ -25,8 +25,8 @@
 using SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect;
 using SoXPlugins::Helpers::SoXAudioHelper;
 
-/** abbreviated form of function name */
-#define expand StringUtil::expand
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
@@ -49,8 +49,8 @@ namespace SoXPlugins::Effects::SoXGain {
         String toString() const
         {
             String st =
-                expand("_EffectDescriptor_GAIN(gain = %1dB)",
-                       TOSTRING(gain));
+                STR::expand("_EffectDescriptor_GAIN(gain = %1dB)",
+                            TOSTRING(gain));
             return st;
         }
 
@@ -76,7 +76,7 @@ namespace SoXPlugins::Effects::SoXGain {
 
         _EffectDescriptor_GAIN* result =
             new _EffectDescriptor_GAIN{
-                0.0 // gain
+                0.0 /* gain */
             };
 
         Logging_trace1("<<: %1", result->toString());
@@ -101,7 +101,7 @@ SoXGain_AudioEffect::SoXGain_AudioEffect ()
     /* initialize parameters */
     _effectParameterMap.clear();
     _effectParameterMap.setKindReal(parameterName_gain,
-                                    -10.0, 10.0, 0.001);
+                                    -100.0, 100.0, 0.001);
 
     Logging_trace1("<<: %1", toString());
 }
@@ -169,7 +169,7 @@ SoXGain_AudioEffect::_setValueInternal
     SoXAudioEffect::setValue(parameterName, value);
 
     if (parameterName == parameterName_gain) {
-        const Real dBGain = StringUtil::toReal(value);
+        const Real dBGain = STR::toReal(value);
         effectDescriptor.gain = SoXAudioHelper::dBToLinear(dBGain);
     }
 

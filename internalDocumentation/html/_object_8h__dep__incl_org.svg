@@ -157,7 +157,7 @@
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="_logging_support_8cpp.html" target="_top" xlink:title="The LoggingSupport body implements a class for simple entry/exit logging to a file; this logging reli...">
+<g id="a_node7"><a xlink:href="_logging_support_8cpp.html" target="_top" xlink:title="The LoggingSupport body implements a class for simple entry/exit logging to a file or via a callback ...">
 <polygon fill="white" stroke="black" points="222,-132.5 222,-152.5 336,-152.5 336,-132.5 222,-132.5"/>
 <text text-anchor="middle" x="279" y="-139.7" font-family="Helvetica,sans-Serif" font-size="11.00">LoggingSupport.cpp</text>
 </a>

@@ -44,10 +44,10 @@ var hierarchy =
       [ "SoXPlugins::Effects::SoXCompander::_LRFilter", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_filter.html", null ]
     ] ],
     [ "Listener", null, [
-      [ "SoXPlugins::ViewAndController::_EffectParameterListener", "struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html", null ]
+      [ "SoXPlugins::ViewAndController::EventDispatcher", "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html", null ]
     ] ],
     [ "Listener", null, [
-      [ "SoXPlugins::ViewAndController::EventDispatcher", "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html", null ]
+      [ "SoXPlugins::ViewAndController::_EffectParameterListener", "struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html", null ]
     ] ],
     [ "Listener", null, [
       [ "SoXPlugins::ViewAndController::EventDispatcher", "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html", null ]
@@ -67,6 +67,17 @@ var hierarchy =
     [ "SoXPlugins::Helpers::SoXEffectParameterMap", "struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html", null ],
     [ "SoXPlugins::Effects::SoXCompander::SoXMultibandCompander", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html", null ],
     [ "BaseModules::StringUtil", "struct_base_modules_1_1_string_util.html", null ],
+    [ "Windows::tagBITMAP", "struct_windows_1_1tag_b_i_t_m_a_p.html", null ],
+    [ "Windows::tagBITMAPINFO", "struct_windows_1_1tag_b_i_t_m_a_p_i_n_f_o.html", null ],
+    [ "Windows::tagBITMAPINFOHEADER", "struct_windows_1_1tag_b_i_t_m_a_p_i_n_f_o_h_e_a_d_e_r.html", null ],
+    [ "Windows::tagDRAWTEXTPARAMS", "struct_windows_1_1tag_d_r_a_w_t_e_x_t_p_a_r_a_m_s.html", null ],
+    [ "Windows::tagLOGFONTW", "struct_windows_1_1tag_l_o_g_f_o_n_t_w.html", null ],
+    [ "Windows::tagMSG", "struct_windows_1_1tag_m_s_g.html", null ],
+    [ "Windows::tagPAINTSTRUCT", "struct_windows_1_1tag_p_a_i_n_t_s_t_r_u_c_t.html", null ],
+    [ "Windows::tagPOINT", "struct_windows_1_1tag_p_o_i_n_t.html", null ],
+    [ "Windows::tagRECT", "struct_windows_1_1tag_r_e_c_t.html", null ],
+    [ "Windows::tagRGBQUAD", "struct_windows_1_1tag_r_g_b_q_u_a_d.html", null ],
+    [ "Windows::tagWNDCLASSEXW", "struct_windows_1_1tag_w_n_d_c_l_a_s_s_e_x_w.html", null ],
     [ "Audio::WaveForm", "struct_audio_1_1_wave_form.html", null ],
     [ "GenericList", null, [
       [ "Audio::AudioSampleList", "struct_audio_1_1_audio_sample_list.html", null ],

@@ -41,8 +41,8 @@ using BaseTypes::Primitives::Percentage;
 using SoXPlugins::Effects::SoXPhaserAndTremolo
       ::SoXPhaserAndTremolo_AudioEffect;
 
-/** abbreviated form of function name */
-#define expand StringUtil::expand
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
@@ -55,7 +55,8 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
     static const String separator = "/";
 
     /** the standard starting phase of a phaser (90°) */
-    static const Radians _defaultPhase = Real::pi / 2.0;
+    static const Radians _defaultPhase =
+        3.141592653589793238462643383279 / 2.0;
 
     /** the name of the tremolo effect */
     static const String _tremoloEffectKind = "Tremolo";
@@ -123,8 +124,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
         StringList::fromList({parameterName_depth,
                               parameterName_effectKind,
                               parameterName_frequency,
-                              parameterName_timeOffset,
-                              parameterName_waveFormKind});
+                              parameterName_timeOffset});
   
     /*--------------------*/
     /* internal routines  */
@@ -194,24 +194,27 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
         String toString () const
         {
             String st1 =
-                expand("isPhaser = %1, frequency = %2Hz, timeOffset = %3s,"
-                       " inGain = %4, outGain = %5,"
-                       " delay = %6s, decay = %7s, depth = %8%",
-                       TOSTRING(isPhaser), TOSTRING(frequency),
-                       TOSTRING(timeOffset),
-                       TOSTRING(inGain), TOSTRING(outGain),
-                       TOSTRING(delay), TOSTRING(decay), TOSTRING(depth));
+                STR::expand("isPhaser = %1, frequency = %2Hz,"
+                            " timeOffset = %3s, inGain = %4,"
+                            " outGain = %5, delay = %6s,"
+                            " decay = %7s, depth = %8%",
+                            TOSTRING(isPhaser), TOSTRING(frequency),
+                            TOSTRING(timeOffset), TOSTRING(inGain),
+                            TOSTRING(outGain), TOSTRING(delay),
+                            TOSTRING(decay), TOSTRING(depth));
 
             String st2 =
-                expand(" waveForm = %1, delayRingBufferLength = %2,"
-                       " delayRingBufferIndex = %3, delayRingBufferList = %4",
-                       waveForm.toString(),
-                       TOSTRING(delayRingBufferLength),
-                       TOSTRING(delayRingBufferIndex),
-                       delayRingBufferList.toString());
+                STR::expand(" waveForm = %1,"
+                            " delayRingBufferLength = %2,"
+                            " delayRingBufferIndex = %3,"
+                            " delayRingBufferList = %4",
+                            waveForm.toString(),
+                            TOSTRING(delayRingBufferLength),
+                            TOSTRING(delayRingBufferIndex),
+                            delayRingBufferList.toString());
 
-            return expand("_EffectDescriptor_PHTR(%1, %2)",
-                          st1, st2);
+            return STR::expand("_EffectDescriptor_PHTR(%1, %2)",
+                               st1, st2);
         }
 
     };
@@ -239,22 +242,22 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
 
         _EffectDescriptor_PHTR* result =
             new _EffectDescriptor_PHTR{
-                true,                                  // phaser
+                true,                                  /* phaser */
 
-                0.5,                                   // frequency
-                WaveFormKind::triangle,                // waveFormKind
-                {},                                    // waveForm
-                0.0,                                   // timeOffset
+                0.5,                                   /* frequency */
+                WaveFormKind::sine,                    /* waveFormKind */
+                {},                                    /* waveForm */
+                0.0,                                   /* timeOffset */
 
-                0.4,                                   // inGain
-                0.74,                                  // outGain
-                0.003,                                 // delay
-                0.4,                                   // decay
-                40.0,                                  // depth
+                0.4,                                   /* inGain */
+                0.74,                                  /* outGain */
+                0.003,                                 /* delay */
+                0.4,                                   /* decay */
+                40.0,                                  /* depth */
 
-                {2, false, maximumDelayBufferLength},  // delayRingBufferList
-                maximumDelayBufferLength,              // delayRingBufferLength
-                0                                      // delayRingBufferIndex
+                {2, false, maximumDelayBufferLength},  /* delayRingBufferList */
+                maximumDelayBufferLength,              /* delayRingBufferLength */
+                0                                      /* delayRingBufferIndex */
             };
 
         Logging_trace1("<<: %1", result->toString());
@@ -279,7 +282,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
         Assertion_pre(_kindList.contains(effectKind),
                       "effect kind must be known");
 
-        // set the parameter activeness by effect kind
+        /* set the parameter activeness by effect kind */
         parameterMap.setActivenessForNameList(_allParameterNameList,
                                               false);
         const Boolean isTremolo = (effectKind == _tremoloEffectKind);
@@ -321,14 +324,14 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
         Boolean hasIntegerValues;
 
         if (effectDescriptor.isPhaser) {
-            // phaser
+            /* phaser */
             delayRingBufferLength =
                 Natural{Real::round(effectDescriptor.delay * sampleRate)};
             lowModulationValue  = 1.0;
             highModulationValue = Real{delayRingBufferLength};
             hasIntegerValues = true;
         } else {
-            // tremolo: set some effect parameters to constants
+            /* tremolo: set some effect parameters to constants */
             effectDescriptor.delay   = 0.0;
             effectDescriptor.inGain  = 1.0;
             effectDescriptor.outGain = 1.0;
@@ -341,7 +344,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
             hasIntegerValues = false;
         }
 
-        // delay settings
+        /* delay settings */
         effectDescriptor.delayRingBufferIndex  = 0;
         effectDescriptor.delayRingBufferLength = delayRingBufferLength;
         AudioSampleRingBufferVector& ringBufferList =
@@ -349,7 +352,7 @@ namespace SoXPlugins::Effects::SoXPhaserAndTremolo {
         ringBufferList.setRingBufferLength(delayRingBufferLength);
         ringBufferList.setToZero();
 
-        // waveform
+        /* waveform */
         const Radians effectivePhase =
             (_defaultPhase
              + WaveForm::phaseByTime(frequency,
@@ -402,7 +405,8 @@ SoXPhaserAndTremolo_AudioEffect::SoXPhaserAndTremolo_AudioEffect ()
     _effectParameterMap.setKindEnum(parameterName_waveFormKind,
                                     waveFormKindValueList);
     _effectParameterMap.setKindReal(parameterName_timeOffset,
-                                    -1E5, 1E5, 0.0001);
+                                    -8192.0, +8192.0,
+                                    Real::two.power(-16.0));
 
     Logging_trace1("<<: %1", toString());
 }
@@ -477,23 +481,23 @@ SoXPhaserAndTremolo_AudioEffect::_setValueInternal
              && _effectParameterMap.isActive(parameterName));
 
         if (parameterName == parameterName_decay) {
-            effectDescriptor.decay = StringUtil::toReal(value);
+            effectDescriptor.decay = STR::toReal(value);
         } else if (parameterName == parameterName_delayInMs) {
-            effectDescriptor.delay = StringUtil::toReal(value) / 1000.0;
+            effectDescriptor.delay = STR::toReal(value) / 1000.0;
         } else if (parameterName == parameterName_depth) {
-            effectDescriptor.depth = StringUtil::toPercentage(value);
+            effectDescriptor.depth = STR::toPercentage(value);
         } else if (parameterName == parameterName_frequency) {
-            effectDescriptor.frequency = StringUtil::toReal(value);
+            effectDescriptor.frequency = STR::toReal(value);
         } else if (parameterName == parameterName_inGain) {
-            effectDescriptor.inGain = StringUtil::toReal(value);
+            effectDescriptor.inGain = STR::toReal(value);
         } else if (parameterName == parameterName_outGain) {
-            effectDescriptor.outGain = StringUtil::toReal(value);
+            effectDescriptor.outGain = STR::toReal(value);
         } else if (parameterName == parameterName_waveFormKind) {
             effectDescriptor.waveFormKind = (value == "Sine"
                                               ? WaveFormKind::sine
                                               : WaveFormKind::triangle);
         } else if (parameterName == parameterName_timeOffset) {
-            effectDescriptor.timeOffset = StringUtil::toReal(value);
+            effectDescriptor.timeOffset = STR::toReal(value);
         }
 
         if (effectIsUpdated) {
@@ -549,8 +553,8 @@ SoXPhaserAndTremolo_AudioEffect::processBlock
         TOREFERENCE<_EffectDescriptor_PHTR>(_effectDescriptor);
 
     if (_timePositionHasMoved) {
-        // playhead was moved ==> keep time synchronisation of
-        // waveform
+        /* playhead was moved ==> keep time synchronisation of
+           waveform */
         _updateSettings(effectDescriptor, _sampleRate,
                         _currentTimePosition);
     }
@@ -584,12 +588,7 @@ SoXPhaserAndTremolo_AudioEffect::processBlock
 
             if (!isPhaser) {
                 Real factor = waveForm.current();
-                //outputSample = inputSample * waveForm.current();
                 outputSample = inputSample * factor;
-                //Logging_trace4("--: currentTime = %1, in = %2"
-                //               ", fact = %3, out = %4",
-                //               TOSTRING(timePosition), TOSTRING(inputSample),
-                //               TOSTRING(factor), TOSTRING(outputSample));
             } else if (delayRingBufferLength > 0) {
                 const Natural modulatedIndex =
                     ((delayRingBufferIndex + Natural{waveForm.current()})

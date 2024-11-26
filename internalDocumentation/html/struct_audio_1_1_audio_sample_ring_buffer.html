@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('struct_audio_1_1_audio_sample_ring_buf
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="struct_audio_1_1_audio_sample_ring_buffer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Audio::AudioSampleRingBuffer Struct Reference</div>  </div>
@@ -139,9 +140,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 <tr class="memitem:a3e368b42e80c83f672e421e967db622a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_audio.html#a64757dc84eac3a7e8bcaa0bfbd6b71ee">AudioSample</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html#a3e368b42e80c83f672e421e967db622a">last</a> () const</td></tr>
 <tr class="memdesc:a3e368b42e80c83f672e421e967db622a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets last sample of ring buffer.  <a href="struct_audio_1_1_audio_sample_ring_buffer.html#a3e368b42e80c83f672e421e967db622a">More...</a><br /></td></tr>
 <tr class="separator:a3e368b42e80c83f672e421e967db622a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33c43a92740acc426fb6e6c04e8e6f9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html#a33c43a92740acc426fb6e6c04e8e6f9c">setAt</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> position, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_audio.html#a64757dc84eac3a7e8bcaa0bfbd6b71ee">AudioSample</a> sample)</td></tr>
-<tr class="memdesc:a33c43a92740acc426fb6e6c04e8e6f9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets sample in ring buffer at <code>position</code> to <code>sample</code>  <a href="struct_audio_1_1_audio_sample_ring_buffer.html#a33c43a92740acc426fb6e6c04e8e6f9c">More...</a><br /></td></tr>
-<tr class="separator:a33c43a92740acc426fb6e6c04e8e6f9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3a0453cbf4441320b67f211af403475"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html#af3a0453cbf4441320b67f211af403475">set</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> position, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_audio.html#a64757dc84eac3a7e8bcaa0bfbd6b71ee">AudioSample</a> sample)</td></tr>
+<tr class="memdesc:af3a0453cbf4441320b67f211af403475"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets sample in ring buffer at <code>position</code> to <code>sample</code>  <a href="struct_audio_1_1_audio_sample_ring_buffer.html#af3a0453cbf4441320b67f211af403475">More...</a><br /></td></tr>
+<tr class="separator:af3a0453cbf4441320b67f211af403475"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f2bbeb0dcba926d80a15068a29d6ba1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html#a4f2bbeb0dcba926d80a15068a29d6ba1">setFirst</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_audio.html#a64757dc84eac3a7e8bcaa0bfbd6b71ee">AudioSample</a> sample)</td></tr>
 <tr class="memdesc:a4f2bbeb0dcba926d80a15068a29d6ba1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets first sample in ring buffer to <code>sample</code>  <a href="struct_audio_1_1_audio_sample_ring_buffer.html#a4f2bbeb0dcba926d80a15068a29d6ba1">More...</a><br /></td></tr>
 <tr class="separator:a4f2bbeb0dcba926d80a15068a29d6ba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,6 +158,25 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 <tr class="memitem:a8f23e94ff96ac4a9c399d496674be1e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html#a8f23e94ff96ac4a9c399d496674be1e0">toArray</a> (<a class="el" href="_global_macros_8h.html#aec78e7a9e90a406a56f859ee456e8eae">OUT</a> <a class="el" href="namespace_audio.html#a64757dc84eac3a7e8bcaa0bfbd6b71ee">AudioSample</a> *elementArray) const</td></tr>
 <tr class="memdesc:a8f23e94ff96ac4a9c399d496674be1e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets all elements in ring buffer in ordered form into <code>elementArray</code>.  <a href="struct_audio_1_1_audio_sample_ring_buffer.html#a8f23e94ff96ac4a9c399d496674be1e0">More...</a><br /></td></tr>
 <tr class="separator:a8f23e94ff96ac4a9c399d496674be1e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aa1ebc6b47070c1e73d61b3a72fccba04"><td class="memItemLeft" align="right" valign="top"><a id="aa1ebc6b47070c1e73d61b3a72fccba04"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html#aa1ebc6b47070c1e73d61b3a72fccba04">_allocatedLength</a></td></tr>
+<tr class="memdesc:aa1ebc6b47070c1e73d61b3a72fccba04"><td class="mdescLeft">&#160;</td><td class="mdescRight">the allocated length of the ring buffer <br /></td></tr>
+<tr class="separator:aa1ebc6b47070c1e73d61b3a72fccba04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c8a8d87d06e0a939ed9655895818197"><td class="memItemLeft" align="right" valign="top"><a id="a8c8a8d87d06e0a939ed9655895818197"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html#a8c8a8d87d06e0a939ed9655895818197">_length</a></td></tr>
+<tr class="memdesc:a8c8a8d87d06e0a939ed9655895818197"><td class="mdescLeft">&#160;</td><td class="mdescRight">the effective length of the ring buffer <br /></td></tr>
+<tr class="separator:a8c8a8d87d06e0a939ed9655895818197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a492739ac449b9a004ff416c8f364b919"><td class="memItemLeft" align="right" valign="top"><a id="a492739ac449b9a004ff416c8f364b919"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html#a492739ac449b9a004ff416c8f364b919">_firstIndex</a></td></tr>
+<tr class="memdesc:a492739ac449b9a004ff416c8f364b919"><td class="mdescLeft">&#160;</td><td class="mdescRight">the index of the first element in the ring buffer <br /></td></tr>
+<tr class="separator:a492739ac449b9a004ff416c8f364b919"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5999f99a84e18356d92c921e9dbd2e35"><td class="memItemLeft" align="right" valign="top"><a id="a5999f99a84e18356d92c921e9dbd2e35"></a>
+GenericList&lt; <a class="el" href="namespace_audio.html#a64757dc84eac3a7e8bcaa0bfbd6b71ee">AudioSample</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html#a5999f99a84e18356d92c921e9dbd2e35">_data</a></td></tr>
+<tr class="memdesc:a5999f99a84e18356d92c921e9dbd2e35"><td class="mdescLeft">&#160;</td><td class="mdescRight">the elements of the ring buffer as a vector <br /></td></tr>
+<tr class="separator:a5999f99a84e18356d92c921e9dbd2e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code><a class="el" href="struct_audio_1_1_audio_sample_ring_buffer.html" title="A AudioSampleRingBuffer object is a ring buffer for audio samples with left and right shifts and acce...">AudioSampleRingBuffer</a></code> object is a ring buffer for audio samples with left and right shifts and access to first and last elements in queue. </p>
@@ -356,14 +376,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stru
 
 </div>
 </div>
-<a id="a33c43a92740acc426fb6e6c04e8e6f9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33c43a92740acc426fb6e6c04e8e6f9c">&#9670;&nbsp;</a></span>setAt()</h2>
+<a id="af3a0453cbf4441320b67f211af403475"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3a0453cbf4441320b67f211af403475">&#9670;&nbsp;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_global_macros_8h.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void AudioSampleRingBuffer::setAt </td>
+          <td class="memname"><a class="el" href="_global_macros_8h.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void AudioSampleRingBuffer::set </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td>
           <td class="paramname"><em>position</em>, </td>

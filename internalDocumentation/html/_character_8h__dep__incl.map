@@ -1,10 +1,12 @@
 <map id="Character.h" name="Character.h">
-<area shape="rect" id="node1" title="The Character specification and body provides a value object type for character values." alt="" coords="1170,5,1269,33"/>
-<area shape="rect" id="node2" href="$_string_util_8h.html" title="The StringUtil specification defines several string routines not included in the standard C++ library..." alt="" coords="1173,81,1265,109"/>
+<area shape="rect" id="node1" title="The Character specification and body provides a value object type for character values." alt="" coords="1295,5,1394,33"/>
+<area shape="rect" id="node2" href="$_string_util_8h.html" title="The StringUtil specification defines several string routines not included in the standard C++ library..." alt="" coords="1299,81,1391,109"/>
 <area shape="rect" id="node3" href="$_audio_sample_ring_buffer_8cpp-inc.html" title="The AudioSampleRingBuffer body implements a ring buffer for audio samples with left and right shifts ..." alt="" coords="871,157,1101,185"/>
 <area shape="rect" id="node19" href="$_file_8cpp.html" title="The File body implements a class for simple file handling based on C stdio." alt="" coords="1125,157,1199,185"/>
 <area shape="rect" id="node20" href="$_string_util_8cpp.html" title="The StringUtil body implements several string routines not included in the standard C++ library (like..." alt="" coords="1223,157,1331,185"/>
-<area shape="rect" id="node21" href="$_string_list_8cpp.html" title="The StringList body implements lists of string values with zero&#45;based arbitrary indexed access to pos..." alt="" coords="1355,157,1465,185"/>
+<area shape="rect" id="node21" href="$_natural_list_8cpp.html" title="The NaturalList body implements lists of non&#45;negative integer values with zero&#45;based arbitrary indexe..." alt="" coords="1355,157,1473,185"/>
+<area shape="rect" id="node22" href="$_string_list_8cpp.html" title="The StringList body implements lists of string values with zero&#45;based arbitrary indexed access to pos..." alt="" coords="1497,157,1608,185"/>
+<area shape="rect" id="node23" href="$_real_8cpp.html" title="The Real body implements a value object type for real values." alt="" coords="1633,157,1713,185"/>
 <area shape="rect" id="node4" href="$_audio_sample_ring_buffer_8h.html" title="The AudioSampleRingBuffer specification defines a ring buffer for audio samples with left and right s..." alt="" coords="891,233,1081,261"/>
 <area shape="rect" id="node5" href="$_audio_sample_ring_buffer_8cpp.html" title="The AudioSampleRingBuffer body implements a ring buffer for audio samples with left and right shifts ..." alt="" coords="362,309,567,337"/>
 <area shape="rect" id="node6" href="$_audio_sample_ring_buffer_vector_8h.html" title="The AudioSampleRingBufferVector specification defines a two&#45;dimensional list of ring buffers for audi..." alt="" coords="592,309,823,337"/>
