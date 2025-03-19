@@ -247,7 +247,7 @@ There are two license models for this project:
 This means that if you do *not* use the given binaries and compile the source code by yourself, the MIT license applies.  If you *do* use the binaries, then the AGPL v3 license applies.
 
 [reference:JUCE]: http://www.juce.com/
-[reference:manual]: ./SoXPlugins-Documentation.pdf
+[reference:manual]: ./SoXPlugins-documentation.pdf
 [reference:reaJS]: https://www.reaper.fm/reaplugs/
 [reference:SoX]: http://sox.sourceforge.net/
 [reference:SoXNG]: https://codeberg.org/sox_ng/sox_ng
