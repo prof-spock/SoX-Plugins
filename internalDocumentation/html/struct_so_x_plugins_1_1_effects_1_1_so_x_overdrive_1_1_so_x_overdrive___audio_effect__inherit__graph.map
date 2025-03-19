@@ -1,4 +1,4 @@
 <map id="SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect" name="SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect">
-<area shape="rect" id="node1" title="A SoXOverdrive_AudioEffect object models the SoX overdrive plugin amplifying the input signal by a ga..." alt="" coords="5,487,232,712"/>
-<area shape="rect" id="node2" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="11,5,226,439"/>
+<area shape="rect" id="node1" title="A SoXOverdrive_AudioEffect object models the SoX overdrive plugin amplifying the input signal by a ga..." alt="" coords="5,567,232,808"/>
+<area shape="rect" id="node2" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="11,5,226,519"/>
 </map>

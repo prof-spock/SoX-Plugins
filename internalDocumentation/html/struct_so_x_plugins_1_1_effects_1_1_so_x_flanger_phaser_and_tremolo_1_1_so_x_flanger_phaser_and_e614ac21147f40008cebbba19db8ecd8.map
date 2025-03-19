@@ -1,0 +1,5 @@
+<map id="SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::SoXFlangerPhaserAndTremolo_AudioProcessor" name="SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::SoXFlangerPhaserAndTremolo_AudioProcessor">
+<area shape="rect" id="node1" title="A SoXFlangerPhaserAndTremolo_AudioProcessor object is the JUCE wrapper for the SoX phaser and tremolo..." alt="" coords="28,472,265,633"/>
+<area shape="rect" id="node2" href="$struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html" title="A SoXAudioProcessor object provides an audio effect wrapper for a plugin responsible for the communic..." alt="" coords="5,135,288,424"/>
+<area shape="rect" id="node3" title=" " alt="" coords="66,5,227,87"/>
+</map>

@@ -41,7 +41,7 @@ namespace SoXPlugins::Effects::SoXGain {
 
         /*--------------------*/
 
-        ~SoXGain_AudioEffect ();
+        ~SoXGain_AudioEffect () override;
 
         /*-----------------------*/
         /* string representation */

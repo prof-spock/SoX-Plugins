@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('_so_x_effect_parameter_map_8cpp.html',
 </div><!--header-->
 <div class="contents">
 
-<p>The <code>SoXEffectParameterMap</code> body implements a map of string keys and associated values of <code>SoXEffectParameterKind</code>; those values can be set and queried; this provides an interpretative coupling between audio processors and audio editors.  
+<p>The <code>SoXEffectParameterMap</code> body implements a map of string keys to associated values of <code>SoXEffectParameterKind</code>; those values can be set and queried; this provides an interpretative coupling between audio processors and audio editors.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_so_x_effect_parameter_map_8h_source.html">SoXEffectParameterMap.h</a>&quot;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
@@ -120,9 +120,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aa357958d58956eda594c15e7590da272"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_effect_parameter_map_8cpp.html#aa357958d58956eda594c15e7590da272">_addToParameterList</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> StringList &amp;parameterNameList, <a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_base_types_1_1_containers_1_1_dictionary.html">Dictionary</a> &amp;parameterNameToValueMap, <a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_base_types_1_1_containers_1_1_string_set.html">StringSet</a> &amp;activeParameterNameSet, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName)</td></tr>
 <tr class="memdesc:aa357958d58956eda594c15e7590da272"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a new parameter name <code>parameterName</code> to internal lists and clears any existing value, kind and value range settings for it.  <a href="_so_x_effect_parameter_map_8cpp.html#aa357958d58956eda594c15e7590da272">More...</a><br /></td></tr>
 <tr class="separator:aa357958d58956eda594c15e7590da272"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7d2bc1cfb9d21dc33aa4cbd1cf0200b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_effect_parameter_map_8cpp.html#aa7d2bc1cfb9d21dc33aa4cbd1cf0200b">_splitParameterName</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String parameterName, <a class="el" href="_global_macros_8h.html#aec78e7a9e90a406a56f859ee456e8eae">OUT</a> String &amp;effectiveParameterName, <a class="el" href="_global_macros_8h.html#aec78e7a9e90a406a56f859ee456e8eae">OUT</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> &amp;pageIndex, <a class="el" href="_global_macros_8h.html#aec78e7a9e90a406a56f859ee456e8eae">OUT</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_integer.html">Integer</a> &amp;nominalPageIndex)</td></tr>
-<tr class="memdesc:aa7d2bc1cfb9d21dc33aa4cbd1cf0200b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits <code>parameterName</code> into <code>pageIndex</code>, <code>effectiveParameterName</code> and <code>nominalPageIndex</code>.  <a href="_so_x_effect_parameter_map_8cpp.html#aa7d2bc1cfb9d21dc33aa4cbd1cf0200b">More...</a><br /></td></tr>
-<tr class="separator:aa7d2bc1cfb9d21dc33aa4cbd1cf0200b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3950dbb3d16d001fb6fdcf8a6f4e2b5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_effect_parameter_map_8cpp.html#ae3950dbb3d16d001fb6fdcf8a6f4e2b5">_splitParameterName</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#aec78e7a9e90a406a56f859ee456e8eae">OUT</a> String &amp;effectiveParameterName, <a class="el" href="_global_macros_8h.html#aec78e7a9e90a406a56f859ee456e8eae">OUT</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> &amp;pageIndex, <a class="el" href="_global_macros_8h.html#aec78e7a9e90a406a56f859ee456e8eae">OUT</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_integer.html">Integer</a> &amp;nominalPageIndex)</td></tr>
+<tr class="memdesc:ae3950dbb3d16d001fb6fdcf8a6f4e2b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits <code>parameterName</code> into <code>pageIndex</code>, <code>effectiveParameterName</code> and <code>nominalPageIndex</code>.  <a href="_so_x_effect_parameter_map_8cpp.html#ae3950dbb3d16d001fb6fdcf8a6f4e2b5">More...</a><br /></td></tr>
+<tr class="separator:ae3950dbb3d16d001fb6fdcf8a6f4e2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63c96d67105ec19939fd25b69da4fa42"><td class="memItemLeft" align="right" valign="top"><a id="a63c96d67105ec19939fd25b69da4fa42"></a>
 static StringList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_effect_parameter_map_8cpp.html#a63c96d67105ec19939fd25b69da4fa42">_splitRangeData</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> *parameterMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_containers_1_1_dictionary.html">Dictionary</a> parameterNameToValueRangeMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> SoXEffectParameterKind kind)</td></tr>
 <tr class="memdesc:a63c96d67105ec19939fd25b69da4fa42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string triple of (lowValue, highValue, delta) for given <code>parameterName</code> within audio parameter map <code>parameterMap</code> and its associated range map <code>parameterNameToValueRangeMap</code>; also ensures that <code>kind</code> is identical to kind of parameter. <br /></td></tr>
@@ -135,7 +135,7 @@ static const String&#160;</td><td class="memItemRight" valign="bottom"><b>rangeL
 <tr class="separator:a74a615bcb4f334dfd0d0c4cad1b7743b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The <code>SoXEffectParameterMap</code> body implements a map of string keys and associated values of <code>SoXEffectParameterKind</code>; those values can be set and queried; this provides an interpretative coupling between audio processors and audio editors. </p>
+<div class="textblock"><p>The <code>SoXEffectParameterMap</code> body implements a map of string keys to associated values of <code>SoXEffectParameterKind</code>; those values can be set and queried; this provides an interpretative coupling between audio processors and audio editors. </p>
 <dl class="section author"><dt>Author</dt><dd>Dr. Thomas Tensi </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020-08 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -227,8 +227,8 @@ static const String&#160;</td><td class="memItemRight" valign="bottom"><b>rangeL
 
 </div>
 </div>
-<a id="aa7d2bc1cfb9d21dc33aa4cbd1cf0200b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7d2bc1cfb9d21dc33aa4cbd1cf0200b">&#9670;&nbsp;</a></span>_splitParameterName()</h2>
+<a id="ae3950dbb3d16d001fb6fdcf8a6f4e2b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3950dbb3d16d001fb6fdcf8a6f4e2b5">&#9670;&nbsp;</a></span>_splitParameterName()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -239,7 +239,7 @@ static const String&#160;</td><td class="memItemRight" valign="bottom"><b>rangeL
         <tr>
           <td class="memname">static void _splitParameterName </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String&#160;</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
           <td class="paramname"><em>parameterName</em>, </td>
         </tr>
         <tr>

@@ -83,6 +83,7 @@ $(document).ready(function(){initNavTree('struct_audio_1_1___wave_form_descripto
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="struct_audio_1_1___wave_form_descriptor-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -93,53 +94,235 @@ $(document).ready(function(){initNavTree('struct_audio_1_1___wave_form_descripto
 <p>A <code><a class="el" href="struct_audio_1_1___wave_form_descriptor.html" title="A _WaveFormDescriptor object contains the waveform information and a cursor to it; the cursor positio...">_WaveFormDescriptor</a></code> object contains the waveform information and a cursor to it; the cursor position is calculated by a linear function with start offset, step count and increment instead of blindly adding up the increment: this leads to no rounding runoff errors compared to the implementation.  
  <a href="struct_audio_1_1___wave_form_descriptor.html#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a397a3c0b892c67203302ae6341c04e93"><td class="memItemLeft" align="right" valign="top">Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#a397a3c0b892c67203302ae6341c04e93">_getWavetableValueAtPosition</a> () const</td></tr>
+<tr class="memdesc:a397a3c0b892c67203302ae6341c04e93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds value in associated wave table at real position by a linear interpolation.  <a href="struct_audio_1_1___wave_form_descriptor.html#a397a3c0b892c67203302ae6341c04e93">More...</a><br /></td></tr>
+<tr class="separator:a397a3c0b892c67203302ae6341c04e93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71eb8f9da5a2ecfcfbadafc85f7b0d56"><td class="memItemLeft" align="right" valign="top"><a id="a71eb8f9da5a2ecfcfbadafc85f7b0d56"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#a71eb8f9da5a2ecfcfbadafc85f7b0d56">_updatePosition</a> ()</td></tr>
+<tr class="memdesc:a71eb8f9da5a2ecfcfbadafc85f7b0d56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates position from settings in descriptor. <br /></td></tr>
+<tr class="separator:a71eb8f9da5a2ecfcfbadafc85f7b0d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25fdf0b8cfc97edd38599eeb4db50fb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#a25fdf0b8cfc97edd38599eeb4db50fb3">set</a> (Real length, <a class="el" href="namespace_audio.html#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a> kind, Real minimumValue, Real maximumValue, Radians phase, <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> hasIntegerValues)</td></tr>
+<tr class="memdesc:a25fdf0b8cfc97edd38599eeb4db50fb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates waveform to <code>length</code> base points with a wave form given by <code>kind</code>; wave form has <code>minimumValue</code> and <code>maximumValue</code> as bounds; <code>phase</code> specifies the offset in the waveform and <code>hasIntegerValues</code> tells whether data has to be rounded to integer; note that the length is <b>real</b>, that means, albeit the internal representation is an array of samples, the advance operation takes care of the accumulated indexing error and corrects is as soon as it exceeds one sample position.  <a href="struct_audio_1_1___wave_form_descriptor.html#a25fdf0b8cfc97edd38599eeb4db50fb3">More...</a><br /></td></tr>
+<tr class="separator:a25fdf0b8cfc97edd38599eeb4db50fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a340a41176c1b505420debef0460650f1"><td class="memItemLeft" align="right" valign="top">Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#a340a41176c1b505420debef0460650f1">current</a> () const</td></tr>
+<tr class="memdesc:a340a41176c1b505420debef0460650f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns current value of wave form.  <a href="struct_audio_1_1___wave_form_descriptor.html#a340a41176c1b505420debef0460650f1">More...</a><br /></td></tr>
+<tr class="separator:a340a41176c1b505420debef0460650f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac94b250cd2494097bccb5e1975f14501"><td class="memItemLeft" align="right" valign="top"><a id="ac94b250cd2494097bccb5e1975f14501"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#ac94b250cd2494097bccb5e1975f14501">reset</a> ()</td></tr>
+<tr class="memdesc:ac94b250cd2494097bccb5e1975f14501"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets access to wave form to its beginning. <br /></td></tr>
+<tr class="separator:ac94b250cd2494097bccb5e1975f14501"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae48a01cc7cf17eaac06c9a981ec32287"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#ae48a01cc7cf17eaac06c9a981ec32287">setState</a> (<a class="el" href="namespace_audio.html#a516b176c934c0ff0c413e5b62260ee1f">WaveFormIteratorState</a> state)</td></tr>
+<tr class="memdesc:ae48a01cc7cf17eaac06c9a981ec32287"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets state of iteration in wave form.  <a href="struct_audio_1_1___wave_form_descriptor.html#ae48a01cc7cf17eaac06c9a981ec32287">More...</a><br /></td></tr>
+<tr class="separator:ae48a01cc7cf17eaac06c9a981ec32287"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6d87aa8545461ffb1a322b29f9bd88d"><td class="memItemLeft" align="right" valign="top"><a id="ae6d87aa8545461ffb1a322b29f9bd88d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#ae6d87aa8545461ffb1a322b29f9bd88d">advance</a> ()</td></tr>
+<tr class="memdesc:ae6d87aa8545461ffb1a322b29f9bd88d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advances access to wave form to next sample position (taking into account an accumulated indexing error because of a non-natural waveform length) <br /></td></tr>
+<tr class="separator:ae6d87aa8545461ffb1a322b29f9bd88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae09d83cdd69c6835a83a2b54d7db881a"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#ae09d83cdd69c6835a83a2b54d7db881a">asRawString</a> () const</td></tr>
+<tr class="memdesc:ae09d83cdd69c6835a83a2b54d7db881a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns raw string representation of descriptor.  <a href="struct_audio_1_1___wave_form_descriptor.html#ae09d83cdd69c6835a83a2b54d7db881a">More...</a><br /></td></tr>
+<tr class="separator:ae09d83cdd69c6835a83a2b54d7db881a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a217fbcd01b0035f18ec09dc7370b9f91"><td class="memItemLeft" align="right" valign="top"><a id="a217fbcd01b0035f18ec09dc7370b9f91"></a>
-<a class="el" href="namespace_audio.html#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#a217fbcd01b0035f18ec09dc7370b9f91">kind</a></td></tr>
-<tr class="memdesc:a217fbcd01b0035f18ec09dc7370b9f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">the kind of waveform (sine or triangle) <br /></td></tr>
-<tr class="separator:a217fbcd01b0035f18ec09dc7370b9f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac88a1aac2433c3e1eddf85bda7a97d3d"><td class="memItemLeft" align="right" valign="top"><a id="ac88a1aac2433c3e1eddf85bda7a97d3d"></a>
-<a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#ac88a1aac2433c3e1eddf85bda7a97d3d">increment</a></td></tr>
-<tr class="memdesc:ac88a1aac2433c3e1eddf85bda7a97d3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the increment for stepping in the waveform <br /></td></tr>
-<tr class="separator:ac88a1aac2433c3e1eddf85bda7a97d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f6a9971f4dc49c9e0ba4c3cb2720c28"><td class="memItemLeft" align="right" valign="top"><a id="a2f6a9971f4dc49c9e0ba4c3cb2720c28"></a>
-<a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#a2f6a9971f4dc49c9e0ba4c3cb2720c28">firstPosition</a></td></tr>
-<tr class="memdesc:a2f6a9971f4dc49c9e0ba4c3cb2720c28"><td class="mdescLeft">&#160;</td><td class="mdescRight">the first position in the waveform <br /></td></tr>
-<tr class="separator:a2f6a9971f4dc49c9e0ba4c3cb2720c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeddb0b796ac3772b6d9fc773fb3e14f1"><td class="memItemLeft" align="right" valign="top"><a id="aeddb0b796ac3772b6d9fc773fb3e14f1"></a>
-<a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#aeddb0b796ac3772b6d9fc773fb3e14f1">stepCount</a></td></tr>
-<tr class="memdesc:aeddb0b796ac3772b6d9fc773fb3e14f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the number of steps in the waveform <br /></td></tr>
-<tr class="separator:aeddb0b796ac3772b6d9fc773fb3e14f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3666aa4b4707304acbe8899e34aa453e"><td class="memItemLeft" align="right" valign="top"><a id="a3666aa4b4707304acbe8899e34aa453e"></a>
-<a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#a3666aa4b4707304acbe8899e34aa453e">position</a></td></tr>
-<tr class="memdesc:a3666aa4b4707304acbe8899e34aa453e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the current (cursor) position in the waveform <br /></td></tr>
-<tr class="separator:a3666aa4b4707304acbe8899e34aa453e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac430ce0a757c9764ea15413526dda83c"><td class="memItemLeft" align="right" valign="top"><a id="ac430ce0a757c9764ea15413526dda83c"></a>
-<a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#ac430ce0a757c9764ea15413526dda83c">minimumValue</a></td></tr>
-<tr class="memdesc:ac430ce0a757c9764ea15413526dda83c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the minimum value in the waveform <br /></td></tr>
-<tr class="separator:ac430ce0a757c9764ea15413526dda83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afac37e0e1f96c931fe0fb76b4b8208ac"><td class="memItemLeft" align="right" valign="top"><a id="afac37e0e1f96c931fe0fb76b4b8208ac"></a>
-<a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#afac37e0e1f96c931fe0fb76b4b8208ac">maximumValue</a></td></tr>
-<tr class="memdesc:afac37e0e1f96c931fe0fb76b4b8208ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">the maximum value in the waveform <br /></td></tr>
-<tr class="separator:afac37e0e1f96c931fe0fb76b4b8208ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02385d992c8db4fea6ba1b214edc4d70"><td class="memItemLeft" align="right" valign="top"><a id="a02385d992c8db4fea6ba1b214edc4d70"></a>
-<a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#a02385d992c8db4fea6ba1b214edc4d70">hasIntegerValues</a></td></tr>
-<tr class="memdesc:a02385d992c8db4fea6ba1b214edc4d70"><td class="mdescLeft">&#160;</td><td class="mdescRight">the information whether only integer values may be used <br /></td></tr>
-<tr class="separator:a02385d992c8db4fea6ba1b214edc4d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdf5168ef41c975412ccdbe70766bcae"><td class="memItemLeft" align="right" valign="top"><a id="afdf5168ef41c975412ccdbe70766bcae"></a>
-<a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#afdf5168ef41c975412ccdbe70766bcae">waveTableLength</a></td></tr>
-<tr class="memdesc:afdf5168ef41c975412ccdbe70766bcae"><td class="mdescLeft">&#160;</td><td class="mdescRight">the count of points in the waveform <br /></td></tr>
-<tr class="separator:afdf5168ef41c975412ccdbe70766bcae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3226fb8c26b806d5ecf71b096a29837b"><td class="memItemLeft" align="right" valign="top"><a id="a3226fb8c26b806d5ecf71b096a29837b"></a>
-<a class="el" href="namespace_audio.html#a13115429994ee612768bb9bbe1257868">_WaveTable</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#a3226fb8c26b806d5ecf71b096a29837b">buffer</a></td></tr>
-<tr class="memdesc:a3226fb8c26b806d5ecf71b096a29837b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the data buffer for the waveform <br /></td></tr>
-<tr class="separator:a3226fb8c26b806d5ecf71b096a29837b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8af8dbda5f2a4a22b99e98b28caed63"><td class="memItemLeft" align="right" valign="top"><a id="aa8af8dbda5f2a4a22b99e98b28caed63"></a>
+<a class="el" href="namespace_audio.html#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#aa8af8dbda5f2a4a22b99e98b28caed63">_kind</a></td></tr>
+<tr class="memdesc:aa8af8dbda5f2a4a22b99e98b28caed63"><td class="mdescLeft">&#160;</td><td class="mdescRight">the kind of waveform (sine or triangle) <br /></td></tr>
+<tr class="separator:aa8af8dbda5f2a4a22b99e98b28caed63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af088616775fc6a5d700a3500949bc231"><td class="memItemLeft" align="right" valign="top"><a id="af088616775fc6a5d700a3500949bc231"></a>
+Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#af088616775fc6a5d700a3500949bc231">_increment</a></td></tr>
+<tr class="memdesc:af088616775fc6a5d700a3500949bc231"><td class="mdescLeft">&#160;</td><td class="mdescRight">the increment for stepping in the waveform <br /></td></tr>
+<tr class="separator:af088616775fc6a5d700a3500949bc231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0900c3f3cec63127b3c10dfb8e15e77"><td class="memItemLeft" align="right" valign="top"><a id="ac0900c3f3cec63127b3c10dfb8e15e77"></a>
+Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#ac0900c3f3cec63127b3c10dfb8e15e77">_firstPosition</a></td></tr>
+<tr class="memdesc:ac0900c3f3cec63127b3c10dfb8e15e77"><td class="mdescLeft">&#160;</td><td class="mdescRight">the first x-position in the waveform <br /></td></tr>
+<tr class="separator:ac0900c3f3cec63127b3c10dfb8e15e77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1234b21bae42682aab10e9d7130255b"><td class="memItemLeft" align="right" valign="top"><a id="ac1234b21bae42682aab10e9d7130255b"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#ac1234b21bae42682aab10e9d7130255b">_stepCount</a></td></tr>
+<tr class="memdesc:ac1234b21bae42682aab10e9d7130255b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the number of steps in the waveform so far <br /></td></tr>
+<tr class="separator:ac1234b21bae42682aab10e9d7130255b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52dfb65c21c323e70c1dfe8048dfce28"><td class="memItemLeft" align="right" valign="top"><a id="a52dfb65c21c323e70c1dfe8048dfce28"></a>
+Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#a52dfb65c21c323e70c1dfe8048dfce28">_position</a></td></tr>
+<tr class="memdesc:a52dfb65c21c323e70c1dfe8048dfce28"><td class="mdescLeft">&#160;</td><td class="mdescRight">the current (cursor) x-position in the waveform <br /></td></tr>
+<tr class="separator:a52dfb65c21c323e70c1dfe8048dfce28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a001d7152411b6617bb2b7864c912fd95"><td class="memItemLeft" align="right" valign="top"><a id="a001d7152411b6617bb2b7864c912fd95"></a>
+Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#a001d7152411b6617bb2b7864c912fd95">_minimumValue</a></td></tr>
+<tr class="memdesc:a001d7152411b6617bb2b7864c912fd95"><td class="mdescLeft">&#160;</td><td class="mdescRight">the minimum value in the waveform <br /></td></tr>
+<tr class="separator:a001d7152411b6617bb2b7864c912fd95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c07a2a5b17877e16f80805907f936a6"><td class="memItemLeft" align="right" valign="top"><a id="a9c07a2a5b17877e16f80805907f936a6"></a>
+Real&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#a9c07a2a5b17877e16f80805907f936a6">_maximumValue</a></td></tr>
+<tr class="memdesc:a9c07a2a5b17877e16f80805907f936a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the maximum value in the waveform <br /></td></tr>
+<tr class="separator:a9c07a2a5b17877e16f80805907f936a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5b14dd5dc7246fc66c6eea9ff43d6dd"><td class="memItemLeft" align="right" valign="top"><a id="aa5b14dd5dc7246fc66c6eea9ff43d6dd"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#aa5b14dd5dc7246fc66c6eea9ff43d6dd">_hasIntegerValues</a></td></tr>
+<tr class="memdesc:aa5b14dd5dc7246fc66c6eea9ff43d6dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">the information whether only integer values may be used <br /></td></tr>
+<tr class="separator:aa5b14dd5dc7246fc66c6eea9ff43d6dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a370233332e293f12645671bf3ef3cbb1"><td class="memItemLeft" align="right" valign="top"><a id="a370233332e293f12645671bf3ef3cbb1"></a>
+<a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#a370233332e293f12645671bf3ef3cbb1">_waveTableLength</a></td></tr>
+<tr class="memdesc:a370233332e293f12645671bf3ef3cbb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the count of points in the waveform <br /></td></tr>
+<tr class="separator:a370233332e293f12645671bf3ef3cbb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca8139f23977bbc9dad8fe5c47d7bbc6"><td class="memItemLeft" align="right" valign="top"><a id="aca8139f23977bbc9dad8fe5c47d7bbc6"></a>
+<a class="el" href="namespace_audio.html#a8730da08410ddb94e356b07224e46bbf">_WaveTablePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html#aca8139f23977bbc9dad8fe5c47d7bbc6">_buffer</a></td></tr>
+<tr class="memdesc:aca8139f23977bbc9dad8fe5c47d7bbc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">the data buffer for the waveform <br /></td></tr>
+<tr class="separator:aca8139f23977bbc9dad8fe5c47d7bbc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code><a class="el" href="struct_audio_1_1___wave_form_descriptor.html" title="A _WaveFormDescriptor object contains the waveform information and a cursor to it; the cursor positio...">_WaveFormDescriptor</a></code> object contains the waveform information and a cursor to it; the cursor position is calculated by a linear function with start offset, step count and increment instead of blindly adding up the increment: this leads to no rounding runoff errors compared to the implementation. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="_wave_form_8cpp.html">WaveForm.cpp</a></li>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a397a3c0b892c67203302ae6341c04e93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a397a3c0b892c67203302ae6341c04e93">&#9670;&nbsp;</a></span>_getWavetableValueAtPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_global_macros_8h.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> Real _WaveFormDescriptor::_getWavetableValueAtPosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds value in associated wave table at real position by a linear interpolation. </p>
+<dl class="section return"><dt>Returns</dt><dd>interpolated value of wave at position </dd></dl>
+
+</div>
+</div>
+<a id="ae09d83cdd69c6835a83a2b54d7db881a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae09d83cdd69c6835a83a2b54d7db881a">&#9670;&nbsp;</a></span>asRawString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_global_macros_8h.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> String _WaveFormDescriptor::asRawString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns raw string representation of descriptor. </p>
+<dl class="section return"><dt>Returns</dt><dd>string representation without type wrapping </dd></dl>
+
+</div>
+</div>
+<a id="a340a41176c1b505420debef0460650f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a340a41176c1b505420debef0460650f1">&#9670;&nbsp;</a></span>current()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_global_macros_8h.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> Real _WaveFormDescriptor::current </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns current value of wave form. </p>
+<dl class="section return"><dt>Returns</dt><dd>value of waveform at current pointer </dd></dl>
+
+</div>
+</div>
+<a id="a25fdf0b8cfc97edd38599eeb4db50fb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25fdf0b8cfc97edd38599eeb4db50fb3">&#9670;&nbsp;</a></span>set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_global_macros_8h.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void _WaveFormDescriptor::set </td>
+          <td>(</td>
+          <td class="paramtype">Real&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_audio.html#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a>&#160;</td>
+          <td class="paramname"><em>kind</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Real&#160;</td>
+          <td class="paramname"><em>minimumValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Real&#160;</td>
+          <td class="paramname"><em>maximumValue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Radians&#160;</td>
+          <td class="paramname"><em>phase</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a>&#160;</td>
+          <td class="paramname"><em>hasIntegerValues</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates waveform to <code>length</code> base points with a wave form given by <code>kind</code>; wave form has <code>minimumValue</code> and <code>maximumValue</code> as bounds; <code>phase</code> specifies the offset in the waveform and <code>hasIntegerValues</code> tells whether data has to be rounded to integer; note that the length is <b>real</b>, that means, albeit the internal representation is an array of samples, the advance operation takes care of the accumulated indexing error and corrects is as soon as it exceeds one sample position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>the count of base points </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">kind</td><td>the kind (sine or triangle) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">minimumValue</td><td>the minimum y-value in waveform </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">maximumValue</td><td>the maximum y-value in waveform </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">phase</td><td>the initial phase (in radians) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">hasIntegerValues</td><td>tells whether waveform only may have integer values as y-values </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae48a01cc7cf17eaac06c9a981ec32287"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae48a01cc7cf17eaac06c9a981ec32287">&#9670;&nbsp;</a></span>setState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_global_macros_8h.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void _WaveFormDescriptor::setState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_audio.html#a516b176c934c0ff0c413e5b62260ee1f">WaveFormIteratorState</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets state of iteration in wave form. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>new state of wave form </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="_wave_form_8cpp-inc.html">WaveForm.cpp-inc</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

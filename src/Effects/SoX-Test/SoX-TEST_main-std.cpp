@@ -21,7 +21,7 @@
 #include "OperatingSystem.h"
 #include "SoXCompander_AudioEffect.h"
 #include "SoXFilter_AudioEffect.h"
-#include "SoXPhaserAndTremolo_AudioEffect.h"
+#include "SoXFlangerPhaserAndTremolo_AudioEffect.h"
 #include "SoXReverb_AudioEffect.h"
 
 /*--------------------*/
@@ -32,8 +32,8 @@ using Audio::AudioSample;
 using BaseModules::OperatingSystem;
 using SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect;
 using SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect;
-using SoXPlugins::Effects::SoXPhaserAndTremolo
-         ::SoXPhaserAndTremolo_AudioEffect;
+using SoXPlugins::Effects::SoXFlangerPhaserAndTremolo
+         ::SoXFlangerPhaserAndTremolo_AudioEffect;
 using SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect;
 
 /*====================*/
@@ -54,12 +54,10 @@ const String _effectName_tremolo   = "TREMOLO";
 /* output file for debugging */
 std::ofstream _outputFile;
 
-/*---------*/
-/* TYPES */
-/*---------*/
+/*--------------------*/
 
-void _writeToOutputFile (String title,
-                         SoXAudioEffect& audioEffect)
+void _writeToOutputFile (IN String& title,
+                         IN SoXAudioEffect& audioEffect)
 {
     _outputFile << "====================" << "\n";
     _outputFile << title << "\n";
@@ -141,7 +139,7 @@ void _fillBuffer (OUT AudioSampleListVector& buffer,
 
 /*--------------------*/
 
-void _initializeEffect (IN String audioEffectKind,
+void _initializeEffect (IN String& audioEffectKind,
                         INOUT SoXAudioEffect* audioEffect) {
     Logging_trace1(">>: %1", audioEffectKind);
 
@@ -183,12 +181,12 @@ void _initializeEffect (IN String audioEffectKind,
         audioEffect->setValue("Bandwidth Unit", "Octave(s)", true);
         audioEffect->setValue("Eq. Gain [dB]", "5", false);
     } else if (audioEffectKind == _effectName_reverb) {
-        audioEffect->setValue("isWetOnly?", "false", true);
+        audioEffect->setValue("Is Wet Only?", "false", true);
         audioEffect->setValue("Reverberance [%]", "50", true);
         audioEffect->setValue("HF Damping [%]", "50", true);
         audioEffect->setValue("Room Scale [%]", "100", true);
         audioEffect->setValue("Stereo Depth [%]", "100", true);
-        audioEffect->setValue("Pre Delay [ms]", "0", true);
+        audioEffect->setValue("Predelay [ms]", "0", true);
         audioEffect->setValue("Wet Gain [dB]", "0", false);
     } else if (audioEffectKind == _effectName_tremolo) {
         audioEffect->setValue("Effect Kind", "Tremolo", true);
@@ -215,7 +213,7 @@ SoXAudioEffect* _makeNewEffect (IN String& audioEffectKind,
         testLengthInSeconds = 50;
         audioEffect = new SoXReverb_AudioEffect{};
     } else if (audioEffectKind == _effectName_tremolo) {
-        audioEffect = new SoXPhaserAndTremolo_AudioEffect{};
+        audioEffect = new SoXFlangerPhaserAndTremolo_AudioEffect{};
     } else {
         audioEffect = new SoXCompander_AudioEffect{};
     }
@@ -256,6 +254,12 @@ void _runForEffect (IN String& audioEffectKind,
     audioEffect->prepareToPlay(sampleRate);
     _writeToOutputFile("EFFECT AFTER PREPARATION", *audioEffect);
     Logging_trace("--: AFTER PREPARATION");
+
+    if (audioEffectKind == _effectName_reverb) {
+        SoXReverb_AudioEffect* reverb =
+            static_cast<SoXReverb_AudioEffect*>(audioEffect);
+        Real tailLength = reverb->tailLength();
+    }
 
     const Natural repetitionCount = testLengthInSeconds * _blocksPerSecond;
     for (Natural i = 0;  i < repetitionCount;  i++) {

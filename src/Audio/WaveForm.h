@@ -50,10 +50,35 @@ namespace Audio {
     /*--------------------*/
 
     /**
+     * Returns string representation of <C>kind</C>.
+     *
+     * @param[in]  kind   wave form kind to be converted to string
+     * @return string representation of kind
+     */
+    String waveFormKindToString (IN WaveFormKind kind);
+
+    /*--------------------*/
+
+    /**
+     * Returns wave form kind for <C>st</C>. If st is unknown, returns
+     * "sine".
+     *
+     * @param[in]  st   string representation of wave form kind
+     * @return wave form kind
+     */
+    WaveFormKind stringToWaveFormKind (IN String& st);
+
+    /*--------------------*/
+
+    /**
      * A <C>WaveForm</C> object provides common services for (LFO)
      * wave forms.
      */
     struct WaveForm {
+
+        /*--------------------*/
+        /* con-/destruction   */
+        /*--------------------*/
 
         /**
          * Creates empty waveform
@@ -63,10 +88,32 @@ namespace Audio {
         /*--------------------*/
 
         /**
+         * Constructs new waveform from <C>otherWaveFrom</C>.
+         *
+         * @param[in] otherWaveForm  waveform to be copied
+         */
+        WaveForm (IN WaveForm& otherWaveForm);
+
+        /*--------------------*/
+
+        /**
          * Deletes waveform
          */
         ~WaveForm ();
 
+        /*--------------------*/
+        /* assignment         */
+        /*--------------------*/
+
+        /**
+         * Assigns current waveform from <C>otherWaveForm</C>
+         *
+         * @param otherWaveForm  waveform to be assigned
+         */
+        WaveForm& operator= (WaveForm& otherWaveForm);
+
+        /*--------------------*/
+        /* conversion         */
         /*--------------------*/
 
         /**
@@ -86,15 +133,19 @@ namespace Audio {
          * <C>minimumValue</C> and <C>maximumValue</C> as bounds;
          * <C>phase</C> specifies the offset in the waveform and
          * <C>hasIntegerElements</C> tells whether data has to be
-         * rounded to integer
+         * rounded to integer; note that the length is <B>real</B>,
+         * that means, albeit the internal representation is an array
+         * of samples, the advance operation takes care of the
+         * accumulated indexing error and corrects is as soon as it
+         * exceeds one sample position
          *
          * @param[in] length            the count of base points
          * @param[in] kind              the kind (sine or triangle)
          * @param[in] minimumValue      the minimum y-value in waveform
          * @param[in] maximumValue      the maximum y-value in waveform
          * @param[in] phase             the initial phase (in radians)
-         * @param[in] hasIntegerValues  tells whether waveform only may have
-         *                              integer values as y-values
+         * @param[in] hasIntegerValues  tells whether waveform only may
+         *                              have integer values as y-values
          */
         void set (IN Real length, IN WaveFormKind kind,
                   IN Real minimumValue, IN Real maximumValue,
@@ -142,6 +193,8 @@ namespace Audio {
 
         /**
          * Advances access to wave form to next sample position
+         * (taking into account an accumulated indexing error because
+         * of a non-natural waveform length)
          */
         void advance ();
 
@@ -178,3 +231,10 @@ namespace Audio {
     };
 
 }
+
+//============================================================
+
+#ifndef DEBUG
+    //production code is inlined
+    #include "WaveForm.cpp-inc"
+#endif

@@ -1,0 +1,38 @@
+var _so_x_chorus_and_echo___audio_effect_8cpp =
+[
+    [ "_DelayStageParameterData", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data" ],
+    [ "_EffectDescriptor_ECHO", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o" ],
+    [ "_defaultChorusPhase", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a50850f1c8399852aba4d02c4697fc610", null ],
+    [ "_maxStageCount", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a3239e8631666b9bee05a39e9e602c33d", null ],
+    [ "pagedParameterName", "_so_x_chorus_and_echo___audio_effect_8cpp.html#ace15357d96e5cd488d38773ecb7a803d", null ],
+    [ "_StageIndexToStageDataMap", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a0d2021e2599a180127a7e124910504c4", null ],
+    [ "STR", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c", null ],
+    [ "_DelayKind", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a331ee929bb0d820936ec4a204099aaa9", [
+      [ "chorus", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a331ee929bb0d820936ec4a204099aaa9a970ae9dcbe08d5b400eee5d177dea886", null ],
+      [ "tappedDelay", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a331ee929bb0d820936ec4a204099aaa9ae1370cb451b1e46ff996cec55aa8f2f1", null ],
+      [ "delaySequence", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a331ee929bb0d820936ec4a204099aaa9aa8ce5288a272f235b8a0ac3de1524881", null ]
+    ] ],
+    [ "_delayKindToString", "_so_x_chorus_and_echo___audio_effect_8cpp.html#abc51f439703811111e46cd6457f08e2b", null ],
+    [ "_stringToDelayKind", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a8b847cfd5d7351fd9239462b701b3086", null ],
+    [ "_updateParameterMap", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a6efea07274e8395a7629c07f94518447", null ],
+    [ "_updateRealParameterRange", "_so_x_chorus_and_echo___audio_effect_8cpp.html#afe91effd4bb38523b9837004f45dc31d", null ],
+    [ "_chorusEffectKind", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a08c1093ff5eb9c65c074ca0899da7070", null ],
+    [ "_delaySequenceEffectKind", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a624e7f564019da22a4f02704610d5cf8", null ],
+    [ "_delayStageParameterNameList", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a337915239aafb9e82fc96cbd38fde42c", null ],
+    [ "_depthResolution", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a90af6164656f4bc80eb6f8783000ea17", null ],
+    [ "_kindList", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a4c2d0ceecd5eafb7fdfc54d8eb20184e", null ],
+    [ "_minimumDepth", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a267a0fd3ac5695d3a20aea3239767b38", null ],
+    [ "_modulationKindValueList", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a4f88e6aae0fd886f92651ad5c6566bfd", null ],
+    [ "_tappedDelayEffectKind", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a5c3b6e6b0d6bc1e2d1c844f425c40ce5", null ],
+    [ "parameterName_decay", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a7341caa6fdd20d8201b0123c5cf82239", null ],
+    [ "parameterName_delay", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a0113d63b532552d45666c1b94c1e176f", null ],
+    [ "parameterName_depth", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a06b1af5856d20c4a14d4c7a28901c0a6", null ],
+    [ "parameterName_effectKind", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a0d455c378d42dca8e7b0c8f033620d88", null ],
+    [ "parameterName_frequency", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a92b590697346a8898f6f43c9fa36f481", null ],
+    [ "parameterName_inGain", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a98bf32881e5509b7b82c0a5e9fc61269", null ],
+    [ "parameterName_modulationKind", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a9ee279687d098b51cdfeada441c56ab7", null ],
+    [ "parameterName_outGain", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a3b0083111e9a21ceccbcf1a92739732b", null ],
+    [ "parameterName_stageCount", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a643bd9590b78013e99dbe9afe9f5ae2d", null ],
+    [ "parameterName_stageIndex", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a998a90322eef34a99e2a3168bc9a053a", null ],
+    [ "parameterName_timeOffset", "_so_x_chorus_and_echo___audio_effect_8cpp.html#aca78840c79d1b1f25d5388ca99d4a240", null ]
+];

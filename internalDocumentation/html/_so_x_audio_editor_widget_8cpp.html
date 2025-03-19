@@ -136,15 +136,57 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad048dcfb108390149c0495f103fccb01"><td class="memItemLeft" align="right" valign="top">static juce::Component *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#ad048dcfb108390149c0495f103fccb01">SoXPlugins::ViewAndController::_makeWidget</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;map, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> SoXEffectParameterKind &amp;kind, EventDispatcher *eventDispatcher)</td></tr>
-<tr class="memdesc:ad048dcfb108390149c0495f103fccb01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a JUCE widget from <code>map</code> for parameter named <code>parameterName</code> with <code>kind</code> defining either a slider or a combo box; <code>eventDispatcher</code> defines the event handler for the editor.  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#ad048dcfb108390149c0495f103fccb01">More...</a><br /></td></tr>
-<tr class="separator:ad048dcfb108390149c0495f103fccb01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a4f8183c43eaad90f3ac81b2ce27ab4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#a4a4f8183c43eaad90f3ac81b2ce27ab4">_updateWidgetRange</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> juce::Component &amp;widget, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;map, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName)</td></tr>
+<tr class="memdesc:a4a4f8183c43eaad90f3ac81b2ce27ab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates range of JUCE <code>widget</code> from <code>map</code> for parameter named <code>parameterName</code> referring to either a slider or a combo box.  <a href="_so_x_audio_editor_widget_8cpp.html#a4a4f8183c43eaad90f3ac81b2ce27ab4">More...</a><br /></td></tr>
+<tr class="separator:a4a4f8183c43eaad90f3ac81b2ce27ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04378a75d2dba13cc7498b27e4d32c97"><td class="memItemLeft" align="right" valign="top">static juce::Component *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#a04378a75d2dba13cc7498b27e4d32c97">_makeWidget</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;map, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html">EventDispatcher</a> *eventDispatcher)</td></tr>
+<tr class="memdesc:a04378a75d2dba13cc7498b27e4d32c97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a JUCE widget from <code>map</code> for parameter named <code>parameterName</code> defining either a slider or a combo box; <code>eventDispatcher</code> defines the event handler for the editor.  <a href="_so_x_audio_editor_widget_8cpp.html#a04378a75d2dba13cc7498b27e4d32c97">More...</a><br /></td></tr>
+<tr class="separator:a04378a75d2dba13cc7498b27e4d32c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a556c212b62c900a57fc40f2b6a5456b4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#a556c212b62c900a57fc40f2b6a5456b4">_setWidgetBounds</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> juce::Component *widget, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> &amp;parentWidth, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> &amp;parentHeight, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a> x, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a> y, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a> width, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a> height)</td></tr>
+<tr class="memdesc:a556c212b62c900a57fc40f2b6a5456b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets bounds of <code>widget</code> to percentages <code>x</code>, <code>y</code>, <code>width</code> and <code>height</code> of frame given by <code>parentWidth</code> and <code>parentHeight</code>.  <a href="_so_x_audio_editor_widget_8cpp.html#a556c212b62c900a57fc40f2b6a5456b4">More...</a><br /></td></tr>
+<tr class="separator:a556c212b62c900a57fc40f2b6a5456b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:af16c84e0d09f1a2c346eb1695c995b8f"><td class="memItemLeft" align="right" valign="top">static const juce::NotificationType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#af16c84e0d09f1a2c346eb1695c995b8f">SoXPlugins::ViewAndController::noNotification</a></td></tr>
-<tr class="memdesc:af16c84e0d09f1a2c346eb1695c995b8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the JUCE notification kind that describes that no notifications should be sent by some widget  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#af16c84e0d09f1a2c346eb1695c995b8f">More...</a><br /></td></tr>
-<tr class="separator:af16c84e0d09f1a2c346eb1695c995b8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34e2305063e29673f31951d35f71959c"><td class="memItemLeft" align="right" valign="top"><a id="a34e2305063e29673f31951d35f71959c"></a>
+static <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#a34e2305063e29673f31951d35f71959c">_currentPageNumber</a> = 1</td></tr>
+<tr class="memdesc:a34e2305063e29673f31951d35f71959c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the index of the active page <br /></td></tr>
+<tr class="separator:a34e2305063e29673f31951d35f71959c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf560458aa49ca5c47fcda13b44f83b0"><td class="memItemLeft" align="right" valign="top"><a id="abf560458aa49ca5c47fcda13b44f83b0"></a>
+static <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#abf560458aa49ca5c47fcda13b44f83b0">_leftMarginWidthPercentage</a> = 3.0</td></tr>
+<tr class="memdesc:abf560458aa49ca5c47fcda13b44f83b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">percentage of full editor width of left margin before label <br /></td></tr>
+<tr class="separator:abf560458aa49ca5c47fcda13b44f83b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfe90f5b099363756d2bbe3492275cc7"><td class="memItemLeft" align="right" valign="top"><a id="acfe90f5b099363756d2bbe3492275cc7"></a>
+static <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#acfe90f5b099363756d2bbe3492275cc7">_labelWidthPercentage</a> = 20.0</td></tr>
+<tr class="memdesc:acfe90f5b099363756d2bbe3492275cc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">percentage of full editor width of label width <br /></td></tr>
+<tr class="separator:acfe90f5b099363756d2bbe3492275cc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00803b75a64d71ed66ce6ab5385e2822"><td class="memItemLeft" align="right" valign="top"><a id="a00803b75a64d71ed66ce6ab5385e2822"></a>
+static <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#a00803b75a64d71ed66ce6ab5385e2822">_separationWidthPercentage</a> = 3.0</td></tr>
+<tr class="memdesc:a00803b75a64d71ed66ce6ab5385e2822"><td class="mdescLeft">&#160;</td><td class="mdescRight">percentage of full editor width of separation between label and widget or widget and value <br /></td></tr>
+<tr class="separator:a00803b75a64d71ed66ce6ab5385e2822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6b4fe38782d060aefc15ae7e66759fd"><td class="memItemLeft" align="right" valign="top"><a id="ab6b4fe38782d060aefc15ae7e66759fd"></a>
+static <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#ab6b4fe38782d060aefc15ae7e66759fd">_widgetWidthPercentage</a> = 50.0</td></tr>
+<tr class="memdesc:ab6b4fe38782d060aefc15ae7e66759fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">percentage of full editor width of widget width <br /></td></tr>
+<tr class="separator:ab6b4fe38782d060aefc15ae7e66759fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f5c18ce43ff4a980834379181b9ae42"><td class="memItemLeft" align="right" valign="top"><a id="a6f5c18ce43ff4a980834379181b9ae42"></a>
+static <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#a6f5c18ce43ff4a980834379181b9ae42">_valueFieldWidthPercentage</a> = 15.0</td></tr>
+<tr class="memdesc:a6f5c18ce43ff4a980834379181b9ae42"><td class="mdescLeft">&#160;</td><td class="mdescRight">percentage of full editor width of value field width <br /></td></tr>
+<tr class="separator:a6f5c18ce43ff4a980834379181b9ae42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbd1bfc520f13415226b3bfaad57a550"><td class="memItemLeft" align="right" valign="top"><a id="afbd1bfc520f13415226b3bfaad57a550"></a>
+static <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#afbd1bfc520f13415226b3bfaad57a550">_topMarginHeightPercentage</a> = 10.0</td></tr>
+<tr class="memdesc:afbd1bfc520f13415226b3bfaad57a550"><td class="mdescLeft">&#160;</td><td class="mdescRight">percentage of full editor height for top and bottom margin <br /></td></tr>
+<tr class="separator:afbd1bfc520f13415226b3bfaad57a550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c7915f846003715b36b8e170673e670"><td class="memItemLeft" align="right" valign="top"><a id="a0c7915f846003715b36b8e170673e670"></a>
+static <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#a0c7915f846003715b36b8e170673e670">_rowHeightPercentage</a> = 20.0</td></tr>
+<tr class="memdesc:a0c7915f846003715b36b8e170673e670"><td class="mdescLeft">&#160;</td><td class="mdescRight">percentage of full editor height of height of widget <br /></td></tr>
+<tr class="separator:a0c7915f846003715b36b8e170673e670"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a167636ab67adcfb3305430130b60ab9c"><td class="memItemLeft" align="right" valign="top"><a id="a167636ab67adcfb3305430130b60ab9c"></a>
+static <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#a167636ab67adcfb3305430130b60ab9c">_rowGapHeightPercentage</a> = 5.0</td></tr>
+<tr class="memdesc:a167636ab67adcfb3305430130b60ab9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">percentage of full editor height of gap between widgets <br /></td></tr>
+<tr class="separator:a167636ab67adcfb3305430130b60ab9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4686cd10dd0c805c56144ab34aff818f"><td class="memItemLeft" align="right" valign="top">static const juce::NotificationType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_editor_widget_8cpp.html#a4686cd10dd0c805c56144ab34aff818f">_noNotification</a></td></tr>
+<tr class="memdesc:a4686cd10dd0c805c56144ab34aff818f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the JUCE notification kind that describes that no notifications should be sent by some widget  <a href="_so_x_audio_editor_widget_8cpp.html#a4686cd10dd0c805c56144ab34aff818f">More...</a><br /></td></tr>
+<tr class="separator:a4686cd10dd0c805c56144ab34aff818f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXAudioEditorWidget</code> body implements an audio editor widget (a slider or a combo box) in a SoX audio editor for editing a single discrete value parameter. </p>
@@ -162,15 +204,228 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">                             (_pageNumber == _currentPageNumber \</div>
+<b>Value:</b><div class="fragment"><div class="line">                             (_pageNumber == <a class="code" href="_so_x_audio_editor_widget_8cpp.html#a34e2305063e29673f31951d35f71959c">_currentPageNumber</a> \</div>
 <div class="line">                             || _pageNumber == 0)</div>
 </div><!-- fragment -->
 <p>tells whether current widget is active because it is on the displayed page or on (always displayed) page 0 </p>
 
 </div>
 </div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a04378a75d2dba13cc7498b27e4d32c97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04378a75d2dba13cc7498b27e4d32c97">&#9670;&nbsp;</a></span>_makeWidget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static juce::Component* _makeWidget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;&#160;</td>
+          <td class="paramname"><em>map</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>parameterName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html">EventDispatcher</a> *&#160;</td>
+          <td class="paramname"><em>eventDispatcher</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs a JUCE widget from <code>map</code> for parameter named <code>parameterName</code> defining either a slider or a combo box; <code>eventDispatcher</code> defines the event handler for the editor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">map</td><td>audio parameter map for this editor </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">parameterName</td><td>the parameter associated with new widget </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">eventDispatcher</td><td>the associated event dispatcher for this editor </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a556c212b62c900a57fc40f2b6a5456b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a556c212b62c900a57fc40f2b6a5456b4">&#9670;&nbsp;</a></span>_setWidgetBounds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void _setWidgetBounds </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> juce::Component *&#160;</td>
+          <td class="paramname"><em>widget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> &amp;&#160;</td>
+          <td class="paramname"><em>parentWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> &amp;&#160;</td>
+          <td class="paramname"><em>parentHeight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a>&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_percentage.html">Percentage</a>&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets bounds of <code>widget</code> to percentages <code>x</code>, <code>y</code>, <code>width</code> and <code>height</code> of frame given by <code>parentWidth</code> and <code>parentHeight</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">widget</td><td>juce widget to be adapted </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">parentWidth</td><td>enclosing widget width </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">parentHeight</td><td>enclosing widget height </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>left margin of widget area as percentage of parent widget area </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>top margin of widget area as percentage of parent widget area </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">width</td><td>width of widget area as percentage of parent widget area </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">height</td><td>height of widget area as percentage of parent widget area </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4a4f8183c43eaad90f3ac81b2ce27ab4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a4f8183c43eaad90f3ac81b2ce27ab4">&#9670;&nbsp;</a></span>_updateWidgetRange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void _updateWidgetRange </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> juce::Component &amp;&#160;</td>
+          <td class="paramname"><em>widget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;&#160;</td>
+          <td class="paramname"><em>map</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>parameterName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Updates range of JUCE <code>widget</code> from <code>map</code> for parameter named <code>parameterName</code> referring to either a slider or a combo box. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">widget</td><td>juce widget to be adapted </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">map</td><td>audio parameter map for this editor </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">parameterName</td><td>the parameter associated with new widget </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a4686cd10dd0c805c56144ab34aff818f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4686cd10dd0c805c56144ab34aff818f">&#9670;&nbsp;</a></span>_noNotification</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const juce::NotificationType _noNotification</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    juce::NotificationType::dontSendNotification</div>
+</div><!-- fragment -->
+<p>the JUCE notification kind that describes that no notifications should be sent by some widget </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="a_so_x_audio_editor_widget_8cpp_html_a34e2305063e29673f31951d35f71959c"><div class="ttname"><a href="_so_x_audio_editor_widget_8cpp.html#a34e2305063e29673f31951d35f71959c">_currentPageNumber</a></div><div class="ttdeci">static Natural _currentPageNumber</div><div class="ttdoc">the index of the active page</div><div class="ttdef"><b>Definition:</b> SoXAudioEditorWidget.cpp:34</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

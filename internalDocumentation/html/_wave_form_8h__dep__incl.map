@@ -1,5 +1,6 @@
 <map id="WaveForm.h" name="WaveForm.h">
-<area shape="rect" id="node1" title="The WaveForm specification defines common services for (LFO) wave forms." alt="" coords="100,5,207,33"/>
+<area shape="rect" id="node1" title="The WaveForm specification defines common services for (LFO) wave forms." alt="" coords="232,5,339,33"/>
 <area shape="rect" id="node2" href="$_wave_form_8cpp.html" title="The WaveForm body implements common services for (LFO) wave forms." alt="" coords="5,89,128,117"/>
-<area shape="rect" id="node3" href="$_so_x_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXPhaserAndTremolo_AudioEffect body implements the SoX phaser and tremolo modulation effects tha..." alt="" coords="153,81,327,125"/>
+<area shape="rect" id="node3" href="$_so_x_chorus_and_echo___audio_effect_8cpp.html" title="The SoXChorusAndEcho_AudioEffect body implements the SoX chorus, echo and echos audio effects; the di..." alt="" coords="152,89,419,117"/>
+<area shape="rect" id="node4" href="$_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXFlangerPhaserAndTremolo_AudioEffect body implements the SoX flanger, phaser and tremolo modula..." alt="" coords="443,81,667,125"/>
 </map>

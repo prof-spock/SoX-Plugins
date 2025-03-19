@@ -1,0 +1,19 @@
+/**
+ * The package <C>SoXFlangerPhaserAndTremolo</C> provides classes for
+ * the SoX audio modulation effects <B>flanger</B>, <B>phaser</B> and
+ * <B>tremolo</B> that have similar parameters and hence are combined
+ * into a single plugin.
+ *
+ * The original algorithms can be found in the <A
+ * HREF="https://sourceforge.net/p/sox/code">SoX repository</A>
+ * in the files
+ *   - "flanger.c" by Rob Sewell with the code for the flanger effect,
+ *   - "phaser.c" by Juergen Mueller and Sundry Contributors with the
+ *     code for the phaser effect,
+ *   - "synth.c" by Carsten Borchardt and Rob Sowell with the
+ *     code for the synth base effect, and
+ *   - "tremolo.c" by Rob Sewell with the code for the (wrapper) tremolo
+ *     effect.
+ */
+namespace SoXPlugins::Effects::SoXFlangerPhaserAndTremolo {
+}

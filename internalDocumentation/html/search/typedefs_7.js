@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['waveformiteratorstate_1772',['WaveFormIteratorState',['../namespace_audio.html#a516b176c934c0ff0c413e5b62260ee1f',1,'Audio']]]
+  ['timestamp_1933',['Timestamp',['../_logging_support_8cpp.html#a9ec9a8615bb4c91e73b5190b70ac2c87',1,'LoggingSupport.cpp']]]
 ];

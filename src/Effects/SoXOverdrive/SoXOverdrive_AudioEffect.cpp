@@ -20,12 +20,10 @@
 
 #include <cmath>
 #include "Logging.h"
-#include "AudioSampleRingBufferVector.h"
 #include "SoXAudioHelper.h"
 
 /*--------------------*/
 
-using Audio::AudioSampleRingBufferVector;
 using SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect;
 using SoXPlugins::Helpers::SoXAudioHelper;
 
@@ -34,16 +32,33 @@ using STR = BaseModules::StringUtil;
 
 /*====================*/
 
+/** the parameter name of the gain parameter */
+static const String parameterName_gain   = "Gain [dB]";
+
+/** the parameter name of the colour parameter */
+static const String parameterName_colour = "Colour";
+
+/** the factor from colour parameter to DC offset in the effect */
+static const Real colourFactor = 0.005;
+
+/*====================*/
+
 namespace SoXPlugins::Effects::SoXOverdrive {
 
     /**
-     * An <C>_EffectDescriptor_OVRD</C> object is the internal
+     * An <C>_EffectDescriptor_ODRV</C> object is the internal
      * implementation of an <B>overdrive</B> effect descriptor type
      * where all sample input is routed to and sample output is routed
      * from with two parameters gain factor and colour.
      */
-    struct _EffectDescriptor_OVRD {
+    struct _EffectDescriptor_ODRV {
 
+        /** the associated overdrive effect */
+        SoXOverdrive_AudioEffect& effect;
+
+        /** the number of channels in this effect */
+        Natural channelCount;
+        
         /** the gain of this effect (as a factor) */
         Real gain;
 
@@ -51,10 +66,51 @@ namespace SoXPlugins::Effects::SoXOverdrive {
           * a DC offset applied to the signal*/
         Real colour;
 
-        /** the list of samples ring buffers for input and output */
-        AudioSampleRingBufferVector sampleRingBufferVector;
+        /** the list of incoming samples for all channels (one for
+         * each) */
+        AudioSampleList inputSampleList;
+
+        /** the list of outgoing samples for all channels (one for
+         * each) */
+        AudioSampleList outputSampleList;
+
+        /** the list of the previously incoming samples for all
+         * channels (one for each) */
+        AudioSampleList previousInputSampleList;
+
+        /** the list of the previously outgoing samples for all
+         * channels (one for each) */
+        AudioSampleList previousOutputSampleList;
 
         /*--------------------*/
+        /*--------------------*/
+
+        /**
+         * Sets up a new effect descriptor for <C>effect</C>
+         *
+         * @param[inout] effect  associated overdrive effect
+         */
+        _EffectDescriptor_ODRV (INOUT SoXOverdrive_AudioEffect& effect);
+
+        /*--------------------*/
+
+        /**
+         * Applies the overdrive effect on multiple channel data from
+         * <C>inputSampleList</C> and returns effect result in
+         * <C>outputSampleList</C>.
+         */
+        void apply ();
+
+        /*--------------------*/
+
+        /**
+         * Recalculates derived parameters in effect descriptor with a
+         * given <C>newChannelCount</C>.
+         *
+         * @param[in] newChannelCount  the new channel count
+         */
+        void updateSettings (IN Natural newChannelCount);
+
         /*--------------------*/
 
         /**
@@ -62,55 +118,95 @@ namespace SoXPlugins::Effects::SoXOverdrive {
          *
          * @return  string representation
          */
-        String toString () const
-        {
-            String st =
-                STR::expand("gain = %1dB, colour = %2,"
-                            " sampleRingBufferVector = %3",
-                            TOSTRING(gain), TOSTRING(colour),
-                            sampleRingBufferVector.toString());
- 
-            st = STR::expand("_EffectDescriptor_OVRD(%1)", st);
-            return st;
-        }
+        String toString () const;
 
     };
 
-    /*====================*/
+}
 
-    /** the parameter name of the gain parameter */
-    static const String parameterName_gain   = "Gain [dB]";
+/*============================================================*/
 
-    /** the parameter name of the colour parameter */
-    static const String parameterName_colour = "Colour";
+using SoXPlugins::Effects::SoXOverdrive::_EffectDescriptor_ODRV;
 
-    /** the factor from colour parameter to DC offset in the effect */
-    static const Real colourFactor = 0.005;
+/*------------------------*/
+/* _EffectDescriptor_ODRV */
+/*------------------------*/
 
-    /*--------------------*/
-    /* internal routines  */
-    /*--------------------*/
+_EffectDescriptor_ODRV::
+_EffectDescriptor_ODRV (INOUT SoXOverdrive_AudioEffect& effect)
+    : effect{effect},
+      channelCount{2},
+      gain{SoXAudioHelper::dBToLinear(0.0)},
+      colour{Real{20.0} * colourFactor},
+      inputSampleList{channelCount},
+      outputSampleList{channelCount},
+      previousInputSampleList{channelCount},
+      previousOutputSampleList{channelCount}
+{
+    Logging_trace(">>");
+    Logging_trace1("<<: %1", toString());
+}
 
-    /**
-     * Sets up a new effect descriptor and returns it.
-     *
-     * @return new overdrive effect descriptor
-     */
-    static _EffectDescriptor_OVRD* _createEffectDescriptor ()
-    {
-        Logging_trace(">>");
+/*--------------------*/
 
-        _EffectDescriptor_OVRD* result =
-            new _EffectDescriptor_OVRD{
-                SoXAudioHelper::dBToLinear(0.0),  /* gain */
-                Real{20.0} * colourFactor,        /* colour */
-                {2, true, 1}                      /* sampleRingBufferVector */
-            };
+void _EffectDescriptor_ODRV::apply ()
+{
+    Logging_trace(">>");
 
-        Logging_trace1("<<: %1", result->toString());
-        return result;
+    for (Natural channel = 0;  channel < channelCount;  channel++) {
+        const AudioSample inputSample = inputSampleList[channel];
+        const AudioSample previousInputSample =
+            previousInputSampleList[channel];
+        const AudioSample previousOutputSample =
+            previousOutputSampleList[channel];
+        AudioSample newValue;
+
+        newValue = (AudioSample) (inputSample * gain + colour);
+        newValue = newValue.forceToInterval(-1.0, 1.0);
+        newValue = (newValue - (newValue * newValue * newValue) / Real{3.0});
+        const AudioSample outputSample =
+            (newValue - previousInputSample
+             + Real{0.995} * previousOutputSample);
+        outputSampleList[channel] = (inputSample / Real::two
+                                     + outputSample * Real{0.75});
+        previousInputSampleList[channel]  = newValue;
+        previousOutputSampleList[channel] = outputSample;
     }
 
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+void _EffectDescriptor_ODRV::updateSettings (IN Natural newChannelCount)
+{
+    Logging_trace1(">>: channelCount = %s", TOSTRING(newChannelCount));
+
+    effect.setParameterValidity(false);
+    channelCount = newChannelCount;
+    inputSampleList.setLength(channelCount);
+    outputSampleList.setLength(channelCount);
+    previousInputSampleList.setLength(channelCount);
+    previousOutputSampleList.setLength(channelCount);
+    effect.setParameterValidity(true);
+
+    Logging_trace("<<");
+}
+
+/*---------------------*/
+
+String _EffectDescriptor_ODRV::toString () const
+{
+    String st =
+        STR::expand("gain = %1dB, colour = %2,"
+                    " previousInputSampleList = %3,"
+                    " previousOutputSampleList = %4",
+                    TOSTRING(gain), TOSTRING(colour),
+                    previousInputSampleList.toString(),
+                    previousOutputSampleList.toString());
+
+    st = STR::expand("_EffectDescriptor_ODRV(%1)", st);
+    return st;
 }
 
 /*============================================================*/
@@ -124,7 +220,7 @@ SoXOverdrive_AudioEffect::SoXOverdrive_AudioEffect ()
     Logging_trace(">>");
 
     /* initialize descriptor */
-    _effectDescriptor = _createEffectDescriptor();
+    _effectDescriptor = new _EffectDescriptor_ODRV(*this);
 
     /* initialize parameters */
     _effectParameterMap.setKindAndValueInt(parameterName_gain,
@@ -139,7 +235,7 @@ SoXOverdrive_AudioEffect::SoXOverdrive_AudioEffect ()
 SoXOverdrive_AudioEffect::~SoXOverdrive_AudioEffect ()
 {
     Logging_trace(">>");
-    delete (_EffectDescriptor_OVRD*) _effectDescriptor;
+    delete (_EffectDescriptor_ODRV*) _effectDescriptor;
     Logging_trace("<<");
 }
 
@@ -160,8 +256,8 @@ String SoXOverdrive_AudioEffect::toString () const
 
 String SoXOverdrive_AudioEffect::_effectDescriptorToString () const
 {
-    _EffectDescriptor_OVRD& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_OVRD>(_effectDescriptor);
+    const _EffectDescriptor_ODRV& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_ODRV>(_effectDescriptor);
     return effectDescriptor.toString();
 }
 
@@ -172,6 +268,20 @@ String SoXOverdrive_AudioEffect::_effectDescriptorToString () const
 String SoXOverdrive_AudioEffect::name() const
 {
     return "SoX Overdrive";
+}
+
+/*--------------------*/
+
+Real SoXOverdrive_AudioEffect::tailLength () const
+{
+    Logging_trace(">>");
+
+    /* use a length that ensures a decay to -100dB for a unity signal
+       (with an attenuation factor of 0.995 from above) */
+    Real result = Real{10000.0} / _sampleRate;
+
+    Logging_trace1("<<: %1", TOSTRING(result));
+    return result;
 }
 
 /*--------------------*/
@@ -189,8 +299,8 @@ SoXOverdrive_AudioEffect::_setValueInternal
                    parameterName, value,
                    TOSTRING(recalculationIsForced));
 
-    _EffectDescriptor_OVRD& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_OVRD>(_effectDescriptor);
+    _EffectDescriptor_ODRV& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_ODRV>(_effectDescriptor);
     SoXParameterValueChangeKind result =
         SoXParameterValueChangeKind::parameterChange;
 
@@ -224,44 +334,35 @@ SoXOverdrive_AudioEffect::processBlock (IN Real timePosition,
 {
     Logging_trace1(">>: %1", TOSTRING(timePosition));
 
-    SoXAudioEffect::processBlock(timePosition, buffer);
-    _EffectDescriptor_OVRD& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_OVRD>(_effectDescriptor);
+    if (_parametersAreValid) {
+        SoXAudioEffect::processBlock(timePosition, buffer);
 
-    const Natural sampleCount = buffer[0].size();
-    const Real gain   = effectDescriptor.gain;
-    const Real colour = effectDescriptor.colour;
-    AudioSampleRingBufferVector& sampleRingBufferVector =
-        effectDescriptor.sampleRingBufferVector;
+        _EffectDescriptor_ODRV& effectDescriptor =
+            TOREFERENCE<_EffectDescriptor_ODRV>(_effectDescriptor);
 
-    for (Natural channel = 0;  channel < _channelCount;
-         channel++) {
-        AudioSampleRingBuffer& inputSampleRingBuffer =
-            sampleRingBufferVector.at(channel, 0);
-        AudioSampleRingBuffer& outputSampleRingBuffer =
-            sampleRingBufferVector.at(channel, 1);
-        const AudioSampleList& inputList  = buffer[channel];
-        AudioSampleList& outputList = buffer[channel];
+        if (_channelCount != effectDescriptor.channelCount) {
+            /* channel count has changed => update descriptor */
+            effectDescriptor.updateSettings(_channelCount);
+        }
+
+        const Natural sampleCount = buffer[0].size();
+        AudioSampleList& inputSampleList  = effectDescriptor.inputSampleList;
+        AudioSampleList& outputSampleList = effectDescriptor.outputSampleList;
 
         for (Natural i = 0;  i < sampleCount;  i++) {
-            const AudioSample inputSample = inputList[i];
-            const AudioSample previousInputSample =
-                inputSampleRingBuffer.first();
-            const AudioSample previousOutputSample =
-                outputSampleRingBuffer.first();
-            AudioSample newValue;
+            /* read input sample list at position i for all channels */
+            for (Natural channel = 0;  channel < _channelCount;  channel++) {
+                const AudioSampleList& inputList = buffer[channel];
+                inputSampleList[channel] = inputList[i];
+            }
+            
+            effectDescriptor.apply();
 
-            newValue = (AudioSample) (inputSample * gain + colour);
-            newValue = newValue.forceToInterval(-1.0, 1.0);
-            newValue = (newValue - (newValue * newValue * newValue)
-                        / Real{3.0});
-            const AudioSample outputSample =
-                (newValue - previousInputSample
-                 + Real{0.995}  * previousOutputSample);
-            outputList[i] = (inputSample / Real::two
-                             + outputSample * Real{0.75});
-            inputSampleRingBuffer.setFirst(newValue);
-            outputSampleRingBuffer.setFirst(outputSample);
+            /* write output sample list at position i onto all channels */
+            for (Natural channel = 0;  channel < _channelCount;  channel++) {
+                AudioSampleList& outputList = buffer[channel];
+                outputList[i] = outputSampleList[channel];
+            }
         }
     }
 

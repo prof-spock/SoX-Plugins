@@ -84,7 +84,8 @@ $(document).ready(function(){initNavTree('_so_x_audio_effect_8h.html',''); initR
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
 <div class="title">SoXAudioEffect.h File Reference</div>  </div>
 </div><!--header-->
@@ -125,8 +126,15 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespace_so_x_plugins"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins.html" title="The package SoXPlugins provides all types for the DAW plugins emulating the command-line audio proces...">SoXPlugins</a></code> provides all types for the DAW plugins emulating the command-line audio processor SoX; the connection to the plugin host is abstracted via the JUCE framework, the effect implementation itself is completedly self-contained. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_so_x_plugins_1_1_effects"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects.html">SoXPlugins::Effects</a></td></tr>
-<tr class="memdesc:namespace_so_x_plugins_1_1_effects"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects.html" title="The package Effects provides types for the different audio effects themselves; the currently supporte...">Effects</a></code> provides types for the different audio effects themselves; the currently supported SoX effects are <b>compander</b>, <b>filter</b>, <b>gain</b>, <b>overdrive</b>, <b>phaser/tremolo</b> and <b>reverb</b>. <br /></td></tr>
+<tr class="memdesc:namespace_so_x_plugins_1_1_effects"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects.html" title="The package Effects provides types for the different audio effects themselves; the currently supporte...">Effects</a></code> provides types for the different audio effects themselves; the currently supported SoX effects are <b>compander</b>, <b>chorus/echo/echos</b>, <b>filter</b>, <b>gain</b>, <b>overdrive</b>, <b>flanger/phaser/tremolo</b> and <b>reverb</b>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a37bb2b70b4a8f47ea8cd2f5e5e571970"><td class="memItemLeft" align="right" valign="top"><a id="a37bb2b70b4a8f47ea8cd2f5e5e571970"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects.html#a37bb2b70b4a8f47ea8cd2f5e5e571970">SoXPlugins::Effects::ValueChangeNotification</a>) (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> Object, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> Boolean)</td></tr>
+<tr class="memdesc:a37bb2b70b4a8f47ea8cd2f5e5e571970"><td class="mdescLeft">&#160;</td><td class="mdescRight">a callback function type for receiving a value change notification <br /></td></tr>
+<tr class="separator:a37bb2b70b4a8f47ea8cd2f5e5e571970"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXAudioEffect</code> specification defines the root class for all SoX audio effects. </p>

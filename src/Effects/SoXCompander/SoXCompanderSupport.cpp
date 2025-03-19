@@ -717,6 +717,7 @@ namespace SoXPlugins::Effects::SoXCompander {
          * <C>topFrequency</C> defines the crossover frequency for
          * this band.
          *
+         * @param[in] sampleRate    the sample rate for this band
          * @param[in] attack        the attack time for this band
          * @param[in] release       the release time for this band
          * @param[in] dBKnee        the knee in decibels for this band
@@ -724,17 +725,16 @@ namespace SoXPlugins::Effects::SoXCompander {
          *                          for this band
          * @param[in] ratio         the compression ration for this band
          * @param[in] dBGain        the out gain in decibels for this band
-         * @param[in] sampleRate    the sample rate for this band
          * @param[in] topFrequency  the top crossover frequency for this
          *                          band
          */
-        void adapt (IN Real attack,
+        void adapt (IN Real sampleRate,
+                    IN Real attack,
                     IN Real release,
                     IN Real dBKnee,
                     IN Real dBThreshold,
                     IN Real ratio,
                     IN Real dBGain,
-                    IN Real sampleRate,
                     IN Real topFrequency);
 
         /*--------------------*/
@@ -1119,26 +1119,28 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     void _TransferFunction::adapt (IN Real dBKnee,
-                                   IN Real cDBThreshold,
-                                   IN Real cRatio,
+                                   IN Real dBThreshold,
+                                   IN Real ratio,
                                    IN Real dBGain) {
         Logging_trace4(">>: dBKnee = %1, dBThreshold = %2,"
                        " ratio = %3, dBGain = %4",
-                       TOSTRING(dBKnee), TOSTRING(cDBThreshold),
-                       TOSTRING(cRatio), TOSTRING(dBGain));
+                       TOSTRING(dBKnee), TOSTRING(dBThreshold),
+                       TOSTRING(ratio), TOSTRING(dBGain));
 
-        const Real ratio = Real::maximum(1.0, cRatio);
-        const Real dBThreshold = Real::minimum(0.0, cDBThreshold);
+        const Real effectiveRatio = Real::maximum(1.0, ratio);
+        const Real threshold = Real::minimum(0.0, dBThreshold);
         _dBKnee = Real::maximum(0.0, dBKnee);
         _dBGain = dBGain;
 
         /* set data for the straight segments */
         _Point2D& segmentStart = _segmentList[0].startPoint;
-        segmentStart = _Point2D(dBThreshold - _leftDbOffset, 0.0);
+        segmentStart = _Point2D(threshold - _leftDbOffset, 0.0);
 
         _TfSegment& segment = _segmentList[2];
-        segment.startPoint = _Point2D(dBThreshold, 0.0);
-        segment.endPoint   = _Point2D(0.0, (ratio - 1.0) * dBThreshold / ratio);
+        segment.startPoint = _Point2D(threshold, 0.0);
+        segment.endPoint   =
+            _Point2D(0.0,
+                     (effectiveRatio - 1.0) * threshold / effectiveRatio);
 
         _updateSegmentList();
 
@@ -1151,15 +1153,15 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     /*--------------------*/
 
-    Real _TransferFunction::apply (IN Real cValue) const {
+    Real _TransferFunction::apply (IN Real value) const {
         Real result;
 
-        if (cValue <= _minimumLinearInValue) {
+        if (value <= _minimumLinearInValue) {
             result = _minimumLinearOutValue;
         } else {
-            const Real value = Real::minimum(cValue, 1.0);
-            Real lnValue = value.log();
-            result = value;
+            const Real effectiveValue = Real::minimum(value, 1.0);
+            Real lnValue = effectiveValue.log();
+            result = effectiveValue;
 
             for (const _TfSegment& segment : _segmentList) {
                 if (segment.domainContains(lnValue)) {
@@ -1621,7 +1623,7 @@ namespace SoXPlugins::Effects::SoXCompander {
     {
         Logging_trace(">>");
 
-        for (_CompanderSampleBufferElement& bufferElement : _buffer) {
+        for (const _CompanderSampleBufferElement& bufferElement : _buffer) {
             const AudioSampleRingBuffer* inputBuffer =
                 bufferElement[_kindInputStream];
             AudioSampleRingBuffer* outputBufferLow =
@@ -1684,7 +1686,7 @@ SoXMultibandCompander::~SoXMultibandCompander () {
 
 String SoXMultibandCompander::toString () const {
     const _MCompanderBandList* companderBandList =
-        (_MCompanderBandList*) _companderBandList;
+        static_cast<_MCompanderBandList*>(_companderBandList);
     String st =
         STR::expand("SoXMultibandCompander("
                     "_allocatedBandCount = %1, _effectiveBandCount = %2,"
@@ -1719,9 +1721,8 @@ SoXMultibandCompander::setCompanderBandData (IN Natural bandIndex,
                    TOSTRING(topFrequency));
 
     _MCompanderBandList* companderBandList =
-        (_MCompanderBandList*) _companderBandList;
-    _MCompanderBand& companderBand =
-        companderBandList->at(bandIndex);
+        static_cast<_MCompanderBandList*>(_companderBandList);
+    _MCompanderBand& companderBand = companderBandList->at(bandIndex);
     companderBand.adapt(sampleRate,
                         attack, release, dBKnee, dBThreshold,
                         ratio, dBGain, topFrequency);
@@ -1742,7 +1743,7 @@ void SoXMultibandCompander::resize (IN Natural bandCount,
 
     /* setup all compander bands */
     _MCompanderBandList* companderBandList =
-        (_MCompanderBandList*) _companderBandList;
+        static_cast<_MCompanderBandList*>(_companderBandList);
     companderBandList->setLength(_allocatedBandCount);
 
     for (_MCompanderBand& companderBand : *companderBandList) {
@@ -1820,7 +1821,7 @@ SoXMultibandCompander::apply (IN AudioSampleList& inputSampleList,
     }
 
     _MCompanderBandList* companderBandList =
-        (_MCompanderBandList*) _companderBandList;
+        static_cast<_MCompanderBandList*>(_companderBandList);
 
     /* calculate crossover filtering from input buffers into
        low and high outputs */

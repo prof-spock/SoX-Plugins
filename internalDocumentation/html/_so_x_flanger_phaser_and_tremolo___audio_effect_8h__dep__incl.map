@@ -1,0 +1,5 @@
+<map id="SoXFlangerPhaserAndTremolo_AudioEffect.h" name="SoXFlangerPhaserAndTremolo_AudioEffect.h">
+<area shape="rect" id="node1" title="The SoXFlangerPhaserAndTremolo_AudioEffect specification defines the SoX flanger, phaser and tremolo ..." alt="" coords="129,5,353,49"/>
+<area shape="rect" id="node2" href="$_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXFlangerPhaserAndTremolo_AudioEffect body implements the SoX flanger, phaser and tremolo modula..." alt="" coords="5,97,229,141"/>
+<area shape="rect" id="node3" href="$_so_x_flanger_phaser_and_tremolo___audio_processor_8cpp.html" title="The SoXFlangerPhaserAndTremolo_AudioProcessor module provides boilerplate code for a plugin for the S..." alt="" coords="253,97,477,141"/>
+</map>

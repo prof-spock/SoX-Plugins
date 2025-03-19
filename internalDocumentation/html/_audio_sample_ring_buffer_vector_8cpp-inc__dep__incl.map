@@ -1,8 +1,8 @@
 <map id="AudioSampleRingBufferVector.cpp&#45;inc" name="AudioSampleRingBufferVector.cpp&#45;inc">
-<area shape="rect" id="node1" title="The AudioSampleRingBufferVector body implements a two&#45;dimensional list of ring buffers for audio samp..." alt="" coords="351,5,621,33"/>
-<area shape="rect" id="node2" href="$_audio_sample_ring_buffer_vector_8h.html" title="The AudioSampleRingBufferVector specification defines a two&#45;dimensional list of ring buffers for audi..." alt="" coords="371,81,601,109"/>
+<area shape="rect" id="node1" title="The AudioSampleRingBufferVector body implements a two&#45;dimensional list of ring buffers for audio samp..." alt="" coords="401,5,672,33"/>
+<area shape="rect" id="node2" href="$_audio_sample_ring_buffer_vector_8h.html" title="The AudioSampleRingBufferVector specification defines a two&#45;dimensional list of ring buffers for audi..." alt="" coords="421,81,652,109"/>
 <area shape="rect" id="node3" href="$_audio_sample_ring_buffer_vector_8cpp.html" title="The AudioSampleRingBufferVector body implements a two&#45;dimensional list of ring buffers for audio samp..." alt="" coords="5,165,252,193"/>
-<area shape="rect" id="node4" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="276,165,467,193"/>
-<area shape="rect" id="node5" href="$_so_x_overdrive___audio_effect_8cpp.html" title="The SoXOverdrive_AudioEffect body implements the SoX overdrive plugin distorting an input signal with..." alt="" coords="491,165,713,193"/>
-<area shape="rect" id="node6" href="$_so_x_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXPhaserAndTremolo_AudioEffect body implements the SoX phaser and tremolo modulation effects tha..." alt="" coords="737,157,912,201"/>
+<area shape="rect" id="node4" href="$_so_x_chorus_and_echo___audio_effect_8cpp.html" title="The SoXChorusAndEcho_AudioEffect body implements the SoX chorus, echo and echos audio effects; the di..." alt="" coords="277,165,543,193"/>
+<area shape="rect" id="node5" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="568,165,759,193"/>
+<area shape="rect" id="node6" href="$_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXFlangerPhaserAndTremolo_AudioEffect body implements the SoX flanger, phaser and tremolo modula..." alt="" coords="783,157,1007,201"/>
 </map>

@@ -1,0 +1,17 @@
+/**
+ * The package <C>SoXChorusAndEcho</C> provides classes for the SoX
+ * <B>chorus</B>, <B>echo</B> and <B>echos</B> audio effects.
+ *
+ * The original algorithms can be found in the <A
+ * HREF="https://sourceforge.net/p/sox/code">SoX repository</A>
+ * and the files
+ *
+ *   - "chorus.c" by Juergen Mueller And Sundry Contributors for the
+ *     chorus effect, and
+ *   - "echo.c" by Juergen Mueller And Sundry Contributors for the echo
+ *     effect, and
+ *   - "echos.c" by Juergen Mueller And Sundry Contributors for the echos
+ *     effect.
+ */
+namespace SoXPlugins::Effects::SoXChorusAndEcho {
+}

@@ -25,14 +25,16 @@ using SoXPlugins::Effects::SoXAudioEffect;
 /*--------------------*/
 
 SoXAudioEffect::SoXAudioEffect ()
-     : _sampleRate{100.0},
+     : _valueChangeHandler{NULL},
+       _notificationProc{NULL},
+       _sampleRate{100.0},
        _channelCount{0},
        _effectParameterMap{},
-       _effectDescriptor{},
        _currentTimePosition{Real::infinity},
        _expectedNextTimePosition{Real::infinity},
        _timePositionHasMoved{true},
-       _parametersAreValid{false}
+       _parametersAreValid{false},
+       _effectDescriptor{}
 {
     Logging_trace(">>");
     Logging_trace("<<");
@@ -96,6 +98,13 @@ String SoXAudioEffect::name () const
 }
 
 /*--------------------*/
+
+Real SoXAudioEffect::tailLength () const
+{
+    return 0.0;
+}
+
+/*--------------------*/
 /* parameter map      */
 /*--------------------*/
 
@@ -117,7 +126,7 @@ SoXAudioEffect::setValue (IN String& parameterName,
                    TOSTRING(recalculationIsForced));
 
     SoXParameterValueChangeKind result =
-        SoXParameterValueChangeKind::parameterChange;
+        SoXParameterValueChangeKind::noChange;
 
     if (!_effectParameterMap.valueIsDifferent(parameterName, value)) {
         /* break cycles: if value is already known, ignore this
@@ -133,6 +142,29 @@ SoXAudioEffect::setValue (IN String& parameterName,
 
     Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));
     return result;
+}
+
+/*--------------------*/
+
+void SoXAudioEffect::setValueViaParent (IN String& parameterName,
+                                        IN String& value,
+                                        IN Boolean recalculationIsForced)
+{
+    Logging_trace3(">>: parameterName = %1, value = %2,"
+                   " recalcIsForced = %3",
+                   parameterName, value,
+                   TOSTRING(recalculationIsForced));
+
+    if (_valueChangeHandler == NULL || _notificationProc == NULL) {
+        /* set value directly in effect */
+        setValue(parameterName, value, recalculationIsForced);
+    } else {
+        /* use indirection via enclosing object */
+        (*_notificationProc)(_valueChangeHandler,
+                             parameterName, value, recalculationIsForced);
+    }
+
+    Logging_trace("<<");
 }
 
 /*--------------------*/
@@ -154,6 +186,22 @@ void SoXAudioEffect::setParameterValidity (IN Boolean isValid)
     Logging_trace("<<");
 }
 
+/*----------------------*/
+/* data change listener */
+/*----------------------*/
+
+void SoXAudioEffect::
+setValueChangeHandler (Object valueChangeHandler,
+                       ValueChangeNotification notificationProc)
+{
+    Logging_trace(">>");
+
+    _valueChangeHandler = valueChangeHandler;
+    _notificationProc   = notificationProc;
+
+    Logging_trace("<<");
+}
+
 /*--------------------*/
 /* event handling     */
 /*--------------------*/
@@ -162,7 +210,7 @@ void SoXAudioEffect::prepareToPlay (IN Real sampleRate)
 {
     Logging_trace1(">>: sampleRate = %1", TOSTRING(sampleRate));
     _expectedNextTimePosition = Real::infinity;
-    _sampleRate           = sampleRate;
+    _sampleRate               = sampleRate;
     Logging_trace("<<");
 }
 

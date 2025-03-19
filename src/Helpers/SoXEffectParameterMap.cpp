@@ -1,7 +1,7 @@
 /**
  * @file
  * The <C>SoXEffectParameterMap</C> body implements a map of string
- * keys and associated values of <C>SoXEffectParameterKind</C>; those
+ * keys to associated values of <C>SoXEffectParameterKind</C>; those
  * values can be set and queried; this provides an interpretative
  * coupling between audio processors and audio editors.
  *
@@ -37,6 +37,8 @@ static const String rangeListSeparator = "¦";
 
 const String SoXEffectParameterMap::unknownValue = "???";
 const String SoXEffectParameterMap::widgetPageSeparator = "#";
+const Integer SoXEffectParameterMap::selectorPage    = -1;
+const Integer SoXEffectParameterMap::pageCounterPage = -2;
 
 /*--------------------*/
 /*--------------------*/
@@ -68,7 +70,7 @@ void _adaptRealValueToPrecision (INOUT String& value,
                               (Natural) fractionalDigitCount);
     }
     
-    Logging_trace1("<<: value = %1", value)
+    Logging_trace1("<<: value = %1", value);
 }
 
 /*--------------------*/
@@ -112,7 +114,7 @@ void _addToParameterList (INOUT StringList& parameterNameList,
  * @param[out} nominalPageIndex        the effective page index for
  *                                     this parameter
  */
-static void _splitParameterName (IN String parameterName,
+static void _splitParameterName (IN String& parameterName,
                                  OUT String& effectiveParameterName,
                                  OUT Natural& pageIndex,
                                  OUT Integer& nominalPageIndex)
@@ -395,14 +397,14 @@ Boolean SoXEffectParameterMap::isAllowedValue (IN String& parameterName,
     if (!_parameterNameList.contains(parameterName)) {
         isOkay = false;
     } else {
-        const SoXEffectParameterKind kind =
+        const SoXEffectParameterKind parameterKind =
             _parameterNameToKindMap.at(parameterName);
 
-        if (kind == SoXEffectParameterKind::intKind) {
+        if (parameterKind == SoXEffectParameterKind::intKind) {
             isOkay = STR::isInt(value);
-        } else if (kind == SoXEffectParameterKind::realKind) {
+        } else if (parameterKind == SoXEffectParameterKind::realKind) {
             isOkay = STR::isReal(value);
-        } else if (kind == SoXEffectParameterKind::enumKind) {
+        } else if (parameterKind == SoXEffectParameterKind::enumKind) {
             StringList valueList;
             valueRangeEnum(parameterName, valueList);
             isOkay = valueList.contains(value);
@@ -410,9 +412,9 @@ Boolean SoXEffectParameterMap::isAllowedValue (IN String& parameterName,
             isOkay = false;
         }
 
-        if (isOkay && kind != SoXEffectParameterKind::enumKind) {
+        if (isOkay && parameterKind != SoXEffectParameterKind::enumKind) {
             /* do the range check */
-            if (kind == SoXEffectParameterKind::intKind) {
+            if (parameterKind == SoXEffectParameterKind::intKind) {
                 const Integer currentValue = STR::toInteger(value);
                 Integer lowValue, highValue, delta;
                 valueRangeInt(parameterName, lowValue, highValue, delta);
@@ -511,17 +513,17 @@ Boolean SoXEffectParameterMap::adaptValueReal (IN String& parameterName,
     }
 
     Logging_trace2("<<: isOkay = %1, value = %2",
-                   TOSTRING(isOkay), TOSTRING(value));
+                   isOkay.toString(), TOSTRING(value));
     return isOkay;
 }
 
 /*--------------------*/
 
 Boolean SoXEffectParameterMap::valueIsDifferent (IN String& parameterName,
-                                                 IN String value) const
+                                                 IN String& value) const
 {
     Logging_trace2(">>: parameterName = %1, value = %2",
-                   parameterName, TOSTRING(value));
+                   parameterName, value);
 
     Boolean isDifferent;
     const Boolean isRealValue =
@@ -582,11 +584,11 @@ void SoXEffectParameterMap::setActivenessForNameList
                    TOSTRING(isActive), parameterNameList.toString());
 
     if (isActive) {
-        for (String parameterName : parameterNameList) {
+        for (const String& parameterName : parameterNameList) {
             _activeParameterNameSet.add(parameterName);
         }
     } else {
-        for (String parameterName : parameterNameList) {
+        for (const String& parameterName : parameterNameList) {
             _activeParameterNameSet.remove(parameterName);
         }
     }
@@ -600,14 +602,14 @@ void SoXEffectParameterMap::changeActivenessByPage (IN Natural lastPageIndex)
 {
     Logging_trace1(">>: %1", TOSTRING(lastPageIndex));
 
-    for (String& parameterName : _parameterNameList) {
+    for (const String& parameterName : _parameterNameList) {
         String effectiveParameterName;
         Natural pageIndex;
         Integer nominalPageIndex;
         _splitParameterName(parameterName, effectiveParameterName,
                             pageIndex, nominalPageIndex);
-        const Boolean isActive = (pageIndex <= lastPageIndex);
-        setActiveness(parameterName, isActive);
+        const Boolean parameterIsActive = (pageIndex <= lastPageIndex);
+        setActiveness(parameterName, parameterIsActive);
     }
 
     Logging_trace("<<");
@@ -795,8 +797,8 @@ void SoXEffectParameterMap::setKindAndValueEnum
 /*---------------------------*/
 
 String
-SoXEffectParameterMap::pagedParameterName (IN String parameterName,
-                                           IN Natural pageIndex)
+SoXEffectParameterMap::pagedParameterName (IN String& parameterName,
+                                           IN Integer pageIndex)
 {
     Logging_trace2(">>: parameterName = %1, page = %2",
                    parameterName, TOSTRING(pageIndex));
@@ -810,7 +812,7 @@ SoXEffectParameterMap::pagedParameterName (IN String parameterName,
 
 void
 SoXEffectParameterMap
-::splitParameterName (IN String parameterName,
+::splitParameterName (IN String& parameterName,
                       OUT String& effectiveParameterName,
                       OUT Natural& pageIndex)
 {
@@ -826,7 +828,7 @@ SoXEffectParameterMap
 
 void
 SoXEffectParameterMap
-::splitParameterName (IN String parameterName,
+::splitParameterName (IN String& parameterName,
                       OUT String& effectiveParameterName,
                       OUT Natural& pageIndex,
                       OUT Integer& nominalPageIndex)
@@ -842,7 +844,7 @@ SoXEffectParameterMap
 /*--------------------*/
 
 Boolean
-SoXEffectParameterMap::isPageSelector (IN String parameterName) {
+SoXEffectParameterMap::isPageSelector (IN String& parameterName) {
     Logging_trace1(">>: %1", parameterName);
 
     String effectiveParameterName;
@@ -850,7 +852,7 @@ SoXEffectParameterMap::isPageSelector (IN String parameterName) {
     Integer nominalPageIndex;
     _splitParameterName(parameterName, effectiveParameterName,
                         pageIndex, nominalPageIndex);
-    const Boolean isPageSelector = (nominalPageIndex == -1);
+    const Boolean isPageSelector = (nominalPageIndex == selectorPage);
 
     Logging_trace1("<<: %1", TOSTRING(isPageSelector));
     return isPageSelector;

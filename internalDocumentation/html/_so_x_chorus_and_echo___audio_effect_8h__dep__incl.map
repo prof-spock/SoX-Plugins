@@ -1,0 +1,5 @@
+<map id="SoXChorusAndEcho_AudioEffect.h" name="SoXChorusAndEcho_AudioEffect.h">
+<area shape="rect" id="node1" title="The SoXChorusAndEcho_AudioEffect specification defines the SoX echo and echos audio effects; the diff..." alt="" coords="165,5,416,33"/>
+<area shape="rect" id="node2" href="$_so_x_chorus_and_echo___audio_effect_8cpp.html" title="The SoXChorusAndEcho_AudioEffect body implements the SoX chorus, echo and echos audio effects; the di..." alt="" coords="5,81,272,109"/>
+<area shape="rect" id="node3" href="$_so_x_chorus_and_echo___audio_processor_8cpp.html" title="The SoXChorusAndEcho_AudioProcessor module provides boilerplate code for a plugin for the combined So..." alt="" coords="296,81,592,109"/>
+</map>

@@ -72,6 +72,12 @@ namespace SoXPlugins::Helpers {
          * and widget name */
         static const String widgetPageSeparator;
 
+        /** the page where a page selector widget must be located */
+        static const Integer selectorPage;
+
+        /** the page where a page count widget must be located */
+        static const Integer pageCounterPage;
+
         /*--------------------*/
         /*--------------------*/
 
@@ -282,7 +288,7 @@ namespace SoXPlugins::Helpers {
          * @param[in] value           value to be stored in parameter
          */
         Boolean valueIsDifferent (IN String& parameterName,
-                                  IN String value) const;
+                                  IN String& value) const;
 
         /*--------------------*/
         /* active state       */
@@ -508,14 +514,15 @@ namespace SoXPlugins::Helpers {
          * @return adapted parameter name
          */
         static
-        String pagedParameterName (IN String parameterName,
-                                   IN Natural pageIndex);
+        String pagedParameterName (IN String& parameterName,
+                                   IN Integer pageIndex);
 
         /*--------------------*/
 
         /**
          * Splits <C>parameterName</C> into <C>pageIndex</C> and
-         * <C>effectiveParameterName</C>.
+         * <C>effectiveParameterName</C>.  Note that zero is returned
+         * for a parameter with a negative page index.
          *
          * @param[in]  parameterName           parameter name containing
          *                                     page index
@@ -525,7 +532,7 @@ namespace SoXPlugins::Helpers {
          *                                     parameter
          */
         static
-        void splitParameterName (IN String parameterName,
+        void splitParameterName (IN String& parameterName,
                                  OUT String& effectiveParameterName,
                                  OUT Natural& pageIndex);
 
@@ -533,8 +540,9 @@ namespace SoXPlugins::Helpers {
 
         /**
          * Splits <C>parameterName</C> into <C>pageIndex</C>,
-         * <C>effectiveParameterName</C> and
-         * <C>nominalPageIndex</C>.
+         * <C>effectiveParameterName</C> and <C>nominalPageIndex</C>.
+         * Note that the page index returned is zero for a parameter
+         * with a negative nominal page index.
          *
          * @param[in]  parameterName           parameter name containing
          *                                     page index
@@ -546,7 +554,7 @@ namespace SoXPlugins::Helpers {
          *                                     for this parameter
          */
         static
-        void splitParameterName (IN String parameterName,
+        void splitParameterName (IN String& parameterName,
                                  OUT String& effectiveParameterName,
                                  OUT Natural& pageIndex,
                                  OUT Integer& nominalPageIndex);
@@ -557,10 +565,11 @@ namespace SoXPlugins::Helpers {
          * Tells whether parameter given by <C>parameterName</C>
          * is the page selector.
          *
-         * @param[in] parameterName  name of parameter to be checked
+         * @param[in] parameterName name of parameter to be checked
          * @return  tells whether this parameter is the page selector
+         *          (its nominal page index equals <C>selectorPage</C>
          */
-        static Boolean isPageSelector (IN String parameterName);
+        static Boolean isPageSelector (IN String& parameterName);
 
         /*--------------------*/
         /*--------------------*/

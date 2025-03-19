@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['replace_1262',['replace',['../_so_x_audio_processor_8cpp.html#a88537a4214e315cc3e1c300bd0d0eb1c',1,'SoXAudioProcessor.cpp']]]
+  ['tostring_1995',['TOSTRING',['../_string_util_8h.html#aa024c992018773b65a67cced7d7e3640',1,'StringUtil.h']]]
 ];

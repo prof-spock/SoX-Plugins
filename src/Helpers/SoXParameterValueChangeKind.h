@@ -29,7 +29,10 @@ namespace SoXPlugins::Helpers {
 
         /** a simple change of a single parameter in the parameter
          * set */
-        parameterChange = 4
+        parameterChange = 4,
+
+        /** no significant */
+        noChange = 5
 
     };
 
@@ -47,4 +50,5 @@ namespace SoXPlugins::Helpers {
     String((short)(kind) == 1 ? "globalChange" \
            : ((short)(kind) == 2 ? "pageChange" \
               : ((short)(kind) == 3 ? "pageCountChange" \
-                 : "parameterChange")))
+                 : ((short)(kind) == 4 ? "parameterChange"      \
+                    : "noChange"))))

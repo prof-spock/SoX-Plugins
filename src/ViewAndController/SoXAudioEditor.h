@@ -143,9 +143,11 @@ namespace SoXPlugins::ViewAndController {
             /** the last display page of this editor */
             Natural _lastEditorPageIndex;
 
-            /** the percentage of fixed widgets on a page related
-             * to the maximum widget count (for a paged editor) */
-            Percentage _fixedWidgetPercentage;
+            /** the count of widgets fixed on a tabbed page */
+            Natural _commonWidgetCount;
+
+            /** the maximum count of widgets on a tabbed page */
+            Natural _maximumWidgetCount;
 
             /*--------------------*/
 

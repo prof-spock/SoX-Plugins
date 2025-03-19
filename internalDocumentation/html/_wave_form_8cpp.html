@@ -83,9 +83,6 @@ $(document).ready(function(){initNavTree('_wave_form_8cpp.html',''); initResizab
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -96,9 +93,6 @@ $(document).ready(function(){initNavTree('_wave_form_8cpp.html',''); initResizab
 <p>The <code>WaveForm</code> body implements common services for (LFO) wave forms.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_wave_form_8h_source.html">WaveForm.h</a>&quot;</code><br />
-<code>#include &lt;cmath&gt;</code><br />
-<code>#include &quot;<a class="el" href="_assertion_8h_source.html">Assertion.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_logging_8h_source.html">Logging.h</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for WaveForm.cpp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -107,59 +101,123 @@ $(document).ready(function(){initNavTree('_wave_form_8cpp.html',''); initResizab
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="_wave_form_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1___wave_form_descriptor.html">Audio::_WaveFormDescriptor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_audio_1_1___wave_form_descriptor.html" title="A _WaveFormDescriptor object contains the waveform information and a cursor to it; the cursor positio...">_WaveFormDescriptor</a></code> object contains the waveform information and a cursor to it; the cursor position is calculated by a linear function with start offset, step count and increment instead of blindly adding up the increment: this leads to no rounding runoff errors compared to the implementation.  <a href="struct_audio_1_1___wave_form_descriptor.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespace_audio"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html">Audio</a></td></tr>
-<tr class="memdesc:namespace_audio"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_audio.html" title="The package Audio provides simple audio types.">Audio</a></code> provides simple audio types. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a13115429994ee612768bb9bbe1257868"><td class="memItemLeft" align="right" valign="top"><a id="a13115429994ee612768bb9bbe1257868"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a13115429994ee612768bb9bbe1257868">Audio::_WaveTable</a> = <a class="el" href="struct_base_types_1_1_containers_1_1_real_list.html">RealList</a></td></tr>
-<tr class="memdesc:a13115429994ee612768bb9bbe1257868"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code>_WaveTable</code> is a local alias name for a real list <br /></td></tr>
-<tr class="separator:a13115429994ee612768bb9bbe1257868"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a266c35f653d75295bba3f78fa2b006f7"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a266c35f653d75295bba3f78fa2b006f7">Audio::_waveFormKind</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> WaveFormKind kind)</td></tr>
-<tr class="memdesc:a266c35f653d75295bba3f78fa2b006f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns string representation of <code>kind</code>.  <a href="namespace_audio.html#a266c35f653d75295bba3f78fa2b006f7">More...</a><br /></td></tr>
-<tr class="separator:a266c35f653d75295bba3f78fa2b006f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0241b44b4799e4b82e8bf435f33a94e6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a0241b44b4799e4b82e8bf435f33a94e6">Audio::_getWavetableValueAtPosition</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> _WaveTable *waveTable, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> position)</td></tr>
-<tr class="memdesc:a0241b44b4799e4b82e8bf435f33a94e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds value in <code>waveTable</code> at real <code>position</code> by a linear interpolation.  <a href="namespace_audio.html#a0241b44b4799e4b82e8bf435f33a94e6">More...</a><br /></td></tr>
-<tr class="separator:a0241b44b4799e4b82e8bf435f33a94e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51194bb27225fb2d37d8dc7e853f62ce"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a51194bb27225fb2d37d8dc7e853f62ce">Audio::_initializeWaveTable</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> _WaveTable &amp;waveTable, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> WaveFormKind kind, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> length)</td></tr>
-<tr class="memdesc:a51194bb27225fb2d37d8dc7e853f62ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes <code>waveTable</code> to be of <code>kind</code> having <code>length</code> base points, the range is [0, +1] for all wave forms.  <a href="namespace_audio.html#a51194bb27225fb2d37d8dc7e853f62ce">More...</a><br /></td></tr>
-<tr class="separator:a51194bb27225fb2d37d8dc7e853f62ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4a2631f95324dfde08a7cf33d5facfd"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#ab4a2631f95324dfde08a7cf33d5facfd">Audio::_position</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> _WaveFormDescriptor *descriptor)</td></tr>
-<tr class="memdesc:ab4a2631f95324dfde08a7cf33d5facfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates position from settings in <code>descriptor</code>.  <a href="namespace_audio.html#ab4a2631f95324dfde08a7cf33d5facfd">More...</a><br /></td></tr>
-<tr class="separator:ab4a2631f95324dfde08a7cf33d5facfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fe899a8de8173c5cff14a54527cf107"><td class="memItemLeft" align="right" valign="top">static _WaveTable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wave_form_8cpp.html#a2fe899a8de8173c5cff14a54527cf107">_makeWaveTable</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> WaveFormKind kind, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> length)</td></tr>
+<tr class="memdesc:a2fe899a8de8173c5cff14a54527cf107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs waveTable of <code>kind</code> having <code>length</code> base points, the range is [0, +1] for all wave forms.  <a href="_wave_form_8cpp.html#a2fe899a8de8173c5cff14a54527cf107">More...</a><br /></td></tr>
+<tr class="separator:a2fe899a8de8173c5cff14a54527cf107"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:abf5c21d68937ed5150a07fd4bc379c3b"><td class="memItemLeft" align="right" valign="top"><a id="abf5c21d68937ed5150a07fd4bc379c3b"></a>
-static <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Audio::_isInitialized</b> = false</td></tr>
-<tr class="separator:abf5c21d68937ed5150a07fd4bc379c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51dbc34a1f94f979d8fe25bc5d0f9d8b"><td class="memItemLeft" align="right" valign="top"><a id="a51dbc34a1f94f979d8fe25bc5d0f9d8b"></a>
-static _WaveTable&#160;</td><td class="memItemRight" valign="bottom"><b>Audio::_sineWaveTable</b></td></tr>
-<tr class="separator:a51dbc34a1f94f979d8fe25bc5d0f9d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5111f5b4c2201e8e7a559233d42c396a"><td class="memItemLeft" align="right" valign="top"><a id="a5111f5b4c2201e8e7a559233d42c396a"></a>
-static _WaveTable&#160;</td><td class="memItemRight" valign="bottom"><b>Audio::_triangleWaveTable</b></td></tr>
-<tr class="separator:a5111f5b4c2201e8e7a559233d42c396a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6de5d1dc889c54010dfa7694ad1ac45"><td class="memItemLeft" align="right" valign="top"><a id="ab6de5d1dc889c54010dfa7694ad1ac45"></a>
+const <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wave_form_8cpp.html#ab6de5d1dc889c54010dfa7694ad1ac45">_sineWaveTableLength</a> = 10000</td></tr>
+<tr class="memdesc:ab6de5d1dc889c54010dfa7694ad1ac45"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of base points for a sine wave <br /></td></tr>
+<tr class="separator:ab6de5d1dc889c54010dfa7694ad1ac45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a915f23a85ea0266dc945bee522dba0c1"><td class="memItemLeft" align="right" valign="top"><a id="a915f23a85ea0266dc945bee522dba0c1"></a>
+const <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wave_form_8cpp.html#a915f23a85ea0266dc945bee522dba0c1">_triangleWaveTableLength</a> = 4</td></tr>
+<tr class="memdesc:a915f23a85ea0266dc945bee522dba0c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of base points for a triangle wave(four is enough!) <br /></td></tr>
+<tr class="separator:a915f23a85ea0266dc945bee522dba0c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6876a221871b0a7c43abd8a0b013c485"><td class="memItemLeft" align="right" valign="top">_WaveTable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wave_form_8cpp.html#a6876a221871b0a7c43abd8a0b013c485">_sineWaveTable</a></td></tr>
+<tr class="memdesc:a6876a221871b0a7c43abd8a0b013c485"><td class="mdescLeft">&#160;</td><td class="mdescRight">the reference table for a sine wave  <a href="_wave_form_8cpp.html#a6876a221871b0a7c43abd8a0b013c485">More...</a><br /></td></tr>
+<tr class="separator:a6876a221871b0a7c43abd8a0b013c485"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3662ae2282e221fab192d6c75d7137c"><td class="memItemLeft" align="right" valign="top">_WaveTable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wave_form_8cpp.html#af3662ae2282e221fab192d6c75d7137c">_triangleWaveTable</a></td></tr>
+<tr class="memdesc:af3662ae2282e221fab192d6c75d7137c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the reference table for a triangle wave  <a href="_wave_form_8cpp.html#af3662ae2282e221fab192d6c75d7137c">More...</a><br /></td></tr>
+<tr class="separator:af3662ae2282e221fab192d6c75d7137c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>WaveForm</code> body implements common services for (LFO) wave forms. </p>
-<p>The algorithms here are based on implementation ideas from Carsten Borchardt and Rob Sewell in SoX file "synth.c".</p>
+<p>The algorithms here are based on implementation ideas from Carsten Borchardt and Rob Sewell in SoX file "synth.c". <em>(this is the formal CPP file used when not doing inlining in production code)</em></p>
 <dl class="section author"><dt>Author</dt><dd>Dr. Thomas Tensi </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020-06 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a2fe899a8de8173c5cff14a54527cf107"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fe899a8de8173c5cff14a54527cf107">&#9670;&nbsp;</a></span>_makeWaveTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static _WaveTable _makeWaveTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> WaveFormKind&#160;</td>
+          <td class="paramname"><em>kind</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs waveTable of <code>kind</code> having <code>length</code> base points, the range is [0, +1] for all wave forms. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">kind</td><td>the wave form kind </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>the number of base points </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>new wave table </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a6876a221871b0a7c43abd8a0b013c485"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6876a221871b0a7c43abd8a0b013c485">&#9670;&nbsp;</a></span>_sineWaveTable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_WaveTable _sineWaveTable</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <a class="code" href="_wave_form_8cpp.html#a2fe899a8de8173c5cff14a54527cf107">_makeWaveTable</a>(WaveFormKind::sine, <a class="code" href="_wave_form_8cpp.html#ab6de5d1dc889c54010dfa7694ad1ac45">_sineWaveTableLength</a>)</div>
+</div><!-- fragment -->
+<p>the reference table for a sine wave </p>
+
+</div>
+</div>
+<a id="af3662ae2282e221fab192d6c75d7137c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3662ae2282e221fab192d6c75d7137c">&#9670;&nbsp;</a></span>_triangleWaveTable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">_WaveTable _triangleWaveTable</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <a class="code" href="_wave_form_8cpp.html#a2fe899a8de8173c5cff14a54527cf107">_makeWaveTable</a>(WaveFormKind::triangle, <a class="code" href="_wave_form_8cpp.html#a915f23a85ea0266dc945bee522dba0c1">_triangleWaveTableLength</a>)</div>
+</div><!-- fragment -->
+<p>the reference table for a triangle wave </p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="a_wave_form_8cpp_html_a2fe899a8de8173c5cff14a54527cf107"><div class="ttname"><a href="_wave_form_8cpp.html#a2fe899a8de8173c5cff14a54527cf107">_makeWaveTable</a></div><div class="ttdeci">static _WaveTable _makeWaveTable(IN WaveFormKind kind, IN Natural length)</div><div class="ttdoc">Constructs waveTable of kind having length base points, the range is [0, +1] for all wave forms.</div><div class="ttdef"><b>Definition:</b> WaveForm.cpp:63</div></div>
+<div class="ttc" id="a_wave_form_8cpp_html_ab6de5d1dc889c54010dfa7694ad1ac45"><div class="ttname"><a href="_wave_form_8cpp.html#ab6de5d1dc889c54010dfa7694ad1ac45">_sineWaveTableLength</a></div><div class="ttdeci">const Natural _sineWaveTableLength</div><div class="ttdoc">number of base points for a sine wave</div><div class="ttdef"><b>Definition:</b> WaveForm.cpp:33</div></div>
+<div class="ttc" id="a_wave_form_8cpp_html_a915f23a85ea0266dc945bee522dba0c1"><div class="ttname"><a href="_wave_form_8cpp.html#a915f23a85ea0266dc945bee522dba0c1">_triangleWaveTableLength</a></div><div class="ttdeci">const Natural _triangleWaveTableLength</div><div class="ttdoc">number of base points for a triangle wave(four is enough!)</div><div class="ttdef"><b>Definition:</b> WaveForm.cpp:36</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

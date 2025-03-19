@@ -56,7 +56,7 @@ namespace BaseTypes::Containers {
          * @param list  list of string elements to be included in set
          * @return  set with data from <C>list</C>
          */
-        static StringSet makeFromList (IN StringList& list)
+        static StringSet fromList (IN StringList& list)
         {
             StringSet result = StringSet();
 

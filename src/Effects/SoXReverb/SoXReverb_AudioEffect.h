@@ -42,7 +42,7 @@ namespace SoXPlugins::Effects::SoXReverb {
 
         /*--------------------*/
 
-        ~SoXReverb_AudioEffect ();
+        ~SoXReverb_AudioEffect () override;
 
         /*-----------------------*/
         /* string representation */
@@ -57,6 +57,10 @@ namespace SoXPlugins::Effects::SoXReverb {
         String name () const override;
 
         /*--------------------*/
+
+        Real tailLength () const override;
+
+        /*--------------------*/
         /* parameter change   */
         /*--------------------*/
 
@@ -64,6 +68,10 @@ namespace SoXPlugins::Effects::SoXReverb {
 
         /*--------------------*/
         /* event handling     */
+        /*--------------------*/
+
+        void prepareToPlay (IN Real sampleRate) override;
+
         /*--------------------*/
 
         void processBlock (IN Real timePosition,

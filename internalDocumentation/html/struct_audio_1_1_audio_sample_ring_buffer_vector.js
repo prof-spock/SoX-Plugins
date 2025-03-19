@@ -2,8 +2,8 @@ var struct_audio_1_1_audio_sample_ring_buffer_vector =
 [
     [ "AudioSampleRingBufferVector", "struct_audio_1_1_audio_sample_ring_buffer_vector.html#a7b0fdbd3d4a413607018be3e0d4a02ae", null ],
     [ "append", "struct_audio_1_1_audio_sample_ring_buffer_vector.html#a4adb94aace631c71ec7a71a7a9dc5bce", null ],
-    [ "at", "struct_audio_1_1_audio_sample_ring_buffer_vector.html#a6b7a368a8363871b951a6c2d0f0c4bdb", null ],
-    [ "at", "struct_audio_1_1_audio_sample_ring_buffer_vector.html#ae49d4accf52d422cfa9a15a75bec4536", null ],
+    [ "at", "struct_audio_1_1_audio_sample_ring_buffer_vector.html#a4ad11401479093aa9e7ae2fbef83f78a", null ],
+    [ "at", "struct_audio_1_1_audio_sample_ring_buffer_vector.html#ae2f848c3bda3c2b80a49e2e7b2d7d9ee", null ],
     [ "clear", "struct_audio_1_1_audio_sample_ring_buffer_vector.html#a236248169bf4b46275370e5dd00046cb", null ],
     [ "last", "struct_audio_1_1_audio_sample_ring_buffer_vector.html#a84ddbaa3e63cfe287ef31962f205f8e4", null ],
     [ "operator[]", "struct_audio_1_1_audio_sample_ring_buffer_vector.html#a972a2195b700d2f28cacaa4e53379e89", null ],

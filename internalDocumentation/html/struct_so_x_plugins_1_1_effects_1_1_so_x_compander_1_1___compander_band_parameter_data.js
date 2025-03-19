@@ -1,6 +1,6 @@
 var struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander_band_parameter_data =
 [
-    [ "toString", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander_band_parameter_data.html#a4875765989dba1caf4c4970624b24b8f", null ],
+    [ "toString", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander_band_parameter_data.html#acf76b883beed1f933ab6fc69ff28901c", null ],
     [ "attack", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander_band_parameter_data.html#aab212a16f2ba821075977a8754ddf09f", null ],
     [ "decay", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander_band_parameter_data.html#a1791d4e23de7d426ab4343ec68893f60", null ],
     [ "gain", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander_band_parameter_data.html#ab9e98c7c2900d564a678467093f78efe", null ],

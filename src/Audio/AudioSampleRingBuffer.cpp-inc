@@ -11,6 +11,8 @@
 
 /*====================*/
 
+#include <algorithm>
+
 #include "MyArray.h"
 #include "StringUtil.h"
 
@@ -93,10 +95,7 @@ INLINE
 void AudioSampleRingBuffer::setToZero ()
 {
     _firstIndex = 0;
-
-    for (AudioSample& listElement : _data) {
-        listElement = 0.0;
-    }
+    std::fill(_data.begin(), _data.end(), Real::zero);
 }
 
 /*--------------------*/

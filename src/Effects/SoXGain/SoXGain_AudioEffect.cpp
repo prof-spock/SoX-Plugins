@@ -30,6 +30,11 @@ using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
+/** the parameter name of the gain parameter */
+static const String parameterName_gain = "Gain [dB]";
+
+/*============================================================*/
+
 namespace SoXPlugins::Effects::SoXGain {
 
     /**
@@ -40,49 +45,59 @@ namespace SoXPlugins::Effects::SoXGain {
      */
     struct _EffectDescriptor_GAIN {
 
+        /** the associated gain effect */
+        SoXGain_AudioEffect& effect;
+        
         /** the gain (as a real factor) */
         Real gain;
 
         /*--------------------*/
         /*--------------------*/
 
-        String toString() const
-        {
-            String st =
-                STR::expand("_EffectDescriptor_GAIN(gain = %1dB)",
-                            TOSTRING(gain));
-            return st;
-        }
+        /**
+         * Sets up a new effect descriptor for <C>effect</C>
+         *
+         * @param[inout] effect  associated gain effect
+         */
+        _EffectDescriptor_GAIN (INOUT SoXGain_AudioEffect& effect);
+
+        /*--------------------*/
+
+        /**
+         * Returns string representation of effect descriptor.
+         *
+         * @return  string representation
+         */
+        String toString() const;
 
     };
+}
 
-    /*====================*/
+/*============================================================*/
 
-    /** the parameter name of the gain parameter */
-    static const String parameterName_gain   = "Gain [dB]";
+using SoXPlugins::Effects::SoXGain::_EffectDescriptor_GAIN;
 
-    /*--------------------*/
-    /* internal routines  */
-    /*--------------------*/
+/*------------------------*/
+/* _EffectDescriptor_GAIN */
+/*------------------------*/
 
-    /**
-     * Sets up a new gain effect descriptor and returns it.
-     *
-     * @return new gain effect descriptor
-     */
-    static _EffectDescriptor_GAIN* _createEffectDescriptor ()
-    {
-        Logging_trace(">>");
+_EffectDescriptor_GAIN::
+_EffectDescriptor_GAIN (INOUT SoXGain_AudioEffect& effect)
+    : effect(effect),
+      gain{0.0}
+{
+    Logging_trace(">>");
+    Logging_trace1("<<: %1", toString());
+}
 
-        _EffectDescriptor_GAIN* result =
-            new _EffectDescriptor_GAIN{
-                0.0 /* gain */
-            };
+/*--------------------*/
 
-        Logging_trace1("<<: %1", result->toString());
-        return result;
-    }
-
+String _EffectDescriptor_GAIN::toString() const
+{
+    String st =
+        STR::expand("_EffectDescriptor_GAIN(gain = %1dB)",
+                    TOSTRING(gain));
+    return st;
 }
 
 /*============================================================*/
@@ -96,7 +111,7 @@ SoXGain_AudioEffect::SoXGain_AudioEffect ()
     Logging_trace(">>");
 
     /* initialize descriptor */
-    _effectDescriptor = _createEffectDescriptor();
+    _effectDescriptor = new _EffectDescriptor_GAIN(*this);
 
     /* initialize parameters */
     _effectParameterMap.clear();
@@ -132,7 +147,7 @@ String SoXGain_AudioEffect::toString () const
 
 String SoXGain_AudioEffect::_effectDescriptorToString () const
 {
-    _EffectDescriptor_GAIN& effectDescriptor =
+    const _EffectDescriptor_GAIN& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);
     return effectDescriptor.toString();
 }
@@ -141,7 +156,7 @@ String SoXGain_AudioEffect::_effectDescriptorToString () const
 /* property queries   */
 /*--------------------*/
 
-String SoXGain_AudioEffect::name() const
+String SoXGain_AudioEffect::name () const
 {
     return "SoX Gain";
 }
@@ -195,22 +210,24 @@ SoXGain_AudioEffect::processBlock (IN Real timePosition,
 {
     Logging_trace1(">>: time = %1", TOSTRING(timePosition));
 
-    SoXAudioEffect::processBlock(timePosition, buffer);
-    _EffectDescriptor_GAIN& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);
+    if (_parametersAreValid) {
+        SoXAudioEffect::processBlock(timePosition, buffer);
+        _EffectDescriptor_GAIN& effectDescriptor =
+            TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);
 
-    const Natural sampleCount = buffer[0].size();
-    const Real gain = effectDescriptor.gain;
+        const Natural sampleCount = buffer[0].size();
+        const Real gain = effectDescriptor.gain;
 
-    for (Natural channel = 0;  channel < _channelCount;
-         channel++) {
-        const AudioSampleList& inputList  = buffer[channel];
-        AudioSampleList& outputList = buffer[channel];
+        for (Natural channel = 0;  channel < _channelCount;
+             channel++) {
+            const AudioSampleList& inputList  = buffer[channel];
+            AudioSampleList& outputList = buffer[channel];
 
-        for (Natural i = 0;  i < sampleCount;  i++) {
-            const AudioSample inputSample = inputList[i];
-            AudioSample& outputSample     = outputList[i];
-            outputSample = (AudioSample) (inputSample * gain);
+            for (Natural i = 0;  i < sampleCount;  i++) {
+                const AudioSample inputSample = inputList[i];
+                AudioSample& outputSample     = outputList[i];
+                outputSample = (AudioSample) (inputSample * gain);
+            }
         }
     }
 

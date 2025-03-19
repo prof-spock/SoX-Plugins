@@ -42,6 +42,10 @@ namespace SoXPlugins::ViewAndController {
     */
     struct SoXAudioEditorWidget {
 
+        /*--------------------*/
+        /* con-/destruction   */
+        /*--------------------*/
+
         /**
          * Creates a new slider or combobox widget for audio
          * parameter map <C>map</C> representing parameter named
@@ -69,7 +73,31 @@ namespace SoXPlugins::ViewAndController {
 
         /*--------------------*/
 
+        /**
+         * Constructs new editor widget from <C>otherWidget</C>
+         * (NOT AVAILABLE!)
+         *
+         * @param[in] otherWidget  widget to be copied
+         */
+        SoXAudioEditorWidget
+            (IN SoXAudioEditorWidget& otherWidget) = delete;
+
+        /*--------------------*/
+
         ~SoXAudioEditorWidget ();
+
+        /*--------------------*/
+        /* assignment         */
+        /*--------------------*/
+
+        /**
+         * Assigns current editor widget from <C>otherWidget</C>
+         * (NOT AVAILABLE!)
+         *
+         * @param[in] otherWidget  widget to be assigned
+         */
+        SoXAudioEditorWidget& operator=
+            (IN SoXAudioEditorWidget& otherWidget) = delete;
 
         /*--------------------*/
         /* property access    */
@@ -87,12 +115,13 @@ namespace SoXPlugins::ViewAndController {
         /*--------------------*/
 
         /**
-         * Changes value of widget to <C>value</C> (if acceptable
-         * for this widget); if not acceptable, nothing will happen
+         * Changes value of widget to <C>value</C> (if acceptable for
+         * this widget) without any notification to the enclosing
+         * editor; if not acceptable, nothing will happen
          *
          * @param[in] value  new value for widget
          */
-        void setValue (IN String value);
+        void setValue (IN String& value);
 
         /*--------------------*/
 
@@ -101,6 +130,13 @@ namespace SoXPlugins::ViewAndController {
          * calculation of position and size of embedded widgets
          */
         void resized ();
+
+        /*--------------------*/
+
+        /**
+         * Tells that this widget has a change in its range
+         */
+        void updateRange ();
 
         /*--------------------*/
         /* positioning/paging */
@@ -134,57 +170,78 @@ namespace SoXPlugins::ViewAndController {
         /*--------------------*/
 
         /**
+         * Gives percentages of the full editor height used for top
+         * and bottom margins, a single row and the distance between
+         * rows (as <C>topMarginHeightPercentage</C>,
+         * <C>rowHeightPercentage</C> and <C>rowGapPercentage</C>).
+         *
+         * @param[in] topMarginHeightPercentage  percentage of height for
+         *                                       top and bottom margin
+         * @param[in] rowHeightPercentage        percentage of height for
+         *                                       height of widget
+         * @param[in] rowGapPercentage           percentage of height for
+         *                                       gap between widgets
+         */
+        static void partHeightsInPage
+                        (OUT Percentage& topMarginHeightPercentage,
+                         OUT Percentage& rowHeightPercentage,
+                         OUT Percentage& rowGapHeightPercentage);
+
+        /*--------------------*/
+
+        /**
          * Gives percentages of the full row width used for left
          * gap, the label, the separation, the widget and the
-         * value field (as <C>leftGapPercentage</C>,
+         * value field (as <C>leftMarginPercentage</C>,
          * <C>labelWidthPercentage</C>,
-         * <C>separationPercentage</C>,
+         * <C>separationWidthPercentage</C>,
          * <C>widgetWidthPercentage</C> and
-         * <C>valueFieldPercentage</C>); ideally
-         * (2*<C>leftGapPercentage</C> +
+         * <C>valueFieldWidthPercentage</C>); ideally
+         * (2*<C>leftMarginWidthPercentage</C> +
          * <C>labelWidthPercentage</C> +
          * 2*<C>separationPercentage</C> +
          * <C>widgetWidthPercentage</C> +
          * <C>valueFieldPercentage</C>) == 100%
          *
-         * @param[in] leftGapPercentage      percentage of width of left
-         *                                   gap before label
-         * @param[in] labelWidthPercentage   percentage of width of
-         *                                   label width
-         * @param[in] separationPercentage   percentage of width of
-         *                                   separation between label
-         *                                   and widget or widget and
-         *                                   value
-         * @param[in] widgetWidthPercentage  percentage of width of
-         *                                   widget width
-         * @param[in] valueFieldPercentage   percentage of width of
-         *                                   value field width
+         * @param[in] leftMarginWidthPercentage  percentage of width of left
+         *                                       margin before label
+         * @param[in] labelWidthPercentage       percentage of width of
+         *                                       label width
+         * @param[in] separationWidthPercentage  percentage of width of
+         *                                       separation between label
+         *                                       and widget or widget and
+         *                                       value
+         * @param[in] widgetWidthPercentage      percentage of width of
+         *                                       widget width
+         * @param[in] valueFieldWidthPercentage  percentage of width of
+         *                                       value field width
          */
         static void setPartWidthsInRow
-                        (IN Percentage leftGapPercentage,
+                        (IN Percentage leftMarginWidthPercentage,
                          IN Percentage labelWidthPercentage,
-                         IN Percentage separationPercentage,
+                         IN Percentage separationWidthPercentage,
                          IN Percentage widgetWidthPercentage,
-                         IN Percentage valueFieldPercentage);
+                         IN Percentage valueFieldWidthPercentage);
 
         /*--------------------*/
 
         /**
-         * Gives percentages of the full editor height used for
-         * top gap, a single row and the distance between rows (as
-         * <C>topGap</C>, <C>rowHeight</C> and <C>rowGap</C>).
+         * Gives percentages of the full editor height used for top
+         * and bottom margins, a single row and the distance between
+         * rows (as <C>topMarginHeightPercentage</C>,
+         * <C>rowHeightPercentage</C> and <C>rowGapPercentage</C>).
          *
-         * @param[in] topGapPercentage     percentage of height for top
-         *                                 and bottom gap
-         * @param[in] rowHeightPercentage  percentage of height of height
-         *                                 of widget
-         * @param[in] rowGapPercentage     percentage of height of gap
-         *                                 between widgets
+         * @param[in] topMarginHeightPercentage  percentage of height for
+         *                                       top and bottom margin
+         * @param[in] rowHeightPercentage        percentage of height for
+         *                                       height of widget
+         * @param[in] rowGapHeightPercentage     percentage of height for
+         *                                       gap between widgets
          */
         static void setPartHeightsInPage
-                        (IN Percentage topGapPercentage,
+                        (IN Percentage topMarginHeightPercentage,
                          IN Percentage rowHeightPercentage,
-                         IN Percentage rowGapPercentage);
+                         IN Percentage rowGapHeightPercentage);
 
         /*--------------------*/
         /*--------------------*/
@@ -214,49 +271,6 @@ namespace SoXPlugins::ViewAndController {
 
             /** the underlying parameter map */
             const SoXEffectParameterMap& _parameterMap;
-
-            /*====================*/
-            /* class wide params  */
-            /*====================*/
-
-            /** the index of the active page */
-            static Natural _currentPageNumber;
-
-            /* the width percentages within a row for the different
-             * parts */
-
-            /** percentage of full editor width of left gap before
-             * label */
-            static Percentage _leftGapPercentage;
-
-            /** percentage of full editor width of label width */
-            static Percentage _labelWidthPercentage;
-
-            /** percentage of full editor width of separation
-             * between label and widget or widget and value */
-            static Percentage _separationPercentage;
-
-            /** percentage of full editor width of widget width */
-            static Percentage _widgetWidthPercentage;
-
-            /** percentage of full editor width of value field
-             * width */
-            static Percentage _valueFieldPercentage;
-
-            /* the height percentages of the top gap, a single row
-             * and the separation to the next row */
-
-            /** percentage of full editor height for top and
-             * bottom gap */
-            static Percentage _topGapPercentage;
-
-            /** percentage of full editor height of height of
-             * widget */
-            static Percentage _rowHeightPercentage;
-
-            /** percentage of full editor height of gap between
-             * widgets */
-            static Percentage _rowGapPercentage;
 
     };
 

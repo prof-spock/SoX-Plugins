@@ -1,6 +1,6 @@
 var namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive =
 [
-    [ "_EffectDescriptor_OVRD", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_v_r_d.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_v_r_d" ],
+    [ "_EffectDescriptor_ODRV", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v" ],
     [ "SoXOverdrive_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect" ],
     [ "SoXOverdrive_AudioProcessor", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor" ]
 ];

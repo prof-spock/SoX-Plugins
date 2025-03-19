@@ -1,10 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,220,132,248"/>
-<area shape="rect" id="node2" href="$struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html" title="A SoXAudioProcessor object provides an audio effect wrapper for a plugin responsible for the communic..." alt="" coords="180,212,404,256"/>
-<area shape="rect" id="node3" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_processor.html" title="A SoXCompander_AudioProcessor is the JUCE wrapper for the SoX compand and mcompand audio effects; a s..." alt="" coords="461,5,707,65"/>
-<area shape="rect" id="node4" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_processor.html" title="A SoXFilter_AudioProcessor is the JUCE wrapper for several SoX IIR filters: those filters are allpass..." alt="" coords="506,89,662,149"/>
-<area shape="rect" id="node5" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_processor.html" title="A SoXGain_AudioProcessor is the JUCE wrapper for the SoX gain plugin amplifying or attenuating the in..." alt="" coords="452,173,716,217"/>
-<area shape="rect" id="node6" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor.html" title="A SoXOverdrive_AudioProcessor is the JUCE wrapper for the SoX overdrive plugin distorting the input s..." alt="" coords="475,241,693,301"/>
-<area shape="rect" id="node7" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_processor.html" title="A SoXPhaserAndTremolo_AudioProcessor object is the JUCE wrapper for the SoX phaser and tremolo effect..." alt="" coords="493,325,675,401"/>
-<area shape="rect" id="node8" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_processor.html" title="A SoXReverb_AudioProcessor object is a JUCE wrapper for the SoX reverb effect implementing the Freeve..." alt="" coords="491,425,677,485"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,13,169,41"/>
+<area shape="rect" id="node2" href="$struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html" title="A SoXAudioEditor object models the (generic)audio editor for a plugin, represented by a display windo..." alt="" coords="217,5,441,49"/>
 </map>

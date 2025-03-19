@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 1470;
+var viewWidth = 1661;
 var viewHeight = 326;
 var sectionId = 'dynsection-1';
 </script>
@@ -54,13 +54,13 @@ var sectionId = 'dynsection-1';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>Percentage.h</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-322 1465.5,-322 1465.5,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-322 1656.5,-322 1656.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="The Percentage specification and body provides a simple percentage type.">
-<polygon fill="#bfbfbf" stroke="black" points="479.5,-297.5 479.5,-317.5 561.5,-317.5 561.5,-297.5 479.5,-297.5"/>
-<text text-anchor="middle" x="520.5" y="-304.7" font-family="Helvetica,sans-Serif" font-size="11.00">Percentage.h</text>
+<polygon fill="#bfbfbf" stroke="black" points="1039.5,-297.5 1039.5,-317.5 1121.5,-317.5 1121.5,-297.5 1039.5,-297.5"/>
+<text text-anchor="middle" x="1080.5" y="-304.7" font-family="Helvetica,sans-Serif" font-size="11.00">Percentage.h</text>
 </a>
 </g>
 </g>
@@ -68,341 +68,356 @@ var sectionId = 'dynsection-1';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="_string_util_8h.html" target="_top" xlink:title="The StringUtil specification defines several string routines not included in the standard C++ library...">
-<polygon fill="white" stroke="black" points="620,-240.5 620,-260.5 689,-260.5 689,-240.5 620,-240.5"/>
-<text text-anchor="middle" x="654.5" y="-247.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringUtil.h</text>
+<polygon fill="white" stroke="black" points="886,-240.5 886,-260.5 955,-260.5 955,-240.5 886,-240.5"/>
+<text text-anchor="middle" x="920.5" y="-247.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringUtil.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M551.93,-293.6C576.63,-283.46 610.41,-269.6 632.34,-260.6"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="550.55,-290.38 542.63,-297.42 553.21,-296.86 550.55,-290.38"/>
+<path fill="none" stroke="midnightblue" d="M1044.49,-294.12C1014.78,-283.91 973.32,-269.66 946.69,-260.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1043.48,-297.48 1054.08,-297.42 1045.76,-290.86 1043.48,-297.48"/>
 </g>
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node10"><a xlink:href="_so_x_phaser_and_tremolo___audio_effect_8cpp.html" target="_top" xlink:title="The SoXPhaserAndTremolo_AudioEffect body implements the SoX phaser and tremolo modulation effects tha...">
-<polygon fill="white" stroke="black" points="322,-0.5 322,-32.5 453,-32.5 453,-0.5 322,-0.5"/>
-<text text-anchor="start" x="330" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPhaserAndTremolo</text>
-<text text-anchor="middle" x="387.5" y="-7.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioEffect.cpp</text>
+<g id="a_node10"><a xlink:href="_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html" target="_top" xlink:title="The SoXFlangerPhaserAndTremolo_AudioEffect body implements the SoX flanger, phaser and tremolo modula...">
+<polygon fill="white" stroke="black" points="1365.5,-0.5 1365.5,-32.5 1533.5,-32.5 1533.5,-0.5 1365.5,-0.5"/>
+<text text-anchor="start" x="1373.5" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXFlangerPhaserAndTremolo</text>
+<text text-anchor="middle" x="1449.5" y="-7.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioEffect.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node10 -->
-<g id="edge25" class="edge">
+<g id="edge26" class="edge">
 <title>Node1&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M483.68,-293.67C444.32,-277.34 387.5,-245.01 387.5,-194.5 387.5,-194.5 387.5,-194.5 387.5,-135.5 387.5,-98.62 387.5,-55.27 387.5,-32.77"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="482.68,-297.04 493.26,-297.49 485.26,-290.54 482.68,-297.04"/>
+<path fill="none" stroke="midnightblue" d="M1109.55,-292.68C1142.14,-274.92 1190.5,-240.76 1190.5,-194.5 1190.5,-194.5 1190.5,-194.5 1190.5,-135.5 1190.5,-92.33 1311.19,-53.11 1387.79,-32.57"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1107.66,-289.72 1100.42,-297.46 1110.9,-295.92 1107.66,-289.72"/>
 </g>
 <!-- Node16 -->
 <g id="node16" class="node">
 <title>Node16</title>
 <g id="a_node16"><a xlink:href="_so_x_reverb_support_8h.html" target="_top" xlink:title="The SoXReverbSupport specification defines support classes for the freeverb algorithm and provides a ...">
-<polygon fill="white" stroke="black" points="209,-69.5 209,-89.5 328,-89.5 328,-69.5 209,-69.5"/>
-<text text-anchor="middle" x="268.5" y="-76.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXReverbSupport.h</text>
+<polygon fill="white" stroke="black" points="251,-69.5 251,-89.5 370,-89.5 370,-69.5 251,-69.5"/>
+<text text-anchor="middle" x="310.5" y="-76.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXReverbSupport.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node16 -->
-<g id="edge26" class="edge">
+<g id="edge27" class="edge">
 <title>Node1&#45;&gt;Node16</title>
-<path fill="none" stroke="midnightblue" d="M469.29,-300.16C438.84,-294.22 400.92,-282.82 373.5,-261 312.79,-212.7 280.21,-119.02 271.15,-89.58"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="468.85,-303.63 479.31,-301.97 470.09,-296.75 468.85,-303.63"/>
+<path fill="none" stroke="midnightblue" d="M1029.19,-302.93C893.41,-292.78 527.89,-260.8 422.5,-204 370.01,-175.71 329.47,-112.98 315.64,-89.56"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1029.1,-306.43 1039.33,-303.68 1029.61,-299.45 1029.1,-306.43"/>
 </g>
-<!-- Node24 -->
-<g id="node24" class="node">
-<title>Node24</title>
-<g id="a_node24"><a xlink:href="_so_x_audio_editor_widget_8h.html" target="_top" xlink:title="The SoXAudioEditorWidget specification defines an audio editor widget (a slider or a combo box) in a ...">
-<polygon fill="white" stroke="black" points="877.5,-240.5 877.5,-260.5 1013.5,-260.5 1013.5,-240.5 877.5,-240.5"/>
-<text text-anchor="middle" x="945.5" y="-247.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditorWidget.h</text>
+<!-- Node25 -->
+<g id="node25" class="node">
+<title>Node25</title>
+<g id="a_node25"><a xlink:href="_so_x_audio_editor_widget_8h.html" target="_top" xlink:title="The SoXAudioEditorWidget specification defines an audio editor widget (a slider or a combo box) in a ...">
+<polygon fill="white" stroke="black" points="1287.5,-240.5 1287.5,-260.5 1423.5,-260.5 1423.5,-240.5 1287.5,-240.5"/>
+<text text-anchor="middle" x="1355.5" y="-247.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditorWidget.h</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node24 -->
-<g id="edge27" class="edge">
-<title>Node1&#45;&gt;Node24</title>
-<path fill="none" stroke="midnightblue" d="M571.96,-299.84C648.4,-289.95 792.03,-271.36 877.19,-260.34"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="571.11,-296.42 561.64,-301.18 572,-303.36 571.11,-296.42"/>
+<!-- Node1&#45;&gt;Node25 -->
+<g id="edge28" class="edge">
+<title>Node1&#45;&gt;Node25</title>
+<path fill="none" stroke="midnightblue" d="M1131.56,-296.29C1182.89,-286.02 1261.27,-270.35 1310.39,-260.52"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1130.79,-292.87 1121.67,-298.27 1132.16,-299.74 1130.79,-292.87"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
 <g id="a_node3"><a xlink:href="_audio_sample_ring_buffer_8cpp-inc.html" target="_top" xlink:title="The AudioSampleRingBuffer body implements a ring buffer for audio samples with left and right shifts ...">
-<polygon fill="white" stroke="black" points="702.5,-183.5 702.5,-203.5 874.5,-203.5 874.5,-183.5 702.5,-183.5"/>
-<text text-anchor="middle" x="788.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleRingBuffer.cpp&#45;inc</text>
+<polygon fill="white" stroke="black" points="531.5,-183.5 531.5,-203.5 703.5,-203.5 703.5,-183.5 531.5,-183.5"/>
+<text text-anchor="middle" x="617.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleRingBuffer.cpp&#45;inc</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M685.93,-236.6C710.63,-226.46 744.41,-212.6 766.34,-203.6"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="684.55,-233.38 676.63,-240.42 687.21,-239.86 684.55,-233.38"/>
+<path fill="none" stroke="midnightblue" d="M875.81,-241.39C820.07,-231.27 725.06,-214.02 667.11,-203.51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="875.28,-244.85 885.74,-243.19 876.53,-237.96 875.28,-244.85"/>
 </g>
 <!-- Node19 -->
 <g id="node19" class="node">
 <title>Node19</title>
 <g id="a_node19"><a xlink:href="_file_8cpp.html" target="_top" xlink:title="The File body implements a class for simple file handling based on C stdio.">
-<polygon fill="white" stroke="black" points="893,-183.5 893,-203.5 948,-203.5 948,-183.5 893,-183.5"/>
-<text text-anchor="middle" x="920.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">File.cpp</text>
+<polygon fill="white" stroke="black" points="1107,-183.5 1107,-203.5 1162,-203.5 1162,-183.5 1107,-183.5"/>
+<text text-anchor="middle" x="1134.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">File.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node19 -->
 <g id="edge20" class="edge">
 <title>Node2&#45;&gt;Node19</title>
-<path fill="none" stroke="midnightblue" d="M699.15,-241.38C745.42,-232.8 819.75,-218.51 883.5,-204 886.47,-203.32 889.57,-202.58 892.66,-201.82"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="698.35,-237.97 689.15,-243.23 699.62,-244.86 698.35,-237.97"/>
+<path fill="none" stroke="midnightblue" d="M965.21,-238.01C1007.92,-227.03 1070.93,-210.84 1106.81,-201.62"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="964.17,-234.66 955.36,-240.54 965.92,-241.44 964.17,-234.66"/>
 </g>
 <!-- Node20 -->
 <g id="node20" class="node">
 <title>Node20</title>
 <g id="a_node20"><a xlink:href="_string_util_8cpp.html" target="_top" xlink:title="The StringUtil body implements several string routines not included in the standard C++ library (like...">
-<polygon fill="white" stroke="black" points="966,-183.5 966,-203.5 1047,-203.5 1047,-183.5 966,-183.5"/>
-<text text-anchor="middle" x="1006.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringUtil.cpp</text>
+<polygon fill="white" stroke="black" points="432,-183.5 432,-203.5 513,-203.5 513,-183.5 432,-183.5"/>
+<text text-anchor="middle" x="472.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringUtil.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node20 -->
 <g id="edge21" class="edge">
 <title>Node2&#45;&gt;Node20</title>
-<path fill="none" stroke="midnightblue" d="M699.24,-243.39C758.44,-235.16 866.01,-219.73 957.5,-204 960.23,-203.53 963.05,-203.03 965.88,-202.51"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="698.54,-239.95 689.11,-244.79 699.5,-246.88 698.54,-239.95"/>
+<path fill="none" stroke="midnightblue" d="M875.45,-245.44C801.53,-238.55 649.97,-223.37 522.5,-204 519.44,-203.54 516.29,-203.02 513.12,-202.48"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="875.5,-248.96 885.78,-246.4 876.15,-241.99 875.5,-248.96"/>
 </g>
 <!-- Node21 -->
 <g id="node21" class="node">
 <title>Node21</title>
 <g id="a_node21"><a xlink:href="_natural_list_8cpp.html" target="_top" xlink:title="The NaturalList body implements lists of non&#45;negative integer values with zero&#45;based arbitrary indexe...">
-<polygon fill="white" stroke="black" points="416,-183.5 416,-203.5 505,-203.5 505,-183.5 416,-183.5"/>
-<text text-anchor="middle" x="460.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">NaturalList.cpp</text>
+<polygon fill="white" stroke="black" points="722,-183.5 722,-203.5 811,-203.5 811,-183.5 722,-183.5"/>
+<text text-anchor="middle" x="766.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">NaturalList.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node21 -->
 <g id="edge22" class="edge">
 <title>Node2&#45;&gt;Node21</title>
-<path fill="none" stroke="midnightblue" d="M612.71,-237.65C576.57,-227.41 525.11,-212.82 492.26,-203.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="611.89,-241.06 622.46,-240.42 613.8,-234.32 611.89,-241.06"/>
+<path fill="none" stroke="midnightblue" d="M885.47,-236.99C856.9,-226.79 817.23,-212.62 791.71,-203.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="884.48,-240.35 895.07,-240.42 886.83,-233.76 884.48,-240.35"/>
 </g>
 <!-- Node22 -->
 <g id="node22" class="node">
 <title>Node22</title>
 <g id="a_node22"><a xlink:href="_string_list_8cpp.html" target="_top" xlink:title="The StringList body implements lists of string values with zero&#45;based arbitrary indexed access to pos...">
-<polygon fill="white" stroke="black" points="523,-183.5 523,-203.5 606,-203.5 606,-183.5 523,-183.5"/>
-<text text-anchor="middle" x="564.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringList.cpp</text>
+<polygon fill="white" stroke="black" points="829,-183.5 829,-203.5 912,-203.5 912,-183.5 829,-183.5"/>
+<text text-anchor="middle" x="870.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">StringList.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node22 -->
 <g id="edge23" class="edge">
 <title>Node2&#45;&gt;Node22</title>
-<path fill="none" stroke="midnightblue" d="M630.7,-234.95C614.41,-225 593.33,-212.12 579.38,-203.6"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="629.28,-238.19 639.64,-240.42 632.93,-232.22 629.28,-238.19"/>
+<path fill="none" stroke="midnightblue" d="M905.51,-233.01C896.82,-223.45 886.19,-211.76 878.94,-203.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="902.93,-235.37 912.24,-240.42 908.11,-230.66 902.93,-235.37"/>
 </g>
 <!-- Node23 -->
 <g id="node23" class="node">
 <title>Node23</title>
-<g id="a_node23"><a xlink:href="_real_8cpp.html" target="_top" xlink:title="The Real body implements a value object type for real values.">
-<polygon fill="white" stroke="black" points="624.5,-183.5 624.5,-203.5 684.5,-203.5 684.5,-183.5 624.5,-183.5"/>
-<text text-anchor="middle" x="654.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">Real.cpp</text>
+<g id="a_node23"><a xlink:href="_my_string_8cpp.html" target="_top" xlink:title="The String body implements a standard string type.">
+<polygon fill="white" stroke="black" points="930.5,-183.5 930.5,-203.5 1010.5,-203.5 1010.5,-183.5 930.5,-183.5"/>
+<text text-anchor="middle" x="970.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">MyString.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node23 -->
 <g id="edge24" class="edge">
 <title>Node2&#45;&gt;Node23</title>
-<path fill="none" stroke="midnightblue" d="M654.5,-230.38C654.5,-221.37 654.5,-211.04 654.5,-203.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="651,-230.42 654.5,-240.42 658,-230.42 651,-230.42"/>
+<path fill="none" stroke="midnightblue" d="M935.49,-233.01C944.18,-223.45 954.81,-211.76 962.06,-203.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="932.89,-230.66 928.76,-240.42 938.07,-235.37 932.89,-230.66"/>
+</g>
+<!-- Node24 -->
+<g id="node24" class="node">
+<title>Node24</title>
+<g id="a_node24"><a xlink:href="_real_8cpp.html" target="_top" xlink:title="The Real body implements a value object type for real values.">
+<polygon fill="white" stroke="black" points="1028.5,-183.5 1028.5,-203.5 1088.5,-203.5 1088.5,-183.5 1028.5,-183.5"/>
+<text text-anchor="middle" x="1058.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">Real.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node2&#45;&gt;Node24 -->
+<g id="edge25" class="edge">
+<title>Node2&#45;&gt;Node24</title>
+<path fill="none" stroke="midnightblue" d="M952.87,-236.6C978.31,-226.46 1013.09,-212.6 1035.68,-203.6"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="951.28,-233.46 943.29,-240.42 953.87,-239.97 951.28,-233.46"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
 <g id="a_node4"><a xlink:href="_audio_sample_ring_buffer_8h.html" target="_top" xlink:title="The AudioSampleRingBuffer specification defines a ring buffer for audio samples with left and right s...">
-<polygon fill="white" stroke="black" points="733.5,-126.5 733.5,-146.5 875.5,-146.5 875.5,-126.5 733.5,-126.5"/>
-<text text-anchor="middle" x="804.5" y="-133.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleRingBuffer.h</text>
+<polygon fill="white" stroke="black" points="546.5,-126.5 546.5,-146.5 688.5,-146.5 688.5,-126.5 546.5,-126.5"/>
+<text text-anchor="middle" x="617.5" y="-133.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleRingBuffer.h</text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node3&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M793.98,-173.68C796.62,-164.6 799.67,-154.12 801.8,-146.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="790.57,-172.84 791.14,-183.42 797.3,-174.79 790.57,-172.84"/>
+<path fill="none" stroke="midnightblue" d="M617.5,-173.38C617.5,-164.37 617.5,-154.04 617.5,-146.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="614,-173.42 617.5,-183.42 621,-173.42 614,-173.42"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
 <g id="a_node5"><a xlink:href="_audio_sample_ring_buffer_8cpp.html" target="_top" xlink:title="The AudioSampleRingBuffer body implements a ring buffer for audio samples with left and right shifts ...">
-<polygon fill="white" stroke="black" points="1024.5,-69.5 1024.5,-89.5 1178.5,-89.5 1178.5,-69.5 1024.5,-69.5"/>
-<text text-anchor="middle" x="1101.5" y="-76.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleRingBuffer.cpp</text>
+<polygon fill="white" stroke="black" points="540.5,-69.5 540.5,-89.5 694.5,-89.5 694.5,-69.5 540.5,-69.5"/>
+<text text-anchor="middle" x="617.5" y="-76.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleRingBuffer.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node4&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M863.24,-124.62C918.69,-114.35 1000.85,-99.14 1052.76,-89.53"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="862.41,-121.22 853.21,-126.48 863.68,-128.1 862.41,-121.22"/>
+<path fill="none" stroke="midnightblue" d="M617.5,-116.38C617.5,-107.37 617.5,-97.04 617.5,-89.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="614,-116.42 617.5,-126.42 621,-116.42 614,-116.42"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
 <g id="a_node6"><a xlink:href="_audio_sample_ring_buffer_vector_8h.html" target="_top" xlink:title="The AudioSampleRingBufferVector specification defines a two&#45;dimensional list of ring buffers for audi...">
-<polygon fill="white" stroke="black" points="662,-69.5 662,-89.5 835,-89.5 835,-69.5 662,-69.5"/>
-<text text-anchor="middle" x="748.5" y="-76.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleRingBufferVector.h</text>
+<polygon fill="white" stroke="black" points="957,-69.5 957,-89.5 1130,-89.5 1130,-69.5 957,-69.5"/>
+<text text-anchor="middle" x="1043.5" y="-76.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleRingBufferVector.h</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node4&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M788,-119.3C778.21,-109.68 766.15,-97.83 757.95,-89.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="785.67,-121.91 795.25,-126.42 790.57,-116.91 785.67,-121.91"/>
+<path fill="none" stroke="midnightblue" d="M697.34,-125.19C776.87,-114.92 897.75,-99.32 973.59,-89.53"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="696.84,-121.73 687.37,-126.48 697.73,-128.67 696.84,-121.73"/>
 </g>
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
 <g id="a_node11"><a xlink:href="_i_i_r_filter_8h.html" target="_top" xlink:title="The IIRFilter specification defines an infinite impulse response filter.">
-<polygon fill="white" stroke="black" points="1228.5,-69.5 1228.5,-89.5 1290.5,-89.5 1290.5,-69.5 1228.5,-69.5"/>
-<text text-anchor="middle" x="1259.5" y="-76.7" font-family="Helvetica,sans-Serif" font-size="11.00">IIRFilter.h</text>
+<polygon fill="white" stroke="black" points="460.5,-69.5 460.5,-89.5 522.5,-89.5 522.5,-69.5 460.5,-69.5"/>
+<text text-anchor="middle" x="491.5" y="-76.7" font-family="Helvetica,sans-Serif" font-size="11.00">IIRFilter.h</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node11 -->
 <g id="edge10" class="edge">
 <title>Node4&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M886.01,-126.13C963.58,-117.13 1083.54,-103.03 1187.5,-90 1200.89,-88.32 1215.66,-86.39 1228.32,-84.7"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="885.36,-122.68 875.83,-127.31 886.16,-129.63 885.36,-122.68"/>
+<path fill="none" stroke="midnightblue" d="M587.32,-122.33C564.16,-112.22 532.78,-98.52 512.34,-89.6"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="586.13,-125.62 596.69,-126.42 588.93,-119.21 586.13,-125.62"/>
 </g>
 <!-- Node14 -->
 <g id="node14" class="node">
 <title>Node14</title>
 <g id="a_node14"><a xlink:href="_so_x_compander_support_8h.html" target="_top" xlink:title="The SoXCompanderSupport specification defines support classes for the compander algorithm and provide...">
-<polygon fill="white" stroke="black" points="864.5,-69.5 864.5,-89.5 1006.5,-89.5 1006.5,-69.5 864.5,-69.5"/>
-<text text-anchor="middle" x="935.5" y="-76.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXCompanderSupport.h</text>
+<polygon fill="white" stroke="black" points="712.5,-69.5 712.5,-89.5 854.5,-89.5 854.5,-69.5 712.5,-69.5"/>
+<text text-anchor="middle" x="783.5" y="-76.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXCompanderSupport.h</text>
 </a>
 </g>
 </g>
 <!-- Node4&#45;&gt;Node14 -->
 <g id="edge14" class="edge">
 <title>Node4&#45;&gt;Node14</title>
-<path fill="none" stroke="midnightblue" d="M835.55,-122.46C859.67,-112.34 892.49,-98.56 913.84,-89.6"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="834,-119.32 826.13,-126.42 836.71,-125.77 834,-119.32"/>
+<path fill="none" stroke="midnightblue" d="M654.46,-123.26C685.31,-113.03 728.57,-98.7 756.32,-89.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="653.3,-119.95 644.91,-126.42 655.5,-126.6 653.3,-119.95"/>
 </g>
 <!-- Node4&#45;&gt;Node16 -->
 <g id="edge17" class="edge">
 <title>Node4&#45;&gt;Node16</title>
-<path fill="none" stroke="midnightblue" d="M723.07,-127.14C614.48,-116 424.78,-96.54 328.39,-86.65"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="723.02,-130.66 733.32,-128.2 723.73,-123.69 723.02,-130.66"/>
+<path fill="none" stroke="midnightblue" d="M557.14,-124.69C499.82,-114.42 414.65,-99.16 360.88,-89.53"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="556.69,-128.16 567.15,-126.48 557.92,-121.27 556.69,-128.16"/>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
 <g id="a_node7"><a xlink:href="_audio_sample_ring_buffer_vector_8cpp.html" target="_top" xlink:title="The AudioSampleRingBufferVector body implements a two&#45;dimensional list of ring buffers for audio samp...">
-<polygon fill="white" stroke="black" points="656,-6.5 656,-26.5 841,-26.5 841,-6.5 656,-6.5"/>
-<text text-anchor="middle" x="748.5" y="-13.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleRingBufferVector.cpp</text>
+<polygon fill="white" stroke="black" points="1162,-6.5 1162,-26.5 1347,-26.5 1347,-6.5 1162,-6.5"/>
+<text text-anchor="middle" x="1254.5" y="-13.7" font-family="Helvetica,sans-Serif" font-size="11.00">AudioSampleRingBufferVector.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node6&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node6&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M748.5,-59.2C748.5,-48.27 748.5,-35.11 748.5,-26.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="745,-59.5 748.5,-69.5 752,-59.5 745,-59.5"/>
+<path fill="none" stroke="midnightblue" d="M1084.48,-66.65C1125.09,-54.91 1186.41,-37.19 1223.24,-26.54"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1083.27,-63.36 1074.63,-69.5 1085.21,-70.08 1083.27,-63.36"/>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node8"><a xlink:href="_so_x_filter___audio_effect_8cpp.html" target="_top" xlink:title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi...">
-<polygon fill="white" stroke="black" points="1054,-6.5 1054,-26.5 1197,-26.5 1197,-6.5 1054,-6.5"/>
-<text text-anchor="middle" x="1125.5" y="-13.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXFilter_AudioEffect.cpp</text>
+<g id="a_node8"><a xlink:href="_so_x_chorus_and_echo___audio_effect_8cpp.html" target="_top" xlink:title="The SoXChorusAndEcho_AudioEffect body implements the SoX chorus, echo and echos audio effects; the di...">
+<polygon fill="white" stroke="black" points="943.5,-6.5 943.5,-26.5 1143.5,-26.5 1143.5,-6.5 943.5,-6.5"/>
+<text text-anchor="middle" x="1043.5" y="-13.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXChorusAndEcho_AudioEffect.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node6&#45;&gt;Node8 -->
 <g id="edge7" class="edge">
 <title>Node6&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M822.51,-67.99C882.68,-59.24 969.71,-46.14 1045.5,-33 1056.93,-31.02 1069.25,-28.72 1080.71,-26.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="821.74,-64.56 812.35,-69.46 822.75,-71.49 821.74,-64.56"/>
+<path fill="none" stroke="midnightblue" d="M1043.5,-59.2C1043.5,-48.27 1043.5,-35.11 1043.5,-26.54"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1040,-59.5 1043.5,-69.5 1047,-59.5 1040,-59.5"/>
 </g>
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
-<g id="a_node9"><a xlink:href="_so_x_overdrive___audio_effect_8cpp.html" target="_top" xlink:title="The SoXOverdrive_AudioEffect body implements the SoX overdrive plugin distorting an input signal with...">
-<polygon fill="white" stroke="black" points="471,-6.5 471,-26.5 638,-26.5 638,-6.5 471,-6.5"/>
-<text text-anchor="middle" x="554.5" y="-13.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXOverdrive_AudioEffect.cpp</text>
+<g id="a_node9"><a xlink:href="_so_x_filter___audio_effect_8cpp.html" target="_top" xlink:title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi...">
+<polygon fill="white" stroke="black" points="587,-6.5 587,-26.5 730,-26.5 730,-6.5 587,-6.5"/>
+<text text-anchor="middle" x="658.5" y="-13.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXFilter_AudioEffect.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node6&#45;&gt;Node9 -->
 <g id="edge8" class="edge">
 <title>Node6&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M709.86,-66.35C672.53,-54.61 616.82,-37.1 583.24,-26.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="709.29,-69.84 719.87,-69.5 711.38,-63.16 709.29,-69.84"/>
+<path fill="none" stroke="midnightblue" d="M967.27,-68.06C905.48,-59.38 816.23,-46.32 738.5,-33 727.07,-31.04 714.75,-28.75 703.29,-26.53"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="966.94,-71.55 977.33,-69.47 967.91,-64.62 966.94,-71.55"/>
 </g>
 <!-- Node6&#45;&gt;Node10 -->
 <g id="edge9" class="edge">
 <title>Node6&#45;&gt;Node10</title>
-<path fill="none" stroke="midnightblue" d="M675.74,-67.98C617.62,-59.33 534.17,-46.36 461.5,-33 458.79,-32.5 456.02,-31.98 453.23,-31.44"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="675.52,-71.48 685.92,-69.49 676.55,-64.56 675.52,-71.48"/>
+<path fill="none" stroke="midnightblue" d="M1118.22,-68.08C1181.67,-59.13 1275.13,-45.69 1356.5,-33 1359.41,-32.55 1362.37,-32.08 1365.36,-31.6"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1117.71,-64.62 1108.3,-69.48 1118.69,-71.55 1117.71,-64.62"/>
 </g>
-<!-- Node11&#45;&gt;Node8 -->
+<!-- Node11&#45;&gt;Node9 -->
 <g id="edge13" class="edge">
-<title>Node11&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M1230.47,-65.28C1204.73,-53.57 1167.85,-36.78 1145.35,-26.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1229.18,-68.54 1239.73,-69.5 1232.08,-62.17 1229.18,-68.54"/>
+<title>Node11&#45;&gt;Node9</title>
+<path fill="none" stroke="midnightblue" d="M525.59,-66.05C557.72,-54.31 605.1,-37.01 633.76,-26.54"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="524.33,-62.78 516.14,-69.5 526.74,-69.36 524.33,-62.78"/>
 </g>
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
 <g id="a_node12"><a xlink:href="_i_i_r_filter_8cpp.html" target="_top" xlink:title="The IIRFilter body implements an infinite impulse response filter (this is the formal CPP file used w...">
-<polygon fill="white" stroke="black" points="1387.5,-6.5 1387.5,-26.5 1461.5,-26.5 1461.5,-6.5 1387.5,-6.5"/>
-<text text-anchor="middle" x="1424.5" y="-13.7" font-family="Helvetica,sans-Serif" font-size="11.00">IIRFilter.cpp</text>
+<polygon fill="white" stroke="black" points="322.5,-6.5 322.5,-26.5 396.5,-26.5 396.5,-6.5 322.5,-6.5"/>
+<text text-anchor="middle" x="359.5" y="-13.7" font-family="Helvetica,sans-Serif" font-size="11.00">IIRFilter.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node11&#45;&gt;Node12 -->
 <g id="edge11" class="edge">
 <title>Node11&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M1293.59,-65.9C1325.33,-54.16 1371.86,-36.96 1400.05,-26.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1292.01,-62.75 1283.85,-69.5 1294.44,-69.31 1292.01,-62.75"/>
+<path fill="none" stroke="midnightblue" d="M462.9,-65.28C437.55,-53.57 401.22,-36.78 379.06,-26.54"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="461.48,-68.48 472.02,-69.5 464.41,-62.13 461.48,-68.48"/>
 </g>
 <!-- Node13 -->
 <g id="node13" class="node">
 <title>Node13</title>
 <g id="a_node13"><a xlink:href="_so_x_compander_support_8cpp.html" target="_top" xlink:title="The SoXCompanderSupport body implements several internal compander classes for the compander algorith...">
-<polygon fill="white" stroke="black" points="1215.5,-6.5 1215.5,-26.5 1369.5,-26.5 1369.5,-6.5 1215.5,-6.5"/>
-<text text-anchor="middle" x="1292.5" y="-13.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXCompanderSupport.cpp</text>
+<polygon fill="white" stroke="black" points="414.5,-6.5 414.5,-26.5 568.5,-26.5 568.5,-6.5 414.5,-6.5"/>
+<text text-anchor="middle" x="491.5" y="-13.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXCompanderSupport.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node11&#45;&gt;Node13 -->
 <g id="edge12" class="edge">
 <title>Node11&#45;&gt;Node13</title>
-<path fill="none" stroke="midnightblue" d="M1269.2,-60.57C1275.25,-49.39 1282.78,-35.47 1287.61,-26.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1266.05,-59.04 1264.37,-69.5 1272.21,-62.37 1266.05,-59.04"/>
+<path fill="none" stroke="midnightblue" d="M491.5,-59.2C491.5,-48.27 491.5,-35.11 491.5,-26.54"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="488,-59.5 491.5,-69.5 495,-59.5 488,-59.5"/>
 </g>
 <!-- Node14&#45;&gt;Node13 -->
 <g id="edge16" class="edge">
 <title>Node14&#45;&gt;Node13</title>
-<path fill="none" stroke="midnightblue" d="M1000.24,-67.85C1055.16,-58.77 1136.04,-45.26 1206.5,-33 1218.31,-30.94 1231.02,-28.68 1242.95,-26.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="999.59,-64.41 990.29,-69.5 1000.73,-71.32 999.59,-64.41"/>
+<path fill="none" stroke="midnightblue" d="M730.31,-67.39C674.19,-55.67 586.82,-37.41 534.76,-26.54"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="729.91,-70.88 740.41,-69.5 731.34,-64.03 729.91,-70.88"/>
 </g>
 <!-- Node15 -->
 <g id="node15" class="node">
 <title>Node15</title>
 <g id="a_node15"><a xlink:href="_so_x_compander___audio_effect_8cpp.html" target="_top" xlink:title="The SoXCompander_AudioEffect body implements the SoX compand and mcompand audio effects; a simple com...">
-<polygon fill="white" stroke="black" points="859,-6.5 859,-26.5 1036,-26.5 1036,-6.5 859,-6.5"/>
-<text text-anchor="middle" x="947.5" y="-13.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXCompander_AudioEffect.cpp</text>
+<polygon fill="white" stroke="black" points="748,-6.5 748,-26.5 925,-26.5 925,-6.5 748,-6.5"/>
+<text text-anchor="middle" x="836.5" y="-13.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXCompander_AudioEffect.cpp</text>
 </a>
 </g>
 </g>
 <!-- Node14&#45;&gt;Node15 -->
 <g id="edge15" class="edge">
 <title>Node14&#45;&gt;Node15</title>
-<path fill="none" stroke="midnightblue" d="M939.23,-59.55C941.39,-48.55 944.02,-35.2 945.72,-26.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="935.77,-59.01 937.27,-69.5 942.64,-60.36 935.77,-59.01"/>
+<path fill="none" stroke="midnightblue" d="M797.91,-61.91C807.81,-50.52 820.57,-35.83 828.65,-26.54"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="795.24,-59.65 791.32,-69.5 800.52,-64.25 795.24,-59.65"/>
 </g>
 <!-- Node17 -->
 <g id="node17" class="node">
@@ -416,8 +431,8 @@ var sectionId = 'dynsection-1';
 <!-- Node16&#45;&gt;Node17 -->
 <g id="edge18" class="edge">
 <title>Node16&#45;&gt;Node17</title>
-<path fill="none" stroke="midnightblue" d="M230.46,-66.35C193.7,-54.61 138.86,-37.1 105.8,-26.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="229.73,-69.79 240.32,-69.5 231.86,-63.12 229.73,-69.79"/>
+<path fill="none" stroke="midnightblue" d="M266.38,-66.95C221.55,-55.21 153.04,-37.28 112.02,-26.54"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="265.56,-70.35 276.12,-69.5 267.33,-63.58 265.56,-70.35"/>
 </g>
 <!-- Node18 -->
 <g id="node18" class="node">
@@ -431,68 +446,68 @@ var sectionId = 'dynsection-1';
 <!-- Node16&#45;&gt;Node18 -->
 <g id="edge19" class="edge">
 <title>Node16&#45;&gt;Node18</title>
-<path fill="none" stroke="midnightblue" d="M259.51,-60.23C254.04,-49.11 247.29,-35.38 242.94,-26.54"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="256.52,-62.07 264.07,-69.5 262.8,-58.98 256.52,-62.07"/>
-</g>
-<!-- Node25 -->
-<g id="node25" class="node">
-<title>Node25</title>
-<g id="a_node25"><a xlink:href="_so_x_audio_editor_8h.html" target="_top" xlink:title="The SoXAudioEditor specification defines the audio editor for a plugin, represented by a display wind...">
-<polygon fill="white" stroke="black" points="1065,-183.5 1065,-203.5 1166,-203.5 1166,-183.5 1065,-183.5"/>
-<text text-anchor="middle" x="1115.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditor.h</text>
-</a>
-</g>
-</g>
-<!-- Node24&#45;&gt;Node25 -->
-<g id="edge28" class="edge">
-<title>Node24&#45;&gt;Node25</title>
-<path fill="none" stroke="midnightblue" d="M983.35,-237.26C1014.94,-227.03 1059.25,-212.7 1087.67,-203.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="982.01,-234.01 973.57,-240.42 984.16,-240.67 982.01,-234.01"/>
+<path fill="none" stroke="midnightblue" d="M292.08,-62.9C278.49,-51.38 260.46,-36.1 249.17,-26.54"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="289.98,-65.71 299.88,-69.5 294.51,-60.36 289.98,-65.71"/>
 </g>
 <!-- Node26 -->
 <g id="node26" class="node">
 <title>Node26</title>
-<g id="a_node26"><a xlink:href="_so_x_audio_editor_8cpp.html" target="_top" xlink:title="The SoXAudioEditor body implements the audio editor for a plugin, represented by a display window con...">
-<polygon fill="white" stroke="black" points="910,-126.5 910,-146.5 1023,-146.5 1023,-126.5 910,-126.5"/>
-<text text-anchor="middle" x="966.5" y="-133.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditor.cpp</text>
+<g id="a_node26"><a xlink:href="_so_x_audio_editor_8h.html" target="_top" xlink:title="The SoXAudioEditor specification defines the audio editor for a plugin, represented by a display wind...">
+<polygon fill="white" stroke="black" points="1340,-183.5 1340,-203.5 1441,-203.5 1441,-183.5 1340,-183.5"/>
+<text text-anchor="middle" x="1390.5" y="-190.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditor.h</text>
 </a>
 </g>
 </g>
 <!-- Node25&#45;&gt;Node26 -->
 <g id="edge29" class="edge">
 <title>Node25&#45;&gt;Node26</title>
-<path fill="none" stroke="midnightblue" d="M1081.27,-179.87C1053.75,-169.71 1015.74,-155.68 991.14,-146.6"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1080.3,-183.24 1090.9,-183.42 1082.73,-176.67 1080.3,-183.24"/>
+<path fill="none" stroke="midnightblue" d="M1366.73,-231.86C1372.67,-222.52 1379.72,-211.44 1384.59,-203.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1363.7,-230.1 1361.28,-240.42 1369.6,-233.86 1363.7,-230.1"/>
 </g>
 <!-- Node27 -->
 <g id="node27" class="node">
 <title>Node27</title>
-<g id="a_node27"><a xlink:href="_so_x_audio_editor_widget_8cpp.html" target="_top" xlink:title="The SoXAudioEditorWidget body implements an audio editor widget (a slider or a combo box) in a SoX au...">
-<polygon fill="white" stroke="black" points="1041.5,-126.5 1041.5,-146.5 1189.5,-146.5 1189.5,-126.5 1041.5,-126.5"/>
-<text text-anchor="middle" x="1115.5" y="-133.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditorWidget.cpp</text>
+<g id="a_node27"><a xlink:href="_so_x_audio_editor_8cpp.html" target="_top" xlink:title="The SoXAudioEditor body implements the audio editor for a plugin, represented by a display window con...">
+<polygon fill="white" stroke="black" points="1219,-126.5 1219,-146.5 1332,-146.5 1332,-126.5 1219,-126.5"/>
+<text text-anchor="middle" x="1275.5" y="-133.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditor.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node27 -->
+<!-- Node26&#45;&gt;Node27 -->
 <g id="edge30" class="edge">
-<title>Node25&#45;&gt;Node27</title>
-<path fill="none" stroke="midnightblue" d="M1115.5,-173.38C1115.5,-164.37 1115.5,-154.04 1115.5,-146.78"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1112,-173.42 1115.5,-183.42 1119,-173.42 1112,-173.42"/>
+<title>Node26&#45;&gt;Node27</title>
+<path fill="none" stroke="midnightblue" d="M1362.39,-179.06C1341.3,-168.97 1313.01,-155.44 1294.52,-146.6"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1360.98,-182.26 1371.51,-183.42 1364,-175.95 1360.98,-182.26"/>
 </g>
 <!-- Node28 -->
 <g id="node28" class="node">
 <title>Node28</title>
-<g id="a_node28"><a xlink:href="_so_x_audio_processor_8cpp.html" target="_top" xlink:title="The SoXAudioProcessor body implements an audio effect wrapper for a plugin responsible for the commun...">
-<polygon fill="white" stroke="black" points="1207.5,-126.5 1207.5,-146.5 1343.5,-146.5 1343.5,-126.5 1207.5,-126.5"/>
-<text text-anchor="middle" x="1275.5" y="-133.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioProcessor.cpp</text>
+<g id="a_node28"><a xlink:href="_so_x_audio_editor_widget_8cpp.html" target="_top" xlink:title="The SoXAudioEditorWidget body implements an audio editor widget (a slider or a combo box) in a SoX au...">
+<polygon fill="white" stroke="black" points="1350.5,-126.5 1350.5,-146.5 1498.5,-146.5 1498.5,-126.5 1350.5,-126.5"/>
+<text text-anchor="middle" x="1424.5" y="-133.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioEditorWidget.cpp</text>
 </a>
 </g>
 </g>
-<!-- Node25&#45;&gt;Node28 -->
+<!-- Node26&#45;&gt;Node28 -->
 <g id="edge31" class="edge">
-<title>Node25&#45;&gt;Node28</title>
-<path fill="none" stroke="midnightblue" d="M1151.51,-180.12C1181.22,-169.91 1222.68,-155.66 1249.31,-146.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1150.24,-176.86 1141.92,-183.42 1152.52,-183.48 1150.24,-176.86"/>
+<title>Node26&#45;&gt;Node28</title>
+<path fill="none" stroke="midnightblue" d="M1401.41,-174.86C1407.18,-165.52 1414.03,-154.44 1418.76,-146.78"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1398.4,-173.07 1396.11,-183.42 1404.35,-176.75 1398.4,-173.07"/>
+</g>
+<!-- Node29 -->
+<g id="node29" class="node">
+<title>Node29</title>
+<g id="a_node29"><a xlink:href="_so_x_audio_processor_8cpp.html" target="_top" xlink:title="The SoXAudioProcessor body implements an audio effect wrapper for a plugin responsible for the commun...">
+<polygon fill="white" stroke="black" points="1516.5,-126.5 1516.5,-146.5 1652.5,-146.5 1652.5,-126.5 1516.5,-126.5"/>
+<text text-anchor="middle" x="1584.5" y="-133.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXAudioProcessor.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node26&#45;&gt;Node29 -->
+<g id="edge32" class="edge">
+<title>Node26&#45;&gt;Node29</title>
+<path fill="none" stroke="midnightblue" d="M1432.29,-180.65C1468.43,-170.41 1519.89,-155.82 1552.74,-146.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1431.2,-177.32 1422.54,-183.42 1433.11,-184.06 1431.2,-177.32"/>
 </g>
 </g>
 </svg>

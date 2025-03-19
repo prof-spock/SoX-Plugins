@@ -22,6 +22,11 @@ using STR = BaseModules::StringUtil;
 
 /*====================*/
 
+/** error message issued for accessing a position > 0 for a simple
+ * ring buffer matrix */
+static String _errorMessage_badPosition =
+    "a simple matrix may only have one ring buffer per channel";
+
 /*--------------------*/
 /* internal routines  */
 /*--------------------*/
@@ -52,6 +57,10 @@ static Natural _effectiveIndex (IN Boolean hasTwoRingBuffersPerChannel,
 /* exported routines  */
 /*--------------------*/
 
+/*--------------------*/
+/* con-/destruction   */
+/*--------------------*/
+
 INLINE
 AudioSampleRingBufferVector::AudioSampleRingBufferVector
                               (IN Natural channelCount,
@@ -67,56 +76,7 @@ AudioSampleRingBufferVector::AudioSampleRingBufferVector
 }
 
 /*--------------------*/
-
-INLINE String
-AudioSampleRingBufferVector::toString (IN Boolean sampleDataIsShown,
-                                       IN Natural audioFrameCount,
-                                       IN Boolean isGroupedByFrames) const
-{
-    String result = "";
-    const Natural channelCount = ringBufferCount();
-    const Natural sampleCount =
-        Natural::minimum(audioFrameCount, ringBufferLength());
-
-    if (!sampleDataIsShown) {
-        result = _expand("channelCount = %1, sampleCount = %2",
-                         TOSTRING(channelCount), TOSTRING(sampleCount));
-    } else {
-        Natural groupCount =
-            (isGroupedByFrames ? audioFrameCount : channelCount);
-        Natural groupLength =
-            (isGroupedByFrames ? channelCount : audioFrameCount);
-    
-        for (Natural i = 0; i < groupCount; i++) {
-            String groupString = "(";
-
-            for (Natural j = 0; j < groupLength; j++) {
-                const AudioSample& sample = (isGroupedByFrames
-                                             ? _data[j][i]
-                                             : _data[i][j]);
-                groupString += (j == 0 ? "" : ", ") + TOSTRING(sample);
-            }
-
-            groupString += (sampleCount < audioFrameCount ? ", ..." : "");
-            groupString += ")";
-            result += (result == "" ? "" : ", ") + groupString;
-        }
-    }
-
-    result = STR::expand("AudioSampleRingBufferVector(%1)", result);
-    return result;
-}
-
-/*--------------------*/
-
-INLINE
-void AudioSampleRingBufferVector::clear ()
-{
-    Logging_trace(">>");
-    _data.clear();
-    Logging_trace("<<");
-}
-
+/* property queries   */
 /*--------------------*/
 
 INLINE
@@ -135,6 +95,18 @@ Natural AudioSampleRingBufferVector::ringBufferLength () const
 {
     Natural result = (_data.length() == 0 ? 0 : _data[0].length());
     return result;
+}
+
+/*--------------------*/
+/* property change    */
+/*--------------------*/
+
+INLINE
+void AudioSampleRingBufferVector::clear ()
+{
+    Logging_trace(">>");
+    _data.clear();
+    Logging_trace("<<");
 }
 
 /*--------------------*/
@@ -183,25 +155,27 @@ void AudioSampleRingBufferVector::setToZero ()
 /*--------------------*/
 
 INLINE
-AudioSampleRingBuffer& AudioSampleRingBufferVector::at
-                         (IN Natural channelIndex,
-                          IN Natural position)
+const AudioSampleRingBuffer& AudioSampleRingBufferVector::at
+                                 (IN Natural channelIndex,
+                                  IN Natural position) const
 {
+    Assertion_pre(position == 0 || _hasTwoRingBuffersPerChannel,
+                  _errorMessage_badPosition);
     return _data[_effectiveIndex(_hasTwoRingBuffersPerChannel,
                                  channelIndex, position)];
 }
-
 
 /*--------------------*/
 
 INLINE
 AudioSampleRingBuffer& AudioSampleRingBufferVector::at
-                         (IN Natural channelIndex)
+                         (IN Natural channelIndex,
+                          IN Natural position)
 {
-    Assertion_pre(!_hasTwoRingBuffersPerChannel,
-                  "a simple matrix may only have one ring buffer"
-                  " per channel");
-    return at(channelIndex, 0);
+    Assertion_pre(position == 0 || _hasTwoRingBuffersPerChannel,
+                  _errorMessage_badPosition);
+    return _data[_effectiveIndex(_hasTwoRingBuffersPerChannel,
+                                 channelIndex, position)];
 }
 
 /*--------------------*/
@@ -230,4 +204,47 @@ INLINE
 AudioSampleRingBuffer& AudioSampleRingBufferVector::last ()
 {
     return _data.back();
+}
+
+/*--------------------*/
+/* conversion         */
+/*--------------------*/
+
+INLINE String
+AudioSampleRingBufferVector::toString (IN Boolean sampleDataIsShown,
+                                       IN Natural audioFrameCount,
+                                       IN Boolean isGroupedByFrames) const
+{
+    String result = "";
+    const Natural channelCount = ringBufferCount();
+    const Natural sampleCount =
+        Natural::minimum(audioFrameCount, ringBufferLength());
+
+    if (!sampleDataIsShown) {
+        result = _expand("channelCount = %1, sampleCount = %2",
+                         TOSTRING(channelCount), TOSTRING(sampleCount));
+    } else {
+        Natural groupCount =
+            (isGroupedByFrames ? audioFrameCount : channelCount);
+        Natural groupLength =
+            (isGroupedByFrames ? channelCount : audioFrameCount);
+    
+        for (Natural i = 0; i < groupCount; i++) {
+            String groupString = "(";
+
+            for (Natural j = 0; j < groupLength; j++) {
+                const AudioSample& sample = (isGroupedByFrames
+                                             ? _data[j][i]
+                                             : _data[i][j]);
+                groupString += (j == 0 ? "" : ", ") + TOSTRING(sample);
+            }
+
+            groupString += (sampleCount < audioFrameCount ? ", ..." : "");
+            groupString += ")";
+            result += (result == "" ? "" : ", ") + groupString;
+        }
+    }
+
+    result = STR::expand("AudioSampleRingBufferVector(%1)", result);
+    return result;
 }

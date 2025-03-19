@@ -1,0 +1,25 @@
+var _so_x_flanger_phaser_and_tremolo___audio_effect_8cpp =
+[
+    [ "_EffectDescriptor_PHTR", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r" ],
+    [ "STR", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c", null ],
+    [ "_createEffectDescriptor", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a80c24f302315b71e12f8288631e40e63", null ],
+    [ "_updateParametersForKind", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a56076cc6279152dc82e25b27ba45d9b6", null ],
+    [ "_updateSettings", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a87f12870c0ff9610b1d32f11f58d6e1c", null ],
+    [ "_allParameterNameList", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a24d96846f48e0a4e4dc2a12055396d95", null ],
+    [ "_defaultPhase", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a7d39ec84a5f13a9708da7e0f300c7503", null ],
+    [ "_kindList", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a4c2d0ceecd5eafb7fdfc54d8eb20184e", null ],
+    [ "_maximumDelay", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a3ff72421185148d54a110670f6e1fd8c", null ],
+    [ "_phaserParameterNameList", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a4a07e6f244668044893ed02a9dde14c5", null ],
+    [ "_tremoloEffectKind", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a38a66362afb5891bad0e76eb58a06fdd", null ],
+    [ "_tremoloParameterNameList", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#aa615f3e4961d0ea5015a09f3bbd27b33", null ],
+    [ "parameterName_decay", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a7341caa6fdd20d8201b0123c5cf82239", null ],
+    [ "parameterName_delayInMs", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a97cbb3a3e91780d44fcb107eef482d3b", null ],
+    [ "parameterName_depth", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a06b1af5856d20c4a14d4c7a28901c0a6", null ],
+    [ "parameterName_effectKind", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a0d455c378d42dca8e7b0c8f033620d88", null ],
+    [ "parameterName_frequency", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a92b590697346a8898f6f43c9fa36f481", null ],
+    [ "parameterName_inGain", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a98bf32881e5509b7b82c0a5e9fc61269", null ],
+    [ "parameterName_outGain", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a3b0083111e9a21ceccbcf1a92739732b", null ],
+    [ "parameterName_timeOffset", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#aca78840c79d1b1f25d5388ca99d4a240", null ],
+    [ "parameterName_waveFormKind", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a1ef8581b84225940aeb1cbcf4d78588c", null ],
+    [ "separator", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a3b388035d8c1c6fd9f75620fb2e62ce2", null ]
+];

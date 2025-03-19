@@ -87,7 +87,6 @@ $(document).ready(function(){initNavTree('_so_x_compander___audio_effect_8cpp.ht
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">SoXCompander_AudioEffect.cpp File Reference</div>  </div>
@@ -126,7 +125,7 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespace_so_x_plugins"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins.html" title="The package SoXPlugins provides all types for the DAW plugins emulating the command-line audio proces...">SoXPlugins</a></code> provides all types for the DAW plugins emulating the command-line audio processor SoX; the connection to the plugin host is abstracted via the JUCE framework, the effect implementation itself is completedly self-contained. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_so_x_plugins_1_1_effects"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects.html">SoXPlugins::Effects</a></td></tr>
-<tr class="memdesc:namespace_so_x_plugins_1_1_effects"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects.html" title="The package Effects provides types for the different audio effects themselves; the currently supporte...">Effects</a></code> provides types for the different audio effects themselves; the currently supported SoX effects are <b>compander</b>, <b>filter</b>, <b>gain</b>, <b>overdrive</b>, <b>phaser/tremolo</b> and <b>reverb</b>. <br /></td></tr>
+<tr class="memdesc:namespace_so_x_plugins_1_1_effects"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects.html" title="The package Effects provides types for the different audio effects themselves; the currently supporte...">Effects</a></code> provides types for the different audio effects themselves; the currently supported SoX effects are <b>compander</b>, <b>chorus/echo/echos</b>, <b>filter</b>, <b>gain</b>, <b>overdrive</b>, <b>flanger/phaser/tremolo</b> and <b>reverb</b>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_so_x_plugins_1_1_effects_1_1_so_x_compander"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html">SoXPlugins::Effects::SoXCompander</a></td></tr>
 <tr class="memdesc:namespace_so_x_plugins_1_1_effects_1_1_so_x_compander"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html" title="The package SoXCompander provides classes for the SoX compand and mcompand audio effects.">SoXCompander</a></code> provides classes for the SoX <b>compand</b> and <b>mcompand</b> audio effects. <br /></td></tr>
@@ -134,6 +133,10 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:ace15357d96e5cd488d38773ecb7a803d"><td class="memItemLeft" align="right" valign="top"><a id="ace15357d96e5cd488d38773ecb7a803d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander___audio_effect_8cpp.html#ace15357d96e5cd488d38773ecb7a803d">pagedParameterName</a>&#160;&#160;&#160;SoXEffectParameterMap::pagedParameterName</td></tr>
+<tr class="memdesc:ace15357d96e5cd488d38773ecb7a803d"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for pagedParameterName <br /></td></tr>
+<tr class="separator:ace15357d96e5cd488d38773ecb7a803d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2651eaed0ec92fd791856abe29e0f16d"><td class="memItemLeft" align="right" valign="top"><a id="a2651eaed0ec92fd791856abe29e0f16d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander___audio_effect_8cpp.html#a2651eaed0ec92fd791856abe29e0f16d">_maxBandCount</a>&#160;&#160;&#160;(10)</td></tr>
 <tr class="memdesc:a2651eaed0ec92fd791856abe29e0f16d"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum number of bands in a multiband compressor <br /></td></tr>
@@ -146,18 +149,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so
 <tr class="memdesc:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil <br /></td></tr>
 <tr class="separator:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8765ded7791a2b7d076153f3e56640a"><td class="memItemLeft" align="right" valign="top"><a id="ac8765ded7791a2b7d076153f3e56640a"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ac8765ded7791a2b7d076153f3e56640a">SoXPlugins::Effects::SoXCompander::_BandIndexToCompanderDataMap</a> = GenericTuple&lt; _CompanderBandParameterData, <a class="el" href="_so_x_compander___audio_effect_8cpp.html#a2651eaed0ec92fd791856abe29e0f16d">_maxBandCount</a> &gt;</td></tr>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ac8765ded7791a2b7d076153f3e56640a">SoXPlugins::Effects::SoXCompander::_BandIndexToCompanderDataMap</a> = GenericTuple&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander_band_parameter_data.html">_CompanderBandParameterData</a>, <a class="el" href="_so_x_compander___audio_effect_8cpp.html#a2651eaed0ec92fd791856abe29e0f16d">_maxBandCount</a> &gt;</td></tr>
 <tr class="memdesc:ac8765ded7791a2b7d076153f3e56640a"><td class="mdescLeft">&#160;</td><td class="mdescRight">fixed-length mapping from natural to compander data <br /></td></tr>
 <tr class="separator:ac8765ded7791a2b7d076153f3e56640a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ae2c243ee173092e632f3dd2acdbbd617"><td class="memItemLeft" align="right" valign="top">static _EffectDescriptor_CMPD *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ae2c243ee173092e632f3dd2acdbbd617">SoXPlugins::Effects::SoXCompander::_createEffectDescriptor</a> (<a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>)</td></tr>
-<tr class="memdesc:ae2c243ee173092e632f3dd2acdbbd617"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up a new effect descriptor based on <code>sampleRate</code>  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ae2c243ee173092e632f3dd2acdbbd617">More...</a><br /></td></tr>
-<tr class="separator:ae2c243ee173092e632f3dd2acdbbd617"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89536b662737e30e6f96e9c5e7ea40a1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a89536b662737e30e6f96e9c5e7ea40a1">SoXPlugins::Effects::SoXCompander::_updateSettings</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> _EffectDescriptor_CMPD &amp;effectDescriptor, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> channelCount)</td></tr>
-<tr class="memdesc:a89536b662737e30e6f96e9c5e7ea40a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recalculates derived parameters in <code>effectDescriptor</code> with a given <code>sampleRate</code> and <code>channelCount</code>.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a89536b662737e30e6f96e9c5e7ea40a1">More...</a><br /></td></tr>
-<tr class="separator:a89536b662737e30e6f96e9c5e7ea40a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -165,45 +159,257 @@ Variables</h2></td></tr>
 const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander___audio_effect_8cpp.html#a25738d4950ff3f3bf1b411f32cbd7f5e">_maxTopFrequency</a> {25000.0}</td></tr>
 <tr class="memdesc:a25738d4950ff3f3bf1b411f32cbd7f5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum top frequency in a compander band <br /></td></tr>
 <tr class="separator:a25738d4950ff3f3bf1b411f32cbd7f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a420ce24cb49b754caf6de928deb8a2e4"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a420ce24cb49b754caf6de928deb8a2e4">SoXPlugins::Effects::SoXCompander::_companderBandParameterNameList</a></td></tr>
-<tr class="memdesc:a420ce24cb49b754caf6de928deb8a2e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of parameter names in a compander band (with units)  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a420ce24cb49b754caf6de928deb8a2e4">More...</a><br /></td></tr>
-<tr class="separator:a420ce24cb49b754caf6de928deb8a2e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24c62b868c76ad8f950751dfd5c8b385"><td class="memItemLeft" align="right" valign="top"><a id="a24c62b868c76ad8f950751dfd5c8b385"></a>
-static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a24c62b868c76ad8f950751dfd5c8b385">SoXPlugins::Effects::SoXCompander::parameterName_bandCount</a> = &quot;Band Count&quot;</td></tr>
-<tr class="memdesc:a24c62b868c76ad8f950751dfd5c8b385"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the band count (in English language) <br /></td></tr>
-<tr class="separator:a24c62b868c76ad8f950751dfd5c8b385"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4946bcccc3dac0927bcd456b3aeb8c0d"><td class="memItemLeft" align="right" valign="top"><a id="a4946bcccc3dac0927bcd456b3aeb8c0d"></a>
-static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a4946bcccc3dac0927bcd456b3aeb8c0d">SoXPlugins::Effects::SoXCompander::parameterName_bandIndex</a> = &quot;Band Index&quot;</td></tr>
-<tr class="memdesc:a4946bcccc3dac0927bcd456b3aeb8c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the band index (in English language) <br /></td></tr>
-<tr class="separator:a4946bcccc3dac0927bcd456b3aeb8c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b49477bf4c39fc435c12bfad49e8489"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a4b49477bf4c39fc435c12bfad49e8489">SoXPlugins::Effects::SoXCompander::parameterName_attack</a></td></tr>
-<tr class="memdesc:a4b49477bf4c39fc435c12bfad49e8489"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the attack (in English language)  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a4b49477bf4c39fc435c12bfad49e8489">More...</a><br /></td></tr>
-<tr class="separator:a4b49477bf4c39fc435c12bfad49e8489"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5c0cd048bb02633e67e840887abd401"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ad5c0cd048bb02633e67e840887abd401">SoXPlugins::Effects::SoXCompander::parameterName_decay</a></td></tr>
-<tr class="memdesc:ad5c0cd048bb02633e67e840887abd401"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the decay (in English language)  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ad5c0cd048bb02633e67e840887abd401">More...</a><br /></td></tr>
-<tr class="separator:ad5c0cd048bb02633e67e840887abd401"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a931c87869080f25aa871f40f07896d71"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a931c87869080f25aa871f40f07896d71">SoXPlugins::Effects::SoXCompander::parameterName_dBKnee</a></td></tr>
-<tr class="memdesc:a931c87869080f25aa871f40f07896d71"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the knee (in English language)  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a931c87869080f25aa871f40f07896d71">More...</a><br /></td></tr>
-<tr class="separator:a931c87869080f25aa871f40f07896d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f6cb7688dc02c3347a2a66cb7828878"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a2f6cb7688dc02c3347a2a66cb7828878">SoXPlugins::Effects::SoXCompander::parameterName_dBThreshold</a></td></tr>
-<tr class="memdesc:a2f6cb7688dc02c3347a2a66cb7828878"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the threshold (in English language)  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a2f6cb7688dc02c3347a2a66cb7828878">More...</a><br /></td></tr>
-<tr class="separator:a2f6cb7688dc02c3347a2a66cb7828878"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89206578d37f3536dd8c89f2deb3241c"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a89206578d37f3536dd8c89f2deb3241c">SoXPlugins::Effects::SoXCompander::parameterName_ratio</a></td></tr>
-<tr class="memdesc:a89206578d37f3536dd8c89f2deb3241c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the ratio (in English language)  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a89206578d37f3536dd8c89f2deb3241c">More...</a><br /></td></tr>
-<tr class="separator:a89206578d37f3536dd8c89f2deb3241c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae234a1c6795070e338537ac2408c2673"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ae234a1c6795070e338537ac2408c2673">SoXPlugins::Effects::SoXCompander::parameterName_dBGain</a></td></tr>
-<tr class="memdesc:ae234a1c6795070e338537ac2408c2673"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the gain (in English language)  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ae234a1c6795070e338537ac2408c2673">More...</a><br /></td></tr>
-<tr class="separator:ae234a1c6795070e338537ac2408c2673"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99816a9d467febea5de871185d1b6102"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a99816a9d467febea5de871185d1b6102">SoXPlugins::Effects::SoXCompander::parameterName_topFrequency</a></td></tr>
-<tr class="memdesc:a99816a9d467febea5de871185d1b6102"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the top frequency (in English language)  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a99816a9d467febea5de871185d1b6102">More...</a><br /></td></tr>
-<tr class="separator:a99816a9d467febea5de871185d1b6102"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a718e4bd7d4efb84022f557ef48762ce5"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander___audio_effect_8cpp.html#a718e4bd7d4efb84022f557ef48762ce5">_companderBandParameterNameList</a></td></tr>
+<tr class="memdesc:a718e4bd7d4efb84022f557ef48762ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of parameter names in a compander band (with units)  <a href="_so_x_compander___audio_effect_8cpp.html#a718e4bd7d4efb84022f557ef48762ce5">More...</a><br /></td></tr>
+<tr class="separator:a718e4bd7d4efb84022f557ef48762ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa488fda6970a7013da7827efbf80a52d"><td class="memItemLeft" align="right" valign="top"><a id="aa488fda6970a7013da7827efbf80a52d"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander___audio_effect_8cpp.html#aa488fda6970a7013da7827efbf80a52d">parameterName_bandCount</a> = &quot;Band Count&quot;</td></tr>
+<tr class="memdesc:aa488fda6970a7013da7827efbf80a52d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the band count (in English language) <br /></td></tr>
+<tr class="separator:aa488fda6970a7013da7827efbf80a52d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18342ec0dfeda2e2cda5b7ec48997d3f"><td class="memItemLeft" align="right" valign="top"><a id="a18342ec0dfeda2e2cda5b7ec48997d3f"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander___audio_effect_8cpp.html#a18342ec0dfeda2e2cda5b7ec48997d3f">parameterName_bandIndex</a> = &quot;Band Index&quot;</td></tr>
+<tr class="memdesc:a18342ec0dfeda2e2cda5b7ec48997d3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the band index (in English language) <br /></td></tr>
+<tr class="separator:a18342ec0dfeda2e2cda5b7ec48997d3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9817b4b5ef4e9421574f0a1489c01e3d"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander___audio_effect_8cpp.html#a9817b4b5ef4e9421574f0a1489c01e3d">parameterName_attack</a></td></tr>
+<tr class="memdesc:a9817b4b5ef4e9421574f0a1489c01e3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the attack (in English language)  <a href="_so_x_compander___audio_effect_8cpp.html#a9817b4b5ef4e9421574f0a1489c01e3d">More...</a><br /></td></tr>
+<tr class="separator:a9817b4b5ef4e9421574f0a1489c01e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7341caa6fdd20d8201b0123c5cf82239"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander___audio_effect_8cpp.html#a7341caa6fdd20d8201b0123c5cf82239">parameterName_decay</a></td></tr>
+<tr class="memdesc:a7341caa6fdd20d8201b0123c5cf82239"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the decay (in English language)  <a href="_so_x_compander___audio_effect_8cpp.html#a7341caa6fdd20d8201b0123c5cf82239">More...</a><br /></td></tr>
+<tr class="separator:a7341caa6fdd20d8201b0123c5cf82239"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7c3d8bd066304cdf4d17b8dc4ab01f5"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander___audio_effect_8cpp.html#ad7c3d8bd066304cdf4d17b8dc4ab01f5">parameterName_dBKnee</a></td></tr>
+<tr class="memdesc:ad7c3d8bd066304cdf4d17b8dc4ab01f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the knee (in English language)  <a href="_so_x_compander___audio_effect_8cpp.html#ad7c3d8bd066304cdf4d17b8dc4ab01f5">More...</a><br /></td></tr>
+<tr class="separator:ad7c3d8bd066304cdf4d17b8dc4ab01f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0845c9c48cbb8d7ee7631beac3ae7d3d"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander___audio_effect_8cpp.html#a0845c9c48cbb8d7ee7631beac3ae7d3d">parameterName_dBThreshold</a></td></tr>
+<tr class="memdesc:a0845c9c48cbb8d7ee7631beac3ae7d3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the threshold (in English language)  <a href="_so_x_compander___audio_effect_8cpp.html#a0845c9c48cbb8d7ee7631beac3ae7d3d">More...</a><br /></td></tr>
+<tr class="separator:a0845c9c48cbb8d7ee7631beac3ae7d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fdf041ad5fca0ed9c32be2929240b30"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander___audio_effect_8cpp.html#a1fdf041ad5fca0ed9c32be2929240b30">parameterName_ratio</a></td></tr>
+<tr class="memdesc:a1fdf041ad5fca0ed9c32be2929240b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the ratio (in English language)  <a href="_so_x_compander___audio_effect_8cpp.html#a1fdf041ad5fca0ed9c32be2929240b30">More...</a><br /></td></tr>
+<tr class="separator:a1fdf041ad5fca0ed9c32be2929240b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b90c17fd056177ec973b2216a45d556"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander___audio_effect_8cpp.html#a6b90c17fd056177ec973b2216a45d556">parameterName_dBGain</a></td></tr>
+<tr class="memdesc:a6b90c17fd056177ec973b2216a45d556"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the gain (in English language)  <a href="_so_x_compander___audio_effect_8cpp.html#a6b90c17fd056177ec973b2216a45d556">More...</a><br /></td></tr>
+<tr class="separator:a6b90c17fd056177ec973b2216a45d556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64109e6d7475249085f16d5076f39505"><td class="memItemLeft" align="right" valign="top">static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_compander___audio_effect_8cpp.html#a64109e6d7475249085f16d5076f39505">parameterName_topFrequency</a></td></tr>
+<tr class="memdesc:a64109e6d7475249085f16d5076f39505"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the top frequency (in English language)  <a href="_so_x_compander___audio_effect_8cpp.html#a64109e6d7475249085f16d5076f39505">More...</a><br /></td></tr>
+<tr class="separator:a64109e6d7475249085f16d5076f39505"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXCompander_AudioEffect</code> body implements the SoX <b>compand</b> and <b>mcompand</b> audio effects; a simple compander is just seen as a multiband compander with a single band. </p>
 <dl class="section author"><dt>Author</dt><dd>Dr. Thomas Tensi </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-01 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Variable Documentation</h2>
+<a id="a718e4bd7d4efb84022f557ef48762ce5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a718e4bd7d4efb84022f557ef48762ce5">&#9670;&nbsp;</a></span>_companderBandParameterNameList</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a> _companderBandParameterNameList</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    StringList::fromList({<span class="stringliteral">&quot;Attack [s]&quot;</span>, <span class="stringliteral">&quot;Decay [s]&quot;</span>, <span class="stringliteral">&quot;Knee [dB]&quot;</span>,</div>
+<div class="line">                          <span class="stringliteral">&quot;Threshold [dB]&quot;</span>, <span class="stringliteral">&quot;Ratio&quot;</span>, <span class="stringliteral">&quot;Gain [dB]&quot;</span>,</div>
+<div class="line">                          <span class="stringliteral">&quot;Top Frequency [Hz]&quot;</span>})</div>
+</div><!-- fragment -->
+<p>the list of parameter names in a compander band (with units) </p>
+
+</div>
+</div>
+<a id="a9817b4b5ef4e9421574f0a1489c01e3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9817b4b5ef4e9421574f0a1489c01e3d">&#9670;&nbsp;</a></span>parameterName_attack</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const String parameterName_attack</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <a class="code" href="_so_x_compander___audio_effect_8cpp.html#a718e4bd7d4efb84022f557ef48762ce5">_companderBandParameterNameList</a>[0]</div>
+</div><!-- fragment -->
+<p>the parameter name of the attack (in English language) </p>
+
+</div>
+</div>
+<a id="a6b90c17fd056177ec973b2216a45d556"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b90c17fd056177ec973b2216a45d556">&#9670;&nbsp;</a></span>parameterName_dBGain</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const String parameterName_dBGain</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <a class="code" href="_so_x_compander___audio_effect_8cpp.html#a718e4bd7d4efb84022f557ef48762ce5">_companderBandParameterNameList</a>[5]</div>
+</div><!-- fragment -->
+<p>the parameter name of the gain (in English language) </p>
+
+</div>
+</div>
+<a id="ad7c3d8bd066304cdf4d17b8dc4ab01f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7c3d8bd066304cdf4d17b8dc4ab01f5">&#9670;&nbsp;</a></span>parameterName_dBKnee</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const String parameterName_dBKnee</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <a class="code" href="_so_x_compander___audio_effect_8cpp.html#a718e4bd7d4efb84022f557ef48762ce5">_companderBandParameterNameList</a>[2]</div>
+</div><!-- fragment -->
+<p>the parameter name of the knee (in English language) </p>
+
+</div>
+</div>
+<a id="a0845c9c48cbb8d7ee7631beac3ae7d3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0845c9c48cbb8d7ee7631beac3ae7d3d">&#9670;&nbsp;</a></span>parameterName_dBThreshold</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const String parameterName_dBThreshold</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <a class="code" href="_so_x_compander___audio_effect_8cpp.html#a718e4bd7d4efb84022f557ef48762ce5">_companderBandParameterNameList</a>[3]</div>
+</div><!-- fragment -->
+<p>the parameter name of the threshold (in English language) </p>
+
+</div>
+</div>
+<a id="a7341caa6fdd20d8201b0123c5cf82239"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7341caa6fdd20d8201b0123c5cf82239">&#9670;&nbsp;</a></span>parameterName_decay</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const String parameterName_decay</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <a class="code" href="_so_x_compander___audio_effect_8cpp.html#a718e4bd7d4efb84022f557ef48762ce5">_companderBandParameterNameList</a>[1]</div>
+</div><!-- fragment -->
+<p>the parameter name of the decay (in English language) </p>
+
+</div>
+</div>
+<a id="a1fdf041ad5fca0ed9c32be2929240b30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fdf041ad5fca0ed9c32be2929240b30">&#9670;&nbsp;</a></span>parameterName_ratio</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const String parameterName_ratio</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <a class="code" href="_so_x_compander___audio_effect_8cpp.html#a718e4bd7d4efb84022f557ef48762ce5">_companderBandParameterNameList</a>[4]</div>
+</div><!-- fragment -->
+<p>the parameter name of the ratio (in English language) </p>
+
+</div>
+</div>
+<a id="a64109e6d7475249085f16d5076f39505"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64109e6d7475249085f16d5076f39505">&#9670;&nbsp;</a></span>parameterName_topFrequency</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const String parameterName_topFrequency</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <a class="code" href="_so_x_compander___audio_effect_8cpp.html#a718e4bd7d4efb84022f557ef48762ce5">_companderBandParameterNameList</a>[6]</div>
+</div><!-- fragment -->
+<p>the parameter name of the top frequency (in English language) </p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="a_so_x_compander___audio_effect_8cpp_html_a718e4bd7d4efb84022f557ef48762ce5"><div class="ttname"><a href="_so_x_compander___audio_effect_8cpp.html#a718e4bd7d4efb84022f557ef48762ce5">_companderBandParameterNameList</a></div><div class="ttdeci">static const StringList _companderBandParameterNameList</div><div class="ttdoc">the list of parameter names in a compander band (with units)</div><div class="ttdef"><b>Definition:</b> SoXCompander_AudioEffect.cpp:287</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

@@ -39,6 +39,10 @@ namespace SoXPlugins::Effects::SoXCompander {
      */
     struct SoXMultibandCompander {
 
+        /*--------------------*/
+        /* con-/destruction   */
+        /*--------------------*/
+
         /**
          * Sets up a multiband compander.
          */
@@ -46,17 +50,37 @@ namespace SoXPlugins::Effects::SoXCompander {
 
         /*--------------------*/
 
-        ~SoXMultibandCompander ();
+        /**
+         * Constructs new compander from <C>otherCompander</C>
+         * (NOT AVAILABLE!)
+         *
+         * @param[in] otherCompander  compander to be copied
+         */
+        SoXMultibandCompander
+            (IN SoXMultibandCompander& otherCompander) = delete;
 
         /*--------------------*/
 
         /**
-         * Return string representation of multiband compander.
-         *
-         * @return  string representation
+         * Destroys multiband compander.
          */
-        String toString () const;
+        ~SoXMultibandCompander ();
 
+        /*--------------------*/
+        /* assignment         */
+        /*--------------------*/
+
+        /**
+         * Assigns current compander from <C>otherCompander</C>
+         * (NOT AVAILABLE!)
+         *
+         * @param[in] otherCompander  compander to be assigned
+         */
+        SoXMultibandCompander& operator=
+            (IN SoXMultibandCompander& otherCompander) = delete;
+
+        /*--------------------*/
+        /* property change    */
         /*--------------------*/
 
         /**
@@ -112,6 +136,8 @@ namespace SoXPlugins::Effects::SoXCompander {
                                    IN Real topFrequency);
 
         /*--------------------*/
+        /* complex change     */
+        /*--------------------*/
 
         /**
          * Processes samples from <C>inputSampleList</C> by multiband
@@ -126,6 +152,17 @@ namespace SoXPlugins::Effects::SoXCompander {
          */
         void apply (IN AudioSampleList& inputSampleList,
                     OUT AudioSampleList& outputSampleList);
+
+        /*--------------------*/
+        /* type conversion    */
+        /*--------------------*/
+
+        /**
+         * Return string representation of multiband compander.
+         *
+         * @return  string representation
+         */
+        String toString () const;
 
         /*--------------------*/
         /*--------------------*/

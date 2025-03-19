@@ -1,12 +1,13 @@
 <map id="RealList.h" name="RealList.h">
-<area shape="rect" id="node1" title="The RealList specification defines lists of real values with zero&#45;based arbitrary indexed access to p..." alt="" coords="655,5,742,33"/>
+<area shape="rect" id="node1" title="The RealList specification defines lists of real values with zero&#45;based arbitrary indexed access to p..." alt="" coords="879,5,966,33"/>
 <area shape="rect" id="node2" href="$_i_i_r_filter_8h.html" title="The IIRFilter specification defines an infinite impulse response filter." alt="" coords="301,81,384,109"/>
-<area shape="rect" id="node6" href="$_wave_form_8h.html" title="The WaveForm specification defines common services for (LFO) wave forms." alt="" coords="581,81,688,109"/>
-<area shape="rect" id="node9" href="$_real_list_8cpp.html" title="The RealList body implements lists of real values with zero&#45;based arbitrary indexed access to positio..." alt="" coords="713,81,815,109"/>
-<area shape="rect" id="node10" href="$_so_x_compander___audio_effect_8cpp.html" title="The SoXCompander_AudioEffect body implements the SoX compand and mcompand audio effects; a simple com..." alt="" coords="839,81,1075,109"/>
+<area shape="rect" id="node6" href="$_wave_form_8h.html" title="The WaveForm specification defines common services for (LFO) wave forms." alt="" coords="779,81,885,109"/>
+<area shape="rect" id="node8" href="$_so_x_chorus_and_echo___audio_effect_8cpp.html" title="The SoXChorusAndEcho_AudioEffect body implements the SoX chorus, echo and echos audio effects; the di..." alt="" coords="968,165,1235,193"/>
+<area shape="rect" id="node10" href="$_real_list_8cpp.html" title="The RealList body implements lists of real values with zero&#45;based arbitrary indexed access to positio..." alt="" coords="961,81,1063,109"/>
+<area shape="rect" id="node11" href="$_so_x_compander___audio_effect_8cpp.html" title="The SoXCompander_AudioEffect body implements the SoX compand and mcompand audio effects; a simple com..." alt="" coords="1087,81,1323,109"/>
 <area shape="rect" id="node3" href="$_i_i_r_filter_8cpp.html" title="The IIRFilter body implements an infinite impulse response filter (this is the formal CPP file used w..." alt="" coords="5,165,104,193"/>
 <area shape="rect" id="node4" href="$_so_x_compander_support_8cpp.html" title="The SoXCompanderSupport body implements several internal compander classes for the compander algorith..." alt="" coords="128,165,333,193"/>
 <area shape="rect" id="node5" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="358,165,549,193"/>
 <area shape="rect" id="node7" href="$_wave_form_8cpp.html" title="The WaveForm body implements common services for (LFO) wave forms." alt="" coords="573,165,696,193"/>
-<area shape="rect" id="node8" href="$_so_x_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXPhaserAndTremolo_AudioEffect body implements the SoX phaser and tremolo modulation effects tha..." alt="" coords="721,157,895,201"/>
+<area shape="rect" id="node9" href="$_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXFlangerPhaserAndTremolo_AudioEffect body implements the SoX flanger, phaser and tremolo modula..." alt="" coords="720,157,944,201"/>
 </map>

@@ -120,10 +120,14 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:aeb3d6a9a55d48b23c0f515258422f716"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716">SoXPlugins::Helpers::SoXParameterValueChangeKind</a> : short { <a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716ab6c1503bf3ca26a7932d2f6227ec2ba3">SoXPlugins::Helpers::SoXParameterValueChangeKind::globalChange</a> = 1, 
+<tr class="memitem:aeb3d6a9a55d48b23c0f515258422f716"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716">SoXPlugins::Helpers::SoXParameterValueChangeKind</a> : short { <br />
+&#160;&#160;<a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716ab6c1503bf3ca26a7932d2f6227ec2ba3">SoXPlugins::Helpers::SoXParameterValueChangeKind::globalChange</a> = 1, 
 <a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716a2c581a6ab7d343813e8926b1db2dabba">SoXPlugins::Helpers::SoXParameterValueChangeKind::pageChange</a> = 2, 
 <a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716a6865c555494c8184927c5f3a80e6cde7">SoXPlugins::Helpers::SoXParameterValueChangeKind::pageCountChange</a> = 3, 
-<a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716ad099a3a097d6349d897c64f783e1239d">SoXPlugins::Helpers::SoXParameterValueChangeKind::parameterChange</a> = 4
+<a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716ad099a3a097d6349d897c64f783e1239d">SoXPlugins::Helpers::SoXParameterValueChangeKind::parameterChange</a> = 4, 
+<br />
+&#160;&#160;<a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716ad37ddf64a872257d1805878d69aa9e6d">SoXPlugins::Helpers::SoXParameterValueChangeKind::noChange</a> = 5
+<br />
  }</td></tr>
 <tr class="memdesc:aeb3d6a9a55d48b23c0f515258422f716"><td class="mdescLeft">&#160;</td><td class="mdescRight">kind of change in a single parameter value to be reported to observers with its consequences (e.g.  <a href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716">More...</a><br /></td></tr>
 <tr class="separator:aeb3d6a9a55d48b23c0f515258422f716"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -151,7 +155,8 @@ Enumerations</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <a class="code" href="namespace_base_types_1_1_primitives.html#aa1174c1e7bedd8df69fc98453595a127">String</a>((<span class="keywordtype">short</span>)(kind) == 1 ? <span class="stringliteral">&quot;globalChange&quot;</span> \</div>
 <div class="line">           : ((<span class="keywordtype">short</span>)(kind) == 2 ? <span class="stringliteral">&quot;pageChange&quot;</span> \</div>
 <div class="line">              : ((<span class="keywordtype">short</span>)(kind) == 3 ? <span class="stringliteral">&quot;pageCountChange&quot;</span> \</div>
-<div class="line">                 : <span class="stringliteral">&quot;parameterChange&quot;</span>)))</div>
+<div class="line">                 : ((<span class="keywordtype">short</span>)(kind) == 4 ? <span class="stringliteral">&quot;parameterChange&quot;</span>      \</div>
+<div class="line">                    : <span class="stringliteral">&quot;noChange&quot;</span>))))</div>
 </div><!-- fragment -->
 <p>Returns the string representation of <code>kind</code>. </p>
 <dl class="params"><dt>Parameters</dt><dd>

@@ -33,6 +33,15 @@ using SoXPlugins::Helpers::SoXParameterValueChangeKind;
 
 namespace SoXPlugins::Effects {
 
+    /** a callback function type for receiving a value change
+     * notification */
+    typedef void (*ValueChangeNotification)(INOUT Object,
+                                            IN String&,
+                                            IN String&,
+                                            IN Boolean);
+
+    /*====================*/
+
     /**
      * A <C>SoXAudioEffect</C> object is a generic stereo audio effect
      * from SoX encapsulating the common services of such an effect.
@@ -74,6 +83,15 @@ namespace SoXPlugins::Effects {
         virtual String name () const;
 
         /*--------------------*/
+
+        /**
+         * Returns the length of the effect's tail in seconds.
+         *
+         * @return length of effect tail in seconds
+         */
+        virtual Real tailLength () const;
+
+        /*--------------------*/
         /* parameter map      */
         /*--------------------*/
 
@@ -88,12 +106,12 @@ namespace SoXPlugins::Effects {
         /*--------------------*/
 
         /**
-         * Sets parameter named <C>parameterName</C> to <C>value</C>.
-         * If value has wrong kind, it is ignored; if
-         * <C>recalculationIsForced</C> is set, the recalculation of
-         * dependent internal settings is forced (otherwise it is
-         * suppressed); returns change kind of value to be reported to
-         * observers
+         * Sets parameter named <C>parameterName</C> to <C>value</C>
+         * without informing parent processor.  If value has wrong
+         * kind, it is ignored; if <C>recalculationIsForced</C> is
+         * set, the recalculation of dependent internal settings is
+         * forced (otherwise it is suppressed); returns change kind of
+         * value to be reported to observers
          *
          * @param[in] parameterName          name of parameter to
          *                                   be set
@@ -109,6 +127,27 @@ namespace SoXPlugins::Effects {
                   IN String& value,
                   IN Boolean recalculationIsForced = true);
 
+        /*--------------------*/
+
+        /**
+         * Sets parameter named <C>parameterName</C> to <C>value</C>
+         * by informing parent processor.  If value has wrong kind, it
+         * is ignored; if <C>recalculationIsForced</C> is set, the
+         * recalculation of dependent internal settings is forced
+         * (otherwise it is suppressed)
+         *
+         * @param[in] parameterName          name of parameter to
+         *                                   be set
+         * @param[in] value                  associated value of
+         *                                   parameter
+         * @param[in] recalculationIsForced  flag to tell whether
+         *                                   complex recalculations
+         *                                   should be done
+         */
+        void setValueViaParent (IN String& parameterName,
+                                IN String& value,
+                                IN Boolean recalculationIsForced = true);
+        
         /*--------------------*/
 
         /**
@@ -135,6 +174,25 @@ namespace SoXPlugins::Effects {
          *                     shall be collectively set to valid
          */
         void setParameterValidity (IN Boolean isValid);
+
+        /*----------------------*/
+        /* data change listener */
+        /*----------------------*/
+
+        /**
+         * Sets handler object and procedure for routing value changes
+         * to <C>parent</C> and <C>notificationProc</C>; if handler
+         * object is NULL, any value change is just processed locally,
+         * otherwise it is assumed that handler calls the local
+         * setValue function indirectly
+         *
+         * @param [inout] valueChangeHandler  object processing the
+         *                                    value change
+         * @param [inout] notificationProc    callback routine called
+         *                                    for some value change
+         */
+        void setValueChangeHandler (Object valueChangeHandler,
+                                    ValueChangeNotification notificationProc);
 
         /*--------------------*/
         /* event handling     */
@@ -219,6 +277,13 @@ namespace SoXPlugins::Effects {
 
             /*--------------------*/
 
+            /** target object for value change information */
+            Object _valueChangeHandler;
+        
+            /** callback function connecting this effect to value
+             * change handler */
+            ValueChangeNotification _notificationProc;
+
             /** the audio sample rate to be used in this effect */
             Real _sampleRate;
 
@@ -227,10 +292,6 @@ namespace SoXPlugins::Effects {
 
             /** the map of effect parameters */
             SoXEffectParameterMap _effectParameterMap;
-
-            /** the specific parameters for this effect (private
-             * type) */
-            Object _effectDescriptor;
 
             /** during processing: the current time position in
              * seconds */
@@ -247,6 +308,10 @@ namespace SoXPlugins::Effects {
             /** tells whether effect parameters have a significant
              * value */
             Boolean _parametersAreValid;
+
+            /** the specific parameters for this effect (private
+             * type) */
+            Object _effectDescriptor;
 
     };
 

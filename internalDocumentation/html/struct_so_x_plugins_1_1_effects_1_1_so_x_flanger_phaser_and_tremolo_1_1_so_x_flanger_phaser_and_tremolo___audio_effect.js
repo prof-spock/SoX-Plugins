@@ -1,0 +1,12 @@
+var struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect =
+[
+    [ "SoXFlangerPhaserAndTremolo_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#a4e011eefdce4570a560dc82dd6b455a1", null ],
+    [ "~SoXFlangerPhaserAndTremolo_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#af00aa9eb19e7215eac7d4ee78b8b6f79", null ],
+    [ "_effectDescriptorToString", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#a9469712f3b7eac5401d4d7ca5fa7f1f5", null ],
+    [ "_setValueInternal", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#a09f7c720cbe7e7a39f00437c11ed34fa", null ],
+    [ "name", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#ac88c71d9cec09d216d87fdc78777c2e2", null ],
+    [ "processBlock", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#a36682ef28e49d33cf763950f621a6266", null ],
+    [ "setDefaultValues", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#a21e53d1553ac9b2b41876dab6cef5e79", null ],
+    [ "tailLength", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#a6ec386a8d3a62f29df343c9ed734206b", null ],
+    [ "toString", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#a945daa7279717fd127c872f704a58dc1", null ]
+];

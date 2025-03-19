@@ -9,9 +9,9 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 266)">
 <title>Graphical Class Hierarchy</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-266 422,-266 422,4 -4,4"/>
-<!-- Node73 -->
+<!-- Node77 -->
 <g id="node1" class="node">
-<title>Node73</title>
+<title>Node77</title>
 <g id="a_node1"><a xlink:title=" ">
 <polygon fill="white" stroke="#bfbfbf" points="0,-133.5 0,-153.5 94,-153.5 94,-133.5 0,-133.5"/>
 <text text-anchor="middle" x="47" y="-140.7" font-family="Helvetica,sans-Serif" font-size="11.00">GenericNumber</text>
@@ -28,15 +28,15 @@
 </a>
 </g>
 </g>
-<!-- Node73&#45;&gt;Node0 -->
+<!-- Node77&#45;&gt;Node0 -->
 <g id="edge1" class="edge">
-<title>Node73&#45;&gt;Node0</title>
+<title>Node77&#45;&gt;Node0</title>
 <path fill="none" stroke="midnightblue" d="M63.38,-161.37C78.82,-178.41 103.98,-203.87 130,-220.5 135.09,-223.75 140.66,-226.71 146.32,-229.37"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="65.88,-158.91 56.63,-153.75 60.65,-163.56 65.88,-158.91"/>
 </g>
-<!-- Node75 -->
+<!-- Node79 -->
 <g id="node3" class="node">
-<title>Node75</title>
+<title>Node79</title>
 <g id="a_node3"><a xlink:href="struct_base_types_1_1_primitives_1_1_character.html" target="_top" xlink:title="A Character object wraps a value of the associated primitive type char into an object.">
 <polygon fill="white" stroke="black" points="130,-178.5 130,-210.5 256,-210.5 256,-178.5 130,-178.5"/>
 <text text-anchor="start" x="138" y="-197.7" font-family="Helvetica,sans-Serif" font-size="11.00">BaseTypes::Primitives</text>
@@ -44,15 +44,15 @@
 </a>
 </g>
 </g>
-<!-- Node73&#45;&gt;Node75 -->
+<!-- Node77&#45;&gt;Node79 -->
 <g id="edge2" class="edge">
-<title>Node73&#45;&gt;Node75</title>
+<title>Node77&#45;&gt;Node79</title>
 <path fill="none" stroke="midnightblue" d="M86.05,-156.98C104.63,-163.56 127.13,-171.53 146.6,-178.42"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="87.04,-153.62 76.45,-153.58 84.71,-160.21 87.04,-153.62"/>
 </g>
-<!-- Node76 -->
+<!-- Node80 -->
 <g id="node4" class="node">
-<title>Node76</title>
+<title>Node80</title>
 <g id="a_node4"><a xlink:href="struct_base_types_1_1_primitives_1_1_integer.html" target="_top" xlink:title="An Integer object wraps a value of the associated primitive type in an object.">
 <polygon fill="white" stroke="black" points="130,-127.5 130,-159.5 256,-159.5 256,-127.5 130,-127.5"/>
 <text text-anchor="start" x="138" y="-146.7" font-family="Helvetica,sans-Serif" font-size="11.00">BaseTypes::Primitives</text>
@@ -60,15 +60,15 @@
 </a>
 </g>
 </g>
-<!-- Node73&#45;&gt;Node76 -->
+<!-- Node77&#45;&gt;Node80 -->
 <g id="edge3" class="edge">
-<title>Node73&#45;&gt;Node76</title>
+<title>Node77&#45;&gt;Node80</title>
 <path fill="none" stroke="midnightblue" d="M104.41,-143.5C112.79,-143.5 121.48,-143.5 129.97,-143.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="104.36,-140 94.36,-143.5 104.36,-147 104.36,-140"/>
 </g>
-<!-- Node77 -->
+<!-- Node81 -->
 <g id="node5" class="node">
-<title>Node77</title>
+<title>Node81</title>
 <g id="a_node5"><a xlink:href="struct_base_types_1_1_primitives_1_1_natural.html" target="_top" xlink:title="An Natural object wraps a value of the associated primitive type in an object.">
 <polygon fill="white" stroke="black" points="130,-76.5 130,-108.5 256,-108.5 256,-76.5 130,-76.5"/>
 <text text-anchor="start" x="138" y="-95.7" font-family="Helvetica,sans-Serif" font-size="11.00">BaseTypes::Primitives</text>
@@ -76,15 +76,15 @@
 </a>
 </g>
 </g>
-<!-- Node73&#45;&gt;Node77 -->
+<!-- Node77&#45;&gt;Node81 -->
 <g id="edge4" class="edge">
-<title>Node73&#45;&gt;Node77</title>
+<title>Node77&#45;&gt;Node81</title>
 <path fill="none" stroke="midnightblue" d="M86.05,-130.02C104.63,-123.44 127.13,-115.47 146.6,-108.58"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="84.71,-126.79 76.45,-133.42 87.04,-133.38 84.71,-126.79"/>
 </g>
-<!-- Node78 -->
+<!-- Node82 -->
 <g id="node6" class="node">
-<title>Node78</title>
+<title>Node82</title>
 <g id="a_node6"><a xlink:href="struct_base_types_1_1_primitives_1_1_real.html" target="_top" xlink:title="An Real object wraps a value of some associated primitive float point type in an object.">
 <polygon fill="white" stroke="black" points="130,-25.5 130,-57.5 256,-57.5 256,-25.5 130,-25.5"/>
 <text text-anchor="start" x="138" y="-44.7" font-family="Helvetica,sans-Serif" font-size="11.00">BaseTypes::Primitives</text>
@@ -92,15 +92,15 @@
 </a>
 </g>
 </g>
-<!-- Node73&#45;&gt;Node78 -->
+<!-- Node77&#45;&gt;Node82 -->
 <g id="edge5" class="edge">
-<title>Node73&#45;&gt;Node78</title>
+<title>Node77&#45;&gt;Node82</title>
 <path fill="none" stroke="midnightblue" d="M63.48,-125.96C78.99,-109.21 104.2,-84.12 130,-67.5 135.69,-63.83 141.99,-60.49 148.32,-57.52"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="60.82,-123.68 56.69,-133.44 66,-128.39 60.82,-123.68"/>
 </g>
-<!-- Node79 -->
+<!-- Node83 -->
 <g id="node7" class="node">
-<title>Node79</title>
+<title>Node83</title>
 <g id="a_node7"><a xlink:href="struct_base_types_1_1_primitives_1_1_percentage.html" target="_top" xlink:title="A Percentage object is real&#45;valued and represents a percentage (normalized to the 0 to 100 range).">
 <polygon fill="white" stroke="black" points="292,-51.5 292,-83.5 418,-83.5 418,-51.5 292,-51.5"/>
 <text text-anchor="start" x="300" y="-70.7" font-family="Helvetica,sans-Serif" font-size="11.00">BaseTypes::Primitives</text>
@@ -108,15 +108,15 @@
 </a>
 </g>
 </g>
-<!-- Node78&#45;&gt;Node79 -->
+<!-- Node82&#45;&gt;Node83 -->
 <g id="edge6" class="edge">
-<title>Node78&#45;&gt;Node79</title>
+<title>Node82&#45;&gt;Node83</title>
 <path fill="none" stroke="midnightblue" d="M266.27,-53.24C274.81,-54.63 283.47,-56.04 291.85,-57.4"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="266.75,-49.78 256.32,-51.63 265.63,-56.69 266.75,-49.78"/>
 </g>
-<!-- Node80 -->
+<!-- Node84 -->
 <g id="node8" class="node">
-<title>Node80</title>
+<title>Node84</title>
 <g id="a_node8"><a xlink:href="struct_base_types_1_1_primitives_1_1_radians.html" target="_top" xlink:title="A Radians object is a real&#45;valued and represents the range from 0 to 2pi.">
 <polygon fill="white" stroke="black" points="292,-0.5 292,-32.5 418,-32.5 418,-0.5 292,-0.5"/>
 <text text-anchor="start" x="300" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">BaseTypes::Primitives</text>
@@ -124,9 +124,9 @@
 </a>
 </g>
 </g>
-<!-- Node78&#45;&gt;Node80 -->
+<!-- Node82&#45;&gt;Node84 -->
 <g id="edge7" class="edge">
-<title>Node78&#45;&gt;Node80</title>
+<title>Node82&#45;&gt;Node84</title>
 <path fill="none" stroke="midnightblue" d="M266.27,-30.21C274.81,-28.87 283.47,-27.52 291.85,-26.21"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="265.66,-26.76 256.32,-31.76 266.74,-33.68 265.66,-26.76"/>
 </g>

@@ -86,8 +86,7 @@ $(document).ready(function(){initNavTree('namespace_audio.html',''); initResizab
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Audio Namespace Reference</div>  </div>
 </div><!--header-->
@@ -126,10 +125,14 @@ Typedefs</h2></td></tr>
 typedef <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a64757dc84eac3a7e8bcaa0bfbd6b71ee">AudioSample</a></td></tr>
 <tr class="memdesc:a64757dc84eac3a7e8bcaa0bfbd6b71ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code>AudioSample</code> represents a single audio sample (a 32bit float) <br /></td></tr>
 <tr class="separator:a64757dc84eac3a7e8bcaa0bfbd6b71ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13115429994ee612768bb9bbe1257868"><td class="memItemLeft" align="right" valign="top"><a id="a13115429994ee612768bb9bbe1257868"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a13115429994ee612768bb9bbe1257868">_WaveTable</a> = <a class="el" href="struct_base_types_1_1_containers_1_1_real_list.html">RealList</a></td></tr>
-<tr class="memdesc:a13115429994ee612768bb9bbe1257868"><td class="mdescLeft">&#160;</td><td class="mdescRight"><code>_WaveTable</code> is a local alias name for a real list <br /></td></tr>
-<tr class="separator:a13115429994ee612768bb9bbe1257868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82c4cb6bc7c44ffdaff458ef109761ab"><td class="memItemLeft" align="right" valign="top"><a id="a82c4cb6bc7c44ffdaff458ef109761ab"></a>
+typedef RealList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a82c4cb6bc7c44ffdaff458ef109761ab">_WaveTable</a></td></tr>
+<tr class="memdesc:a82c4cb6bc7c44ffdaff458ef109761ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>_WaveTable</code> is just a real list storing data for a wave form. <br /></td></tr>
+<tr class="separator:a82c4cb6bc7c44ffdaff458ef109761ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8730da08410ddb94e356b07224e46bbf"><td class="memItemLeft" align="right" valign="top"><a id="a8730da08410ddb94e356b07224e46bbf"></a>
+typedef <a class="el" href="namespace_audio.html#a82c4cb6bc7c44ffdaff458ef109761ab">_WaveTable</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a8730da08410ddb94e356b07224e46bbf">_WaveTablePtr</a></td></tr>
+<tr class="memdesc:a8730da08410ddb94e356b07224e46bbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to a wave table <br /></td></tr>
+<tr class="separator:a8730da08410ddb94e356b07224e46bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a516b176c934c0ff0c413e5b62260ee1f"><td class="memItemLeft" align="right" valign="top"><a id="a516b176c934c0ff0c413e5b62260ee1f"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a516b176c934c0ff0c413e5b62260ee1f">WaveFormIteratorState</a> = <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a></td></tr>
 <tr class="memdesc:a516b176c934c0ff0c413e5b62260ee1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code>WaveFormIteratorState</code> object holds the state of an iterator on the current waveform. <br /></td></tr>
@@ -162,30 +165,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ad6e376977c957925e9ff30fee99e1128"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#ad6e376977c957925e9ff30fee99e1128">_audioSampleListTypeName</a> ()</td></tr>
 <tr class="memdesc:ad6e376977c957925e9ff30fee99e1128"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns name of audio sample list type.  <a href="namespace_audio.html#ad6e376977c957925e9ff30fee99e1128">More...</a><br /></td></tr>
 <tr class="separator:ad6e376977c957925e9ff30fee99e1128"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a266c35f653d75295bba3f78fa2b006f7"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a266c35f653d75295bba3f78fa2b006f7">_waveFormKind</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_audio.html#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a> kind)</td></tr>
-<tr class="memdesc:a266c35f653d75295bba3f78fa2b006f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns string representation of <code>kind</code>.  <a href="namespace_audio.html#a266c35f653d75295bba3f78fa2b006f7">More...</a><br /></td></tr>
-<tr class="separator:a266c35f653d75295bba3f78fa2b006f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0241b44b4799e4b82e8bf435f33a94e6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a0241b44b4799e4b82e8bf435f33a94e6">_getWavetableValueAtPosition</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_audio.html#a13115429994ee612768bb9bbe1257868">_WaveTable</a> *waveTable, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> position)</td></tr>
-<tr class="memdesc:a0241b44b4799e4b82e8bf435f33a94e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds value in <code>waveTable</code> at real <code>position</code> by a linear interpolation.  <a href="namespace_audio.html#a0241b44b4799e4b82e8bf435f33a94e6">More...</a><br /></td></tr>
-<tr class="separator:a0241b44b4799e4b82e8bf435f33a94e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51194bb27225fb2d37d8dc7e853f62ce"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a51194bb27225fb2d37d8dc7e853f62ce">_initializeWaveTable</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="namespace_audio.html#a13115429994ee612768bb9bbe1257868">_WaveTable</a> &amp;waveTable, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_audio.html#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a> kind, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> length)</td></tr>
-<tr class="memdesc:a51194bb27225fb2d37d8dc7e853f62ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes <code>waveTable</code> to be of <code>kind</code> having <code>length</code> base points, the range is [0, +1] for all wave forms.  <a href="namespace_audio.html#a51194bb27225fb2d37d8dc7e853f62ce">More...</a><br /></td></tr>
-<tr class="separator:a51194bb27225fb2d37d8dc7e853f62ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4a2631f95324dfde08a7cf33d5facfd"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#ab4a2631f95324dfde08a7cf33d5facfd">_position</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_audio_1_1___wave_form_descriptor.html">_WaveFormDescriptor</a> *descriptor)</td></tr>
-<tr class="memdesc:ab4a2631f95324dfde08a7cf33d5facfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates position from settings in <code>descriptor</code>.  <a href="namespace_audio.html#ab4a2631f95324dfde08a7cf33d5facfd">More...</a><br /></td></tr>
-<tr class="separator:ab4a2631f95324dfde08a7cf33d5facfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:abf5c21d68937ed5150a07fd4bc379c3b"><td class="memItemLeft" align="right" valign="top"><a id="abf5c21d68937ed5150a07fd4bc379c3b"></a>
-static <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_isInitialized</b> = false</td></tr>
-<tr class="separator:abf5c21d68937ed5150a07fd4bc379c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51dbc34a1f94f979d8fe25bc5d0f9d8b"><td class="memItemLeft" align="right" valign="top"><a id="a51dbc34a1f94f979d8fe25bc5d0f9d8b"></a>
-static <a class="el" href="namespace_audio.html#a13115429994ee612768bb9bbe1257868">_WaveTable</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_sineWaveTable</b></td></tr>
-<tr class="separator:a51dbc34a1f94f979d8fe25bc5d0f9d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5111f5b4c2201e8e7a559233d42c396a"><td class="memItemLeft" align="right" valign="top"><a id="a5111f5b4c2201e8e7a559233d42c396a"></a>
-static <a class="el" href="namespace_audio.html#a13115429994ee612768bb9bbe1257868">_WaveTable</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_triangleWaveTable</b></td></tr>
-<tr class="separator:a5111f5b4c2201e8e7a559233d42c396a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a756c708f5d7d400202219a7a1adaeb13"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a756c708f5d7d400202219a7a1adaeb13">waveFormKindToString</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_audio.html#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a> kind)</td></tr>
+<tr class="memdesc:a756c708f5d7d400202219a7a1adaeb13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns string representation of <code>kind</code>.  <a href="namespace_audio.html#a756c708f5d7d400202219a7a1adaeb13">More...</a><br /></td></tr>
+<tr class="separator:a756c708f5d7d400202219a7a1adaeb13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb924ba2c19839c2128ab2b4a79c4ce7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_audio.html#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#afb924ba2c19839c2128ab2b4a79c4ce7">stringToWaveFormKind</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;st)</td></tr>
+<tr class="memdesc:afb924ba2c19839c2128ab2b4a79c4ce7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns wave form kind for <code>st</code>.  <a href="namespace_audio.html#afb924ba2c19839c2128ab2b4a79c4ce7">More...</a><br /></td></tr>
+<tr class="separator:afb924ba2c19839c2128ab2b4a79c4ce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The package <code><a class="el" href="namespace_audio.html" title="The package Audio provides simple audio types.">Audio</a></code> provides simple audio types. </p>
@@ -211,169 +196,31 @@ static <a class="el" href="namespace_audio.html#a13115429994ee612768bb9bbe125786
 
 </div>
 </div>
-<a id="a0241b44b4799e4b82e8bf435f33a94e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0241b44b4799e4b82e8bf435f33a94e6">&#9670;&nbsp;</a></span>_getWavetableValueAtPosition()</h2>
+<a id="afb924ba2c19839c2128ab2b4a79c4ce7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb924ba2c19839c2128ab2b4a79c4ce7">&#9670;&nbsp;</a></span>stringToWaveFormKind()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> Audio::_getWavetableValueAtPosition </td>
+          <td class="memname"><a class="el" href="_global_macros_8h.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> <a class="el" href="namespace_audio.html#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a> Audio::stringToWaveFormKind </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_audio.html#a13115429994ee612768bb9bbe1257868">_WaveTable</a> *&#160;</td>
-          <td class="paramname"><em>waveTable</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
-          <td class="paramname"><em>position</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Finds value in <code>waveTable</code> at real <code>position</code> by a linear interpolation. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">waveTable</td><td>the list of samples in wave form </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">position</td><td>the position in the wave form </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a51194bb27225fb2d37d8dc7e853f62ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51194bb27225fb2d37d8dc7e853f62ce">&#9670;&nbsp;</a></span>_initializeWaveTable()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void Audio::_initializeWaveTable </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="namespace_audio.html#a13115429994ee612768bb9bbe1257868">_WaveTable</a> &amp;&#160;</td>
-          <td class="paramname"><em>waveTable</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_audio.html#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a>&#160;</td>
-          <td class="paramname"><em>kind</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Initializes <code>waveTable</code> to be of <code>kind</code> having <code>length</code> base points, the range is [0, +1] for all wave forms. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">waveTable</td><td>the list of samples in wave form </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">kind</td><td>the wave form kind </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>the number of sampling points </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ab4a2631f95324dfde08a7cf33d5facfd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4a2631f95324dfde08a7cf33d5facfd">&#9670;&nbsp;</a></span>_position()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> Audio::_position </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_audio_1_1___wave_form_descriptor.html">_WaveFormDescriptor</a> *&#160;</td>
-          <td class="paramname"><em>descriptor</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>st</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Calculates position from settings in <code>descriptor</code>. </p>
+<p>Returns wave form kind for <code>st</code>. </p>
+<p>If st is unknown, returns "sine".</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">descriptor</td><td>the descriptor for the wave form </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">st</td><td>string representation of wave form kind </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a266c35f653d75295bba3f78fa2b006f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a266c35f653d75295bba3f78fa2b006f7">&#9670;&nbsp;</a></span>_waveFormKind()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static String Audio::_waveFormKind </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_audio.html#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a>&#160;</td>
-          <td class="paramname"><em>kind</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns string representation of <code>kind</code>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">kind</td><td>wave form kind </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>string representation of kind </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>wave form kind </dd></dl>
 
 </div>
 </div>
@@ -409,6 +256,33 @@ static <a class="el" href="namespace_audio.html#a13115429994ee612768bb9bbe125786
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>string representation of sample </dd></dl>
+
+</div>
+</div>
+<a id="a756c708f5d7d400202219a7a1adaeb13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a756c708f5d7d400202219a7a1adaeb13">&#9670;&nbsp;</a></span>waveFormKindToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_global_macros_8h.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> String Audio::waveFormKindToString </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_audio.html#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a>&#160;</td>
+          <td class="paramname"><em>kind</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns string representation of <code>kind</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">kind</td><td>wave form kind to be converted to string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string representation of kind </dd></dl>
 
 </div>
 </div>

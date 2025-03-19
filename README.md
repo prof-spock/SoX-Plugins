@@ -3,7 +3,7 @@
     <TH>
       <H1>SoX Plugins for DAWs</H1>
     <TH>
-      <IMG SRC="./doc/latex/figures/title.svg" STYLE="float:right"
+      <IMG SRC="./doc/latex/figures/SoX-A-title.png" STYLE="float:right"
            WIDTH="55%" HEIGHT="55%">
     </TH>
   </TR>
@@ -12,30 +12,26 @@
 Overview
 --------
 
-The SoXPlugins software package provides plugins for being used in
-digital audio workstations (DAW); they implement some of the more
-prominent audio processing effects from SoX as DAW audio plugins.
+The SoX Plugins software package provides plugins for being used in
+digital audio workstations (DAW); they implement some of the audio
+processing effects from SoX.  
 
-*[SoX][]* is a command line audio processing tool for Unix, Windows
-and Mac OS that transforms source audio files in several formats into
-other audio files.  It provides several standard audio effects (like
-e.g. filters or reverb) in good quality and with a transparent,
-open-source implementation.
+*[SoX][reference:SoX]* is a command line audio processing tool for
+Unix, Windows and Mac OS that transforms source audio files in several
+formats into other audio files.  It provides several standard audio
+effects (like e.g. filters or reverb) in good quality and with a
+transparent, open-source implementation.  Currently a project called
+[SoX_ng][reference:SoXNG] and led by Martin W. Guy is modernizing all
+those effects and hence serves as the reference for this project.
 
-This plugin implementation is completely free, open-source,
-platform-neutral and based on the *[JUCE][]* audio framework.
-Currently only plugin versions as VST3 under Windows 10, VST3 and AU
-under MacOSX (x86_64) and VST3 under Linux (x86_64) are provided, but
-porting to other targets should be straightforward, since building is
-supported by a platform-neutral CMAKE build file.
-
-The effects provided here are a complete rewrite in C++ of the SoX
-algorithms for producing *(bit-exact) identical* renderings in the
-DAW.  This can easily be checked by rendering some audio externally
-with SoX and internally with the plugins and subtracting the results.
-Apart from roundoff errors (SoX often uses 32bit integer processing,
-while the SoXPlugins always uses double floating point processing) the
-results cancel out with typically a residual noise of -140dBFS.
+The effects provided here are a complete rewrite in
+C++ of the SoX algorithms for producing
+*(bit-exact) identical* renderings in the DAW.  This can easily be
+checked by rendering some audio externally with SoX and internally
+with the plugins and subtracting the results.  Apart from roundoff
+errors (SoX often uses 32bit integer processing, while the SoXPlugins
+always uses double floating point processing) the results cancel out
+with typically a residual noise of -140dBFS.
 
 The main motivation for this package is to be able to play around with
 effects in a DAW and be sure that the external rendering by SoX will
@@ -67,6 +63,13 @@ complexity in the original sources due to their several contributors.
 Nevertheless - as pointed out - the effects provided here faithfully
 model the SoX command-line processing.
 
+This plugin implementation is completely free, open-source,
+platform-neutral and based on the *[JUCE][reference:JUCE]* audio
+framework.  Currently only plugin versions as VST3 under Windows 10,
+VST3 and AU under MacOSX (x86_64) and VST3 under Linux (x86_64) are
+provided, but porting to other targets should be straightforward,
+since building is supported by a platform-neutral CMAKE build file.
+
 Available Effects
 -----------------
 
@@ -92,10 +95,20 @@ The following effects are available in this package:
   - *biquad*: a generic biquad (iir) filter with 6 coefficients
     b0, b1, b2, a0, a1 and a2
 
+  - *chorus*: a chorus effect with multiple parallel echos modulated
+    either by sine or triangle signals,
+
   - *compand*: a compander with attack, release, input gain
     shift, threshold and compression and soft knee; this
     is a reduced version of SoX compand with only a
     simple transfer function
+
+  - *echo*: a tapped delay with several absolute delay times and
+    signal decays,
+
+  - *echos*: a sequential delay with delay stages with absolute
+    delay times and signal decays fed with signals from the previous
+    stages,
 
   - *equalizer*: a biquad filter for equalizing with
     settings for the pole count, the filter frequency
@@ -132,14 +145,17 @@ The following effects are available in this package:
   - *tremolo*: a tremolo effect with sine modulation using a
     double-sideband suppressed carrier modulation
 
+
+
 Installation
 ------------
 
 The installation is as follows:
 
-   1. Expand the appropriate binary archive of the <TT>SoXPlugins</TT>
-      for your platform from this [repository](../../releases) into
-      the directory for VST plugins of your DAW.
+    1. Expand the appropriate binary archive of the
+      <TT>SoXPlugins</TT> for your platform from this
+      [repository](../../releases) into the directory for VST plugins
+      of your DAW.
 
    2. The distribution also contains a documentation [pdf
       file](./SoXPlugins-documentation.pdf) in subdirectory doc and
@@ -149,7 +165,7 @@ The installation is as follows:
    3. When installing the plugins on MacOSX, note that those are
       **not signed**; so you have to explicitly remove the quarantine
       flag from them (e.g. by applying the command `sudo xattr -rd
-      com.apple.quarantine «vstPath»`).
+      com.apple.quarantine vstPath`).
 
    4. When installing the plugins on Windows, they require the
       so-called *Microsoft Visual C++ Redistributable* library.  Very
@@ -163,7 +179,7 @@ The installation is as follows:
 Plugin Example - Phaser
 -----------------------
 
-![Panel for SoXPlugins Phaser](./doc/latex/figures/SoX-Phaser.png)
+![Panel for SoXPlugins Phaser](./doc/latex/figures/SoX-C-Eff_Phaser.png)
 
 The above diagram gives an example for one of the plugins: this is the
 UI for the phaser effect.
@@ -199,13 +215,13 @@ those test and result files and applies the corresponding effect
 plugins.  Ideally (because the result files have inverted phase),
 everything should cancel out as shown here:
 
-![Example Noise Floor for Regression Test](./doc/latex/figures/noiseFloor.png)
+![Example Noise Floor for Regression Test](./doc/latex/figures/SoX-A-noiseFloor.png)
 
 Details
 -------
 
 The detailed user manual can be found
-*[here](./SoXPlugins-documentation.pdf)*.
+*[here][reference:manual]*.
 
 Acknowledgements
 ----------------
@@ -215,9 +231,10 @@ SoX community.  Although the algorithms used were modified and
 redesigned, this project would been much more complicated and tedious
 without this basis.
 
-Hence my thanks go to Chris Bagwell, Nick Bailey, Daniel Pouzzner,
-Måns Rullgård, Rob Sewell and all the other contributors of the SoX
-project: without your effort this would not have been possible!
+Hence my thanks go to Chris Bagwell, Nick Bailey, Martin W. Guy,
+Daniel Pouzzner, Måns Rullgård, Rob Sewell and all the other
+contributors of the SoX project: without your effort this would not
+have been possible!
 
 ## License
 
@@ -229,6 +246,9 @@ There are two license models for this project:
 
 This means that if you do *not* use the given binaries and compile the source code by yourself, the MIT license applies.  If you *do* use the binaries, then the AGPL v3 license applies.
 
-[JUCE]: http://www.juce.com/
-[SoX]: http://sox.sourceforge.net/
-[VCCLib]: https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist
+[reference:JUCE]: http://www.juce.com/
+[reference:manual]: ./SoXPlugins-Documentation.pdf
+[reference:reaJS]: https://www.reaper.fm/reaplugs/
+[reference:SoX]: http://sox.sourceforge.net/
+[reference:SoXNG]: https://codeberg.org/sox_ng/sox_ng
+[reference:VCCLib]: https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist

@@ -18,6 +18,9 @@
 /* IMPORTS */
 /*=========*/
 
+#include <algorithm>
+#include <numeric>
+
 #include "SoXReverbSupport.h"
 
 #include "GenericTuple.h"
@@ -38,28 +41,59 @@ using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
+/*--------------------*/
+/* CONSTANTS          */
+/*--------------------*/
+
+/** the maximum number of supported channels */
+static constexpr size_t _maxChannelCount = 100;
+
+/* Freeverb construction parameters */
+
+/** the number of freeverb comb filters */
+static constexpr size_t _lineCombFilterCount    = 8;
+
+/** list of sample ring buffer lengths for comb filters in the
+ * Freeverb algorithm */
+static const NaturalList _combFilterLengthList =
+    NaturalList::fromList({Natural{1116}, Natural{1188},
+                           Natural{1277}, Natural{1356},
+                           Natural{1422}, Natural{1491},
+                           Natural{1557}, Natural{1617}});
+
+/** the number of freeverb allpass filters */
+static constexpr size_t _lineAllpassFilterCount = 4;
+
+/** list of sample ring buffer lengths for allpass filters in the
+ * Freeverb algorithm */
+static const NaturalList _allpassFilterLengthList =
+    NaturalList::fromList({Natural{225}, Natural{341},
+                           Natural{441}, Natural{556}});
+
+/** the stereo spread in samples in freeverb */
+static const Real _stereoSpread = 12.0;
+
+/** the allpass factor in freeverb */
+static const Real _allpassFactor = 0.5;
+
+/** the maximum value for the room scale */
+static const Real _maximumRoomScale   = 1.0;
+
+/** the maximum value for the stereo depth */
+static const Real _maximumStereoDepth = 1.0;
+
+/** the maximum value for the predelay in seconds */
+static const Real _maximumPredelay    = 0.5;
+
+/** arbitrary default used for construction of delay lines */
+static const Real _defaultSampleRate = 100.0;
+
+/** reference sample rate for reverb line delays */
+static const Real _referenceSampleRate = 44100.0;
+
+/*============================================================*/
+
 namespace SoXPlugins::Effects::SoXReverb {
-
-    /*--------------------*/
-    /* CONSTANTS          */
-    /*--------------------*/
-
-    /** the maximum number of supported channels */
-    static constexpr size_t _maxChannelCount = 100;
-
-    /* Freeverb construction parameters */
-
-    /** the number of freeverb comb filters */
-    static constexpr size_t _lineCombFilterCount    = 8;
-
-    /** the number of freeverb allpass filters */
-    static constexpr size_t _lineAllpassFilterCount = 4;
-
-    /** the stereo spread in samples in freeverb */
-    static const Real _stereoSpread = 12.0;
-
-    /** the allpass factor in freeverb */
-    static const Real _allpassFactor = 0.5;
 
     /*--------------------*/
     /* TYPE DEFINITIONS   */
@@ -81,7 +115,7 @@ namespace SoXPlugins::Effects::SoXReverb {
     struct _AllpassFilter {
 
         /*--------------------*/
-        /* setup              */
+        /* con-/destruction   */
         /*--------------------*/
 
         /**
@@ -89,6 +123,8 @@ namespace SoXPlugins::Effects::SoXReverb {
          */
         _AllpassFilter ();
 
+        /*--------------------*/
+        /* property access    */
         /*--------------------*/
 
         /**
@@ -98,6 +134,8 @@ namespace SoXPlugins::Effects::SoXReverb {
          */
         Natural ringBufferLength () const;
 
+        /*--------------------*/
+        /* property change    */
         /*--------------------*/
 
         /**
@@ -109,7 +147,7 @@ namespace SoXPlugins::Effects::SoXReverb {
         void setRingBufferLength (IN Natural length);
 
         /*--------------------*/
-        /* filter application */
+        /* complex change     */
         /*--------------------*/
 
         /**
@@ -143,7 +181,7 @@ namespace SoXPlugins::Effects::SoXReverb {
     struct _CombFilter {
 
         /*--------------------*/
-        /* setup              */
+        /* con-/destruction   */
         /*--------------------*/
 
         /**
@@ -151,6 +189,8 @@ namespace SoXPlugins::Effects::SoXReverb {
          */
         _CombFilter ();
 
+        /*--------------------*/
+        /* property access    */
         /*--------------------*/
 
         /**
@@ -161,6 +201,8 @@ namespace SoXPlugins::Effects::SoXReverb {
         Natural ringBufferLength () const;
 
         /*--------------------*/
+        /* property change    */
+        /*--------------------*/
 
         /**
          * Sets length of sample ring buffer in filter
@@ -170,7 +212,7 @@ namespace SoXPlugins::Effects::SoXReverb {
         void setRingBufferLength (IN Natural length);
 
         /*--------------------*/
-        /* filter application */
+        /* complex change     */
         /*--------------------*/
 
         /**
@@ -208,6 +250,10 @@ namespace SoXPlugins::Effects::SoXReverb {
      */
     struct _ReverbLine {
 
+        /*--------------------*/
+        /* con-/destruction   */
+        /*--------------------*/
+
         /**
          * Constructs a complete reverb line and all filters; creates
          * all sample ring buffers with arbitrary length to be adapted
@@ -223,6 +269,8 @@ namespace SoXPlugins::Effects::SoXReverb {
         ~_ReverbLine ();
 
         /*--------------------*/
+        /* type conversion    */
+        /*--------------------*/
 
         /**
          * Returns a string representation of reverb line.
@@ -231,6 +279,19 @@ namespace SoXPlugins::Effects::SoXReverb {
          */
         String toString () const;
 
+        /*--------------------*/
+        /* measurement        */
+        /*--------------------*/
+
+        /**
+         * Returns length of the maximum delay path in samples.
+         *
+         * @return  maximum path length (in samples)
+         */
+        Natural maximumDelayPathLength () const;
+
+        /*--------------------*/
+        /* property change    */
         /*--------------------*/
 
         /**
@@ -243,9 +304,11 @@ namespace SoXPlugins::Effects::SoXReverb {
          * @param[in] stereoDepth  new stereo depth of reverb line
          */
         void adjustRingBufferLengths (IN Real sampleRate,
-                                 IN Real roomScale,
-                                 IN Real stereoDepth);
+                                      IN Real roomScale,
+                                      IN Real stereoDepth);
 
+        /*--------------------*/
+        /* complex change     */
         /*--------------------*/
 
         /**
@@ -282,6 +345,13 @@ namespace SoXPlugins::Effects::SoXReverb {
     };
 
     /*====================*/
+
+    /**
+     * A <C>_ReverbLinePtr</C> object is a pointer to a reverb line.
+     */
+    typedef _ReverbLine* _ReverbLinePtr;
+
+    /*====================*/
     /* Reverb Channel     */
     /*====================*/
 
@@ -293,6 +363,10 @@ namespace SoXPlugins::Effects::SoXReverb {
      * predelay is non-zero)
      */
     struct _ReverbChannel {
+
+        /*--------------------*/
+        /* con-/destruction   */
+        /*--------------------*/
 
         /**
          * Constructs a complete reverb line with predelay line and
@@ -311,6 +385,8 @@ namespace SoXPlugins::Effects::SoXReverb {
         ~_ReverbChannel ();
 
         /*--------------------*/
+        /* type conversion    */
+        /*--------------------*/
 
         /**
          * Returns a string representation of reverb channel.
@@ -319,6 +395,19 @@ namespace SoXPlugins::Effects::SoXReverb {
          */
         String toString () const;
 
+        /*--------------------*/
+        /* measurement        */
+        /*--------------------*/
+
+        /**
+         * Returns length of the maximum delay path in samples.
+         *
+         * @return  maximum path length (in samples)
+         */
+        Natural maximumDelayPathLength () const;
+
+        /*--------------------*/
+        /* property change    */
         /*--------------------*/
 
         /**
@@ -334,10 +423,12 @@ namespace SoXPlugins::Effects::SoXReverb {
          * @param[in] stereoDepth  new stereo depth for reverb channel
          */
         void adjustRingBufferLengths (IN Real sampleRate,
-                                 IN Real predelay,
-                                 IN Real roomScale,
-                                 IN Real stereoDepth);
+                                      IN Real predelay,
+                                      IN Real roomScale,
+                                      IN Real stereoDepth);
 
+        /*--------------------*/
+        /* complex change     */
         /*--------------------*/
 
         /**
@@ -370,7 +461,7 @@ namespace SoXPlugins::Effects::SoXReverb {
             Natural _reverbLineCount;
 
             /** the list of associated reverb lines */
-            GenericList<_ReverbLine*> _reverbLineList;
+            GenericList<_ReverbLinePtr> _reverbLineList;
 
     };
 
@@ -415,6 +506,9 @@ namespace SoXPlugins::Effects::SoXReverb {
         /** the number of channels in this reverb */
         Natural channelCount;
 
+        /** the current sample rate for this reverb */
+        Real sampleRate;
+
         /** the list of reverb channels */
         _ReverbChannelList reverbChannelList{};
 
@@ -429,432 +523,523 @@ namespace SoXPlugins::Effects::SoXReverb {
         String toString () const;
 
     };
-
-    /*============================================================*/
-
-    /* the maximum value for the room scale */
-    static const Real _maximumRoomScale   = 1.0;
-
-    /* the maximum value for the stereo depth */
-    static const Real _maximumStereoDepth = 1.0;
-
-    /* the maximum value for the predelay in seconds */
-    static const Real _maximumPredelay    = 0.5;
-
-    /** arbitrary default used for construction of delay lines */
-    static const Real _defaultSampleRate = 100.0;
-
-    /** reference sample rate for reverb line delays */
-    static const Real _referenceSampleRate = 44100.0;
-
-    /** list of sample ring buffer lengths for comb filters */
-    static const NaturalList _combFilterLengthList =
-        NaturalList::fromList({Natural{1116}, Natural{1188},
-                               Natural{1277}, Natural{1356},
-                               Natural{1422}, Natural{1491},
-                               Natural{1557}, Natural{1617}});
-
-    /** list of sample ring buffer lengths for allpass filters */
-    static const NaturalList _allpassFilterLengthList =
-        NaturalList::fromList({Natural{225}, Natural{341},
-                               Natural{441}, Natural{556}});
-
-    /*============================================================*/
-
-    _AllpassFilter::_AllpassFilter ()
-        : _sampleRingBuffer{}
-    {
-    }
-
-    /*--------------------*/
-
-    Natural _AllpassFilter::ringBufferLength () const
-    {
-        return _sampleRingBuffer.length();
-    }
-
-    /*--------------------*/
-
-    void _AllpassFilter::setRingBufferLength (IN Natural length)
-    {
-        _sampleRingBuffer.setLength(length);
-    }
-
-    /*--------------------*/
-
-    AudioSample _AllpassFilter::apply (IN AudioSample inputSample)
-    {
-        const AudioSample outputSample = _sampleRingBuffer.first();
-        const AudioSample newSample =
-            inputSample + outputSample * _allpassFactor;
-        _sampleRingBuffer.shiftLeft(newSample);
-        return outputSample - inputSample;
-    }
-
-    /*--------------------*/
-
-    _CombFilter::_CombFilter ()
-        : _sampleRingBuffer{},
-          _storedSample{0.0}
-    {
-    }
-
-    /*--------------------*/
-
-    Natural _CombFilter::ringBufferLength () const
-    {
-        return _sampleRingBuffer.length();
-    }
-
-    /*--------------------*/
-
-    void _CombFilter::setRingBufferLength (IN Natural length)
-    {
-        _sampleRingBuffer.setLength(length);
-    }
-
-    /*--------------------*/
-
-    AudioSample _CombFilter::apply (IN AudioSample inputSample,
-                                       IN Real feedback,
-                                       IN Real hfDamping)
-    {
-        const AudioSample outputSample = _sampleRingBuffer.first();
-        _storedSample = (outputSample
-                         + (_storedSample - outputSample) * hfDamping);
-        _sampleRingBuffer.shiftLeft(inputSample + _storedSample * feedback);
-        return outputSample;
-    }
-
-    /*============================================================*/
-
-    /**
-     * Returns length of filter delay line for given parameters;
-     * if <C>isCreation</C> is set, the maximum length for those
-     * parameters is returned.
-     *
-     * @param[in] isCreation    tells whether reverb line effective
-     *                          length or maximum length should be
-     *                          calculated
-     * @param[in] isCombFilter  tells whether length for comb filter
-     *                          or allpass
-     *                          filter should be calculated
-     * @param[in] index         the index of the filter (starting at zero)
-     * @param[in] sampleRate    the sample rate of reverb
-     * @param[in] cRoomScale    the room scale of reverb
-     * @param[in] stereoDepth   the desired stereo depth of reverb
-     * @return  length of filter sample ring buffer
-     */
-    static
-    Natural _reverbLineDelayLength (IN Boolean isCreation,
-                                    IN Boolean isCombFilter,
-                                    IN Natural index,
-                                    IN Real sampleRate,
-                                    IN Real cRoomScale,
-                                    IN Real stereoDepth)
-    {
-        const Real roomScale = (isCreation ? _maximumRoomScale
-                                : (isCombFilter ? cRoomScale : 1.0));
-        const Real factor = sampleRate / _referenceSampleRate * roomScale;
-        const Integer sign = (index % 2 == 0 ? 1 : -1);
-        const Real offset = (isCreation ? _maximumStereoDepth
-                             : stereoDepth * sign);
-        const NaturalList& lengthList = (isCombFilter
-                                         ? _combFilterLengthList
-                                         : _allpassFilterLengthList);
-        const Natural length = lengthList[index];
-        const Real adjustment = _stereoSpread;
-        const Natural result =
-            Natural{Real::round(factor
-                                * (Real{length} + adjustment * offset))};
-        return result;
-    }
-
-    /*--------------------*/
-
-    /**
-     * Returns initial filter delay line maximum length for the
-     * sampleRingBuffer for given parameters.
-     *
-     * @param[in] isCombFilter  tells to adapt comb filter or allpass
-     *                          filter
-     * @param[in] index         the index of the filter (starting at zero)
-     * @param[in] sampleRate    the sample rate of reverb
-     * @return maximum ring buffer length (for later setup)
-     */
-    static
-    Natural _initialReverbLineDelayLength (IN Boolean isCombFilter,
-                                           IN Natural index,
-                                           IN Real sampleRate)
-    {
-        /* calculate maximum ring buffer length with arbitrary values
-           for <channel>, <roomScale> and <stereoDepth> */
-        return _reverbLineDelayLength(true, isCombFilter,
-                                      index, sampleRate, 0.0, 0.0);
-    }
-
-    /*--------------------*/
-
-    /**
-     * Returns adapted filter delay line length for the sample ring
-     * buffer for given parameters <C>isCombFilter</C>,
-     * <C>sampleRate</C>, <C>roomScale</C> and <C>stereoDepth</C> to
-     * their effective length.
-     *
-     * @param[in] isCombFilter  tells whether length for comb filter or
-     *                          allpass filter should be calculated
-     * @param[in] index         the index of the filter (starting at zero)
-     * @param[in] sampleRate    the sample rate of reverb
-     * @param[in] roomScale     the room scale of reverb
-     * @param[in] stereoDepth   the desired stereo depth of reverb
-     * @return  adapted length of filter sample ring buffer
-     */
-    static
-    Natural _adjustedReverbLineDelayLength (IN Boolean isCombFilter,
-                                            IN Natural index,
-                                            IN Real sampleRate,
-                                            IN Real roomScale,
-                                            IN Real stereoDepth)
-    {
-        return _reverbLineDelayLength(false, isCombFilter, index,
-                                      sampleRate, roomScale, stereoDepth);
-    }
-
-    /*============================================================*/
-
-    _ReverbLine::_ReverbLine ()
-        : _allpassFilterList{},
-          _combFilterList{}
-    {
-        /* set allpass filters delay line lengths */
-        for (Natural i = 0;  i < _lineAllpassFilterCount;  i++) {
-            _AllpassFilter* allpassFilter = new _AllpassFilter();
-            const Natural length =
-                _initialReverbLineDelayLength(false, i, _defaultSampleRate);
-            allpassFilter->setRingBufferLength(length);
-            _allpassFilterList[i] = allpassFilter;
-        }
-
-        /* set comb filters delay line lengths */
-        for (Natural i = 0;  i < _lineCombFilterCount;  i++) {
-            _CombFilter* combFilter = new _CombFilter();
-            const Natural length =
-                _initialReverbLineDelayLength(true, i, _defaultSampleRate);
-            combFilter->setRingBufferLength(length);
-            _combFilterList[i] = combFilter;
-        }
-    }
-
-    /*--------------------*/
-
-    _ReverbLine::~_ReverbLine ()
-    {
-        for (_AllpassFilter* filter : _allpassFilterList) {
-            delete filter;
-        }
-
-        for (_CombFilter* filter : _combFilterList) {
-            delete filter;
-        }
-    }
-
-    /*--------------------*/
-
-    String _ReverbLine::toString () const {
-        String st;
-
-        st = "ReverbLine(";
-
-        for (Natural i = 0;  i < _lineAllpassFilterCount;  i++) {
-            const _AllpassFilter* filter = _allpassFilterList[i];
-            const Natural ringBufferLength = filter->ringBufferLength();
-            st += ((i > 0 ? ", af(" : "af(")
-                   + TOSTRING(i) + ")="
-                   + TOSTRING(ringBufferLength));
-        }
-
-        st += ", ";
-
-        for (Natural i = 0;  i < _lineCombFilterCount;  i++) {
-            const _CombFilter* filter = _combFilterList[i];
-            const Natural ringBufferLength = filter->ringBufferLength();
-            st += ((i > 0 ? ", cf(" : "cf(")
-                   + TOSTRING(i) + ")="
-                   + TOSTRING(ringBufferLength));
-        }
-
-        st += ")";
-        return st;
-    }
-
-    /*--------------------*/
-
-    void _ReverbLine::adjustRingBufferLengths (IN Real sampleRate,
-                                          IN Real roomScale,
-                                          IN Real stereoDepth)
-    {
-        /* adjust allpass filter delay lines */
-        for (Natural i = 0;  i < _lineAllpassFilterCount;  i++) {
-            _AllpassFilter* allpassFilter = _allpassFilterList[i];
-            const Natural length =
-                _adjustedReverbLineDelayLength(false, i, sampleRate,
-                                               roomScale, stereoDepth);
-            allpassFilter->setRingBufferLength(length);
-        }
-
-        /* adjust comb filter delay lines */
-        for (Natural i = 0;  i < _lineCombFilterCount;  i++) {
-            _CombFilter* combFilter = _combFilterList[i];
-            const Natural length =
-                _adjustedReverbLineDelayLength(true, i, sampleRate,
-                                               roomScale, stereoDepth);
-            combFilter->setRingBufferLength(length);
-        }
-    }
-
-    /*--------------------*/
-
-    AudioSample _ReverbLine::apply (IN AudioSample inputSample,
-                                       IN Real feedback,
-                                       IN Real hfDamping,
-                                       IN Real gain)
-    {
-        /* route input sample through the filters */
-        AudioSample outputSample = 0.0;
-
-        /* process comb filters in parallel */
-        for (_CombFilter* filter : _combFilterList) {
-            outputSample += filter->apply(inputSample, feedback, hfDamping);
-        }
-
-        /* process allpass filters in series */
-        for (_AllpassFilter* filter : _allpassFilterList) {
-            outputSample = filter->apply(outputSample);
-        }
-
-        outputSample *= gain;
-        return outputSample;
-    }
-
-    /*============================================================*/
-
-    _ReverbChannel::_ReverbChannel ()
-        : _inputSampleRingBuffer{0},
-          _reverbLineCount{2},
-          _reverbLineList{2}
-    {
-        for (_ReverbLine*& reverbLine : _reverbLineList) {
-            reverbLine = new _ReverbLine();
-        }
-    }
-
-    /*--------------------*/
-
-    _ReverbChannel::~_ReverbChannel ()
-    {
-        for (_ReverbLine* reverbLine : _reverbLineList) {
-            delete reverbLine;
-        }
-    }
-
-    /*--------------------*/
-
-    String _ReverbChannel::toString () const
-    {
-        String st = ("ReverbChannel("
-                     "predelay = "
-                     + TOSTRING(_inputSampleRingBuffer.length()));
-
-        /* add information about reverb lines */
-        for (const _ReverbLine* reverbLine : _reverbLineList) {
-            st += ", " + reverbLine->toString();
-        }
-
-        st += ")";
-        return st;
-    }
-
-    /*--------------------*/
-
-    void _ReverbChannel::adjustRingBufferLengths (IN Real sampleRate,
-                                             IN Real predelay,
-                                             IN Real roomScale,
-                                             IN Real stereoDepth)
-    {
-        const Natural ringBufferLength =
-            Natural{Real::round(predelay * sampleRate)};
-        _inputSampleRingBuffer.setLength(ringBufferLength);
-
-        /* adapt lengths of reverb lines; when stereo depth is zero,
-           only a single reverb line is used per channel */
-        _reverbLineCount = (stereoDepth == 0.0 ? 1 : 2);
-        Real effectiveStereoDepth = 0.0;
-
-        for (_ReverbLine* reverbLine : _reverbLineList) {
-            reverbLine->adjustRingBufferLengths(sampleRate, roomScale,
-                                           effectiveStereoDepth);
-            effectiveStereoDepth = stereoDepth;
-        }
-    }
-
-    /*--------------------*/
-
-    void _ReverbChannel::apply (IN AudioSample cInputSample,
-                                IN Real feedback,
-                                IN Real hfDamping,
-                                IN Real gain,
-                                OUT _SamplePair& wetSamplePair)
-    {
-        AudioSample inputSample = cInputSample;
-
-        /* check and process predelay */
-        if (_inputSampleRingBuffer.length() > 0) {
-            const AudioSample firstSample = _inputSampleRingBuffer.first();
-            _inputSampleRingBuffer.shiftLeft(inputSample);
-            inputSample = firstSample;
-        }
-
-        /* process all reverb lines for this channel and store their
-           results in output sample list */
-        for (Natural i = 0;  i < _reverbLineCount;  i++) {
-            _ReverbLine* reverbLine = _reverbLineList[i];
-            const AudioSample outputSample =
-                reverbLine->apply(inputSample, feedback, hfDamping, gain);
-            wetSamplePair[i] = outputSample;
-        }
-    }
-
-    /*--------------------*/
-
-    String _ReverbEffectParameterData::toString () const
-    {
-        String prefix =
-            STR::expand("isWetOnly = %1, feedback = %2,"
-                        " hfDamping = %3%, predelay = %4s"
-                        " stereoDepth = %5%, wetGain = %6dB"
-                        " roomScale = %7%, channelCount = %8)",
-                        TOSTRING(isWetOnly), TOSTRING(feedback),
-                        TOSTRING(hfDamping), TOSTRING(predelay),
-                        TOSTRING(stereoDepth), TOSTRING(wetGain),
-                        TOSTRING(roomScale), TOSTRING(channelCount));
-
-        /* add information about reverb channels */
-        String channelDataAsString;
-        
-        for (Natural channel = 0;   channel < channelCount; channel++) {
-            _ReverbChannel* reverbChannel = reverbChannelList[channel];
-            channelDataAsString += ((channel == 0 ? "" : ", ")
-                                    + reverbChannel->toString());
-        }
-
-        String st = STR::expand("Reverb(%1, channels = (%2))",
-                                prefix, channelDataAsString);
-        return st;
-    }
-
 }
 
+/*====================*/
+
+using SoXPlugins::Effects::SoXReverb::_AllpassFilter;
+using SoXPlugins::Effects::SoXReverb::_CombFilter;
+using SoXPlugins::Effects::SoXReverb::_ReverbChannel;
+using SoXPlugins::Effects::SoXReverb::_ReverbChannelList;
+using SoXPlugins::Effects::SoXReverb::_ReverbEffectParameterData;
+using SoXPlugins::Effects::SoXReverb::_ReverbLine;
+using SoXPlugins::Effects::SoXReverb::_ReverbLinePtr;
+using SoXPlugins::Effects::SoXReverb::_SamplePair;
+
 /*============================================================*/
+
+/**
+ * Returns length of filter delay line for given parameters;
+ * if <C>isCreation</C> is set, the maximum length for those
+ * parameters is returned.
+ *
+ * @param[in] isCreation    tells whether reverb line effective
+ *                          length or maximum length should be
+ *                          calculated
+ * @param[in] isCombFilter  tells whether length for comb filter
+ *                          or allpass
+ *                          filter should be calculated
+ * @param[in] index         the index of the filter (starting at zero)
+ * @param[in] sampleRate    the sample rate of reverb
+ * @param[in] roomScale     the room scale of reverb
+ * @param[in] stereoDepth   the desired stereo depth of reverb
+ * @return  length of filter sample ring buffer
+ */
+static
+Natural _reverbLineDelayLength (IN Boolean isCreation,
+                                IN Boolean isCombFilter,
+                                IN Natural index,
+                                IN Real sampleRate,
+                                IN Real roomScale,
+                                IN Real stereoDepth)
+{
+    const Real effectiveRoomScale =
+        (isCreation ? _maximumRoomScale
+         : (isCombFilter ? roomScale : 1.0));
+    const Real factor =
+        sampleRate / _referenceSampleRate * effectiveRoomScale;
+    const Integer sign = (index % 2 == 0 ? 1 : -1);
+    const Real offset = (isCreation ? _maximumStereoDepth
+                         : stereoDepth * sign);
+    const NaturalList& lengthList = (isCombFilter
+                                     ? _combFilterLengthList
+                                     : _allpassFilterLengthList);
+    const Natural length = lengthList[index];
+    const Real adjustment = _stereoSpread;
+    const Natural result =
+        Natural{Real::round(factor
+                            * (Real{length} + adjustment * offset))};
+    return result;
+}
+
+/*--------------------*/
+
+/**
+ * Returns initial filter delay line maximum length for the
+ * sampleRingBuffer for given parameters.
+ *
+ * @param[in] isCombFilter  tells to adapt comb filter or allpass
+ *                          filter
+ * @param[in] index         the index of the filter (starting at zero)
+ * @param[in] sampleRate    the sample rate of reverb
+ * @return maximum ring buffer length (for later setup)
+ */
+static
+Natural _initialReverbLineDelayLength (IN Boolean isCombFilter,
+                                       IN Natural index,
+                                       IN Real sampleRate)
+{
+    /* calculate maximum ring buffer length with arbitrary values
+       for <channel>, <roomScale> and <stereoDepth> */
+    return _reverbLineDelayLength(true, isCombFilter,
+                                  index, sampleRate, 0.0, 0.0);
+}
+
+/*--------------------*/
+
+/**
+ * Returns adapted filter delay line length for the sample ring
+ * buffer for given parameters <C>isCombFilter</C>,
+ * <C>sampleRate</C>, <C>roomScale</C> and <C>stereoDepth</C> to
+ * their effective length.
+ *
+ * @param[in] isCombFilter  tells whether length for comb filter or
+ *                          allpass filter should be calculated
+ * @param[in] index         the index of the filter (starting at zero)
+ * @param[in] sampleRate    the sample rate of reverb
+ * @param[in] roomScale     the room scale of reverb
+ * @param[in] stereoDepth   the desired stereo depth of reverb
+ * @return  adapted length of filter sample ring buffer
+ */
+static
+Natural _adjustedReverbLineDelayLength (IN Boolean isCombFilter,
+                                        IN Natural index,
+                                        IN Real sampleRate,
+                                        IN Real roomScale,
+                                        IN Real stereoDepth)
+{
+    return _reverbLineDelayLength(false, isCombFilter, index,
+                                  sampleRate, roomScale, stereoDepth);
+}
+
+/*================*/
+/* _AllpassFilter */
+/*================*/
+
+/*--------------------*/
+/* con-/destruction   */
+/*--------------------*/
+
+_AllpassFilter::_AllpassFilter ()
+    : _sampleRingBuffer{}
+{
+}
+
+/*--------------------*/
+/* property access    */
+/*--------------------*/
+
+Natural _AllpassFilter::ringBufferLength () const
+{
+    return _sampleRingBuffer.length();
+}
+
+/*--------------------*/
+/* property change    */
+/*--------------------*/
+
+void _AllpassFilter::setRingBufferLength (IN Natural length)
+{
+    _sampleRingBuffer.setLength(length);
+}
+
+/*--------------------*/
+/* complex change     */
+/*--------------------*/
+
+AudioSample _AllpassFilter::apply (IN AudioSample inputSample)
+{
+    const AudioSample outputSample = _sampleRingBuffer.first();
+    const AudioSample newSample =
+        inputSample + outputSample * _allpassFactor;
+    _sampleRingBuffer.shiftLeft(newSample);
+    return outputSample - inputSample;
+}
+
+/*=============*/
+/* _CombFilter */
+/*=============*/
+
+/*--------------------*/
+/* con-/destruction   */
+/*--------------------*/
+
+_CombFilter::_CombFilter ()
+    : _sampleRingBuffer{},
+      _storedSample{0.0}
+{
+}
+
+/*--------------------*/
+/* property access    */
+/*--------------------*/
+
+Natural _CombFilter::ringBufferLength () const
+{
+    return _sampleRingBuffer.length();
+}
+
+/*--------------------*/
+/* property change    */
+/*--------------------*/
+
+void _CombFilter::setRingBufferLength (IN Natural length)
+{
+    _sampleRingBuffer.setLength(length);
+}
+
+/*--------------------*/
+/* complex change     */
+/*--------------------*/
+
+AudioSample _CombFilter::apply (IN AudioSample inputSample,
+                                IN Real feedback,
+                                IN Real hfDamping)
+{
+    const AudioSample outputSample = _sampleRingBuffer.first();
+    _storedSample = (outputSample
+                     + (_storedSample - outputSample) * hfDamping);
+    _sampleRingBuffer.shiftLeft(inputSample + _storedSample * feedback);
+    return outputSample;
+}
+
+/*=============*/
+/* _ReverbLine */
+/*=============*/
+
+/*--------------------*/
+/* con-/destruction   */
+/*--------------------*/
+
+_ReverbLine::_ReverbLine ()
+    : _allpassFilterList{},
+      _combFilterList{}
+{
+    /* set allpass filters delay line lengths */
+    for (Natural i = 0;  i < _lineAllpassFilterCount;  i++) {
+        _AllpassFilter* allpassFilter = new _AllpassFilter();
+        const Natural length =
+            _initialReverbLineDelayLength(false, i, _defaultSampleRate);
+        allpassFilter->setRingBufferLength(length);
+        _allpassFilterList[i] = allpassFilter;
+    }
+
+    /* set comb filters delay line lengths */
+    for (Natural i = 0;  i < _lineCombFilterCount;  i++) {
+        _CombFilter* combFilter = new _CombFilter();
+        const Natural length =
+            _initialReverbLineDelayLength(true, i, _defaultSampleRate);
+        combFilter->setRingBufferLength(length);
+        _combFilterList[i] = combFilter;
+    }
+}
+
+/*--------------------*/
+
+_ReverbLine::~_ReverbLine ()
+{
+    for (_AllpassFilter* filter : _allpassFilterList) {
+        delete filter;
+    }
+
+    for (_CombFilter* filter : _combFilterList) {
+        delete filter;
+    }
+}
+
+/*--------------------*/
+/* type conversion    */
+/*--------------------*/
+
+String _ReverbLine::toString () const {
+    String st;
+
+    st = "ReverbLine(";
+
+    for (Natural i = 0;  i < _lineAllpassFilterCount;  i++) {
+        const _AllpassFilter* filter = _allpassFilterList[i];
+        const Natural ringBufferLength = filter->ringBufferLength();
+        st += ((i > 0 ? ", af(" : "af(")
+               + TOSTRING(i) + ")="
+               + TOSTRING(ringBufferLength));
+    }
+
+    st += ", ";
+
+    for (Natural i = 0;  i < _lineCombFilterCount;  i++) {
+        const _CombFilter* filter = _combFilterList[i];
+        const Natural ringBufferLength = filter->ringBufferLength();
+        st += ((i > 0 ? ", cf(" : "cf(")
+               + TOSTRING(i) + ")="
+               + TOSTRING(ringBufferLength));
+    }
+
+    st += ")";
+    return st;
+}
+
+/*--------------------*/
+/* measurement        */
+/*--------------------*/
+
+Natural _ReverbLine::maximumDelayPathLength () const
+{
+    Natural result = 0;
+
+    for (_CombFilter* filter : _combFilterList) {
+        result = Natural::maximum(result, filter->ringBufferLength());
+    }
+
+    for (_AllpassFilter* filter : _allpassFilterList) {
+        result += filter->ringBufferLength();
+    }
+
+    return result;
+}
+
+/*--------------------*/
+/* property change    */
+/*--------------------*/
+
+void _ReverbLine::adjustRingBufferLengths (IN Real sampleRate,
+                                           IN Real roomScale,
+                                           IN Real stereoDepth)
+{
+    /* adjust allpass filter delay lines */
+    for (Natural i = 0;  i < _lineAllpassFilterCount;  i++) {
+        _AllpassFilter* allpassFilter = _allpassFilterList[i];
+        const Natural length =
+            _adjustedReverbLineDelayLength(false, i, sampleRate,
+                                           roomScale, stereoDepth);
+        allpassFilter->setRingBufferLength(length);
+    }
+
+    /* adjust comb filter delay lines */
+    for (Natural i = 0;  i < _lineCombFilterCount;  i++) {
+        _CombFilter* combFilter = _combFilterList[i];
+        const Natural length =
+            _adjustedReverbLineDelayLength(true, i, sampleRate,
+                                           roomScale, stereoDepth);
+        combFilter->setRingBufferLength(length);
+    }
+}
+
+/*--------------------*/
+/* complex change     */
+/*--------------------*/
+
+AudioSample _ReverbLine::apply (IN AudioSample inputSample,
+                                IN Real feedback,
+                                IN Real hfDamping,
+                                IN Real gain)
+{
+    /* route input sample through the filters */
+    AudioSample outputSample = 0.0;
+
+    /* process comb filters in parallel */
+    const auto applyCombFilterProc =
+        [inputSample, feedback, hfDamping] (AudioSample currentValue,
+                                            _CombFilter* filter) {
+            return (currentValue
+                    + filter->apply(inputSample, feedback, hfDamping));
+        };
+
+    outputSample =
+        std::accumulate(_combFilterList.begin(), _combFilterList.end(),
+                        Real::zero, applyCombFilterProc);
+
+    /* process allpass filters in series */
+    const auto applyAllpassFilterProc =
+        [] (AudioSample currentValue, _AllpassFilter* filter) {
+            return filter->apply(currentValue);
+        };
+
+    outputSample =
+        std::accumulate(_allpassFilterList.begin(),
+                        _allpassFilterList.end(),
+                        outputSample, applyAllpassFilterProc);
+
+    outputSample *= gain;
+    return outputSample;
+}
+
+/*================*/
+/* _ReverbChannel */
+/*================*/
+
+/*--------------------*/
+/* con-/destruction   */
+/*--------------------*/
+
+_ReverbChannel::_ReverbChannel ()
+    : _inputSampleRingBuffer{0},
+      _reverbLineCount{2},
+      _reverbLineList{2}
+{
+    const auto reverbLineCreationProc =
+        [] () {
+            return new _ReverbLine();
+        };
+
+    std::generate(_reverbLineList.begin(), _reverbLineList.end(),
+                  reverbLineCreationProc);
+}
+
+/*--------------------*/
+
+_ReverbChannel::~_ReverbChannel ()
+{
+    for (_ReverbLinePtr reverbLine : _reverbLineList) {
+        delete reverbLine;
+    }
+}
+
+/*--------------------*/
+/* type conversion    */
+/*--------------------*/
+
+String _ReverbChannel::toString () const
+{
+    String st = ("ReverbChannel("
+                 "predelay = "
+                 + TOSTRING(_inputSampleRingBuffer.length()));
+
+    /* add information about reverb lines */
+    for (const _ReverbLinePtr& reverbLine : _reverbLineList) {
+        st += ", " + reverbLine->toString();
+    }
+
+    st += ")";
+    return st;
+}
+
+/*--------------------*/
+/* measurement        */
+/*--------------------*/
+
+Natural _ReverbChannel::maximumDelayPathLength () const
+{
+    Natural result = 0;
+
+    for (_ReverbLinePtr reverbLine : _reverbLineList) {
+        result = Natural::maximum(result,
+                                  reverbLine->maximumDelayPathLength());
+    }
+
+    return result;
+}
+
+/*--------------------*/
+/* property change    */
+/*--------------------*/
+
+void _ReverbChannel::adjustRingBufferLengths (IN Real sampleRate,
+                                              IN Real predelay,
+                                              IN Real roomScale,
+                                              IN Real stereoDepth)
+{
+    const Natural ringBufferLength =
+        Natural{Real::round(predelay * sampleRate)};
+    _inputSampleRingBuffer.setLength(ringBufferLength);
+
+    /* adapt lengths of reverb lines; when stereo depth is zero,
+       only a single reverb line is used per channel */
+    _reverbLineCount = (stereoDepth == 0.0 ? 1 : 2);
+    Real effectiveStereoDepth = 0.0;
+
+    for (_ReverbLinePtr reverbLine : _reverbLineList) {
+        reverbLine->adjustRingBufferLengths(sampleRate, roomScale,
+                                       effectiveStereoDepth);
+        effectiveStereoDepth = stereoDepth;
+    }
+}
+
+/*--------------------*/
+/* complex change     */
+/*--------------------*/
+
+void _ReverbChannel::apply (IN AudioSample inputSample,
+                            IN Real feedback,
+                            IN Real hfDamping,
+                            IN Real gain,
+                            OUT _SamplePair& wetSamplePair)
+{
+    AudioSample sample = inputSample;
+
+    /* check and process predelay */
+    if (_inputSampleRingBuffer.length() > 0) {
+        const AudioSample firstSample = _inputSampleRingBuffer.first();
+        _inputSampleRingBuffer.shiftLeft(sample);
+        sample = firstSample;
+    }
+
+    /* process all reverb lines for this channel and store their
+       results in output sample list */
+    for (Natural i = 0;  i < _reverbLineCount;  i++) {
+        _ReverbLinePtr reverbLine = _reverbLineList[i];
+        const AudioSample outputSample =
+            reverbLine->apply(sample, feedback, hfDamping, gain);
+        wetSamplePair[i] = outputSample;
+    }
+}
+
+/*--------------------*/
+
+String _ReverbEffectParameterData::toString () const
+{
+    String prefix =
+        STR::expand("isWetOnly = %1, feedback = %2,"
+                    " hfDamping = %3%, predelay = %4s,"
+                    " stereoDepth = %5%, wetGain = %6dB,"
+                    " roomScale = %7%, channelCount = %8,"
+                    " sampleRate = %9Hz)",
+                    TOSTRING(isWetOnly), TOSTRING(feedback),
+                    TOSTRING(hfDamping), TOSTRING(predelay),
+                    TOSTRING(stereoDepth), TOSTRING(wetGain),
+                    TOSTRING(roomScale), TOSTRING(channelCount),
+                    TOSTRING(sampleRate));
+
+    /* add information about reverb channels */
+    String channelDataAsString;
+
+    for (Natural channel = 0;   channel < channelCount; channel++) {
+        const _ReverbChannel* reverbChannel = reverbChannelList[channel];
+        channelDataAsString += ((channel == 0 ? "" : ", ")
+                                + reverbChannel->toString());
+    }
+
+    String st = STR::expand("Reverb(%1, channels = (%2))",
+                            prefix, channelDataAsString);
+    return st;
+}
+
+/*============*/
+/* _SoXReverb */
+/*============*/
+
+/*--------------------*/
+/* con-/destruction   */
+/*--------------------*/
 
 _SoXReverb::_SoXReverb ()
 {
@@ -893,34 +1078,64 @@ _SoXReverb::~_SoXReverb ()
 }
 
 /*--------------------*/
+/* measurement        */
+/*--------------------*/
+
+Real _SoXReverb::tailLength () const
+{
+    Logging_trace(">>");
+
+    const _ReverbEffectParameterData& effectParameterData =
+        TOREFERENCE<_ReverbEffectParameterData>(_effectParameterData);
+
+    Natural maximumPathLength = 0;
+
+    for (_ReverbChannel* reverbChannel
+             : effectParameterData.reverbChannelList) {
+        maximumPathLength =
+            Natural::maximum(maximumPathLength,
+                             reverbChannel->maximumDelayPathLength());
+    }
+
+    const Real result =
+        Real{maximumPathLength} / effectParameterData.sampleRate;
+    
+    Logging_trace1("<<: %1", TOSTRING(result));
+    return result;
+}
+
+/*--------------------*/
+/* property change    */
+/*--------------------*/
 
 void _SoXReverb::setParameters (IN Boolean isWetOnly,
-                                IN Percentage cReverberance,
-                                IN Percentage cHfDamping,
-                                IN Percentage cRoomScale,
-                                IN Percentage cStereoDepth,
-                                IN Real cPredelay,
-                                IN Real cWetDbGain)
+                                IN Percentage reverberance,
+                                IN Percentage hfDamping,
+                                IN Percentage roomScale,
+                                IN Percentage stereoDepth,
+                                IN Real predelay,
+                                IN Real wetDbGain)
 {
     Logging_trace7(">>: isWetOnly = %1, reverberance = %2,"
                    " hfDamping = %3, roomScale = %4,"
                    " stereoDepth = %5, predelay = %6,"
                    " wetDbGain = %7",
-                   TOSTRING(isWetOnly), TOSTRING(cReverberance),
-                   TOSTRING(cHfDamping), TOSTRING(cRoomScale),
-                   TOSTRING(cStereoDepth), TOSTRING(cPredelay),
-                   TOSTRING(cWetDbGain));
+                   TOSTRING(isWetOnly), TOSTRING(reverberance),
+                   TOSTRING(hfDamping), TOSTRING(roomScale),
+                   TOSTRING(stereoDepth), TOSTRING(predelay),
+                   TOSTRING(wetDbGain));
     
     _ReverbEffectParameterData& effectParameterData =
         TOREFERENCE<_ReverbEffectParameterData>(_effectParameterData);
 
     /* adjust parameter value ranges */
-    const Percentage reverberance = cReverberance.forceToPercentage();
-    const Percentage hfDamping = cHfDamping.forceToPercentage();
-    const Percentage roomScale = cRoomScale.forceToPercentage();
-    const Percentage stereoDepth = cStereoDepth.forceToPercentage();
-    const Real predelay = cPredelay.forceToInterval(0.0, _maximumPredelay);
-    const Real wetDbGain = cWetDbGain.forceToInterval(-10.0, 10.0);
+    const Percentage currentReverberance = reverberance.forceToPercentage();
+    const Percentage currentHfDamping    = hfDamping.forceToPercentage();
+    const Percentage currentRoomScale    = roomScale.forceToPercentage();
+    const Percentage currentStereoDepth  = stereoDepth.forceToPercentage();
+    const Real currentPredelay =
+        predelay.forceToInterval(0.0, _maximumPredelay);
+    const Real currentWetDbGain = wetDbGain.forceToInterval(-10.0, 10.0);
 
     /* calculate technical parameters */
     const Real minimumFeedback =  -1 / log(1 - 0.3);
@@ -930,14 +1145,14 @@ void _SoXReverb::setParameters (IN Boolean isWetOnly,
     /* set reverb parameters */
     effectParameterData.isWetOnly   = isWetOnly;
     effectParameterData.feedback    =
-        Real::one - Real::exp((Real{reverberance} - maximumFeedback)
+        Real::one - Real::exp((Real{currentReverberance} - maximumFeedback)
                             / (minimumFeedback * maximumFeedback));
-    effectParameterData.hfDamping   = hfDamping / 100.0 * 0.3 + 0.2;
-    effectParameterData.predelay    = predelay;
-    effectParameterData.stereoDepth = stereoDepth / 100.0;
-    effectParameterData.roomScale   = roomScale / 100.0 * 0.9 + 0.1;
+    effectParameterData.hfDamping   = currentHfDamping / 100.0 * 0.3 + 0.2;
+    effectParameterData.predelay    = currentPredelay;
+    effectParameterData.stereoDepth = currentStereoDepth / 100.0;
+    effectParameterData.roomScale   = currentRoomScale / 100.0 * 0.9 + 0.1;
     effectParameterData.wetGain     =
-        SoXAudioHelper::dBToLinear(wetDbGain) * 0.015;
+        SoXAudioHelper::dBToLinear(currentWetDbGain) * 0.015;
 
     Logging_trace1("<<: %1", toString());
 }
@@ -954,6 +1169,7 @@ void _SoXReverb::resize (IN Real sampleRate,
         TOREFERENCE<_ReverbEffectParameterData>(_effectParameterData);
 
     effectParameterData.channelCount = channelCount;
+    effectParameterData.sampleRate   = sampleRate;
     _ReverbChannelList& reverbChannelList =
         effectParameterData.reverbChannelList;
 
@@ -984,6 +1200,8 @@ void _SoXReverb::resize (IN Real sampleRate,
     Logging_trace("<<");
 }
 
+/*--------------------*/
+/* complex change     */
 /*--------------------*/
 
 void _SoXReverb::apply (IN AudioSampleRingBuffer& inputSampleList,
@@ -1020,7 +1238,7 @@ void _SoXReverb::apply (IN AudioSampleRingBuffer& inputSampleList,
         (effectParameterData.stereoDepth > 0.0 && channelCount == 2);
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
-        _SamplePair& wetSamplePair = wetSamplePairList[channel];
+        const _SamplePair& wetSamplePair = wetSamplePairList[channel];
         AudioSample outputSample;
 
         if (!hasMultipleLines) {
@@ -1042,10 +1260,12 @@ void _SoXReverb::apply (IN AudioSampleRingBuffer& inputSampleList,
 }
 
 /*--------------------*/
+/* type conversion    */
+/*--------------------*/
 
 String _SoXReverb::toString () const
 {
-    _ReverbEffectParameterData& effectParameterData =
+    const _ReverbEffectParameterData& effectParameterData =
         TOREFERENCE<_ReverbEffectParameterData>(_effectParameterData);
     return effectParameterData.toString();
 }

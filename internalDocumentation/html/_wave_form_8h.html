@@ -86,7 +86,8 @@ $(document).ready(function(){initNavTree('_wave_form_8h.html',''); initResizable
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">WaveForm.h File Reference</div>  </div>
 </div><!--header-->
@@ -99,6 +100,7 @@ $(document).ready(function(){initNavTree('_wave_form_8h.html',''); initResizable
 <code>#include &quot;<a class="el" href="_object_8h_source.html">Object.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_radians_8h_source.html">Radians.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_real_list_8h_source.html">RealList.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_wave_form_8cpp-inc.html">WaveForm.cpp-inc</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for WaveForm.h:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -111,7 +113,7 @@ $(document).ready(function(){initNavTree('_wave_form_8h.html',''); initResizable
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_wave_form_8h__dep__incl.svg" width="334" height="131"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="_wave_form_8h__dep__incl.svg" width="100%" height="398"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div>
 <p><a href="_wave_form_8h_source.html">Go to the source code of this file.</a></p>
@@ -142,6 +144,15 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a8cf082e76c27a75bb55cc50f17d0475c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <code>WaveFormKind</code> is an enumeration type for the supported kinds of wave forms: sine and triangle wave. <br /></td></tr>
 <tr class="separator:a8cf082e76c27a75bb55cc50f17d0475c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a756c708f5d7d400202219a7a1adaeb13"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#a756c708f5d7d400202219a7a1adaeb13">Audio::waveFormKindToString</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> WaveFormKind kind)</td></tr>
+<tr class="memdesc:a756c708f5d7d400202219a7a1adaeb13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns string representation of <code>kind</code>.  <a href="namespace_audio.html#a756c708f5d7d400202219a7a1adaeb13">More...</a><br /></td></tr>
+<tr class="separator:a756c708f5d7d400202219a7a1adaeb13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb924ba2c19839c2128ab2b4a79c4ce7"><td class="memItemLeft" align="right" valign="top">WaveFormKind&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_audio.html#afb924ba2c19839c2128ab2b4a79c4ce7">Audio::stringToWaveFormKind</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;st)</td></tr>
+<tr class="memdesc:afb924ba2c19839c2128ab2b4a79c4ce7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns wave form kind for <code>st</code>.  <a href="namespace_audio.html#afb924ba2c19839c2128ab2b4a79c4ce7">More...</a><br /></td></tr>
+<tr class="separator:afb924ba2c19839c2128ab2b4a79c4ce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>WaveForm</code> specification defines common services for (LFO) wave forms. </p>

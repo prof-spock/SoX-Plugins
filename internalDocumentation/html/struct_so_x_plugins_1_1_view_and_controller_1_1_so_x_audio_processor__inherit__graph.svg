@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 1154;
+var viewWidth = 1427;
 var viewHeight = 479;
 var sectionId = 'dynsection-0';
 </script>
@@ -54,45 +54,45 @@ var sectionId = 'dynsection-0';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>SoXPlugins::ViewAndController::SoXAudioProcessor</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-475 1149.5,-475 1149.5,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-475 1422.5,-475 1422.5,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="A SoXAudioProcessor object provides an audio effect wrapper for a plugin responsible for the communic...">
-<polygon fill="#bfbfbf" stroke="black" points="492,-157.5 492,-373.5 704,-373.5 704,-157.5 492,-157.5"/>
-<text text-anchor="start" x="500" y="-360.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::ViewAndController</text>
-<text text-anchor="middle" x="598" y="-348.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXAudioProcessor</text>
-<polyline fill="none" stroke="black" points="492,-341.5 704,-341.5 "/>
-<text text-anchor="start" x="500" y="-328.7" font-family="Helvetica,sans-Serif" font-size="11.00"># _descriptor</text>
-<polyline fill="none" stroke="black" points="492,-321.5 704,-321.5 "/>
-<text text-anchor="start" x="500" y="-308.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXAudioProcessor()</text>
-<text text-anchor="start" x="500" y="-296.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ ~SoXAudioProcessor()</text>
-<text text-anchor="start" x="500" y="-284.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ createEditor()</text>
-<text text-anchor="start" x="500" y="-272.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ hasEditor()</text>
-<text text-anchor="start" x="500" y="-260.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ supportsDoublePrecisionProcessing()</text>
-<text text-anchor="start" x="500" y="-248.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ acceptsMidi()</text>
-<text text-anchor="start" x="500" y="-236.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ producesMidi()</text>
-<text text-anchor="start" x="500" y="-224.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ isMidiEffect()</text>
-<text text-anchor="start" x="500" y="-212.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ getTailLengthSeconds()</text>
-<text text-anchor="start" x="500" y="-200.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ getNumPrograms()</text>
-<text text-anchor="start" x="500" y="-188.7" font-family="Helvetica,sans-Serif" font-size="11.00">and 16 more...</text>
-<text text-anchor="start" x="500" y="-176.7" font-family="Helvetica,sans-Serif" font-size="11.00"># _notifyObserversAboutChange()</text>
-<text text-anchor="start" x="500" y="-164.7" font-family="Helvetica,sans-Serif" font-size="11.00"># _setAssociatedEffect()</text>
+<polygon fill="#bfbfbf" stroke="black" points="613,-157.5 613,-373.5 825,-373.5 825,-157.5 613,-157.5"/>
+<text text-anchor="start" x="621" y="-360.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::ViewAndController</text>
+<text text-anchor="middle" x="719" y="-348.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXAudioProcessor</text>
+<polyline fill="none" stroke="black" points="613,-341.5 825,-341.5 "/>
+<text text-anchor="start" x="621" y="-328.7" font-family="Helvetica,sans-Serif" font-size="11.00"># _descriptor</text>
+<polyline fill="none" stroke="black" points="613,-321.5 825,-321.5 "/>
+<text text-anchor="start" x="621" y="-308.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXAudioProcessor()</text>
+<text text-anchor="start" x="621" y="-296.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ ~SoXAudioProcessor()</text>
+<text text-anchor="start" x="621" y="-284.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ createEditor()</text>
+<text text-anchor="start" x="621" y="-272.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ hasEditor()</text>
+<text text-anchor="start" x="621" y="-260.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ supportsDoublePrecisionProcessing()</text>
+<text text-anchor="start" x="621" y="-248.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ acceptsMidi()</text>
+<text text-anchor="start" x="621" y="-236.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ producesMidi()</text>
+<text text-anchor="start" x="621" y="-224.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ isMidiEffect()</text>
+<text text-anchor="start" x="621" y="-212.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ getTailLengthSeconds()</text>
+<text text-anchor="start" x="621" y="-200.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ getNumPrograms()</text>
+<text text-anchor="start" x="621" y="-188.7" font-family="Helvetica,sans-Serif" font-size="11.00">and 16 more...</text>
+<text text-anchor="start" x="621" y="-176.7" font-family="Helvetica,sans-Serif" font-size="11.00"># _notifyObserversAboutChange()</text>
+<text text-anchor="start" x="621" y="-164.7" font-family="Helvetica,sans-Serif" font-size="11.00"># _setAssociatedEffect()</text>
 </a>
 </g>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_processor.html" target="_top" xlink:title="A SoXCompander_AudioProcessor is the JUCE wrapper for the SoX compand and mcompand audio effects; a s...">
-<polygon fill="white" stroke="black" points="0,-12.5 0,-108.5 196,-108.5 196,-12.5 0,-12.5"/>
+<g id="a_node3"><a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_processor.html" target="_top" xlink:title="A SoXChorusAndEcho_AudioProcessor is the JUCE wrapper for the SoX chorus, echo and echos audio effect...">
+<polygon fill="white" stroke="black" points="0,-12.5 0,-108.5 218,-108.5 218,-12.5 0,-12.5"/>
 <text text-anchor="start" x="8" y="-95.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::Effects</text>
-<text text-anchor="start" x="8" y="-83.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXCompander::SoXCompander</text>
-<text text-anchor="middle" x="98" y="-71.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioProcessor</text>
-<polyline fill="none" stroke="black" points="0,-64.5 196,-64.5 "/>
-<text text-anchor="middle" x="98" y="-51.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
-<polyline fill="none" stroke="black" points="0,-44.5 196,-44.5 "/>
-<text text-anchor="start" x="8" y="-31.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXCompander_AudioProcessor()</text>
+<text text-anchor="start" x="8" y="-83.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXChorusAndEcho::</text>
+<text text-anchor="middle" x="109" y="-71.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXChorusAndEcho_AudioProcessor</text>
+<polyline fill="none" stroke="black" points="0,-64.5 218,-64.5 "/>
+<text text-anchor="middle" x="109" y="-51.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
+<polyline fill="none" stroke="black" points="0,-44.5 218,-44.5 "/>
+<text text-anchor="start" x="8" y="-31.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXChorusAndEcho_AudioProcessor()</text>
 <text text-anchor="start" x="8" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ name()</text>
 </a>
 </g>
@@ -100,138 +100,160 @@ var sectionId = 'dynsection-0';
 <!-- Node1&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node1&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M482.4,-227.64C403.08,-201.06 296.09,-162.64 205,-121 196.69,-117.2 188.15,-113 179.69,-108.64"/>
-<polygon fill="none" stroke="midnightblue" points="481.34,-230.98 491.94,-230.83 483.56,-224.34 481.34,-230.98"/>
+<path fill="none" stroke="midnightblue" d="M603.07,-237.09C502.09,-211.72 352.57,-170.49 227,-121 217.5,-117.26 207.74,-113.02 198.09,-108.57"/>
+<polygon fill="none" stroke="midnightblue" points="602.45,-240.54 613,-239.58 604.15,-233.75 602.45,-240.54"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_processor.html" target="_top" xlink:title="A SoXFilter_AudioProcessor is the JUCE wrapper for several SoX IIR filters: those filters are allpass...">
-<polygon fill="white" stroke="black" points="214,-12.5 214,-108.5 376,-108.5 376,-12.5 214,-12.5"/>
-<text text-anchor="start" x="222" y="-95.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::Effects</text>
-<text text-anchor="start" x="222" y="-83.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXFilter::SoXFilter</text>
-<text text-anchor="middle" x="295" y="-71.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioProcessor</text>
-<polyline fill="none" stroke="black" points="214,-64.5 376,-64.5 "/>
-<text text-anchor="middle" x="295" y="-51.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
-<polyline fill="none" stroke="black" points="214,-44.5 376,-44.5 "/>
-<text text-anchor="start" x="222" y="-31.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXFilter_AudioProcessor()</text>
-<text text-anchor="start" x="222" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ name()</text>
+<g id="a_node4"><a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_processor.html" target="_top" xlink:title="A SoXCompander_AudioProcessor is the JUCE wrapper for the SoX compand and mcompand audio effects; a s...">
+<polygon fill="white" stroke="black" points="236,-12.5 236,-108.5 432,-108.5 432,-12.5 236,-12.5"/>
+<text text-anchor="start" x="244" y="-95.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::Effects</text>
+<text text-anchor="start" x="244" y="-83.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXCompander::SoXCompander</text>
+<text text-anchor="middle" x="334" y="-71.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioProcessor</text>
+<polyline fill="none" stroke="black" points="236,-64.5 432,-64.5 "/>
+<text text-anchor="middle" x="334" y="-51.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
+<polyline fill="none" stroke="black" points="236,-44.5 432,-44.5 "/>
+<text text-anchor="start" x="244" y="-31.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXCompander_AudioProcessor()</text>
+<text text-anchor="start" x="244" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ name()</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node1&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M483.21,-187.6C443.65,-161.09 400.52,-132.2 365.55,-108.76"/>
-<polygon fill="none" stroke="midnightblue" points="481.34,-190.56 491.6,-193.22 485.24,-184.74 481.34,-190.56"/>
+<path fill="none" stroke="midnightblue" d="M604.04,-206.17C553.8,-180.42 494.29,-149.56 441,-121 433.51,-116.98 425.74,-112.77 417.97,-108.52"/>
+<polygon fill="none" stroke="midnightblue" points="602.49,-209.31 612.99,-210.75 605.68,-203.08 602.49,-209.31"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_processor.html" target="_top" xlink:title="A SoXGain_AudioProcessor is the JUCE wrapper for the SoX gain plugin amplifying or attenuating the in...">
-<polygon fill="white" stroke="black" points="394,-18.5 394,-102.5 592,-102.5 592,-18.5 394,-18.5"/>
-<text text-anchor="start" x="402" y="-89.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::Effects</text>
-<text text-anchor="middle" x="493" y="-77.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXGain::SoXGain_AudioProcessor</text>
-<polyline fill="none" stroke="black" points="394,-70.5 592,-70.5 "/>
-<text text-anchor="middle" x="493" y="-57.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
-<polyline fill="none" stroke="black" points="394,-50.5 592,-50.5 "/>
-<text text-anchor="start" x="402" y="-37.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXGain_AudioProcessor()</text>
-<text text-anchor="start" x="402" y="-25.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ name()</text>
+<g id="a_node5"><a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_processor.html" target="_top" xlink:title="A SoXFilter_AudioProcessor is the JUCE wrapper for several SoX IIR filters: those filters are allpass...">
+<polygon fill="white" stroke="black" points="450,-12.5 450,-108.5 612,-108.5 612,-12.5 450,-12.5"/>
+<text text-anchor="start" x="458" y="-95.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::Effects</text>
+<text text-anchor="start" x="458" y="-83.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXFilter::SoXFilter</text>
+<text text-anchor="middle" x="531" y="-71.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioProcessor</text>
+<polyline fill="none" stroke="black" points="450,-64.5 612,-64.5 "/>
+<text text-anchor="middle" x="531" y="-51.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
+<polyline fill="none" stroke="black" points="450,-44.5 612,-44.5 "/>
+<text text-anchor="start" x="458" y="-31.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXFilter_AudioProcessor()</text>
+<text text-anchor="start" x="458" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ name()</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node1&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M537.88,-148.27C529.46,-132 521.31,-116.24 514.32,-102.72"/>
-<polygon fill="none" stroke="midnightblue" points="534.88,-150.08 542.58,-157.35 541.09,-146.86 534.88,-150.08"/>
+<path fill="none" stroke="midnightblue" d="M612.71,-149.73C599.27,-135.22 586.16,-121.07 574.53,-108.5"/>
+<polygon fill="none" stroke="midnightblue" points="610.41,-152.39 619.77,-157.35 615.54,-147.64 610.41,-152.39"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor.html" target="_top" xlink:title="A SoXOverdrive_AudioProcessor is the JUCE wrapper for the SoX overdrive plugin distorting the input s...">
-<polygon fill="white" stroke="black" points="610.5,-12.5 610.5,-108.5 795.5,-108.5 795.5,-12.5 610.5,-12.5"/>
-<text text-anchor="start" x="618.5" y="-95.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::Effects</text>
-<text text-anchor="start" x="618.5" y="-83.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXOverdrive::SoXOverdrive</text>
-<text text-anchor="middle" x="703" y="-71.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioProcessor</text>
-<polyline fill="none" stroke="black" points="610.5,-64.5 795.5,-64.5 "/>
-<text text-anchor="middle" x="703" y="-51.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
-<polyline fill="none" stroke="black" points="610.5,-44.5 795.5,-44.5 "/>
-<text text-anchor="start" x="618.5" y="-31.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXOverdrive_AudioProcessor()</text>
-<text text-anchor="start" x="618.5" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ name()</text>
+<g id="a_node6"><a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_processor.html" target="_top" xlink:title="A SoXFlangerPhaserAndTremolo_AudioProcessor object is the JUCE wrapper for the SoX phaser and tremolo...">
+<polygon fill="white" stroke="black" points="630,-0.5 630,-120.5 808,-120.5 808,-0.5 630,-0.5"/>
+<text text-anchor="start" x="638" y="-107.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::Effects</text>
+<text text-anchor="start" x="638" y="-95.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXFlangerPhaserAndTremolo</text>
+<text text-anchor="start" x="638" y="-83.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXFlangerPhaserAndTremolo</text>
+<text text-anchor="middle" x="719" y="-71.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioProcessor</text>
+<polyline fill="none" stroke="black" points="630,-64.5 808,-64.5 "/>
+<text text-anchor="middle" x="719" y="-51.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
+<polyline fill="none" stroke="black" points="630,-44.5 808,-44.5 "/>
+<text text-anchor="start" x="638" y="-31.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXFlangerPhaserAndTremolo</text>
+<text text-anchor="start" x="638" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioProcessor()</text>
+<text text-anchor="start" x="638" y="-7.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ name()</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node1&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M658.19,-148.14C665.41,-134.18 672.43,-120.61 678.69,-108.5"/>
-<polygon fill="none" stroke="midnightblue" points="654.91,-146.86 653.42,-157.35 661.12,-150.08 654.91,-146.86"/>
+<path fill="none" stroke="midnightblue" d="M719,-147.07C719,-138.02 719,-129.14 719,-120.73"/>
+<polygon fill="none" stroke="midnightblue" points="715.5,-147.35 719,-157.35 722.5,-147.35 715.5,-147.35"/>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_processor.html" target="_top" xlink:title="A SoXPhaserAndTremolo_AudioProcessor object is the JUCE wrapper for the SoX phaser and tremolo effect...">
-<polygon fill="white" stroke="black" points="813.5,-0.5 813.5,-120.5 954.5,-120.5 954.5,-0.5 813.5,-0.5"/>
-<text text-anchor="start" x="821.5" y="-107.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::Effects</text>
-<text text-anchor="start" x="821.5" y="-95.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXPhaserAndTremolo</text>
-<text text-anchor="start" x="821.5" y="-83.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXPhaserAndTremolo</text>
-<text text-anchor="middle" x="884" y="-71.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioProcessor</text>
-<polyline fill="none" stroke="black" points="813.5,-64.5 954.5,-64.5 "/>
-<text text-anchor="middle" x="884" y="-51.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
-<polyline fill="none" stroke="black" points="813.5,-44.5 954.5,-44.5 "/>
-<text text-anchor="start" x="821.5" y="-31.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXPhaserAndTremolo</text>
-<text text-anchor="start" x="821.5" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioProcessor()</text>
-<text text-anchor="start" x="821.5" y="-7.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ name()</text>
+<g id="a_node7"><a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_processor.html" target="_top" xlink:title="A SoXGain_AudioProcessor is the JUCE wrapper for the SoX gain plugin amplifying or attenuating the in...">
+<polygon fill="white" stroke="black" points="826,-18.5 826,-102.5 1024,-102.5 1024,-18.5 826,-18.5"/>
+<text text-anchor="start" x="834" y="-89.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::Effects</text>
+<text text-anchor="middle" x="925" y="-77.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXGain::SoXGain_AudioProcessor</text>
+<polyline fill="none" stroke="black" points="826,-70.5 1024,-70.5 "/>
+<text text-anchor="middle" x="925" y="-57.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
+<polyline fill="none" stroke="black" points="826,-50.5 1024,-50.5 "/>
+<text text-anchor="start" x="834" y="-37.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXGain_AudioProcessor()</text>
+<text text-anchor="start" x="834" y="-25.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ name()</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node1&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M712.59,-186.25C742.81,-165.29 775.28,-142.48 805,-121 807.78,-118.99 810.61,-116.93 813.47,-114.84"/>
-<polygon fill="none" stroke="midnightblue" points="710.36,-183.54 704.14,-192.11 714.35,-189.29 710.36,-183.54"/>
+<path fill="none" stroke="midnightblue" d="M832.28,-152.87C850.49,-134.93 868.26,-117.42 883.29,-102.6"/>
+<polygon fill="none" stroke="midnightblue" points="829.68,-150.51 825.02,-160.03 834.6,-155.5 829.68,-150.51"/>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node8"><a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_processor.html" target="_top" xlink:title="A SoXReverb_AudioProcessor object is a JUCE wrapper for the SoX reverb effect implementing the Freeve...">
-<polygon fill="white" stroke="black" points="972.5,-12.5 972.5,-108.5 1145.5,-108.5 1145.5,-12.5 972.5,-12.5"/>
-<text text-anchor="start" x="980.5" y="-95.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::Effects</text>
-<text text-anchor="start" x="980.5" y="-83.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXReverb::SoXReverb</text>
-<text text-anchor="middle" x="1059" y="-71.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioProcessor</text>
-<polyline fill="none" stroke="black" points="972.5,-64.5 1145.5,-64.5 "/>
-<text text-anchor="middle" x="1059" y="-51.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
-<polyline fill="none" stroke="black" points="972.5,-44.5 1145.5,-44.5 "/>
-<text text-anchor="start" x="980.5" y="-31.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXReverb_AudioProcessor()</text>
-<text text-anchor="start" x="980.5" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ name()</text>
+<g id="a_node8"><a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor.html" target="_top" xlink:title="A SoXOverdrive_AudioProcessor is the JUCE wrapper for the SoX overdrive plugin distorting the input s...">
+<polygon fill="white" stroke="black" points="1042.5,-12.5 1042.5,-108.5 1227.5,-108.5 1227.5,-12.5 1042.5,-12.5"/>
+<text text-anchor="start" x="1050.5" y="-95.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::Effects</text>
+<text text-anchor="start" x="1050.5" y="-83.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXOverdrive::SoXOverdrive</text>
+<text text-anchor="middle" x="1135" y="-71.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioProcessor</text>
+<polyline fill="none" stroke="black" points="1042.5,-64.5 1227.5,-64.5 "/>
+<text text-anchor="middle" x="1135" y="-51.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
+<polyline fill="none" stroke="black" points="1042.5,-44.5 1227.5,-44.5 "/>
+<text text-anchor="start" x="1050.5" y="-31.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXOverdrive_AudioProcessor()</text>
+<text text-anchor="start" x="1050.5" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ name()</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node8 -->
 <g id="edge7" class="edge">
 <title>Node1&#45;&gt;Node8</title>
-<path fill="none" stroke="midnightblue" d="M714.09,-225.25C787.27,-198.99 882.91,-161.84 964,-121 971.56,-117.19 979.29,-112.96 986.93,-108.56"/>
-<polygon fill="none" stroke="midnightblue" points="712.62,-222.06 704.38,-228.72 714.97,-228.65 712.62,-222.06"/>
+<path fill="none" stroke="midnightblue" d="M834.76,-214.89C894.63,-188.42 968.48,-154.46 1033,-121 1040.55,-117.08 1048.34,-112.87 1056.08,-108.57"/>
+<polygon fill="none" stroke="midnightblue" points="833.02,-211.84 825.28,-219.08 835.84,-218.24 833.02,-211.84"/>
+</g>
+<!-- Node9 -->
+<g id="node9" class="node">
+<title>Node9</title>
+<g id="a_node9"><a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_processor.html" target="_top" xlink:title="A SoXReverb_AudioProcessor object is a JUCE wrapper for the SoX reverb effect implementing the Freeve...">
+<polygon fill="white" stroke="black" points="1245.5,-12.5 1245.5,-108.5 1418.5,-108.5 1418.5,-12.5 1245.5,-12.5"/>
+<text text-anchor="start" x="1253.5" y="-95.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::Effects</text>
+<text text-anchor="start" x="1253.5" y="-83.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXReverb::SoXReverb</text>
+<text text-anchor="middle" x="1332" y="-71.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioProcessor</text>
+<polyline fill="none" stroke="black" points="1245.5,-64.5 1418.5,-64.5 "/>
+<text text-anchor="middle" x="1332" y="-51.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
+<polyline fill="none" stroke="black" points="1245.5,-44.5 1418.5,-44.5 "/>
+<text text-anchor="start" x="1253.5" y="-31.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXReverb_AudioProcessor()</text>
+<text text-anchor="start" x="1253.5" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ name()</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node9 -->
+<g id="edge8" class="edge">
+<title>Node1&#45;&gt;Node9</title>
+<path fill="none" stroke="midnightblue" d="M835.13,-242.41C942.33,-219.69 1104.5,-179.36 1237,-121 1245.19,-117.39 1253.51,-113.16 1261.64,-108.64"/>
+<polygon fill="none" stroke="midnightblue" points="834.32,-239 825.25,-244.49 835.76,-245.85 834.32,-239"/>
 </g>
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="537.5,-410.5 537.5,-470.5 658.5,-470.5 658.5,-410.5 537.5,-410.5"/>
-<text text-anchor="middle" x="598" y="-457.7" font-family="Helvetica,sans-Serif" font-size="11.00">juce::AudioProcessor</text>
-<polyline fill="none" stroke="#bfbfbf" points="537.5,-450.5 658.5,-450.5 "/>
-<text text-anchor="middle" x="598" y="-437.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="537.5,-430.5 658.5,-430.5 "/>
-<text text-anchor="middle" x="598" y="-417.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
+<polygon fill="white" stroke="#bfbfbf" points="658.5,-410.5 658.5,-470.5 779.5,-470.5 779.5,-410.5 658.5,-410.5"/>
+<text text-anchor="middle" x="719" y="-457.7" font-family="Helvetica,sans-Serif" font-size="11.00">juce::AudioProcessor</text>
+<polyline fill="none" stroke="#bfbfbf" points="658.5,-450.5 779.5,-450.5 "/>
+<text text-anchor="middle" x="719" y="-437.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
+<polyline fill="none" stroke="#bfbfbf" points="658.5,-430.5 779.5,-430.5 "/>
+<text text-anchor="middle" x="719" y="-417.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node1 -->
 <g id="edge1" class="edge">
 <title>Node2&#45;&gt;Node1</title>
-<path fill="none" stroke="midnightblue" d="M598,-400.02C598,-391.94 598,-383.07 598,-373.86"/>
-<polygon fill="none" stroke="midnightblue" points="594.5,-400.15 598,-410.15 601.5,-400.15 594.5,-400.15"/>
+<path fill="none" stroke="midnightblue" d="M719,-400.02C719,-391.94 719,-383.07 719,-373.86"/>
+<polygon fill="none" stroke="midnightblue" points="715.5,-400.15 719,-410.15 722.5,-400.15 715.5,-400.15"/>
 </g>
 </g>
 </svg>

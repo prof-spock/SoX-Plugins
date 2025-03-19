@@ -1,0 +1,4 @@
+<map id="SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::SoXFlangerPhaserAndTremolo_AudioEffect" name="SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::SoXFlangerPhaserAndTremolo_AudioEffect">
+<area shape="rect" id="node1" title="A SoXFlangerPhaserAndTremolo_AudioEffect object models the SoX flanger, phaser and tremolo modulation..." alt="" coords="5,567,252,856"/>
+<area shape="rect" id="node2" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="21,5,236,519"/>
+</map>

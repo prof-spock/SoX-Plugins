@@ -31,74 +31,77 @@ using STR = BaseModules::StringUtil;
 
 /*====================*/
 
-/* standard colors */
+/** renaming of the juce color type */
+typedef juce::Colour Colour;
 
-/** black color */
-static const juce::Colour _black(0, 0, 0);
-/** blue color */
-static const juce::Colour _blue(0, 0, 255);
-/** green color */
-static const juce::Colour _green(0, 255, 0);
-/** cyan color */
-static const juce::Colour _cyan(0, 255, 0);
-/** red color */
-static const juce::Colour _red(255, 0, 0);
-/** magenta color */
-static const juce::Colour _magenta(255, 0, 255);
-/** yellow color */
-static const juce::Colour _yellow(255, 255, 0);
-/** white color */
-static const juce::Colour _white(255, 255, 255);
-/** fully transparent color */
-static const juce::Colour _transparent = juce::Colour();
+/* standard colours */
+
+/** black colour */
+static const Colour _black(0, 0, 0);
+/** blue colour */
+static const Colour _blue(0, 0, 255);
+/** green colour */
+static const Colour _green(0, 255, 0);
+/** cyan colour */
+static const Colour _cyan(0, 255, 0);
+/** red colour */
+static const Colour _red(255, 0, 0);
+/** magenta colour */
+static const Colour _magenta(255, 0, 255);
+/** yellow colour */
+static const Colour _yellow(255, 255, 0);
+/** white colour */
+static const Colour _white(255, 255, 255);
+/** fully transparent colour */
+static const Colour _transparent = Colour();
 
 /* levels of grey */
 /** grey colour with  1/16th blackness */
-static const juce::Colour _grey1(240, 240, 240);
+static const Colour _grey1(240, 240, 240);
 /** grey colour with  2/16th blackness */
-static const juce::Colour _grey2(224, 224, 224);
+static const Colour _grey2(224, 224, 224);
 /** grey colour with  3/16th blackness */
-static const juce::Colour _grey3(208, 208, 208);
+static const Colour _grey3(208, 208, 208);
 /** grey colour with  4/16th blackness */
-static const juce::Colour _grey4(192, 192, 192);
+static const Colour _grey4(192, 192, 192);
 /** grey colour with  5/16th blackness */
-static const juce::Colour _grey5(176, 176, 176);
+static const Colour _grey5(176, 176, 176);
 /** grey colour with  6/16th blackness */
-static const juce::Colour _grey6(160, 160, 160);
+static const Colour _grey6(160, 160, 160);
 /** grey colour with  7/16th blackness */
-static const juce::Colour _grey7(144, 144, 144);
+static const Colour _grey7(144, 144, 144);
 /** grey colour with  8/16th blackness */
-static const juce::Colour _grey8(128, 128, 128);
+static const Colour _grey8(128, 128, 128);
 /** grey colour with  9/16th blackness */
-static const juce::Colour _grey9(112, 112, 112);
+static const Colour _grey9(112, 112, 112);
 /** grey colour with 10/16th blackness */
-static const juce::Colour _greyA( 96,  96,  96);
+static const Colour _greyA( 96,  96,  96);
 /** grey colour with 11/16th blackness */
-static const juce::Colour _greyB( 80,  80,  80);
+static const Colour _greyB( 80,  80,  80);
 /** grey colour with 12/16th blackness */
-static const juce::Colour _greyC( 64,  64,  64);
+static const Colour _greyC( 64,  64,  64);
 /** grey colour with 13/16th blackness */
-static const juce::Colour _greyD( 48,  48,  48);
+static const Colour _greyD( 48,  48,  48);
 /** grey colour with 14/16th blackness */
-static const juce::Colour _greyE( 32,  32,  32);
+static const Colour _greyE( 32,  32,  32);
 /** grey colour with 15/16th blackness */
-static const juce::Colour _greyF( 16,  16,  16);
+static const Colour _greyF( 16,  16,  16);
 
-/* special colors */
+/* special colours */
 /** a red colour with 10/16th blackness */
-static const juce::Colour _redA(96, 64, 64);
+static const Colour _redA(96, 64, 64);
 /** a grey colour with 5/16th blackness and half transparent */
-static const juce::Colour _semiGrey5 = _grey5.withAlpha(0.5f);
+static const Colour _semiGrey5 = _grey5.withAlpha(0.5f);
 
-/* logical colors */
-/** the default editor background color */
-static const juce::Colour _defaultBackgroundColor = _grey2;
-/** the editor background color for the active page */
-static const juce::Colour _activePageColor        = _grey4;
-/** the editor background color for the inactive page */
-static const juce::Colour _inactivePageColor      = _redA;
-/** a dimmed down background color */
-static const juce::Colour _dimmedBackgroundColor  = _grey8;
+/* logical colours */
+/** the default editor background colour */
+static const Colour _defaultBackgroundColour = _grey2;
+/** the editor background colour for the active page */
+static const Colour _activePageColour        = _grey4;
+/** the editor background colour for the inactive page */
+static const Colour _inactivePageColour      = _redA;
+/** a dimmed down background colour */
+static const Colour _dimmedBackgroundColour  = _grey8;
 
 /** the default width of an SoXPlugins editor in pixels */
 static const Natural _defaultWidth    = 500;
@@ -132,7 +135,7 @@ void _clearWidgetList (INOUT SoXAudioEditorWidgetPtrList& widgetList)
 
 /**
  * Adds widgets to <C>widgetList</C> for each parameter in
- * <C>parameterMap</C>; also takes into account the page setting of
+ * <C>effectParameterMap</C>; also takes into account the page setting of
  * each widget; returns pair of fixed widget count on page and maximum
  * widget count on a page
  *
@@ -147,37 +150,39 @@ _addWidgetsToList (INOUT SoXAudioEditor* currentEditor,
 {
     Logging_trace(">>");
 
-    const SoXEffectParameterMap& parameterMap =
+    const SoXEffectParameterMap& effectParameterMap =
         currentEditor->effectParameterMap();
     const StringList parameterNameList =
-        parameterMap.parameterNameList();
+        effectParameterMap.parameterNameList();
 
-    /* find fixed count of widgets */
-    Natural fixedWidgetCount = 0;
+    /* find count of widgets common to all pages (with page number 0) */
+    Natural commonWidgetCount = 0;
 
     for (const String& parameterName : parameterNameList) {
-        if (parameterMap.isActive(parameterName)) {
+        if (effectParameterMap.isActive(parameterName)) {
             Natural pageNumber;
             String labelName;
             SoXEffectParameterMap::splitParameterName(parameterName,
                                                      labelName, pageNumber);
-            fixedWidgetCount += (pageNumber == 0 ? 1 : 0);
+            commonWidgetCount += (pageNumber == 0 ? 1 : 0);
         }
     }
 
     /* generate widgets */
-    Natural maximumWidgetCountOnPage = fixedWidgetCount;
+    Natural maximumWidgetCountOnPage = commonWidgetCount;
     NaturalList pageNumberToWidgetCountMap;
     Natural pageCount = 0;
     _clearWidgetList(widgetList);
-    Logging_trace1("--: fixedWidgetCount = %1", TOSTRING(fixedWidgetCount));
+    Logging_trace1("--: commonWidgetCount = %1",
+                   TOSTRING(commonWidgetCount));
 
     for (const String& parameterName : parameterNameList) {
-        if (parameterMap.isActive(parameterName)) {
+        if (effectParameterMap.isActive(parameterName)) {
             Natural pageNumber;
             String labelName;
             SoXEffectParameterMap::splitParameterName(parameterName,
-                                                      labelName, pageNumber);
+                                                      labelName,
+                                                      pageNumber);
 
             if (pageNumber >= pageCount) {
                 pageCount = pageNumber + 1;
@@ -185,12 +190,14 @@ _addWidgetsToList (INOUT SoXAudioEditor* currentEditor,
             }
 
             SoXAudioEditorWidget* widget =
-                new SoXAudioEditorWidget(currentEditor, parameterMap,
+                new SoXAudioEditorWidget(currentEditor, effectParameterMap,
                                          parameterName, labelName);
             widgetList.append(widget);
-            const Natural positionInPage =
-                (pageNumberToWidgetCountMap[pageNumber]++
-                 + (pageNumber > 0 ? fixedWidgetCount : Natural{0}));
+            Natural relativePosition =
+                pageNumberToWidgetCountMap[pageNumber]++;
+            Natural positionInPage =
+                (relativePosition
+                 + (pageNumber > 0 ? commonWidgetCount : Natural{0}));
             widget->setPageAndRow(pageNumber, positionInPage);
             maximumWidgetCountOnPage =
                 Natural::maximum(positionInPage + 1,
@@ -198,7 +205,7 @@ _addWidgetsToList (INOUT SoXAudioEditor* currentEditor,
         }
     }
 
-    NaturalList result = NaturalList::fromList({fixedWidgetCount,
+    NaturalList result = NaturalList::fromList({commonWidgetCount,
                                                 maximumWidgetCountOnPage});
 
     Logging_trace1("<<: %1", result.toString());
@@ -240,13 +247,61 @@ static void _changeLookAndFeel (INOUT juce::LookAndFeel& lookAndFeel)
     lookAndFeel.setColour(juce::Slider::textBoxBackgroundColourId,
                           _semiGrey5);
     lookAndFeel.setColour(juce::Slider::textBoxOutlineColourId,
-                          _dimmedBackgroundColor);
+                          _dimmedBackgroundColour);
 
     /* text entry */
     lookAndFeel.setColour(juce::TextEditor::highlightColourId,
                           _black);
     lookAndFeel.setColour(juce::TextEditor::highlightedTextColourId,
                           _white);
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+/**
+ * Fills rectangle in <C>editor</C> in graphics context <C>graphics</C>
+ * given by percentage values of editor area <C>x</C>, <C>y</C>,
+ * <C>width</C> and <C>height</C> with <C>color</C>.
+ *
+ * @param[inout] editor      audio editor object
+ * @param[inout] graphics    juce graphics context
+ * @param[in]    x           left margin of rectangle as percentage of
+ *                           editor area
+ * @param[in]    y           top margin of rectangle as percentage of
+ *                           editor area
+ * @param[in]    width       width of rectangle as percentage of editor
+ *                           area
+ * @param[in]    height      height of rectangle as percentage of editor
+ *                           area
+ * @param[in]    fillColour  colour to be used for filling
+ */
+void _fillRectangle (INOUT SoXAudioEditor& editor,
+                     INOUT juce::Graphics& graphics,
+                     IN Percentage x,
+                     IN Percentage y,
+                     IN Percentage width,
+                     IN Percentage height,
+                     IN Colour fillColour)
+{
+    Logging_trace5(">>: x = %1, y = %2, width = %3, height = %4,"
+                   " fillColour = %5",
+                   TOSTRING(x), TOSTRING(y),
+                   TOSTRING(width), TOSTRING(height),
+                   fillColour.toString().toStdString());
+
+    juce::Rectangle<int> rectangle = editor.getLocalBounds();
+    const Real pixelX{(double) rectangle.getX()};
+    const Real pixelY{(double) rectangle.getY()};
+    const Real pixelWidth{(double) rectangle.getWidth()};
+    const Real pixelHeight{(double) rectangle.getHeight()};
+
+    graphics.setColour(fillColour);
+    graphics.fillRect((int) Real::round(pixelX + x.of(pixelWidth)),
+                      (int) Real::round(pixelY + y.of(pixelHeight)),
+                      (int) Real::round(width.of(pixelWidth)),
+                      (int) Real::round(height.of(pixelHeight)));
+
     Logging_trace("<<");
 }
 
@@ -263,16 +318,16 @@ static NaturalList _findPageIndices (INOUT SoXAudioEditor* currentEditor)
 {
     Logging_trace(">>");
 
-    const SoXEffectParameterMap& parameterMap =
+    const SoXEffectParameterMap& effectParameterMap =
         currentEditor->effectParameterMap();
     const StringList parameterNameList =
-        parameterMap.parameterNameList();
+        effectParameterMap.parameterNameList();
 
     Natural pageIndex = 0;
     Natural pageCount = 0;
 
     for (const String& parameterName : parameterNameList) {
-        if (parameterMap.isActive(parameterName)) {
+        if (effectParameterMap.isActive(parameterName)) {
             Natural pageNumber;
             String labelName;
             Integer nominalPageNumber;
@@ -281,15 +336,16 @@ static NaturalList _findPageIndices (INOUT SoXAudioEditor* currentEditor)
                                                      nominalPageNumber);
 
             if (nominalPageNumber < 0) {
-                const String value = parameterMap.value(parameterName);
+                const String value = effectParameterMap.value(parameterName);
                 Logging_trace2("--: nominalPageNumber = %1, value = %2",
                                nominalPageNumber.toString(), value);
                 const Natural v =
                     Natural::maximum(1, STR::toNatural(value, 1));
 
-                if (nominalPageNumber == -1) {
+                if (nominalPageNumber == SoXEffectParameterMap::selectorPage) {
                     pageIndex = v;
-                } else {
+                } else if (nominalPageNumber
+                           == SoXEffectParameterMap::pageCounterPage) {
                     pageCount = v;
                 }
             }
@@ -323,6 +379,27 @@ _notifyWidgetsAboutPageChange (INOUT SoXAudioEditorWidgetPtrList& widgetList,
     Logging_trace("<<");
 }
 
+
+/*--------------------*/
+
+/**
+ * Tells each widget in <C>widgetList</C> to update its range from the
+ * underlying parameter map.
+ *
+ * @param[in] widgetList  widget list of current editor
+ */
+static void
+_updateWidgetRanges (INOUT SoXAudioEditorWidgetPtrList& widgetList)
+{
+    Logging_trace(">>");
+
+    for (SoXAudioEditorWidget* widget : widgetList) {
+        widget->updateRange();
+    }
+
+    Logging_trace("<<");
+}
+
 /*--------------------*/
 /* EXPORTED FEATURES  */
 /*--------------------*/
@@ -331,8 +408,7 @@ SoXAudioEditor::SoXAudioEditor (INOUT SoXAudioProcessor& processor)
     : juce::AudioProcessorEditor(&processor),
       _processor(processor),
       _currentEditorPageIndex(1),
-      _lastEditorPageIndex(1),
-      _fixedWidgetPercentage(Percentage{100.0})
+      _lastEditorPageIndex(1)
 {
     Logging_trace(">>");
 
@@ -385,25 +461,63 @@ void SoXAudioEditor::paint (juce::Graphics& graphics)
 
     juce::Rectangle<int> rectangle = getLocalBounds();
     const Integer height{rectangle.getHeight()};
-    const Integer y{_fixedWidgetPercentage.of(height)};
-    Logging_trace2("--: height = %1, y = %2",
-                   height.toString(), y.toString());
+    const Percentage zero = 0.0;
+    const Percentage hundred = 100.0;
+    Percentage divisionLineY1 = hundred;
+    Percentage divisionLineY2 = hundred;
 
-    /* fill fixed part with default background color */
-    rectangle.setHeight((int) y);
-    graphics.setColour(_defaultBackgroundColor);
-    graphics.fillRect(rectangle);
+    if (_commonWidgetCount < _maximumWidgetCount) {
+        Percentage rowHeightPercentage;
+        Percentage topMarginHeightPercentage;
+        Percentage rowSpaceHeightPercentage;
+        SoXAudioEditorWidget::partHeightsInPage(topMarginHeightPercentage,
+                                                rowHeightPercentage,
+                                                rowSpaceHeightPercentage);
+        Percentage rowPlusSpaceHeightPercentage =
+            rowHeightPercentage + rowSpaceHeightPercentage;
+        Percentage gapHeightPercentage = rowSpaceHeightPercentage / 2.0;
 
-    /* fill page part with color depending on activeness of page */
-    const Boolean isActivePage =
-        (_currentEditorPageIndex <= _lastEditorPageIndex);
-    const juce::Colour pageColor = (isActivePage
-                                    ? _activePageColor
-                                    : _inactivePageColor);
-    rectangle.setY((int) y);
-    rectangle.setHeight((int) (height - y));
-    graphics.setColour(pageColor);
-    graphics.fillRect(rectangle);
+        divisionLineY2 =
+            (topMarginHeightPercentage - gapHeightPercentage
+             + rowPlusSpaceHeightPercentage * _commonWidgetCount);
+
+        if (_commonWidgetCount > 2) {
+            divisionLineY1 =
+                divisionLineY2 - rowPlusSpaceHeightPercentage * 2.0;
+        }
+    }
+    
+    Logging_trace2("--: y1 = %1, y2 = %2",
+                   TOSTRING(divisionLineY1), TOSTRING(divisionLineY2));
+
+    /* fill fixed part with default background colour */
+    _fillRectangle(*this, graphics,
+                   zero, zero, hundred, divisionLineY2,
+                   _defaultBackgroundColour);
+
+    if (divisionLineY1 < 100.0) {
+        /* draw a simple line to separate the page selection
+         * widgets */
+        const Percentage lineHeight = 0.25;
+        _fillRectangle(*this, graphics,
+                       zero, divisionLineY1 - lineHeight / 2.0,
+                       hundred, lineHeight,
+                       _activePageColour);
+    }
+    
+    if (divisionLineY2 < height) {
+        /* fill paged part with colour depending on activeness of
+         * page */
+        const Boolean isActivePage =
+            (_currentEditorPageIndex <= _lastEditorPageIndex);
+        const Colour pageColour = (isActivePage
+                                   ? _activePageColour
+                                   : _inactivePageColour);
+        _fillRectangle(*this, graphics,
+                       zero, divisionLineY2,
+                       hundred, hundred - divisionLineY2,
+                       pageColour);
+    }
 
     _notifyWidgetsAboutPageChange(_widgetList, _currentEditorPageIndex);
     Logging_trace("<<");
@@ -448,6 +562,7 @@ SoXAudioEditor::notifyAboutChange (IN SoXParameterValueChangeKind kind,
     Boolean repaintIsNecessary = false;
 
     if (kind == SoXParameterValueChangeKind::globalChange) {
+        _updateWidgetRanges(_widgetList);
         _resetAppearance();
     } else if (kind == SoXParameterValueChangeKind::pageChange) {
         repaintIsNecessary = true;
@@ -489,33 +604,27 @@ void SoXAudioEditor::_resetAppearance ()
     Logging_trace(">>");
 
     NaturalList widgetCountList = _addWidgetsToList(this, _widgetList);
-    const Natural fixedWidgetCount = widgetCountList[0];
-    const Natural maximumWidgetCount =
-        Natural::maximum(1, widgetCountList[1]);
+    _commonWidgetCount = widgetCountList[0];
+    _maximumWidgetCount = Natural::maximum(1, widgetCountList[1]);
     setSize((int) _defaultWidth,
-            (int) (_heightPerWidget * maximumWidgetCount));
+            (int) (_heightPerWidget * _maximumWidgetCount));
 
     /* initialize page setup */
     const Real rowSpaceFactor = 0.25;
     const Real borderFactor   = 0.5;
-    const Real one = 1.0;
-    const Real two = 2.0;
     const Real oneHundred = 100.0;
-    const Percentage rowHeight =
-        oneHundred / ((Real{maximumWidgetCount} - one)
-                 * (one + rowSpaceFactor) + two * borderFactor + one);
-    const Percentage topHeight      = Percentage{rowHeight / two};
-    const Percentage rowSpaceHeight = Percentage{topHeight / two};
-    SoXAudioEditorWidget::setPartHeightsInPage(topHeight,
-                                               rowHeight,
-                                               rowSpaceHeight);
-    _fixedWidgetPercentage =
-        Percentage{fixedWidgetCount == maximumWidgetCount
-                   ? oneHundred
-                   : (topHeight
-                      + ((rowHeight + rowSpaceHeight)
-                          * Real{fixedWidgetCount})
-                      - rowSpaceHeight / two)};
+
+    /* calculate the number of rows (with height 1) plus inter row
+     * spaces and both top and bottom margins */
+    const Real effectiveRowCount =
+        (Real{_maximumWidgetCount} * (Real::one + rowSpaceFactor)
+         - rowSpaceFactor + Real::two * borderFactor);
+    Percentage rowHeightPercentage{oneHundred / effectiveRowCount};
+    Percentage topMarginHeightPercentage{rowHeightPercentage * borderFactor};
+    Percentage rowSpaceHeightPercentage{rowHeightPercentage * rowSpaceFactor};
+    SoXAudioEditorWidget::setPartHeightsInPage(topMarginHeightPercentage,
+                                               rowHeightPercentage,
+                                               rowSpaceHeightPercentage);
 
     Logging_trace("<<");
 }

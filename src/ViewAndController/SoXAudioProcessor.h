@@ -206,11 +206,11 @@ namespace SoXPlugins::ViewAndController {
         /*--------------------*/
 
         /**
-         * Sets parameter named <C>parameterName</C> to
-         * <C>value</C>.  If value has wrong kind, it is ignored;
-         * if <C>recalculationIsForced</C> is set, the
-         * recalculation of dependent internal settings is
-         * forced (otherwise it is suppressed).
+         * Sets parameter named <C>parameterName</C> to <C>value</C>
+         * and notifies host.  If value has wrong kind, it is ignored;
+         * if <C>recalculationIsForced</C> is set, the recalculation
+         * of dependent internal settings is forced (otherwise it is
+         * suppressed).
          *
          * @param[in] parameterName              name of parameter to
          *                                       be set
@@ -228,7 +228,7 @@ namespace SoXPlugins::ViewAndController {
 
         /**
          * Sets all parameters for audio processor to values
-         * defined by <C>dictionary</C>
+         * defined by <C>dictionary</C>.
          *
          * @param[in] dictionary  dictionary from parameter names to
          *                        associated string values to be set

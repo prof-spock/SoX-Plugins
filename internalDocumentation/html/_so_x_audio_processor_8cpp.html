@@ -139,50 +139,299 @@ typedef GenericSet&lt; <a class="el" href="struct_so_x_plugins_1_1_view_and_cont
 typedef GenericMap&lt; String, <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a159291a215bac17ba80d19973f63fdec">StringToNaturalMap</a></td></tr>
 <tr class="memdesc:a159291a215bac17ba80d19973f63fdec"><td class="mdescLeft">&#160;</td><td class="mdescRight">a mapping from string to natural <br /></td></tr>
 <tr class="separator:a159291a215bac17ba80d19973f63fdec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96716fa170703d312b3d4fad25cf3233"><td class="memItemLeft" align="right" valign="top"><a id="a96716fa170703d312b3d4fad25cf3233"></a>
+typedef juce::Array&lt; juce::AudioProcessorParameter * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a96716fa170703d312b3d4fad25cf3233">_AudioProcessorParameterArray</a></td></tr>
+<tr class="memdesc:a96716fa170703d312b3d4fad25cf3233"><td class="mdescLeft">&#160;</td><td class="mdescRight">a JUCE array of audio processor parameter pointers <br /></td></tr>
+<tr class="separator:a96716fa170703d312b3d4fad25cf3233"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a7c30130b4cdda2b7f9313411e74fee48"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a7c30130b4cdda2b7f9313411e74fee48">_stretchToRealInterval</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> unitIntervalValue, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> lowValue, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> highValue)</td></tr>
-<tr class="memdesc:a7c30130b4cdda2b7f9313411e74fee48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns value from interval <code>lowValue</code> to <code>highValue</code> defined by unit interval factor <code>unitIntervalValue</code>.  <a href="_so_x_audio_processor_8cpp.html#a7c30130b4cdda2b7f9313411e74fee48">More...</a><br /></td></tr>
-<tr class="separator:a7c30130b4cdda2b7f9313411e74fee48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f639bc3b4ab0d90034e1bb79a3d6ab1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_integer.html">Integer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a3f639bc3b4ab0d90034e1bb79a3d6ab1">_stretchToIntegerInterval</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> unitIntervalValue, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_integer.html">Integer</a> lowValue, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_integer.html">Integer</a> highValue)</td></tr>
 <tr class="memdesc:a3f639bc3b4ab0d90034e1bb79a3d6ab1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns value from interval <code>lowValue</code> to <code>highValue</code> defined by unit interval factor <code>unitIntervalValue</code>.  <a href="_so_x_audio_processor_8cpp.html#a3f639bc3b4ab0d90034e1bb79a3d6ab1">More...</a><br /></td></tr>
 <tr class="separator:a3f639bc3b4ab0d90034e1bb79a3d6ab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac40c8e82e1d81445df26ebf254ae9e8e"><td class="memItemLeft" align="right" valign="top">static juce::AudioProcessorParameter *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#ac40c8e82e1d81445df26ebf254ae9e8e">SoXPlugins::ViewAndController::_constructParameterObject</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;effectParameterMap)</td></tr>
-<tr class="memdesc:ac40c8e82e1d81445df26ebf254ae9e8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs juce parameter object from <code>parameterName</code> with data taken from <code>effectParameterMap</code>.  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#ac40c8e82e1d81445df26ebf254ae9e8e">More...</a><br /></td></tr>
-<tr class="separator:ac40c8e82e1d81445df26ebf254ae9e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6d933280a605069185330af0f337ecd"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#ab6d933280a605069185330af0f337ecd">SoXPlugins::ViewAndController::_normalize</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;st)</td></tr>
-<tr class="memdesc:ab6d933280a605069185330af0f337ecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces all newline in <code>st</code> by another character and returns result.  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#ab6d933280a605069185330af0f337ecd">More...</a><br /></td></tr>
-<tr class="separator:ab6d933280a605069185330af0f337ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abcf9d2d9ea1286cfb9f6309d9126ed3d"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#abcf9d2d9ea1286cfb9f6309d9126ed3d">SoXPlugins::ViewAndController::_convertMapToString</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;parameterMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;title)</td></tr>
-<tr class="memdesc:abcf9d2d9ea1286cfb9f6309d9126ed3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts audio parameter in <code>map</code> to serialized string form; <code>title</code> is added for reference as the first line.  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#abcf9d2d9ea1286cfb9f6309d9126ed3d">More...</a><br /></td></tr>
-<tr class="separator:abcf9d2d9ea1286cfb9f6309d9126ed3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a418ec70762fae62f2497026385d358f3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#a418ec70762fae62f2497026385d358f3">SoXPlugins::ViewAndController::_readKeyValueMapString</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html">SoXAudioProcessor</a> *audioProcessor, <a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;parameterMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;st)</td></tr>
-<tr class="memdesc:a418ec70762fae62f2497026385d358f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads value settings from serialized form in <code>st</code> to <code>audioProcessor</code> and into <code>parameterMap</code>  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#a418ec70762fae62f2497026385d358f3">More...</a><br /></td></tr>
-<tr class="separator:a418ec70762fae62f2497026385d358f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19375c785a4f562f89f2dee11f0be928"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#a19375c785a4f562f89f2dee11f0be928">SoXPlugins::ViewAndController::_readTime</a> (juce::AudioPlayHead *playHead)</td></tr>
-<tr class="memdesc:a19375c785a4f562f89f2dee11f0be928"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads current time and returns its value.  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#a19375c785a4f562f89f2dee11f0be928">More...</a><br /></td></tr>
-<tr class="separator:a19375c785a4f562f89f2dee11f0be928"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab586d8c0b077c3214db3cc8ff2fe6f2c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#ab586d8c0b077c3214db3cc8ff2fe6f2c">SoXPlugins::ViewAndController::_updateAudioProcessorParameter</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> juce::AudioProcessorParameter *parameter, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;effectParameterMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;value)</td></tr>
-<tr class="memdesc:ab586d8c0b077c3214db3cc8ff2fe6f2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update juce parameter object <code>parameter</code> named <code>parameterName</code> to <code>value</code> using data taken from <code>effectParameterMap</code>.  <a href="namespace_so_x_plugins_1_1_view_and_controller.html#ab586d8c0b077c3214db3cc8ff2fe6f2c">More...</a><br /></td></tr>
-<tr class="separator:ab586d8c0b077c3214db3cc8ff2fe6f2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c30130b4cdda2b7f9313411e74fee48"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a7c30130b4cdda2b7f9313411e74fee48">_stretchToRealInterval</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> unitIntervalValue, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> lowValue, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> highValue)</td></tr>
+<tr class="memdesc:a7c30130b4cdda2b7f9313411e74fee48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns value from interval <code>lowValue</code> to <code>highValue</code> defined by unit interval factor <code>unitIntervalValue</code>.  <a href="_so_x_audio_processor_8cpp.html#a7c30130b4cdda2b7f9313411e74fee48">More...</a><br /></td></tr>
+<tr class="separator:a7c30130b4cdda2b7f9313411e74fee48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af73422597c70ec2139e44575ec88e364"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#af73422597c70ec2139e44575ec88e364">_updateAudioProcessorParameterRange</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> juce::AudioProcessorParameter &amp;parameterObject, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;effectParameterMap)</td></tr>
+<tr class="memdesc:af73422597c70ec2139e44575ec88e364"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates range of juce parameter object <code>parameterObject</code> named <code>parameterName</code> using data taken from <code>effectParameterMap</code>.  <a href="_so_x_audio_processor_8cpp.html#af73422597c70ec2139e44575ec88e364">More...</a><br /></td></tr>
+<tr class="separator:af73422597c70ec2139e44575ec88e364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a665ac4d121fcaaac593d5b60d74e67c0"><td class="memItemLeft" align="right" valign="top">static juce::AudioProcessorParameter *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a665ac4d121fcaaac593d5b60d74e67c0">_constructParameterObject</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;effectParameterMap)</td></tr>
+<tr class="memdesc:a665ac4d121fcaaac593d5b60d74e67c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs juce parameter object from <code>parameterName</code> with data taken from <code>effectParameterMap</code>.  <a href="_so_x_audio_processor_8cpp.html#a665ac4d121fcaaac593d5b60d74e67c0">More...</a><br /></td></tr>
+<tr class="separator:a665ac4d121fcaaac593d5b60d74e67c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a3632ffdc458e17795a4db81acd4ffc"><td class="memItemLeft" align="right" valign="top">static String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a6a3632ffdc458e17795a4db81acd4ffc">_convertMapToString</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;parameterMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;title)</td></tr>
+<tr class="memdesc:a6a3632ffdc458e17795a4db81acd4ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts audio parameter in <code>map</code> to serialized string form; <code>title</code> is added for reference as the first line.  <a href="_so_x_audio_processor_8cpp.html#a6a3632ffdc458e17795a4db81acd4ffc">More...</a><br /></td></tr>
+<tr class="separator:a6a3632ffdc458e17795a4db81acd4ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ca774014e2dc8e27deddc71cfa6ed16"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a1ca774014e2dc8e27deddc71cfa6ed16">_dispatchValueChange</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> Object object, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;value, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> recalculationIsForced)</td></tr>
+<tr class="memdesc:a1ca774014e2dc8e27deddc71cfa6ed16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets parameter named <code>parameterName</code> to <code>value</code> for audio processor given as <code>object</code>; calls associated setValue function for processor.  <a href="_so_x_audio_processor_8cpp.html#a1ca774014e2dc8e27deddc71cfa6ed16">More...</a><br /></td></tr>
+<tr class="separator:a1ca774014e2dc8e27deddc71cfa6ed16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b1cbd3edcc8d0808b75e3b6a0234b4c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a2b1cbd3edcc8d0808b75e3b6a0234b4c">_readKeyValueMapString</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html">SoXAudioProcessor</a> *audioProcessor, <a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;parameterMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;st)</td></tr>
+<tr class="memdesc:a2b1cbd3edcc8d0808b75e3b6a0234b4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads value settings from serialized form in <code>st</code> to <code>audioProcessor</code> and into <code>parameterMap</code>  <a href="_so_x_audio_processor_8cpp.html#a2b1cbd3edcc8d0808b75e3b6a0234b4c">More...</a><br /></td></tr>
+<tr class="separator:a2b1cbd3edcc8d0808b75e3b6a0234b4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3829b559a50f77073bed9097787838ab"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a3829b559a50f77073bed9097787838ab">_readTime</a> (juce::AudioPlayHead *playHead)</td></tr>
+<tr class="memdesc:a3829b559a50f77073bed9097787838ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads current time and returns its value.  <a href="_so_x_audio_processor_8cpp.html#a3829b559a50f77073bed9097787838ab">More...</a><br /></td></tr>
+<tr class="separator:a3829b559a50f77073bed9097787838ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a731965fc9138172ef80c57892defe12e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a731965fc9138172ef80c57892defe12e">_updateAudioProcessorParameterValue</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> juce::AudioProcessorParameter *parameterObject, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;effectParameterMap, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;value)</td></tr>
+<tr class="memdesc:a731965fc9138172ef80c57892defe12e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates value of juce parameter object <code>parameterObject</code> named <code>parameterName</code> to <code>value</code> using data taken from <code>effectParameterMap</code>.  <a href="_so_x_audio_processor_8cpp.html#a731965fc9138172ef80c57892defe12e">More...</a><br /></td></tr>
+<tr class="separator:a731965fc9138172ef80c57892defe12e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a860e4bc007a2f19c5028007152b0ccd7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a860e4bc007a2f19c5028007152b0ccd7">_updateParameterRanges</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="_so_x_audio_processor_8cpp.html#a96716fa170703d312b3d4fad25cf3233">_AudioProcessorParameterArray</a> &amp;audioParameterList, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;effectParameterMap)</td></tr>
+<tr class="memdesc:a860e4bc007a2f19c5028007152b0ccd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that all audio parameter ranges correspond to the underlying parameter map.  <a href="_so_x_audio_processor_8cpp.html#a860e4bc007a2f19c5028007152b0ccd7">More...</a><br /></td></tr>
+<tr class="separator:a860e4bc007a2f19c5028007152b0ccd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:af4ab15d0c88bb9a7da586dca959fd8f3"><td class="memItemLeft" align="right" valign="top"><a id="af4ab15d0c88bb9a7da586dca959fd8f3"></a>
-static const Character&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#af4ab15d0c88bb9a7da586dca959fd8f3">SoXPlugins::ViewAndController::quoteCharacter</a> = '&quot;'</td></tr>
-<tr class="memdesc:af4ab15d0c88bb9a7da586dca959fd8f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the double quote character <br /></td></tr>
-<tr class="separator:af4ab15d0c88bb9a7da586dca959fd8f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6dfbf5240ea5d5ad1924ecb51bf1852"><td class="memItemLeft" align="right" valign="top"><a id="aa6dfbf5240ea5d5ad1924ecb51bf1852"></a>
-static const <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_view_and_controller.html#aa6dfbf5240ea5d5ad1924ecb51bf1852">SoXPlugins::ViewAndController::decimalPlaceCount</a> = 5</td></tr>
-<tr class="memdesc:aa6dfbf5240ea5d5ad1924ecb51bf1852"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of decimal places for reals in serialized form <br /></td></tr>
-<tr class="separator:aa6dfbf5240ea5d5ad1924ecb51bf1852"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf174bbc71e92b2e039a58e2f1dd56a1"><td class="memItemLeft" align="right" valign="top"><a id="aaf174bbc71e92b2e039a58e2f1dd56a1"></a>
+static const Character&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#aaf174bbc71e92b2e039a58e2f1dd56a1">quoteCharacter</a> = '&quot;'</td></tr>
+<tr class="memdesc:aaf174bbc71e92b2e039a58e2f1dd56a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the double quote character <br /></td></tr>
+<tr class="separator:aaf174bbc71e92b2e039a58e2f1dd56a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f6020260a19696f7502f8290f2a842c"><td class="memItemLeft" align="right" valign="top"><a id="a3f6020260a19696f7502f8290f2a842c"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#a3f6020260a19696f7502f8290f2a842c">decimalPlaceCount</a> = 5</td></tr>
+<tr class="memdesc:a3f6020260a19696f7502f8290f2a842c"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of decimal places for reals in serialized form <br /></td></tr>
+<tr class="separator:a3f6020260a19696f7502f8290f2a842c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7258423060f7303df15d876ca8f100c"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_set.html">StringSet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_audio_processor_8cpp.html#ac7258423060f7303df15d876ca8f100c">metaParameterNameSet</a></td></tr>
+<tr class="memdesc:ac7258423060f7303df15d876ca8f100c"><td class="mdescLeft">&#160;</td><td class="mdescRight">set of parameter names considered 'meta parameters' implicitely changing other parameter values  <a href="_so_x_audio_processor_8cpp.html#ac7258423060f7303df15d876ca8f100c">More...</a><br /></td></tr>
+<tr class="separator:ac7258423060f7303df15d876ca8f100c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXAudioProcessor</code> body implements an audio effect wrapper for a plugin responsible for the communication to the enclosing plugin host. </p>
 <dl class="section author"><dt>Author</dt><dd>Dr. Thomas Tensi </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020-06 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a665ac4d121fcaaac593d5b60d74e67c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a665ac4d121fcaaac593d5b60d74e67c0">&#9670;&nbsp;</a></span>_constructParameterObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static juce::AudioProcessorParameter* _constructParameterObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>parameterName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;&#160;</td>
+          <td class="paramname"><em>effectParameterMap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructs juce parameter object from <code>parameterName</code> with data taken from <code>effectParameterMap</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">parameterName</td><td>name of audio parameter in map </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">effectParameterMap</td><td>map of all audio parameters to associated attributes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>juce audio parameter object </dd></dl>
+
+</div>
+</div>
+<a id="a6a3632ffdc458e17795a4db81acd4ffc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a3632ffdc458e17795a4db81acd4ffc">&#9670;&nbsp;</a></span>_convertMapToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static String _convertMapToString </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;&#160;</td>
+          <td class="paramname"><em>parameterMap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>title</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Converts audio parameter in <code>map</code> to serialized string form; <code>title</code> is added for reference as the first line. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">parameterMap</td><td>map of audio parameters in processor </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">title</td><td>title for audio processor parameter serialization </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1ca774014e2dc8e27deddc71cfa6ed16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ca774014e2dc8e27deddc71cfa6ed16">&#9670;&nbsp;</a></span>_dispatchValueChange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void _dispatchValueChange </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> Object&#160;</td>
+          <td class="paramname"><em>object</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>parameterName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a>&#160;</td>
+          <td class="paramname"><em>recalculationIsForced</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets parameter named <code>parameterName</code> to <code>value</code> for audio processor given as <code>object</code>; calls associated setValue function for processor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">parameterName</td><td>name of parameter to be set </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>associated value of parameter </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">recalculationIsForced</td><td>flag to tell whether complex recalculations should be done </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2b1cbd3edcc8d0808b75e3b6a0234b4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b1cbd3edcc8d0808b75e3b6a0234b4c">&#9670;&nbsp;</a></span>_readKeyValueMapString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void _readKeyValueMapString </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html">SoXAudioProcessor</a> *&#160;</td>
+          <td class="paramname"><em>audioProcessor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;&#160;</td>
+          <td class="paramname"><em>parameterMap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>st</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads value settings from serialized form in <code>st</code> to <code>audioProcessor</code> and into <code>parameterMap</code> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">audioProcessor</td><td>the audio processor to be set by external string </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">parameterMap</td><td>map from audio parameters to associated data </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">st</td><td>string with serialized processor information </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3829b559a50f77073bed9097787838ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3829b559a50f77073bed9097787838ab">&#9670;&nbsp;</a></span>_readTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> _readTime </td>
+          <td>(</td>
+          <td class="paramtype">juce::AudioPlayHead *&#160;</td>
+          <td class="paramname"><em>playHead</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads current time and returns its value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">playHead</td><td>the JUCE audio play head </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>current time (as a real value) </dd></dl>
+
+</div>
+</div>
 <a id="a3f639bc3b4ab0d90034e1bb79a3d6ab1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3f639bc3b4ab0d90034e1bb79a3d6ab1">&#9670;&nbsp;</a></span>_stretchToIntegerInterval()</h2>
 
@@ -286,6 +535,189 @@ static const <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.ht
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>scaled value in target interval </dd></dl>
+
+</div>
+</div>
+<a id="af73422597c70ec2139e44575ec88e364"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af73422597c70ec2139e44575ec88e364">&#9670;&nbsp;</a></span>_updateAudioProcessorParameterRange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void _updateAudioProcessorParameterRange </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> juce::AudioProcessorParameter &amp;&#160;</td>
+          <td class="paramname"><em>parameterObject</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>parameterName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;&#160;</td>
+          <td class="paramname"><em>effectParameterMap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Updates range of juce parameter object <code>parameterObject</code> named <code>parameterName</code> using data taken from <code>effectParameterMap</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">parameterObject</td><td>juce audio parameter object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">parameterName</td><td>name of audio parameter in map </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">effectParameterMap</td><td>map of all audio parameters to associated attributes </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a731965fc9138172ef80c57892defe12e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a731965fc9138172ef80c57892defe12e">&#9670;&nbsp;</a></span>_updateAudioProcessorParameterValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void _updateAudioProcessorParameterValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> juce::AudioProcessorParameter *&#160;</td>
+          <td class="paramname"><em>parameterObject</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>parameterName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;&#160;</td>
+          <td class="paramname"><em>effectParameterMap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Updates value of juce parameter object <code>parameterObject</code> named <code>parameterName</code> to <code>value</code> using data taken from <code>effectParameterMap</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">parameterObject</td><td>juce audio parameter object </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">parameterName</td><td>name of audio parameter in map </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">effectParameterMap</td><td>map of all audio parameters to associated attributes </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>new value for parameter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a860e4bc007a2f19c5028007152b0ccd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a860e4bc007a2f19c5028007152b0ccd7">&#9670;&nbsp;</a></span>_updateParameterRanges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void _updateParameterRanges </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="_so_x_audio_processor_8cpp.html#a96716fa170703d312b3d4fad25cf3233">_AudioProcessorParameterArray</a> &amp;&#160;</td>
+          <td class="paramname"><em>audioParameterList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;&#160;</td>
+          <td class="paramname"><em>effectParameterMap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ensures that all audio parameter ranges correspond to the underlying parameter map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">audioParameterList</td><td>list of audio parameter objects </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">effectParameterMap</td><td>map with parameter data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ac7258423060f7303df15d876ca8f100c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7258423060f7303df15d876ca8f100c">&#9670;&nbsp;</a></span>metaParameterNameSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="struct_base_types_1_1_containers_1_1_string_set.html">StringSet</a> metaParameterNameSet</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    StringSet::fromList(StringList::fromList({<span class="stringliteral">&quot;Effect Kind&quot;</span>}))</div>
+</div><!-- fragment -->
+<p>set of parameter names considered 'meta parameters' implicitely changing other parameter values </p>
 
 </div>
 </div>

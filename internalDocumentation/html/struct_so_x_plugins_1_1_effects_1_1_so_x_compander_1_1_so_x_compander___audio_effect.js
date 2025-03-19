@@ -1,7 +1,7 @@
 var struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect =
 [
     [ "SoXCompander_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#a6f1ff2fb3457c104639a6c87683863b1", null ],
-    [ "~SoXCompander_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#aa08b39a88228816e76527e0d4c59ab2b", null ],
+    [ "~SoXCompander_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#a3712e249100da4afc87fd823e0ad40cf", null ],
     [ "_effectDescriptorToString", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#ad62653eb5b6f044fe12974533b9f96d1", null ],
     [ "_setValueInternal", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#acd5cba4249017fecd7d8368e2d732cfa", null ],
     [ "name", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#a753f566112fed8c2eed9cf6b802f25f9", null ],

@@ -49,11 +49,12 @@ var files_dup =
     ] ],
     [ "IntegerList.cpp", "_integer_list_8cpp.html", null ],
     [ "IntegerList.h", "_integer_list_8h.html", "_integer_list_8h" ],
+    [ "SoXChorusAndEcho/JucePluginDefines.h", "_so_x_chorus_and_echo_2_juce_plugin_defines_8h.html", "_so_x_chorus_and_echo_2_juce_plugin_defines_8h" ],
     [ "SoXCompander/JucePluginDefines.h", "_so_x_compander_2_juce_plugin_defines_8h.html", "_so_x_compander_2_juce_plugin_defines_8h" ],
     [ "SoXFilter/JucePluginDefines.h", "_so_x_filter_2_juce_plugin_defines_8h.html", "_so_x_filter_2_juce_plugin_defines_8h" ],
     [ "SoXGain/JucePluginDefines.h", "_so_x_gain_2_juce_plugin_defines_8h.html", "_so_x_gain_2_juce_plugin_defines_8h" ],
     [ "SoXOverdrive/JucePluginDefines.h", "_so_x_overdrive_2_juce_plugin_defines_8h.html", "_so_x_overdrive_2_juce_plugin_defines_8h" ],
-    [ "SoXPhaserAndTremolo/JucePluginDefines.h", "_so_x_phaser_and_tremolo_2_juce_plugin_defines_8h.html", "_so_x_phaser_and_tremolo_2_juce_plugin_defines_8h" ],
+    [ "SoXFlangerPhaserAndTremolo/JucePluginDefines.h", "_so_x_flanger_phaser_and_tremolo_2_juce_plugin_defines_8h.html", "_so_x_flanger_phaser_and_tremolo_2_juce_plugin_defines_8h" ],
     [ "SoXReverb/JucePluginDefines.h", "_so_x_reverb_2_juce_plugin_defines_8h.html", "_so_x_reverb_2_juce_plugin_defines_8h" ],
     [ "Logging.h", "_logging_8h.html", null ],
     [ "LoggingSupport.cpp", "_logging_support_8cpp.html", "_logging_support_8cpp" ],
@@ -91,9 +92,7 @@ var files_dup =
       [ "SoXAudioEditorWidget", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget" ]
     ] ],
     [ "SoXAudioEffect.cpp", "_so_x_audio_effect_8cpp.html", null ],
-    [ "SoXAudioEffect.h", "_so_x_audio_effect_8h.html", [
-      [ "SoXAudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect" ]
-    ] ],
+    [ "SoXAudioEffect.h", "_so_x_audio_effect_8h.html", "_so_x_audio_effect_8h" ],
     [ "SoXAudioHelper.h", "_so_x_audio_helper_8h.html", [
       [ "SoXAudioHelper", "struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_helper.html", "struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_helper" ]
     ] ],
@@ -101,6 +100,11 @@ var files_dup =
     [ "SoXAudioProcessor.h", "_so_x_audio_processor_8h.html", [
       [ "SoXAudioProcessor", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor" ]
     ] ],
+    [ "SoXChorusAndEcho_AudioEffect.cpp", "_so_x_chorus_and_echo___audio_effect_8cpp.html", "_so_x_chorus_and_echo___audio_effect_8cpp" ],
+    [ "SoXChorusAndEcho_AudioEffect.h", "_so_x_chorus_and_echo___audio_effect_8h.html", [
+      [ "SoXChorusAndEcho_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect" ]
+    ] ],
+    [ "SoXChorusAndEcho_AudioProcessor.cpp", "_so_x_chorus_and_echo___audio_processor_8cpp.html", "_so_x_chorus_and_echo___audio_processor_8cpp" ],
     [ "SoXCompander_AudioEffect.cpp", "_so_x_compander___audio_effect_8cpp.html", "_so_x_compander___audio_effect_8cpp" ],
     [ "SoXCompander_AudioEffect.h", "_so_x_compander___audio_effect_8h.html", [
       [ "SoXCompander_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect" ]
@@ -117,6 +121,11 @@ var files_dup =
       [ "SoXFilter_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect" ]
     ] ],
     [ "SoXFilter_AudioProcessor.cpp", "_so_x_filter___audio_processor_8cpp.html", "_so_x_filter___audio_processor_8cpp" ],
+    [ "SoXFlangerPhaserAndTremolo_AudioEffect.cpp", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html", "_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp" ],
+    [ "SoXFlangerPhaserAndTremolo_AudioEffect.h", "_so_x_flanger_phaser_and_tremolo___audio_effect_8h.html", [
+      [ "SoXFlangerPhaserAndTremolo_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect" ]
+    ] ],
+    [ "SoXFlangerPhaserAndTremolo_AudioProcessor.cpp", "_so_x_flanger_phaser_and_tremolo___audio_processor_8cpp.html", "_so_x_flanger_phaser_and_tremolo___audio_processor_8cpp" ],
     [ "SoXGain_AudioEffect.cpp", "_so_x_gain___audio_effect_8cpp.html", "_so_x_gain___audio_effect_8cpp" ],
     [ "SoXGain_AudioEffect.h", "_so_x_gain___audio_effect_8h.html", [
       [ "SoXGain_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect" ]
@@ -128,29 +137,27 @@ var files_dup =
     ] ],
     [ "SoXOverdrive_AudioProcessor.cpp", "_so_x_overdrive___audio_processor_8cpp.html", "_so_x_overdrive___audio_processor_8cpp" ],
     [ "SoXParameterValueChangeKind.h", "_so_x_parameter_value_change_kind_8h.html", "_so_x_parameter_value_change_kind_8h" ],
-    [ "SoXPhaserAndTremolo_AudioEffect.cpp", "_so_x_phaser_and_tremolo___audio_effect_8cpp.html", "_so_x_phaser_and_tremolo___audio_effect_8cpp" ],
-    [ "SoXPhaserAndTremolo_AudioEffect.h", "_so_x_phaser_and_tremolo___audio_effect_8h.html", [
-      [ "SoXPhaserAndTremolo_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect" ]
-    ] ],
-    [ "SoXPhaserAndTremolo_AudioProcessor.cpp", "_so_x_phaser_and_tremolo___audio_processor_8cpp.html", "_so_x_phaser_and_tremolo___audio_processor_8cpp" ],
+    [ "SoXChorusAndEcho/SoXPlugin-Standalone.cpp", "_so_x_chorus_and_echo_2_so_x_plugin-_standalone_8cpp.html", null ],
     [ "SoXCompander/SoXPlugin-Standalone.cpp", "_so_x_compander_2_so_x_plugin-_standalone_8cpp.html", null ],
     [ "SoXFilter/SoXPlugin-Standalone.cpp", "_so_x_filter_2_so_x_plugin-_standalone_8cpp.html", null ],
     [ "SoXGain/SoXPlugin-Standalone.cpp", "_so_x_gain_2_so_x_plugin-_standalone_8cpp.html", null ],
     [ "SoXOverdrive/SoXPlugin-Standalone.cpp", "_so_x_overdrive_2_so_x_plugin-_standalone_8cpp.html", null ],
-    [ "SoXPhaserAndTremolo/SoXPlugin-Standalone.cpp", "_so_x_phaser_and_tremolo_2_so_x_plugin-_standalone_8cpp.html", null ],
+    [ "SoXFlangerPhaserAndTremolo/SoXPlugin-Standalone.cpp", "_so_x_flanger_phaser_and_tremolo_2_so_x_plugin-_standalone_8cpp.html", null ],
     [ "SoXReverb/SoXPlugin-Standalone.cpp", "_so_x_reverb_2_so_x_plugin-_standalone_8cpp.html", null ],
+    [ "SoXChorusAndEcho/SoXPlugin-util.cpp", "_so_x_chorus_and_echo_2_so_x_plugin-util_8cpp.html", null ],
     [ "SoXCompander/SoXPlugin-util.cpp", "_so_x_compander_2_so_x_plugin-util_8cpp.html", null ],
     [ "SoXFilter/SoXPlugin-util.cpp", "_so_x_filter_2_so_x_plugin-util_8cpp.html", null ],
     [ "SoXGain/SoXPlugin-util.cpp", "_so_x_gain_2_so_x_plugin-util_8cpp.html", null ],
     [ "SoXOverdrive/SoXPlugin-util.cpp", "_so_x_overdrive_2_so_x_plugin-util_8cpp.html", null ],
-    [ "SoXPhaserAndTremolo/SoXPlugin-util.cpp", "_so_x_phaser_and_tremolo_2_so_x_plugin-util_8cpp.html", null ],
+    [ "SoXFlangerPhaserAndTremolo/SoXPlugin-util.cpp", "_so_x_flanger_phaser_and_tremolo_2_so_x_plugin-util_8cpp.html", null ],
     [ "SoXReverb/SoXPlugin-util.cpp", "_so_x_reverb_2_so_x_plugin-util_8cpp.html", null ],
-    [ "SoXCompander/SoXPlugin-VST_1.cpp", "_so_x_compander_2_so_x_plugin-_v_s_t__1_8cpp.html", null ],
-    [ "SoXOverdrive/SoXPlugin-VST_1.cpp", "_so_x_overdrive_2_so_x_plugin-_v_s_t__1_8cpp.html", null ],
     [ "SoXFilter/SoxPlugin-VST_1.cpp", "_so_x_filter_2_sox_plugin-_v_s_t__1_8cpp.html", null ],
     [ "SoXGain/SoxPlugin-VST_1.cpp", "_so_x_gain_2_sox_plugin-_v_s_t__1_8cpp.html", null ],
-    [ "SoXPhaserAndTremolo/SoxPlugin-VST_1.cpp", "_so_x_phaser_and_tremolo_2_sox_plugin-_v_s_t__1_8cpp.html", null ],
     [ "SoXReverb/SoxPlugin-VST_1.cpp", "_so_x_reverb_2_sox_plugin-_v_s_t__1_8cpp.html", null ],
+    [ "SoXChorusAndEcho/SoXPlugin-VST_1.cpp", "_so_x_chorus_and_echo_2_so_x_plugin-_v_s_t__1_8cpp.html", null ],
+    [ "SoXCompander/SoXPlugin-VST_1.cpp", "_so_x_compander_2_so_x_plugin-_v_s_t__1_8cpp.html", null ],
+    [ "SoXOverdrive/SoXPlugin-VST_1.cpp", "_so_x_overdrive_2_so_x_plugin-_v_s_t__1_8cpp.html", null ],
+    [ "SoXFlangerPhaserAndTremolo/SoXPlugin-VST_1.cpp", "_so_x_flanger_phaser_and_tremolo_2_so_x_plugin-_v_s_t__1_8cpp.html", null ],
     [ "SoXReverb_AudioEffect.cpp", "_so_x_reverb___audio_effect_8cpp.html", "_so_x_reverb___audio_effect_8cpp" ],
     [ "SoXReverb_AudioEffect.h", "_so_x_reverb___audio_effect_8h.html", [
       [ "SoXReverb_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect" ]
@@ -167,5 +174,6 @@ var files_dup =
     [ "StringUtil.cpp", "_string_util_8cpp.html", "_string_util_8cpp" ],
     [ "StringUtil.h", "_string_util_8h.html", "_string_util_8h" ],
     [ "WaveForm.cpp", "_wave_form_8cpp.html", "_wave_form_8cpp" ],
+    [ "WaveForm.cpp-inc", "_wave_form_8cpp-inc.html", "_wave_form_8cpp-inc" ],
     [ "WaveForm.h", "_wave_form_8h.html", "_wave_form_8h" ]
 ];

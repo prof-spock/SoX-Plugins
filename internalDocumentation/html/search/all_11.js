@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quotecharacter_634',['quoteCharacter',['../namespace_so_x_plugins_1_1_view_and_controller.html#af4ab15d0c88bb9a7da586dca959fd8f3',1,'SoXPlugins::ViewAndController']]]
+  ['quotecharacter_697',['quoteCharacter',['../_so_x_audio_processor_8cpp.html#aaf174bbc71e92b2e039a58e2f1dd56a1',1,'SoXAudioProcessor.cpp']]]
 ];

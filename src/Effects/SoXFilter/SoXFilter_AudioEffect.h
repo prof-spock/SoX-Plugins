@@ -45,7 +45,7 @@ namespace SoXPlugins::Effects::SoXFilter {
 
         /*--------------------*/
 
-        ~SoXFilter_AudioEffect ();
+        ~SoXFilter_AudioEffect () override;
 
         /*-----------------------*/
         /* string representation */

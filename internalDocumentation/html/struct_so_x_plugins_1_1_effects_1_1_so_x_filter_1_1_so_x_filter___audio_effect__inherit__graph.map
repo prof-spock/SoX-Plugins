@@ -1,4 +1,4 @@
 <map id="SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect" name="SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect">
-<area shape="rect" id="node1" title="A SoXFilter_AudioEffect object models several SoX biquad filters and combines allpass,..." alt="" coords="7,487,218,728"/>
-<area shape="rect" id="node2" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="5,5,220,439"/>
+<area shape="rect" id="node1" title="A SoXFilter_AudioEffect object models several SoX biquad filters and combines allpass,..." alt="" coords="7,567,218,808"/>
+<area shape="rect" id="node2" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="5,5,220,519"/>
 </map>

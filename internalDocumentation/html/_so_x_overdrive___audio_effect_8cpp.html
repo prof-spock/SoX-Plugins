@@ -86,7 +86,6 @@ $(document).ready(function(){initNavTree('_so_x_overdrive___audio_effect_8cpp.ht
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">SoXOverdrive_AudioEffect.cpp File Reference</div>  </div>
@@ -98,20 +97,20 @@ $(document).ready(function(){initNavTree('_so_x_overdrive___audio_effect_8cpp.ht
 <div class="textblock"><code>#include &quot;<a class="el" href="_so_x_overdrive___audio_effect_8h_source.html">SoXOverdrive_AudioEffect.h</a>&quot;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &quot;<a class="el" href="_logging_8h_source.html">Logging.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_audio_sample_ring_buffer_vector_8h_source.html">AudioSampleRingBufferVector.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_so_x_audio_helper_8h_source.html">SoXAudioHelper.h</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for SoXOverdrive_AudioEffect.cpp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="_so_x_overdrive___audio_effect_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="_so_x_overdrive___audio_effect_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_v_r_d.html">SoXPlugins::Effects::SoXOverdrive::_EffectDescriptor_OVRD</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_v_r_d.html" title="An _EffectDescriptor_OVRD object is the internal implementation of an overdrive effect descriptor typ...">_EffectDescriptor_OVRD</a></code> object is the internal implementation of an <b>overdrive</b> effect descriptor type where all sample input is routed to and sample output is routed from with two parameters gain factor and colour.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_v_r_d.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html">SoXPlugins::Effects::SoXOverdrive::_EffectDescriptor_ODRV</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html" title="An _EffectDescriptor_ODRV object is the internal implementation of an overdrive effect descriptor typ...">_EffectDescriptor_ODRV</a></code> object is the internal implementation of an <b>overdrive</b> effect descriptor type where all sample input is routed to and sample output is routed from with two parameters gain factor and colour.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -120,7 +119,7 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespace_so_x_plugins"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins.html" title="The package SoXPlugins provides all types for the DAW plugins emulating the command-line audio proces...">SoXPlugins</a></code> provides all types for the DAW plugins emulating the command-line audio processor SoX; the connection to the plugin host is abstracted via the JUCE framework, the effect implementation itself is completedly self-contained. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_so_x_plugins_1_1_effects"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects.html">SoXPlugins::Effects</a></td></tr>
-<tr class="memdesc:namespace_so_x_plugins_1_1_effects"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects.html" title="The package Effects provides types for the different audio effects themselves; the currently supporte...">Effects</a></code> provides types for the different audio effects themselves; the currently supported SoX effects are <b>compander</b>, <b>filter</b>, <b>gain</b>, <b>overdrive</b>, <b>phaser/tremolo</b> and <b>reverb</b>. <br /></td></tr>
+<tr class="memdesc:namespace_so_x_plugins_1_1_effects"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects.html" title="The package Effects provides types for the different audio effects themselves; the currently supporte...">Effects</a></code> provides types for the different audio effects themselves; the currently supported SoX effects are <b>compander</b>, <b>chorus/echo/echos</b>, <b>filter</b>, <b>gain</b>, <b>overdrive</b>, <b>flanger/phaser/tremolo</b> and <b>reverb</b>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive.html">SoXPlugins::Effects::SoXOverdrive</a></td></tr>
 <tr class="memdesc:namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive.html" title="The package SoXOverdrive provides classes for the SoX overdrive audio effect.">SoXOverdrive</a></code> provides classes for the SoX <b>overdrive</b> audio effect. <br /></td></tr>
@@ -133,26 +132,20 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so
 <tr class="memdesc:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for StringUtil <br /></td></tr>
 <tr class="separator:a5b6f88d1249b396e351c4a85bcb35b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ac5e653eaf282134bff318e452202a6d2"><td class="memItemLeft" align="right" valign="top">static _EffectDescriptor_OVRD *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive.html#ac5e653eaf282134bff318e452202a6d2">SoXPlugins::Effects::SoXOverdrive::_createEffectDescriptor</a> ()</td></tr>
-<tr class="memdesc:ac5e653eaf282134bff318e452202a6d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up a new effect descriptor and returns it.  <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive.html#ac5e653eaf282134bff318e452202a6d2">More...</a><br /></td></tr>
-<tr class="separator:ac5e653eaf282134bff318e452202a6d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aa51bd422ed94d6c8345cf527d3c683c5"><td class="memItemLeft" align="right" valign="top"><a id="aa51bd422ed94d6c8345cf527d3c683c5"></a>
-static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive.html#aa51bd422ed94d6c8345cf527d3c683c5">SoXPlugins::Effects::SoXOverdrive::parameterName_gain</a> = &quot;Gain [dB]&quot;</td></tr>
-<tr class="memdesc:aa51bd422ed94d6c8345cf527d3c683c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the gain parameter <br /></td></tr>
-<tr class="separator:aa51bd422ed94d6c8345cf527d3c683c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52fc3c40d17c05045f86e2466a1ab20c"><td class="memItemLeft" align="right" valign="top"><a id="a52fc3c40d17c05045f86e2466a1ab20c"></a>
-static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive.html#a52fc3c40d17c05045f86e2466a1ab20c">SoXPlugins::Effects::SoXOverdrive::parameterName_colour</a> = &quot;Colour&quot;</td></tr>
-<tr class="memdesc:a52fc3c40d17c05045f86e2466a1ab20c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the colour parameter <br /></td></tr>
-<tr class="separator:a52fc3c40d17c05045f86e2466a1ab20c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d2f84c8f3374d9ba7826c53748c5f7d"><td class="memItemLeft" align="right" valign="top"><a id="a9d2f84c8f3374d9ba7826c53748c5f7d"></a>
-static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_overdrive.html#a9d2f84c8f3374d9ba7826c53748c5f7d">SoXPlugins::Effects::SoXOverdrive::colourFactor</a> = 0.005</td></tr>
-<tr class="memdesc:a9d2f84c8f3374d9ba7826c53748c5f7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the factor from colour parameter to DC offset in the effect <br /></td></tr>
-<tr class="separator:a9d2f84c8f3374d9ba7826c53748c5f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96bb1dc0511cd98ba6a2b7eb4e9402a5"><td class="memItemLeft" align="right" valign="top"><a id="a96bb1dc0511cd98ba6a2b7eb4e9402a5"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_overdrive___audio_effect_8cpp.html#a96bb1dc0511cd98ba6a2b7eb4e9402a5">parameterName_gain</a> = &quot;Gain [dB]&quot;</td></tr>
+<tr class="memdesc:a96bb1dc0511cd98ba6a2b7eb4e9402a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the gain parameter <br /></td></tr>
+<tr class="separator:a96bb1dc0511cd98ba6a2b7eb4e9402a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fd667ff98e31c12e5d7a995f7184324"><td class="memItemLeft" align="right" valign="top"><a id="a0fd667ff98e31c12e5d7a995f7184324"></a>
+static const String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_overdrive___audio_effect_8cpp.html#a0fd667ff98e31c12e5d7a995f7184324">parameterName_colour</a> = &quot;Colour&quot;</td></tr>
+<tr class="memdesc:a0fd667ff98e31c12e5d7a995f7184324"><td class="mdescLeft">&#160;</td><td class="mdescRight">the parameter name of the colour parameter <br /></td></tr>
+<tr class="separator:a0fd667ff98e31c12e5d7a995f7184324"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02d9cf8a7c0df6498aa389b361a8f686"><td class="memItemLeft" align="right" valign="top"><a id="a02d9cf8a7c0df6498aa389b361a8f686"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_so_x_overdrive___audio_effect_8cpp.html#a02d9cf8a7c0df6498aa389b361a8f686">colourFactor</a> = 0.005</td></tr>
+<tr class="memdesc:a02d9cf8a7c0df6498aa389b361a8f686"><td class="mdescLeft">&#160;</td><td class="mdescRight">the factor from colour parameter to DC offset in the effect <br /></td></tr>
+<tr class="separator:a02d9cf8a7c0df6498aa389b361a8f686"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code>SoXOverdrive_AudioEffect</code> body implements the SoX <b>overdrive</b> plugin distorting an input signal with a tanh curve. </p>

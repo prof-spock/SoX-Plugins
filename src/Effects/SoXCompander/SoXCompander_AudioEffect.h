@@ -41,7 +41,7 @@ namespace SoXPlugins::Effects::SoXCompander {
 
         /*--------------------*/
 
-        ~SoXCompander_AudioEffect ();
+        ~SoXCompander_AudioEffect () override;
 
         /*-----------------------*/
         /* string representation */

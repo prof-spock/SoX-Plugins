@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="textblock"><div> <b>author:</b> Dr. Thomas Tensi<br  />
  <b>date:</b> November 2022 </div><h1>Overview</h1>
 <p>The <a class="el" href="namespace_so_x_plugins.html" title="The package SoXPlugins provides all types for the DAW plugins emulating the command-line audio proces...">SoXPlugins</a> software package provides plugins for being used in digital audio workstations (DAW); they implement some of the more prominent audio processing effects from SoX as DAW audio plugins. <u><a href="https://sox.sourceforge.net">SoX</a></u> is a command line audio processing tool for Unix, Windows and Mac OS that transforms source audio files in several formats into other audio files. It provides several standard audio effects (like e.g. filters or reverb) in good quality and with a transparent, open-source implementation.</p>
-<p>This doxygen documentation gives a detailed description of the C++ sources for the SoX plugins. Note that the implementation is completely free, open-source, platform-neutral and based on the <u><a href="https://juce.com">JUCE audio framework</a></u>. Currently only plugin versions as VST3 under Windows 10, VST3 and AU under MacOSX (x86_64) and VST3 under Linux (x86_64) are provided, but porting to other targets should be straightforward, since building is supported by a platform-neutral CMAKE build file.</p>
+<p>This doxygen documentation gives a detailed description of the C++ sources for the SoX plugins. Note that the implementation is completely free, open-source, platform-neutral and based on the <u><a href="https://juce.com">JUCE audio framework</a></u>. Currently only plugin versions as VST3 under Windows 10, VST3 and AU under MacOS (x86_64) and VST3 under Linux (x86_64) are provided, but porting to other targets should be straightforward, since building is supported by a platform-neutral CMAKE build file.</p>
 <p>The effects provided here are a complete rewrite in C++ of the original SoX algorithms producing <em>(bit-exact) identical</em> renderings in the DAW. This can easily be checked by rendering some audio externally with SoX and internally with the plugins and subtracting the results. Apart from roundoff errors (SoX often uses 32bit integer processing, while the <a class="el" href="namespace_so_x_plugins.html" title="The package SoXPlugins provides all types for the DAW plugins emulating the command-line audio proces...">SoXPlugins</a> always uses double floating point processing) the results cancel out with typically a residual noise of -140dBFS.</p>
 <h1>Available Effects From SoX</h1>
 <p>The following effects are available in this package: </p><ul>
@@ -118,7 +118,19 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p class="endli"></p>
 </li>
 <li>
+<p class="startli"><b>chorus</b> (in <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html">SoXFilter</a>): a chorus effect with multiple parallel echos modulated either by sine or triangle signals,</p>
+<p class="endli"></p>
+</li>
+<li>
 <p class="startli"><b>compand</b> (in <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html">SoXCompander</a>): a compander with attack, release, input gain shift, threshold and compression and soft knee; this is a reduced version of SoX compand with only a simple transfer function,</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli"><b>echo</b> (in <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html">SoXFilter</a>): a tapped delay with several absolute delay times and signal decays,</p>
+<p class="endli"></p>
+</li>
+<li>
+<p class="startli"><b>echos</b> (in <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html">SoXFilter</a>): a sequential delay with delay stages with absolute delay times and signal decays fed with signals from the previous stages,</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -146,7 +158,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>phaser</b> (in <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html">SoXPhaserAndTremolo</a>): a phaser effect with sine or triangle modulation,</p>
+<p class="startli"><b>phaser</b> (in <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo.html">SoXFlangerPhaserAndTremolo</a>): a phaser effect with sine or triangle modulation,</p>
 <p class="endli"></p>
 </li>
 <li>
@@ -158,7 +170,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli"><b>tremolo</b> (in <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html">SoXPhaserAndTremolo</a>): a tremolo effect with sine modulation using a double-sideband suppressed carrier modulation</p>
+<p class="startli"><b>tremolo</b> (in <a href="namespace_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo.html">SoXFlangerPhaserAndTremolo</a>): a tremolo effect with sine modulation using a double-sideband suppressed carrier modulation</p>
 <p class="endli"></p>
 </li>
 </ul>

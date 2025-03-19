@@ -42,7 +42,7 @@ namespace SoXPlugins::Effects::SoXOverdrive {
 
         /*--------------------*/
 
-        ~SoXOverdrive_AudioEffect ();
+        ~SoXOverdrive_AudioEffect () override;
 
         /*-----------------------*/
         /* string representation */
@@ -55,6 +55,10 @@ namespace SoXPlugins::Effects::SoXOverdrive {
         /*--------------------*/
 
         String name () const override;
+
+        /*--------------------*/
+
+        Real tailLength () const override;
 
         /*--------------------*/
         /* parameter change   */

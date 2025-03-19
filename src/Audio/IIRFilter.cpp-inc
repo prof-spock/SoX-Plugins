@@ -12,6 +12,8 @@
 /* IMPORTS */
 /*=========*/
 
+#include <algorithm>
+
 #include "Assertion.h"
 #include "Logging.h"
 #include "MyArray.h"
@@ -42,9 +44,12 @@ void _normalize (INOUT RealList& data, IN Natural order)
     const Real referenceValue = data[order];
 
     if (referenceValue != 0.0) {
-        for (Real& listElement : data) {
-            listElement /= referenceValue;
-        }
+        const auto divideByValueProc =
+            [referenceValue] (Real &element) {
+                element /= referenceValue;
+            };
+
+        std::for_each(data.begin(), data.end(), divideByValueProc);
     }
 
     Logging_trace("<<");
@@ -183,9 +188,9 @@ void IIRFilter::apply (IN AudioSampleRingBuffer& inputBuffer,
         outputBuffer.setFirst(outputValue);
     #else
         /* support vectorization by using arrays for the buffers */
-        AudioSample* inputBufferAsArray  =
+        AudioSample* inputBufferAsArray =
             makeLocalArray(AudioSample, _order);
-        AudioSample* outputBufferAsArray =
+        AudioSample* outputBufferAsArray = 
             makeLocalArray(AudioSample, _order);
         const AudioSample* dataAsArray = _data.asArray();
         const AudioSample* otherDataAsArray = _data.asArray(_order);

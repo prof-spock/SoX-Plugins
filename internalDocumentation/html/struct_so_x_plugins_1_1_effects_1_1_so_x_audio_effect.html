@@ -101,7 +101,8 @@ $(document).ready(function(){initNavTree('struct_so_x_plugins_1_1_effects_1_1_so
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -120,12 +121,18 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <tr class="memitem:a20683cbe412d425bc27b7bd3a8e63e0b"><td class="memItemLeft" align="right" valign="top">virtual String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a20683cbe412d425bc27b7bd3a8e63e0b">name</a> () const</td></tr>
 <tr class="memdesc:a20683cbe412d425bc27b7bd3a8e63e0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of this effect.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a20683cbe412d425bc27b7bd3a8e63e0b">More...</a><br /></td></tr>
 <tr class="separator:a20683cbe412d425bc27b7bd3a8e63e0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5de158efc6c8a03e972aee36d25a9e5"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ac5de158efc6c8a03e972aee36d25a9e5">tailLength</a> () const</td></tr>
+<tr class="memdesc:ac5de158efc6c8a03e972aee36d25a9e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the length of the effect's tail in seconds.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ac5de158efc6c8a03e972aee36d25a9e5">More...</a><br /></td></tr>
+<tr class="separator:ac5de158efc6c8a03e972aee36d25a9e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5f9f0343c74bf67ea8e5ab6677f0630"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ac5f9f0343c74bf67ea8e5ab6677f0630">effectParameterMap</a> () const</td></tr>
 <tr class="memdesc:ac5f9f0343c74bf67ea8e5ab6677f0630"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the mapping from effect parameter name onto parameter data (e.g.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ac5f9f0343c74bf67ea8e5ab6677f0630">More...</a><br /></td></tr>
 <tr class="separator:ac5f9f0343c74bf67ea8e5ab6677f0630"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c4fe56395eeb5e72b70521781553ef5"><td class="memItemLeft" align="right" valign="top">SoXParameterValueChangeKind&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a3c4fe56395eeb5e72b70521781553ef5">setValue</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;value, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> recalculationIsForced=true)</td></tr>
-<tr class="memdesc:a3c4fe56395eeb5e72b70521781553ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets parameter named <code>parameterName</code> to <code>value</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a3c4fe56395eeb5e72b70521781553ef5">More...</a><br /></td></tr>
+<tr class="memdesc:a3c4fe56395eeb5e72b70521781553ef5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets parameter named <code>parameterName</code> to <code>value</code> without informing parent processor.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a3c4fe56395eeb5e72b70521781553ef5">More...</a><br /></td></tr>
 <tr class="separator:a3c4fe56395eeb5e72b70521781553ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2a43190656affc746b9b07aa2c143fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#aa2a43190656affc746b9b07aa2c143fd">setValueViaParent</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;value, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> recalculationIsForced=true)</td></tr>
+<tr class="memdesc:aa2a43190656affc746b9b07aa2c143fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets parameter named <code>parameterName</code> to <code>value</code> by informing parent processor.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#aa2a43190656affc746b9b07aa2c143fd">More...</a><br /></td></tr>
+<tr class="separator:aa2a43190656affc746b9b07aa2c143fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bf3b20b5834b9607f408aa8bff6d50e"><td class="memItemLeft" align="right" valign="top"><a id="a4bf3b20b5834b9607f408aa8bff6d50e"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a4bf3b20b5834b9607f408aa8bff6d50e">setDefaultValues</a> ()=0</td></tr>
 <tr class="memdesc:a4bf3b20b5834b9607f408aa8bff6d50e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets parameters to effect default values. <br /></td></tr>
@@ -136,6 +143,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:adadb0c7a70e55bca080207e314b50b24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#adadb0c7a70e55bca080207e314b50b24">setParameterValidity</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> isValid)</td></tr>
 <tr class="memdesc:adadb0c7a70e55bca080207e314b50b24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets parameters collectively to valid or invalid depending on <code>isValid</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#adadb0c7a70e55bca080207e314b50b24">More...</a><br /></td></tr>
 <tr class="separator:adadb0c7a70e55bca080207e314b50b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48926a08b6451536c283d47c8bf624ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a48926a08b6451536c283d47c8bf624ff">setValueChangeHandler</a> (Object valueChangeHandler, <a class="el" href="namespace_so_x_plugins_1_1_effects.html#a37bb2b70b4a8f47ea8cd2f5e5e571970">ValueChangeNotification</a> notificationProc)</td></tr>
+<tr class="memdesc:a48926a08b6451536c283d47c8bf624ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets handler object and procedure for routing value changes to <code>parent</code> and <code>notificationProc</code>; if handler object is NULL, any value change is just processed locally, otherwise it is assumed that handler calls the local setValue function indirectly.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a48926a08b6451536c283d47c8bf624ff">More...</a><br /></td></tr>
+<tr class="separator:a48926a08b6451536c283d47c8bf624ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5da88fd2a3b4cecfd2e25fd70a7ac05"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ad5da88fd2a3b4cecfd2e25fd70a7ac05">prepareToPlay</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate)</td></tr>
 <tr class="memdesc:ad5da88fd2a3b4cecfd2e25fd70a7ac05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Informs effect about upcoming processing with <code>sampleRate</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ad5da88fd2a3b4cecfd2e25fd70a7ac05">More...</a><br /></td></tr>
 <tr class="separator:ad5da88fd2a3b4cecfd2e25fd70a7ac05"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,6 +171,14 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:a3263c732f668041123eeb1cba02410d9"><td class="memItemLeft" align="right" valign="top"><a id="a3263c732f668041123eeb1cba02410d9"></a>
+Object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a3263c732f668041123eeb1cba02410d9">_valueChangeHandler</a></td></tr>
+<tr class="memdesc:a3263c732f668041123eeb1cba02410d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">target object for value change information <br /></td></tr>
+<tr class="separator:a3263c732f668041123eeb1cba02410d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0664aae7c30380e5fd55c8ee932335a"><td class="memItemLeft" align="right" valign="top"><a id="ac0664aae7c30380e5fd55c8ee932335a"></a>
+<a class="el" href="namespace_so_x_plugins_1_1_effects.html#a37bb2b70b4a8f47ea8cd2f5e5e571970">ValueChangeNotification</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ac0664aae7c30380e5fd55c8ee932335a">_notificationProc</a></td></tr>
+<tr class="memdesc:ac0664aae7c30380e5fd55c8ee932335a"><td class="mdescLeft">&#160;</td><td class="mdescRight">callback function connecting this effect to value change handler <br /></td></tr>
+<tr class="separator:ac0664aae7c30380e5fd55c8ee932335a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad327c3c6c773b9de08848d49938d0183"><td class="memItemLeft" align="right" valign="top"><a id="ad327c3c6c773b9de08848d49938d0183"></a>
 <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ad327c3c6c773b9de08848d49938d0183">_sampleRate</a></td></tr>
 <tr class="memdesc:ad327c3c6c773b9de08848d49938d0183"><td class="mdescLeft">&#160;</td><td class="mdescRight">the audio sample rate to be used in this effect <br /></td></tr>
@@ -173,10 +191,6 @@ Protected Attributes</h2></td></tr>
 <a class="el" href="struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html">SoXEffectParameterMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a2d4b7833355d68aade5ca9a751b32472">_effectParameterMap</a></td></tr>
 <tr class="memdesc:a2d4b7833355d68aade5ca9a751b32472"><td class="mdescLeft">&#160;</td><td class="mdescRight">the map of effect parameters <br /></td></tr>
 <tr class="separator:a2d4b7833355d68aade5ca9a751b32472"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a601e402242d5c10229e28b9fb5fb6735"><td class="memItemLeft" align="right" valign="top"><a id="a601e402242d5c10229e28b9fb5fb6735"></a>
-Object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a601e402242d5c10229e28b9fb5fb6735">_effectDescriptor</a></td></tr>
-<tr class="memdesc:a601e402242d5c10229e28b9fb5fb6735"><td class="mdescLeft">&#160;</td><td class="mdescRight">the specific parameters for this effect (private type) <br /></td></tr>
-<tr class="separator:a601e402242d5c10229e28b9fb5fb6735"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaeced2a97dfc532dad3eec89d7f32ca7"><td class="memItemLeft" align="right" valign="top"><a id="aaeced2a97dfc532dad3eec89d7f32ca7"></a>
 <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#aaeced2a97dfc532dad3eec89d7f32ca7">_currentTimePosition</a></td></tr>
 <tr class="memdesc:aaeced2a97dfc532dad3eec89d7f32ca7"><td class="mdescLeft">&#160;</td><td class="mdescRight">during processing: the current time position in seconds <br /></td></tr>
@@ -193,6 +207,10 @@ Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a5cd71c383fb66ae989dc44f7cf19eaa7">_parametersAreValid</a></td></tr>
 <tr class="memdesc:a5cd71c383fb66ae989dc44f7cf19eaa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">tells whether effect parameters have a significant value <br /></td></tr>
 <tr class="separator:a5cd71c383fb66ae989dc44f7cf19eaa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a601e402242d5c10229e28b9fb5fb6735"><td class="memItemLeft" align="right" valign="top"><a id="a601e402242d5c10229e28b9fb5fb6735"></a>
+Object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a601e402242d5c10229e28b9fb5fb6735">_effectDescriptor</a></td></tr>
+<tr class="memdesc:a601e402242d5c10229e28b9fb5fb6735"><td class="mdescLeft">&#160;</td><td class="mdescRight">the specific parameters for this effect (private type) <br /></td></tr>
+<tr class="separator:a601e402242d5c10229e28b9fb5fb6735"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o...">SoXAudioEffect</a></code> object is a generic stereo audio effect from SoX encapsulating the common services of such an effect. </p>
@@ -251,7 +269,7 @@ Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <p>Returns effect descriptor data as string. </p>
 <dl class="section return"><dt>Returns</dt><dd>string representation of internal effect descriptor </dd></dl>
 
-<p>Implemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html#ab1857ea621be27a96487311e90d4861c">SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html#ab805454426d0a5ff0953b5a905e74c5d">SoXPlugins::Effects::SoXPhaserAndTremolo::SoXPhaserAndTremolo_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a8cb97a9f31655fc9e214fbd1891c48de">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#ac693df8a8257e645ee22e4790146b3b6">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a7a7a56f6a5f0fb2e55d9bf6d845b7864">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#ad62653eb5b6f044fe12974533b9f96d1">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>.</p>
+<p>Implemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html#ab1857ea621be27a96487311e90d4861c">SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a8cb97a9f31655fc9e214fbd1891c48de">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#ac693df8a8257e645ee22e4790146b3b6">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#a9469712f3b7eac5401d4d7ca5fa7f1f5">SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::SoXFlangerPhaserAndTremolo_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a7a7a56f6a5f0fb2e55d9bf6d845b7864">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#ad62653eb5b6f044fe12974533b9f96d1">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html#a8dc3fec6913fb5cff6f9c31bba5d47c4">SoXPlugins::Effects::SoXChorusAndEcho::SoXChorusAndEcho_AudioEffect</a>.</p>
 
 </div>
 </div>
@@ -307,7 +325,7 @@ Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>value change kind to be reported to observers </dd></dl>
 
-<p>Implemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html#aae7c1eead3c6aef25330ef4be0d5ce94">SoXPlugins::Effects::SoXPhaserAndTremolo::SoXPhaserAndTremolo_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a550ec1b318aa4b65383359fa1dc7458b">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#a2dea869ebce318fc7a33cf95eb677b18">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a5bb0ea13d934d6c6a653c0bd679e4660">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#acd5cba4249017fecd7d8368e2d732cfa">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>.</p>
+<p>Implemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a550ec1b318aa4b65383359fa1dc7458b">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#a2dea869ebce318fc7a33cf95eb677b18">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#a09f7c720cbe7e7a39f00437c11ed34fa">SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::SoXFlangerPhaserAndTremolo_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a5bb0ea13d934d6c6a653c0bd679e4660">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#acd5cba4249017fecd7d8368e2d732cfa">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html#a150a7d34e8c9fe13bfa1c99e843b79fe">SoXPlugins::Effects::SoXChorusAndEcho::SoXChorusAndEcho_AudioEffect</a>.</p>
 
 </div>
 </div>
@@ -378,7 +396,7 @@ Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <p>Returns the name of this effect. </p>
 <dl class="section return"><dt>Returns</dt><dd>name of effect </dd></dl>
 
-<p>Reimplemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html#ac75d76009a42c82b5fcf3be39079046e">SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html#a64915c059bbd540d6e6c11d33c6cf9ef">SoXPlugins::Effects::SoXPhaserAndTremolo::SoXPhaserAndTremolo_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a935d301106298215ee2f9d0876517d99">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#a64403409949ef9090f5f99cd537cb41e">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#affd8c6966f593b4f3ecfa619bc07ffcd">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#a753f566112fed8c2eed9cf6b802f25f9">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>.</p>
+<p>Reimplemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html#ac75d76009a42c82b5fcf3be39079046e">SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a935d301106298215ee2f9d0876517d99">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#a64403409949ef9090f5f99cd537cb41e">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#ac88c71d9cec09d216d87fdc78777c2e2">SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::SoXFlangerPhaserAndTremolo_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#affd8c6966f593b4f3ecfa619bc07ffcd">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#a753f566112fed8c2eed9cf6b802f25f9">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html#a3cb6c4c31858478d06c2c67866e5d2be">SoXPlugins::Effects::SoXChorusAndEcho::SoXChorusAndEcho_AudioEffect</a>.</p>
 
 </div>
 </div>
@@ -414,7 +432,7 @@ Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a5679f547d770c1b593f9624bb3fa8213">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#a0492d6e24f876568a38aed1e1a2861d7">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>.</p>
+<p>Reimplemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html#a3a34cf39f2181b63dfd7c8abd7c6cc5e">SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a5679f547d770c1b593f9624bb3fa8213">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#a0492d6e24f876568a38aed1e1a2861d7">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html#a1d9b7726e4785b23eccde79f34a292bb">SoXPlugins::Effects::SoXChorusAndEcho::SoXChorusAndEcho_AudioEffect</a>.</p>
 
 </div>
 </div>
@@ -461,7 +479,7 @@ Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html#aed8df910fa2b7bfc984da0324ef4f7c0">SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html#ae099ce31cadab87428eeeffafb813b34">SoXPlugins::Effects::SoXPhaserAndTremolo::SoXPhaserAndTremolo_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a9228dff4d68ac291574ae427fede297f">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#aee35a1540b213261541ced87e21dfab2">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a036100afde139d1876e6774142aa9d2e">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#ac1637ae47b9a3f5ac4a32566500ba2a2">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>.</p>
+<p>Reimplemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html#aed8df910fa2b7bfc984da0324ef4f7c0">SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a9228dff4d68ac291574ae427fede297f">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#aee35a1540b213261541ced87e21dfab2">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#a36682ef28e49d33cf763950f621a6266">SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::SoXFlangerPhaserAndTremolo_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a036100afde139d1876e6774142aa9d2e">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#ac1637ae47b9a3f5ac4a32566500ba2a2">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html#a5efa63b5326d7da1f70378de408dee2a">SoXPlugins::Effects::SoXChorusAndEcho::SoXChorusAndEcho_AudioEffect</a>.</p>
 
 </div>
 </div>
@@ -523,7 +541,7 @@ Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
       </table>
 </div><div class="memdoc">
 
-<p>Sets parameter named <code>parameterName</code> to <code>value</code>. </p>
+<p>Sets parameter named <code>parameterName</code> to <code>value</code> without informing parent processor. </p>
 <p>If value has wrong kind, it is ignored; if <code>recalculationIsForced</code> is set, the recalculation of dependent internal settings is forced (otherwise it is suppressed); returns change kind of value to be reported to observers</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -534,6 +552,118 @@ Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>change kind of value (e.g. parameter change) </dd></dl>
+
+</div>
+</div>
+<a id="a48926a08b6451536c283d47c8bf624ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48926a08b6451536c283d47c8bf624ff">&#9670;&nbsp;</a></span>setValueChangeHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SoXAudioEffect::setValueChangeHandler </td>
+          <td>(</td>
+          <td class="paramtype">Object&#160;</td>
+          <td class="paramname"><em>valueChangeHandler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_so_x_plugins_1_1_effects.html#a37bb2b70b4a8f47ea8cd2f5e5e571970">ValueChangeNotification</a>&#160;</td>
+          <td class="paramname"><em>notificationProc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets handler object and procedure for routing value changes to <code>parent</code> and <code>notificationProc</code>; if handler object is NULL, any value change is just processed locally, otherwise it is assumed that handler calls the local setValue function indirectly. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">valueChangeHandler</td><td>object processing the value change </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">notificationProc</td><td>callback routine called for some value change </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa2a43190656affc746b9b07aa2c143fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2a43190656affc746b9b07aa2c143fd">&#9670;&nbsp;</a></span>setValueViaParent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SoXAudioEffect::setValueViaParent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>parameterName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> String &amp;&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a>&#160;</td>
+          <td class="paramname"><em>recalculationIsForced</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets parameter named <code>parameterName</code> to <code>value</code> by informing parent processor. </p>
+<p>If value has wrong kind, it is ignored; if <code>recalculationIsForced</code> is set, the recalculation of dependent internal settings is forced (otherwise it is suppressed)</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">parameterName</td><td>name of parameter to be set </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>associated value of parameter </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">recalculationIsForced</td><td>flag to tell whether complex recalculations should be done </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac5de158efc6c8a03e972aee36d25a9e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5de158efc6c8a03e972aee36d25a9e5">&#9670;&nbsp;</a></span>tailLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> SoXAudioEffect::tailLength </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the length of the effect's tail in seconds. </p>
+<dl class="section return"><dt>Returns</dt><dd>length of effect tail in seconds </dd></dl>
+
+<p>Reimplemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html#a39d81446d23dc3d4e4e9eabc740f8372">SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#af79c7e423818248a424e539a0f44925f">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#a6ec386a8d3a62f29df343c9ed734206b">SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::SoXFlangerPhaserAndTremolo_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html#a2389fcd4f53ebbec5d63f4e898dfb076">SoXPlugins::Effects::SoXChorusAndEcho::SoXChorusAndEcho_AudioEffect</a>.</p>
 
 </div>
 </div>
@@ -563,7 +693,7 @@ Boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="s
 <p>Returns string representation of audio effect. </p>
 <dl class="section return"><dt>Returns</dt><dd>string representation </dd></dl>
 
-<p>Reimplemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html#a4a7e0365785125fdad5da7b28709d487">SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html#a45562fef4166cae9b0064feb0250f261">SoXPlugins::Effects::SoXPhaserAndTremolo::SoXPhaserAndTremolo_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a157e13cfd1e5ea0c24b60a8ede823654">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#aebf9f0dc62487e2a01e7cd7468f1e232">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a0dc8f79191788f64f2f970f11627d0f4">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#a5bca7698ec48b13917073d5e8202279d">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>.</p>
+<p>Reimplemented in <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html#a4a7e0365785125fdad5da7b28709d487">SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html#a157e13cfd1e5ea0c24b60a8ede823654">SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#aebf9f0dc62487e2a01e7cd7468f1e232">SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html#a945daa7279717fd127c872f704a58dc1">SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::SoXFlangerPhaserAndTremolo_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html#a0dc8f79191788f64f2f970f11627d0f4">SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect</a>, <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html#a5bca7698ec48b13917073d5e8202279d">SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect</a>, and <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html#a80fd58938add853c83014939e51bdc25">SoXPlugins::Effects::SoXChorusAndEcho::SoXChorusAndEcho_AudioEffect</a>.</p>
 
 </div>
 </div>

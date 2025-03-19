@@ -34,6 +34,10 @@ namespace Audio {
      */
     struct AudioSampleRingBufferVector {
 
+        /*--------------------*/
+        /* con-/destruction   */
+        /*--------------------*/
+
         /**
          * Makes a list of sample ring buffers for <C>channelCount</C>
          * channels with arbitrary length; depending on
@@ -56,28 +60,7 @@ namespace Audio {
              IN Natural sampleRingBufferLength = 0);
 
         /*--------------------*/
-
-        /**
-         * Returns string representation of sample ring buffer list;;
-         * if <C>audioFrameCount</C> is set, only that number of audio
-         * frames with sample data will be returned; if
-         * <C>isGroupedByFrames</C> is set, then frames are grouped,
-         * otherwise the list is by channels.
-         *
-         * @param[in] sampleDataIsShown  information, whether each
-         *                               sample is returned or only a
-         *                               broad description is given
-         * @param[in] audioFrameCount    count of sample frames to be
-         *                               returned
-         * @param[in] isGroupedByFrames  information, whether grouping
-         *                               is by frames instead of channels
-         * @return string representation of ring buffer vector
-         */
-        String
-        toString (IN Boolean sampleDataIsShown = false,
-                  IN Natural audioFrameCount = Natural::maximumValue(),
-                  IN Boolean isGroupedByFrames = false) const;
-
+        /* property queries   */
         /*--------------------*/
 
         /**
@@ -96,6 +79,8 @@ namespace Audio {
          */
         Natural ringBufferLength () const;
 
+        /*--------------------*/
+        /* property change    */
         /*--------------------*/
 
         /**
@@ -144,21 +129,25 @@ namespace Audio {
          *                          additional selection parameter
          * @return reference to appropriate ring buffer in vector
          */
-        AudioSampleRingBuffer& at (IN Natural channelIndex,
-                                   IN Natural position);
+        const AudioSampleRingBuffer& at (IN Natural channelIndex,
+                                         IN Natural position = 0) const;
 
         /*--------------------*/
 
         /**
-         * Returns reference to sample ringBuffer for channel with
-         * <C>channelIndex</C>; is only allowed when
-         * <C>_hasTwoRingBuffersPerChannel</C> is not set
+         * Returns reference to sample ring buffer for channel with
+         * <C>channelIndex</C> and <C>position</C> (where this may
+         * be 0 or 1 when <C>_hasTwoRingBuffersPerChannel</C> has been
+         * set
          *
-         * @param[in] channelIndex  number of channel to be
-         *                          selected (starting at zero)
+         * @param[in] channelIndex  number of channel to be selected
+         *                          (starting at zero)
+         * @param[in] position      if channel has two ring buffers, an
+         *                          additional selection parameter
          * @return reference to appropriate ring buffer in vector
          */
-        AudioSampleRingBuffer& at (IN Natural channelIndex);
+        AudioSampleRingBuffer& at (IN Natural channelIndex,
+                                   IN Natural position = 0);
 
         /*--------------------*/
 
@@ -191,6 +180,31 @@ namespace Audio {
          * @return last sample ring buffer
          */
         AudioSampleRingBuffer& last ();
+
+        /*--------------------*/
+        /* conversion         */
+        /*--------------------*/
+
+        /**
+         * Returns string representation of sample ring buffer list;;
+         * if <C>audioFrameCount</C> is set, only that number of audio
+         * frames with sample data will be returned; if
+         * <C>isGroupedByFrames</C> is set, then frames are grouped,
+         * otherwise the list is by channels.
+         *
+         * @param[in] sampleDataIsShown  information, whether each
+         *                               sample is returned or only a
+         *                               broad description is given
+         * @param[in] audioFrameCount    count of sample frames to be
+         *                               returned
+         * @param[in] isGroupedByFrames  information, whether grouping
+         *                               is by frames instead of channels
+         * @return string representation of ring buffer vector
+         */
+        String
+        toString (IN Boolean sampleDataIsShown = false,
+                  IN Natural audioFrameCount = Natural::maximumValue(),
+                  IN Boolean isGroupedByFrames = false) const;
 
         /*--------------------*/
         /*--------------------*/

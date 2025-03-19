@@ -44,7 +44,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", "functions_vars" ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -62,13 +62,14 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"",
-"_my_windows_8h.html#ad22ea9bf4048982ebe82d945dbe7edb2",
-"_so_x_filter___audio_effect_8cpp.html#a8845b84049ac1e11a069616bb281602d",
-"class_base_modules_1_1___logging_time.html#abbe64720f730901fb60610f56566cc66",
-"struct_base_modules_1_1_string_util.html#a3af812d07fc474751e87a8424907fae1",
-"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html#a0b2e0131ef046e1838c4430d09aa3c2f",
-"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#a52bb26bd41bcbac401dfead300ee3a7f"
+"_assertion_8h.html",
+"_my_windows_8h.html#acf022792a06287190723f0f548cb7c08",
+"_so_x_compander_support_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c",
+"_so_x_reverb_support_8cpp.html#a1dd6c93a16fb94a66d276dd46ad3603f",
+"struct_audio_1_1_audio_sample_list_vector.html#ab78b6113aa137915c37d170c49573cf0",
+"struct_base_types_1_1_primitives_1_1_natural.html#a263cce02b93e703af5a871b796f8b3bd",
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#a0b790121166865fc579a673ce3459c74",
+"struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html#a649280295403b501f97c7774f94a6e6d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

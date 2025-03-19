@@ -36,10 +36,24 @@ namespace SoXPlugins::Effects::SoXReverb {
      */
     struct _SoXReverb {
 
+        /*--------------------*/
+        /* con-/destruction   */
+        /*--------------------*/
+
         /**
          * Constructs a new SoX reverb
          */
         _SoXReverb ();
+
+        /*--------------------*/
+
+        /**
+         * Constructs new reverb from <C>otherReverb</C>
+         * (NOT AVAILABLE!)
+         *
+         * @param[in] otherReverb  reverb to be copied
+         */
+        _SoXReverb (IN _SoXReverb& otherReverb) = delete;
 
         /*--------------------*/
 
@@ -49,14 +63,30 @@ namespace SoXPlugins::Effects::SoXReverb {
         ~_SoXReverb ();
 
         /*--------------------*/
+        /* assignment         */
+        /*--------------------*/
 
         /**
-         * Returns a string representation of reverb
-         * 
-         * @return string representation
+         * Assigns current reverb from <C>otherReverb</C>
+         * (NOT AVAILABLE!)
+         *
+         * @param[in] otherReverb  reverb to be assigned
          */
-        String toString () const;
+        _SoXReverb& operator= (IN _SoXReverb& otherReverb) = delete;
 
+        /*--------------------*/
+        /* measurement        */
+        /*--------------------*/
+
+        /**
+         * Returns the length of the reverb tail in seconds.
+         *
+         * @return length of reverb tail in seconds
+         */
+        Real tailLength () const;
+
+        /*--------------------*/
+        /* property change    */
         /*--------------------*/
 
         /**
@@ -96,6 +126,8 @@ namespace SoXPlugins::Effects::SoXReverb {
                      IN Natural channelCount);
 
         /*--------------------*/
+        /* complex change     */
+        /*--------------------*/
 
         /**
          * Applies this reverb to samples for all channels in
@@ -109,6 +141,17 @@ namespace SoXPlugins::Effects::SoXReverb {
          */
         void apply (IN AudioSampleRingBuffer& inputSampleList,
                     OUT AudioSampleRingBuffer& outputSampleList);
+
+        /*--------------------*/
+        /* type conversion    */
+        /*--------------------*/
+
+        /**
+         * Returns a string representation of reverb
+         * 
+         * @return string representation
+         */
+        String toString () const;
 
         /*--------------------*/
         /*--------------------*/

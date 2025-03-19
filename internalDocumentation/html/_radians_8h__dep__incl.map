@@ -1,6 +1,7 @@
 <map id="Radians.h" name="Radians.h">
-<area shape="rect" id="node1" title="The Radians specification and body provides a simple radians type." alt="" coords="109,5,197,33"/>
-<area shape="rect" id="node2" href="$_wave_form_8h.html" title="The WaveForm specification defines common services for (LFO) wave forms." alt="" coords="100,81,207,109"/>
+<area shape="rect" id="node1" title="The Radians specification and body provides a simple radians type." alt="" coords="241,5,329,33"/>
+<area shape="rect" id="node2" href="$_wave_form_8h.html" title="The WaveForm specification defines common services for (LFO) wave forms." alt="" coords="232,81,339,109"/>
 <area shape="rect" id="node3" href="$_wave_form_8cpp.html" title="The WaveForm body implements common services for (LFO) wave forms." alt="" coords="5,165,128,193"/>
-<area shape="rect" id="node4" href="$_so_x_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXPhaserAndTremolo_AudioEffect body implements the SoX phaser and tremolo modulation effects tha..." alt="" coords="153,157,327,201"/>
+<area shape="rect" id="node4" href="$_so_x_chorus_and_echo___audio_effect_8cpp.html" title="The SoXChorusAndEcho_AudioEffect body implements the SoX chorus, echo and echos audio effects; the di..." alt="" coords="152,165,419,193"/>
+<area shape="rect" id="node5" href="$_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXFlangerPhaserAndTremolo_AudioEffect body implements the SoX flanger, phaser and tremolo modula..." alt="" coords="443,157,667,201"/>
 </map>

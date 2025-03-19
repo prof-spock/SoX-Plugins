@@ -4,11 +4,13 @@ var hierarchy =
     [ "SoXPlugins::Effects::SoXReverb::_CombFilter", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html", null ],
     [ "SoXPlugins::Effects::SoXCompander::_Compander", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander.html", null ],
     [ "SoXPlugins::Effects::SoXCompander::_CompanderBandParameterData", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___compander_band_parameter_data.html", null ],
+    [ "SoXPlugins::Effects::SoXChorusAndEcho::_DelayStageParameterData", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data.html", null ],
     [ "SoXPlugins::Effects::SoXCompander::_EffectDescriptor_CMPD", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___effect_descriptor___c_m_p_d.html", null ],
+    [ "SoXPlugins::Effects::SoXChorusAndEcho::_EffectDescriptor_ECHO", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o.html", null ],
     [ "SoXPlugins::Effects::SoXFilter::_EffectDescriptor_FLTR", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html", null ],
     [ "SoXPlugins::Effects::SoXGain::_EffectDescriptor_GAIN", "struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1___effect_descriptor___g_a_i_n.html", null ],
-    [ "SoXPlugins::Effects::SoXOverdrive::_EffectDescriptor_OVRD", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_v_r_d.html", null ],
-    [ "SoXPlugins::Effects::SoXPhaserAndTremolo::_EffectDescriptor_PHTR", "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html", null ],
+    [ "SoXPlugins::Effects::SoXOverdrive::_EffectDescriptor_ODRV", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html", null ],
+    [ "SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::_EffectDescriptor_PHTR", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html", null ],
     [ "SoXPlugins::Effects::SoXReverb::_EffectDescriptor_RVRB", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html", null ],
     [ "BaseModules::_LoggingBufferEntry", "struct_base_modules_1_1___logging_buffer_entry.html", null ],
     [ "BaseModules::_LoggingTime", "class_base_modules_1_1___logging_time.html", null ],
@@ -25,11 +27,12 @@ var hierarchy =
     [ "Audio::_WaveFormDescriptor", "struct_audio_1_1___wave_form_descriptor.html", null ],
     [ "AudioProcessor", null, [
       [ "SoXPlugins::ViewAndController::SoXAudioProcessor", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html", [
+        [ "SoXPlugins::Effects::SoXChorusAndEcho::SoXChorusAndEcho_AudioProcessor", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_processor.html", null ],
         [ "SoXPlugins::Effects::SoXCompander::SoXCompander_AudioProcessor", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_processor.html", null ],
         [ "SoXPlugins::Effects::SoXFilter::SoXFilter_AudioProcessor", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_processor.html", null ],
+        [ "SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::SoXFlangerPhaserAndTremolo_AudioProcessor", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_processor.html", null ],
         [ "SoXPlugins::Effects::SoXGain::SoXGain_AudioProcessor", "struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_processor.html", null ],
         [ "SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioProcessor", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor.html", null ],
-        [ "SoXPlugins::Effects::SoXPhaserAndTremolo::SoXPhaserAndTremolo_AudioProcessor", "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_processor.html", null ],
         [ "SoXPlugins::Effects::SoXReverb::SoXReverb_AudioProcessor", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_processor.html", null ]
       ] ]
     ] ],
@@ -44,10 +47,10 @@ var hierarchy =
       [ "SoXPlugins::Effects::SoXCompander::_LRFilter", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_filter.html", null ]
     ] ],
     [ "Listener", null, [
-      [ "SoXPlugins::ViewAndController::EventDispatcher", "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html", null ]
+      [ "SoXPlugins::ViewAndController::_EffectParameterListener", "struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html", null ]
     ] ],
     [ "Listener", null, [
-      [ "SoXPlugins::ViewAndController::_EffectParameterListener", "struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html", null ]
+      [ "SoXPlugins::ViewAndController::EventDispatcher", "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html", null ]
     ] ],
     [ "Listener", null, [
       [ "SoXPlugins::ViewAndController::EventDispatcher", "struct_so_x_plugins_1_1_view_and_controller_1_1_event_dispatcher.html", null ]
@@ -56,11 +59,12 @@ var hierarchy =
     [ "BaseModules::OperatingSystem", "struct_base_modules_1_1_operating_system.html", null ],
     [ "SoXPlugins::ViewAndController::SoXAudioEditorWidget", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html", null ],
     [ "SoXPlugins::Effects::SoXAudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html", [
+      [ "SoXPlugins::Effects::SoXChorusAndEcho::SoXChorusAndEcho_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html", null ],
       [ "SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html", null ],
       [ "SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html", null ],
+      [ "SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::SoXFlangerPhaserAndTremolo_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html", null ],
       [ "SoXPlugins::Effects::SoXGain::SoXGain_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html", null ],
       [ "SoXPlugins::Effects::SoXOverdrive::SoXOverdrive_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html", null ],
-      [ "SoXPlugins::Effects::SoXPhaserAndTremolo::SoXPhaserAndTremolo_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo_1_1_so_x_phaser_and_tremolo___audio_effect.html", null ],
       [ "SoXPlugins::Effects::SoXReverb::SoXReverb_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html", null ]
     ] ],
     [ "SoXPlugins::Helpers::SoXAudioHelper", "struct_so_x_plugins_1_1_helpers_1_1_so_x_audio_helper.html", null ],

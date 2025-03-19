@@ -1,13 +1,21 @@
 var struct_audio_1_1___wave_form_descriptor =
 [
-    [ "buffer", "struct_audio_1_1___wave_form_descriptor.html#a3226fb8c26b806d5ecf71b096a29837b", null ],
-    [ "firstPosition", "struct_audio_1_1___wave_form_descriptor.html#a2f6a9971f4dc49c9e0ba4c3cb2720c28", null ],
-    [ "hasIntegerValues", "struct_audio_1_1___wave_form_descriptor.html#a02385d992c8db4fea6ba1b214edc4d70", null ],
-    [ "increment", "struct_audio_1_1___wave_form_descriptor.html#ac88a1aac2433c3e1eddf85bda7a97d3d", null ],
-    [ "kind", "struct_audio_1_1___wave_form_descriptor.html#a217fbcd01b0035f18ec09dc7370b9f91", null ],
-    [ "maximumValue", "struct_audio_1_1___wave_form_descriptor.html#afac37e0e1f96c931fe0fb76b4b8208ac", null ],
-    [ "minimumValue", "struct_audio_1_1___wave_form_descriptor.html#ac430ce0a757c9764ea15413526dda83c", null ],
-    [ "position", "struct_audio_1_1___wave_form_descriptor.html#a3666aa4b4707304acbe8899e34aa453e", null ],
-    [ "stepCount", "struct_audio_1_1___wave_form_descriptor.html#aeddb0b796ac3772b6d9fc773fb3e14f1", null ],
-    [ "waveTableLength", "struct_audio_1_1___wave_form_descriptor.html#afdf5168ef41c975412ccdbe70766bcae", null ]
+    [ "_getWavetableValueAtPosition", "struct_audio_1_1___wave_form_descriptor.html#a397a3c0b892c67203302ae6341c04e93", null ],
+    [ "_updatePosition", "struct_audio_1_1___wave_form_descriptor.html#a71eb8f9da5a2ecfcfbadafc85f7b0d56", null ],
+    [ "advance", "struct_audio_1_1___wave_form_descriptor.html#ae6d87aa8545461ffb1a322b29f9bd88d", null ],
+    [ "asRawString", "struct_audio_1_1___wave_form_descriptor.html#ae09d83cdd69c6835a83a2b54d7db881a", null ],
+    [ "current", "struct_audio_1_1___wave_form_descriptor.html#a340a41176c1b505420debef0460650f1", null ],
+    [ "reset", "struct_audio_1_1___wave_form_descriptor.html#ac94b250cd2494097bccb5e1975f14501", null ],
+    [ "set", "struct_audio_1_1___wave_form_descriptor.html#a25fdf0b8cfc97edd38599eeb4db50fb3", null ],
+    [ "setState", "struct_audio_1_1___wave_form_descriptor.html#ae48a01cc7cf17eaac06c9a981ec32287", null ],
+    [ "_buffer", "struct_audio_1_1___wave_form_descriptor.html#aca8139f23977bbc9dad8fe5c47d7bbc6", null ],
+    [ "_firstPosition", "struct_audio_1_1___wave_form_descriptor.html#ac0900c3f3cec63127b3c10dfb8e15e77", null ],
+    [ "_hasIntegerValues", "struct_audio_1_1___wave_form_descriptor.html#aa5b14dd5dc7246fc66c6eea9ff43d6dd", null ],
+    [ "_increment", "struct_audio_1_1___wave_form_descriptor.html#af088616775fc6a5d700a3500949bc231", null ],
+    [ "_kind", "struct_audio_1_1___wave_form_descriptor.html#aa8af8dbda5f2a4a22b99e98b28caed63", null ],
+    [ "_maximumValue", "struct_audio_1_1___wave_form_descriptor.html#a9c07a2a5b17877e16f80805907f936a6", null ],
+    [ "_minimumValue", "struct_audio_1_1___wave_form_descriptor.html#a001d7152411b6617bb2b7864c912fd95", null ],
+    [ "_position", "struct_audio_1_1___wave_form_descriptor.html#a52dfb65c21c323e70c1dfe8048dfce28", null ],
+    [ "_stepCount", "struct_audio_1_1___wave_form_descriptor.html#ac1234b21bae42682aab10e9d7130255b", null ],
+    [ "_waveTableLength", "struct_audio_1_1___wave_form_descriptor.html#a370233332e293f12645671bf3ef3cbb1", null ]
 ];

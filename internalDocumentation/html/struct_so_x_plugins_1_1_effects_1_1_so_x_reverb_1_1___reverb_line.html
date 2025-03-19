@@ -96,46 +96,49 @@ $(document).ready(function(){initNavTree('struct_so_x_plugins_1_1_effects_1_1_so
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8e3c5f0f4303d689702d81666ebad898"><td class="memItemLeft" align="right" valign="top"><a id="a8e3c5f0f4303d689702d81666ebad898"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a8e3c5f0f4303d689702d81666ebad898">_ReverbLine</a> ()</td></tr>
-<tr class="memdesc:a8e3c5f0f4303d689702d81666ebad898"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a complete reverb line and all filters; creates all sample ring buffers with arbitrary length to be adapted by later adjustments. <br /></td></tr>
-<tr class="separator:a8e3c5f0f4303d689702d81666ebad898"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d83ac7ae9e7cc0f4327052ba5738586"><td class="memItemLeft" align="right" valign="top"><a id="a0d83ac7ae9e7cc0f4327052ba5738586"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a0d83ac7ae9e7cc0f4327052ba5738586">~_ReverbLine</a> ()</td></tr>
-<tr class="memdesc:a0d83ac7ae9e7cc0f4327052ba5738586"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys complete reverb line and all filters. <br /></td></tr>
-<tr class="separator:a0d83ac7ae9e7cc0f4327052ba5738586"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1110dc7c1f57a1568b19cc35e8eb2685"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a1110dc7c1f57a1568b19cc35e8eb2685">toString</a> () const</td></tr>
-<tr class="memdesc:a1110dc7c1f57a1568b19cc35e8eb2685"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string representation of reverb line.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a1110dc7c1f57a1568b19cc35e8eb2685">More...</a><br /></td></tr>
-<tr class="separator:a1110dc7c1f57a1568b19cc35e8eb2685"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea7c3827305cf80f1287fbebb476f491"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#aea7c3827305cf80f1287fbebb476f491">adjustRingBufferLengths</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> roomScale, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> stereoDepth)</td></tr>
-<tr class="memdesc:aea7c3827305cf80f1287fbebb476f491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adjusts lengths of sample ring buffers for reverb line based on <code>sampleRate</code>, <code>roomScale</code> and <code>stereoDepth</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#aea7c3827305cf80f1287fbebb476f491">More...</a><br /></td></tr>
-<tr class="separator:aea7c3827305cf80f1287fbebb476f491"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a746cc36a3d0eaa4c34733be11608fd9f"><td class="memItemLeft" align="right" valign="top">AudioSample&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a746cc36a3d0eaa4c34733be11608fd9f">apply</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> AudioSample inputSample, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> feedback, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> hfDamping, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> gain)</td></tr>
-<tr class="memdesc:a746cc36a3d0eaa4c34733be11608fd9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies reverb line to single <code>inputSample</code> and returns output sample with parameters <code>feedback</code>, <code>hfDamping</code> and <code>gain</code>; the comb filters are applied to the input in parallel, the allpass filters in series.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a746cc36a3d0eaa4c34733be11608fd9f">More...</a><br /></td></tr>
-<tr class="separator:a746cc36a3d0eaa4c34733be11608fd9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45ddb815b29837d3751c5bd911611b1c"><td class="memItemLeft" align="right" valign="top"><a id="a45ddb815b29837d3751c5bd911611b1c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a45ddb815b29837d3751c5bd911611b1c">_ReverbLine</a> ()</td></tr>
+<tr class="memdesc:a45ddb815b29837d3751c5bd911611b1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a complete reverb line and all filters; creates all sample ring buffers with arbitrary length to be adapted by later adjustments. <br /></td></tr>
+<tr class="separator:a45ddb815b29837d3751c5bd911611b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29802bfcad270a2b11f804bf8fc23bee"><td class="memItemLeft" align="right" valign="top"><a id="a29802bfcad270a2b11f804bf8fc23bee"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a29802bfcad270a2b11f804bf8fc23bee">~_ReverbLine</a> ()</td></tr>
+<tr class="memdesc:a29802bfcad270a2b11f804bf8fc23bee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys complete reverb line and all filters. <br /></td></tr>
+<tr class="separator:a29802bfcad270a2b11f804bf8fc23bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51ed5ea92e8f569ac0bcaad922569e5e"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a51ed5ea92e8f569ac0bcaad922569e5e">toString</a> () const</td></tr>
+<tr class="memdesc:a51ed5ea92e8f569ac0bcaad922569e5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string representation of reverb line.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a51ed5ea92e8f569ac0bcaad922569e5e">More...</a><br /></td></tr>
+<tr class="separator:a51ed5ea92e8f569ac0bcaad922569e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ce70660aa2c03de4e50e12508138ed2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a0ce70660aa2c03de4e50e12508138ed2">maximumDelayPathLength</a> () const</td></tr>
+<tr class="memdesc:a0ce70660aa2c03de4e50e12508138ed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns length of the maximum delay path in samples.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a0ce70660aa2c03de4e50e12508138ed2">More...</a><br /></td></tr>
+<tr class="separator:a0ce70660aa2c03de4e50e12508138ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c94513280969b90a8ecd35e8163a6a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a8c94513280969b90a8ecd35e8163a6a1">adjustRingBufferLengths</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> sampleRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> roomScale, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> stereoDepth)</td></tr>
+<tr class="memdesc:a8c94513280969b90a8ecd35e8163a6a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adjusts lengths of sample ring buffers for reverb line based on <code>sampleRate</code>, <code>roomScale</code> and <code>stereoDepth</code>.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a8c94513280969b90a8ecd35e8163a6a1">More...</a><br /></td></tr>
+<tr class="separator:a8c94513280969b90a8ecd35e8163a6a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9761d7cd0a21635fbeeea8b24f613252"><td class="memItemLeft" align="right" valign="top">AudioSample&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a9761d7cd0a21635fbeeea8b24f613252">apply</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> AudioSample inputSample, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> feedback, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> hfDamping, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> gain)</td></tr>
+<tr class="memdesc:a9761d7cd0a21635fbeeea8b24f613252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies reverb line to single <code>inputSample</code> and returns output sample with parameters <code>feedback</code>, <code>hfDamping</code> and <code>gain</code>; the comb filters are applied to the input in parallel, the allpass filters in series.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a9761d7cd0a21635fbeeea8b24f613252">More...</a><br /></td></tr>
+<tr class="separator:a9761d7cd0a21635fbeeea8b24f613252"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a144e8f196c82ab130599a9b83957dcfa"><td class="memItemLeft" align="right" valign="top"><a id="a144e8f196c82ab130599a9b83957dcfa"></a>
-GenericTuple&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html">_AllpassFilter</a> *, <a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a79d1861b4fb6266a592f21c8b27fa40a">_lineAllpassFilterCount</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a144e8f196c82ab130599a9b83957dcfa">_allpassFilterList</a></td></tr>
+GenericTuple&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html">_AllpassFilter</a> *, <a class="el" href="_so_x_reverb_support_8cpp.html#af9771cd7d7f30966da84ef84c207bcd4">_lineAllpassFilterCount</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#a144e8f196c82ab130599a9b83957dcfa">_allpassFilterList</a></td></tr>
 <tr class="memdesc:a144e8f196c82ab130599a9b83957dcfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of all allpass filters in reverb line <br /></td></tr>
 <tr class="separator:a144e8f196c82ab130599a9b83957dcfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb4e372674def072efd56fd1d91e2707"><td class="memItemLeft" align="right" valign="top"><a id="abb4e372674def072efd56fd1d91e2707"></a>
-GenericTuple&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html">_CombFilter</a> *, <a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#a40bc0330171225ab589f996fff92f8d2">_lineCombFilterCount</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#abb4e372674def072efd56fd1d91e2707">_combFilterList</a></td></tr>
+GenericTuple&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html">_CombFilter</a> *, <a class="el" href="_so_x_reverb_support_8cpp.html#a7f60c93205cfd44f44a053ddce8bff39">_lineCombFilterCount</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#abb4e372674def072efd56fd1d91e2707">_combFilterList</a></td></tr>
 <tr class="memdesc:abb4e372674def072efd56fd1d91e2707"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of all comb filters in reverb line <br /></td></tr>
 <tr class="separator:abb4e372674def072efd56fd1d91e2707"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html" title="A _ReverbLine object is a list of filters with delay lines forming a single reverb channel in Freever...">_ReverbLine</a></code> object is a list of filters with delay lines forming a single reverb channel in Freeverb. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aea7c3827305cf80f1287fbebb476f491"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea7c3827305cf80f1287fbebb476f491">&#9670;&nbsp;</a></span>adjustRingBufferLengths()</h2>
+<a id="a8c94513280969b90a8ecd35e8163a6a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c94513280969b90a8ecd35e8163a6a1">&#9670;&nbsp;</a></span>adjustRingBufferLengths()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void SoXPlugins::Effects::SoXReverb::_ReverbLine::adjustRingBufferLengths </td>
+          <td class="memname">void _ReverbLine::adjustRingBufferLengths </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td>
           <td class="paramname"><em>sampleRate</em>, </td>
@@ -172,14 +175,14 @@ GenericTuple&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_re
 
 </div>
 </div>
-<a id="a746cc36a3d0eaa4c34733be11608fd9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a746cc36a3d0eaa4c34733be11608fd9f">&#9670;&nbsp;</a></span>apply()</h2>
+<a id="a9761d7cd0a21635fbeeea8b24f613252"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9761d7cd0a21635fbeeea8b24f613252">&#9670;&nbsp;</a></span>apply()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">AudioSample SoXPlugins::Effects::SoXReverb::_ReverbLine::apply </td>
+          <td class="memname">AudioSample _ReverbLine::apply </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> AudioSample&#160;</td>
           <td class="paramname"><em>inputSample</em>, </td>
@@ -224,14 +227,34 @@ GenericTuple&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_re
 
 </div>
 </div>
-<a id="a1110dc7c1f57a1568b19cc35e8eb2685"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1110dc7c1f57a1568b19cc35e8eb2685">&#9670;&nbsp;</a></span>toString()</h2>
+<a id="a0ce70660aa2c03de4e50e12508138ed2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ce70660aa2c03de4e50e12508138ed2">&#9670;&nbsp;</a></span>maximumDelayPathLength()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">String SoXPlugins::Effects::SoXReverb::_ReverbLine::toString </td>
+          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> _ReverbLine::maximumDelayPathLength </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns length of the maximum delay path in samples. </p>
+<dl class="section return"><dt>Returns</dt><dd>maximum path length (in samples) </dd></dl>
+
+</div>
+</div>
+<a id="a51ed5ea92e8f569ac0bcaad922569e5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51ed5ea92e8f569ac0bcaad922569e5e">&#9670;&nbsp;</a></span>toString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String _ReverbLine::toString </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

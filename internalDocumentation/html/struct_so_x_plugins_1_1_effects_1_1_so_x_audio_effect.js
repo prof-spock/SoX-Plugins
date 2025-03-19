@@ -14,13 +14,18 @@ var struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect =
     [ "setDefaultValues", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a4bf3b20b5834b9607f408aa8bff6d50e", null ],
     [ "setParameterValidity", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#adadb0c7a70e55bca080207e314b50b24", null ],
     [ "setValue", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a3c4fe56395eeb5e72b70521781553ef5", null ],
+    [ "setValueChangeHandler", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a48926a08b6451536c283d47c8bf624ff", null ],
+    [ "setValueViaParent", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#aa2a43190656affc746b9b07aa2c143fd", null ],
+    [ "tailLength", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ac5de158efc6c8a03e972aee36d25a9e5", null ],
     [ "toString", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#aee18be5bb7048909c45831bcca78a8a3", null ],
     [ "_channelCount", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ab211499efb61d7b4bba13c2563dc0900", null ],
     [ "_currentTimePosition", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#aaeced2a97dfc532dad3eec89d7f32ca7", null ],
     [ "_effectDescriptor", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a601e402242d5c10229e28b9fb5fb6735", null ],
     [ "_effectParameterMap", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a2d4b7833355d68aade5ca9a751b32472", null ],
     [ "_expectedNextTimePosition", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a13a9e5797e58625cf5d5a63ece4c024a", null ],
+    [ "_notificationProc", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ac0664aae7c30380e5fd55c8ee932335a", null ],
     [ "_parametersAreValid", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a5cd71c383fb66ae989dc44f7cf19eaa7", null ],
     [ "_sampleRate", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#ad327c3c6c773b9de08848d49938d0183", null ],
-    [ "_timePositionHasMoved", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a54469052f47e0128b234b5ca87ccc6a6", null ]
+    [ "_timePositionHasMoved", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a54469052f47e0128b234b5ca87ccc6a6", null ],
+    [ "_valueChangeHandler", "struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html#a3263c732f668041123eeb1cba02410d9", null ]
 ];

@@ -19,7 +19,7 @@
 <polyline fill="none" stroke="black" points="16,-64.5 168,-64.5 "/>
 <text text-anchor="middle" x="92" y="-51.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
 <polyline fill="none" stroke="black" points="16,-44.5 168,-44.5 "/>
-<text text-anchor="start" x="24" y="-31.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ makeFromList()</text>
+<text text-anchor="start" x="24" y="-31.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ fromList()</text>
 <text text-anchor="start" x="24" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ makeFromString()</text>
 <text text-anchor="start" x="24" y="-7.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ makeKeyListFromString()</text>
 </a>
