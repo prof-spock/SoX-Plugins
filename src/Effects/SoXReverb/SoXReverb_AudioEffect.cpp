@@ -31,9 +31,9 @@ namespace SoXPlugins::Effects::SoXReverb {
     /**
      * An <C>_EffectDescriptor_RVRB</C> object is the internal
      * implementation of a reverb effect descriptor type where all
-     * sample input is routed to and sample output is routed from with
-     * several parameters for the freeverb algorithm (like e.g.\ the
-     * room scale).
+     * data point input is routed to and data point output is routed
+     * from with several parameters for the freeverb algorithm (like
+     * e.g.\ the room scale).
      */
     struct _EffectDescriptor_RVRB {
 
@@ -82,13 +82,13 @@ namespace SoXPlugins::Effects::SoXReverb {
 
         /**
          * Recalculates derived parameters in reverb effect descriptor
-         * for effect from its other parameters, <C>sampleRate</C> and
-         * <C>channelCount</C>.
+         * for effect from its other parameters, <C>dataPointRate</C>
+         * and <C>channelCount</C>.
          *
-         * @param[in]    sampleRate        new sample rate
-         * @param[in]    channelCount      new channel count
+         * @param[in] dataPointRate  new data point rate
+         * @param[in] channelCount   new channel count
          */
-        void updateSettings (IN Real sampleRate,
+        void updateSettings (IN Real dataPointRate,
                              IN Natural channelCount);
 
         /*--------------------*/
@@ -129,13 +129,13 @@ _EffectDescriptor_RVRB
 
 /*--------------------*/
 
-void _EffectDescriptor_RVRB::updateSettings (IN Real sampleRate,
+void _EffectDescriptor_RVRB::updateSettings (IN Real dataPointRate,
                                              IN Natural channelCount)
 {
     Logging_trace3(">>: descriptor = %1,"
-                   " sampleRate = %2, channelCount = %3",
+                   " dataPointRate = %2, channelCount = %3",
                    toString(),
-                   TOSTRING(sampleRate), TOSTRING(channelCount));
+                   TOSTRING(dataPointRate), TOSTRING(channelCount));
 
     effect.setParameterValidity(false);
     this->channelCount = channelCount;
@@ -146,7 +146,7 @@ void _EffectDescriptor_RVRB::updateSettings (IN Real sampleRate,
                          stereoDepth,
                          preDelay,
                          wetDbGain);
-    reverb.resize(sampleRate, channelCount);
+    reverb.resize(dataPointRate, channelCount);
     effect.setParameterValidity(true);
 
     Logging_trace1("<<: %1", toString());
@@ -237,7 +237,7 @@ SoXReverb_AudioEffect::SoXReverb_AudioEffect ()
                                     -100.0, 100.0, 0.001);
 
     _channelCount = Natural::maximum(_channelCount, 2);
-    effectDescriptor.updateSettings(_sampleRate, _channelCount);
+    effectDescriptor.updateSettings(_dataPointRate, _channelCount);
 
     Logging_trace1("<<: %1", toString());
 }
@@ -268,9 +268,17 @@ String SoXReverb_AudioEffect::toString () const
 
 String SoXReverb_AudioEffect::_effectDescriptorToString () const
 {
-    const _EffectDescriptor_RVRB& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_RVRB>(_effectDescriptor);
-    return effectDescriptor.toString();
+    String result;
+
+    if (_effectDescriptor == NULL) {
+        result = "NULL";
+    } else {
+        const _EffectDescriptor_RVRB& effectDescriptor =
+            TOREFERENCE<_EffectDescriptor_RVRB>(_effectDescriptor);
+        result = effectDescriptor.toString();
+    }
+
+    return result;
 }
 
 /*--------------------*/
@@ -334,7 +342,7 @@ SoXReverb_AudioEffect::_setValueInternal
     }
 
     if (recalculationIsForced) {
-        effectDescriptor.updateSettings(_sampleRate, _channelCount);
+        effectDescriptor.updateSettings(_dataPointRate, _channelCount);
     }
 
     Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));
@@ -347,13 +355,13 @@ void SoXReverb_AudioEffect::setDefaultValues ()
 {
     Logging_trace(">>");
 
-    _effectParameterMap.setValue(parameterName_isWetOnly,    "No");
-    _effectParameterMap.setValue(parameterName_reverberance, "50");
-    _effectParameterMap.setValue(parameterName_hfDamping,    "50");
-    _effectParameterMap.setValue(parameterName_roomScale,    "100");
-    _effectParameterMap.setValue(parameterName_stereoDepth,  "100");
-    _effectParameterMap.setValue(parameterName_preDelay,     "0");
-    _effectParameterMap.setValue(parameterName_wetGain,      "0");
+    setValueViaParent(parameterName_isWetOnly,    "No");
+    setValueViaParent(parameterName_reverberance, "50");
+    setValueViaParent(parameterName_hfDamping,    "50");
+    setValueViaParent(parameterName_roomScale,    "100");
+    setValueViaParent(parameterName_stereoDepth,  "100");
+    setValueViaParent(parameterName_preDelay,     "0");
+    setValueViaParent(parameterName_wetGain,      "0", true);
 
     Logging_trace1("<<: %1", toString());
 }
@@ -362,13 +370,13 @@ void SoXReverb_AudioEffect::setDefaultValues ()
 /* event handling     */
 /*--------------------*/
 
-void SoXReverb_AudioEffect::prepareToPlay (IN Real sampleRate)
+void SoXReverb_AudioEffect::prepareToPlay (IN Real dataPointRate)
 {
-    Logging_trace1(">>: sampleRate = %1", TOSTRING(sampleRate));
+    Logging_trace1(">>: dataPointRate = %1", TOSTRING(dataPointRate));
 
     _EffectDescriptor_RVRB& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_RVRB>(_effectDescriptor);
-    effectDescriptor.updateSettings(sampleRate, _channelCount);
+    effectDescriptor.updateSettings(dataPointRate, _channelCount);
 
     Logging_trace("<<");
 }
@@ -377,7 +385,7 @@ void SoXReverb_AudioEffect::prepareToPlay (IN Real sampleRate)
 
 void SoXReverb_AudioEffect::processBlock
                                 (IN Real timePosition,
-                                 INOUT AudioSampleListVector& buffer)
+                                 INOUT AudioDataPointListVector& buffer)
 {
     Logging_trace1(">>: time = %1", TOSTRING(timePosition));
 
@@ -390,29 +398,30 @@ void SoXReverb_AudioEffect::processBlock
 
         if (_channelCount != effectDescriptor.channelCount) {
             effectDescriptor.channelCount = _channelCount;
-            effectDescriptor.updateSettings(_sampleRate, _channelCount);
+            effectDescriptor.updateSettings(_dataPointRate,
+                                            _channelCount);
         }
 
-        const Natural sampleCount = buffer[0].size();
+        const Natural dataPointCount = buffer[0].size();
         _SoXReverb& reverb = effectDescriptor.reverb;
-        AudioSampleRingBuffer inputSampleList{_channelCount};
-        AudioSampleRingBuffer outputSampleList{_channelCount};
+        AudioDataPointRingBuffer inputDataPointList{_channelCount};
+        AudioDataPointRingBuffer outputDataPointList{_channelCount};
 
-        for (Natural i = 0;  i < sampleCount;  i++) {
-            /* read all channel samples into one list */
+        for (Natural i = 0;  i < dataPointCount;  i++) {
+            /* read all channel data points into one list */
             for (Natural channel = 0;  channel < _channelCount;
                  channel++) {
-                const AudioSampleList& inputList = buffer[channel];
-                inputSampleList[channel] = inputList[i];
+                const AudioDataPointList& inputList = buffer[channel];
+                inputDataPointList[channel] = inputList[i];
             }
 
-            reverb.apply(inputSampleList, outputSampleList);
+            reverb.apply(inputDataPointList, outputDataPointList);
 
-            /* write output sample list onto all channels */
+            /* write output data point list onto all channels */
             for (Natural channel = 0;  channel < _channelCount;
                  channel++) {
-                AudioSampleList& outputList = buffer[channel];
-                outputList[i] = outputSampleList[channel];
+                AudioDataPointList& outputList = buffer[channel];
+                outputList[i] = outputDataPointList[channel];
             }
         }
     }

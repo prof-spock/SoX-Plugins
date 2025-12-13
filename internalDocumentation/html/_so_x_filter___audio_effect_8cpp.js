@@ -1,8 +1,11 @@
 var _so_x_filter___audio_effect_8cpp =
 [
-    [ "_EffectDescriptor_FLTR", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r" ],
-    [ "STR", "_so_x_filter___audio_effect_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c", null ],
-    [ "_alphaForBandwidth", "_so_x_filter___audio_effect_8cpp.html#afc0fbfe0c64b011ced5d172954b8088c", null ],
+    [ "SoXPlugins::Effects::SoXFilter::_EffectDescriptor_FLTR", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1___effect_descriptor___f_l_t_r" ],
+    [ "SoXFilter_AudioEffect", "struct_so_x_filter___audio_effect.html", "struct_so_x_filter___audio_effect" ],
+    [ "SoXAudioHelper", "struct_so_x_audio_helper.html", "struct_so_x_audio_helper" ],
+    [ "_EffectDescriptor_FLTR", "struct___effect_descriptor___f_l_t_r.html", "struct___effect_descriptor___f_l_t_r" ],
+    [ "FilterBandwidthUnit", "_so_x_filter___audio_effect_8cpp.html#a64aa76192d11c685addc45d443d23ae4", null ],
+    [ "_alphaForBandwidth", "_so_x_filter___audio_effect_8cpp.html#a23553b9a6f19bfd2bf63e2f20519989d", null ],
     [ "_bwUnitToString", "_so_x_filter___audio_effect_8cpp.html#a683e6cce986069ec5c5b3812bebac361", null ],
     [ "_setBandwidthUnitParameter", "_so_x_filter___audio_effect_8cpp.html#ae94c8b5d515ea87c541f4c276b00b9e6", null ],
     [ "_toBWUnit", "_so_x_filter___audio_effect_8cpp.html#a6fa421321e96a68c5365dd7cdbf0530b", null ],

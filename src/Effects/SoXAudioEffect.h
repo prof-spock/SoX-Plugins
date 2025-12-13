@@ -16,14 +16,14 @@
 /*=========*/
 
 #include "Object.h"
-#include "AudioSampleListVector.h"
+#include "AudioDataPointListVector.h"
 #include "SoXEffectParameterMap.h"
 #include "SoXParameterValueChangeKind.h"
 
 /*--------------------*/
 
-using Audio::AudioSampleList;
-using Audio::AudioSampleListVector;
+using Audio::AudioDataPointList;
+using Audio::AudioDataPointListVector;
 using BaseTypes::Primitives::Object;
 using BaseTypes::Primitives::String;
 using SoXPlugins::Helpers::SoXEffectParameterMap;
@@ -146,7 +146,7 @@ namespace SoXPlugins::Effects {
          */
         void setValueViaParent (IN String& parameterName,
                                 IN String& value,
-                                IN Boolean recalculationIsForced = true);
+                                IN Boolean recalculationIsForced = false);
         
         /*--------------------*/
 
@@ -200,12 +200,12 @@ namespace SoXPlugins::Effects {
 
         /**
          * Informs effect about upcoming processing with
-         * <C>sampleRate</C>.
+         * <C>dataPointRate</C>.
          *
-         * @param[in] sampleRate  sample rate to be used for
-         *                        processing
+         * @param[in] dataPointRate  data point rate to be used for
+         *                           processing
          */
-        virtual void prepareToPlay (IN Real sampleRate);
+        virtual void prepareToPlay (IN Real dataPointRate);
 
         /*--------------------*/
 
@@ -217,15 +217,15 @@ namespace SoXPlugins::Effects {
         /*--------------------*/
 
         /**
-         * Processes a block of audio samples <C>buffer</C> for
+         * Processes a block of audio data points <C>buffer</C> for
          * position <C>timePosition</C>.
          *
          * @param[in]    timePosition  position where processing starts
          * @param[inout] buffer        buffer of input and output audio
-         *                             samples to be processed
+         *                             data points to be processed
          */
         virtual void processBlock (IN Real timePosition,
-                                   INOUT AudioSampleListVector& buffer);
+                                   INOUT AudioDataPointListVector& buffer);
 
         /*--------------------*/
         /*--------------------*/
@@ -277,15 +277,15 @@ namespace SoXPlugins::Effects {
 
             /*--------------------*/
 
-            /** target object for value change information */
+            /** destination object for value change information */
             Object _valueChangeHandler;
         
             /** callback function connecting this effect to value
              * change handler */
             ValueChangeNotification _notificationProc;
 
-            /** the audio sample rate to be used in this effect */
-            Real _sampleRate;
+            /** the audio data point rate to be used in this effect */
+            Real _dataPointRate;
 
             /** the count of channels in this effect */
             Natural _channelCount;

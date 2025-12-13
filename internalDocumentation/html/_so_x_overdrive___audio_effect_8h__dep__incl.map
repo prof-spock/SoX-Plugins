@@ -1,5 +1,7 @@
 <map id="SoXOverdrive_AudioEffect.h" name="SoXOverdrive_AudioEffect.h">
-<area shape="rect" id="node1" title="The SoXOverdrive_AudioEffect specification defines the SoX overdrive plugin distorting an input signa..." alt="" coords="144,5,351,33"/>
-<area shape="rect" id="node2" href="$_so_x_overdrive___audio_effect_8cpp.html" title="The SoXOverdrive_AudioEffect body implements the SoX overdrive plugin distorting an input signal with..." alt="" coords="5,81,228,109"/>
-<area shape="rect" id="node3" href="$_so_x_overdrive___audio_processor_8cpp.html" title="The SoXOverdrive_AudioProcessor module provides boilerplate code for a plugin for the SoX overdrive e..." alt="" coords="252,81,504,109"/>
+<area shape="rect" id="Node000001" title="The SoXOverdrive_AudioEffect specification defines the SoX overdrive plugin distorting an input signa..." alt="" coords="128,5,309,31"/>
+<area shape="rect" id="Node000002" href="$_so_x_overdrive___audio_effect_8cpp.html" title="The SoXOverdrive_AudioEffect body implements the SoX overdrive plugin distorting an input signal with..." alt="" coords="5,79,200,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,40,123,81,120,76,187,35"/>
+<area shape="rect" id="Node000003" href="$_so_x_overdrive___audio_processor_8cpp.html" title="The SoXOverdrive_AudioProcessor module provides boilerplate code for a plugin for the SoX overdrive e..." alt="" coords="224,79,445,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="250,35,317,76,314,81,247,40"/>
 </map>

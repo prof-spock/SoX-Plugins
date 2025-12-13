@@ -70,12 +70,12 @@ namespace SoXPlugins::Effects::SoXReverb {
         /* event handling     */
         /*--------------------*/
 
-        void prepareToPlay (IN Real sampleRate) override;
+        void prepareToPlay (IN Real dataPointRate) override;
 
         /*--------------------*/
 
         void processBlock (IN Real timePosition,
-                           INOUT AudioSampleListVector& buffer)
+                           INOUT AudioDataPointListVector& buffer)
             override;
 
         /*--------------------*/

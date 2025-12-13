@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['valuechangenotification_1934',['ValueChangeNotification',['../namespace_so_x_plugins_1_1_effects.html#a37bb2b70b4a8f47ea8cd2f5e5e571970',1,'SoXPlugins::Effects']]]
+  ['time_0',['Time',['../namespace_base_types_1_1_primitives.html#a68db50e56bc5e26231973a63d64b8f6a',1,'BaseTypes::Primitives::Time'],['../_operating_system_8cpp.html#a68db50e56bc5e26231973a63d64b8f6a',1,'Time:&#160;TimeAndDuration.h'],['../_time_and_duration_8cpp.html#a68db50e56bc5e26231973a63d64b8f6a',1,'Time:&#160;TimeAndDuration.h']]]
 ];

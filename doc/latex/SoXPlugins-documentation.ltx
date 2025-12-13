@@ -222,7 +222,7 @@
     Date:&2025-03-18\\
     Version:&0.96\\
     Platforms:&VST3 on Windows~x64,\\
-              &VST3 \& AU on MacOSX (x86\_64)\\
+              &VST3 \& AU on MacOSX (x86\_64, ARM64)\\
               &VST3 on Linux (x86\_64)\\
   \end{tabular}
   \vfill
@@ -297,8 +297,8 @@ faithfully model the \SoX\ command-line processing.
 The plugin implementation is completely free, open-source,
 platform-neutral and based on the JUCE audio
 framework~\cite{reference:juce}.  Currently only plugin versions as
-VST3 under Windows 10, VST3 and AU under MacOSX (x86\_64) and VST3
-under Linux (x86\_64) are provided, but porting to other targets
+VST3 under Windows 10, VST3 and AU under MacOSX (x86\_64/ARM64) and
+VST3 under Linux (x86\_64) are provided, but porting to other targets
 should be straightforward, since building is supported by a
 platform-neutral CMAKE build file (see chapter~\ref{section:build}).
 
@@ -1519,9 +1519,9 @@ floor of typically less than -120dB.
 Surprisingly the tracks do not completely cancel out, but this comes
 from rounding or precision errors ---~\SoX\ often uses 32bit integer
 processing, while the \SoXPlugins\ always use double precision
-floating point processing~--- and also the 24~bit sample depth used in
-the FLAC files of the test suite; increasing that sample depth would
-even lead to less residual noise.
+floating point processing~--- and also the 24~bit data point depth
+used in the FLAC files of the test suite; increasing that data point
+depth would even lead to less residual noise.
 
 \begin{centeredFigure}
   \centeredExternalPicture{0.5}{SoX-A-noiseFloor.png}

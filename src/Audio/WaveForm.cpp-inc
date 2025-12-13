@@ -17,12 +17,15 @@
 #include <cmath>
 #include "Assertion.h"
 #include "Logging.h"
+#include "GenericListInterpolator.h"
 
 /*--------------------*/
 
 using Audio::WaveForm;
 using Audio::WaveFormIteratorState;
 using Audio::WaveFormKind;
+using BaseTypes::GenericTypes::GenericListInterpolator;
+
 
 /** abbreviation for StringUtil */
 using STR = BaseModules::StringUtil;
@@ -82,18 +85,11 @@ namespace Audio {
         /** the data buffer for the waveform */
         _WaveTablePtr _buffer;
 
+        /** the interpolator for the waveform */
+        GenericListInterpolator<_WaveTable, Real> _interpolator;
+
         /*--------------------*/
         /* local routines     */
-        /*--------------------*/
-
-        /**
-         * Finds value in associated wave table at real position by a
-         * linear interpolation
-         *
-         * @return interpolated value of wave at position
-         */
-        Real _getWavetableValueAtPosition () const;
-
         /*--------------------*/
 
         /**
@@ -205,23 +201,6 @@ extern _WaveTable _triangleWaveTable;
 /*--------------------*/
 
 INLINE
-Real _WaveFormDescriptor::_getWavetableValueAtPosition () const
-{
-    const _WaveTable& waveTable = TOREFERENCE<_WaveTable>(_buffer);
-    Assertion_pre(_position >= 0.0, "position must be non-negative");
-
-    const Natural indexA = (Natural) _position % _waveTableLength;
-    const Natural indexB = (indexA + 1) % _waveTableLength;
-    const Real valueA = waveTable.at(indexA);
-    const Real valueB = waveTable.at(indexB);
-    const Real fPart = _position.fractionalPart();
-    const Real value = valueA * (Real::one - fPart) + valueB * fPart;
-    return value;
-}
-
-/*--------------------*/
-
-INLINE
 void _WaveFormDescriptor::_updatePosition ()
 {
     Real p = _firstPosition + Real{_stepCount} * _increment;
@@ -248,6 +227,8 @@ void _WaveFormDescriptor::set (Real length, WaveFormKind kind,
     _WaveTablePtr buffer = (kind == WaveFormKind::sine
                             ? &_sineWaveTable
                             : &_triangleWaveTable);
+    const Natural interpolationDegree =
+        (kind == WaveFormKind::sine ? 3 : 1);
     const Natural waveTableLength = buffer->length();
     Assertion_pre(waveTableLength > 0, "wave table must be non-empty");
 
@@ -266,6 +247,9 @@ void _WaveFormDescriptor::set (Real length, WaveFormKind kind,
     _waveTableLength  = waveTableLength;
     _buffer           = buffer;
 
+    _interpolator.set(*buffer,
+                      waveTableLength, true, interpolationDegree);
+
     Logging_trace("<<");
 }
 
@@ -277,7 +261,8 @@ INLINE
 Real _WaveFormDescriptor::current () const
 {
     const Real scalingFactor = _maximumValue - _minimumValue;
-    Real value = _getWavetableValueAtPosition();
+    Assertion_check(_position >= 0.0, "position must be non-negative");
+    Real value = _interpolator.at(_position);
     value = _minimumValue + value * scalingFactor;
 
     /* the following does not distribute integer values equally over

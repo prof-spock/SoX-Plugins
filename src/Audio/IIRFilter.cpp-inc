@@ -17,7 +17,7 @@
 #include "Assertion.h"
 #include "Logging.h"
 #include "MyArray.h"
-#include "AudioSample.h"
+#include "AudioDataPoint.h"
 
 /*====================*/
 
@@ -173,11 +173,11 @@ void IIRFilter::set (IN Real b0, IN Real b1, IN Real b2,
 /*--------------------*/
 
 INLINE
-void IIRFilter::apply (IN AudioSampleRingBuffer& inputBuffer,
-                       INOUT AudioSampleRingBuffer& outputBuffer) const
+void IIRFilter::apply (IN AudioDataPointRingBuffer& inputBuffer,
+                       INOUT AudioDataPointRingBuffer& outputBuffer) const
 {
     #if 0
-        AudioSample outputValue = _data[0] * inputBuffer.first();
+        AudioDataPoint outputValue = _data[0] * inputBuffer.first();
 
         for (Natural i = 1;  i < _order;  i++) {
             const Natural j = i + _order;
@@ -188,16 +188,16 @@ void IIRFilter::apply (IN AudioSampleRingBuffer& inputBuffer,
         outputBuffer.setFirst(outputValue);
     #else
         /* support vectorization by using arrays for the buffers */
-        AudioSample* inputBufferAsArray =
-            makeLocalArray(AudioSample, _order);
-        AudioSample* outputBufferAsArray = 
-            makeLocalArray(AudioSample, _order);
-        const AudioSample* dataAsArray = _data.asArray();
-        const AudioSample* otherDataAsArray = _data.asArray(_order);
+        AudioDataPoint* inputBufferAsArray =
+            makeLocalArray(AudioDataPoint, _order);
+        AudioDataPoint* outputBufferAsArray = 
+            makeLocalArray(AudioDataPoint, _order);
+        const AudioDataPoint* dataAsArray = _data.asArray();
+        const AudioDataPoint* otherDataAsArray = _data.asArray(_order);
         inputBuffer.toArray(inputBufferAsArray);
         outputBuffer.toArray(outputBufferAsArray);
 
-        AudioSample outputValue;
+        AudioDataPoint outputValue;
         outputValue = *dataAsArray++ * *inputBufferAsArray++;
         otherDataAsArray++;
         outputBufferAsArray++;

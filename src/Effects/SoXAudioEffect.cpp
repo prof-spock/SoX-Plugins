@@ -27,7 +27,7 @@ using SoXPlugins::Effects::SoXAudioEffect;
 SoXAudioEffect::SoXAudioEffect ()
      : _valueChangeHandler{NULL},
        _notificationProc{NULL},
-       _sampleRate{100.0},
+       _dataPointRate{100.0},
        _channelCount{0},
        _effectParameterMap{},
        _currentTimePosition{Real::infinity},
@@ -44,7 +44,8 @@ SoXAudioEffect::SoXAudioEffect ()
 
 SoXAudioEffect::~SoXAudioEffect ()
 {
-    Logging_trace1(">>: %1", toString());
+    Logging_trace(">>");
+    _effectDescriptor = NULL;
     Logging_trace("<<");
 }
 
@@ -66,7 +67,7 @@ String SoXAudioEffect::toString () const
 String SoXAudioEffect::_asRawString () const
 {
     String st;
-    st += "_sampleRate = " + TOSTRING(_sampleRate) + "Hz";
+    st += "_dataPointRate = " + TOSTRING(_dataPointRate) + "Hz";
     st += ", _channelCount = " + TOSTRING(_channelCount);
     st += (", _currentTimePosition = "
            + TOSTRING(_currentTimePosition) + "s");
@@ -75,7 +76,7 @@ String SoXAudioEffect::_asRawString () const
     st += (", _timePositionHasMoved = "
            + TOSTRING(_timePositionHasMoved));
     st += ", _parametersAreValid = " + TOSTRING(_parametersAreValid);
-    st += ", _effectParameterMap = " + _effectParameterMap.toString();
+    st += ", _effectParameterMap = " +  _effectParameterMap.toString();
     st += ", _effectDescriptor = " + _effectDescriptorToString();
 
     return st;
@@ -85,7 +86,9 @@ String SoXAudioEffect::_asRawString () const
 
 String SoXAudioEffect::_effectDescriptorToString () const
 {
-    return "_EffectDescriptor()";
+    return (_effectDescriptor == NULL
+            ? "NULL"
+            : "_EffectDescriptor()");
 }
 
 /*--------------------*/
@@ -206,11 +209,11 @@ setValueChangeHandler (Object valueChangeHandler,
 /* event handling     */
 /*--------------------*/
 
-void SoXAudioEffect::prepareToPlay (IN Real sampleRate)
+void SoXAudioEffect::prepareToPlay (IN Real dataPointRate)
 {
-    Logging_trace1(">>: sampleRate = %1", TOSTRING(sampleRate));
+    Logging_trace1(">>: dataPointRate = %1", TOSTRING(dataPointRate));
     _expectedNextTimePosition = Real::infinity;
-    _sampleRate               = sampleRate;
+    _dataPointRate            = dataPointRate;
     Logging_trace("<<");
 }
 
@@ -226,7 +229,7 @@ void SoXAudioEffect::releaseResources ()
 /*--------------------*/
 
 void SoXAudioEffect::processBlock (IN Real timePosition,
-                                   INOUT AudioSampleListVector& buffer)
+                                   INOUT AudioDataPointListVector& buffer)
 {
     Logging_trace1(">>: timePosition = %1", TOSTRING(timePosition));
 
@@ -238,9 +241,9 @@ void SoXAudioEffect::processBlock (IN Real timePosition,
         Real::abs(_currentTimePosition - _expectedNextTimePosition);
     _timePositionHasMoved = (absoluteDifference > 1E-3);
 
-    const Natural sampleCount = buffer[0].size();
+    const Natural dataPointCount = buffer[0].size();
     _expectedNextTimePosition = (timePosition
-                                 + Real(sampleCount) / _sampleRate);
+                                 + Real(dataPointCount) / _dataPointRate);
 
     Logging_trace("<<");
 }

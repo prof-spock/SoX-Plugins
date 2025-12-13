@@ -1,5 +1,7 @@
 <map id="SoXFilter_AudioEffect.h" name="SoXFilter_AudioEffect.h">
-<area shape="rect" id="node1" title="The SoXFilter_AudioEffect specification defines a universal SoX filter plugin representing different ..." alt="" coords="128,5,303,33"/>
-<area shape="rect" id="node2" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="5,81,196,109"/>
-<area shape="rect" id="node3" href="$_so_x_filter___audio_processor_8cpp.html" title="The SoXFilter_AudioProcessor module provides boilerplate code for a plugin for several SoX filter eff..." alt="" coords="221,81,442,109"/>
+<area shape="rect" id="Node000001" title="The SoXFilter_AudioEffect specification defines a universal SoX filter plugin representing different ..." alt="" coords="116,5,275,31"/>
+<area shape="rect" id="Node000002" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="5,79,177,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,41,110,81,107,76,166,36"/>
+<area shape="rect" id="Node000003" href="$_so_x_filter___audio_processor_8cpp.html" title="The SoXFilter_AudioProcessor module provides boilerplate code for a plugin for several SoX filter eff..." alt="" coords="201,79,400,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="225,36,285,76,282,81,222,41"/>
 </map>

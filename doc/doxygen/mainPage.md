@@ -20,7 +20,7 @@ This doxygen documentation gives a detailed description of the C++
 sources for the SoX plugins.  Note that the implementation is
 completely free, open-source, platform-neutral and based on the <U><A
 HREF="https://juce.com">JUCE audio framework</A></U>.  Currently only
-plugin versions as VST3 under Windows 10, VST3 and AU under MacOSX
+plugin versions as VST3 under Windows 10, VST3 and AU under MacOS
 (x86_64) and VST3 under Linux (x86_64) are provided, but porting to
 other targets should be straightforward, since building is supported
 by a platform-neutral CMAKE build file.
@@ -71,11 +71,27 @@ The following effects are available in this package:
       a generic biquad (iir) filter with 6 coefficients b0, b1, b2,
       a0, a1 and a2,</LI>
 
+  <LI><B>chorus</B> (in <A
+      HREF="namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html">SoXFilter</A>):
+      a chorus effect with multiple parallel echos modulated either by
+      sine or triangle signals,</LI>
+
   <LI><B>compand</B> (in <A
       HREF="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html">SoXCompander</A>):
       a compander with attack, release, input gain shift, threshold
       and compression and soft knee; this is a reduced version of SoX
       compand with only a simple transfer function,</LI>
+
+  <LI><B>echo</B> (in <A
+      HREF="namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html">SoXFilter</A>):
+      a tapped delay with several absolute delay times and signal
+      decays,</LI>
+
+  <LI><B>echos</B> (in <A
+      HREF="namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html">SoXFilter</A>):
+      a sequential delay with delay stages with absolute delay times
+      and signal decays fed with signals from the previous
+      stages,</LI>
 
   <LI><B>equalizer</B> (in <A
       HREF="namespace_so_x_plugins_1_1_effects_1_1_so_x_filter.html">SoXFilter</A>):
@@ -112,7 +128,7 @@ The following effects are available in this package:
       specification,</LI>
 
   <LI><B>phaser</B> (in <A
-      HREF="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html">SoXPhaserAndTremolo</A>):
+      HREF="namespace_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo.html">SoXFlangerPhaserAndTremolo</A>):
       a phaser effect with sine or triangle modulation,</LI>
 
   <LI><B>reverb</B> (in <A
@@ -128,7 +144,7 @@ The following effects are available in this package:
       filter bandwith (in several units), and</LI>
 
   <LI><B>tremolo</B> (in <A
-      HREF="namespace_so_x_plugins_1_1_effects_1_1_so_x_phaser_and_tremolo.html">SoXPhaserAndTremolo</A>):
+      HREF="namespace_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo.html">SoXFlangerPhaserAndTremolo</A>):
       a tremolo effect with sine modulation using a double-sideband
       suppressed carrier modulation</LI>
 

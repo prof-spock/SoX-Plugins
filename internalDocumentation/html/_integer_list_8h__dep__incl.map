@@ -1,4 +1,5 @@
 <map id="IntegerList.h" name="IntegerList.h">
-<area shape="rect" id="node1" title="The IntegerList specification defines sequences of integer values with zero&#45;based arbitrary indexed a..." alt="" coords="13,5,115,33"/>
-<area shape="rect" id="node2" href="$_integer_list_8cpp.html" title="The IntegerList body implements lists of integer values with zero&#45;based arbitrary indexed access to p..." alt="" coords="5,81,123,109"/>
+<area shape="rect" id="Node000001" title="The IntegerList specification defines sequences of integer values with zero&#45;based arbitrary indexed a..." alt="" coords="12,5,105,31"/>
+<area shape="rect" id="Node000002" href="$_integer_list_8cpp.html" title="The IntegerList body implements lists of integer values with zero&#45;based arbitrary indexed access to p..." alt="" coords="5,79,112,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="61,44,61,79,56,79,56,44"/>
 </map>

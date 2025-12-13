@@ -72,7 +72,7 @@ namespace SoXPlugins::Effects::SoXFlangerPhaserAndTremolo {
         /*--------------------*/
 
         void processBlock (IN Real timePosition,
-                           INOUT AudioSampleListVector& buffer)
+                           INOUT AudioDataPointListVector& buffer)
             override;
 
         /*--------------------*/

@@ -1,4 +1,5 @@
 <map id="SoXPlugins::Effects::SoXCompander::_LRFilter" name="SoXPlugins::Effects::SoXCompander::_LRFilter">
-<area shape="rect" id="node1" title="A _LRFilter object is a Linkwitz&#45;Riley filter of order 5." alt="" coords="5,263,207,376"/>
-<area shape="rect" id="node2" href="$struct_audio_1_1_i_i_r_filter.html" title="A IIRFilter object is an infinite impulse response filter." alt="" coords="49,5,163,215"/>
+<area shape="rect" id="Node000001" title="A _LRFilter object is a Linkwitz&#45;Riley filter of order 5." alt="" coords="5,279,176,379"/>
+<area shape="rect" id="Node000002" href="$struct_audio_1_1_i_i_r_filter.html" title="A IIRFilter object is an infinite impulse response filter." alt="" coords="41,5,140,231"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,245,93,278,88,278,88,245"/>
 </map>

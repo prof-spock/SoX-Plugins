@@ -212,17 +212,16 @@ namespace SoXPlugins::ViewAndController {
          * of dependent internal settings is forced (otherwise it is
          * suppressed).
          *
-         * @param[in] parameterName              name of parameter to
-         *                                       be set
-         * @param[in] value                      new value of parameter
+         * @param[in] parameterName          name of parameter to be set
+         * @param[in] value                  new value of parameter
          * @param[in] recalculationIsForced  tells whether some
-         *                                       internal recalculation
-         *                                       of associated effect
-         *                                       must be done
+         *                                   internal recalculation
+         *                                   of associated effect
+         *                                   must be done
          */
         virtual void setValue (IN String& parameterName,
                                IN String& value,
-                               IN Boolean recalculationIsForced = true);
+                               IN Boolean recalculationIsForced = false);
 
         /*--------------------*/
 

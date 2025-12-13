@@ -1,7 +1,8 @@
 var _so_x_audio_editor_8cpp =
 [
+    [ "SoXAudioEditor", "struct_so_x_audio_editor.html", "struct_so_x_audio_editor" ],
     [ "Colour", "_so_x_audio_editor_8cpp.html#a5f8b2c1bca2a7c23012d2225f0f6a9c0", null ],
-    [ "STR", "_so_x_audio_editor_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c", null ],
+    [ "SoXAudioEditorWidgetPtrList", "_so_x_audio_editor_8cpp.html#a1d18461453a22537cf1370aa0a6ecd09", null ],
     [ "_addWidgetsToList", "_so_x_audio_editor_8cpp.html#a95f0ace661839808a712a5eeb2dd0804", null ],
     [ "_black", "_so_x_audio_editor_8cpp.html#adae967ad41274567cfdbb30c0d3f6cfb", null ],
     [ "_blue", "_so_x_audio_editor_8cpp.html#a21f5b8f2257d34fd5c11fa1f95827bab", null ],

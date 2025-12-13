@@ -71,7 +71,7 @@ namespace SoXPlugins::Effects::SoXOverdrive {
         /*--------------------*/
 
         void processBlock (IN Real timePosition,
-                           INOUT AudioSampleListVector& buffer)
+                           INOUT AudioDataPointListVector& buffer)
             override;
 
         /*--------------------*/

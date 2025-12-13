@@ -5,164 +5,183 @@
  -->
 <!-- Title: SoXPlugins::Effects::SoXReverb::SoXReverb_AudioProcessor Pages: 1 -->
 <!--zoomable 455 -->
+
 <svg id="main" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" onload="init(evt)">
+
 <style type="text/css"><![CDATA[
+.node, .edge {opacity: 0.7;}
+.node.selected, .edge.selected {opacity: 1;}
 .edge:hover path { stroke: red; }
 .edge:hover polygon { stroke: red; fill: red; }
 ]]></style>
-<script type="text/javascript"><![CDATA[
-var edges = document.getElementsByTagName('g');
-if (edges && edges.length) {
-  for (var i=0;i<edges.length;i++) {
-    if (edges[i].id.substr(0,4)=='edge') {
-      edges[i].setAttribute('class','edge');
-    }
-  }
-}
-]]></script>
-        <defs>
-                <circle id="rim" cx="0" cy="0" r="7"/>
-                <circle id="rim2" cx="0" cy="0" r="3.5"/>
-                <g id="zoomPlus">
-                        <use xlink:href="#rim" fill="#404040">
-                                <set attributeName="fill" to="#808080" begin="zoomplus.mouseover" end="zoomplus.mouseout"/>
-                        </use>
-                        <path d="M-4,0h8M0,-4v8" fill="none" stroke="white" stroke-width="1.5" pointer-events="none"/>
-                </g>
-                <g id="zoomMin">
-                        <use xlink:href="#rim" fill="#404040">
-                                <set attributeName="fill" to="#808080" begin="zoomminus.mouseover" end="zoomminus.mouseout"/>
-                        </use>
-                        <path d="M-4,0h8" fill="none" stroke="white" stroke-width="1.5" pointer-events="none"/>
-                </g>
-                <g id="dirArrow">
-                        <path fill="none" stroke="white" stroke-width="1.5" d="M0,-3.0v7 M-2.5,-0.5L0,-3.0L2.5,-0.5"/>
-                </g>
-               <g id="resetDef">
-                       <use xlink:href="#rim2" fill="#404040">
-                               <set attributeName="fill" to="#808080" begin="reset.mouseover" end="reset.mouseout"/>
-                       </use>
-               </g>
-        </defs>
 
-<script type="text/javascript">
-var viewWidth = 220;
+<defs>
+  <circle id="rim" cx="0" cy="0" r="7"/>
+  <circle id="rim2" cx="0" cy="0" r="3.5"/>
+  <g id="zoomPlus">
+    <use xlink:href="#rim" fill="#404040"><set attributeName="fill" to="#808080" begin="zoomplus.mouseover" end="zoomplus.mouseout"/></use>
+    <path d="M-4,0h8M0,-4v8" fill="none" stroke="white" stroke-width="1.5" pointer-events="none"/>
+  </g>
+  <g id="zoomMin">
+    <use xlink:href="#rim" fill="#404040"><set attributeName="fill" to="#808080" begin="zoomminus.mouseover" end="zoomminus.mouseout"/></use>
+    <path d="M-4,0h8" fill="none" stroke="white" stroke-width="1.5" pointer-events="none"/>
+  </g>
+  <g id="arrowUp" transform="translate(30 24)">
+    <use xlink:href="#rim"/>
+    <path pointer-events="none" fill="none" stroke="white" stroke-width="1.5" d="M0,-3.0v7 M-2.5,-0.5L0,-3.0L2.5,-0.5"/>
+  </g>
+  <g id="arrowRight" transform="rotate(90) translate(36 -43)">
+    <use xlink:href="#rim"/>
+    <path pointer-events="none" fill="none" stroke="white" stroke-width="1.5" d="M0,-3.0v7 M-2.5,-0.5L0,-3.0L2.5,-0.5"/>
+  </g>
+  <g id="arrowDown" transform="rotate(180) translate(-30 -48)">
+    <use xlink:href="#rim"/>
+    <path pointer-events="none" fill="none" stroke="white" stroke-width="1.5" d="M0,-3.0v7 M-2.5,-0.5L0,-3.0L2.5,-0.5"/>
+  </g>
+  <g id="arrowLeft" transform="rotate(270) translate(-36 17)">
+    <use xlink:href="#rim"/>
+    <path pointer-events="none" fill="none" stroke="white" stroke-width="1.5" d="M0,-3.0v7 M-2.5,-0.5L0,-3.0L2.5,-0.5"/>
+  </g>
+  <g id="resetDef">
+    <use xlink:href="#rim2" fill="#404040"><set attributeName="fill" to="#808080" begin="reset.mouseover" end="reset.mouseout"/></use>
+  </g>
+</defs>
+<script type="application/ecmascript">
+var viewWidth = 190;
 var viewHeight = 455;
 var sectionId = 'dynsection-0';
 </script>
-<script xlink:href="svgpan.js"/>
+<script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>SoXPlugins::Effects::SoXReverb::SoXReverb_AudioProcessor</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-451 216,-451 216,4 -4,4"/>
 <!-- Node1 -->
-<g id="node1" class="node">
+<g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title="A SoXReverb_AudioProcessor object is a JUCE wrapper for the SoX reverb effect implementing the Freeve...">
-<polygon fill="#bfbfbf" stroke="black" points="19.5,-0.5 19.5,-96.5 192.5,-96.5 192.5,-0.5 19.5,-0.5"/>
-<text text-anchor="start" x="27.5" y="-83.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::Effects</text>
-<text text-anchor="start" x="27.5" y="-71.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXReverb::SoXReverb</text>
-<text text-anchor="middle" x="106" y="-59.7" font-family="Helvetica,sans-Serif" font-size="11.00">_AudioProcessor</text>
-<polyline fill="none" stroke="black" points="19.5,-52.5 192.5,-52.5 "/>
-<text text-anchor="middle" x="106" y="-39.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
-<polyline fill="none" stroke="black" points="19.5,-32.5 192.5,-32.5 "/>
-<text text-anchor="start" x="27.5" y="-19.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXReverb_AudioProcessor()</text>
-<text text-anchor="start" x="27.5" y="-7.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ name()</text>
+<g id="a_Node000001"><a xlink:title="A SoXReverb_AudioProcessor object is a JUCE wrapper for the SoX reverb effect implementing the Freeve...">
+<polygon fill="#999999" stroke="transparent" points="164,-86 18,-86 18,0 164,0 164,-86"/>
+<text text-anchor="start" x="38" y="-74" font-family="Helvetica,sans-Serif" font-size="10.00">SoXPlugins::Effects</text>
+<text text-anchor="start" x="38" y="-63" font-family="Helvetica,sans-Serif" font-size="10.00">::SoXReverb::SoXReverb</text>
+<text text-anchor="start" x="53.5" y="-52" font-family="Helvetica,sans-Serif" font-size="10.00">_AudioProcessor</text>
+<text text-anchor="start" x="89" y="-37" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<text text-anchor="start" x="22" y="-22" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="33" y="-22" font-family="Helvetica,sans-Serif" font-size="10.00">SoXReverb_AudioProcessor()</text>
+<text text-anchor="start" x="22" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="33" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">name()</text>
+<polygon fill="#666666" stroke="#666666" points="18,-47 18,-47 164,-47 164,-47 18,-47"/>
+<polygon fill="#666666" stroke="#666666" points="18,-32 18,-32 164,-32 164,-32 18,-32"/>
+<polygon fill="none" stroke="#666666" points="18,0 18,-86 164,-86 164,0 18,0"/>
 </a>
 </g>
 </g>
 <!-- Node2 -->
-<g id="node2" class="node">
+<g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html" target="_top" xlink:title="A SoXAudioProcessor object provides an audio effect wrapper for a plugin responsible for the communic...">
-<polygon fill="white" stroke="black" points="0,-133.5 0,-349.5 212,-349.5 212,-133.5 0,-133.5"/>
-<text text-anchor="start" x="8" y="-336.7" font-family="Helvetica,sans-Serif" font-size="11.00">SoXPlugins::ViewAndController</text>
-<text text-anchor="middle" x="106" y="-324.7" font-family="Helvetica,sans-Serif" font-size="11.00">::SoXAudioProcessor</text>
-<polyline fill="none" stroke="black" points="0,-317.5 212,-317.5 "/>
-<text text-anchor="start" x="8" y="-304.7" font-family="Helvetica,sans-Serif" font-size="11.00"># _descriptor</text>
-<polyline fill="none" stroke="black" points="0,-297.5 212,-297.5 "/>
-<text text-anchor="start" x="8" y="-284.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ SoXAudioProcessor()</text>
-<text text-anchor="start" x="8" y="-272.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ ~SoXAudioProcessor()</text>
-<text text-anchor="start" x="8" y="-260.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ createEditor()</text>
-<text text-anchor="start" x="8" y="-248.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ hasEditor()</text>
-<text text-anchor="start" x="8" y="-236.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ supportsDoublePrecisionProcessing()</text>
-<text text-anchor="start" x="8" y="-224.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ acceptsMidi()</text>
-<text text-anchor="start" x="8" y="-212.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ producesMidi()</text>
-<text text-anchor="start" x="8" y="-200.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ isMidiEffect()</text>
-<text text-anchor="start" x="8" y="-188.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ getTailLengthSeconds()</text>
-<text text-anchor="start" x="8" y="-176.7" font-family="Helvetica,sans-Serif" font-size="11.00">+ getNumPrograms()</text>
-<text text-anchor="start" x="8" y="-164.7" font-family="Helvetica,sans-Serif" font-size="11.00">and 16 more...</text>
-<text text-anchor="start" x="8" y="-152.7" font-family="Helvetica,sans-Serif" font-size="11.00"># _notifyObserversAboutChange()</text>
-<text text-anchor="start" x="8" y="-140.7" font-family="Helvetica,sans-Serif" font-size="11.00"># _setAssociatedEffect()</text>
+<g id="a_Node000002"><a xlink:href="struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_processor.html" target="_top" xlink:title="A SoXAudioProcessor object provides an audio effect wrapper for a plugin responsible for the communic...">
+<polygon fill="white" stroke="transparent" points="182,-362 0,-362 0,-122 182,-122 182,-362"/>
+<text text-anchor="start" x="23" y="-350" font-family="Helvetica,sans-Serif" font-size="10.00">SoXPlugins::ViewAndController</text>
+<text text-anchor="start" x="44.5" y="-339" font-family="Helvetica,sans-Serif" font-size="10.00">::SoXAudioProcessor</text>
+<text text-anchor="start" x="4.5" y="-324" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="15" y="-324" font-family="Helvetica,sans-Serif" font-size="10.00">_descriptor</text>
+<text text-anchor="start" x="4" y="-309" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="15" y="-309" font-family="Helvetica,sans-Serif" font-size="10.00">SoXAudioProcessor()</text>
+<text text-anchor="start" x="4" y="-294" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="15" y="-294" font-family="Helvetica,sans-Serif" font-size="10.00">~SoXAudioProcessor()</text>
+<text text-anchor="start" x="4" y="-279" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="15" y="-279" font-family="Helvetica,sans-Serif" font-size="10.00">createEditor()</text>
+<text text-anchor="start" x="4" y="-264" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="15" y="-264" font-family="Helvetica,sans-Serif" font-size="10.00">hasEditor()</text>
+<text text-anchor="start" x="4" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="15" y="-249" font-family="Helvetica,sans-Serif" font-size="10.00">supportsDoublePrecisionProcessing()</text>
+<text text-anchor="start" x="4" y="-234" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="15" y="-234" font-family="Helvetica,sans-Serif" font-size="10.00">acceptsMidi()</text>
+<text text-anchor="start" x="4" y="-219" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="15" y="-219" font-family="Helvetica,sans-Serif" font-size="10.00">producesMidi()</text>
+<text text-anchor="start" x="4" y="-204" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="15" y="-204" font-family="Helvetica,sans-Serif" font-size="10.00">isMidiEffect()</text>
+<text text-anchor="start" x="4" y="-189" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="15" y="-189" font-family="Helvetica,sans-Serif" font-size="10.00">getTailLengthSeconds()</text>
+<text text-anchor="start" x="4" y="-174" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>
+<text text-anchor="start" x="15" y="-174" font-family="Helvetica,sans-Serif" font-size="10.00">getNumPrograms()</text>
+<text text-anchor="start" x="15" y="-159" font-family="Helvetica,sans-Serif" font-size="10.00">and 16 more...</text>
+<text text-anchor="start" x="4.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="15" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">_notifyObserversAboutChange()</text>
+<text text-anchor="start" x="4.5" y="-129" font-family="Helvetica,sans-Serif" font-size="10.00">#</text>
+<text text-anchor="start" x="15" y="-129" font-family="Helvetica,sans-Serif" font-size="10.00">_setAssociatedEffect()</text>
+<polygon fill="#666666" stroke="#666666" points="0,-334 0,-334 182,-334 182,-334 0,-334"/>
+<polygon fill="#666666" stroke="#666666" points="0,-319 0,-319 13,-319 13,-319 0,-319"/>
+<polygon fill="#666666" stroke="#666666" points="13,-319 13,-319 182,-319 182,-319 13,-319"/>
+<polygon fill="none" stroke="#666666" points="0,-122 0,-362 182,-362 182,-122 0,-122"/>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node1 -->
-<g id="edge1" class="edge">
+<g id="edge1_Node000001_Node000002" class="edge">
 <title>Node2&#45;&gt;Node1</title>
-<path fill="none" stroke="midnightblue" d="M106,-123.19C106,-113.98 106,-105.06 106,-96.79"/>
-<polygon fill="none" stroke="midnightblue" points="102.5,-123.28 106,-133.28 109.5,-123.28 102.5,-123.28"/>
+<g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M91,-111.61C91,-102.67 91,-94.1 91,-86.25"/>
+<polygon fill="none" stroke="#63b8ff" points="87.5,-111.86 91,-121.86 94.5,-111.86 87.5,-111.86"/>
+</a>
+</g>
 </g>
 <!-- Node3 -->
-<g id="node3" class="node">
+<g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:title=" ">
-<polygon fill="white" stroke="#bfbfbf" points="45.5,-386.5 45.5,-446.5 166.5,-446.5 166.5,-386.5 45.5,-386.5"/>
-<text text-anchor="middle" x="106" y="-433.7" font-family="Helvetica,sans-Serif" font-size="11.00">juce::AudioProcessor</text>
-<polyline fill="none" stroke="#bfbfbf" points="45.5,-426.5 166.5,-426.5 "/>
-<text text-anchor="middle" x="106" y="-413.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
-<polyline fill="none" stroke="#bfbfbf" points="45.5,-406.5 166.5,-406.5 "/>
-<text text-anchor="middle" x="106" y="-393.7" font-family="Helvetica,sans-Serif" font-size="11.00"> </text>
+<g id="a_Node000003"><a xlink:title=" ">
+<polygon fill="white" stroke="transparent" points="143,-447 39,-447 39,-398 143,-398 143,-447"/>
+<text text-anchor="start" x="44" y="-434.5" font-family="Helvetica,sans-Serif" font-size="10.00">juce::AudioProcessor</text>
+<text text-anchor="start" x="89" y="-419.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<text text-anchor="start" x="89" y="-404.5" font-family="Helvetica,sans-Serif" font-size="10.00"> </text>
+<polygon fill="#bfbfbf" stroke="#bfbfbf" points="39,-429.5 39,-429.5 143,-429.5 143,-429.5 39,-429.5"/>
+<polygon fill="#bfbfbf" stroke="#bfbfbf" points="39,-414.5 39,-414.5 143,-414.5 143,-414.5 39,-414.5"/>
+<polygon fill="none" stroke="#bfbfbf" points="39,-398 39,-447 143,-447 143,-398 39,-398"/>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node2 -->
-<g id="edge2" class="edge">
+<g id="edge2_Node000002_Node000003" class="edge">
 <title>Node3&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M106,-376.02C106,-367.94 106,-359.07 106,-349.86"/>
-<polygon fill="none" stroke="midnightblue" points="102.5,-376.15 106,-386.15 109.5,-376.15 102.5,-376.15"/>
+<g id="a_edge2_Node000002_Node000003"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M91,-387.79C91,-380 91,-371.27 91,-362.06"/>
+<polygon fill="none" stroke="#63b8ff" points="87.5,-387.8 91,-397.8 94.5,-387.8 87.5,-387.8"/>
+</a>
+</g>
 </g>
 </g>
 </svg>
-        <g id="navigator" transform="translate(0 0)" fill="#404254">
-                <rect fill="#f2f5e9" fill-opacity="0.5" stroke="#606060" stroke-width=".5" x="0" y="0" width="60" height="60"/>
-                <use id="zoomplus" xlink:href="#zoomPlus" x="17" y="9" onmousedown="handleZoom(evt,'in')"/>
-                <use id="zoomminus" xlink:href="#zoomMin" x="42" y="9" onmousedown="handleZoom(evt,'out')"/>
-                <use id="reset" xlink:href="#resetDef" x="30" y="36" onmousedown="handleReset()"/>
-                <g id="arrowUp" xlink:href="#dirArrow" transform="translate(30 24)" onmousedown="handlePan(0,-1)">
-                  <use xlink:href="#rim" fill="#404040">
-                        <set attributeName="fill" to="#808080" begin="arrowUp.mouseover" end="arrowUp.mouseout"/>
-                  </use>
-                  <path fill="none" stroke="white" stroke-width="1.5" d="M0,-3.0v7 M-2.5,-0.5L0,-3.0L2.5,-0.5"/>
-                </g>
-                <g id="arrowRight" xlink:href="#dirArrow" transform="rotate(90) translate(36 -43)" onmousedown="handlePan(1,0)">
-                  <use xlink:href="#rim" fill="#404040">
-                        <set attributeName="fill" to="#808080" begin="arrowRight.mouseover" end="arrowRight.mouseout"/>
-                  </use>
-                  <path fill="none" stroke="white" stroke-width="1.5" d="M0,-3.0v7 M-2.5,-0.5L0,-3.0L2.5,-0.5"/>
-                </g>
-                <g id="arrowDown" xlink:href="#dirArrow" transform="rotate(180) translate(-30 -48)" onmousedown="handlePan(0,1)">
-                  <use xlink:href="#rim" fill="#404040">
-                        <set attributeName="fill" to="#808080" begin="arrowDown.mouseover" end="arrowDown.mouseout"/>
-                  </use>
-                  <path fill="none" stroke="white" stroke-width="1.5" d="M0,-3.0v7 M-2.5,-0.5L0,-3.0L2.5,-0.5"/>
-                </g>
-                <g id="arrowLeft" xlink:href="#dirArrow" transform="rotate(270) translate(-36 17)" onmousedown="handlePan(-1,0)">
-                  <use xlink:href="#rim" fill="#404040">
-                        <set attributeName="fill" to="#808080" begin="arrowLeft.mouseover" end="arrowLeft.mouseout"/>
-                  </use>
-                  <path fill="none" stroke="white" stroke-width="1.5" d="M0,-3.0v7 M-2.5,-0.5L0,-3.0L2.5,-0.5"/>
-                </g>
-        </g>
-        <svg viewBox="0 0 15 15" width="100%" height="30px" preserveAspectRatio="xMaxYMin meet">
-         <g id="arrow_out" transform="scale(0.3 0.3)">
-          <a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_processor__inherit__graph_org.svg" target="_base">
-           <rect id="button" ry="5" rx="5" y="6" x="6" height="38" width="38"
-                fill="#f2f5e9" fill-opacity="0.5" stroke="#606060" stroke-width="1.0"/>
-           <path id="arrow"
-             d="M 11.500037,31.436501 C 11.940474,20.09759 22.043105,11.32322 32.158766,21.979434 L 37.068811,17.246167 C 37.068811,17.246167 37.088388,32 37.088388,32 L 22.160133,31.978069 C 22.160133,31.978069 26.997745,27.140456 26.997745,27.140456 C 18.528582,18.264221 13.291696,25.230495 11.500037,31.436501 z"
-             style="fill:#404040;"/>
-          </a>
-         </g>
-        </svg>
+
+<g id="navigator" transform="translate(0 0)" fill="#404254">
+  <rect fill="#f2f5e9" fill-opacity="0.5" stroke="#606060" stroke-width=".5" x="0" y="0" width="60" height="60"/>
+  <use id="zoomplus" xlink:href="#zoomPlus" x="17" y="9" onmousedown="handleZoom(evt,'in')"/>
+  <use id="zoomminus" xlink:href="#zoomMin" x="42" y="9" onmousedown="handleZoom(evt,'out')"/>
+  <use id="reset" xlink:href="#resetDef" x="30" y="36" onmousedown="handleReset()"/>
+   <use id="arrowup" xlink:href="#arrowUp" x="0" y="0" onmousedown="handlePan(0,-1)"/>
+  <use id="arrowright" xlink:href="#arrowRight" x="0" y="0" onmousedown="handlePan(1,0)"/>
+  <use id="arrowdown" xlink:href="#arrowDown" x="0" y="0" onmousedown="handlePan(0,1)"/>
+  <use id="arrowleft" xlink:href="#arrowLeft" x="0" y="0" onmousedown="handlePan(-1,0)"/>
+</g>
+<svg viewBox="0 0 15 15" width="100%" height="30px" preserveAspectRatio="xMaxYMin meet">
+ <g id="arrow_out" transform="scale(0.3 0.3)">
+  <a xlink:href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_processor__inherit__graph_org.svg" target="_base">
+   <rect id="button" ry="5" rx="5" y="6" x="6" height="38" width="38"
+        fill="#f2f5e9" fill-opacity="0.5" stroke="#606060" stroke-width="1.0"/>
+   <path id="arrow"
+     d="M 11.500037,31.436501 C 11.940474,20.09759 22.043105,11.32322 32.158766,21.979434 L 37.068811,17.246167 C 37.068811,17.246167 37.088388,32 37.088388,32 L 22.160133,31.978069 C 22.160133,31.978069 26.997745,27.140456 26.997745,27.140456 C 18.528582,18.264221 13.291696,25.230495 11.500037,31.436501 z"
+     style="fill:#404040;"/>
+  </a>
+ </g>
+</svg>
+
+<style type='text/css'>
+<![CDATA[
+[data-mouse-over-selected='false'] { opacity: 0.7; }
+[data-mouse-over-selected='true']  { opacity: 1.0; }
+]]>
+</style>
+<script type="application/ecmascript"><![CDATA[
+document.addEventListener('DOMContentLoaded', (event) => {
+  highlightEdges();
+  highlightAdjacentNodes();
+});
+]]></script>
 </svg>

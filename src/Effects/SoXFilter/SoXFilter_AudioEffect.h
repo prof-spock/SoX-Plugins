@@ -69,13 +69,13 @@ namespace SoXPlugins::Effects::SoXFilter {
         /* event handling     */
         /*--------------------*/
 
-        void prepareToPlay (IN Real sampleRate)
+        void prepareToPlay (IN Real dataPointRate)
             override;
 
         /*--------------------*/
 
         void processBlock (IN Real timePosition,
-                           INOUT AudioSampleListVector& buffer)
+                           INOUT AudioDataPointListVector& buffer)
             override;
 
         /*--------------------*/

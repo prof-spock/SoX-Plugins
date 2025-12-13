@@ -39,9 +39,9 @@ namespace SoXPlugins::Effects::SoXGain {
 
     /**
      * An <C>_EffectDescriptor_GAIN</C> object is the internal
-     * implementation of a gain effect descriptor type where all
-     * sample input is routed to and sample output is routed from with
-     * a single gain factor parameter.
+     * implementation of a gain effect descriptor type where all data
+     * point input is routed to and data point output is routed from
+     * with a single gain factor parameter.
      */
     struct _EffectDescriptor_GAIN {
 
@@ -147,9 +147,17 @@ String SoXGain_AudioEffect::toString () const
 
 String SoXGain_AudioEffect::_effectDescriptorToString () const
 {
-    const _EffectDescriptor_GAIN& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);
-    return effectDescriptor.toString();
+    String result;
+
+    if (_effectDescriptor == NULL) {
+        result = "NULL";
+    } else {
+        const _EffectDescriptor_GAIN& effectDescriptor =
+            TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);
+        result = effectDescriptor.toString();
+    }
+
+    return result;
 }
 
 /*--------------------*/
@@ -181,7 +189,7 @@ SoXGain_AudioEffect::_setValueInternal
     SoXParameterValueChangeKind result =
         SoXParameterValueChangeKind::parameterChange;
 
-    SoXAudioEffect::setValue(parameterName, value);
+    SoXAudioEffect::setValue(parameterName, value, true);
 
     if (parameterName == parameterName_gain) {
         const Real dBGain = STR::toReal(value);
@@ -196,7 +204,7 @@ SoXGain_AudioEffect::_setValueInternal
 
 void SoXGain_AudioEffect::setDefaultValues () {
     Logging_trace(">>");
-    _effectParameterMap.setValue(parameterName_gain, "0");
+    setValueViaParent(parameterName_gain, "0");
     Logging_trace1("<<: %1", toString());
 }
 
@@ -206,7 +214,7 @@ void SoXGain_AudioEffect::setDefaultValues () {
 
 void
 SoXGain_AudioEffect::processBlock (IN Real timePosition,
-                                   INOUT AudioSampleListVector& buffer)
+                                   INOUT AudioDataPointListVector& buffer)
 {
     Logging_trace1(">>: time = %1", TOSTRING(timePosition));
 
@@ -215,18 +223,18 @@ SoXGain_AudioEffect::processBlock (IN Real timePosition,
         _EffectDescriptor_GAIN& effectDescriptor =
             TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);
 
-        const Natural sampleCount = buffer[0].size();
+        const Natural dataPointCount = buffer[0].size();
         const Real gain = effectDescriptor.gain;
 
         for (Natural channel = 0;  channel < _channelCount;
              channel++) {
-            const AudioSampleList& inputList  = buffer[channel];
-            AudioSampleList& outputList = buffer[channel];
+            const AudioDataPointList& inputList = buffer[channel];
+            AudioDataPointList& outputList      = buffer[channel];
 
-            for (Natural i = 0;  i < sampleCount;  i++) {
-                const AudioSample inputSample = inputList[i];
-                AudioSample& outputSample     = outputList[i];
-                outputSample = (AudioSample) (inputSample * gain);
+            for (Natural i = 0;  i < dataPointCount;  i++) {
+                const AudioDataPoint inputDataPoint = inputList[i];
+                AudioDataPoint& outputDataPoint     = outputList[i];
+                outputDataPoint = (AudioDataPoint) (inputDataPoint * gain);
             }
         }
     }

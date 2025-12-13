@@ -54,6 +54,7 @@ var NAVTREE =
         [ "Functions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -63,14 +64,21 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_assertion_8h.html",
-"_my_windows_8h.html#acf022792a06287190723f0f548cb7c08",
-"_so_x_compander_support_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c",
-"_so_x_reverb_support_8cpp.html#a1dd6c93a16fb94a66d276dd46ad3603f",
-"struct_audio_1_1_audio_sample_list_vector.html#ab78b6113aa137915c37d170c49573cf0",
-"struct_base_types_1_1_primitives_1_1_natural.html#a263cce02b93e703af5a871b796f8b3bd",
-"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html#a0b790121166865fc579a673ce3459c74",
-"struct_so_x_plugins_1_1_helpers_1_1_so_x_effect_parameter_map.html#a649280295403b501f97c7774f94a6e6d"
+"_so_x_audio_editor_widget_8cpp.html#a4a4f8183c43eaad90f3ac81b2ce27ab4",
+"_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html#a3ff72421185148d54a110670f6e1fd8c",
+"dir_ea754da17e3d11d3201d9d479b786745.html",
+"struct___effect_descriptor___e_c_h_o.html",
+"struct_audio_1_1_audio_data_point_ring_buffer.html#afdd971d2404a2ead115f065d8b130c99",
+"struct_base_modules_1_1_string_util.html#a53508bce935d60d29a34dfeac1a3edc4",
+"struct_base_types_1_1_primitives_1_1_integer.html#abad328088c0b4da05ae09f9420ee2d5a",
+"struct_event_dispatcher.html#a2fb060415168e88eda03ca262630758a",
+"struct_so_x_audio_effect.html#ac5f9f0343c74bf67ea8e5ab6677f0630",
+"struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html#a2389fcd4f53ebbec5d63f4e898dfb076",
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html#a7af0a173a93e287fd1b6788a5045589d",
+"struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#a7e410470e18ddc45f337f950f149a017",
+"struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#a7cce766106bb4a4c5e4f4c446334da6f"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';
+var LISTOFALLMEMBERS = 'List of all members';

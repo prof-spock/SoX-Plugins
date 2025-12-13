@@ -28,7 +28,7 @@
 
 using std::cout;
 
-using Audio::AudioSample;
+using Audio::AudioDataPoint;
 using BaseModules::OperatingSystem;
 using SoXPlugins::Effects::SoXCompander::SoXCompander_AudioEffect;
 using SoXPlugins::Effects::SoXFilter::SoXFilter_AudioEffect;
@@ -68,17 +68,17 @@ void _writeToOutputFile (IN String& title,
 /*--------------------*/
 
 /**
-  * Puts five samples onto left and right channel in <buffer>
+  * Puts five data points onto left and right channel in <buffer>
   */
-void _adaptBuffer (INOUT AudioSampleListVector& buffer) {
-    AudioSampleList& leftInputList = buffer[0];
+void _adaptBuffer (INOUT AudioDataPointListVector& buffer) {
+    AudioDataPointList& leftInputList = buffer[0];
     leftInputList[0] =   0.6;
     leftInputList[1] =  -0.3;
     leftInputList[2] =   0.25;
     leftInputList[3] =   0.4;
     leftInputList[4] =  -0.6;
     leftInputList.setLength(5);
-    AudioSampleList& rightInputList = buffer[1];
+    AudioDataPointList& rightInputList = buffer[1];
     rightInputList[0] =  0.3;
     rightInputList[1] = -0.6;
     rightInputList[2] =  0.4;
@@ -89,18 +89,18 @@ void _adaptBuffer (INOUT AudioSampleListVector& buffer) {
 
 /*--------------------*/
 
-void _copyBuffer (IN AudioSampleListVector& srcBuffer,
-                  OUT AudioSampleListVector& destBuffer) {
-    Natural channelCount = srcBuffer.length();
-    Natural sampleCount = srcBuffer[0].length();
+void _copyBuffer (IN AudioDataPointListVector& srcBuffer,
+                  OUT AudioDataPointListVector& destBuffer) {
+    Natural channelCount   = srcBuffer.length();
+    Natural dataPointCount = srcBuffer[0].length();
     destBuffer.clear();
 
     for (Natural channel = 0;  channel < channelCount;
          channel++) {
-        const AudioSampleList& srcList = srcBuffer[channel];
-        AudioSampleList destList{sampleCount};
+        const AudioDataPointList& srcList = srcBuffer[channel];
+        AudioDataPointList destList{dataPointCount};
 
-        for (Natural i = 0;  i < sampleCount;  i++) {
+        for (Natural i = 0;  i < dataPointCount;  i++) {
             destList[i] = srcList[i];
         }
 
@@ -112,21 +112,25 @@ void _copyBuffer (IN AudioSampleListVector& srcBuffer,
 /*--------------------*/
 
 /**
-  * Constructs a sine wave with 441Hz for <sampleRate> in <buffer>
-  */
-void _fillBuffer (OUT AudioSampleListVector& buffer,
-                  IN Integer sampleRate) {
-    Logging_trace1(">>: sampleRate = %1", TOSTRING(sampleRate));
+ * Constructs a sine wave with 441Hz for <C>dataPointRate</C> in
+ * <C>buffer</C>.
+ *
+ * @param[out] buffer         list vector of data points
+ * @param[in]  dataPointRate  data point rate (in Hz)
+ */
+void _fillBuffer (OUT AudioDataPointListVector& buffer,
+                  IN Integer dataPointRate) {
+    Logging_trace1(">>: dataPointRate = %1", TOSTRING(dataPointRate));
 
-    Natural bufferLength = (Natural) sampleRate / _blocksPerSecond;
+    Natural bufferLength = (Natural) dataPointRate / _blocksPerSecond;
     buffer.clear();
 
     for (Natural channel = 0;  channel < _channelCount;
          channel++) {
-        AudioSampleList inputList{bufferLength};
+        AudioDataPointList inputList{bufferLength};
 
         for (Natural i = 0;  i < bufferLength;  i++) {
-            AudioSample s = Real::sin(Real::twoPi * Real(i)
+            AudioDataPoint s = Real::sin(Real::twoPi * Real(i)
                                          / Real{bufferLength});
             inputList[i] = s;
         }
@@ -146,52 +150,52 @@ void _initializeEffect (IN String& audioEffectKind,
     if (audioEffectKind == _effectName_compander) {
         audioEffect->setValue("0#BANDCOUNT", "4", true);
         audioEffect->setValue("-1#BANDINDEX", "1", true);
-        audioEffect->setValue("1#Attack [s]", "0.03", true);
-        audioEffect->setValue("1#Decay [s]", "0.15", true);
-        audioEffect->setValue("1#Knee [dB]", "6.0", true);
-        audioEffect->setValue("1#Threshold [dB]", "-18.0", true);
-        audioEffect->setValue("1#Ratio", "6", true);
-        audioEffect->setValue("1#Gain [dB]", "4", true);
-        audioEffect->setValue("1#Top Frequency [Hz]", "300.0", false);
-        audioEffect->setValue("2#Attack [s]", "0.03", true);
-        audioEffect->setValue("2#Decay [s]", "0.15", true);
-        audioEffect->setValue("2#Knee [dB]", "6.0", true);
-        audioEffect->setValue("2#Threshold [dB]", "-18.0", true);
-        audioEffect->setValue("2#Ratio", "6", true);
-        audioEffect->setValue("2#Gain [dB]", "-7", true);
-        audioEffect->setValue("2#Top Frequency [Hz]", "1500.0", false);
-        audioEffect->setValue("3#Attack [s]", "0.04", true);
-        audioEffect->setValue("3#Decay [s]", "0.15", true);
-        audioEffect->setValue("3#Knee [dB]", "6.0", true);
-        audioEffect->setValue("3#Threshold [dB]", "-20.0", true);
-        audioEffect->setValue("3#Ratio", "20", true);
-        audioEffect->setValue("3#Gain [dB]", "10", true);
-        audioEffect->setValue("3#Top Frequency [Hz]", "4000.0", false);
-        audioEffect->setValue("4#Attack [s]", "0.30", true);
-        audioEffect->setValue("4#Decay [s]", "0.50", true);
-        audioEffect->setValue("4#Knee [dB]", "6.0", true);
-        audioEffect->setValue("4#Threshold [dB]", "-60.0", true);
-        audioEffect->setValue("4#Ratio", "1.05", true);
-        audioEffect->setValue("4#Gain [dB]", "0", true);
-        audioEffect->setValue("4#Top Frequency [Hz]", "25000.0", false);
+        audioEffect->setValue("1#Attack [s]", "0.03");
+        audioEffect->setValue("1#Decay [s]", "0.15");
+        audioEffect->setValue("1#Knee [dB]", "6.0");
+        audioEffect->setValue("1#Threshold [dB]", "-18.0");
+        audioEffect->setValue("1#Ratio", "6");
+        audioEffect->setValue("1#Gain [dB]", "4");
+        audioEffect->setValue("1#Top Frequency [Hz]", "300.0", true);
+        audioEffect->setValue("2#Attack [s]", "0.03");
+        audioEffect->setValue("2#Decay [s]", "0.15");
+        audioEffect->setValue("2#Knee [dB]", "6.0");
+        audioEffect->setValue("2#Threshold [dB]", "-18.0");
+        audioEffect->setValue("2#Ratio", "6");
+        audioEffect->setValue("2#Gain [dB]", "-7");
+        audioEffect->setValue("2#Top Frequency [Hz]", "1500.0", true);
+        audioEffect->setValue("3#Attack [s]", "0.04");
+        audioEffect->setValue("3#Decay [s]", "0.15");
+        audioEffect->setValue("3#Knee [dB]", "6.0");
+        audioEffect->setValue("3#Threshold [dB]", "-20.0");
+        audioEffect->setValue("3#Ratio", "20");
+        audioEffect->setValue("3#Gain [dB]", "10");
+        audioEffect->setValue("3#Top Frequency [Hz]", "4000.0", true);
+        audioEffect->setValue("4#Attack [s]", "0.30");
+        audioEffect->setValue("4#Decay [s]", "0.50");
+        audioEffect->setValue("4#Knee [dB]", "6.0");
+        audioEffect->setValue("4#Threshold [dB]", "-60.0");
+        audioEffect->setValue("4#Ratio", "1.05");
+        audioEffect->setValue("4#Gain [dB]", "0");
+        audioEffect->setValue("4#Top Frequency [Hz]", "25000.0", true);
     } else if (audioEffectKind == _effectName_filter) {
-        audioEffect->setValue("Filter Kind", "Equalizer", true);
-        audioEffect->setValue("Frequency [Hz]", "1000", true);
-        audioEffect->setValue("Bandwidth", "2", true);
-        audioEffect->setValue("Bandwidth Unit", "Octave(s)", true);
-        audioEffect->setValue("Eq. Gain [dB]", "5", false);
+        audioEffect->setValue("Filter Kind", "Equalizer");
+        audioEffect->setValue("Frequency [Hz]", "1000");
+        audioEffect->setValue("Bandwidth", "2");
+        audioEffect->setValue("Bandwidth Unit", "Octave(s)");
+        audioEffect->setValue("Eq. Gain [dB]", "5", true);
     } else if (audioEffectKind == _effectName_reverb) {
-        audioEffect->setValue("Is Wet Only?", "false", true);
-        audioEffect->setValue("Reverberance [%]", "50", true);
-        audioEffect->setValue("HF Damping [%]", "50", true);
-        audioEffect->setValue("Room Scale [%]", "100", true);
-        audioEffect->setValue("Stereo Depth [%]", "100", true);
-        audioEffect->setValue("Predelay [ms]", "0", true);
-        audioEffect->setValue("Wet Gain [dB]", "0", false);
+        audioEffect->setValue("Is Wet Only?", "false");
+        audioEffect->setValue("Reverberance [%]", "50");
+        audioEffect->setValue("HF Damping [%]", "50");
+        audioEffect->setValue("Room Scale [%]", "100");
+        audioEffect->setValue("Stereo Depth [%]", "100");
+        audioEffect->setValue("Predelay [ms]", "0");
+        audioEffect->setValue("Wet Gain [dB]", "0", true);
     } else if (audioEffectKind == _effectName_tremolo) {
-        audioEffect->setValue("Effect Kind", "Tremolo", true);
-        audioEffect->setValue("Depth [%]", "50", true);
-        audioEffect->setValue("Modulation [Hz]", "1", false);
+        audioEffect->setValue("Effect Kind", "Tremolo");
+        audioEffect->setValue("Depth [%]", "50");
+        audioEffect->setValue("Modulation [Hz]", "1", true);
     }
 
     Logging_trace("<<");
@@ -229,12 +233,16 @@ SoXAudioEffect* _makeNewEffect (IN String& audioEffectKind,
 
 /**
  * Performs a multisecond test run for a processor with given
- * <audioEffectKind> using samples from <waveFormBuffer> assuming a
- * sample rate of <sampleRate>
+ * <C>audioEffectKind</C> using data points from <C>waveFormBuffer</C>
+ * assuming a data point rate of <C>dataPointRate</C>
+ * 
+ * @param[in]  audioEffectKind  kind of audio effect to be tested
+ * @param[in]  waveFormBuffer   buffer of data points for effect
+ * @param[in]  dataPointRate    data point rate (in Hz)
  */
 void _runForEffect (IN String& audioEffectKind,
-                    INOUT AudioSampleListVector& waveFormBuffer,
-                    IN Integer sampleRate) {
+                    INOUT AudioDataPointListVector& waveFormBuffer,
+                    IN Integer dataPointRate) {
     Logging_trace1(">>: kind = %1", audioEffectKind);
 
     Natural testLengthInSeconds;
@@ -244,14 +252,14 @@ void _runForEffect (IN String& audioEffectKind,
     _writeToOutputFile("EFFECT AFTER INITIALIZATION", *audioEffect);
     Real timePosition = 0.0;
     Real increment = Real{1.0} / Real{_blocksPerSecond};
-    AudioSampleListVector buffer{};
+    AudioDataPointListVector buffer{};
 
     if (audioEffectKind == _effectName_compander) {
         _adaptBuffer(waveFormBuffer);
     }
 
     _copyBuffer(waveFormBuffer, buffer);
-    audioEffect->prepareToPlay(sampleRate);
+    audioEffect->prepareToPlay(dataPointRate);
     _writeToOutputFile("EFFECT AFTER PREPARATION", *audioEffect);
     Logging_trace("--: AFTER PREPARATION");
 
@@ -286,9 +294,9 @@ int main (int argc, char* argv[]) {
     Logging_trace(">>");
     _outputFile.open(temporaryDirectoryPath + "/SoXTest.txt");
 
-    const Integer sampleRate = 44100;
+    const Integer dataPointRate = 44100;
     String effectName;
-    AudioSampleListVector waveFormBuffer{};
+    AudioDataPointListVector waveFormBuffer{};
     const Character effectCharacter = (argc < 2 ? ' ' : argv[1][0]);
 
     if (effectCharacter  == 'C') {
@@ -302,8 +310,8 @@ int main (int argc, char* argv[]) {
     }
 
     Logging_trace1("--: effectName = %1", effectName);
-    _fillBuffer(waveFormBuffer, sampleRate);
-    _runForEffect(effectName, waveFormBuffer, sampleRate);
+    _fillBuffer(waveFormBuffer, dataPointRate);
+    _runForEffect(effectName, waveFormBuffer, dataPointRate);
     _outputFile.close();
 
     Logging_trace("<<");

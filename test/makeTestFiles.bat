@@ -1,23 +1,33 @@
 @ECHO OFF
 REM generate SOX test files for cancellation test
 
+SETLOCAL ENABLEDELAYEDEXPANSION
+SET scriptDirectory=%~dp0.
+
+SET configuration=Release
+IF NOT "%1"=="" SET configuration=%1
+
 REM --- sox command path ---
-SET sox=sox
+SET sox=CALL sox
 
 REM --- internal configuration ---
 SET soxFileType=.flac
 SET soxFileSettings=-b 24 -r 44100
-SET durationInSecondsBy4=4
 SET durationInSeconds=16
+SET /A durationInSecondsBy4="%durationInSeconds% / 4"
+SET pulseLength=0.04
+SET pulseFrequency=400
+SET durationInSecondsBy4MinusPLMinus1=2.96
 
 REM ==========================
 REM === prepare test files ===
 REM ==========================
 
+PUSHD %scriptDirectory%
+
 ECHO === preparing test files ===
 
 SET soxCommandsSuffix=fade 0.1 -0 pad 1 1
-
 REM -- a stereo file with noise on one channel and sine on the other
 REM -- (both with two bursts)
 SET soxCommands=synth %durationInSecondsBy4% pinknoise
@@ -26,12 +36,26 @@ SET soxCommands=synth %durationInSecondsBy4% sine 135
 CALL :makeBurstFile channelB true
 %sox% -M channelA%soxFileType% channelB%soxFileType% noise%soxFileType%
 
-REM -- two sine files, one with a sweep --
+REM -- sine file with a sweep --
 SET soxCommands=synth %durationInSeconds% sine 100-5000 gain -6 remix 1 1
 %sox% -n %soxFileSettings% sine-sweep%soxFileType% %soxCommands% %soxCommandsSuffix%
 
-SET soxCommands=synth %durationInSeconds% sine 500 remix 1 1
-%sox% -n %soxFileSettings% sine-500Hz%soxFileType% %soxCommands% %soxCommandsSuffix%
+REM -- four triangle bursts
+SET soxCommands=synth %pulseLength% noise %pulseFrequency% gain -6 remix 1 1
+%sox% -n %soxFileSettings% onePulse%soxFileType% %soxCommands% pad 0.05 1
+
+SET soxCommands=%soxCommands% pad 1 %durationInSecondsBy4MinusPLMinus1%
+SET soxCommands=%soxCommands% repeat 3
+%sox% -n %soxFileSettings% pulse%soxFileType% %soxCommands% %soxCommandsSuffix%
+
+REM -- four notes --
+SET notes=E2 A2 D3 G3
+SET soxCommand=synth %durationInSecondsBy4% pluck
+SET prefix=%sox% -n %soxFileSettings%
+FOR %%n IN (%notes%) DO %prefix% note-%%n%soxFileType% %soxCommand% %%n
+SET fileList=
+FOR %%n IN (%notes%) DO SET fileList=!fileList! note-%%n%soxFileType%
+%sox% %fileList% notes%soxFileType% %soxCommandsSuffix%
 
 REM =====================
 REM === perform tests ===
@@ -57,8 +81,23 @@ CALL :performTest sine-sweep bass
 SET soxCommands=biquad 0.3 -0.5 0.3 2 -0.4 0.1
 CALL :performTest noise biquad
 
+SET stageList=50 0.75 1.25 1 -s  75 0.5 2.5 2 -t  100 0.25 5 4 -s
+SET soxCommands=chorus 1.0 0.5 %stageList%
+CALL :performTest notes chorus
+CALL :performTest onePulse chorus
+
 SET soxCommands=compand 0.02,0.15 -4:-60,0,-20 +4.5
 CALL :performTest noise compander
+
+SET soxCommands=echo 0.9 0.6 200 0.75 400 0.5 800 0.25
+CALL :performTest pulse echo
+CALL :performTest notes echo
+CALL :performTest noise echo
+
+SET soxCommands=echos 0.9 0.6 300 0.75 600 0.5 1200 0.25
+CALL :performTest pulse echos
+CALL :performTest notes echos
+CALL :performTest noise echos
 
 SET soxCommands=equalizer 520 2o -3
 CALL :performTest sine-sweep equalizer
@@ -79,7 +118,7 @@ SET soxCommands=mcompand "0.02,0.15 4:-60,0,-20 +4.5" 1000
 SET soxCommands=%soxCommands% "0.15,0.4 -20,0,-10 -2"
 CALL :performTest noise mcompander
 
-SET soxCommands=phaser 0.6 0.66 3 0.6 0.5 -t
+SET soxCommands=phaser 0.6 0.66 3 0.4 0.5 -t
 CALL :performTest noise phaser
 
 SET soxCommands=reverb 60 22 87.5 34.88 20 -3
@@ -91,6 +130,8 @@ CALL :performTest noise treble
 SET soxCommands=tremolo 0.395 94.67
 CALL :performTest sine-sweep tremolo
 
+POPD
+ENDLOCAL
 GOTO :EOF
 
 REM ============================================================

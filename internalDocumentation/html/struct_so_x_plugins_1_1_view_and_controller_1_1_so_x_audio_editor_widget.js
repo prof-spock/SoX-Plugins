@@ -2,9 +2,8 @@ var struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget =
 [
     [ "SoXAudioEditorWidget", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#ae6728fc015c249b3b9fee44219b8036c", null ],
     [ "SoXAudioEditorWidget", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#a5fbf8056bf8ec3ceb16e2e3423d2fb3d", null ],
-    [ "~SoXAudioEditorWidget", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#ab99c09b1d712e0198e8a558a5a52f35b", null ],
     [ "handlePageChange", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#a1c52aa0773036a7160051001168be597", null ],
-    [ "operator=", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#a1583e02f8cfeab2c26ee87b65b60cbd2", null ],
+    [ "operator=", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#a428b41e6bdb050389b09f4736d92a98f", null ],
     [ "parameterName", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#af2cb41ce57820fb2eb85b7b53bcdd050", null ],
     [ "partHeightsInPage", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#a79c3099dd9b8e36679d668ffd749b1cf", null ],
     [ "resized", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor_widget.html#a053bafaaee1cb3ca274b075e24c8865d", null ],

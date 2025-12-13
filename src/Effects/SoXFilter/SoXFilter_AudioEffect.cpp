@@ -18,7 +18,7 @@
 
 #include <cmath>
 
-#include "AudioSampleRingBufferVector.h"
+#include "AudioDataPointRingBufferVector.h"
 #include "Dictionary.h"
 #include "FilterBandwidthUnit.h"
 #include "IIRFilter.h"
@@ -27,7 +27,7 @@
 
 /*--------------------*/
 
-using Audio::AudioSampleRingBufferVector;
+using Audio::AudioDataPointRingBufferVector;
 using Audio::FilterBandwidthUnit;
 using Audio::IIRFilter;
 using BaseTypes::Containers::Dictionary;
@@ -104,7 +104,7 @@ static const StringList _biquadFilterParameterNameList =
 /* FORWARD DECLARATIONS */
 /*----------------------*/
 
-static Real _alphaForBandwidth (IN Real sampleRate,
+static Real _alphaForBandwidth (IN Real dataPointRate,
                                 IN Real bandwidth,
                                 IN FilterBandwidthUnit unit,
                                 IN Real frequency,
@@ -121,7 +121,8 @@ namespace SoXPlugins::Effects::SoXFilter {
     /**
      * An <C>_EffectDescriptor_FLTR</C> object is the internal
      * implementation of a biquad filter effect descriptor type where
-     * all sample input is routed to and sample output is routed from.
+     * all data point input is routed to and data point output is
+     * routed from.
      */
     struct _EffectDescriptor_FLTR {
 
@@ -138,8 +139,8 @@ namespace SoXPlugins::Effects::SoXFilter {
         Real a1; /**< IIR filter coefficient a1 */
         Real a2; /**< IIR filter coefficient a2 */
 
-        /** a vector of sample ring buffers for the IIR filter */
-        AudioSampleRingBufferVector sampleRingBufferVector;
+        /** a vector of data point ring buffers for the IIR filter */
+        AudioDataPointRingBufferVector dataPointRingBufferVector;
 
         /** the underlying IIR filter */
         IIRFilter filter;
@@ -184,11 +185,12 @@ namespace SoXPlugins::Effects::SoXFilter {
 
         /**
          * Recalculates IIR filter coefficients from other parameters
-         * and <C>sampleRate</C> and updates IIR filter accordingly.
+         * and <C>dataPointRate</C> and updates IIR filter
+         * accordingly.
          *
-         * @param[in] sampleRate  new sample rate
+         * @param[in] dataPointRate  new data point rate
          */
-        void updateSettings (IN Real sampleRate);
+        void updateSettings (IN Real dataPointRate);
 
         /*--------------------*/
 
@@ -215,7 +217,7 @@ _EffectDescriptor_FLTR (INOUT SoXFilter_AudioEffect& effect)
     : effect(effect),
       kind{filterKind_biquad},
       b0{0.0}, b1{0.0}, b2{0.0}, a0{0.0}, a1{0.0}, a2{0.0},
-      sampleRingBufferVector{2, true, _biquadFilterOrder},
+      dataPointRingBufferVector{2, true, _biquadFilterOrder},
       filter{_biquadFilterOrder},
       frequency{1000.0},
       bandwidth{1.5},
@@ -232,10 +234,10 @@ _EffectDescriptor_FLTR (INOUT SoXFilter_AudioEffect& effect)
 
 /*--------------------*/
 
-void _EffectDescriptor_FLTR::updateSettings (IN Real sampleRate)
+void _EffectDescriptor_FLTR::updateSettings (IN Real dataPointRate)
 {
-    Logging_trace2(">>: kind = %1, sampleRate = %2",
-                   kind, TOSTRING(sampleRate));
+    Logging_trace2(">>: kind = %1, dataPointRate = %2",
+                   kind, TOSTRING(dataPointRate));
 
     effect.setParameterValidity(false);
 
@@ -246,10 +248,10 @@ void _EffectDescriptor_FLTR::updateSettings (IN Real sampleRate)
         const Real four{4.0};
         const Real ten{10.0};
 
-        const Real w0 = Real::twoPi * frequency / sampleRate;
+        const Real w0 = Real::twoPi * frequency / dataPointRate;
         const Real cw0 = Real::cos(w0);
         const Real sw0 = Real::sin(w0);
-        const Real alpha = _alphaForBandwidth(sampleRate,
+        const Real alpha = _alphaForBandwidth(dataPointRate,
                                               bandwidth,
                                               bandwidthUnit,
                                               frequency,
@@ -271,7 +273,7 @@ void _EffectDescriptor_FLTR::updateSettings (IN Real sampleRate)
                          ? Real{(frequency * Real::two.power(bandwidth - Real::one)
                                  * Real::two.power(-bandwidth / Real::two))}
                          : bandwidth));
-            a2 = (-Real::twoPi * bandwidthAsFrequency / sampleRate).exp();
+            a2 = (-Real::twoPi * bandwidthAsFrequency / dataPointRate).exp();
             a1 = -four * a2 / (Real::one + a2) * cw0;
             a0 = Real::one;
             b2 = Real::zero;
@@ -388,11 +390,11 @@ String _EffectDescriptor_FLTR::toString () const
     String st2 =
         STR::expand("b0 = %1, b1 = %2, b2 = %3,"
                     " a0 = %4, a1 = %5, a2 = %6,"
-                    " filter = %7, sampleRingBufferVector = %8",
+                    " filter = %7, dataPointRingBufferVector = %8",
                     TOSTRING(b0), TOSTRING(b1), TOSTRING(b2),
                     TOSTRING(a0), TOSTRING(a1), TOSTRING(a2),
                     filter.toString(),
-                    sampleRingBufferVector.toString());
+                    dataPointRingBufferVector.toString());
 
     return STR::expand("_EffectDescriptor_FLTR(%1, %2)", st1, st2);
 }
@@ -569,28 +571,29 @@ static const Dictionary _unitCodeToTextMap =
 /**
  * Returns the alpha for given <C>bandwidth</C> measured as
  * <C>unit</C> with <C>frequency</C> and <C>dBgain</C>;
- * <C>sampleRate</C> gives the current samplerate for the effect.
+ * <C>dataPointRate</C> gives the current data point rate for the
+ * effect.
  *
- * @param[in] sampleRate  current effect sample rate
- * @param[in] bandWidth   the nominal of the filter band width
- * @param[in] unit        the unit of the filter band width
- * @param[in] frequency   the characteristic frequency of the filter
- * @param[in] dBGain      the filter gain (in decibels)
+ * @param[in] dataPointRate  current effect data point rate
+ * @param[in] bandWidth      the nominal of the filter band width
+ * @param[in] unit           the unit of the filter band width
+ * @param[in] frequency      the characteristic frequency of the filter
+ * @param[in] dBGain         the filter gain (in decibels)
  * @return  alpha parameter of filter
  */
-static Real _alphaForBandwidth (IN Real sampleRate,
+static Real _alphaForBandwidth (IN Real dataPointRate,
                                 IN Real bandwidth,
                                 IN FilterBandwidthUnit unit,
                                 IN Real frequency,
                                 IN Real dBGain)
 {
-    Logging_trace5(">>: sampleRate = %1, bandwidth = %2%3,"
+    Logging_trace5(">>: dataPointRate = %1, bandwidth = %2%3,"
                    " frequency = %4, gain = %5",
-                   TOSTRING(sampleRate), TOSTRING(bandwidth),
+                   TOSTRING(dataPointRate), TOSTRING(bandwidth),
                    _bwUnitToString(unit), TOSTRING(frequency),
                    TOSTRING(dBGain));
 
-    const Real w0 = Real::twoPi * frequency / sampleRate;
+    const Real w0 = Real::twoPi * frequency / dataPointRate;
     const Real sinW0 = w0.sin();
     const Real one{1.0};
     const Real two{2.0};
@@ -839,28 +842,28 @@ SoXFilter_AudioEffect::SoXFilter_AudioEffect ()
 
     /* first of all define kind of filter and all parameter names */
     _effectParameterMap.setKindAndValueEnum(parameterName_kind,
-                                            _kindList, filterKind);
-    _effectParameterMap.setKindAndValueReal(parameterName_frequency,
-                                            10.0, 20000.0, 0.01, 1000.0);
-    _effectParameterMap.setKindAndValueReal(parameterName_bandwidth,
-                                            0.001, 20000.0, 0.001, 1.0);
-    _effectParameterMap.setKindAndValueEnum(parameterName_bandwidthUnit,
-                                            bwUnitTextList,
-                                            _bwUnitText_quality);
-    _effectParameterMap.setKindAndValueReal(parameterName_dBGain,
-                                            -25.0, 25.0, 0.01, 0.0);
-    _effectParameterMap.setKindAndValueEnum(parameterName_cstSkirtGain,
-                                            _yesNoList, "No");
-    _effectParameterMap.setKindAndValueReal(parameterName_equGain,
-                                            -25.0, 25.0, 0.01, 0.0);
-    _effectParameterMap.setKindAndValueReal(parameterName_poleCount,
-                                            1.0, 2.0, 1.0, 1.0);
-    _effectParameterMap.setKindAndValueEnum(parameterName_unpitchedMode,
-                                            _yesNoList, "No");
+                                            _kindList,
+                                            filterKind_allpass);
+
+    _effectParameterMap.setKindReal(parameterName_frequency,
+                                    10.0, 20000.0, 0.01);
+    _effectParameterMap.setKindReal(parameterName_bandwidth,
+                                    0.001, 20000.0, 0.001);
+    _effectParameterMap.setKindEnum(parameterName_bandwidthUnit,
+                                    bwUnitTextList);
+    _effectParameterMap.setKindReal(parameterName_dBGain,
+                                    -25.0, 25.0, 0.01);
+    _effectParameterMap.setKindEnum(parameterName_cstSkirtGain,
+                                    _yesNoList);
+    _effectParameterMap.setKindReal(parameterName_equGain,
+                                    -25.0, 25.0, 0.01);
+    _effectParameterMap.setKindReal(parameterName_poleCount,
+                                    1.0, 2.0, 1.0);
+    _effectParameterMap.setKindEnum(parameterName_unpitchedMode,
+                                    _yesNoList);
 
     for (const String& parameterName : _biquadFilterParameterNameList) {
-        _effectParameterMap.setKindAndValueReal(parameterName,
-                                                -10.0, 10.0, 1e-6, 0.0);
+        _effectParameterMap.setKindReal(parameterName, -10.0, 10.0, 1e-6);
     }
 
     Logging_trace1("<<: %1", toString());
@@ -892,9 +895,17 @@ String SoXFilter_AudioEffect::toString () const
 
 String SoXFilter_AudioEffect::_effectDescriptorToString () const
 {
-    const _EffectDescriptor_FLTR& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_FLTR>(_effectDescriptor);
-    return effectDescriptor.toString();
+    String result;
+
+    if (_effectDescriptor == NULL) {
+        result = "NULL";
+    } else {
+        const _EffectDescriptor_FLTR& effectDescriptor =
+            TOREFERENCE<_EffectDescriptor_FLTR>(_effectDescriptor);
+        result = effectDescriptor.toString();
+    }
+
+    return result;
 }
 
 /*--------------------*/
@@ -966,7 +977,7 @@ SoXFilter_AudioEffect::_setValueInternal
         }
 
         if (effectIsUpdated) {
-            effectDescriptor.updateSettings(_sampleRate);
+            effectDescriptor.updateSettings(_dataPointRate);
         }
     }
 
@@ -980,7 +991,23 @@ void SoXFilter_AudioEffect::setDefaultValues () {
     Logging_trace(">>");
     const String filterKind =
         _effectParameterMap.value(parameterName_kind);
+
+    setValueViaParent(parameterName_kind,          filterKind);
+    setValueViaParent(parameterName_bandwidth,     "1.0");
+    setValueViaParent(parameterName_bandwidthUnit, _bwUnitText_quality);
+    setValueViaParent(parameterName_dBGain,        "0.0");
+    setValueViaParent(parameterName_cstSkirtGain,  "No");
+    setValueViaParent(parameterName_equGain,       "0.0");
+    setValueViaParent(parameterName_poleCount,     "1.0");
+    setValueViaParent(parameterName_unpitchedMode, "No");
+
+    for (const String& parameterName : _biquadFilterParameterNameList) {
+        setValueViaParent(parameterName, "0.0");
+    }
+
+    setValueViaParent(parameterName_frequency, "1000.0", true);
     _updateParametersForKind(_effectParameterMap, filterKind);
+
     Logging_trace1("<<: %1", toString());
 }
 
@@ -988,17 +1015,17 @@ void SoXFilter_AudioEffect::setDefaultValues () {
 /* event handling     */
 /*--------------------*/
 
-void SoXFilter_AudioEffect::prepareToPlay (IN Real sampleRate)
+void SoXFilter_AudioEffect::prepareToPlay (IN Real dataPointRate)
 {
-    Logging_trace1(">>: %1", TOSTRING(sampleRate));
+    Logging_trace1(">>: %1", TOSTRING(dataPointRate));
 
-    if (sampleRate != _sampleRate) {
+    if (dataPointRate != _dataPointRate) {
         _EffectDescriptor_FLTR& effectDescriptor =
             TOREFERENCE<_EffectDescriptor_FLTR>(_effectDescriptor);
-        _sampleRate = sampleRate;
+        _dataPointRate = dataPointRate;
 
         /* filter has to be recalculated */
-        effectDescriptor.updateSettings(_sampleRate);
+        effectDescriptor.updateSettings(_dataPointRate);
     }
 
     Logging_trace("<<");
@@ -1008,7 +1035,7 @@ void SoXFilter_AudioEffect::prepareToPlay (IN Real sampleRate)
 
 void
 SoXFilter_AudioEffect::processBlock (IN Real timePosition,
-                                     INOUT AudioSampleListVector& buffer)
+                                     INOUT AudioDataPointListVector& buffer)
 {
     Logging_trace1(">>: time = %1", TOSTRING(timePosition));
 
@@ -1017,27 +1044,28 @@ SoXFilter_AudioEffect::processBlock (IN Real timePosition,
 
         _EffectDescriptor_FLTR& effectDescriptor =
             TOREFERENCE<_EffectDescriptor_FLTR>(_effectDescriptor);
-        const Natural sampleCount = buffer[0].size();
+        const Natural dataPointCount = buffer[0].size();
         IIRFilter& filter{effectDescriptor.filter};
-        AudioSampleRingBufferVector& sampleRingBufferVector =
-            effectDescriptor.sampleRingBufferVector;
+        AudioDataPointRingBufferVector& dataPointRingBufferVector =
+            effectDescriptor.dataPointRingBufferVector;
 
         for (Natural channel = 0;  channel < _channelCount;
              channel++) {
-            AudioSampleRingBuffer& inputSampleRingBuffer =
-                sampleRingBufferVector.at(channel, 0);
-            AudioSampleRingBuffer& outputSampleRingBuffer =
-                sampleRingBufferVector.at(channel, 1);
-            const AudioSampleList& inputList = buffer[channel];
-            AudioSampleList& outputList = buffer[channel];
+            AudioDataPointRingBuffer& inputDataPointRingBuffer =
+                dataPointRingBufferVector.at(channel, 0);
+            AudioDataPointRingBuffer& outputDataPointRingBuffer =
+                dataPointRingBufferVector.at(channel, 1);
+            const AudioDataPointList& inputList = buffer[channel];
+            AudioDataPointList& outputList = buffer[channel];
 
-            for (Natural i = 0;  i < sampleCount;  i++) {
-                const AudioSample inputSample = inputList[i];
-                AudioSample& outputSample     = outputList[i];
-                inputSampleRingBuffer.shiftRight(inputSample);
-                outputSampleRingBuffer.shiftRight(0.0);
-                filter.apply(inputSampleRingBuffer, outputSampleRingBuffer);
-                outputSample = outputSampleRingBuffer.first();
+            for (Natural i = 0;  i < dataPointCount;  i++) {
+                const AudioDataPoint inputDataPoint = inputList[i];
+                AudioDataPoint& outputDataPoint     = outputList[i];
+                inputDataPointRingBuffer.shiftRight(inputDataPoint);
+                outputDataPointRingBuffer.shiftRight(0.0);
+                filter.apply(inputDataPointRingBuffer,
+                             outputDataPointRingBuffer);
+                outputDataPoint = outputDataPointRingBuffer.first();
             }
         }
     }

@@ -547,7 +547,7 @@ void SoXAudioEditor::setValue (IN String& parameterName,
                                IN String& value)
 {
     Logging_trace(">>");
-    _processor.setValue(parameterName, value);
+    _processor.setValue(parameterName, value, true);
     Logging_trace("<<");
 }
 

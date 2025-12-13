@@ -66,7 +66,7 @@ namespace SoXPlugins::Effects::SoXGain {
         /*--------------------*/
 
         void processBlock (IN Real timePosition,
-                           INOUT AudioSampleListVector& buffer)
+                           INOUT AudioDataPointListVector& buffer)
             override;
 
         /*--------------------*/

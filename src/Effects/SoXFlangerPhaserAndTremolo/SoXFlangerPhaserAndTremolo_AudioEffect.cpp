@@ -29,13 +29,13 @@
 
 #include "Logging.h"
 #include "Percentage.h"
-#include "AudioSampleRingBufferVector.h"
+#include "AudioDataPointRingBufferVector.h"
 #include "WaveForm.h"
 #include "SoXFlangerPhaserAndTremolo_AudioEffect.h"
 
 /*--------------------*/
 
-using Audio::AudioSampleRingBufferVector;
+using Audio::AudioDataPointRingBufferVector;
 using Audio::WaveForm;
 using Audio::WaveFormKind;
 using Audio::WaveFormIteratorState;
@@ -56,8 +56,9 @@ namespace SoXPlugins::Effects::SoXFlangerPhaserAndTremolo {
      * tremolo; both effects share parameters and have similar
      * implementations: hence they can be combined.
      *
-     * For the tremolo the phaser parameters are assumed as follows: delay
-     * is 0s, inGain and outGain are 1.0, the decay is not relevant.
+     * For the tremolo the phaser parameters are assumed as follows:
+     * delay is 0s, inGain and outGain are 1.0, the regeneration is
+     * not relevant.
      *
      * For the phaser the tremolo parameter depth is not relevant and
      * ignored.
@@ -88,16 +89,20 @@ namespace SoXPlugins::Effects::SoXFlangerPhaserAndTremolo {
         /** the delay in seconds */
         Real delay;
 
-        /** the decay in seconds */
-        Real decay;
+        /** the regeneration as a factor */
+        Real regeneration;
 
         /** the modulation depth in percent */
         Percentage depth;
 
-        /** the sample ring buffer for the delay line */
-        AudioSampleRingBufferVector delayRingBufferList;
+        /** the order of interpolation for the ring buffer: 0 is no
+         * interpolation, 1 is linear and 2 is quadratic */
+        Natural interpolationOrder;
 
-        /** the delay buffer length in samples */
+        /** the data point ring buffer for the delay line */
+        AudioDataPointRingBufferVector delayRingBufferList;
+
+        /** the delay buffer length in data points */
         Natural delayRingBufferLength;
 
         /** the pointer to the delay buffer (as an index) */
@@ -118,7 +123,8 @@ namespace SoXPlugins::Effects::SoXFlangerPhaserAndTremolo {
 
 /*============================================================*/
 
-using SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::_EffectDescriptor_PHTR;
+using SoXPlugins::Effects::SoXFlangerPhaserAndTremolo
+          ::_EffectDescriptor_PHTR;
 
 /*--------------------*/
 /*--------------------*/
@@ -129,11 +135,13 @@ String _EffectDescriptor_PHTR::toString () const
         STR::expand("isPhaser = %1, frequency = %2Hz,"
                     " timeOffset = %3s, inGain = %4,"
                     " outGain = %5, delay = %6s,"
-                    " decay = %7s, depth = %8%",
+                    " regeneration = %7, depth = %8%,"
+                    " interpolationOrder = %9",
                     TOSTRING(isPhaser), TOSTRING(frequency),
                     TOSTRING(timeOffset), TOSTRING(inGain),
                     TOSTRING(outGain), TOSTRING(delay),
-                    TOSTRING(decay), TOSTRING(depth));
+                    TOSTRING(regeneration), TOSTRING(depth),
+                    TOSTRING(interpolationOrder));
 
     String st2 =
         STR::expand(" waveForm = %1,"
@@ -149,18 +157,16 @@ String _EffectDescriptor_PHTR::toString () const
                        st1, st2);
 }
 
-
 /*====================*/
 
 /** the maximum allowable delay in seconds */
-static const Real _maximumDelay = 0.005;
+static const Real _maximumDelay = 1.0;
 
 /** the internal separator for lists */
 static const String separator = "/";
 
 /** the standard starting phase of a phaser (90°) */
-static const Radians _defaultPhase =
-    3.141592653589793238462643383279 / 2.0;
+static const Radians _defaultPhase = 3.141592653589793238462643383279 / 2.0;
 
 /** the name of the tremolo effect */
 static const String _tremoloEffectKind = "Tremolo";
@@ -172,9 +178,6 @@ static const StringList _kindList =
 /*....................*/
 /* parameter names    */
 /*....................*/
-
-/** the name for the decay parameter */
-static const String parameterName_decay        = "Decay";
 
 /** the name for the delay parameter */
 static const String parameterName_delayInMs    = "Delay [ms]";
@@ -188,11 +191,21 @@ static const String parameterName_effectKind   = "Effect Kind";
 /** the name for the frequency parameter */
 static const String parameterName_frequency    = "Modulation [Hz]";
 
+/** the name for the interpolation order parameter */
+static const String parameterName_interpolationOrder =
+    "Interp. Order";
+
 /** the name for the input gain parameter */
 static const String parameterName_inGain       = "In Gain";
 
 /** the name for the output gain parameter */
 static const String parameterName_outGain      = "Out Gain";
+
+/** the name for the regeneration parameter */
+static const String parameterName_regeneration = "Regeneration";
+
+/** the original name for the regeneration parameter */
+static const String parameterName_regeneration_OLD = "Decay";
 
 /** the name for the time offset parameter */
 static const String parameterName_timeOffset   = "Time Offset [s]";
@@ -202,23 +215,25 @@ static const String parameterName_waveFormKind = "Waveform";
 
 /** the list of all parameter names */
 static const StringList _allParameterNameList =
-    StringList::fromList({parameterName_decay,
-                          parameterName_delayInMs,
+    StringList::fromList({parameterName_delayInMs,
                           parameterName_depth,
                           parameterName_effectKind,
                           parameterName_frequency,
                           parameterName_inGain,
+                          parameterName_interpolationOrder,
+                          parameterName_regeneration,
                           parameterName_outGain,
                           parameterName_timeOffset,
                           parameterName_waveFormKind});
 
 /** the list of the phaser parameter names */
 static const StringList _phaserParameterNameList =
-    StringList::fromList({parameterName_decay,
-                          parameterName_delayInMs,
+    StringList::fromList({parameterName_delayInMs,
                           parameterName_effectKind,
                           parameterName_frequency,
                           parameterName_inGain,
+                          parameterName_interpolationOrder,
+                          parameterName_regeneration,
                           parameterName_outGain,
                           parameterName_timeOffset,
                           parameterName_waveFormKind});
@@ -236,37 +251,40 @@ static const StringList _tremoloParameterNameList =
 
 /**
  * Sets up a new phaser/tremolo effect descriptor based on
- * <C>sampleRate</C>
+ * <C>dataPointRate</C>
  *
- * @param[in] sampleRate  the sample rate for this effect
+ * @param[in] dataPointRate  the data point rate for this effect
  * @return  new phaser/tremolo effect descriptor
  */
 static
-_EffectDescriptor_PHTR* _createEffectDescriptor (IN Real sampleRate)
+_EffectDescriptor_PHTR* _createEffectDescriptor (IN Real dataPointRate)
 {
-    Logging_trace1(">>: %1", TOSTRING(sampleRate));
+    Logging_trace1(">>: %1", TOSTRING(dataPointRate));
 
     const Natural maximumDelayBufferLength =
-        (Natural) Real::ceiling(_maximumDelay * sampleRate);
+        (Natural) Real::ceiling(_maximumDelay * dataPointRate);
 
     _EffectDescriptor_PHTR* result =
         new _EffectDescriptor_PHTR{
-            true,                                  /* phaser */
+            true,                        /* phaser */
 
-            0.5,                                   /* frequency */
-            WaveFormKind::sine,                    /* waveFormKind */
-            {},                                    /* waveForm */
-            0.0,                                   /* timeOffset */
+            0.5,                         /* frequency */
+            WaveFormKind::sine,          /* waveFormKind */
+            {},                          /* waveForm */
+            0.0,                         /* timeOffset */
 
-            0.4,                                   /* inGain */
-            0.74,                                  /* outGain */
-            0.003,                                 /* delay */
-            0.4,                                   /* decay */
-            40.0,                                  /* depth */
+            0.4,                         /* inGain */
+            0.74,                        /* outGain */
+            0.003,                       /* delay */
+            0.4,                         /* regeneration */
+            40.0,                        /* depth */
+            0,                           /* interpolationOrder */
 
-            {2, false, maximumDelayBufferLength},  /* delayRingBufferList */
-            maximumDelayBufferLength,              /* delayRingBufferLength */
-            0                                      /* delayRingBufferIndex */
+            {2,
+             false,
+             maximumDelayBufferLength},  /* delayRingBufferList */
+            maximumDelayBufferLength,    /* delayRingBufferLength */
+            0                            /* delayRingBufferIndex */
         };
 
     Logging_trace1("<<: %1", result->toString());
@@ -311,36 +329,35 @@ _updateParametersForKind (INOUT SoXEffectParameterMap& parameterMap,
 
 /**
  * Recalculates derived parameters in <C>effectDescriptor</C> for
- * <C>effect</C> from parameter map and <C>sampleRate</C> and start
+ * <C>effect</C> from parameter map and <C>dataPointRate</C> and start
  * time in <C>currentTime</C>.
  *
+ * @param[inout] effect            the current effect
  * @param[inout] effectDescriptor  descriptor of effect
- * @param[in] sampleRate           new sample rate for effect
- * @param[in] currentTime          current time for effect
+ * @param[in]    dataPointRate     new data point rate for effect
+ * @param[in]    currentTime       current time for effect
  */
 static void
 _updateSettings (INOUT SoXFlangerPhaserAndTremolo_AudioEffect& effect,
                  INOUT _EffectDescriptor_PHTR& effectDescriptor,
-                 IN Real sampleRate, IN Real currentTime)
+                 IN Real dataPointRate, IN Real currentTime)
 {
-    Logging_trace2(">>: sampleRate = %1, currentTime = %2",
-                   TOSTRING(sampleRate), TOSTRING(currentTime));
+    Logging_trace2(">>: dataPointRate = %1, currentTime = %2",
+                   TOSTRING(dataPointRate), TOSTRING(currentTime));
 
     effect.setParameterValidity(false);
     const Real frequency = effectDescriptor.frequency;
-    const Real waveFormLength = sampleRate / frequency;
+    const Real waveFormLength = dataPointRate / frequency;
     Natural delayRingBufferLength;
     Real lowModulationValue;
     Real highModulationValue;
-    Boolean hasIntegerValues;
 
     if (effectDescriptor.isPhaser) {
         /* phaser */
         delayRingBufferLength =
-            Natural{Real::round(effectDescriptor.delay * sampleRate)};
+            Natural{Real::round(effectDescriptor.delay * dataPointRate)};
         lowModulationValue  = 1.0;
         highModulationValue = Real{delayRingBufferLength};
-        hasIntegerValues = true;
     } else {
         /* tremolo: set some effect parameters to constants */
         effectDescriptor.delay   = 0.0;
@@ -352,13 +369,12 @@ _updateSettings (INOUT SoXFlangerPhaserAndTremolo_AudioEffect& effect,
         lowModulationValue =
             Real{1.0} - effectDescriptor.depth / Real{100.0};
         highModulationValue = 1.0;
-        hasIntegerValues = false;
     }
 
     /* delay settings */
     effectDescriptor.delayRingBufferIndex  = 0;
     effectDescriptor.delayRingBufferLength = delayRingBufferLength;
-    AudioSampleRingBufferVector& ringBufferList =
+    AudioDataPointRingBufferVector& ringBufferList =
         effectDescriptor.delayRingBufferList;
     ringBufferList.setRingBufferLength(delayRingBufferLength);
     ringBufferList.setToZero();
@@ -370,6 +386,7 @@ _updateSettings (INOUT SoXFlangerPhaserAndTremolo_AudioEffect& effect,
                                     effectDescriptor.timeOffset,
                                     currentTime));
 
+    const Boolean hasIntegerValues = false;
     WaveForm& waveForm = effectDescriptor.waveForm;
     waveForm.set(waveFormLength, effectDescriptor.waveFormKind,
                  lowModulationValue, highModulationValue,
@@ -391,7 +408,7 @@ SoXFlangerPhaserAndTremolo_AudioEffect ()
     Logging_trace(">>");
 
     /* initialize descriptor */
-    _effectDescriptor = _createEffectDescriptor(_sampleRate);
+    _effectDescriptor = _createEffectDescriptor(_dataPointRate);
 
     /* initialize parameters */
     const String effectKind = _kindList[0];
@@ -407,7 +424,7 @@ SoXFlangerPhaserAndTremolo_AudioEffect ()
                                     0.0, 1000.0, 0.001);
     _effectParameterMap.setKindReal(parameterName_delayInMs,
                                     0.0, 5.0, 0.001);
-    _effectParameterMap.setKindReal(parameterName_decay,
+    _effectParameterMap.setKindReal(parameterName_regeneration,
                                     0.0, 0.99, 0.001);
     _effectParameterMap.setKindReal(parameterName_depth,
                                     0.0, 100.0, 0.001);
@@ -415,6 +432,8 @@ SoXFlangerPhaserAndTremolo_AudioEffect ()
                                     0.1, 2.0, 0.001);
     _effectParameterMap.setKindEnum(parameterName_waveFormKind,
                                     waveFormKindValueList);
+    _effectParameterMap.setKindInt(parameterName_interpolationOrder,
+                                    0, 2, 1);
     _effectParameterMap.setKindReal(parameterName_timeOffset,
                                     -8192.0, +8192.0,
                                     Real::two.power(-16.0));
@@ -450,9 +469,17 @@ String SoXFlangerPhaserAndTremolo_AudioEffect::toString () const
 String SoXFlangerPhaserAndTremolo_AudioEffect::
 _effectDescriptorToString () const
 {
-    const _EffectDescriptor_PHTR& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_PHTR>(_effectDescriptor);
-    return effectDescriptor.toString();
+    String result;
+
+    if (_effectDescriptor == NULL) {
+        result = "NULL";
+    } else {
+        const _EffectDescriptor_PHTR& effectDescriptor =
+            TOREFERENCE<_EffectDescriptor_PHTR>(_effectDescriptor);
+        result = effectDescriptor.toString();
+    }
+
+    return result;
 }
 
 /*--------------------*/
@@ -501,9 +528,7 @@ _setValueInternal (IN String& parameterName,
             (recalculationIsForced
              && _effectParameterMap.isActive(parameterName));
 
-        if (parameterName == parameterName_decay) {
-            effectDescriptor.decay = STR::toReal(value);
-        } else if (parameterName == parameterName_delayInMs) {
+        if (parameterName == parameterName_delayInMs) {
             effectDescriptor.delay = STR::toReal(value) / 1000.0;
         } else if (parameterName == parameterName_depth) {
             effectDescriptor.depth = STR::toPercentage(value);
@@ -511,8 +536,13 @@ _setValueInternal (IN String& parameterName,
             effectDescriptor.frequency = STR::toReal(value);
         } else if (parameterName == parameterName_inGain) {
             effectDescriptor.inGain = STR::toReal(value);
+        } else if (parameterName == parameterName_interpolationOrder) {
+            effectDescriptor.interpolationOrder = STR::toNatural(value);
         } else if (parameterName == parameterName_outGain) {
             effectDescriptor.outGain = STR::toReal(value);
+        } else if (parameterName == parameterName_regeneration
+            || parameterName == parameterName_regeneration_OLD) {
+            effectDescriptor.regeneration = STR::toReal(value);
         } else if (parameterName == parameterName_waveFormKind) {
             effectDescriptor.waveFormKind =
                 Audio::stringToWaveFormKind(value);
@@ -522,7 +552,7 @@ _setValueInternal (IN String& parameterName,
 
         if (effectIsUpdated) {
             _updateSettings(*this, effectDescriptor,
-                            _sampleRate, _currentTimePosition);
+                            _dataPointRate, _currentTimePosition);
         }
     }
 
@@ -541,18 +571,20 @@ void SoXFlangerPhaserAndTremolo_AudioEffect::setDefaultValues ()
     const Boolean isTremolo = (effectKind == _tremoloEffectKind);
 
     if (isTremolo) {
-        _effectParameterMap.setValue(parameterName_frequency, "0.5");
-        _effectParameterMap.setValue(parameterName_depth,     "40");
+        setValueViaParent(parameterName_frequency, "0.5");
+        setValueViaParent(parameterName_depth,     "40");
     } else {
-        _effectParameterMap.setValue(parameterName_inGain,       "0.4");
-        _effectParameterMap.setValue(parameterName_outGain,      "0.74");
-        _effectParameterMap.setValue(parameterName_delayInMs,    "3.0");
-        _effectParameterMap.setValue(parameterName_decay,        "0.4");
-        _effectParameterMap.setValue(parameterName_frequency,    "0.5");
-        _effectParameterMap.setValue(parameterName_waveFormKind, "Triangle");
+        setValueViaParent(parameterName_inGain,             "0.4");
+        setValueViaParent(parameterName_outGain,            "0.74");
+        setValueViaParent(parameterName_delayInMs,          "3.0");
+        setValueViaParent(parameterName_regeneration,       "0.4");
+        setValueViaParent(parameterName_frequency,          "0.5");
+        setValueViaParent(parameterName_waveFormKind,       "Triangle");
+        setValueViaParent(parameterName_interpolationOrder, "0");
     }
 
-    _effectParameterMap.setValue(parameterName_timeOffset, "0");
+    setValueViaParent(parameterName_timeOffset, "0", true);
+
     Logging_trace1("<<: %1", toString());
 }
 
@@ -562,7 +594,7 @@ void SoXFlangerPhaserAndTremolo_AudioEffect::setDefaultValues ()
 
 void SoXFlangerPhaserAndTremolo_AudioEffect::
 processBlock (IN Real timePosition,
-              INOUT AudioSampleListVector& buffer)
+              INOUT AudioDataPointListVector& buffer)
 {
     Logging_trace1(">>: time = %1", TOSTRING(timePosition));
 
@@ -576,54 +608,54 @@ processBlock (IN Real timePosition,
             /* playhead was moved ==> keep time synchronisation of
                waveform */
             _updateSettings(*this, effectDescriptor,
-                            _sampleRate, _currentTimePosition);
+                            _dataPointRate, _currentTimePosition);
         }
 
-        const Natural sampleCount = buffer[0].size();
-        const Boolean isPhaser = effectDescriptor.isPhaser;
-        const Real inGain   = effectDescriptor.inGain;
-        const Real outGain  = effectDescriptor.outGain;
-        const Real decay    = effectDescriptor.decay;
+        const Natural dataPointCount = buffer[0].size();
+        const Boolean isPhaser  = effectDescriptor.isPhaser;
+        const Real inGain       = effectDescriptor.inGain;
+        const Real outGain      = effectDescriptor.outGain;
+        const Real regeneration = effectDescriptor.regeneration;
         const Natural delayRingBufferLength =
             effectDescriptor.delayRingBufferLength;
         Natural delayRingBufferIndex  =
             effectDescriptor.delayRingBufferIndex;
-        AudioSampleRingBufferVector& delayRingBufferList =
+        AudioDataPointRingBufferVector& delayRingBufferList =
             effectDescriptor.delayRingBufferList;
         WaveForm& waveForm = effectDescriptor.waveForm;
         WaveFormIteratorState state = waveForm.state();
 
         for (Natural channel = 0;  channel < _channelCount;
              channel++) {
-            const AudioSampleList& inputList = buffer[channel];
-            AudioSampleList& outputList = buffer[channel];
-            AudioSampleRingBuffer& delayRingBuffer =
+            const AudioDataPointList& inputList = buffer[channel];
+            AudioDataPointList& outputList = buffer[channel];
+            AudioDataPointRingBuffer& delayRingBuffer =
                 delayRingBufferList[channel];
 
             waveForm.setState(state);
             delayRingBufferIndex = effectDescriptor.delayRingBufferIndex;
 
-            for (Natural i = 0;  i < sampleCount;  i++) {
-                const AudioSample inputSample = inputList[i];
-                AudioSample outputSample = 0.0;
+            for (Natural i = 0;  i < dataPointCount;  i++) {
+                const AudioDataPoint inputDataPoint = inputList[i];
+                AudioDataPoint outputDataPoint = 0.0;
 
                 if (!isPhaser) {
                     const Real factor = waveForm.current();
-                    outputSample = inputSample * factor;
+                    outputDataPoint = inputDataPoint * factor;
                 } else if (delayRingBufferLength > 0) {
                     const Natural modulatedIndex =
                         ((delayRingBufferIndex + Natural{waveForm.current()})
                          % delayRingBufferLength);
-                    outputSample =
-                        (inputSample * inGain
-                         + delayRingBuffer[modulatedIndex] * decay);
+                    outputDataPoint =
+                        (inputDataPoint * inGain
+                         + delayRingBuffer[modulatedIndex] * regeneration);
                     delayRingBufferIndex =
                         (delayRingBufferIndex + 1) % delayRingBufferLength;
-                    delayRingBuffer[delayRingBufferIndex] = outputSample;
-                    outputSample *= outGain;
+                    delayRingBuffer[delayRingBufferIndex] = outputDataPoint;
+                    outputDataPoint *= outGain;
                 }
 
-                outputList[i] = outputSample;
+                outputList[i] = outputDataPoint;
                 waveForm.advance();
             }
         }

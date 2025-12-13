@@ -2,7 +2,7 @@ var struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_
 [
     [ "_EffectDescriptor_RVRB", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#a7e410470e18ddc45f337f950f149a017", null ],
     [ "toString", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#a19b233909cb3722d8b070f89be22a7a5", null ],
-    [ "updateSettings", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#ab352f1d63476039203029622b469be1d", null ],
+    [ "updateSettings", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#adee0b4714d9ea0bbd86e6cc9acf3cd4a", null ],
     [ "channelCount", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#a7d81a403a0aa39e2b91c02bd8772bcdd", null ],
     [ "effect", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#a940e1bf44d843a1fbe9796701d6a3360", null ],
     [ "hfDamping", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html#a70e63cdcbc7093c0b3b74aff70f43cfc", null ],

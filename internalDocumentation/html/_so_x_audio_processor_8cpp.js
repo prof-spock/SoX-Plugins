@@ -1,12 +1,15 @@
 var _so_x_audio_processor_8cpp =
 [
-    [ "_EffectParameterListener", "struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html", "struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener" ],
-    [ "_SoXAudioProcessorDescriptor", "struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html", "struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor" ],
+    [ "SoXPlugins::ViewAndController::_EffectParameterListener", "struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener.html", "struct_so_x_plugins_1_1_view_and_controller_1_1___effect_parameter_listener" ],
+    [ "SoXPlugins::ViewAndController::_SoXAudioProcessorDescriptor", "struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor.html", "struct_so_x_plugins_1_1_view_and_controller_1_1___so_x_audio_processor_descriptor" ],
+    [ "_EffectParameterListener", "struct___effect_parameter_listener.html", "struct___effect_parameter_listener" ],
+    [ "_SoXAudioProcessorDescriptor", "struct___so_x_audio_processor_descriptor.html", "struct___so_x_audio_processor_descriptor" ],
     [ "_AudioProcessorParameterArray", "_so_x_audio_processor_8cpp.html#a96716fa170703d312b3d4fad25cf3233", null ],
     [ "_SoXAudioEditorPtrSet", "_so_x_audio_processor_8cpp.html#ad9be64afd7f4e12d76d70c7de111ebe8", null ],
-    [ "STR", "_so_x_audio_processor_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c", null ],
     [ "StringToNaturalMap", "_so_x_audio_processor_8cpp.html#a159291a215bac17ba80d19973f63fdec", null ],
-    [ "_constructParameterObject", "_so_x_audio_processor_8cpp.html#a665ac4d121fcaaac593d5b60d74e67c0", null ],
+    [ "ValueChangeNotification", "_so_x_audio_processor_8cpp.html#a37bb2b70b4a8f47ea8cd2f5e5e571970", null ],
+    [ "SoXEffectParameterKind", "_so_x_audio_processor_8cpp.html#a782a7054af4fe4d3821edfd71bb275d3", null ],
+    [ "_constructParameterObject", "_so_x_audio_processor_8cpp.html#a23e0aa2e5cf089d605b55ad8ea6f7cee", null ],
     [ "_convertMapToString", "_so_x_audio_processor_8cpp.html#a6a3632ffdc458e17795a4db81acd4ffc", null ],
     [ "_dispatchValueChange", "_so_x_audio_processor_8cpp.html#a1ca774014e2dc8e27deddc71cfa6ed16", null ],
     [ "_readKeyValueMapString", "_so_x_audio_processor_8cpp.html#a2b1cbd3edcc8d0808b75e3b6a0234b4c", null ],
@@ -16,6 +19,8 @@ var _so_x_audio_processor_8cpp =
     [ "_updateAudioProcessorParameterRange", "_so_x_audio_processor_8cpp.html#af73422597c70ec2139e44575ec88e364", null ],
     [ "_updateAudioProcessorParameterValue", "_so_x_audio_processor_8cpp.html#a731965fc9138172ef80c57892defe12e", null ],
     [ "_updateParameterRanges", "_so_x_audio_processor_8cpp.html#a860e4bc007a2f19c5028007152b0ccd7", null ],
+    [ "convertArray", "_so_x_audio_processor_8cpp.html#a26a6344026afe5b821b34f6ad176ee79", null ],
+    [ "String_normalize", "_so_x_audio_processor_8cpp.html#a71e0b0d5231035b5cc28fc08c9ae5bb1", null ],
     [ "decimalPlaceCount", "_so_x_audio_processor_8cpp.html#a3f6020260a19696f7502f8290f2a842c", null ],
     [ "metaParameterNameSet", "_so_x_audio_processor_8cpp.html#ac7258423060f7303df15d876ca8f100c", null ],
     [ "quoteCharacter", "_so_x_audio_processor_8cpp.html#aaf174bbc71e92b2e039a58e2f1dd56a1", null ]

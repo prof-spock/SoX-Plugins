@@ -1,5 +1,7 @@
 <map id="SoXPlugins::ViewAndController::EventDispatcher" name="SoXPlugins::ViewAndController::EventDispatcher">
-<area shape="rect" id="node1" title="An EventDispatcher is a helper type for catching events from embedded sliders and combo boxes and dis..." alt="" coords="87,135,311,264"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,196,87"/>
-<area shape="rect" id="node3" title=" " alt="" coords="221,5,375,87"/>
+<area shape="rect" id="Node000001" title="An EventDispatcher is a helper type for catching events from embedded sliders and combo boxes and dis..." alt="" coords="77,119,271,239"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,169,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,81,139,117,135,120,112,84"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="194,5,327,71"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="236,84,213,120,209,117,231,81"/>
 </map>

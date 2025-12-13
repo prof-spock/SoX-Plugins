@@ -100,7 +100,7 @@ namespace SoXPlugins::ViewAndController {
         /**
          * Constructor for event dispatcher for <C>editor</C>.
          *
-         * @param editor  target editor of new event dispatcher
+         * @param editor  associated editor of new event dispatcher
          */
         EventDispatcher (SoXAudioEditor* editor)
             : juce::ComboBox::Listener(), juce::Slider::Listener()

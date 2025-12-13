@@ -1,7 +1,9 @@
 var _so_x_reverb___audio_effect_8cpp =
 [
-    [ "_EffectDescriptor_RVRB", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b" ],
-    [ "STR", "_so_x_reverb___audio_effect_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c", null ],
+    [ "SoXPlugins::Effects::SoXReverb::_EffectDescriptor_RVRB", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___effect_descriptor___r_v_r_b" ],
+    [ "_SoXReverb", "struct___so_x_reverb.html", "struct___so_x_reverb" ],
+    [ "SoXReverb_AudioEffect", "struct_so_x_reverb___audio_effect.html", "struct_so_x_reverb___audio_effect" ],
+    [ "_EffectDescriptor_RVRB", "struct___effect_descriptor___r_v_r_b.html", "struct___effect_descriptor___r_v_r_b" ],
     [ "_yesNoList", "_so_x_reverb___audio_effect_8cpp.html#a765f43e9f9c7f9948f9ad80cd0536feb", null ],
     [ "parameterName_hfDamping", "_so_x_reverb___audio_effect_8cpp.html#aa66bee24f863e61c551dc1864bd4dcb6", null ],
     [ "parameterName_isWetOnly", "_so_x_reverb___audio_effect_8cpp.html#ac044cfc6ac7ef9fa60ff9880f20e6463", null ],

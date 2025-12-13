@@ -1,4 +1,5 @@
 <map id="SoXPlugins::ViewAndController::SoXAudioEditor" name="SoXPlugins::ViewAndController::SoXAudioEditor">
-<area shape="rect" id="node1" title="A SoXAudioEditor object models the (generic)audio editor for a plugin, represented by a display windo..." alt="" coords="5,135,229,424"/>
-<area shape="rect" id="node2" title=" " alt="" coords="18,5,217,87"/>
+<area shape="rect" id="Node000001" title="A SoXAudioEditor object models the (generic)audio editor for a plugin, represented by a display windo..." alt="" coords="5,119,200,439"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="17,5,189,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,84,105,119,100,119,100,84"/>
 </map>

@@ -1,0 +1,5 @@
+<map id="SoXCompander_AudioEffect" name="SoXCompander_AudioEffect">
+<area shape="rect" id="Node000001" title="A SoXCompander_AudioEffect object models the SoX compand and mcompand audio effects; a simple compand..." alt="" coords="5,653,209,879"/>
+<area shape="rect" id="Node000002" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="13,5,201,605"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,619,110,653,105,653,105,619"/>
+</map>

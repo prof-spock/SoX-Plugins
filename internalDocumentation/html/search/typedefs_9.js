@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['waveformiteratorstate_1935',['WaveFormIteratorState',['../namespace_audio.html#a516b176c934c0ff0c413e5b62260ee1f',1,'Audio']]]
+  ['valuechangenotification_0',['ValueChangeNotification',['../namespace_so_x_plugins_1_1_effects.html#a37bb2b70b4a8f47ea8cd2f5e5e571970',1,'SoXPlugins::Effects::ValueChangeNotification'],['../_so_x_audio_processor_8cpp.html#a37bb2b70b4a8f47ea8cd2f5e5e571970',1,'ValueChangeNotification:&#160;SoXAudioEffect.h']]]
 ];

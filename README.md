@@ -66,8 +66,8 @@ model the SoX command-line processing.
 This plugin implementation is completely free, open-source,
 platform-neutral and based on the *[JUCE][reference:JUCE]* audio
 framework.  Currently only plugin versions as VST3 under Windows 10,
-VST3 and AU under MacOSX (x86_64) and VST3 under Linux (x86_64) are
-provided, but porting to other targets should be straightforward,
+VST3 and AU under MacOSX (x86_64/ARM64) and VST3 under Linux (x86_64)
+are provided, but porting to other targets should be straightforward,
 since building is supported by a platform-neutral CMAKE build file.
 
 Available Effects

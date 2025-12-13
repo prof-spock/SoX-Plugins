@@ -9,8 +9,9 @@
  * <C>AudioEffect</C> that is defined in this namespace.
  *
  * The plugins are based on the algorithms in the SoX repository based
- * on the works of the SoX team namely Chris Bagwell, Mans Rullgard,
- * Rob Sewell, Ulrich Klauer, Lance Norskog and many others.
+ * on the works of the SoX team namely Martin W. Guy, Chris Bagwell,
+ * Mans Rullgard, Rob Sewell, Ulrich Klauer, Lance Norskog and many
+ * others.
  */
 namespace SoXPlugins::Effects {
 }

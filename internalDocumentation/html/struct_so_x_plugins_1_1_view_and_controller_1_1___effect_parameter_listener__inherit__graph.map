@@ -1,4 +1,5 @@
 <map id="SoXPlugins::ViewAndController::_EffectParameterListener" name="SoXPlugins::ViewAndController::_EffectParameterListener">
-<area shape="rect" id="node1" title="a listener for effect parameters" alt="" coords="9,151,233,264"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,236,103"/>
+<area shape="rect" id="Node000001" title="a listener for effect parameters" alt="" coords="7,133,202,233"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,204,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,99,107,133,102,133,102,99"/>
 </map>

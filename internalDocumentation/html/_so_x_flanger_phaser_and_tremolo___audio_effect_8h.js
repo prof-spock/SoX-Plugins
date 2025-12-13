@@ -1,0 +1,4 @@
+var _so_x_flanger_phaser_and_tremolo___audio_effect_8h =
+[
+    [ "SoXPlugins::Effects::SoXFlangerPhaserAndTremolo::SoXFlangerPhaserAndTremolo_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect" ]
+];

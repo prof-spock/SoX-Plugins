@@ -14,23 +14,25 @@
 
 #include <cstdlib>
 #include <filesystem>
-
 #include <stdio.h>
     /** qualified version of fprintf from stdio */
     #define StdIO_fprintf  fprintf
     /** qualified version of stderr from stdio */
     #define StdIO_stderr   stderr
+#include <thread>
 
 #include "File.h"
 #include "Logging.h"
+
 #include "OperatingSystem.h"
 
 /*====================*/
 
-#ifdef _WIN32
+#ifdef _WINDOWS
     #include "MyWindows.h"
 #else
     #include <unistd.h>
+        #define UniStd_sleep  sleep
     #include <dlfcn.h>
 #endif
 
@@ -38,6 +40,9 @@
 
 using BaseModules::File;
 using BaseModules::OperatingSystem;
+using BaseTypes::Primitives::Time;
+using BaseTypes::Primitives::Time_addDuration;
+using BaseTypes::Primitives::Time_withinProcess;
 
 namespace FileSystem = std::filesystem;
 
@@ -46,7 +51,7 @@ using STR = BaseModules::StringUtil;
 
 /*====================*/
 
-#ifdef _WIN32
+#ifdef _WINDOWS
 
     /**
      * Returns path of directory of current library or executable
@@ -56,7 +61,7 @@ using STR = BaseModules::StringUtil;
      *                          or an executable
      * @return  path of executable or library
      */
-    String _executableDirectoryPath (IN Boolean isExecutable)
+    static String _executableDirectoryPath (IN Boolean isExecutable)
     {
         Windows::HMODULE component;
 
@@ -78,6 +83,17 @@ using STR = BaseModules::StringUtil;
         return result;
     }
 
+    /*--------------------*/
+
+    /**
+     * Sleeps for <C>duration</C> seconds.
+     *
+     * @param[in] duration   sleep duration in seconds
+     */
+    static void _sleepForDuration (IN float duration)
+    {
+        Windows::Sleep(round(duration * 1000.0));
+    }
 #else
 
     /*========================*/
@@ -92,7 +108,7 @@ using STR = BaseModules::StringUtil;
      *                          or an executable
      * @return  path of executable or library
      */
-    String _executableDirectoryPath (IN Boolean isExecutable)
+    static String _executableDirectoryPath (IN Boolean isExecutable)
     {
         String result;
 
@@ -118,7 +134,44 @@ using STR = BaseModules::StringUtil;
         return result;
     }
 
+    /*--------------------*/
+
+    /**
+     * Sleeps for <C>duration</C> seconds.
+     *
+     * @param[in] duration   sleep duration in seconds
+     */
+    static void _sleepForDuration (IN float duration)
+    {
+        UniStd_sleep(duration);
+    }
 #endif  
+
+/*====================*/
+/* LOCAL FUNCTIONS    */
+/*====================*/
+
+/**
+ * Reads associated value for environment variable named
+ * <C>variableName</C> into <C>value</C>; returns false when not found.
+ *
+ * @param[in]  variableName  name of environment variable
+ * @param[out] value         associated variable value (if any)
+ * @return  information whether variable is set
+ */
+static Boolean _environmentValue (IN String& variableName,
+                                  OUT String& value)
+{
+    char* envValue = std::getenv(variableName.c_str());
+    Boolean result = false;
+
+    if (envValue != NULL) {
+        result = true;
+        value = String{envValue};
+    }
+    
+    return result;
+}
 
 /*====================*/
 
@@ -165,9 +218,11 @@ StringList OperatingSystem::fileNameList (IN String& directoryName,
 
 /*--------------------*/
 
-String OperatingSystem::basename (IN String& fileName)
+String OperatingSystem::basename (IN String& fileName,
+                                  IN Boolean extensionIsShown)
 {
-    Logging_trace1(">>: %1", fileName);
+    Logging_trace2(">>: fileName = %1, extensionIsShown = %2",
+                   fileName, TOSTRING(extensionIsShown));
 
     String result;
 
@@ -183,6 +238,14 @@ String OperatingSystem::basename (IN String& fileName)
         result = fileName;
     } else {
         result = STR::substring(fileName, position + 1);
+    }
+
+    if (!extensionIsShown) {
+        Natural dotPosition = STR::findFromEnd(result, ".");
+
+        if (position != undefined) {
+            result = STR::prefix(result, dotPosition);
+        }
     }
     
     Logging_trace1("<<: %1", result);
@@ -217,6 +280,19 @@ String OperatingSystem::dirname (IN String& fileName)
 
 /*--------------------*/
 
+String OperatingSystem::environmentValue (IN String& variableName)
+{
+    Logging_trace1(">>: '%1'", variableName);
+
+    String result = "";
+    _environmentValue(variableName, result);
+
+    Logging_trace1("<<: '%1'", result);
+    return result;
+}
+
+/*--------------------*/
+
 String OperatingSystem::executableDirectoryPath (IN Boolean isExecutable)
 {
     Logging_trace(">>");
@@ -227,16 +303,56 @@ String OperatingSystem::executableDirectoryPath (IN Boolean isExecutable)
 
 /*--------------------*/
 
+/**
+ * Sleeps for <C>duration</C>.
+ *
+ * @param[in] duration  sleep duration (in seconds)
+ */
+void OperatingSystem::sleep (IN Duration duration)
+{
+    Time startTime = Time_withinProcess();
+    Time endTime   = Time_addDuration(startTime, duration);
+    Time stopTime = 0.0;
+
+    while (stopTime < endTime) {
+        stopTime = Time_withinProcess();
+        _sleepForDuration(((double) duration) / 10.0);
+    }
+}
+
+/*--------------------*/
+
+String OperatingSystem::systemName ()
+{
+    Logging_trace(">>");
+    #ifdef _WINDOWS
+        String result = "Windows";
+    #else
+        #ifdef UNIX
+            String result = "Unix";
+        #else
+            String result = "MacOS";
+        #endif
+    #endif
+
+    Logging_trace1("<<: %1", result);
+    return result;
+}
+
+/*--------------------*/
+
 String OperatingSystem::temporaryDirectoryPath ()
 {
     Logging_trace(">>");
 
-    char* environmentPath = std::getenv("tmp");
-    environmentPath = (environmentPath != NULL ? environmentPath
-                       : std::getenv("temp"));
-    environmentPath = (environmentPath != NULL ? environmentPath
-                       : reinterpret_cast<char*>(const_cast<char*>("/tmp")));
-    String result = String(environmentPath);
+    Boolean isOkay;
+    String result = "/tmp";
+
+    isOkay = _environmentValue("tmp", result);
+
+    if (!isOkay) {
+        isOkay = _environmentValue("temp", result);
+    }
 
     Logging_trace1("<<: %1", result);
     return result;

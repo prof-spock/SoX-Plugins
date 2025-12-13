@@ -19,11 +19,11 @@
 #include "GenericMatrix.h"
 #include "Object.h"
 #include "Real.h"
-#include "AudioSampleRingBuffer.h"
+#include "AudioDataPointRingBuffer.h"
 
 /*--------------------*/
 
-using Audio::AudioSampleRingBuffer;
+using Audio::AudioDataPointRingBuffer;
 using BaseTypes::Primitives::Object;
 using BaseTypes::Primitives::Real;
 using BaseTypes::GenericTypes::GenericMatrix;
@@ -108,25 +108,28 @@ namespace SoXPlugins::Effects::SoXCompander {
         /**
          * Sets band compander characteristics in multiband compander
          * for band with <C>bandIndex</C> to data given by
-         * <C>sampleRate</C>, <C>attack</C>, <C>release</C>,
+         * <C>dataPointRate</C>, <C>attack</C>, <C>release</C>,
          * <C>dBKnee</C>, <C>dBThreshold</C>, <C>ratio</C> and
          * <C>dBGain</C>; <C>topFrequency</C> gives the crossover
          * frequency for this band.
          *
-         * @param[in] bandIndex     the index of the band to be adapted
-         * @param[in] sampleRate    the new sample rate
-         * @param[in] attack        the attack time for this band
-         * @param[in] release       the release time for this band
-         * @param[in] dBKnee        the knee in decibels for this band
-         * @param[in] dBThreshold   the threshold setting in decibels
-         *                          for this band
-         * @param[in] ratio         the compression ration for this band
-         * @param[in] dBGain        the out gain in decibels for this band
-         * @param[in] topFrequency  the top crossover frequency for this
-         *                          band
+         * @param[in] bandIndex      the index of the band to be
+         *                           adapted
+         * @param[in] dataPointRate  the new data point rate
+         * @param[in] attack         the attack time for this band
+         * @param[in] release        the release time for this band
+         * @param[in] dBKnee         the knee in decibels for this band
+         * @param[in] dBThreshold    the threshold setting in decibels
+         *                           for this band
+         * @param[in] ratio          the compression ration for this
+         *                           band
+         * @param[in] dBGain         the out gain in decibels for this
+         *                           band
+         * @param[in] topFrequency   the top crossover frequency for
+         *                           this band
          */
         void setCompanderBandData (IN Natural bandIndex,
-                                   IN Real sampleRate,
+                                   IN Real dataPointRate,
                                    IN Real attack,
                                    IN Real release,
                                    IN Real dBKnee,
@@ -140,18 +143,18 @@ namespace SoXPlugins::Effects::SoXCompander {
         /*--------------------*/
 
         /**
-         * Processes samples from <C>inputSampleList</C> by multiband
-         * compander and returns output in <C>outputSampleList</C>;
-         * updates internal buffers for low and high output of each
-         * band and sums up to output.
+         * Processes data points from <C>inputDataPointList</C> by
+         * multiband compander and returns output in
+         * <C>outputDataPointList</C>; updates internal buffers for
+         * low and high output of each band and sums up to output.
          *
-         * @param[in]  inputSampleList   the queue of samples for all
-         *                               input channels
-         * @param[out] outputSampleList  the queue of samples for all
-         *                               output channels
+         * @param[in]  inputDataPointList   the queue of data points
+         *                                  for all input channels
+         * @param[out] outputDataPointList  the queue of data points
+         *                                  for all output channels
          */
-        void apply (IN AudioSampleList& inputSampleList,
-                    OUT AudioSampleList& outputSampleList);
+        void apply (IN AudioDataPointList& inputDataPointList,
+                    OUT AudioDataPointList& outputDataPointList);
 
         /*--------------------*/
         /* type conversion    */
@@ -185,14 +188,15 @@ namespace SoXPlugins::Effects::SoXCompander {
             Object _companderBandList;
 
             /**
-             * the vector of sample ring buffers shared between the
-             * bands
+             * the vector of data point ring buffers shared between
+             * the bands
              *
-             * each channel contains (2 * bandCount + 1) sample ring
-             * buffers where each band covers a window of three
+             * each channel contains (2 * bandCount + 1) data point
+             * ring buffers where each band covers a window of three
              * entries overlapping in one entry
              */
-            GenericMatrix<AudioSampleRingBuffer> _sampleRingBufferVector;
+            GenericMatrix<AudioDataPointRingBuffer>
+                _dataPointRingBufferVector;
 
     };
 

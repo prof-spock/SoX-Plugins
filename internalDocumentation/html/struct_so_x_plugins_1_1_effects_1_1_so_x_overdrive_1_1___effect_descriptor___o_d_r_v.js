@@ -8,8 +8,8 @@ var struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor__
     [ "colour", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#af9ecea5af77467cb6e836b50040b7fa0", null ],
     [ "effect", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a81deb6790934fd36dd4280a2de1c66ec", null ],
     [ "gain", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a04beb6537727cb27fa03ff2d9042955e", null ],
-    [ "inputSampleList", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a162337ca7ea8485aefaa44db4246e1f0", null ],
-    [ "outputSampleList", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a77b5fd689c677c5c2795be95fc2433f5", null ],
-    [ "previousInputSampleList", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#aa978b275e5ac7ec8142e4c0947e692b6", null ],
-    [ "previousOutputSampleList", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a08d9891c6a94707de34e914a26897660", null ]
+    [ "inputDataPointList", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#ad64e88bd838c2cbe4b4b0c753dcfaec1", null ],
+    [ "outputDataPointList", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a0f703529af24df763d455a66b4b9c65d", null ],
+    [ "previousInputDataPointList", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a4991c84950a09135ca69453c134c18c2", null ],
+    [ "previousOutputDataPointList", "struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a45ee0ace0ea3a41947f4c581e4cecf75", null ]
 ];

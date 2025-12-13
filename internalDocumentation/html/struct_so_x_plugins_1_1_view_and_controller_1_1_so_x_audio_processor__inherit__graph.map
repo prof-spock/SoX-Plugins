@@ -1,11 +1,19 @@
 <map id="SoXPlugins::ViewAndController::SoXAudioProcessor" name="SoXPlugins::ViewAndController::SoXAudioProcessor">
-<area shape="rect" id="node1" title="A SoXAudioProcessor object provides an audio effect wrapper for a plugin responsible for the communic..." alt="" coords="823,135,1105,424"/>
-<area shape="rect" id="node3" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_processor.html" title="A SoXChorusAndEcho_AudioProcessor is the JUCE wrapper for the SoX chorus, echo and echos audio effect..." alt="" coords="5,488,296,617"/>
-<area shape="rect" id="node4" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_processor.html" title="A SoXCompander_AudioProcessor is the JUCE wrapper for the SoX compand and mcompand audio effects; a s..." alt="" coords="320,488,581,617"/>
-<area shape="rect" id="node5" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_processor.html" title="A SoXFilter_AudioProcessor is the JUCE wrapper for several SoX IIR filters: those filters are allpass..." alt="" coords="605,488,821,617"/>
-<area shape="rect" id="node6" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_processor.html" title="A SoXFlangerPhaserAndTremolo_AudioProcessor object is the JUCE wrapper for the SoX phaser and tremolo..." alt="" coords="845,472,1083,633"/>
-<area shape="rect" id="node7" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_processor.html" title="A SoXGain_AudioProcessor is the JUCE wrapper for the SoX gain plugin amplifying or attenuating the in..." alt="" coords="1107,496,1371,609"/>
-<area shape="rect" id="node8" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor.html" title="A SoXOverdrive_AudioProcessor is the JUCE wrapper for the SoX overdrive plugin distorting the input s..." alt="" coords="1395,488,1642,617"/>
-<area shape="rect" id="node9" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_processor.html" title="A SoXReverb_AudioProcessor object is a JUCE wrapper for the SoX reverb effect implementing the Freeve..." alt="" coords="1666,488,1897,617"/>
-<area shape="rect" id="node2" title=" " alt="" coords="883,5,1045,87"/>
+<area shape="rect" id="Node000001" title="A SoXAudioProcessor object provides an audio effect wrapper for a plugin responsible for the communic..." alt="" coords="717,119,960,439"/>
+<area shape="rect" id="Node000003" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_processor.html" title="A SoXChorusAndEcho_AudioProcessor is the JUCE wrapper for the SoX chorus, echo and echos audio effect..." alt="" coords="5,501,256,616"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="705,326,498,398,269,489,238,504,235,499,267,484,496,393,703,321"/>
+<area shape="rect" id="Node000004" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_processor.html" title="A SoXCompander_AudioProcessor is the JUCE wrapper for the SoX compand and mcompand audio effects; a s..." alt="" coords="281,501,503,616"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="707,365,484,504,481,499,704,360"/>
+<area shape="rect" id="Node000005" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_processor.html" title="A SoXFilter_AudioProcessor is the JUCE wrapper for several SoX IIR filters: those filters are allpass..." alt="" coords="527,501,713,616"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="711,446,666,503,662,499,707,443"/>
+<area shape="rect" id="Node000006" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_processor.html" title="A SoXFlangerPhaserAndTremolo_AudioProcessor object is the JUCE wrapper for the SoX phaser and tremolo..." alt="" coords="737,487,940,631"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="841,452,841,486,836,486,836,452"/>
+<area shape="rect" id="Node000007" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_processor.html" title="A SoXGain_AudioProcessor is the JUCE wrapper for the SoX gain plugin amplifying or attenuating the in..." alt="" coords="964,509,1193,609"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="971,429,1038,507,1034,510,967,432"/>
+<area shape="rect" id="Node000008" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_processor.html" title="A SoXOverdrive_AudioProcessor is the JUCE wrapper for the SoX overdrive plugin distorting the input s..." alt="" coords="1217,501,1425,616"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="973,351,1207,484,1231,499,1228,503,1204,489,971,356"/>
+<area shape="rect" id="Node000009" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_processor.html" title="A SoXReverb_AudioProcessor object is a JUCE wrapper for the SoX reverb effect implementing the Freeve..." alt="" coords="1449,501,1644,616"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="974,314,1195,384,1319,431,1439,484,1466,499,1463,504,1436,489,1317,436,1193,389,972,319"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="769,5,908,71"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="841,84,841,119,836,119,836,84"/>
 </map>

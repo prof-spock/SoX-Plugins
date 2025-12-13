@@ -1,3 +1,25 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$struct_windows_1_1tag_r_e_c_t.html" title=" " alt="" coords="5,5,157,33"/>
+<area shape="rect" id="Node000000" href="$struct_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="18,236,129,261"/>
+<area shape="rect" id="Node000001" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html" title="A SoXChorusAndEcho_AudioEffect object models the SoX echo and echos audio effects; the difference bet..." alt="" coords="191,479,403,533"/>
+<area shape="poly" id="edge31_Node000000_Node000001" title=" " alt="" coords="138,267,143,272,160,297,168,322,169,347,168,371,166,395,168,418,175,442,191,466,203,476,200,480,187,469,170,444,162,419,161,395,162,371,164,347,163,323,155,300,139,276,134,271"/>
+<area shape="rect" id="Node000003" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html" title="A SoXCompander_AudioEffect object models the SoX compand and mcompand audio effects; a simple compand..." alt="" coords="189,5,405,60"/>
+<area shape="poly" id="edge32_Node000000_Node000003" title=" " alt="" coords="82,222,121,147,151,106,188,69,205,58,208,62,191,73,155,109,126,150,87,225"/>
+<area shape="rect" id="Node000004" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html" title="A SoXFilter_AudioEffect object models several SoX biquad filters and combines allpass,..." alt="" coords="226,84,369,139"/>
+<area shape="poly" id="edge33_Node000000_Node000004" title=" " alt="" coords="95,224,136,186,188,149,224,131,227,136,191,154,139,191,98,228"/>
+<area shape="rect" id="Node000005" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html" title="A SoXFlangerPhaserAndTremolo_AudioEffect object models the SoX flanger, phaser and tremolo modulation..." alt="" coords="194,163,401,233"/>
+<area shape="poly" id="edge34_Node000000_Node000005" title=" " alt="" coords="142,231,193,219,195,224,143,236"/>
+<area shape="rect" id="Node000006" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html" title="A SoXGain_AudioEffect object models the SoX gain plugin amplifying or attenuating the input signal by..." alt="" coords="192,257,403,297"/>
+<area shape="poly" id="edge35_Node000000_Node000006" title=" " alt="" coords="143,255,192,261,191,266,142,260"/>
+<area shape="rect" id="Node000007" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html" title="A SoXOverdrive_AudioEffect object models the SoX overdrive plugin amplifying the input signal by a ga..." alt="" coords="203,321,391,376"/>
+<area shape="poly" id="edge36_Node000000_Node000007" title=" " alt="" coords="127,264,143,272,167,289,191,306,217,319,215,324,188,311,164,294,140,276,125,269"/>
+<area shape="rect" id="Node000008" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html" title="A SoXReverb_AudioEffect object models the SoX reverb plugin as a simple reverb implementing the Freev..." alt="" coords="216,400,379,455"/>
+<area shape="poly" id="edge37_Node000000_Node000008" title=" " alt="" coords="136,266,143,272,155,287,162,302,168,331,173,359,180,373,191,387,217,405,214,409,188,391,175,376,168,361,163,332,157,304,151,290,139,276,133,270"/>
+<area shape="rect" id="Node000002" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="5,286,141,326"/>
+<area shape="poly" id="edge38_Node000002_Node000001" title=" " alt="" coords="92,337,132,402,159,436,191,465,208,476,206,481,188,469,155,440,128,405,88,340"/>
+<area shape="poly" id="edge39_Node000002_Node000003" title=" " alt="" coords="135,275,139,271,155,245,162,220,161,171,160,146,161,121,170,96,187,70,200,58,203,62,191,73,174,98,167,122,165,146,166,171,167,221,160,247,143,274,139,279"/>
+<area shape="poly" id="edge40_Node000002_Node000004" title=" " alt="" coords="134,276,139,271,151,256,157,241,162,211,167,181,175,165,187,149,205,136,224,126,227,131,208,140,191,153,179,168,172,182,167,212,162,242,155,258,143,274,138,280"/>
+<area shape="poly" id="edge41_Node000002_Node000005" title=" " alt="" coords="127,277,140,270,188,242,213,230,215,235,191,247,143,275,129,282"/>
+<area shape="poly" id="edge42_Node000002_Node000006" title=" " alt="" coords="155,293,191,288,192,293,155,298"/>
+<area shape="poly" id="edge43_Node000002_Node000007" title=" " alt="" coords="156,319,204,328,203,333,155,324"/>
+<area shape="poly" id="edge44_Node000002_Node000008" title=" " alt="" coords="111,333,148,360,191,386,217,399,215,403,188,391,145,365,108,337"/>
 </map>

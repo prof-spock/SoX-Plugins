@@ -351,11 +351,12 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     /**
      * A <C>_Compander</C> object is a simple compander for several
-     * channels integrating the sample volumes and applying a transfer
-     * function to them; as opposed to a <C>_MCompanderBand</C> there
-     * is no crossover filtering done here, but a compander band uses
-     * the basic functionality of a compander and splits its output
-     * into a local and propagated result list.
+     * channels integrating the data point volumes and applying a
+     * transfer function to them; as opposed to a
+     * <C>_MCompanderBand</C> there is no crossover filtering done
+     * here, but a compander band uses the basic functionality of a
+     * compander and splits its output into a local and propagated
+     * result list.
      */
     struct _Compander {
 
@@ -378,21 +379,21 @@ namespace SoXPlugins::Effects::SoXCompander {
         /**
          * Sets parameters of single line compander to <C>attack</C>,
          * <C>release</C>, <C>dBKnee</C>, <C>dBThreshold</C>,
-         * <C>ratio</C> and <C>dBGain</C> based on <C>sampleRate</C>.
+         * <C>ratio</C> and <C>dBGain</C> based on <C>dataPointRate</C>.
          *
-         * @param[in] sampleRate    the new sample rate
-         * @param[in] attack        the attack time for this compander
-         * @param[in] release       the release time for this compander
-         * @param[in] dBKnee        the knee in decibels for this
-         *                          compander
-         * @param[in] dBThreshold   the threshold setting in decibels
-         *                          for this compander
-         * @param[in] ratio         the compression ration for this
-         *                          compander
-         * @param[in] dBGain        the out gain in decibels for this
-         *                          compander
+         * @param[in] dataPointRate  the new data point rate
+         * @param[in] attack         the attack time for this compander
+         * @param[in] release        the release time for this compander
+         * @param[in] dBKnee         the knee in decibels for this
+         *                           compander
+         * @param[in] dBThreshold    the threshold setting in decibels
+         *                           for this compander
+         * @param[in] ratio          the compression ration for this
+         *                           compander
+         * @param[in] dBGain         the out gain in decibels for this
+         *                           compander
          */
-        void adapt (IN Real sampleRate,
+        void adapt (IN Real dataPointRate,
                     IN Real attack,
                     IN Real release,
                     IN Real dBKnee,
@@ -403,22 +404,22 @@ namespace SoXPlugins::Effects::SoXCompander {
         /*--------------------*/
 
         /**
-         * Applies compander to all channels based on samples from
-         * <C>inputSampleList</C> and returns them in
-         * <C>outputSampleList</C>; if <C>outputValuesAreSummed</C> is
-         * set, the output samples are summed up into
-         * <C>outputSampleList</C>.
+         * Applies compander to all channels based on data points from
+         * <C>inputDataPointList</C> and returns them in
+         * <C>outputDataPointList</C>; if <C>outputValuesAreSummed</C>
+         * is set, the output data points are summed up into
+         * <C>outputDataPointList</C>.
          *
-         * @param[in]  inputSampleList       the list of samples for all
-         *                                   input channels
-         * @param[out] outputSampleList      the list of samples for all
-         *                                   output channels
+         * @param[in]  inputDataPointList    the list of data points
+         *                                   for all input channels
+         * @param[out] outputDataPointList   the list of data points
+         *                                   for all output channels
          * @param[in] outputValuesAreSummed  tells whether old values
-         *                                   are kept in output sample
-         *                                   list
+         *                                   are kept in output data
+         *                                   point list
          */
-        void apply (IN AudioSampleList& inputSampleList,
-                    OUT AudioSampleList& outputSampleList,
+        void apply (IN AudioDataPointList& inputDataPointList,
+                    OUT AudioDataPointList& outputDataPointList,
                     IN bool outputValuesAreSummed);
 
         /*--------------------*/
@@ -454,14 +455,14 @@ namespace SoXPlugins::Effects::SoXCompander {
 
             /**
              * Adapts envelope time <C>t</C> in seconds into a delta
-             * value relative to <C>sampleRate</C>.
+             * value relative to <C>dataPointRate</C>.
              *
-             * @param[in] t           envelope time in seconds
-             * @param[in] sampleRate  sample rate of effect
-             * @return  delta value relative to sample rate
+             * @param[in] t              envelope time in seconds
+             * @param[in] dataPointRate  data point rate of effect
+             * @return  delta value relative to data point rate
              */
             static Real _adaptEnvelopeTime (IN Real t,
-                                            IN Real sampleRate);
+                                            IN Real dataPointRate);
 
             /*--------------------*/
 
@@ -480,14 +481,15 @@ namespace SoXPlugins::Effects::SoXCompander {
             /*--------------------*/
 
             /**
-             * Finds and returns maximum absolute sample among all
-             * samples in <C>sampleList</C>.
+             * Finds and returns maximum absolute data point among all
+             * data points in <C>dataPointList</C>.
              *
-             * @param[in] sampleList  audio sample list to be scanned
-             * @return  maximum absolute sample value
+             * @param[in] dataPointList  audio data point list to be
+             *                           scanned
+             * @return  maximum absolute data point value
              */
-            static AudioSample _maximumAbsoluteSample (
-                IN AudioSampleList& sampleList);
+            static AudioDataPoint _maximumAbsoluteDataPoint (
+                IN AudioDataPointList& dataPointList);
 
     };
 
@@ -557,29 +559,32 @@ namespace SoXPlugins::Effects::SoXCompander {
 
         /**
          * Initializes a Linkwitz-Riley 4th order crossover filter at
-         * <C>frequency</C> consisting of a lowpass, highpass and allpass
-         * into current filter using <C>sampleRate</C>.
+         * <C>frequency</C> consisting of a lowpass, highpass and
+         * allpass into current filter using <C>dataPointRate</C>.
          *
-         * @param[in] frequency   the crossover frequency of the filter
-         * @param[in] sampleRate  the sample rate in the filter
+         * @param[in] frequency      the crossover frequency of the filter
+         * @param[in] dataPointRate  the data point rate in the filter
          */
-        void adapt (IN Real frequency, IN Real sampleRate);
+        void adapt (IN Real frequency, IN Real dataPointRate);
 
         /*--------------------*/
 
         /**
          * Applies current LR4 crossover filter to <C>inputBuffer</C>
          * and <C>outputBufferLow</C> and <C>outputBufferHigh</C>;
-         * assumes that first entry in input buffer is current sample
-         * and writes results sample into top of output buffers.
+         * assumes that first entry in input buffer is current data
+         * point and writes result data points into top of output
+         * buffers.
          *
-         * @param[in]  inputBuffer       input sample buffer
-         * @param[out] outputBufferLow   sample buffer for low filter output
-         * @param[out] outputBufferHigh  sample buffer for high filter output
+         * @param[in]  inputBuffer       input data point buffer
+         * @param[out] outputBufferLow   data point buffer for low
+         *                               filter output
+         * @param[out] outputBufferHigh  data point buffer for high
+         *                               filter output
          */
-        void apply (IN AudioSampleRingBuffer& inputBuffer,
-                    OUT AudioSampleRingBuffer& outputBufferLow,
-                    OUT AudioSampleRingBuffer& outputBufferHigh);
+        void apply (IN AudioDataPointRingBuffer& inputBuffer,
+                    OUT AudioDataPointRingBuffer& outputBufferLow,
+                    OUT AudioDataPointRingBuffer& outputBufferHigh);
 
         /*--------------------*/
 
@@ -609,7 +614,7 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     /**
      * The <C>_CompanderStreamKind</C> type is an enumeration for the
-     * kind of audio sample streams relevant for a compander band:
+     * kind of audio data point streams relevant for a compander band:
      * input, lowOutput and highOutput as input for the next band
     */
     typedef size_t _CompanderStreamKind;
@@ -623,27 +628,28 @@ namespace SoXPlugins::Effects::SoXCompander {
     /** a map from stream kind to string */
     String _streamKindAsString[] = { "input", "lowOutput", "highOutput" };
 
-    /*========================*/
-    /* _CompanderSampleBuffer */
-    /*========================*/
+    /*===========================*/
+    /* _CompanderDataPointBuffer */
+    /*===========================*/
 
     /**
-     * A <C>_CompanderSampleBufferElement</C> object contains pointers
-     * to a buffer for input, low and high output samples; it is the
-     * element type in a <B>_CompanderSampleBuffer</B>.
+     * A <C>_CompanderDataPointBufferElement</C> object contains
+     * pointers to a buffer for input, low and high output data
+     * points; it is the element type in a
+     * <B>_CompanderDataPointBuffer</B>.
      */
-    using _CompanderSampleBufferElement =
-        array<AudioSampleRingBuffer*, _companderStreamKindCount>;
+    using _CompanderDataPointBufferElement =
+        array<AudioDataPointRingBuffer*, _companderStreamKindCount>;
 
     /**
-     * A <C>_CompanderSampleBuffer</C> object contains pointers to the
-     * buffers for input, low and high output samples for each channel
-     * in a crossover band; the input buffer of the first band contain
-     * the input samples, the following bands use the high output of
-     * the previous crossover band
+     * A <C>_CompanderDataPointBuffer</C> object contains pointers to
+     * the buffers for input, low and high output data points for each
+     * channel in a crossover band; the input buffer of the first band
+     * contain the input data points, the following bands use the high
+     * output of the previous crossover band
      */
-    using _CompanderSampleBuffer =
-        GenericList<_CompanderSampleBufferElement>;
+    using _CompanderDataPointBuffer =
+        GenericList<_CompanderDataPointBufferElement>;
 
     /*=================*/
     /* _MCompanderBand */
@@ -651,8 +657,8 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     /**
      * A <C>_MCompanderBand</C> object is a single band in a multiband
-     * compander consisting of a compander and sample buffers for the
-     * crossover filter.
+     * compander consisting of a compander and data point buffers for
+     * the crossover filter.
      *
      * For each channel the crossover calculation is done on an input
      * buffer resulting in low output and high output (for the next
@@ -692,11 +698,11 @@ namespace SoXPlugins::Effects::SoXCompander {
          *
          * @param[in] channel  channel of band to be changed
          * @param[in] stream   stream of band to be changed
-         * @param[in] buffer    buffer to be assigned to this position
+         * @param[in] buffer   buffer to be assigned to this position
          */
         void setBuffer (IN Natural channel,
                        IN _CompanderStreamKind stream,
-                       AudioSampleRingBuffer* buffer);
+                       AudioDataPointRingBuffer* buffer);
 
         /*--------------------*/
 
@@ -713,22 +719,24 @@ namespace SoXPlugins::Effects::SoXCompander {
          * Sets up compander band using standard compander parameters
          * <C>attack</C>, <C>release</C>, <C>dBKnee</C>,
          * <C>dBThreshold</C>, <C>ratio</C> and <C>dBGain</C>;
-         * <C>sampleRate</C> is the current sample rate,
+         * <C>dataPointRate</C> is the current data point rate,
          * <C>topFrequency</C> defines the crossover frequency for
          * this band.
          *
-         * @param[in] sampleRate    the sample rate for this band
-         * @param[in] attack        the attack time for this band
-         * @param[in] release       the release time for this band
-         * @param[in] dBKnee        the knee in decibels for this band
-         * @param[in] dBThreshold   the threshold setting in decibels
-         *                          for this band
-         * @param[in] ratio         the compression ration for this band
-         * @param[in] dBGain        the out gain in decibels for this band
-         * @param[in] topFrequency  the top crossover frequency for this
-         *                          band
+         * @param[in] dataPointRate  the data point rate for this band
+         * @param[in] attack         the attack time for this band
+         * @param[in] release        the release time for this band
+         * @param[in] dBKnee         the knee in decibels for this band
+         * @param[in] dBThreshold    the threshold setting in decibels
+         *                           for this band
+         * @param[in] ratio          the compression ration for this
+         *                           band
+         * @param[in] dBGain         the out gain in decibels for this
+         *                           band
+         * @param[in] topFrequency   the top crossover frequency for
+         *                           this band
          */
-        void adapt (IN Real sampleRate,
+        void adapt (IN Real dataPointRate,
                     IN Real attack,
                     IN Real release,
                     IN Real dBKnee,
@@ -741,20 +749,20 @@ namespace SoXPlugins::Effects::SoXCompander {
 
         /**
          * Applies band compander to internal input stream and updates
-         * <C>outputSampleList</C> (by adding resulting values per
+         * <C>outputDataPointList</C> (by adding resulting values per
          * channel).
          *
-         * @param[out] outputSampleList  the sample list to be written
-         *                               to
+         * @param[out] outputDataPointList  the data point list to be
+         *                                  written to
          */
-        void apply (OUT AudioSampleList& outputSampleList);
+        void apply (OUT AudioDataPointList& outputDataPointList);
 
         /*--------------------*/
 
         /**
-         * Processes samples from input for band compander; updates
-         * associated sample buffers for low and high output of this
-         * band
+         * Processes data points from input for band compander;
+         * updates associated data point buffers for low and high
+         * output of this band
          */
         void calculateCrossover ();
 
@@ -781,13 +789,13 @@ namespace SoXPlugins::Effects::SoXCompander {
              * multiband compander) */
             _LRCrossoverFilter _crossoverFilter;
 
-            /** the sample list for the separation filter (for a
+            /** the data point list for the separation filter (for a
              * multiband compander) */
-            _CompanderSampleBuffer _buffer;
+            _CompanderDataPointBuffer _buffer;
 
-            /** a temporary input sample list only used in the apply
-             * method*/
-            AudioSampleList _inputSampleList;
+            /** a temporary input data point list only used in the
+             * apply method*/
+            AudioDataPointList _inputDataPointList;
     };
 
     /*=====================*/
@@ -1182,10 +1190,10 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*============================================================*/
 
     Real _Compander::_adaptEnvelopeTime (IN Real t,
-                                         IN Real sampleRate) {
+                                         IN Real dataPointRate) {
         const Real one{1.0};
         return Real::minimum(one,
-                             one - (-one / (sampleRate * t)).exp());
+                             one - (-one / (dataPointRate * t)).exp());
     }
 
     /*--------------------*/
@@ -1223,7 +1231,7 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     /*--------------------*/
 
-    void _Compander::adapt (IN Real sampleRate,
+    void _Compander::adapt (IN Real dataPointRate,
                             IN Real attack,
                             IN Real release,
                             IN Real dBKnee,
@@ -1231,10 +1239,10 @@ namespace SoXPlugins::Effects::SoXCompander {
                             IN Real ratio,
                             IN Real dBGain)
     {
-        Logging_trace7(">>: sampleRate = %1, attack = %2, release = %3,"
-                       " dBKnee = %4, dBThreshold = %5, ratio = %6,"
-                       " dBGain = %7",
-                       TOSTRING(sampleRate), TOSTRING(attack),
+        Logging_trace7(">>: dataPointRate = %1, attack = %2,"
+                       " release = %3, dBKnee = %4, dBThreshold = %5,"
+                       " ratio = %6, dBGain = %7",
+                       TOSTRING(dataPointRate), TOSTRING(attack),
                        TOSTRING(release), TOSTRING(dBKnee),
                        TOSTRING(dBThreshold), TOSTRING(ratio),
                        TOSTRING(dBGain));
@@ -1243,9 +1251,9 @@ namespace SoXPlugins::Effects::SoXCompander {
         _transferFunction.adapt(dBKnee, dBThreshold, ratio, dBGain);
         _channelsAreAggregated = true;
         _volumeList.fill(1.0);
-        time = _adaptEnvelopeTime(attack, sampleRate);
+        time = _adaptEnvelopeTime(attack, dataPointRate);
         _attackTimeList.fill(time);
-        time = _adaptEnvelopeTime(release, sampleRate);
+        time = _adaptEnvelopeTime(release, dataPointRate);
         _releaseTimeList.fill(time);
 
         Logging_trace1("<<: %1", toString());
@@ -1253,41 +1261,44 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     /*--------------------*/
 
-    void _Compander::apply (IN AudioSampleList& inputSampleList,
-                            OUT AudioSampleList& outputSampleList,
+    void _Compander::apply (IN AudioDataPointList& inputDataPointList,
+                            OUT AudioDataPointList& outputDataPointList,
                             IN bool outputValuesAreSummed)
     {
         Logging_trace(">>");
 
         Natural channel;
-        const Natural channelCount = inputSampleList.size();
+        const Natural channelCount = inputDataPointList.size();
 
         if (_channelsAreAggregated) {
             /* use settings of first channel to represent all
                channels */
             channel = 0;
-            const AudioSample maximumSample =
-                _maximumAbsoluteSample(inputSampleList);
-            _integrateVolume(channel, maximumSample);
+            const AudioDataPoint maximumDataPoint =
+                _maximumAbsoluteDataPoint(inputDataPointList);
+            _integrateVolume(channel, maximumDataPoint);
         } else {
             for (channel = 0;  channel < channelCount;  channel++) {
-                const AudioSample inputSample = inputSampleList[channel];
-                _integrateVolume(channel, inputSample);
+                const AudioDataPoint inputDataPoint =
+                    inputDataPointList[channel];
+                _integrateVolume(channel, inputDataPoint);
             }
         }
 
         for (channel = 0;  channel < channelCount;  channel++) {
-            const AudioSample inputSample = inputSampleList[channel];
+            const AudioDataPoint inputDataPoint =
+                inputDataPointList[channel];
             const Real currentVolume = _volumeList[channel];
             const Real amplificationFactor =
                 _transferFunction.apply(currentVolume);
-            AudioSample outputSample = inputSample * amplificationFactor;
+            AudioDataPoint outputDataPoint =
+                inputDataPoint * amplificationFactor;
 
             if (outputValuesAreSummed) {
-                outputSample += outputSampleList[channel];
+                outputDataPoint += outputDataPointList[channel];
             }
 
-            outputSampleList[channel] = outputSample;
+            outputDataPointList[channel] = outputDataPoint;
         }
 
         Logging_trace("<<");
@@ -1321,12 +1332,13 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     /*--------------------*/
 
-    AudioSample
-    _Compander::_maximumAbsoluteSample (IN AudioSampleList& sampleList) {
-        AudioSample result = 0.0;
+    AudioDataPoint
+    _Compander::_maximumAbsoluteDataPoint
+        (IN AudioDataPointList& dataPointList) {
+        AudioDataPoint result = 0.0;
 
-        for (const AudioSample& value : sampleList) {
-            const AudioSample absValue = value.abs();
+        for (const AudioDataPoint& value : dataPointList) {
+            const AudioDataPoint absValue = value.abs();
 
             if (absValue > result) {
                 result = absValue;
@@ -1414,15 +1426,15 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     void _LRCrossoverFilter::adapt (IN Real frequency,
-                                    IN Real sampleRate) {
-        Logging_trace2(">>: frequency = %1, sampleRate = %2",
-                       TOSTRING(frequency), TOSTRING(sampleRate));
+                                    IN Real dataPointRate) {
+        Logging_trace2(">>: frequency = %1, dataPointRate = %2",
+                       TOSTRING(frequency), TOSTRING(dataPointRate));
 
-        if (frequency >= sampleRate / 2.0) {
+        if (frequency >= dataPointRate / 2.0) {
             _lowpassFilter.set(1.0);
             _highpassFilter.set(0.0);
         } else {
-            const Real w0 = Real::twoPi * frequency / sampleRate;
+            const Real w0 = Real::twoPi * frequency / dataPointRate;
             const Real filterQuality = sqrt(0.5);
             const Real alpha = w0.sin() / (Real{2.0} * filterQuality);
             const Real cosW0 = w0.cos();
@@ -1463,9 +1475,10 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     void
-    _LRCrossoverFilter::apply (IN AudioSampleRingBuffer& inputBuffer,
-                               OUT AudioSampleRingBuffer& outputBufferLow,
-                               OUT AudioSampleRingBuffer& outputBufferHigh)
+    _LRCrossoverFilter::apply
+        (IN AudioDataPointRingBuffer& inputBuffer,
+         OUT AudioDataPointRingBuffer& outputBufferLow,
+         OUT AudioDataPointRingBuffer& outputBufferHigh)
     {
         Logging_trace(">>");
         _lowpassFilter.apply(inputBuffer, outputBufferLow);
@@ -1487,7 +1500,8 @@ namespace SoXPlugins::Effects::SoXCompander {
     /**
      * Returns string representation of <C>buffer</C>.
      */
-    static String _sampleBufferToString (IN _CompanderSampleBuffer& buffer)
+    static String _dataPointBufferToString
+        (IN _CompanderDataPointBuffer& buffer)
     {
         const Natural channelCount = buffer.size();
         String st;
@@ -1497,7 +1511,7 @@ namespace SoXPlugins::Effects::SoXCompander {
 
             for (Natural stream = 0;  stream < _companderStreamKindCount;
                  stream++) {
-                const AudioSampleRingBuffer* ringBuffer =
+                const AudioDataPointRingBuffer* ringBuffer =
                     buffer[channel][(size_t) stream];
                 const String bufferAsString =
                     (ringBuffer == NULL ? "NULL" : ringBuffer->toString());
@@ -1508,7 +1522,7 @@ namespace SoXPlugins::Effects::SoXCompander {
             }
         }
 
-        st = STR::expand("_CompanderSampleBuffer(%1)", st);
+        st = STR::expand("_CompanderDataPointBuffer(%1)", st);
 
         return st;
     }
@@ -1525,7 +1539,7 @@ namespace SoXPlugins::Effects::SoXCompander {
           _topFrequency{maxTopFrequency},
           _crossoverFilter{},
           _buffer{},
-          _inputSampleList{}
+          _inputDataPointList{}
     {
         Logging_trace(">>");
         Logging_trace1("<<: %1", toString());
@@ -1539,18 +1553,18 @@ namespace SoXPlugins::Effects::SoXCompander {
             STR::expand("_MCompanderBand("
                         "_channelCount = %1, _topFrequency = %2Hz,"
                         " _crossoverFilter = %3, _compander = %4,"
-                        " _buffer = %5, _inputSampleList = %6)",
+                        " _buffer = %5, _inputDataPointList = %6)",
                         TOSTRING(_channelCount), TOSTRING(_topFrequency),
                         _crossoverFilter.toString(), _compander.toString(),
-                        _sampleBufferToString(_buffer),
-                        _inputSampleList.toString());
+                        _dataPointBufferToString(_buffer),
+                        _inputDataPointList.toString());
 
         return st;
     }
 
     /*--------------------*/
 
-    void _MCompanderBand::adapt (IN Real sampleRate,
+    void _MCompanderBand::adapt (IN Real dataPointRate,
                                  IN Real attack,
                                  IN Real release,
                                  IN Real dBKnee,
@@ -1559,17 +1573,17 @@ namespace SoXPlugins::Effects::SoXCompander {
                                  IN Real dBGain,
                                  IN Real topFrequency)
     {
-        Logging_trace8(">>: sampleRate = %1, attack = %2, release = %3,"
+        Logging_trace8(">>: dataPointRate = %1, attack = %2, release = %3,"
                        " dBKnee = %4, dBThreshold = %5, ratio = %6,"
                        " dBGain = %7, topFrequency = %8",
-                       TOSTRING(sampleRate), TOSTRING(attack),
+                       TOSTRING(dataPointRate), TOSTRING(attack),
                        TOSTRING(release), TOSTRING(dBKnee),
                        TOSTRING(dBThreshold), TOSTRING(ratio),
                        TOSTRING(dBGain), TOSTRING(topFrequency));
 
-        _compander.adapt(sampleRate, attack, release,
+        _compander.adapt(dataPointRate, attack, release,
                          dBKnee, dBThreshold, ratio, dBGain);
-        _crossoverFilter.adapt(topFrequency, sampleRate);
+        _crossoverFilter.adapt(topFrequency, dataPointRate);
         _topFrequency = topFrequency;
 
         Logging_trace1("<<: %1", toString());
@@ -1583,7 +1597,7 @@ namespace SoXPlugins::Effects::SoXCompander {
         _channelCount = channelCount;
         _buffer.setLength(channelCount);
         _compander.setLength(channelCount);
-        _inputSampleList.setLength(channelCount);
+        _inputDataPointList.setLength(channelCount);
         Logging_trace("<<");
     }
 
@@ -1591,7 +1605,7 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     void _MCompanderBand::setBuffer (IN Natural channel,
                                     IN _CompanderStreamKind stream,
-                                    AudioSampleRingBuffer* buffer)
+                                    AudioDataPointRingBuffer* buffer)
     {
         Logging_trace1(">>: channel = %1", TOSTRING(channel));
         _buffer[channel][stream] = buffer;
@@ -1600,20 +1614,20 @@ namespace SoXPlugins::Effects::SoXCompander {
 
     /*--------------------*/
 
-    void _MCompanderBand::apply (OUT AudioSampleList& outputSampleList)
+    void _MCompanderBand::apply (OUT AudioDataPointList& outputDataPointList)
     {
         Logging_trace(">>");
 
         for (Natural channel = 0;  channel < _channelCount;  channel++) {
-            const _CompanderSampleBufferElement& bufferElement =
+            const _CompanderDataPointBufferElement& bufferElement =
                 _buffer[channel];
-            const AudioSampleRingBuffer* outputBufferLow =
+            const AudioDataPointRingBuffer* outputBufferLow =
                 bufferElement[_kindLowOutputStream];
-            AudioSample inputSample = outputBufferLow->first();
-            _inputSampleList[channel] = inputSample;
+            AudioDataPoint inputDataPoint = outputBufferLow->first();
+            _inputDataPointList[channel] = inputDataPoint;
         }
 
-        _compander.apply(_inputSampleList, outputSampleList, true);
+        _compander.apply(_inputDataPointList, outputDataPointList, true);
         Logging_trace("<<");
     }
 
@@ -1623,12 +1637,12 @@ namespace SoXPlugins::Effects::SoXCompander {
     {
         Logging_trace(">>");
 
-        for (const _CompanderSampleBufferElement& bufferElement : _buffer) {
-            const AudioSampleRingBuffer* inputBuffer =
+        for (const _CompanderDataPointBufferElement& bufferElement : _buffer) {
+            const AudioDataPointRingBuffer* inputBuffer =
                 bufferElement[_kindInputStream];
-            AudioSampleRingBuffer* outputBufferLow =
+            AudioDataPointRingBuffer* outputBufferLow =
                 bufferElement[_kindLowOutputStream];
-            AudioSampleRingBuffer* outputBufferHigh =
+            AudioDataPointRingBuffer* outputBufferHigh =
                 bufferElement[_kindHighOutputStream];
 
             _crossoverFilter.apply(*inputBuffer,
@@ -1666,7 +1680,7 @@ SoXMultibandCompander::SoXMultibandCompander ()
     : _allocatedBandCount{0},
       _bandCount{0},
       _channelCount{0},
-      _sampleRingBufferVector{}
+      _dataPointRingBufferVector{}
 {
     Logging_trace(">>");
     _companderBandList = new _MCompanderBandList(_allocatedBandCount);
@@ -1702,7 +1716,7 @@ String SoXMultibandCompander::toString () const {
 
 void
 SoXMultibandCompander::setCompanderBandData (IN Natural bandIndex,
-                                             IN Real sampleRate,
+                                             IN Real dataPointRate,
                                              IN Real attack,
                                              IN Real release,
                                              IN Real dBKnee,
@@ -1711,10 +1725,10 @@ SoXMultibandCompander::setCompanderBandData (IN Natural bandIndex,
                                              IN Real dBGain,
                                              IN Real topFrequency)
 {
-    Logging_trace9(">>: bandIndex = %1, sampleRate = %2, attack = %3,"
+    Logging_trace9(">>: bandIndex = %1, dataPointRate = %2, attack = %3,"
                    " release = %4, dBKnee = %5, dBThreshold = %6,"
                    " ratio = %7, dBGain = %8, topFrequency = %9",
-                   TOSTRING(bandIndex), TOSTRING(sampleRate),
+                   TOSTRING(bandIndex), TOSTRING(dataPointRate),
                    TOSTRING(attack), TOSTRING(release),
                    TOSTRING(dBKnee), TOSTRING(dBThreshold),
                    TOSTRING(ratio), TOSTRING(dBGain),
@@ -1723,7 +1737,7 @@ SoXMultibandCompander::setCompanderBandData (IN Natural bandIndex,
     _MCompanderBandList* companderBandList =
         static_cast<_MCompanderBandList*>(_companderBandList);
     _MCompanderBand& companderBand = companderBandList->at(bandIndex);
-    companderBand.adapt(sampleRate,
+    companderBand.adapt(dataPointRate,
                         attack, release, dBKnee, dBThreshold,
                         ratio, dBGain, topFrequency);
 
@@ -1751,34 +1765,35 @@ void SoXMultibandCompander::resize (IN Natural bandCount,
     }
 
     const Natural bufferCountPerChannel = _allocatedBandCount * 2 + 1;
-    _sampleRingBufferVector.resize(_channelCount, bufferCountPerChannel);
+    _dataPointRingBufferVector.resize(_channelCount, bufferCountPerChannel);
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
-        /* connect the compander buffers to the sample buffer
+        /* connect the compander buffers to the data point buffer
            matrix */
         Natural i = 0;
 
         for (_MCompanderBand& companderBand : *companderBandList) {
             companderBand.setBuffer(channel,
                                     _kindInputStream,
-                                    &_sampleRingBufferVector.at(channel, i));
+                                    &_dataPointRingBufferVector.at(channel,
+                                                                   i));
             companderBand.setBuffer(channel,
                                     _kindLowOutputStream,
-                                    &_sampleRingBufferVector.at(channel,
-                                                                i + 1));
+                                    &_dataPointRingBufferVector.at(channel,
+                                                                   i + 1));
             companderBand.setBuffer(channel,
                                     _kindHighOutputStream,
-                                    &_sampleRingBufferVector.at(channel,
-                                                                i + 2));
+                                    &_dataPointRingBufferVector.at(channel,
+                                                                   i + 2));
             /* take care of single overlapping buffer between the
                bands */
             i += 2;
         }
 
         for (Natural j = 0;  j < bufferCountPerChannel;  j++) {
-            AudioSampleRingBuffer& sampleBuffer =
-                _sampleRingBufferVector.at(channel, j);
-            sampleBuffer.setLength(_LRFilter::order);
+            AudioDataPointRingBuffer& dataPointBuffer =
+                _dataPointRingBufferVector.at(channel, j);
+            dataPointBuffer.setLength(_LRFilter::order);
         }
     }
 
@@ -1798,26 +1813,26 @@ void SoXMultibandCompander::setEffectiveSize (IN Natural bandCount)
 /*--------------------*/
 
 void
-SoXMultibandCompander::apply (IN AudioSampleList& inputSampleList,
-                              OUT AudioSampleList& outputSampleList)
+SoXMultibandCompander::apply (IN AudioDataPointList& inputDataPointList,
+                              OUT AudioDataPointList& outputDataPointList)
 {
     Logging_trace(">>");
 
-    outputSampleList.setToZero();
+    outputDataPointList.setToZero();
     const Natural bufferCountPerChannel = _bandCount * 2 + 1;
 
     for (Natural channel = 0;  channel < _channelCount;  channel++) {
         for (Natural j = 0;  j < bufferCountPerChannel;  j++) {
-            AudioSampleRingBuffer& sampleBuffer =
-                _sampleRingBufferVector.at(channel, j);
-            sampleBuffer.shiftRight(0.0);
+            AudioDataPointRingBuffer& dataPointBuffer =
+                _dataPointRingBufferVector.at(channel, j);
+            dataPointBuffer.shiftRight(0.0);
         }
 
-        /* setup sample buffer for processing */
-        AudioSampleRingBuffer& inputBuffer =
-            _sampleRingBufferVector.at(channel, 0);
-        AudioSample inputSample = inputSampleList[channel];
-        inputBuffer.setFirst(inputSample);
+        /* setup data point buffer for processing */
+        AudioDataPointRingBuffer& inputBuffer =
+            _dataPointRingBufferVector.at(channel, 0);
+        AudioDataPoint inputDataPoint = inputDataPointList[channel];
+        inputBuffer.setFirst(inputDataPoint);
     }
 
     _MCompanderBandList* companderBandList =
@@ -1835,15 +1850,15 @@ SoXMultibandCompander::apply (IN AudioSampleList& inputSampleList,
     for (Natural bandIndex = 0;  bandIndex < _bandCount;  bandIndex++) {
         _MCompanderBand& companderBand =
             companderBandList->at(bandIndex);
-        companderBand.apply(outputSampleList);
+        companderBand.apply(outputDataPointList);
     }
 
-    /* write all output channel samples to buffer */
+    /* write all output channel data points to buffer */
     for (Natural channel = 0;  channel < _channelCount;  channel++) {
-        const AudioSample outputSample = outputSampleList[channel];
-        AudioSampleRingBuffer& outputBuffer =
-            _sampleRingBufferVector.at(channel, bufferCountPerChannel - 1);
-        outputBuffer.setFirst(outputSample);
+        const AudioDataPoint outputDataPoint = outputDataPointList[channel];
+        AudioDataPointRingBuffer& outputBuffer =
+            _dataPointRingBufferVector.at(channel, bufferCountPerChannel - 1);
+        outputBuffer.setFirst(outputDataPoint);
     }
 
     Logging_trace("<<");

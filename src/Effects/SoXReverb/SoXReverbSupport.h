@@ -16,13 +16,13 @@
 /* IMPORTS */
 /*=========*/
 
-#include "AudioSampleRingBuffer.h"
+#include "AudioDataPointRingBuffer.h"
 #include "Object.h"
 #include "Percentage.h"
 
 /*--------------------*/
 
-using Audio::AudioSampleRingBuffer;
+using Audio::AudioDataPointRingBuffer;
 using BaseTypes::Primitives::Object;
 using BaseTypes::Primitives::Percentage;
 using BaseTypes::Primitives::Real;
@@ -116,13 +116,13 @@ namespace SoXPlugins::Effects::SoXReverb {
         /*--------------------*/
 
         /**
-         * Sets number of reverb channels to <C>channelCount</C> and the
-         * sample rate to <C>sampleRate</C>.
+         * Sets number of reverb channels to <C>channelCount</C> and
+         * the data point rate to <C>dataPointRate</C>.
          *
-         * @param[in] sampleRate    the new sample rate for this effect
-         * @param[in] channelCount  the new channel count for this effect
+         * @param[in] dataPointRate  the new data point rate for this effect
+         * @param[in] channelCount   the new channel count for this effect
          */
-        void resize (IN Real sampleRate,
+        void resize (IN Real dataPointRate,
                      IN Natural channelCount);
 
         /*--------------------*/
@@ -130,17 +130,17 @@ namespace SoXPlugins::Effects::SoXReverb {
         /*--------------------*/
 
         /**
-         * Applies this reverb to samples for all channels in
-         * <C>inputSampleList</C> and writes result in
-         * <C>outputSampleList</C>.
+         * Applies this reverb to data points for all channels in
+         * <C>inputDataPointList</C> and writes result in
+         * <C>outputDataPointList</C>.
          *
-         * @param[in]  inputSampleList   the queue of samples for all
-         *                               input channels
-         * @param[out] outputSampleList  the queue of samples for all
-         *                               output channels
+         * @param[in]  inputDataPointList   the queue of data points for
+         *                                  all input channels
+         * @param[out] outputDataPointList  the queue of data points for
+         *                                  all output channels
          */
-        void apply (IN AudioSampleRingBuffer& inputSampleList,
-                    OUT AudioSampleRingBuffer& outputSampleList);
+        void apply (IN AudioDataPointRingBuffer& inputDataPointList,
+                    OUT AudioDataPointRingBuffer& outputDataPointList);
 
         /*--------------------*/
         /* type conversion    */

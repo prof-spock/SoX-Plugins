@@ -1,6 +1,9 @@
 <map id="File.h" name="File.h">
-<area shape="rect" id="node1" title="The File specification defines a class for simple file handling based on C stdio." alt="" coords="151,5,208,33"/>
-<area shape="rect" id="node2" href="$_file_8cpp.html" title="The File body implements a class for simple file handling based on C stdio." alt="" coords="5,81,79,109"/>
-<area shape="rect" id="node3" href="$_logging_support_8cpp.html" title="The LoggingSupport body implements a class for simple entry/exit logging to a file or via a callback ..." alt="" coords="103,81,255,109"/>
-<area shape="rect" id="node4" href="$_operating_system_8cpp.html" title="The OperatingSystem body implements a class for several operating system related utility functions (l..." alt="" coords="280,81,444,109"/>
+<area shape="rect" id="Node000001" title="The File specification defines a class for simple file handling based on C stdio." alt="" coords="139,5,193,31"/>
+<area shape="rect" id="Node000002" href="$_file_8cpp.html" title="The File body implements a class for simple file handling based on C stdio." alt="" coords="5,79,73,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,40,61,81,59,76,132,35"/>
+<area shape="rect" id="Node000003" href="$_logging_support_8cpp.html" title="The LoggingSupport body implements a class for simple entry/exit logging to a file or via a callback ..." alt="" coords="97,79,235,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="169,44,169,79,163,79,163,44"/>
+<area shape="rect" id="Node000004" href="$_operating_system_8cpp.html" title="The OperatingSystem body implements a class for several operating system related utility functions (l..." alt="" coords="259,79,407,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="206,34,306,76,304,81,204,38"/>
 </map>

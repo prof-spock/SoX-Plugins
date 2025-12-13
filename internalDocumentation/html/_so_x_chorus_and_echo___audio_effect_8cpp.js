@@ -1,19 +1,21 @@
 var _so_x_chorus_and_echo___audio_effect_8cpp =
 [
-    [ "_DelayStageParameterData", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data" ],
-    [ "_EffectDescriptor_ECHO", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o" ],
+    [ "SoXPlugins::Effects::SoXChorusAndEcho::_DelayStageParameterData", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data" ],
+    [ "SoXPlugins::Effects::SoXChorusAndEcho::_EffectDescriptor_ECHO", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o" ],
+    [ "SoXChorusAndEcho_AudioEffect", "struct_so_x_chorus_and_echo___audio_effect.html", "struct_so_x_chorus_and_echo___audio_effect" ],
+    [ "_DelayStageParameterData", "struct___delay_stage_parameter_data.html", "struct___delay_stage_parameter_data" ],
+    [ "_EffectDescriptor_ECHO", "struct___effect_descriptor___e_c_h_o.html", "struct___effect_descriptor___e_c_h_o" ],
     [ "_defaultChorusPhase", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a50850f1c8399852aba4d02c4697fc610", null ],
     [ "_maxStageCount", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a3239e8631666b9bee05a39e9e602c33d", null ],
     [ "pagedParameterName", "_so_x_chorus_and_echo___audio_effect_8cpp.html#ace15357d96e5cd488d38773ecb7a803d", null ],
-    [ "_StageIndexToStageDataMap", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a0d2021e2599a180127a7e124910504c4", null ],
-    [ "STR", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a5b6f88d1249b396e351c4a85bcb35b2c", null ],
-    [ "_DelayKind", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a331ee929bb0d820936ec4a204099aaa9", [
-      [ "chorus", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a331ee929bb0d820936ec4a204099aaa9a970ae9dcbe08d5b400eee5d177dea886", null ],
-      [ "tappedDelay", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a331ee929bb0d820936ec4a204099aaa9ae1370cb451b1e46ff996cec55aa8f2f1", null ],
-      [ "delaySequence", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a331ee929bb0d820936ec4a204099aaa9aa8ce5288a272f235b8a0ac3de1524881", null ]
+    [ "SoXPlugins::Effects::SoXChorusAndEcho::_StageIndexToStageDataMap", "namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html#a568616e41982e23974efa69d0dff07a2", null ],
+    [ "_DelayKind", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a331ee929bb0d820936ec4a204099aaa9", null ],
+    [ "SoXPlugins::Effects::SoXChorusAndEcho::_DelayKind", "namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html#a331ee929bb0d820936ec4a204099aaa9", [
+      [ "SoXPlugins::Effects::SoXChorusAndEcho::_DelayKind::chorus", "namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html#a331ee929bb0d820936ec4a204099aaa9a970ae9dcbe08d5b400eee5d177dea886", null ],
+      [ "SoXPlugins::Effects::SoXChorusAndEcho::_DelayKind::tappedDelay", "namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html#a331ee929bb0d820936ec4a204099aaa9ae1370cb451b1e46ff996cec55aa8f2f1", null ],
+      [ "SoXPlugins::Effects::SoXChorusAndEcho::_DelayKind::delaySequence", "namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html#a331ee929bb0d820936ec4a204099aaa9aa8ce5288a272f235b8a0ac3de1524881", null ]
     ] ],
-    [ "_delayKindToString", "_so_x_chorus_and_echo___audio_effect_8cpp.html#abc51f439703811111e46cd6457f08e2b", null ],
-    [ "_stringToDelayKind", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a8b847cfd5d7351fd9239462b701b3086", null ],
+    [ "WaveFormKind", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a8cf082e76c27a75bb55cc50f17d0475c", null ],
     [ "_updateParameterMap", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a6efea07274e8395a7629c07f94518447", null ],
     [ "_updateRealParameterRange", "_so_x_chorus_and_echo___audio_effect_8cpp.html#afe91effd4bb38523b9837004f45dc31d", null ],
     [ "_chorusEffectKind", "_so_x_chorus_and_echo___audio_effect_8cpp.html#a08c1093ff5eb9c65c074ca0899da7070", null ],

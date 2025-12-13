@@ -1,7 +1,6 @@
 var struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor =
 [
     [ "SoXAudioEditor", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#ae5fb12ab174bec80155f637283bc2ee2", null ],
-    [ "~SoXAudioEditor", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#acca2814eaa0ad9010f32a131fc6e14df", null ],
     [ "_resetAppearance", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#a7653fa859b60da5599f0ec6f5e33d3ec", null ],
     [ "effectParameterMap", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#a3aa244ad6e8c374cc12e6bf578718a40", null ],
     [ "notifyAboutChange", "struct_so_x_plugins_1_1_view_and_controller_1_1_so_x_audio_editor.html#a572141276ba622864f42b1c5e89311c5", null ],

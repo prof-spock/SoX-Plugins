@@ -19,7 +19,7 @@
 
 /*--------------------*/
 
-using Audio::AudioSampleListVector;
+using Audio::AudioDataPointListVector;
 using BaseTypes::Containers::convertArray;
 using BaseTypes::GenericTypes::GenericSet;
 using SoXPlugins::Helpers::SoXEffectParameterKind;
@@ -499,24 +499,26 @@ static void _updateAudioProcessorParameterRange
 
     if (kind == SoXEffectParameterKind::enumKind) {
         Logging_traceError("combo box change is not supported");
-        // juce::AudioParameterChoice& choiceParameterObject =
-        //     dynamic_cast<juce::AudioParameterChoice&>(parameterObject);
-        // StringList enumValueList;
-        // effectParameterMap.valueRangeEnum(parameterName, enumValueList);
-        // juce::StringArray juceChoiceList;
-        // Natural parameterIndex = 0;
-        // Boolean isFound = false;
+        /* TODO: check whether some combo box change is possible
 
-        // for (const String& enumValue : enumValueList) {
-        //     juceChoiceList.add(juce::String(enumValue));
-        //     isFound = isFound || (value == enumValue);
-        //     parameterIndex += (isFound ? 0 : 1);
-        // }
+           juce::AudioParameterChoice& choiceParameterObject =
+           dynamic_cast<juce::AudioParameterChoice&>(parameterObject);
+           StringList enumValueList;
+           effectParameterMap.valueRangeEnum(parameterName, enumValueList);
+           juce::StringArray juceChoiceList;
+           Natural parameterIndex = 0;
+           Boolean isFound = false;
+           
+           for (const String& enumValue : enumValueList) {
+               juceChoiceList.add(juce::String(enumValue));
+               isFound = isFound || (value == enumValue);
+               parameterIndex += (isFound ? 0 : 1);
+           }
 
-        // /* workaround */
-        // while (juceChoiceList.size() < 2) {
-        //     juceChoiceList.add("x");
-        // }
+           while (juceChoiceList.size() < 2) {
+               juceChoiceList.add("x");
+           }
+        */
     } else if (kind == SoXEffectParameterKind::realKind
                || kind == SoXEffectParameterKind::intKind) {
         juce::AudioParameterFloat& floatParameterObject =
@@ -972,10 +974,10 @@ SoXAudioProcessor::_notifyObserversAboutChange
 /* event handling     */
 /*--------------------*/
 
-void SoXAudioProcessor::prepareToPlay (double sampleRate, int)
+void SoXAudioProcessor::prepareToPlay (double dataPointRate, int)
 {
-    Logging_trace1(">>: sampleRate = %1",
-                   TOSTRING(Real{sampleRate}));
+    Logging_trace1(">>: dataPointRate = %1",
+                   TOSTRING(Real{dataPointRate}));
 
     _SoXAudioProcessorDescriptor& descriptor =
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
@@ -986,7 +988,7 @@ void SoXAudioProcessor::prepareToPlay (double sampleRate, int)
         effect->setParameterValidity(true);
     }
 
-    effect->prepareToPlay(sampleRate);
+    effect->prepareToPlay(dataPointRate);
 
     Logging_trace("<<");
 }
@@ -1014,29 +1016,29 @@ void SoXAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
 
     const Natural channelCount = getTotalNumInputChannels();
     const Natural outputChannelCount = getTotalNumOutputChannels();
-    const Natural sampleCount{buffer.getNumSamples()};
+    const Natural dataPointCount{buffer.getNumSamples()};
     
     /* In case we have more outputs than inputs, this code clears any
        output channels that didn't contain input data */
     for (Natural i = channelCount;  i < outputChannelCount;  i++) {
-        buffer.clear((int) i, 0, (int) sampleCount);
+        buffer.clear((int) i, 0, (int) dataPointCount);
     }
 
-    AudioSampleListVector audioSampleBuffer{};
+    AudioDataPointListVector audioDataPointBuffer{};
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
         const float* inputPtr = buffer.getReadPointer((int) channel);
-        AudioSampleList sampleList{sampleCount};
-        convertArray(sampleList.asArray(), inputPtr, sampleCount);
-        audioSampleBuffer.append(sampleList);
+        AudioDataPointList dataPointList{dataPointCount};
+        convertArray(dataPointList.asArray(), inputPtr, dataPointCount);
+        audioDataPointBuffer.append(dataPointList);
     }
 
     const Real currentTimePosition = _readTime(getPlayHead());
-    effect->processBlock(currentTimePosition, audioSampleBuffer);
+    effect->processBlock(currentTimePosition, audioDataPointBuffer);
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
         float* outputPtr = buffer.getWritePointer((int) channel);
-        AudioSampleList& sampleList = audioSampleBuffer[channel];
-        convertArray(outputPtr, sampleList.asArray(), sampleCount);
+        AudioDataPointList& dataPointList = audioDataPointBuffer[channel];
+        convertArray(outputPtr, dataPointList.asArray(), dataPointCount);
     }
 }

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['filepointer_1926',['FilePointer',['../_file_8cpp.html#aa99fc14e9abd46ef7ab808983ee4a876',1,'File.cpp']]]
+  ['duration_0',['Duration',['../namespace_base_types_1_1_primitives.html#ad86f6fc98f8b655f465813e496850506',1,'BaseTypes::Primitives::Duration'],['../_operating_system_8h.html#ad86f6fc98f8b655f465813e496850506',1,'Duration:&#160;TimeAndDuration.h'],['../_time_and_duration_8cpp.html#ad86f6fc98f8b655f465813e496850506',1,'Duration:&#160;TimeAndDuration.h']]]
 ];

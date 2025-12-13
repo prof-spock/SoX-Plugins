@@ -11,5 +11,15 @@ var namespace_so_x_plugins_1_1_effects_1_1_so_x_compander =
     [ "_TransferFunction", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___transfer_function" ],
     [ "SoXCompander_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect" ],
     [ "SoXCompander_AudioProcessor", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_processor.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_processor" ],
-    [ "SoXMultibandCompander", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander" ]
+    [ "SoXMultibandCompander", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_multiband_compander" ],
+    [ "_BandIndexToCompanderDataMap", "namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#af0d110ef8dca0b39cb7bb96415b5a63c", null ],
+    [ "_CompanderDataPointBuffer", "namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a8713a22362fcf6725e8db1a401ba1352", null ],
+    [ "_CompanderDataPointBufferElement", "namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ab88c183413092c55997568c84b4c6989", null ],
+    [ "_CompanderStreamKind", "namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a04ac9b5b15f96dc2803ffba37facc0c3", null ],
+    [ "_MCompanderBandList", "namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#ab095f12220af32c947678105ea5227b6", null ],
+    [ "_TfSegmentList", "namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a75a8a0a665547750e3981a78bd54b0f8", null ],
+    [ "_dataPointBufferToString", "namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a98eeba66e76de244c2323e0ef584b391", null ],
+    [ "_companderStreamKindCount", "namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#aba315deadaf1e3fa986162eb4f7aa5a2", null ],
+    [ "_maximumChannelCount", "namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a03d18776f0fa01892f32d55bfba5dbe2", null ],
+    [ "_streamKindAsString", "namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#a5eb3b5af08e7cd7b8d9ad97178c56401", null ]
 ];

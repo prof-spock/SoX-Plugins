@@ -47,7 +47,7 @@ namespace BaseTypes::Primitives {
          *
          * @param[in] c  char value
          */
-        explicit Byte (IN char c)
+        Byte (IN char c)
         {
             _value = c;
         }
@@ -59,7 +59,7 @@ namespace BaseTypes::Primitives {
          *
          * @param[in] i  int value
          */
-        explicit Byte (IN int i)
+        Byte (IN int i)
         {
             _value = i;
         }

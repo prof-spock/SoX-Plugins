@@ -16,12 +16,12 @@
 /*=========*/
 
 #include "RealList.h"
-#include "AudioSampleRingBuffer.h"
+#include "AudioDataPointRingBuffer.h"
 
 /*====================*/
 
 using BaseTypes::Containers::RealList;
-using Audio::AudioSampleRingBuffer;
+using Audio::AudioDataPointRingBuffer;
 
 /*====================*/
 
@@ -113,16 +113,16 @@ namespace Audio {
         /**
          * Applies IIR filter to <C>inputBuffer</C> and
          * <C>outputBuffer</C>; assumes that first entry in input
-         * buffer is current sample and writes result sample into top
+         * buffer is current data point and writes result data point into top
          * of output buffer
          *
          * @param[in] inputBuffer     the buffer (of correct length)
-         *                            with the input samples
+         *                            with the input data points
          * @param[inout] outputBuffer the buffer (of correct length)
-         *                            with the output samples
+         *                            with the output data points
          */
-        void apply (IN AudioSampleRingBuffer& inputBuffer,
-                    INOUT AudioSampleRingBuffer& outputBuffer) const;
+        void apply (IN AudioDataPointRingBuffer& inputBuffer,
+                    INOUT AudioDataPointRingBuffer& outputBuffer) const;
 
         /*--------------------*/
         /*--------------------*/
