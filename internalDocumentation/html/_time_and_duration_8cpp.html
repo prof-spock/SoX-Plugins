@@ -95,7 +95,7 @@ $(function(){initNavTree('_time_and_duration_8cpp.html','',''); });
 
 <p>The <code>TimeAndDuration</code> body implements simple functions for the types for time and duration.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;time.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;MySystemTime.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="_logging_8h_source.html">Logging.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_real_list_8h_source.html">RealList.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_time_and_duration_8h_source.html">TimeAndDuration.h</a>&quot;</code><br />
@@ -106,12 +106,6 @@ $(function(){initNavTree('_time_and_duration_8cpp.html','',''); });
 <div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="_time_and_duration_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a0a72656a3c65a9a8012db7551f1dd232" id="r_a0a72656a3c65a9a8012db7551f1dd232"><td class="memItemLeft" align="right" valign="top"><a id="a0a72656a3c65a9a8012db7551f1dd232" name="a0a72656a3c65a9a8012db7551f1dd232"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SystemTime_TimeSpec</b>&#160;&#160;&#160;struct timespec</td></tr>
-<tr class="memitem:a7e31cfde2a256e2851f2c0d82263a526" id="r_a7e31cfde2a256e2851f2c0d82263a526"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e31cfde2a256e2851f2c0d82263a526">SystemTime_currentClockTime</a>(ts)</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a2446389c5ecdea05df8952e709ef46f4" id="r_a2446389c5ecdea05df8952e709ef46f4"><td class="memItemLeft" align="right" valign="top"><a id="a2446389c5ecdea05df8952e709ef46f4" name="a2446389c5ecdea05df8952e709ef46f4"></a>
@@ -154,26 +148,7 @@ static const <a class="el" href="namespace_base_types_1_1_primitives.html#ad86f6
 <div class="textblock"><p>The <code>TimeAndDuration</code> body implements simple functions for the types for time and duration. </p>
 <dl class="section author"><dt>Author</dt><dd>Dr. Thomas Tensi </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025-06 </dd></dl>
-</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
-<a id="a7e31cfde2a256e2851f2c0d82263a526" name="a7e31cfde2a256e2851f2c0d82263a526"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e31cfde2a256e2851f2c0d82263a526">&#9670;&#160;</a></span>SystemTime_currentClockTime</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SystemTime_currentClockTime</td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>ts</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">timespec_get(ts, TIME_UTC)</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a4fa48870cfb879ca468c1d56895220a2" name="a4fa48870cfb879ca468c1d56895220a2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4fa48870cfb879ca468c1d56895220a2">&#9670;&#160;</a></span>_fromParts()</h2>
 

@@ -13,9 +13,7 @@
 /* IMPORTS */
 /*=========*/
 
-#include <time.h>
-    #define SystemTime_TimeSpec   struct timespec
-    #define SystemTime_currentClockTime(ts) timespec_get(ts, TIME_UTC)
+#include <MySystemTime.h>
 
 #include "Logging.h"
 #include "RealList.h"
@@ -224,10 +222,10 @@ static Real _systemTime ()
 {
     Logging_trace(">>");
 
-    SystemTime_TimeSpec timeSpec;
-    SystemTime_currentClockTime(&timeSpec);
-    Real result{(double) timeSpec.tv_sec
-                + ((double) timeSpec.tv_nsec) * 1.0E-9};
+    C_SystemTime::TimeSpec timeSpec;
+    C_SystemTime::currentClockTime(timeSpec);
+    Real result{double(timeSpec.tv_sec)
+                + double(timeSpec.tv_nsec) * 1.0E-9};
 
     Logging_trace1("<<: %1", TOSTRING(result));
     return result;

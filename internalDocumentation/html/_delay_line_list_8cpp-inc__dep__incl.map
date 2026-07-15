@@ -1,0 +1,11 @@
+<map id="DelayLineList.cpp&#45;inc" name="DelayLineList.cpp&#45;inc">
+<area shape="rect" id="Node000001" title="The DelayLineList body implements a list of delay lines for audio data points (this is the effective ..." alt="" coords="200,5,347,31"/>
+<area shape="rect" id="Node000002" href="$_delay_line_list_8h.html" title="The DelayLineList specification defines a list of delay lines for audio data points." alt="" coords="218,79,329,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="276,44,276,79,271,79,271,44"/>
+<area shape="rect" id="Node000003" href="$_delay_line_list_8cpp.html" title="The DelayLine body implements a list of delay lines for audio data points (this is the formal CPP fil..." alt="" coords="5,159,131,185"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="232,111,99,162,97,157,230,106"/>
+<area shape="rect" id="Node000004" href="$_so_x_chorus_and_echo___audio_effect_8cpp.html" title="The SoXChorusAndEcho_AudioEffect body implements the SoX chorus, echo and echos audio effects; the di..." alt="" coords="155,159,392,185"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="276,118,276,159,271,159,271,118"/>
+<area shape="rect" id="Node000005" href="$_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXFlangerPhaserAndTremolo_AudioEffect body implements the SoX flanger, phaser and tremolo modula..." alt="" coords="417,152,615,192"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="323,106,458,149,457,154,321,111"/>
+</map>

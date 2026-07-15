@@ -14,7 +14,10 @@
 /* IMPORTS */
 /*=========*/
 
-#include "AudioDataPointRingBufferVector.h"
+#include <cmath>
+#include <utility>
+
+#include "DelayLineList.h"
 #include "Logging.h"
 #include "GenericTuple.h"
 #include "SoXEffectParameterMap.h"
@@ -23,7 +26,7 @@
 
 /*--------------------*/
 
-using Audio::AudioDataPointRingBufferVector;
+using Audio::DelayLineList;
 using Audio::WaveForm;
 using Audio::WaveFormKind;
 using BaseTypes::GenericTypes::GenericTuple;
@@ -34,12 +37,13 @@ using SoXPlugins::Effects::SoXChorusAndEcho::SoXChorusAndEcho_AudioEffect;
 using STR = BaseModules::StringUtil;
 
 /** abbreviation for pagedParameterName */
-#define pagedParameterName SoXEffectParameterMap::pagedParameterName
+static const auto pagedParameterName =
+    SoXEffectParameterMap::pagedParameterName;
 
 /*====================*/
 
 /** maximum number of stages in a chorus or echo */
-#define _maxStageCount  (10)
+constexpr int _maxStageCount = 10;
 
 /** minimum depth value */
 static const Real _minimumDepth = 0.0;
@@ -48,7 +52,8 @@ static const Real _minimumDepth = 0.0;
 static const Real _depthResolution = 0.1;
 
 /** the default phase of each chorus modulation waveform */
-#define _defaultChorusPhase Radians{Real::pi / 2.0}
+static const Radians _defaultChorusPhase =
+    Radians{atan(1) * 4 * 1.5};
 
 /** the name of the chorus effect */
 static const String _chorusEffectKind = "Chorus";
@@ -58,6 +63,21 @@ static const String _delaySequenceEffectKind = "Delay Sequence";
 
 /** the name of the tapped delay effect */
 static const String _tappedDelayEffectKind = "Tapped Delay";
+
+/** when logging is active, the number of elements shown for the delay
+ * lines involved */
+static const Natural _delayLineLoggingLength = 12;
+
+/* adaptation for external test drivers */
+#ifdef EFFECTS_HAVE_EXTENDED_PARAMETER_RANGES
+    static const Real _minimumChorusDelay  = 0.0;
+    static const Real _maximumFrequency    = 100.0;
+    static const Real _frequencyResolution = 0.00001;
+#else
+    static const Real _minimumChorusDelay  = 20.0;
+    static const Real _maximumFrequency    = 5.0;
+    static const Real _frequencyResolution = 0.01;
+#endif
 
 /*============================================================*/
 
@@ -85,16 +105,16 @@ namespace SoXPlugins::Effects::SoXChorusAndEcho {
         /** the stage decay for this stage (as a factor) */
         Real _decay;
 
-        /** the stage chorus modulation frequency in Hz (when this is a
-         * chorus stage) */
+        /** the stage chorus modulation frequency in Hz (when this is
+         * a chorus stage) */
         Real _frequency;
 
-        /** the stage chorus depth for this stage in seconds (when this is a
-         * chorus stage) */
+        /** the stage chorus depth for this stage in seconds (when
+         * this is a chorus stage) */
         Real _depth;
 
-        /** the stage modulation waveform kind for this stage (when this
-         * is a chorus stage) */
+        /** the stage modulation waveform kind for this stage (when
+         * this is a chorus stage) */
         WaveFormKind _modulationKind;
 
         /** the waveform used for the modulation of this stage (when
@@ -123,12 +143,12 @@ namespace SoXPlugins::Effects::SoXChorusAndEcho {
     /*====================*/
 
     /**
-     * An <C>_EffectDescriptor_ECHO</C> object is the internal
+     * An <C>_EffectDescriptor_CECH</C> object is the internal
      * implementation of an chorus or echo effect descriptor type
      * where all data point input is routed to and data point output
      * is routed from.
      */
-    struct _EffectDescriptor_ECHO {
+    struct _EffectDescriptor_CECH {
 
         /** the associated echo effect */
         SoXChorusAndEcho_AudioEffect& _effect;
@@ -146,13 +166,13 @@ namespace SoXPlugins::Effects::SoXChorusAndEcho {
          * effect) */
         Real _timeOffset;
 
-        /** the number of delay lines in this multiline echo */
+        /** the number of delay lines in this multiline effect */
         Natural _stageCount;
 
         /** the current data point rate for this effect */
         Real _dataPointRate;
         
-        /** the number of audio channels in this echo */
+        /** the number of audio channels in this effect */
         Natural _channelCount;
 
         /** a map from stage index to the echo stage parameters
@@ -167,10 +187,34 @@ namespace SoXPlugins::Effects::SoXChorusAndEcho {
          * each) */
         AudioDataPointList _outputDataPointList;
 
-        /** the echo delay lines as a vector */
-        AudioDataPointRingBufferVector _delayLineList;
+        /** the echo delay lines as a list */
+        DelayLineList _delayLineList;
 
         /*--------------------*/
+        /*--------------------*/
+
+        /**
+         * Returns const reference to delay line for <C>channel</C> and
+         *<C>stage</C>
+         *
+         * @param[in] channel     channel represented by delay line
+         * @param[in] stageIndex  stage represented by delay line
+         */
+        const DelayLine& _delayLineAt (Natural channel,
+                                       Natural stageIndex) const;
+
+        /*--------------------*/
+
+        /**
+         * Returns reference to delay line for <C>channel</C> and
+         *<C>stage</C>
+         *
+         * @param[in] channel     channel represented by delay line
+         * @param[in] stageIndex  stage represented by delay line
+         */
+        DelayLine& _delayLineAt (Natural channel,
+                                 Natural stageIndex);
+
         /*--------------------*/
 
         /**
@@ -178,7 +222,7 @@ namespace SoXPlugins::Effects::SoXChorusAndEcho {
          *
          * @param[inout] effect  associated chorus and echo effect
          */
-        _EffectDescriptor_ECHO (INOUT SoXChorusAndEcho_AudioEffect& effect);
+        _EffectDescriptor_CECH (INOUT SoXChorusAndEcho_AudioEffect& effect);
 
         /*--------------------*/
 
@@ -229,7 +273,7 @@ namespace SoXPlugins::Effects::SoXChorusAndEcho {
 
 using SoXPlugins::Effects::SoXChorusAndEcho::_DelayKind;
 using SoXPlugins::Effects::SoXChorusAndEcho::_DelayStageParameterData;
-using SoXPlugins::Effects::SoXChorusAndEcho::_EffectDescriptor_ECHO;
+using SoXPlugins::Effects::SoXChorusAndEcho::_EffectDescriptor_CECH;
 
 /*----------------------*/
 /* FORWARD DECLARATIONS */
@@ -258,10 +302,9 @@ String _DelayStageParameterData::toString () const
                             TOSTRING(_decay));
 
     if (_isChorusStage) {
-        st = (st
-              + STR::expand(", frequency = %1Hz, depth = %2s, kind = %3",
-                            TOSTRING(_frequency), TOSTRING(_depth),
-                            Audio::waveFormKindToString(_modulationKind)));
+        st += STR::expand(", frequency = %1Hz, depth = %2s, kind = %3",
+                          TOSTRING(_frequency), TOSTRING(_depth),
+                          Audio::waveFormKindToString(_modulationKind));
     }
 
     st = STR::expand("_DelayStageParameterData(%1)", st);
@@ -269,11 +312,11 @@ String _DelayStageParameterData::toString () const
 }
 
 /*------------------------*/
-/* _EffectDescriptor_ECHO */
+/* _EffectDescriptor_CECH */
 /*------------------------*/
 
-_EffectDescriptor_ECHO::
-_EffectDescriptor_ECHO (INOUT SoXChorusAndEcho_AudioEffect& effect)
+_EffectDescriptor_CECH::
+_EffectDescriptor_CECH (INOUT SoXChorusAndEcho_AudioEffect& effect)
     : _effect{effect},
       _kind{_DelayKind::tappedDelay},
       _inGain{0.0},
@@ -291,67 +334,104 @@ _EffectDescriptor_ECHO (INOUT SoXChorusAndEcho_AudioEffect& effect)
 
 /*--------------------*/
 
-void _EffectDescriptor_ECHO::apply ()
+const DelayLine&
+_EffectDescriptor_CECH::_delayLineAt (Natural channel,
+                                      Natural stageIndex) const
+{
+    Logging_trace2(">>: channel = %1, stageIndex = %2",
+                   TOSTRING(channel), TOSTRING(stageIndex));
+
+    const Natural delayLineIndex = channel * _stageCount + stageIndex;
+    const DelayLine& result = _delayLineList.at(delayLineIndex);
+   
+    Logging_trace("<<");
+    return result;
+}
+
+/*--------------------*/
+
+DelayLine& _EffectDescriptor_CECH::_delayLineAt (Natural channel,
+                                                 Natural stageIndex)
+{
+    return const_cast<DelayLine&>(std::as_const(*this)._delayLineAt(channel, stageIndex));
+}
+
+/*--------------------*/
+
+void _EffectDescriptor_CECH::apply ()
 {
     Logging_trace(">>");
 
     const Boolean isChorus          = (_kind == _DelayKind::chorus);
     const Boolean isSequentialDelay = (_kind == _DelayKind::delaySequence);
 
-    Natural delayLineIndex = 0;
+    String st;
 
     for (Natural channel = 0;  channel < _channelCount;  channel++) {
         AudioDataPoint inputDataPoint         = _inputDataPointList[channel];
         AudioDataPoint outputDataPoint        = inputDataPoint * _inGain;
         AudioDataPoint previousStageDataPoint = 0.0;
+        const Boolean isLastChannel = (channel == _channelCount - 1);
 
         for (Natural stageIndex = 0;  stageIndex < _stageCount;
              stageIndex++) {
             _DelayStageParameterData& stage =
                 _indexToStageParamDataMap[stageIndex];
             const Real decay = stage._decay;
-            Natural indexOffset;
+            Real indexOffset;
 
             if (!isChorus) {
                 /* no modulation, take first entry in delay line */
-                indexOffset = 0;
+                indexOffset = 0.0;
             } else {
                 /* access a position modulated by modulation wave */
                 WaveForm& waveForm{stage._modulationWave};
-                indexOffset = Natural{waveForm.current()};
+                indexOffset = -waveForm.current();
 
-                if (channel == _channelCount - 1) {
+                if (isLastChannel) {
                     waveForm.advance();
                 }
             }
 
-            Logging_trace2("--: stage = %1, indexOffset = %2",
-                           TOSTRING(stageIndex), TOSTRING(indexOffset));
-
-            AudioDataPointRingBuffer& delayLine =
-                _delayLineList.at(delayLineIndex);
+            DelayLine& delayLine = _delayLineAt(channel, stageIndex);
             AudioDataPoint stageDataPoint;
+            AudioDataPoint delayedDataPoint;
 
-            if (delayLine.length() == 0) {
+            if (Logging_isActive) {
+                st = STR::expand("channel = %1, stage = %2,"
+                                 " indexOffset = %3, delayLine = %4",
+                                 TOSTRING(channel), TOSTRING(stageIndex),
+                                 TOSTRING(indexOffset),
+                                 delayLine.toString(_delayLineLoggingLength));
+            }
+
+            if (delayLine.isEmpty()) {
                 stageDataPoint = inputDataPoint;
             } else {
-                stageDataPoint = delayLine.at(indexOffset);
                 /* the next stage either gets as input the input data
                    point or the input data point plus the current
                    stage data point */
-                AudioDataPoint delayedDataPoint =
+                delayedDataPoint =
                     (!isSequentialDelay
                      ? inputDataPoint
                      : previousStageDataPoint + inputDataPoint);
-                delayLine.shiftLeft(delayedDataPoint);
+                stageDataPoint = delayLine.at(indexOffset);
+                delayLine.advance(delayedDataPoint);
             }
 
             outputDataPoint += stageDataPoint * decay;
-            Logging_trace2("--: stageDataPoint = %1, outputDataPoint = %2",
-                           TOSTRING(stageDataPoint),
-                           TOSTRING(outputDataPoint));
+
+            if (Logging_isActive) {
+                Logging_trace4("--: %1, stageDataPoint = %2,"
+                               " delayedDataPoint = %3,"
+                               " outputDataPoint = %4",
+                               st,
+                               TOSTRING(stageDataPoint),
+                               TOSTRING(delayedDataPoint),
+                               TOSTRING(outputDataPoint));
+            }
+
             previousStageDataPoint = stageDataPoint;
-            delayLineIndex++;
         }
 
         _outputDataPointList[channel] = outputDataPoint * _outGain;
@@ -362,42 +442,42 @@ void _EffectDescriptor_ECHO::apply ()
         
 /*--------------------*/
 
-String _EffectDescriptor_ECHO::internalState () const
+String _EffectDescriptor_CECH::internalState () const
 {
     const Boolean isChorus = (_kind == _DelayKind::chorus);
     String st;
-    Natural delayLineIndex = 0;
 
-    for (Natural stageIndex = 0;  stageIndex < _stageCount;  stageIndex++) {
+    for (Natural stageIndex = 0;  stageIndex < _stageCount;
+         stageIndex++) {
         const _DelayStageParameterData& stage =
             _indexToStageParamDataMap[stageIndex];
-        AudioDataPoint stageDataPoint = 0.0;
-        Natural indexOffset =
-            (!isChorus ? 0 : Natural{stage._modulationWave.current()});
+        Real indexOffset =
+            (!isChorus ? 0.0 : stage._modulationWave.current());
 
-        if (_channelCount > 0) {
-            const AudioDataPointRingBuffer& delayLine =
-                _delayLineList.at(delayLineIndex);
-            stageDataPoint = (indexOffset >= delayLine.length()
-                           ? 0.0 : delayLine.at(indexOffset));
-            delayLineIndex += _channelCount;
-        }
-
-        st = (st
-              + STR::expand(", stage = %1, dataPoint = %2",
-                            TOSTRING(stageIndex),
-                            TOSTRING(stageDataPoint)));
+        st += STR::expand(", stage = %1", TOSTRING(stageIndex));
 
         if (isChorus) {
-            Real offsetAsTime =
-                (stage._depth - Real{indexOffset} / _dataPointRate) * 1000.0;
-            st = (st
-                  + STR::expand(", offset = %1, offsetAsTime = %2,"
-                                " waveState = %3",
-                                TOSTRING(indexOffset),
-                                TOSTRING(offsetAsTime),
-                                TOSTRING(stage._modulationWave.state())));
+            Real offsetAsTime = indexOffset * 1000.0 / _dataPointRate;
+            st += STR::expand(", offset = %1smp, offsetAsTime = %2ms,"
+                              " waveState = %3",
+                              TOSTRING(indexOffset),
+                              TOSTRING(offsetAsTime),
+                              TOSTRING(stage._modulationWave.state()));
         }
+
+        AudioDataPointList stageDataPointList;
+
+        for (Natural channel = 0;  channel < _channelCount;  channel ++) {
+            const DelayLine& delayLine = _delayLineAt(channel, stageIndex);
+            const AudioDataPoint stageDataPoint =
+                (delayLine.isEmpty()
+                 ? AudioDataPoint{-999.0}
+                 : delayLine.at(-indexOffset));
+            stageDataPointList.append(stageDataPoint);
+        }
+        
+        st += STR::expand(", stageDataPoints = %1",
+                          stageDataPointList.toString(false));
     }
 
     return st;
@@ -405,7 +485,7 @@ String _EffectDescriptor_ECHO::internalState () const
 
 /*--------------------*/
 
-void _EffectDescriptor_ECHO::updateSettings (IN Real dataPointRate,
+void _EffectDescriptor_CECH::updateSettings (IN Real dataPointRate,
                                              IN Natural channelCount,
                                              IN Real currentTime)
 {
@@ -420,21 +500,23 @@ void _EffectDescriptor_ECHO::updateSettings (IN Real dataPointRate,
 
     Boolean isChorusEffect = (_kind == _DelayKind::chorus);
     Natural delayLineCount = _channelCount * _maxStageCount;
-    _delayLineList.setRingBufferCount(delayLineCount);
+    _delayLineList.setLength(delayLineCount);
+    _delayLineList.setToZero();
 
     for (Natural stageIndex = 0;  stageIndex < _stageCount; stageIndex++) {
-        Natural delayLineIndex = stageIndex;
         _DelayStageParameterData& stage =
             _indexToStageParamDataMap[stageIndex];
         stage._isChorusStage = isChorusEffect;
 
-        Real delayLineLengthInSeconds =
-            stage._delay + (isChorusEffect ? stage._depth : 0.0);
-        Natural delayLineLength =
-            Natural::floor((double) (delayLineLengthInSeconds
-                                     * _dataPointRate));
-        Logging_trace2("--: stageIndex = %1, delayLineLength = %2",
-                       TOSTRING(stageIndex), TOSTRING(delayLineLength));
+        const Real delayLineLengthInSamples =
+            (stage._delay + stage._depth) * _dataPointRate;
+
+        #ifndef EMULATE_SOX_STRICTLY
+            const Real delayLineLength = delayLineLengthInSamples;
+        #else
+            /* use natural values for the delay line lengths */
+            const Real delayLineLength = delayLineLengthInSamples.ceiling();
+        #endif
 
         /* update modulation waveform for a chorus*/
         if (isChorusEffect && stage._frequency > 0.0001) {
@@ -448,19 +530,30 @@ void _EffectDescriptor_ECHO::updateSettings (IN Real dataPointRate,
             Real waveFormLength = (frequency < 0.001
                                    ? 1.0
                                    : _dataPointRate / stage._frequency);
-            Real maximumModulationValue =
-                Real::floor(stage._depth * _dataPointRate);
+            Boolean hasIntegerValues = false;
+
+            #ifdef EMULATE_SOX_STRICTLY
+                /* use natural values for the wave form and
+                   indexing */
+                waveFormLength   = waveFormLength.round();
+                hasIntegerValues = true;
+            #endif
+
+            Real minimumModulationValue = stage._delay * _dataPointRate;
+            Real maximumModulationValue = delayLineLengthInSamples;
+
             WaveForm& waveForm = stage._modulationWave;
             waveForm.set(waveFormLength, stage._modulationKind,
-                         0.0, maximumModulationValue,
-                         effectivePhase, true);
+                         minimumModulationValue, maximumModulationValue,
+                         effectivePhase, hasIntegerValues);
         }
 
+        Logging_trace2("--: stageIndex = %1, delayLineLength = %2smp",
+                       TOSTRING(stageIndex), TOSTRING(delayLineLength));
+
         for (Natural channel = 0;  channel < _channelCount;  channel++) {
-            AudioDataPointRingBuffer& delayLine =
-                _delayLineList.at(delayLineIndex);
+            DelayLine& delayLine = _delayLineAt(channel, stageIndex);
             delayLine.setLength(delayLineLength);
-            delayLineIndex += _stageCount;
         }                
     }
 
@@ -470,7 +563,7 @@ void _EffectDescriptor_ECHO::updateSettings (IN Real dataPointRate,
 
 /*--------------------*/
 
-String _EffectDescriptor_ECHO::toString () const
+String _EffectDescriptor_CECH::toString () const
 {
     String prefix =
         STR::expand("kind = %1,"
@@ -483,25 +576,25 @@ String _EffectDescriptor_ECHO::toString () const
                     TOSTRING(_stageCount), TOSTRING(_channelCount));
 
     String stageDataString;
-    Natural delayLineIndex = 0;
 
     for (Natural stageIndex = 0;  stageIndex < _stageCount;  stageIndex++) {
         const _DelayStageParameterData& data =
             _indexToStageParamDataMap[stageIndex];
-        Natural delayLineLength = 0;
+        Real delayLineLength = 0.0;
 
         if (_channelCount > 0) {
-            const AudioDataPointRingBuffer& delayLine =
-                _delayLineList.at(delayLineIndex);
-            delayLineIndex += _channelCount;
+            const DelayLine& delayLine = _delayLineAt(0, stageIndex);
             delayLineLength = delayLine.length();
         }
 
         stageDataString +=
             ((stageIndex > 0 ? ", " : "")
-             + STR::expand("stage_%1(%2,"
-                           " modulationWave = %3, delayLineLength = %4)",
-                           TOSTRING(stageIndex), data.toString(),
+             + STR::expand("stage_%1("
+                           "parameterData = %2,"
+                           " modulationWave = %3,"
+                           " delayLineLength = %4)",
+                           TOSTRING(stageIndex),
+                           data.toString(),
                            data._modulationWave.toString(),
                            TOSTRING(delayLineLength)));
     }
@@ -509,7 +602,7 @@ String _EffectDescriptor_ECHO::toString () const
     stageDataString = STR::expand("(%1)", stageDataString);
 
     String st = STR::expand("%1, stages = %2", prefix, stageDataString);
-    st = STR::expand("_EffectDescriptor_ECHO(%1)", st);
+    st = STR::expand("_EffectDescriptor_CECH(%1)", st);
     return st;
 }
 
@@ -621,7 +714,7 @@ void _updateParameterMap (IN _DelayKind delayKind,
 
     /* delay value range (in milliseconds) */
     Real maximumDelay = (isChorusEffect ? 100.0 : 20000.0);
-    Real minimumDelay = (isChorusEffect ?  20.0 :     0.0);
+    Real minimumDelay = (isChorusEffect ?  _minimumChorusDelay : 0.0);
 
     for (Natural stageIndex = 0;  stageIndex < _maxStageCount;  stageIndex++) {
         const auto pagedName =
@@ -639,7 +732,8 @@ void _updateParameterMap (IN _DelayKind delayKind,
                                   0.0, 1.0, 0.00001);
         _updateRealParameterRange(parameterMap,
                                   pagedName(parameterName_frequency),
-                                  0.1, 5.0, 0.01);
+                                  0.1, _maximumFrequency,
+                                  _frequencyResolution);
         _updateRealParameterRange(parameterMap,
                                   pagedName(parameterName_depth),
                                   0.0, 10.0, _depthResolution);
@@ -710,9 +804,9 @@ SoXChorusAndEcho_AudioEffect::SoXChorusAndEcho_AudioEffect ()
     Logging_trace(">>");
 
     /* initialize descriptor */
-    _effectDescriptor = new _EffectDescriptor_ECHO(*this);
-    _EffectDescriptor_ECHO& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_ECHO>(_effectDescriptor);
+    _effectDescriptor = new _EffectDescriptor_CECH(*this);
+    _EffectDescriptor_CECH& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_CECH>(_effectDescriptor);
     String st;
 
     /* --- initialize parameters --- */
@@ -755,7 +849,7 @@ SoXChorusAndEcho_AudioEffect::SoXChorusAndEcho_AudioEffect ()
 SoXChorusAndEcho_AudioEffect::~SoXChorusAndEcho_AudioEffect ()
 {
     Logging_trace(">>");
-    delete (_EffectDescriptor_ECHO*) _effectDescriptor;
+    delete (_EffectDescriptor_CECH*) _effectDescriptor;
     Logging_trace("<<");
 }
 
@@ -781,8 +875,8 @@ String SoXChorusAndEcho_AudioEffect::_effectDescriptorToString () const
     if (_effectDescriptor == NULL) {
         result = "NULL";
     } else {
-        const _EffectDescriptor_ECHO& effectDescriptor =
-            TOREFERENCE<_EffectDescriptor_ECHO>(_effectDescriptor);
+        const _EffectDescriptor_CECH& effectDescriptor =
+            TOREFERENCE<_EffectDescriptor_CECH>(_effectDescriptor);
         result = effectDescriptor.toString();
     }
 
@@ -802,8 +896,8 @@ String SoXChorusAndEcho_AudioEffect::name () const
 
 Real SoXChorusAndEcho_AudioEffect::tailLength () const
 {
-    const _EffectDescriptor_ECHO& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_ECHO>(_effectDescriptor);
+    const _EffectDescriptor_CECH& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_CECH>(_effectDescriptor);
     const Natural stageCount = effectDescriptor._stageCount;
     const _DelayKind kind = effectDescriptor._kind;
     const Boolean isChorusEffect    = (kind == _DelayKind::chorus);
@@ -844,8 +938,8 @@ SoXParameterValueChangeKind SoXChorusAndEcho_AudioEffect
 
     SoXParameterValueChangeKind result =
         SoXParameterValueChangeKind::parameterChange;
-    _EffectDescriptor_ECHO& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_ECHO>(_effectDescriptor);
+    _EffectDescriptor_CECH& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_CECH>(_effectDescriptor);
     const String stageCountParam = parameterName_stageCount;
     const String stageIndexParam = parameterName_stageIndex;
 
@@ -987,8 +1081,8 @@ void SoXChorusAndEcho_AudioEffect::setDefaultValues ()
     /* stages */
     _updateParameterMap(delayKind, _effectParameterMap);
     
-    _EffectDescriptor_ECHO& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_ECHO>(_effectDescriptor);
+    _EffectDescriptor_CECH& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_CECH>(_effectDescriptor);
     effectDescriptor._stageCount = 1;
     effectDescriptor.updateSettings(_dataPointRate, _channelCount,
                                     _currentTimePosition);
@@ -1004,8 +1098,8 @@ void SoXChorusAndEcho_AudioEffect::prepareToPlay (IN Real dataPointRate)
 {
     Logging_trace1(">>: %1", TOSTRING(dataPointRate));
 
-    _EffectDescriptor_ECHO& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_ECHO>(_effectDescriptor);
+    _EffectDescriptor_CECH& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_CECH>(_effectDescriptor);
 
     if (dataPointRate == _dataPointRate) {
         Logging_trace("--: no recalculation");
@@ -1017,13 +1111,12 @@ void SoXChorusAndEcho_AudioEffect::prepareToPlay (IN Real dataPointRate)
     }
 
     /* reset delay lines */
-    Natural delayLineIndex = 0;
     Natural stageCount = effectDescriptor._stageCount;
 
     for (Natural stageIndex = 0;  stageIndex < stageCount; stageIndex++) {
         for (Natural channel = 0;  channel < _channelCount;  channel++) {
-            AudioDataPointRingBuffer& delayLine =
-                effectDescriptor._delayLineList.at(delayLineIndex++);
+            DelayLine& delayLine =
+                effectDescriptor._delayLineAt(channel, stageIndex);
             delayLine.setToZero();
         }
     }
@@ -1044,8 +1137,8 @@ SoXChorusAndEcho_AudioEffect::processBlock
         String st;
         Real effectiveTime = timePosition;
         const Real deltaTime = Real::one / _dataPointRate;
-        _EffectDescriptor_ECHO& effectDescriptor =
-            TOREFERENCE<_EffectDescriptor_ECHO>(_effectDescriptor);
+        _EffectDescriptor_CECH& effectDescriptor =
+            TOREFERENCE<_EffectDescriptor_CECH>(_effectDescriptor);
 
         SoXAudioEffect::processBlock(timePosition, buffer);
 
@@ -1072,16 +1165,16 @@ SoXChorusAndEcho_AudioEffect::processBlock
             }
 
             if (Logging_isActive) {
-                st = STR::expand("time = %1ms, inputDataPoint = %2%3",
+                st = STR::expand("time = %1ms, inputDataPoints = %2%3",
                                  TOSTRING(effectiveTime * 1000.0),
-                                 TOSTRING(inputDataPointList[0]),
+                                 inputDataPointList.toString(false),
                                  effectDescriptor.internalState());
             }
 
             effectDescriptor.apply();
 
-            Logging_trace2("--: %1, outputDataPoint = %2",
-                           st, TOSTRING(outputDataPointList[0]));
+            Logging_trace2("--: %1, outputDataPoints = %2",
+                           st, outputDataPointList.toString(false));
 
             /* write output data point list at position i onto all
              * channels */
@@ -1093,6 +1186,8 @@ SoXChorusAndEcho_AudioEffect::processBlock
             effectiveTime += deltaTime;
         }
     }
+
+    Logging_trace1("--: outputBuffer = %1", buffer.toString());
 
     Logging_trace("<<");
 }

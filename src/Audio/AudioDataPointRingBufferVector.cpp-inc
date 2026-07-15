@@ -24,7 +24,7 @@ using STR = BaseModules::StringUtil;
 
 /** error message issued for accessing a position > 0 for a simple
  * ring buffer matrix */
-static const String _errorMessage_badPosition =
+static const String _ErrMsg_badPosition =
     "a simple matrix may only have one ring buffer per channel";
 
 /*--------------------*/
@@ -160,7 +160,7 @@ const AudioDataPointRingBuffer& AudioDataPointRingBufferVector::at
                                   IN Natural position) const
 {
     Assertion_pre(position == 0 || _hasTwoRingBuffersPerChannel,
-                  _errorMessage_badPosition);
+                  _ErrMsg_badPosition);
     return _data[_effectiveIndex(_hasTwoRingBuffersPerChannel,
                                  channelIndex, position)];
 }
@@ -173,7 +173,7 @@ AudioDataPointRingBuffer& AudioDataPointRingBufferVector::at
                           IN Natural position)
 {
     Assertion_pre(position == 0 || _hasTwoRingBuffersPerChannel,
-                  _errorMessage_badPosition);
+                  _ErrMsg_badPosition);
     return _data[_effectiveIndex(_hasTwoRingBuffersPerChannel,
                                  channelIndex, position)];
 }

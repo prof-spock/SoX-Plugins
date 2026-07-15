@@ -25,6 +25,14 @@ using Audio::IIRFilter;
 
 /*====================*/
 
+/** error message for required filter order 3 */
+static const String _ErrMsg_badFilterOrderA =
+    "filter order must be 3";
+
+/** error message for required filter order 5 */
+static const String _ErrMsg_badFilterOrderB =
+    "filter order must be 5";
+
 /*--------------------*/
 /* internal routines  */
 /*--------------------*/
@@ -119,13 +127,13 @@ void IIRFilter::set (IN Real b0)
 
 INLINE
 void IIRFilter::set (IN Real b0, IN Real b1, IN Real b2,
-                        IN Real a0, IN Real a1, IN Real a2)
+                     IN Real a0, IN Real a1, IN Real a2)
 {
     Logging_trace6(">>: b = (%1, %2, %3), a = (%4, %5, %6)",
                    TOSTRING(b0), TOSTRING(b1), TOSTRING(b2),
                    TOSTRING(a0), TOSTRING(a1), TOSTRING(a2));
 
-    Assertion_pre(_order == 3, "filter order must be 3");
+    Assertion_pre(_order == 3, _ErrMsg_badFilterOrderA);
 
     _data[0] = b0;
     _data[1] = b1;
@@ -142,9 +150,9 @@ void IIRFilter::set (IN Real b0, IN Real b1, IN Real b2,
 
 INLINE
 void IIRFilter::set (IN Real b0, IN Real b1, IN Real b2,
-                        IN Real b3, IN Real b4,
-                        IN Real a0, IN Real a1, IN Real a2,
-                        IN Real a3, IN Real a4)
+                     IN Real b3, IN Real b4,
+                     IN Real a0, IN Real a1, IN Real a2,
+                     IN Real a3, IN Real a4)
 {
     Logging_trace10(">>: b = (%1, %2, %3, %4, %5),"
                     " a = (%6, %7, %8, %9, %A)",
@@ -153,7 +161,7 @@ void IIRFilter::set (IN Real b0, IN Real b1, IN Real b2,
                     TOSTRING(a0), TOSTRING(a1), TOSTRING(a2),
                     TOSTRING(a3), TOSTRING(a4));
 
-    Assertion_pre(_order == 5, "filter order must be 5");
+    Assertion_pre(_order == 5, _ErrMsg_badFilterOrderB);
 
     _data[0] = b0;
     _data[1] = b1;

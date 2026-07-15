@@ -95,7 +95,9 @@ $(function(){initNavTree('_so_x_chorus_and_echo___audio_effect_8cpp.html','','')
 
 <p>The <code><a class="el" href="struct_so_x_chorus_and_echo___audio_effect.html" title="A SoXChorusAndEcho_AudioEffect object models the SoX echo and echos audio effects; the difference bet...">SoXChorusAndEcho_AudioEffect</a></code> body implements the SoX <b>chorus</b>, <b>echo</b> and <b>echos</b> audio effects; the difference between both echos is that <b>echo</b> has parallel stages all fed by the input signal while <b>echos</b> has sequential stages fed by previous stages.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_audio_data_point_ring_buffer_vector_8h_source.html">AudioDataPointRingBufferVector.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;utility&gt;</code><br />
+<code>#include &quot;<a class="el" href="_delay_line_list_8h_source.html">DelayLineList.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_logging_8h_source.html">Logging.h</a>&quot;</code><br />
 <code>#include &quot;GenericTuple.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="_so_x_effect_parameter_map_8h_source.html">SoXEffectParameterMap.h</a>&quot;</code><br />
@@ -112,14 +114,14 @@ $(function(){initNavTree('_so_x_chorus_and_echo___audio_effect_8cpp.html','','')
 Classes</h2></td></tr>
 <tr class="memitem:SoXPlugins_3A_3AEffects_3A_3ASoXChorusAndEcho_3A_3A_5FDelayStageParameterData" id="r_SoXPlugins_3A_3AEffects_3A_3ASoXChorusAndEcho_3A_3A_5FDelayStageParameterData"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data.html">SoXPlugins::Effects::SoXChorusAndEcho::_DelayStageParameterData</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data.html" title="A _DelayStageParameterData object contains the parameter data for a single chorus/echo stage.">_DelayStageParameterData</a></code> object contains the parameter data for a single chorus/echo stage.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data.html#details">More...</a><br /></td></tr>
-<tr class="memitem:SoXPlugins_3A_3AEffects_3A_3ASoXChorusAndEcho_3A_3A_5FEffectDescriptor_5FECHO" id="r_SoXPlugins_3A_3AEffects_3A_3ASoXChorusAndEcho_3A_3A_5FEffectDescriptor_5FECHO"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o.html">SoXPlugins::Effects::SoXChorusAndEcho::_EffectDescriptor_ECHO</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o.html" title="An _EffectDescriptor_ECHO object is the internal implementation of an chorus or echo effect descripto...">_EffectDescriptor_ECHO</a></code> object is the internal implementation of an chorus or echo effect descriptor type where all data point input is routed to and data point output is routed from.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o.html#details">More...</a><br /></td></tr>
+<tr class="memitem:SoXPlugins_3A_3AEffects_3A_3ASoXChorusAndEcho_3A_3A_5FEffectDescriptor_5FCECH" id="r_SoXPlugins_3A_3AEffects_3A_3ASoXChorusAndEcho_3A_3A_5FEffectDescriptor_5FCECH"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___c_e_c_h.html">SoXPlugins::Effects::SoXChorusAndEcho::_EffectDescriptor_CECH</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___c_e_c_h.html" title="An _EffectDescriptor_CECH object is the internal implementation of an chorus or echo effect descripto...">_EffectDescriptor_CECH</a></code> object is the internal implementation of an chorus or echo effect descriptor type where all data point input is routed to and data point output is routed from.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___c_e_c_h.html#details">More...</a><br /></td></tr>
 <tr class="memitem:SoXChorusAndEcho_5FAudioEffect" id="r_SoXChorusAndEcho_5FAudioEffect"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_chorus_and_echo___audio_effect.html">SoXChorusAndEcho_AudioEffect</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_so_x_chorus_and_echo___audio_effect.html" title="A SoXChorusAndEcho_AudioEffect object models the SoX echo and echos audio effects; the difference bet...">SoXChorusAndEcho_AudioEffect</a></code> object models the SoX <b>echo</b> and <b>echos</b> audio effects; the difference between them is that <b>echo</b> has parallel taps all fed by the input signal while <b>echos</b> has sequential taps.  <a href="struct_so_x_chorus_and_echo___audio_effect.html#details">More...</a><br /></td></tr>
 <tr class="memitem:_5FDelayStageParameterData" id="r__5FDelayStageParameterData"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___delay_stage_parameter_data.html">_DelayStageParameterData</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data.html" title="A _DelayStageParameterData object contains the parameter data for a single chorus/echo stage.">_DelayStageParameterData</a></code> object contains the parameter data for a single chorus/echo stage.  <a href="struct___delay_stage_parameter_data.html#details">More...</a><br /></td></tr>
-<tr class="memitem:_5FEffectDescriptor_5FECHO" id="r__5FEffectDescriptor_5FECHO"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___effect_descriptor___e_c_h_o.html">_EffectDescriptor_ECHO</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code><a class="el" href="struct___effect_descriptor___e_c_h_o.html" title="An _EffectDescriptor_ECHO object is the internal implementation of an chorus or echo effect descripto...">_EffectDescriptor_ECHO</a></code> object is the internal implementation of an chorus or echo effect descriptor type where all data point input is routed to and data point output is routed from.  <a href="struct___effect_descriptor___e_c_h_o.html#details">More...</a><br /></td></tr>
+<tr class="memitem:_5FEffectDescriptor_5FCECH" id="r__5FEffectDescriptor_5FCECH"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___effect_descriptor___c_e_c_h.html">_EffectDescriptor_CECH</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code><a class="el" href="struct___effect_descriptor___c_e_c_h.html" title="An _EffectDescriptor_CECH object is the internal implementation of an chorus or echo effect descripto...">_EffectDescriptor_CECH</a></code> object is the internal implementation of an chorus or echo effect descriptor type where all data point input is routed to and data point output is routed from.  <a href="struct___effect_descriptor___c_e_c_h.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -129,18 +131,6 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespace_so_x_plugins_1_1_effects"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects.html" title="The package Effects provides types for the different audio effects themselves; the currently supporte...">Effects</a></code> provides types for the different audio effects themselves; the currently supported SoX effects are <b>compander</b>, <b>chorus/echo/echos</b>, <b>filter</b>, <b>gain</b>, <b>overdrive</b>, <b>flanger/phaser/tremolo</b> and <b>reverb</b>. <br /></td></tr>
 <tr class="memitem:SoXPlugins_3A_3AEffects_3A_3ASoXChorusAndEcho" id="r_SoXPlugins_3A_3AEffects_3A_3ASoXChorusAndEcho"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html">SoXPlugins::Effects::SoXChorusAndEcho</a></td></tr>
 <tr class="memdesc:namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html" title="The package SoXChorusAndEcho provides classes for the SoX chorus, echo and echos audio effects.">SoXChorusAndEcho</a></code> provides classes for the SoX <b>chorus</b>, <b>echo</b> and <b>echos</b> audio effects. <br /></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ace15357d96e5cd488d38773ecb7a803d" id="r_ace15357d96e5cd488d38773ecb7a803d"><td class="memItemLeft" align="right" valign="top"><a id="ace15357d96e5cd488d38773ecb7a803d" name="ace15357d96e5cd488d38773ecb7a803d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>pagedParameterName</b>&#160;&#160;&#160;SoXEffectParameterMap::pagedParameterName</td></tr>
-<tr class="memdesc:ace15357d96e5cd488d38773ecb7a803d"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for pagedParameterName <br /></td></tr>
-<tr class="memitem:a3239e8631666b9bee05a39e9e602c33d" id="r_a3239e8631666b9bee05a39e9e602c33d"><td class="memItemLeft" align="right" valign="top"><a id="a3239e8631666b9bee05a39e9e602c33d" name="a3239e8631666b9bee05a39e9e602c33d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>_maxStageCount</b>&#160;&#160;&#160;(10)</td></tr>
-<tr class="memdesc:a3239e8631666b9bee05a39e9e602c33d"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum number of stages in a chorus or echo <br /></td></tr>
-<tr class="memitem:a50850f1c8399852aba4d02c4697fc610" id="r_a50850f1c8399852aba4d02c4697fc610"><td class="memItemLeft" align="right" valign="top"><a id="a50850f1c8399852aba4d02c4697fc610" name="a50850f1c8399852aba4d02c4697fc610"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>_defaultChorusPhase</b>&#160;&#160;&#160;<a class="el" href="struct_base_types_1_1_primitives_1_1_radians.html">Radians</a>{<a class="el" href="struct_real.html#a848267ef7ae6a81cf12dd27e689ae9ea">Real::pi</a> / 2.0}</td></tr>
-<tr class="memdesc:a50850f1c8399852aba4d02c4697fc610"><td class="mdescLeft">&#160;</td><td class="mdescRight">the default phase of each chorus modulation waveform <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -172,12 +162,19 @@ static <a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_an
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a631fa041ba7444a4541c500b24c7c949" id="r_a631fa041ba7444a4541c500b24c7c949"><td class="memItemLeft" align="right" valign="top">static const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a631fa041ba7444a4541c500b24c7c949">pagedParameterName</a></td></tr>
+<tr class="memdesc:a631fa041ba7444a4541c500b24c7c949"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for pagedParameterName  <br /></td></tr>
+<tr class="memitem:a3754637314b1ef6622ba7662eae3df9e" id="r_a3754637314b1ef6622ba7662eae3df9e"><td class="memItemLeft" align="right" valign="top"><a id="a3754637314b1ef6622ba7662eae3df9e" name="a3754637314b1ef6622ba7662eae3df9e"></a>
+constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxStageCount</b> = 10</td></tr>
+<tr class="memdesc:a3754637314b1ef6622ba7662eae3df9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum number of stages in a chorus or echo <br /></td></tr>
 <tr class="memitem:a267a0fd3ac5695d3a20aea3239767b38" id="r_a267a0fd3ac5695d3a20aea3239767b38"><td class="memItemLeft" align="right" valign="top"><a id="a267a0fd3ac5695d3a20aea3239767b38" name="a267a0fd3ac5695d3a20aea3239767b38"></a>
 static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_minimumDepth</b> = 0.0</td></tr>
 <tr class="memdesc:a267a0fd3ac5695d3a20aea3239767b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">minimum depth value <br /></td></tr>
 <tr class="memitem:a90af6164656f4bc80eb6f8783000ea17" id="r_a90af6164656f4bc80eb6f8783000ea17"><td class="memItemLeft" align="right" valign="top"><a id="a90af6164656f4bc80eb6f8783000ea17" name="a90af6164656f4bc80eb6f8783000ea17"></a>
 static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_depthResolution</b> = 0.1</td></tr>
 <tr class="memdesc:a90af6164656f4bc80eb6f8783000ea17"><td class="mdescLeft">&#160;</td><td class="mdescRight">depth resolution <br /></td></tr>
+<tr class="memitem:a4aa623769911edb3c957d38b1464bf2d" id="r_a4aa623769911edb3c957d38b1464bf2d"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_primitives_1_1_radians.html">Radians</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4aa623769911edb3c957d38b1464bf2d">_defaultChorusPhase</a></td></tr>
+<tr class="memdesc:a4aa623769911edb3c957d38b1464bf2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">the default phase of each chorus modulation waveform  <br /></td></tr>
 <tr class="memitem:a08c1093ff5eb9c65c074ca0899da7070" id="r_a08c1093ff5eb9c65c074ca0899da7070"><td class="memItemLeft" align="right" valign="top"><a id="a08c1093ff5eb9c65c074ca0899da7070" name="a08c1093ff5eb9c65c074ca0899da7070"></a>
 static const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_chorusEffectKind</b> = &quot;Chorus&quot;</td></tr>
 <tr class="memdesc:a08c1093ff5eb9c65c074ca0899da7070"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the chorus effect <br /></td></tr>
@@ -187,6 +184,15 @@ static const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6
 <tr class="memitem:a5c3b6e6b0d6bc1e2d1c844f425c40ce5" id="r_a5c3b6e6b0d6bc1e2d1c844f425c40ce5"><td class="memItemLeft" align="right" valign="top"><a id="a5c3b6e6b0d6bc1e2d1c844f425c40ce5" name="a5c3b6e6b0d6bc1e2d1c844f425c40ce5"></a>
 static const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_tappedDelayEffectKind</b> = &quot;Tapped Delay&quot;</td></tr>
 <tr class="memdesc:a5c3b6e6b0d6bc1e2d1c844f425c40ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the tapped delay effect <br /></td></tr>
+<tr class="memitem:a49ceaf528e25e3ae202e10312befc40e" id="r_a49ceaf528e25e3ae202e10312befc40e"><td class="memItemLeft" align="right" valign="top"><a id="a49ceaf528e25e3ae202e10312befc40e" name="a49ceaf528e25e3ae202e10312befc40e"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_delayLineLoggingLength</b> = 12</td></tr>
+<tr class="memdesc:a49ceaf528e25e3ae202e10312befc40e"><td class="mdescLeft">&#160;</td><td class="mdescRight">when logging is active, the number of elements shown for the delay lines involved <br /></td></tr>
+<tr class="memitem:a73288e4fb27c55c10fec914d6abf0276" id="r_a73288e4fb27c55c10fec914d6abf0276"><td class="memItemLeft" align="right" valign="top"><a id="a73288e4fb27c55c10fec914d6abf0276" name="a73288e4fb27c55c10fec914d6abf0276"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_minimumChorusDelay</b> = 20.0</td></tr>
+<tr class="memitem:a860eadeda922771c579a5086615e82a6" id="r_a860eadeda922771c579a5086615e82a6"><td class="memItemLeft" align="right" valign="top"><a id="a860eadeda922771c579a5086615e82a6" name="a860eadeda922771c579a5086615e82a6"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_maximumFrequency</b> = 5.0</td></tr>
+<tr class="memitem:a8e7fbf7eb2d7bfe7a0ba310152b2b7c3" id="r_a8e7fbf7eb2d7bfe7a0ba310152b2b7c3"><td class="memItemLeft" align="right" valign="top"><a id="a8e7fbf7eb2d7bfe7a0ba310152b2b7c3" name="a8e7fbf7eb2d7bfe7a0ba310152b2b7c3"></a>
+static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_frequencyResolution</b> = 0.01</td></tr>
 <tr class="memitem:a4c2d0ceecd5eafb7fdfc54d8eb20184e" id="r_a4c2d0ceecd5eafb7fdfc54d8eb20184e"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c2d0ceecd5eafb7fdfc54d8eb20184e">_kindList</a></td></tr>
 <tr class="memdesc:a4c2d0ceecd5eafb7fdfc54d8eb20184e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of effect kinds in this plugin  <br /></td></tr>
 <tr class="memitem:a337915239aafb9e82fc96cbd38fde42c" id="r_a337915239aafb9e82fc96cbd38fde42c"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_string_list.html">StringList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a337915239aafb9e82fc96cbd38fde42c">_delayStageParameterNameList</a></td></tr>
@@ -322,6 +328,33 @@ static const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6
 </div>
 </div>
 <a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+<a id="a4aa623769911edb3c957d38b1464bf2d" name="a4aa623769911edb3c957d38b1464bf2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4aa623769911edb3c957d38b1464bf2d">&#9670;&#160;</a></span>_defaultChorusPhase</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="struct_base_types_1_1_primitives_1_1_radians.html">Radians</a> _defaultChorusPhase</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <a class="code hl_struct" href="struct_base_types_1_1_primitives_1_1_radians.html">Radians</a>{atan(1) * 4 * 1.5}</div>
+<div class="ttc" id="astruct_base_types_1_1_primitives_1_1_radians_html"><div class="ttname"><a href="struct_base_types_1_1_primitives_1_1_radians.html">BaseTypes::Primitives::Radians</a></div><div class="ttdoc">A Radians object is a real-valued and represents the range from 0 to 2pi.</div><div class="ttdef"><b>Definition</b> Radians.h:28</div></div>
+</div><!-- fragment -->
+<p>the default phase of each chorus modulation waveform </p>
+
+</div>
+</div>
 <a id="a337915239aafb9e82fc96cbd38fde42c" name="a337915239aafb9e82fc96cbd38fde42c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a337915239aafb9e82fc96cbd38fde42c">&#9670;&#160;</a></span>_delayStageParameterNameList</h2>
 
@@ -344,7 +377,7 @@ static const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">    <a class="code hl_function" href="struct_string_list.html#ab4311662bc2825078dfe2eabca055702">StringList::fromList</a>({<span class="stringliteral">&quot;Delay [ms]&quot;</span>, <span class="stringliteral">&quot;Decay&quot;</span>,</div>
 <div class="line">                          <span class="stringliteral">&quot;Frequency [Hz]&quot;</span>, <span class="stringliteral">&quot;Depth [ms]&quot;</span>, <span class="stringliteral">&quot;Waveform&quot;</span>})</div>
-<div class="ttc" id="astruct_string_list_html_ab4311662bc2825078dfe2eabca055702"><div class="ttname"><a href="struct_string_list.html#ab4311662bc2825078dfe2eabca055702">StringList::fromList</a></div><div class="ttdeci">static StringList fromList(IN initializer_list&lt; String &gt; list)</div><div class="ttdoc">Initializes list of strings from an initializer list of values.</div><div class="ttdef"><b>Definition</b> StringList.cpp:36</div></div>
+<div class="ttc" id="astruct_string_list_html_ab4311662bc2825078dfe2eabca055702"><div class="ttname"><a href="struct_string_list.html#ab4311662bc2825078dfe2eabca055702">StringList::fromList</a></div><div class="ttdeci">static StringList fromList(IN initializer_list&lt; String &gt; list)</div><div class="ttdoc">Initializes list of strings from an initializer list of values.</div><div class="ttdef"><b>Definition</b> StringList.cpp:42</div></div>
 </div><!-- fragment -->
 <p>the list of parameter names in a delay stage (with units) </p>
 
@@ -372,9 +405,9 @@ static const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">    <a class="code hl_function" href="struct_string_list.html#ab4311662bc2825078dfe2eabca055702">StringList::fromList</a>({<a class="code hl_variable" href="#a08c1093ff5eb9c65c074ca0899da7070">_chorusEffectKind</a>, <a class="code hl_variable" href="#a5c3b6e6b0d6bc1e2d1c844f425c40ce5">_tappedDelayEffectKind</a>,</div>
 <div class="line">                          <a class="code hl_variable" href="#a624e7f564019da22a4f02704610d5cf8">_delaySequenceEffectKind</a>})</div>
-<div class="ttc" id="a_so_x_chorus_and_echo___audio_effect_8cpp_html_a08c1093ff5eb9c65c074ca0899da7070"><div class="ttname"><a href="#a08c1093ff5eb9c65c074ca0899da7070">_chorusEffectKind</a></div><div class="ttdeci">static const String _chorusEffectKind</div><div class="ttdoc">the name of the chorus effect</div><div class="ttdef"><b>Definition</b> SoXChorusAndEcho_AudioEffect.cpp:54</div></div>
-<div class="ttc" id="a_so_x_chorus_and_echo___audio_effect_8cpp_html_a5c3b6e6b0d6bc1e2d1c844f425c40ce5"><div class="ttname"><a href="#a5c3b6e6b0d6bc1e2d1c844f425c40ce5">_tappedDelayEffectKind</a></div><div class="ttdeci">static const String _tappedDelayEffectKind</div><div class="ttdoc">the name of the tapped delay effect</div><div class="ttdef"><b>Definition</b> SoXChorusAndEcho_AudioEffect.cpp:60</div></div>
-<div class="ttc" id="a_so_x_chorus_and_echo___audio_effect_8cpp_html_a624e7f564019da22a4f02704610d5cf8"><div class="ttname"><a href="#a624e7f564019da22a4f02704610d5cf8">_delaySequenceEffectKind</a></div><div class="ttdeci">static const String _delaySequenceEffectKind</div><div class="ttdoc">the name of the delay sequence effect</div><div class="ttdef"><b>Definition</b> SoXChorusAndEcho_AudioEffect.cpp:57</div></div>
+<div class="ttc" id="a_so_x_chorus_and_echo___audio_effect_8cpp_html_a08c1093ff5eb9c65c074ca0899da7070"><div class="ttname"><a href="#a08c1093ff5eb9c65c074ca0899da7070">_chorusEffectKind</a></div><div class="ttdeci">static const String _chorusEffectKind</div><div class="ttdoc">the name of the chorus effect</div><div class="ttdef"><b>Definition</b> SoXChorusAndEcho_AudioEffect.cpp:59</div></div>
+<div class="ttc" id="a_so_x_chorus_and_echo___audio_effect_8cpp_html_a5c3b6e6b0d6bc1e2d1c844f425c40ce5"><div class="ttname"><a href="#a5c3b6e6b0d6bc1e2d1c844f425c40ce5">_tappedDelayEffectKind</a></div><div class="ttdeci">static const String _tappedDelayEffectKind</div><div class="ttdoc">the name of the tapped delay effect</div><div class="ttdef"><b>Definition</b> SoXChorusAndEcho_AudioEffect.cpp:65</div></div>
+<div class="ttc" id="a_so_x_chorus_and_echo___audio_effect_8cpp_html_a624e7f564019da22a4f02704610d5cf8"><div class="ttname"><a href="#a624e7f564019da22a4f02704610d5cf8">_delaySequenceEffectKind</a></div><div class="ttdeci">static const String _delaySequenceEffectKind</div><div class="ttdoc">the name of the delay sequence effect</div><div class="ttdef"><b>Definition</b> SoXChorusAndEcho_AudioEffect.cpp:62</div></div>
 </div><!-- fragment -->
 <p>the list of effect kinds in this plugin </p>
 
@@ -406,6 +439,33 @@ static const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6
 
 </div>
 </div>
+<a id="a631fa041ba7444a4541c500b24c7c949" name="a631fa041ba7444a4541c500b24c7c949"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a631fa041ba7444a4541c500b24c7c949">&#9670;&#160;</a></span>pagedParameterName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const auto pagedParameterName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <a class="code hl_function" href="struct_so_x_effect_parameter_map.html#a3b37c8c923bb2da05c4d4f6dfc039450">SoXEffectParameterMap::pagedParameterName</a></div>
+<div class="ttc" id="astruct_so_x_effect_parameter_map_html_a3b37c8c923bb2da05c4d4f6dfc039450"><div class="ttname"><a href="struct_so_x_effect_parameter_map.html#a3b37c8c923bb2da05c4d4f6dfc039450">SoXEffectParameterMap::pagedParameterName</a></div><div class="ttdeci">static String pagedParameterName(IN String &amp;parameterName, IN Integer pageIndex)</div><div class="ttdoc">Makes effective parameter name from parameterName and pageIndex.</div><div class="ttdef"><b>Definition</b> SoXEffectParameterMap.cpp:800</div></div>
+</div><!-- fragment -->
+<p>abbreviation for pagedParameterName </p>
+
+</div>
+</div>
 <a id="a7341caa6fdd20d8201b0123c5cf82239" name="a7341caa6fdd20d8201b0123c5cf82239"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7341caa6fdd20d8201b0123c5cf82239">&#9670;&#160;</a></span>parameterName_decay</h2>
 
@@ -427,7 +487,7 @@ static const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">    <a class="code hl_variable" href="#a337915239aafb9e82fc96cbd38fde42c">_delayStageParameterNameList</a>[1]</div>
-<div class="ttc" id="a_so_x_chorus_and_echo___audio_effect_8cpp_html_a337915239aafb9e82fc96cbd38fde42c"><div class="ttname"><a href="#a337915239aafb9e82fc96cbd38fde42c">_delayStageParameterNameList</a></div><div class="ttdeci">static const StringList _delayStageParameterNameList</div><div class="ttdoc">the list of parameter names in a delay stage (with units)</div><div class="ttdef"><b>Definition</b> SoXChorusAndEcho_AudioEffect.cpp:526</div></div>
+<div class="ttc" id="a_so_x_chorus_and_echo___audio_effect_8cpp_html_a337915239aafb9e82fc96cbd38fde42c"><div class="ttname"><a href="#a337915239aafb9e82fc96cbd38fde42c">_delayStageParameterNameList</a></div><div class="ttdeci">static const StringList _delayStageParameterNameList</div><div class="ttdoc">the list of parameter names in a delay stage (with units)</div><div class="ttdef"><b>Definition</b> SoXChorusAndEcho_AudioEffect.cpp:619</div></div>
 </div><!-- fragment -->
 <p>the parameter name of the decay (in English language) </p>
 

@@ -27,15 +27,15 @@
 #include <cmath>
 #include <cstdio>
 
+#include "DelayLineList.h"
 #include "Logging.h"
 #include "Percentage.h"
-#include "AudioDataPointRingBufferVector.h"
 #include "WaveForm.h"
 #include "SoXFlangerPhaserAndTremolo_AudioEffect.h"
 
 /*--------------------*/
 
-using Audio::AudioDataPointRingBufferVector;
+using Audio::DelayLineList;
 using Audio::WaveForm;
 using Audio::WaveFormKind;
 using Audio::WaveFormIteratorState;
@@ -99,14 +99,11 @@ namespace SoXPlugins::Effects::SoXFlangerPhaserAndTremolo {
          * interpolation, 1 is linear and 2 is quadratic */
         Natural interpolationOrder;
 
-        /** the data point ring buffer for the delay line */
-        AudioDataPointRingBufferVector delayRingBufferList;
+        /** the list of delay lines */
+        DelayLineList delayLineList;
 
         /** the delay buffer length in data points */
-        Natural delayRingBufferLength;
-
-        /** the pointer to the delay buffer (as an index) */
-        Natural delayRingBufferIndex;
+        Real delayLineLength;
 
         /*--------------------*/
         /*--------------------*/
@@ -145,13 +142,11 @@ String _EffectDescriptor_PHTR::toString () const
 
     String st2 =
         STR::expand(" waveForm = %1,"
-                    " delayRingBufferLength = %2,"
-                    " delayRingBufferIndex = %3,"
-                    " delayRingBufferList = %4",
+                    " delayLineLength = %2,"
+                    " delayLineList = %3",
                     waveForm.toString(),
-                    TOSTRING(delayRingBufferLength),
-                    TOSTRING(delayRingBufferIndex),
-                    delayRingBufferList.toString());
+                    TOSTRING(delayLineLength),
+                    delayLineList.toString());
 
     return STR::expand("_EffectDescriptor_PHTR(%1, %2)",
                        st1, st2);
@@ -266,27 +261,25 @@ _EffectDescriptor_PHTR* _createEffectDescriptor (IN Real dataPointRate)
 
     _EffectDescriptor_PHTR* result =
         new _EffectDescriptor_PHTR{
-            true,                        /* phaser */
+            true,                           /* phaser */
 
-            0.5,                         /* frequency */
-            WaveFormKind::sine,          /* waveFormKind */
-            {},                          /* waveForm */
-            0.0,                         /* timeOffset */
+            0.5,                            /* frequency */
+            WaveFormKind::sine,             /* waveFormKind */
+            {},                             /* waveForm */
+            0.0,                            /* timeOffset */
 
-            0.4,                         /* inGain */
-            0.74,                        /* outGain */
-            0.003,                       /* delay */
-            0.4,                         /* regeneration */
-            40.0,                        /* depth */
-            0,                           /* interpolationOrder */
+            0.4,                            /* inGain */
+            0.74,                           /* outGain */
+            0.003,                          /* delay */
+            0.4,                            /* regeneration */
+            40.0,                           /* depth */
+            0,                              /* interpolationOrder */
 
-            {2,
-             false,
-             maximumDelayBufferLength},  /* delayRingBufferList */
-            maximumDelayBufferLength,    /* delayRingBufferLength */
-            0                            /* delayRingBufferIndex */
+            {2, maximumDelayBufferLength},  /* delayLineList */
+            maximumDelayBufferLength        /* delayLineLength */
         };
 
+    
     Logging_trace1("<<: %1", result->toString());
     return result;
 }
@@ -347,44 +340,47 @@ _updateSettings (INOUT SoXFlangerPhaserAndTremolo_AudioEffect& effect,
 
     effect.setParameterValidity(false);
     const Real frequency = effectDescriptor.frequency;
-    const Real waveFormLength = dataPointRate / frequency;
-    Natural delayRingBufferLength;
+    Real waveFormLength = dataPointRate / frequency;
+    Real delayLineLength;
     Real lowModulationValue;
     Real highModulationValue;
 
     if (effectDescriptor.isPhaser) {
         /* phaser */
-        delayRingBufferLength =
-            Natural{Real::round(effectDescriptor.delay * dataPointRate)};
-        lowModulationValue  = 1.0;
-        highModulationValue = Real{delayRingBufferLength};
+        delayLineLength = effectDescriptor.delay * dataPointRate;
+
+        #ifdef EMULATE_SOX_STRICTLY
+            /* delay lines have a natural length */
+            delayLineLength = Real::round(delayLineLength);
+        #endif
+               
+        lowModulationValue  = 0.0;
+        highModulationValue = delayLineLength - 1.0;
     } else {
         /* tremolo: set some effect parameters to constants */
-        effectDescriptor.delay   = 0.0;
-        effectDescriptor.inGain  = 1.0;
-        effectDescriptor.outGain = 1.0;
+        effectDescriptor.delay        = 0.0;
+        effectDescriptor.inGain       = 1.0;
+        effectDescriptor.outGain      = 1.0;
         effectDescriptor.waveFormKind = WaveFormKind::sine;
 
-        delayRingBufferLength = 0;
+        delayLineLength = 0.0;
         lowModulationValue =
             Real{1.0} - effectDescriptor.depth / Real{100.0};
         highModulationValue = 1.0;
     }
 
     /* delay settings */
-    effectDescriptor.delayRingBufferIndex  = 0;
-    effectDescriptor.delayRingBufferLength = delayRingBufferLength;
-    AudioDataPointRingBufferVector& ringBufferList =
-        effectDescriptor.delayRingBufferList;
-    ringBufferList.setRingBufferLength(delayRingBufferLength);
-    ringBufferList.setToZero();
+    effectDescriptor.delayLineLength = delayLineLength;
+    DelayLineList& delayLineList = effectDescriptor.delayLineList;
+    delayLineList.setElementLength(delayLineLength);
+    delayLineList.setToZero();
 
     /* waveform */
     const Radians effectivePhase =
         (_defaultPhase
          + WaveForm::phaseByTime(frequency,
-                                    effectDescriptor.timeOffset,
-                                    currentTime));
+                                 effectDescriptor.timeOffset,
+                                 currentTime));
 
     const Boolean hasIntegerValues = false;
     WaveForm& waveForm = effectDescriptor.waveForm;
@@ -612,28 +608,24 @@ processBlock (IN Real timePosition,
         }
 
         const Natural dataPointCount = buffer[0].size();
-        const Boolean isPhaser  = effectDescriptor.isPhaser;
-        const Real inGain       = effectDescriptor.inGain;
-        const Real outGain      = effectDescriptor.outGain;
-        const Real regeneration = effectDescriptor.regeneration;
-        const Natural delayRingBufferLength =
-            effectDescriptor.delayRingBufferLength;
-        Natural delayRingBufferIndex  =
-            effectDescriptor.delayRingBufferIndex;
-        AudioDataPointRingBufferVector& delayRingBufferList =
-            effectDescriptor.delayRingBufferList;
-        WaveForm& waveForm = effectDescriptor.waveForm;
+
+        const Boolean isPhaser       = effectDescriptor.isPhaser;
+        const Real inGain            = effectDescriptor.inGain;
+        const Real outGain           = effectDescriptor.outGain;
+        const Real regeneration      = effectDescriptor.regeneration;
+        const Real delayLineLength   = effectDescriptor.delayLineLength;
+        DelayLineList& delayLineList = effectDescriptor.delayLineList;
+        WaveForm& waveForm           = effectDescriptor.waveForm;
+
         WaveFormIteratorState state = waveForm.state();
 
         for (Natural channel = 0;  channel < _channelCount;
              channel++) {
             const AudioDataPointList& inputList = buffer[channel];
             AudioDataPointList& outputList = buffer[channel];
-            AudioDataPointRingBuffer& delayRingBuffer =
-                delayRingBufferList[channel];
+            DelayLine& delayLine = delayLineList[channel];
 
             waveForm.setState(state);
-            delayRingBufferIndex = effectDescriptor.delayRingBufferIndex;
 
             for (Natural i = 0;  i < dataPointCount;  i++) {
                 const AudioDataPoint inputDataPoint = inputList[i];
@@ -642,16 +634,22 @@ processBlock (IN Real timePosition,
                 if (!isPhaser) {
                     const Real factor = waveForm.current();
                     outputDataPoint = inputDataPoint * factor;
-                } else if (delayRingBufferLength > 0) {
-                    const Natural modulatedIndex =
-                        ((delayRingBufferIndex + Natural{waveForm.current()})
-                         % delayRingBufferLength);
-                    outputDataPoint =
-                        (inputDataPoint * inGain
-                         + delayRingBuffer[modulatedIndex] * regeneration);
-                    delayRingBufferIndex =
-                        (delayRingBufferIndex + 1) % delayRingBufferLength;
-                    delayRingBuffer[delayRingBufferIndex] = outputDataPoint;
+                } else {
+                    outputDataPoint = inputDataPoint * inGain;
+
+                    if (delayLineLength > 0.0) {
+                        Real waveFormValue = waveForm.current();
+
+                        #ifdef EMULATE_SOX_STRICTLY
+                            /* round value from waveform */
+                            waveFormValue = waveFormValue.round();
+                        #endif
+
+                        outputDataPoint +=
+                            delayLine.at(waveFormValue) * regeneration;
+                        delayLine.advance(outputDataPoint);
+                    }
+
                     outputDataPoint *= outGain;
                 }
 
@@ -659,8 +657,6 @@ processBlock (IN Real timePosition,
                 waveForm.advance();
             }
         }
-
-        effectDescriptor.delayRingBufferIndex = delayRingBufferIndex;
     }
 
     Logging_trace("<<");

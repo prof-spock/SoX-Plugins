@@ -46,9 +46,24 @@ namespace SoXPlugins::Helpers {
  * @param kind  audio value change kind
  * @return string representation
  */
-#define SoXParameterValueChangeKind_toString(kind) \
-    String((short)(kind) == 1 ? "globalChange" \
-           : ((short)(kind) == 2 ? "pageChange" \
-              : ((short)(kind) == 3 ? "pageCountChange" \
-                 : ((short)(kind) == 4 ? "parameterChange"      \
-                    : "noChange"))))
+inline String
+SoXParameterValueChangeKind_toString(
+    IN SoXPlugins::Helpers::SoXParameterValueChangeKind kind)
+{
+    using PVCK = SoXPlugins::Helpers::SoXParameterValueChangeKind;
+    String result;
+
+    if (kind == PVCK::globalChange) {
+        result = "globalChange";
+    } else if (kind == PVCK::pageChange) {
+        result = "pageChange";
+    } else if (kind == PVCK::pageCountChange) {
+        result = "pageCountChange";
+    } else if (kind == PVCK::parameterChange) {
+        result = "parameterChange";
+    } else {
+        result = "noChange";
+    }
+
+    return result;
+}

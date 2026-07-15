@@ -241,10 +241,10 @@ static void _setWidgetBounds (INOUT juce::Component* widget,
                    TOSTRING(x), TOSTRING(y),
                    TOSTRING(width), TOSTRING(height));
 
-    widget->setBounds((int) Real::round(x.of(parentWidth)),
-                      (int) Real::round(y.of(parentHeight)),
-                      (int) Real::round(width.of(parentWidth)),
-                      (int) Real::round(height.of(parentHeight)));
+    widget->setBounds(int(Real::round(x.of(parentWidth))),
+                      int(Real::round(y.of(parentHeight))),
+                      int(Real::round(width.of(parentWidth))),
+                      int(Real::round(height.of(parentHeight))));
 
     Logging_trace("<<");
 }
@@ -283,11 +283,11 @@ static void _updateWidgetRange (INOUT juce::Component& widget,
         for (Natural i = 1;  i <= valueList.size();  i++) {
             const String st = valueList[i - 1];
             const juce::String itemText(st);
-            comboBox.addItem(itemText, (int) i);
+            comboBox.addItem(itemText, int(i));
             selectedId = (st == currentValue ? i : selectedId);
         }
 
-        comboBox.setSelectedId((int) selectedId, _noNotification);
+        comboBox.setSelectedId(int(selectedId), _noNotification);
     } else {
         Real lowValue, highValue, delta;
 
@@ -297,15 +297,15 @@ static void _updateWidgetRange (INOUT juce::Component& widget,
         } else {
             Integer l, h, d;
             map.valueRangeInt(parameterName, l, h, d);
-            lowValue  = (Real) l;
-            highValue = (Real) h;
-            delta     = (Real) d;
+            lowValue  = Real{l};
+            highValue = Real{h};
+            delta     = Real{d};
         }
 
         juce::Slider& slider = dynamic_cast<juce::Slider&>(widget);
-        slider.setRange((double) lowValue, (double) highValue,
-                        (double) delta);
-        slider.setValue((double) STR::toReal(currentValue),
+        slider.setRange(double(lowValue), double(highValue),
+                        double(delta));
+        slider.setValue(double(STR::toReal(currentValue)),
                         _noNotification);
     }
 
@@ -379,12 +379,12 @@ void SoXAudioEditorWidget::setValue (IN String& value)
             dynamic_cast<juce::ComboBox*>(_controlWidget);
 
         if (slider != nullptr) {
-            slider->setValue((double) STR::toReal(value),
+            slider->setValue(double(STR::toReal(value)),
                              _noNotification);
         } else if (comboBox != nullptr) {
             StringList valueList;
             _parameterMap.valueRangeEnum(_parameterName, valueList);
-            comboBox->setSelectedItemIndex((int) valueList.position(value),
+            comboBox->setSelectedItemIndex(int(valueList.position(value)),
                                            _noNotification);
         }
     }
@@ -400,8 +400,8 @@ void SoXAudioEditorWidget::resized ()
 
     /* only resize active widgets */
     if (_widgetIsActive) {
-        const Real parentWidth{(double) _controlWidget->getParentWidth()};
-        const Real parentHeight{(double) _controlWidget->getParentHeight()};
+        const Real parentWidth{double(_controlWidget->getParentWidth())};
+        const Real parentHeight{double(_controlWidget->getParentHeight())};
         Logging_trace2("--: parentWidth = %1, parentHeight = %2",
                        TOSTRING(parentWidth), TOSTRING(parentHeight));
 
@@ -436,7 +436,7 @@ void SoXAudioEditorWidget::resized ()
             Integer boxHeight =
                 (Integer) Real::round(_rowHeightPercentage.of(parentHeight));
             slider->setTextBoxStyle(juce::Slider::TextBoxRight,
-                                    false, (int) boxWidth, (int) boxHeight);
+                                    false, int(boxWidth), int(boxHeight));
             Logging_trace2("--: sliderBoxSize = (%1, %2)",
                            TOSTRING(_valueFieldWidthPercentage),
                            TOSTRING(_rowHeightPercentage));

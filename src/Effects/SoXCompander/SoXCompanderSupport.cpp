@@ -701,8 +701,8 @@ namespace SoXPlugins::Effects::SoXCompander {
          * @param[in] buffer   buffer to be assigned to this position
          */
         void setBuffer (IN Natural channel,
-                       IN _CompanderStreamKind stream,
-                       AudioDataPointRingBuffer* buffer);
+                        IN _CompanderStreamKind stream,
+                        AudioDataPointRingBuffer* buffer);
 
         /*--------------------*/
 
@@ -1512,12 +1512,12 @@ namespace SoXPlugins::Effects::SoXCompander {
             for (Natural stream = 0;  stream < _companderStreamKindCount;
                  stream++) {
                 const AudioDataPointRingBuffer* ringBuffer =
-                    buffer[channel][(size_t) stream];
+                    buffer[channel][size_t(stream)];
                 const String bufferAsString =
                     (ringBuffer == NULL ? "NULL" : ringBuffer->toString());
                 st += STR::expand("channel_%1_%2 = (%3)",
                                   TOSTRING(channel) +
-                                  _streamKindAsString[(size_t) stream],
+                                  _streamKindAsString[size_t(stream)],
                                   bufferAsString);
             }
         }
@@ -1604,8 +1604,8 @@ namespace SoXPlugins::Effects::SoXCompander {
     /*--------------------*/
 
     void _MCompanderBand::setBuffer (IN Natural channel,
-                                    IN _CompanderStreamKind stream,
-                                    AudioDataPointRingBuffer* buffer)
+                                     IN _CompanderStreamKind stream,
+                                     AudioDataPointRingBuffer* buffer)
     {
         Logging_trace1(">>: channel = %1", TOSTRING(channel));
         _buffer[channel][stream] = buffer;

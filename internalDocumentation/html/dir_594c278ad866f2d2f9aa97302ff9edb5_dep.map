@@ -5,11 +5,11 @@
 <area shape="rect" id="node4" href="dir_d0f5152f7d18308a9d4fae6b6ee892f6.html" title="BaseModules" alt="" coords="520,136,621,161"/>
 <area shape="rect" id="node5" href="dir_4913edb3aff02ee8a4afc1fcb6c590c8.html" title="ViewAndController" alt="" coords="736,136,864,161"/>
 <area shape="poly" id="edge1" href="dir_000006_000002.html" alt="" coords="90,86,113,96,166,112,220,124,317,139,316,144,219,129,165,117,111,101,88,91"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000006_000002.html" title="14" alt="" coords="305,125,320,140"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000006_000002.html" title="13" alt="" coords="305,125,320,140"/>
 <area shape="poly" id="edge2" href="dir_000006_000007.html" alt="" coords="88,86,113,96,188,114,254,123,312,126,368,125,484,122,553,125,632,134,632,139,552,130,484,127,368,130,312,131,253,128,187,119,111,101,86,90"/>
 <area shape="rect" id="edge2-headlabel" href="dir_000006_000007.html" title="9" alt="" coords="625,120,633,134"/>
 <area shape="poly" id="edge3" href="dir_000006_000000.html" alt="" coords="89,86,113,96,197,115,266,120,337,122,427,134,427,139,337,128,266,125,196,120,111,101,87,90"/>
-<area shape="rect" id="edge3-headlabel" href="dir_000006_000000.html" title="11" alt="" coords="417,120,432,135"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000006_000000.html" title="12" alt="" coords="417,120,432,135"/>
 <area shape="poly" id="edge4" href="dir_000006_000001.html" alt="" coords="89,86,113,96,170,111,219,119,305,124,394,125,507,133,506,139,394,130,305,130,218,124,169,116,111,101,87,91"/>
 <area shape="rect" id="edge4-headlabel" href="dir_000006_000001.html" title="17" alt="" coords="496,120,510,134"/>
 <area shape="rect" id="node7" href="dir_80bc0ea2ce672c04648e0e3221ccf485.html" title="SoXChorusAndEcho" alt="" coords="483,63,621,88"/>
@@ -70,11 +70,11 @@
 <area shape="rect" id="edge27-headlabel" href="dir_000014_000017.html" title="1" alt="" coords="833,125,841,140"/>
 <area shape="rect" id="node13" href="dir_a4945da1ebc4024de933b7ceb3435a56.html" title="SoXReverb" alt="" coords="646,63,730,88"/>
 <area shape="poly" id="edge30" href="dir_000015_000002.html" alt="" coords="664,91,634,101,579,115,534,123,431,138,430,133,534,117,578,110,633,96,662,86"/>
-<area shape="rect" id="edge30-headlabel" href="dir_000015_000002.html" title="4" alt="" coords="432,136,440,150"/>
+<area shape="rect" id="edge30-headlabel" href="dir_000015_000002.html" title="3" alt="" coords="432,136,440,150"/>
 <area shape="poly" id="edge32" href="dir_000015_000007.html" alt="" coords="689,89,685,123,679,122,684,88"/>
 <area shape="rect" id="edge32-headlabel" href="dir_000015_000007.html" title="1" alt="" coords="687,112,695,126"/>
 <area shape="poly" id="edge33" href="dir_000015_000000.html" alt="" coords="662,91,634,101,509,138,508,133,632,96,660,86"/>
-<area shape="rect" id="edge33-headlabel" href="dir_000015_000000.html" title="1" alt="" coords="511,135,519,150"/>
+<area shape="rect" id="edge33-headlabel" href="dir_000015_000000.html" title="2" alt="" coords="511,135,519,150"/>
 <area shape="poly" id="edge34" href="dir_000015_000001.html" alt="" coords="671,90,603,131,600,126,668,86"/>
 <area shape="rect" id="edge34-headlabel" href="dir_000015_000001.html" title="3" alt="" coords="606,126,614,141"/>
 <area shape="poly" id="edge31" href="dir_000015_000017.html" alt="" coords="707,86,771,126,768,131,705,90"/>

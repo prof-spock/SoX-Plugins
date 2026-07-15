@@ -108,6 +108,10 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_audio_1_1_audio_data_point_ring_buffer.html" title="A AudioDataPointRingBuffer object is a ring buffer for audio data points with left and right shifts a...">AudioDataPointRingBuffer</a></code> object is a ring buffer for audio data points with left and right shifts and access to first and last elements in queue.  <a href="struct_audio_1_1_audio_data_point_ring_buffer.html#details">More...</a><br /></td></tr>
 <tr class="memitem:AudioDataPointRingBufferVector" id="r_AudioDataPointRingBufferVector"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_audio_data_point_ring_buffer_vector.html">AudioDataPointRingBufferVector</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_audio_1_1_audio_data_point_ring_buffer_vector.html" title="A AudioDataPointRingBufferVector object is a list of ring buffers for audio data points with selectio...">AudioDataPointRingBufferVector</a></code> object is a list of ring buffers for audio data points with selection by index and left or right rotation on the individual buffers.  <a href="struct_audio_1_1_audio_data_point_ring_buffer_vector.html#details">More...</a><br /></td></tr>
+<tr class="memitem:DelayLine" id="r_DelayLine"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_delay_line.html">DelayLine</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_audio_1_1_delay_line.html" title="A DelayLine object is a ring buffer for audio data points with real-valued index access and real-valu...">DelayLine</a></code> object is a ring buffer for audio data points with real-valued index access and real-valued length; it differs from an <code><a class="el" href="struct_audio_1_1_audio_data_point_ring_buffer.html" title="A AudioDataPointRingBuffer object is a ring buffer for audio data points with left and right shifts a...">AudioDataPointRingBuffer</a></code> by interpolating function values between the base points instead of assuming a staircase function.  <a href="struct_audio_1_1_delay_line.html#details">More...</a><br /></td></tr>
+<tr class="memitem:DelayLineList" id="r_DelayLineList"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_delay_line_list.html">DelayLineList</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_audio_1_1_delay_line_list.html" title="A DelayLineList object is a list of delay lines for audio data points.">DelayLineList</a></code> object is a list of delay lines for audio data points.  <a href="struct_audio_1_1_delay_line_list.html#details">More...</a><br /></td></tr>
 <tr class="memitem:IIRFilter" id="r_IIRFilter"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_i_i_r_filter.html">IIRFilter</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_audio_1_1_i_i_r_filter.html" title="A IIRFilter object is an infinite impulse response filter.">IIRFilter</a></code> object is an infinite impulse response filter.  <a href="struct_audio_1_1_i_i_r_filter.html#details">More...</a><br /></td></tr>
 <tr class="memitem:WaveForm" id="r_WaveForm"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_audio_1_1_wave_form.html">WaveForm</a></td></tr>
@@ -118,6 +122,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a8a1335d82708ba40820b69bda61aefd9" id="r_a8a1335d82708ba40820b69bda61aefd9"><td class="memItemLeft" align="right" valign="top"><a id="a8a1335d82708ba40820b69bda61aefd9" name="a8a1335d82708ba40820b69bda61aefd9"></a>
 typedef <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><b>AudioDataPoint</b></td></tr>
 <tr class="memdesc:a8a1335d82708ba40820b69bda61aefd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code><a class="el" href="#a8a1335d82708ba40820b69bda61aefd9" title="An AudioDataPoint represents a single audio data point (a real value)">AudioDataPoint</a></code> represents a single audio data point (a real value) <br /></td></tr>
+<tr class="memitem:a2073bea858f75675f52885c1cc422cc3" id="r_a2073bea858f75675f52885c1cc422cc3"><td class="memItemLeft" align="right" valign="top"><a id="a2073bea858f75675f52885c1cc422cc3" name="a2073bea858f75675f52885c1cc422cc3"></a>
+typedef GenericListInterpolator&lt; <a class="el" href="struct_audio_1_1_audio_data_point_ring_buffer.html">AudioDataPointRingBuffer</a>, <a class="el" href="#a8a1335d82708ba40820b69bda61aefd9">AudioDataPoint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>AudioDataPointRingBufferInterpolator</b></td></tr>
+<tr class="memdesc:a2073bea858f75675f52885c1cc422cc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the internal ring buffer interpolator <br /></td></tr>
 <tr class="memitem:a82c4cb6bc7c44ffdaff458ef109761ab" id="r_a82c4cb6bc7c44ffdaff458ef109761ab"><td class="memItemLeft" align="right" valign="top"><a id="a82c4cb6bc7c44ffdaff458ef109761ab" name="a82c4cb6bc7c44ffdaff458ef109761ab"></a>
 typedef <a class="el" href="struct_real_list.html">RealList</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_WaveTable</b></td></tr>
 <tr class="memdesc:a82c4cb6bc7c44ffdaff458ef109761ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="#a82c4cb6bc7c44ffdaff458ef109761ab" title="A _WaveTable is just a real list storing data for a wave form.">_WaveTable</a></code> is just a real list storing data for a wave form. <br /></td></tr>
@@ -147,10 +154,10 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4720db2c9e2d45e7d487bf407685ede4" id="r_a4720db2c9e2d45e7d487bf407685ede4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4720db2c9e2d45e7d487bf407685ede4">toString</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="#a8a1335d82708ba40820b69bda61aefd9">AudioDataPoint</a> &amp;dataPoint)</td></tr>
-<tr class="memdesc:a4720db2c9e2d45e7d487bf407685ede4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts audio data point <code>dataPoint</code> to string.  <br /></td></tr>
 <tr class="memitem:a0fd4a601673977d03922e06385ba15f3" id="r_a0fd4a601673977d03922e06385ba15f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_audio_data_point_8h.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fd4a601673977d03922e06385ba15f3">_audioDataPointListTypeName</a> ()</td></tr>
 <tr class="memdesc:a0fd4a601673977d03922e06385ba15f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns name of audio data point list type.  <br /></td></tr>
+<tr class="memitem:a45a65b43f9cace1e1d9d96744bb1c389" id="r_a45a65b43f9cace1e1d9d96744bb1c389"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_audio_data_point_8h.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45a65b43f9cace1e1d9d96744bb1c389">_delayLineListTypeName</a> ()</td></tr>
+<tr class="memdesc:a45a65b43f9cace1e1d9d96744bb1c389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns name of delay line list type.  <br /></td></tr>
 <tr class="memitem:a756c708f5d7d400202219a7a1adaeb13" id="r_a756c708f5d7d400202219a7a1adaeb13"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a756c708f5d7d400202219a7a1adaeb13">waveFormKindToString</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a> kind)</td></tr>
 <tr class="memdesc:a756c708f5d7d400202219a7a1adaeb13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns string representation of <code>kind</code>.  <br /></td></tr>
 <tr class="memitem:afb924ba2c19839c2128ab2b4a79c4ce7" id="r_afb924ba2c19839c2128ab2b4a79c4ce7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a8cf082e76c27a75bb55cc50f17d0475c">WaveFormKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb924ba2c19839c2128ab2b4a79c4ce7">stringToWaveFormKind</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a> &amp;st)</td></tr>
@@ -180,6 +187,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a45a65b43f9cace1e1d9d96744bb1c389" name="a45a65b43f9cace1e1d9d96744bb1c389"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45a65b43f9cace1e1d9d96744bb1c389">&#9670;&#160;</a></span>_delayLineListTypeName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_audio_data_point_8h.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a> Audio::_delayLineListTypeName </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns name of delay line list type. </p>
+<dl class="section return"><dt>Returns</dt><dd>type name </dd></dl>
+
+</div>
+</div>
 <a id="afb924ba2c19839c2128ab2b4a79c4ce7" name="afb924ba2c19839c2128ab2b4a79c4ce7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afb924ba2c19839c2128ab2b4a79c4ce7">&#9670;&#160;</a></span>stringToWaveFormKind()</h2>
 
@@ -204,40 +231,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>wave form kind </dd></dl>
-
-</div>
-</div>
-<a id="a4720db2c9e2d45e7d487bf407685ede4" name="a4720db2c9e2d45e7d487bf407685ede4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4720db2c9e2d45e7d487bf407685ede4">&#9670;&#160;</a></span>toString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a> Audio::toString </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="#a8a1335d82708ba40820b69bda61aefd9">AudioDataPoint</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>dataPoint</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Converts audio data point <code>dataPoint</code> to string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">dataPoint</td><td>audio data point to be converted to string </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>string representation of data point </dd></dl>
 
 </div>
 </div>

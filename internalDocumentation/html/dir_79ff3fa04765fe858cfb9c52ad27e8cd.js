@@ -3,8 +3,5 @@ var dir_79ff3fa04765fe858cfb9c52ad27e8cd =
     [ "JucePluginDefines.h", "_so_x_filter_2_juce_plugin_defines_8h.html", "_so_x_filter_2_juce_plugin_defines_8h" ],
     [ "SoXFilter_AudioEffect.cpp", "_so_x_filter___audio_effect_8cpp.html", "_so_x_filter___audio_effect_8cpp" ],
     [ "SoXFilter_AudioEffect.h", "_so_x_filter___audio_effect_8h.html", "_so_x_filter___audio_effect_8h" ],
-    [ "SoXFilter_AudioProcessor.cpp", "_so_x_filter___audio_processor_8cpp.html", "_so_x_filter___audio_processor_8cpp" ],
-    [ "SoXPlugin-Standalone.cpp", "_so_x_filter_2_so_x_plugin-_standalone_8cpp.html", null ],
-    [ "SoXPlugin-util.cpp", "_so_x_filter_2_so_x_plugin-util_8cpp.html", null ],
-    [ "SoxPlugin-VST_1.cpp", "_so_x_filter_2_so_x_plugin-_v_s_t__1_8cpp.html", null ]
+    [ "SoXFilter_AudioProcessor.cpp", "_so_x_filter___audio_processor_8cpp.html", "_so_x_filter___audio_processor_8cpp" ]
 ];

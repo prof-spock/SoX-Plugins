@@ -133,15 +133,6 @@ Namespaces</h2></td></tr>
 <tr class="memitem:SoXPlugins_3A_3AEffects_3A_3ASoXCompander" id="r_SoXPlugins_3A_3AEffects_3A_3ASoXCompander"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html">SoXPlugins::Effects::SoXCompander</a></td></tr>
 <tr class="memdesc:namespace_so_x_plugins_1_1_effects_1_1_so_x_compander"><td class="mdescLeft">&#160;</td><td class="mdescRight">The package <code><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html" title="The package SoXCompander provides classes for the SoX compand and mcompand audio effects.">SoXCompander</a></code> provides classes for the SoX <b>compand</b> and <b>mcompand</b> audio effects. <br /></td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ace15357d96e5cd488d38773ecb7a803d" id="r_ace15357d96e5cd488d38773ecb7a803d"><td class="memItemLeft" align="right" valign="top"><a id="ace15357d96e5cd488d38773ecb7a803d" name="ace15357d96e5cd488d38773ecb7a803d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>pagedParameterName</b>&#160;&#160;&#160;SoXEffectParameterMap::pagedParameterName</td></tr>
-<tr class="memdesc:ace15357d96e5cd488d38773ecb7a803d"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for pagedParameterName <br /></td></tr>
-<tr class="memitem:a2651eaed0ec92fd791856abe29e0f16d" id="r_a2651eaed0ec92fd791856abe29e0f16d"><td class="memItemLeft" align="right" valign="top"><a id="a2651eaed0ec92fd791856abe29e0f16d" name="a2651eaed0ec92fd791856abe29e0f16d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>_maxBandCount</b>&#160;&#160;&#160;(10)</td></tr>
-<tr class="memdesc:a2651eaed0ec92fd791856abe29e0f16d"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum number of bands in a multiband compressor <br /></td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:af0d110ef8dca0b39cb7bb96415b5a63c" id="r_af0d110ef8dca0b39cb7bb96415b5a63c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_compander.html#af0d110ef8dca0b39cb7bb96415b5a63c">SoXPlugins::Effects::SoXCompander::_BandIndexToCompanderDataMap</a></td></tr>
@@ -149,6 +140,11 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a631fa041ba7444a4541c500b24c7c949" id="r_a631fa041ba7444a4541c500b24c7c949"><td class="memItemLeft" align="right" valign="top">static const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a631fa041ba7444a4541c500b24c7c949">pagedParameterName</a></td></tr>
+<tr class="memdesc:a631fa041ba7444a4541c500b24c7c949"><td class="mdescLeft">&#160;</td><td class="mdescRight">abbreviation for pagedParameterName  <br /></td></tr>
+<tr class="memitem:a80b8ea21efe3bcd9f627dbf1aa4067b3" id="r_a80b8ea21efe3bcd9f627dbf1aa4067b3"><td class="memItemLeft" align="right" valign="top"><a id="a80b8ea21efe3bcd9f627dbf1aa4067b3" name="a80b8ea21efe3bcd9f627dbf1aa4067b3"></a>
+constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>_maxBandCount</b> = 10</td></tr>
+<tr class="memdesc:a80b8ea21efe3bcd9f627dbf1aa4067b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum number of bands in a multiband compressor <br /></td></tr>
 <tr class="memitem:a25738d4950ff3f3bf1b411f32cbd7f5e" id="r_a25738d4950ff3f3bf1b411f32cbd7f5e"><td class="memItemLeft" align="right" valign="top"><a id="a25738d4950ff3f3bf1b411f32cbd7f5e" name="a25738d4950ff3f3bf1b411f32cbd7f5e"></a>
 const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_maxTopFrequency</b> {25000.0}</td></tr>
 <tr class="memdesc:a25738d4950ff3f3bf1b411f32cbd7f5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum top frequency in a compander band <br /></td></tr>
@@ -203,9 +199,36 @@ static const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6
 <div class="line">    <a class="code hl_function" href="struct_string_list.html#ab4311662bc2825078dfe2eabca055702">StringList::fromList</a>({<span class="stringliteral">&quot;Attack [s]&quot;</span>, <span class="stringliteral">&quot;Decay [s]&quot;</span>, <span class="stringliteral">&quot;Knee [dB]&quot;</span>,</div>
 <div class="line">                          <span class="stringliteral">&quot;Threshold [dB]&quot;</span>, <span class="stringliteral">&quot;Ratio&quot;</span>, <span class="stringliteral">&quot;Gain [dB]&quot;</span>,</div>
 <div class="line">                          <span class="stringliteral">&quot;Top Frequency [Hz]&quot;</span>})</div>
-<div class="ttc" id="astruct_string_list_html_ab4311662bc2825078dfe2eabca055702"><div class="ttname"><a href="struct_string_list.html#ab4311662bc2825078dfe2eabca055702">StringList::fromList</a></div><div class="ttdeci">static StringList fromList(IN initializer_list&lt; String &gt; list)</div><div class="ttdoc">Initializes list of strings from an initializer list of values.</div><div class="ttdef"><b>Definition</b> StringList.cpp:36</div></div>
+<div class="ttc" id="astruct_string_list_html_ab4311662bc2825078dfe2eabca055702"><div class="ttname"><a href="struct_string_list.html#ab4311662bc2825078dfe2eabca055702">StringList::fromList</a></div><div class="ttdeci">static StringList fromList(IN initializer_list&lt; String &gt; list)</div><div class="ttdoc">Initializes list of strings from an initializer list of values.</div><div class="ttdef"><b>Definition</b> StringList.cpp:42</div></div>
 </div><!-- fragment -->
 <p>the list of parameter names in a compander band (with units) </p>
+
+</div>
+</div>
+<a id="a631fa041ba7444a4541c500b24c7c949" name="a631fa041ba7444a4541c500b24c7c949"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a631fa041ba7444a4541c500b24c7c949">&#9670;&#160;</a></span>pagedParameterName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const auto pagedParameterName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <a class="code hl_function" href="struct_so_x_effect_parameter_map.html#a3b37c8c923bb2da05c4d4f6dfc039450">SoXEffectParameterMap::pagedParameterName</a></div>
+<div class="ttc" id="astruct_so_x_effect_parameter_map_html_a3b37c8c923bb2da05c4d4f6dfc039450"><div class="ttname"><a href="struct_so_x_effect_parameter_map.html#a3b37c8c923bb2da05c4d4f6dfc039450">SoXEffectParameterMap::pagedParameterName</a></div><div class="ttdeci">static String pagedParameterName(IN String &amp;parameterName, IN Integer pageIndex)</div><div class="ttdoc">Makes effective parameter name from parameterName and pageIndex.</div><div class="ttdef"><b>Definition</b> SoXEffectParameterMap.cpp:800</div></div>
+</div><!-- fragment -->
+<p>abbreviation for pagedParameterName </p>
 
 </div>
 </div>
@@ -230,7 +253,7 @@ static const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">    <a class="code hl_variable" href="#a718e4bd7d4efb84022f557ef48762ce5">_companderBandParameterNameList</a>[0]</div>
-<div class="ttc" id="a_so_x_compander___audio_effect_8cpp_html_a718e4bd7d4efb84022f557ef48762ce5"><div class="ttname"><a href="#a718e4bd7d4efb84022f557ef48762ce5">_companderBandParameterNameList</a></div><div class="ttdeci">static const StringList _companderBandParameterNameList</div><div class="ttdoc">the list of parameter names in a compander band (with units)</div><div class="ttdef"><b>Definition</b> SoXCompander_AudioEffect.cpp:287</div></div>
+<div class="ttc" id="a_so_x_compander___audio_effect_8cpp_html_a718e4bd7d4efb84022f557ef48762ce5"><div class="ttname"><a href="#a718e4bd7d4efb84022f557ef48762ce5">_companderBandParameterNameList</a></div><div class="ttdeci">static const StringList _companderBandParameterNameList</div><div class="ttdoc">the list of parameter names in a compander band (with units)</div><div class="ttdef"><b>Definition</b> SoXCompander_AudioEffect.cpp:288</div></div>
 </div><!-- fragment -->
 <p>the parameter name of the attack (in English language) </p>
 

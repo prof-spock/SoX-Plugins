@@ -23,15 +23,15 @@
 
 #include "SoXReverbSupport.h"
 
+#include "DelayLine.h"
 #include "GenericTuple.h"
 #include "Logging.h"
-#include "NaturalList.h"
 #include "SoXAudioHelper.h"
 
 /*--------------------*/
 
 using Audio::AudioDataPoint;
-using BaseTypes::Containers::NaturalList;
+using Audio::DelayLine;
 using BaseTypes::GenericTypes::GenericTuple;
 using SoXPlugins::Effects::SoXReverb::_SoXReverb;
 using SoXPlugins::Helpers::SoXAudioHelper;
@@ -53,22 +53,22 @@ static constexpr size_t _maxChannelCount = 100;
 /** the number of freeverb comb filters */
 static constexpr size_t _lineCombFilterCount    = 8;
 
-/** list of data point ring buffer lengths for comb filters in the
+/** list of delay line lengths for comb filters in the
  * Freeverb algorithm */
-static const NaturalList _combFilterLengthList =
-    NaturalList::fromList({Natural{1116}, Natural{1188},
-                           Natural{1277}, Natural{1356},
-                           Natural{1422}, Natural{1491},
-                           Natural{1557}, Natural{1617}});
+static const RealList _combFilterLengthList =
+    RealList::fromList({Real{1116.0}, Real{1188.0},
+                        Real{1277.0}, Real{1356.0},
+                        Real{1422.0}, Real{1491.0},
+                        Real{1557.0}, Real{1617.0}});
 
 /** the number of freeverb allpass filters */
 static constexpr size_t _lineAllpassFilterCount = 4;
 
-/** list of data point ring buffer lengths for allpass filters in the
+/** list of delay line lengths for allpass filters in the
  * Freeverb algorithm */
-static const NaturalList _allpassFilterLengthList =
-    NaturalList::fromList({Natural{225}, Natural{341},
-                           Natural{441}, Natural{556}});
+static const RealList _allpassFilterLengthList =
+    RealList::fromList({Real{225.0}, Real{341.0},
+                        Real{441.0}, Real{556.0}});
 
 /** the stereo spread in data points in freeverb */
 static const Real _stereoSpread = 12.0;
@@ -110,7 +110,7 @@ namespace SoXPlugins::Effects::SoXReverb {
 
     /**
      * An <C>_AllpassFilter</C> object is a simple allpass filter with
-     * an associated data point ring buffer as a delay line
+     * an associated delay line
      */
     struct _AllpassFilter {
 
@@ -119,7 +119,7 @@ namespace SoXPlugins::Effects::SoXReverb {
         /*--------------------*/
 
         /**
-         * Makes allpass filter with embedded data point ring buffer.
+         * Makes allpass filter with embedded delay line.
          */
         _AllpassFilter ();
 
@@ -128,23 +128,23 @@ namespace SoXPlugins::Effects::SoXReverb {
         /*--------------------*/
 
         /**
-         * Gets length of data point ring buffer in filter.
+         * Gets length of delay line in filter.
          *
-         * @return length of data point ring buffer
+         * @return length of delay line
          */
-        Natural ringBufferLength () const;
+        Real delayLineLength () const;
 
         /*--------------------*/
         /* property change    */
         /*--------------------*/
 
         /**
-         * Sets length of data point ring buffer in filter to
+         * Sets length of delay line in filter to
          * <C>length</C>.
          *
-         * @param[in] length  new length of data point ring buffer
+         * @param[in] length  new length of delay line
          */
-        void setRingBufferLength (IN Natural length);
+        void setDelayLineLength (IN Real length);
 
         /*--------------------*/
         /* complex change     */
@@ -162,10 +162,10 @@ namespace SoXPlugins::Effects::SoXReverb {
         /*--------------------*/
         /*--------------------*/
 
-        protected:
+        private:
 
-            /** internal data point ring buffer of allpass */
-            AudioDataPointRingBuffer _dataPointRingBuffer;
+            /** internal delay line of allpass */
+            DelayLine _delayLine;
 
     };
 
@@ -175,8 +175,8 @@ namespace SoXPlugins::Effects::SoXReverb {
 
     /**
      * A <C>_CombFilter</C> object is a simple Schröder-Moorer comb
-     * filter with an associated data point ring buffer as a delay line
-     * and a single stored data point.
+     * filter with an associated delay line and a single stored data
+     * point.
      */
     struct _CombFilter {
 
@@ -185,7 +185,7 @@ namespace SoXPlugins::Effects::SoXReverb {
         /*--------------------*/
 
         /**
-         * Makes comb filter with embedded data point ring buffer.
+         * Makes comb filter with embedded delay line.
          */
         _CombFilter ();
 
@@ -194,22 +194,22 @@ namespace SoXPlugins::Effects::SoXReverb {
         /*--------------------*/
 
         /**
-         * Gets length of data point ring buffer in filter
+         * Gets length of delay line in filter
          *
-         * @return length of data point ring buffer
+         * @return length of delay line
          */
-        Natural ringBufferLength () const;
+        Real delayLineLength () const;
 
         /*--------------------*/
         /* property change    */
         /*--------------------*/
 
         /**
-         * Sets length of data point ring buffer in filter
+         * Sets length of delay line in filter
          *
-         * @param[in] length  new length of data point ring buffer
+         * @param[in] length  new length of delay line
          */
-        void setRingBufferLength (IN Natural length);
+        void setDelayLineLength (IN Real length);
 
         /*--------------------*/
         /* complex change     */
@@ -230,10 +230,10 @@ namespace SoXPlugins::Effects::SoXReverb {
         /*--------------------*/
         /*--------------------*/
 
-        protected:
+        private:
 
-            /** internal data point ring buffer of comb filter */
-            AudioDataPointRingBuffer _dataPointRingBuffer;
+            /** internal delay line of comb filter */
+            DelayLine _delayLine;
 
             /** the single state data point of comb filter */
             AudioDataPoint _storedDataPoint;
@@ -256,7 +256,7 @@ namespace SoXPlugins::Effects::SoXReverb {
 
         /**
          * Constructs a complete reverb line and all filters; creates
-         * all data point ring buffers with arbitrary length to be adapted
+         * all delay lines with arbitrary length to be adapted
          * by later adjustments.
          */
         _ReverbLine ();
@@ -288,14 +288,14 @@ namespace SoXPlugins::Effects::SoXReverb {
          *
          * @return  maximum path length (in data points)
          */
-        Natural maximumDelayPathLength () const;
+        Real maximumDelayPathLength () const;
 
         /*--------------------*/
         /* property change    */
         /*--------------------*/
 
         /**
-         * Adjusts lengths of data point ring buffers for reverb line
+         * Adjusts lengths of delay lines for reverb line
          * based on <C>dataPointRate</C>, <C>roomScale</C> and
          * <C>stereoDepth</C>.
          *
@@ -303,7 +303,7 @@ namespace SoXPlugins::Effects::SoXReverb {
          * @param[in] roomScale       new room scale of reverb line 
          * @param[in] stereoDepth     new stereo depth of reverb line
          */
-        void adjustRingBufferLengths (IN Real dataPointRate,
+        void adjustDelayLineLengths (IN Real dataPointRate,
                                       IN Real roomScale,
                                       IN Real stereoDepth);
 
@@ -332,7 +332,7 @@ namespace SoXPlugins::Effects::SoXReverb {
         /*--------------------*/
         /*--------------------*/
 
-        protected:
+        private:
 
             /** the list of all allpass filters in reverb line */
             GenericTuple<_AllpassFilter*,
@@ -404,7 +404,7 @@ namespace SoXPlugins::Effects::SoXReverb {
          *
          * @return  maximum path length (in data points)
          */
-        Natural maximumDelayPathLength () const;
+        Real maximumDelayPathLength () const;
 
         /*--------------------*/
         /* property change    */
@@ -422,7 +422,7 @@ namespace SoXPlugins::Effects::SoXReverb {
          * @param[in] roomScale      new room scale for reverb channel
          * @param[in] stereoDepth    new stereo depth for reverb channel
          */
-        void adjustRingBufferLengths (IN Real dataPointRate,
+        void adjustDelayLineLengths (IN Real dataPointRate,
                                       IN Real predelay,
                                       IN Real roomScale,
                                       IN Real stereoDepth);
@@ -452,11 +452,11 @@ namespace SoXPlugins::Effects::SoXReverb {
         /*--------------------*/
         /*--------------------*/
 
-        protected:
+        private:
 
-            /** the ring buffer of input data points in this reverb
+            /** the delay line of input data points in this reverb
              * channel */
-            AudioDataPointRingBuffer _inputDataPointRingBuffer;
+            DelayLine _inputDelayLine;
 
             /** the number of associated reverb lines (typically 1 or
              * 2) */
@@ -555,15 +555,15 @@ using SoXPlugins::Effects::SoXReverb::_ReverbLinePtr;
  * @param[in] dataPointRate  the data point rate of reverb
  * @param[in] roomScale      the room scale of reverb
  * @param[in] stereoDepth    the desired stereo depth of reverb
- * @return  length of filter data point ring buffer
+ * @return  length of filter delay line
  */
 static
-Natural _reverbLineDelayLength (IN Boolean isCreation,
-                                IN Boolean isCombFilter,
-                                IN Natural index,
-                                IN Real dataPointRate,
-                                IN Real roomScale,
-                                IN Real stereoDepth)
+Real _reverbLineDelayLength (IN Boolean isCreation,
+                             IN Boolean isCombFilter,
+                             IN Natural index,
+                             IN Real dataPointRate,
+                             IN Real roomScale,
+                             IN Real stereoDepth)
 {
     const Real effectiveRoomScale =
         (isCreation ? _maximumRoomScale
@@ -573,14 +573,13 @@ Natural _reverbLineDelayLength (IN Boolean isCreation,
     const Integer sign = (index % 2 == 0 ? 1 : -1);
     const Real offset = (isCreation ? _maximumStereoDepth
                          : stereoDepth * sign);
-    const NaturalList& lengthList = (isCombFilter
-                                     ? _combFilterLengthList
-                                     : _allpassFilterLengthList);
-    const Natural length = lengthList[index];
+    const RealList& lengthList = (isCombFilter
+                                  ? _combFilterLengthList
+                                  : _allpassFilterLengthList);
+    const Real length = lengthList[index];
     const Real adjustment = _stereoSpread;
-    const Natural result =
-        Natural{Real::round(factor
-                            * (Real{length} + adjustment * offset))};
+    const Real result =
+        Real::round(factor * (Real{length} + adjustment * offset));
     return result;
 }
 
@@ -588,7 +587,7 @@ Natural _reverbLineDelayLength (IN Boolean isCreation,
 
 /**
  * Returns initial filter delay line maximum length for the
- * data point ring buffer for given parameters.
+ * delay line for given parameters.
  *
  * @param[in] isCombFilter   tells to adapt comb filter or allpass
  *                           filter
@@ -597,9 +596,9 @@ Natural _reverbLineDelayLength (IN Boolean isCreation,
  * @return maximum ring buffer length (for later setup)
  */
 static
-Natural _initialReverbLineDelayLength (IN Boolean isCombFilter,
-                                       IN Natural index,
-                                       IN Real dataPointRate)
+Real _initialReverbLineDelayLength (IN Boolean isCombFilter,
+                                    IN Natural index,
+                                    IN Real dataPointRate)
 {
     /* calculate maximum ring buffer length with arbitrary values
        for <channel>, <roomScale> and <stereoDepth> */
@@ -621,14 +620,14 @@ Natural _initialReverbLineDelayLength (IN Boolean isCombFilter,
  * @param[in] dataPointRate  the data point rate of reverb
  * @param[in] roomScale      the room scale of reverb
  * @param[in] stereoDepth    the desired stereo depth of reverb
- * @return  adapted length of filter data point ring buffer
+ * @return  adapted length of filter delay line
  */
 static
-Natural _adjustedReverbLineDelayLength (IN Boolean isCombFilter,
-                                        IN Natural index,
-                                        IN Real dataPointRate,
-                                        IN Real roomScale,
-                                        IN Real stereoDepth)
+Real _adjustedReverbLineDelayLength (IN Boolean isCombFilter,
+                                     IN Natural index,
+                                     IN Real dataPointRate,
+                                     IN Real roomScale,
+                                     IN Real stereoDepth)
 {
     return _reverbLineDelayLength(false, isCombFilter, index,
                                   dataPointRate, roomScale, stereoDepth);
@@ -643,7 +642,6 @@ Natural _adjustedReverbLineDelayLength (IN Boolean isCombFilter,
 /*--------------------*/
 
 _AllpassFilter::_AllpassFilter ()
-    : _dataPointRingBuffer{}
 {
 }
 
@@ -651,18 +649,18 @@ _AllpassFilter::_AllpassFilter ()
 /* property access    */
 /*--------------------*/
 
-Natural _AllpassFilter::ringBufferLength () const
+Real _AllpassFilter::delayLineLength () const
 {
-    return _dataPointRingBuffer.length();
+    return _delayLine.length();
 }
 
 /*--------------------*/
 /* property change    */
 /*--------------------*/
 
-void _AllpassFilter::setRingBufferLength (IN Natural length)
+void _AllpassFilter::setDelayLineLength (IN Real length)
 {
-    _dataPointRingBuffer.setLength(length);
+    _delayLine.setLength(length);
 }
 
 /*--------------------*/
@@ -671,10 +669,10 @@ void _AllpassFilter::setRingBufferLength (IN Natural length)
 
 AudioDataPoint _AllpassFilter::apply (IN AudioDataPoint inputDataPoint)
 {
-    const AudioDataPoint outputDataPoint = _dataPointRingBuffer.first();
+    const AudioDataPoint outputDataPoint = _delayLine.first();
     const AudioDataPoint newDataPoint =
         inputDataPoint + outputDataPoint * _allpassFactor;
-    _dataPointRingBuffer.shiftLeft(newDataPoint);
+    _delayLine.advance(newDataPoint);
     return outputDataPoint - inputDataPoint;
 }
 
@@ -687,8 +685,7 @@ AudioDataPoint _AllpassFilter::apply (IN AudioDataPoint inputDataPoint)
 /*--------------------*/
 
 _CombFilter::_CombFilter ()
-    : _dataPointRingBuffer{},
-      _storedDataPoint{0.0}
+    : _storedDataPoint{0.0}
 {
 }
 
@@ -696,18 +693,18 @@ _CombFilter::_CombFilter ()
 /* property access    */
 /*--------------------*/
 
-Natural _CombFilter::ringBufferLength () const
+Real _CombFilter::delayLineLength () const
 {
-    return _dataPointRingBuffer.length();
+    return _delayLine.length();
 }
 
 /*--------------------*/
 /* property change    */
 /*--------------------*/
 
-void _CombFilter::setRingBufferLength (IN Natural length)
+void _CombFilter::setDelayLineLength (IN Real length)
 {
-    _dataPointRingBuffer.setLength(length);
+    _delayLine.setLength(length);
 }
 
 /*--------------------*/
@@ -718,11 +715,10 @@ AudioDataPoint _CombFilter::apply (IN AudioDataPoint inputDataPoint,
                                 IN Real feedback,
                                 IN Real hfDamping)
 {
-    const AudioDataPoint outputDataPoint = _dataPointRingBuffer.first();
+    const AudioDataPoint outputDataPoint = _delayLine.first();
     _storedDataPoint = (outputDataPoint
                      + (_storedDataPoint - outputDataPoint) * hfDamping);
-    _dataPointRingBuffer.shiftLeft(inputDataPoint
-                                   + _storedDataPoint * feedback);
+    _delayLine.advance(inputDataPoint + _storedDataPoint * feedback);
     return outputDataPoint;
 }
 
@@ -741,18 +737,18 @@ _ReverbLine::_ReverbLine ()
     /* set allpass filters delay line lengths */
     for (Natural i = 0;  i < _lineAllpassFilterCount;  i++) {
         _AllpassFilter* allpassFilter = new _AllpassFilter();
-        const Natural length =
+        const Real length =
             _initialReverbLineDelayLength(false, i, _defaultDataPointRate);
-        allpassFilter->setRingBufferLength(length);
+        allpassFilter->setDelayLineLength(length);
         _allpassFilterList[i] = allpassFilter;
     }
 
     /* set comb filters delay line lengths */
     for (Natural i = 0;  i < _lineCombFilterCount;  i++) {
         _CombFilter* combFilter = new _CombFilter();
-        const Natural length =
+        const Real length =
             _initialReverbLineDelayLength(true, i, _defaultDataPointRate);
-        combFilter->setRingBufferLength(length);
+        combFilter->setDelayLineLength(length);
         _combFilterList[i] = combFilter;
     }
 }
@@ -781,20 +777,20 @@ String _ReverbLine::toString () const {
 
     for (Natural i = 0;  i < _lineAllpassFilterCount;  i++) {
         const _AllpassFilter* filter = _allpassFilterList[i];
-        const Natural ringBufferLength = filter->ringBufferLength();
+        const Real delayLineLength = filter->delayLineLength();
         st += ((i > 0 ? ", af(" : "af(")
                + TOSTRING(i) + ")="
-               + TOSTRING(ringBufferLength));
+               + TOSTRING(delayLineLength));
     }
 
     st += ", ";
 
     for (Natural i = 0;  i < _lineCombFilterCount;  i++) {
         const _CombFilter* filter = _combFilterList[i];
-        const Natural ringBufferLength = filter->ringBufferLength();
+        const Real delayLineLength = filter->delayLineLength();
         st += ((i > 0 ? ", cf(" : "cf(")
                + TOSTRING(i) + ")="
-               + TOSTRING(ringBufferLength));
+               + TOSTRING(delayLineLength));
     }
 
     st += ")";
@@ -805,16 +801,16 @@ String _ReverbLine::toString () const {
 /* measurement        */
 /*--------------------*/
 
-Natural _ReverbLine::maximumDelayPathLength () const
+Real _ReverbLine::maximumDelayPathLength () const
 {
-    Natural result = 0;
+    Real result = 0.0;
 
     for (_CombFilter* filter : _combFilterList) {
-        result = Natural::maximum(result, filter->ringBufferLength());
+        result = Real::maximum(result, filter->delayLineLength());
     }
 
     for (_AllpassFilter* filter : _allpassFilterList) {
-        result += filter->ringBufferLength();
+        result += filter->delayLineLength();
     }
 
     return result;
@@ -824,26 +820,26 @@ Natural _ReverbLine::maximumDelayPathLength () const
 /* property change    */
 /*--------------------*/
 
-void _ReverbLine::adjustRingBufferLengths (IN Real dataPointRate,
+void _ReverbLine::adjustDelayLineLengths (IN Real dataPointRate,
                                            IN Real roomScale,
                                            IN Real stereoDepth)
 {
     /* adjust allpass filter delay lines */
     for (Natural i = 0;  i < _lineAllpassFilterCount;  i++) {
         _AllpassFilter* allpassFilter = _allpassFilterList[i];
-        const Natural length =
+        const Real length =
             _adjustedReverbLineDelayLength(false, i, dataPointRate,
                                            roomScale, stereoDepth);
-        allpassFilter->setRingBufferLength(length);
+        allpassFilter->setDelayLineLength(length);
     }
 
     /* adjust comb filter delay lines */
     for (Natural i = 0;  i < _lineCombFilterCount;  i++) {
         _CombFilter* combFilter = _combFilterList[i];
-        const Natural length =
+        const Real length =
             _adjustedReverbLineDelayLength(true, i, dataPointRate,
                                            roomScale, stereoDepth);
-        combFilter->setRingBufferLength(length);
+        combFilter->setDelayLineLength(length);
     }
 }
 
@@ -895,7 +891,7 @@ AudioDataPoint _ReverbLine::apply (IN AudioDataPoint inputDataPoint,
 /*--------------------*/
 
 _ReverbChannel::_ReverbChannel ()
-    : _inputDataPointRingBuffer{0},
+    : _inputDelayLine{0.0},
       _reverbLineCount{2},
       _reverbLineList{2}
 {
@@ -925,7 +921,7 @@ String _ReverbChannel::toString () const
 {
     String st = ("ReverbChannel("
                  "predelay = "
-                 + TOSTRING(_inputDataPointRingBuffer.length()));
+                 + TOSTRING(_inputDelayLine.length()));
 
     /* add information about reverb lines */
     for (const _ReverbLinePtr& reverbLine : _reverbLineList) {
@@ -940,12 +936,12 @@ String _ReverbChannel::toString () const
 /* measurement        */
 /*--------------------*/
 
-Natural _ReverbChannel::maximumDelayPathLength () const
+Real _ReverbChannel::maximumDelayPathLength () const
 {
-    Natural result = 0;
+    Real result = 0.0;
 
     for (_ReverbLinePtr reverbLine : _reverbLineList) {
-        result = Natural::maximum(result,
+        result = Real::maximum(result,
                                   reverbLine->maximumDelayPathLength());
     }
 
@@ -956,14 +952,13 @@ Natural _ReverbChannel::maximumDelayPathLength () const
 /* property change    */
 /*--------------------*/
 
-void _ReverbChannel::adjustRingBufferLengths (IN Real dataPointRate,
+void _ReverbChannel::adjustDelayLineLengths (IN Real dataPointRate,
                                               IN Real predelay,
                                               IN Real roomScale,
                                               IN Real stereoDepth)
 {
-    const Natural ringBufferLength =
-        Natural{Real::round(predelay * dataPointRate)};
-    _inputDataPointRingBuffer.setLength(ringBufferLength);
+    const Real delayLineLength = Real::round(predelay * dataPointRate);
+    _inputDelayLine.setLength(delayLineLength);
 
     /* adapt lengths of reverb lines; when stereo depth is zero,
        only a single reverb line is used per channel */
@@ -971,8 +966,8 @@ void _ReverbChannel::adjustRingBufferLengths (IN Real dataPointRate,
     Real effectiveStereoDepth = 0.0;
 
     for (_ReverbLinePtr reverbLine : _reverbLineList) {
-        reverbLine->adjustRingBufferLengths(dataPointRate, roomScale,
-                                            effectiveStereoDepth);
+        reverbLine->adjustDelayLineLengths(dataPointRate, roomScale,
+                                           effectiveStereoDepth);
         effectiveStereoDepth = stereoDepth;
     }
 }
@@ -990,10 +985,9 @@ void _ReverbChannel::apply (IN AudioDataPoint inputDataPoint,
     AudioDataPoint dataPoint = inputDataPoint;
 
     /* check and process predelay */
-    if (_inputDataPointRingBuffer.length() > 0) {
-        const AudioDataPoint firstDataPoint =
-            _inputDataPointRingBuffer.first();
-        _inputDataPointRingBuffer.shiftLeft(dataPoint);
+    if (_inputDelayLine.length() > 0.0) {
+        const AudioDataPoint firstDataPoint = _inputDelayLine.first();
+        _inputDelayLine.advance(dataPoint);
         dataPoint = firstDataPoint;
     }
 
@@ -1092,13 +1086,13 @@ Real _SoXReverb::tailLength () const
     const _ReverbEffectParameterData& effectParameterData =
         TOREFERENCE<_ReverbEffectParameterData>(_effectParameterData);
 
-    Natural maximumPathLength = 0;
+    Real maximumPathLength = 0.0;
 
     for (const _ReverbChannel* reverbChannel
              : effectParameterData.reverbChannelList) {
         maximumPathLength =
-            Natural::maximum(maximumPathLength,
-                             reverbChannel->maximumDelayPathLength());
+            Real::maximum(maximumPathLength,
+                          reverbChannel->maximumDelayPathLength());
     }
 
     const Real result =
@@ -1194,7 +1188,7 @@ void _SoXReverb::resize (IN Real dataPointRate,
     }
 
     for (_ReverbChannel* reverbChannel : reverbChannelList) {
-        reverbChannel->adjustRingBufferLengths
+        reverbChannel->adjustDelayLineLengths
                            (dataPointRate,
                             effectParameterData.predelay,
                             effectParameterData.roomScale,

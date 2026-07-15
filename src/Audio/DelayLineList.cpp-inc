@@ -1,0 +1,61 @@
+/**
+ * @file
+ * The <C>DelayLineList</C> body implements a list of delay lines for
+ * audio data points <I>(this is the effective code include file for
+ * conditional inlining)</I>.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2026-05
+ */
+
+/*====================*/
+
+#include "StringUtil.h"
+
+/*====================*/
+
+using Audio::DelayLineList;
+
+/*====================*/
+
+String Audio::_delayLineListTypeName ()
+{
+    return "DelayLineList";
+}
+
+/*--------------------*/
+/* con-/destruction   */
+/*--------------------*/
+
+INLINE
+DelayLineList::DelayLineList (IN Natural count,
+                              IN Natural delayLineLength)
+{
+    setLength(count);
+
+    for (DelayLine& delayLine : *this) {
+        delayLine.setLength(delayLineLength);
+    }
+}
+
+/*--------------------*/
+/* change             */
+/*--------------------*/
+
+INLINE
+void DelayLineList::setElementLength (IN Real elementLength)
+{
+    for (DelayLine& delayLine : *this) {
+        delayLine.setLength(elementLength);
+    }
+}
+
+/*--------------------*/
+
+INLINE
+void DelayLineList::setToZero ()
+{
+    for (DelayLine& delayLine : *this) {
+        delayLine.setToZero();
+    }
+}

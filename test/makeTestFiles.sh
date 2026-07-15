@@ -142,7 +142,7 @@ performTest sine-sweep bass
 soxCommands=(biquad 0.3 -0.5 0.3 2 -0.4 0.1)
 performTest noise biquad
 
-soxCommands=(chorus 1.0 0.5
+soxCommands=(chorus 1.0 0.4
                       50 0.75 1.25 1 -s
                       75 0.5  2.5  2 -t
                      100 0.25 5    4 -s)
@@ -152,7 +152,7 @@ performTest pulse chorus
 soxCommands=(compand 0.02,0.15 -4:-60,0,-20 +4.5)
 performTest noise compander
 
-soxCommands=(echo 0.9 0.6
+soxCommands=(echo 0.9 0.4
                     200 0.75
                     400 0.5
                     800 0.25)
@@ -160,7 +160,7 @@ performTest pulse echo
 performTest notes echo
 performTest noise echo
 
-soxCommands=(echos 0.9 0.6
+soxCommands=(echos 0.9 0.4
                       300 0.75
                       600 0.5
                      1200 0.25)

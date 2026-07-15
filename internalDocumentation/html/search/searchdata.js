@@ -9,7 +9,7 @@ var indexSectionsWithContent =
   6: "_acdflostvw",
   7: "_fsw",
   8: "ginp",
-  9: "_acijlmopst",
+  9: "_acijlmost",
   10: "defs"
 };
 

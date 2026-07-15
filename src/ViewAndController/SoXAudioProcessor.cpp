@@ -101,7 +101,7 @@ namespace SoXPlugins::ViewAndController {
     struct _SoXAudioProcessorDescriptor {
 
         /** the associated effect */
-        SoXAudioEffect* effect{NULL};
+        SoXAudioEffect* effect{nullptr};
 
         /** the set of observers to be notified on a value change */
         _SoXAudioEditorPtrSet observerSet;
@@ -141,7 +141,7 @@ void _EffectParameterListener::parameterValueChanged (int paramIndex,
 
     /* find associated parameter */
     const juce::AudioProcessorParameter* parameter =
-        processor->getParameters()[(int) parameterIndex];
+        processor->getParameters()[int(parameterIndex)];
     const String parameterName{parameter->getName(1000).toStdString()};
     Logging_trace1("--: parameterName = %1", parameterName);
     const SoXEffectParameterMap& parameterMap =
@@ -173,7 +173,7 @@ void _EffectParameterListener::parameterValueChanged (int paramIndex,
         } else if (kind == SoXEffectParameterKind::enumKind) {
             StringList enumValueList;
             parameterMap.valueRangeEnum(parameterName, enumValueList);
-            Integer elementCount{(int) enumValueList.size()};
+            Integer elementCount{int(enumValueList.size())};
             Natural valueIndex =
                 Natural{_stretchToIntegerInterval(unitIntervalValue,
                                                   0, elementCount - 1)};
@@ -221,7 +221,7 @@ _constructParameterObject (IN String& parameterName,
     juce::NormalisableRange<float> range;
     const juce::String juceParameterName = juce::String(parameterName);
     const juce::ParameterID juceParameterID = juceParameterName;
-    juce::AudioProcessorParameter* parameterObject = NULL;
+    juce::AudioProcessorParameter* parameterObject = nullptr;
 
     if (kind == SoXEffectParameterKind::realKind
         || kind == SoXEffectParameterKind::intKind) {
@@ -258,7 +258,7 @@ _constructParameterObject (IN String& parameterName,
             new juce::AudioParameterChoice(juceParameterID,
                                            juceParameterName,
                                            juceChoiceList,
-                                           (int) parameterIndex,
+                                           int(parameterIndex),
                                            attributes);
     }
 
@@ -266,7 +266,7 @@ _constructParameterObject (IN String& parameterName,
                                         parameterName,
                                         effectParameterMap);
 
-    Logging_trace1("<<: %1", (parameterObject == NULL ? "NULL" : "OKAY"));
+    Logging_trace1("<<: %1", (parameterObject == nullptr ? "NULL" : "OKAY"));
     return parameterObject;
 }
 
@@ -413,7 +413,7 @@ static void _readKeyValueMapString (INOUT SoXAudioProcessor* audioProcessor,
  * @param[in] playHead  the JUCE audio play head
  * @return  current time (as a real value)
  */
-static Real _readTime (juce::AudioPlayHead* playHead)
+static Real _readTime (IN juce::AudioPlayHead* playHead)
 {
     Real currentTime;
 
@@ -590,11 +590,10 @@ _updateAudioProcessorParameterValue
         StringList enumValueList;
         effectParameterMap.valueRangeEnum(parameterName, enumValueList);
         const int valueIndex =
-            (int) Integer::maximum(0,
-                                   enumValueList.position(value));
+            int(Integer::maximum(0, enumValueList.position(value)));
         juce::AudioParameterChoice& choiceParameterObject =
             TOREFERENCE<juce::AudioParameterChoice>(parameterObject);
-        choiceParameterObject = (int) valueIndex;
+        choiceParameterObject = int(valueIndex);
     }
 
 
@@ -707,7 +706,7 @@ double SoXAudioProcessor::getTailLengthSeconds () const
     const _SoXAudioProcessorDescriptor& descriptor =
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
     const SoXAudioEffect* effect = descriptor.effect;
-    return (double) effect->tailLength();
+    return double(effect->tailLength());
 }
 
 /*--------------------*/
@@ -778,8 +777,8 @@ void SoXAudioProcessor::getStateInformation (OUT juce::MemoryBlock& destData)
     const String title = getName().toStdString();
     const String st = _convertMapToString(effectParameterMap(), title);
     const Natural sizeInBytes = st.size();
-    destData.setSize((int) sizeInBytes);
-    destData.copyFrom(st.c_str(), 0, (int) sizeInBytes);
+    destData.setSize(int(sizeInBytes));
+    destData.copyFrom(st.c_str(), 0, int(sizeInBytes));
 
     Logging_trace1("<<: %1", String_normalize(st));
 }
@@ -862,7 +861,7 @@ void SoXAudioProcessor::setValue (IN String& parameterName,
                 Natural parameterIndex =
                     descriptor.parameterNameToIndexMap.at(parameterName);
                 juce::AudioProcessorParameter* parameter =
-                    getParameters()[(int) parameterIndex];
+                    getParameters()[int(parameterIndex)];
                 _updateAudioProcessorParameterValue(parameter,
                                                     parameterName,
                                                     parameterMap,
@@ -910,7 +909,7 @@ void SoXAudioProcessor::_setAssociatedEffect (IN SoXAudioEffect* effect)
         juce::AudioProcessorParameter* parameterObject =
             _constructParameterObject(parameterName, parameterMap);
 
-        if (parameterObject != NULL) {
+        if (parameterObject != nullptr) {
             addParameter(parameterObject);
             Natural parameterIndex = parameterObject->getParameterIndex();
             descriptor.parameterNameToIndexMap.set(parameterName,
@@ -1021,13 +1020,13 @@ void SoXAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     /* In case we have more outputs than inputs, this code clears any
        output channels that didn't contain input data */
     for (Natural i = channelCount;  i < outputChannelCount;  i++) {
-        buffer.clear((int) i, 0, (int) dataPointCount);
+        buffer.clear(int(i), 0, int(dataPointCount));
     }
 
     AudioDataPointListVector audioDataPointBuffer{};
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
-        const float* inputPtr = buffer.getReadPointer((int) channel);
+        const float* inputPtr = buffer.getReadPointer(int(channel));
         AudioDataPointList dataPointList{dataPointCount};
         convertArray(dataPointList.asArray(), inputPtr, dataPointCount);
         audioDataPointBuffer.append(dataPointList);
@@ -1037,7 +1036,7 @@ void SoXAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     effect->processBlock(currentTimePosition, audioDataPointBuffer);
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
-        float* outputPtr = buffer.getWritePointer((int) channel);
+        float* outputPtr = buffer.getWritePointer(int(channel));
         AudioDataPointList& dataPointList = audioDataPointBuffer[channel];
         convertArray(outputPtr, dataPointList.asArray(), dataPointCount);
     }

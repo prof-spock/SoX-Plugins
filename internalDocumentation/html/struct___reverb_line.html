@@ -100,21 +100,21 @@ $(function(){initNavTree('struct___reverb_line.html','','struct___reverb_line-me
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a45ddb815b29837d3751c5bd911611b1c" id="r_a45ddb815b29837d3751c5bd911611b1c"><td class="memItemLeft" align="right" valign="top"><a id="a45ddb815b29837d3751c5bd911611b1c" name="a45ddb815b29837d3751c5bd911611b1c"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>_ReverbLine</b> ()</td></tr>
-<tr class="memdesc:a45ddb815b29837d3751c5bd911611b1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a complete reverb line and all filters; creates all data point ring buffers with arbitrary length to be adapted by later adjustments. <br /></td></tr>
+<tr class="memdesc:a45ddb815b29837d3751c5bd911611b1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a complete reverb line and all filters; creates all delay lines with arbitrary length to be adapted by later adjustments. <br /></td></tr>
 <tr class="memitem:a29802bfcad270a2b11f804bf8fc23bee" id="r_a29802bfcad270a2b11f804bf8fc23bee"><td class="memItemLeft" align="right" valign="top"><a id="a29802bfcad270a2b11f804bf8fc23bee" name="a29802bfcad270a2b11f804bf8fc23bee"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~_ReverbLine</b> ()</td></tr>
 <tr class="memdesc:a29802bfcad270a2b11f804bf8fc23bee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys complete reverb line and all filters. <br /></td></tr>
 <tr class="memitem:a51ed5ea92e8f569ac0bcaad922569e5e" id="r_a51ed5ea92e8f569ac0bcaad922569e5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51ed5ea92e8f569ac0bcaad922569e5e">toString</a> () const</td></tr>
 <tr class="memdesc:a51ed5ea92e8f569ac0bcaad922569e5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a string representation of reverb line.  <br /></td></tr>
-<tr class="memitem:a0ce70660aa2c03de4e50e12508138ed2" id="r_a0ce70660aa2c03de4e50e12508138ed2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ce70660aa2c03de4e50e12508138ed2">maximumDelayPathLength</a> () const</td></tr>
-<tr class="memdesc:a0ce70660aa2c03de4e50e12508138ed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns length of the maximum delay path in data points.  <br /></td></tr>
-<tr class="memitem:a54d04b24f3da20859571d30172e4980f" id="r_a54d04b24f3da20859571d30172e4980f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54d04b24f3da20859571d30172e4980f">adjustRingBufferLengths</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> dataPointRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> roomScale, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> stereoDepth)</td></tr>
-<tr class="memdesc:a54d04b24f3da20859571d30172e4980f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adjusts lengths of data point ring buffers for reverb line based on <code>dataPointRate</code>, <code>roomScale</code> and <code>stereoDepth</code>.  <br /></td></tr>
+<tr class="memitem:abe3d21cb248cb71b5a99d57677789850" id="r_abe3d21cb248cb71b5a99d57677789850"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe3d21cb248cb71b5a99d57677789850">maximumDelayPathLength</a> () const</td></tr>
+<tr class="memdesc:abe3d21cb248cb71b5a99d57677789850"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns length of the maximum delay path in data points.  <br /></td></tr>
+<tr class="memitem:ac55e1c7fca334dffa6ace73bc5e9351b" id="r_ac55e1c7fca334dffa6ace73bc5e9351b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac55e1c7fca334dffa6ace73bc5e9351b">adjustDelayLineLengths</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> dataPointRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> roomScale, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> stereoDepth)</td></tr>
+<tr class="memdesc:ac55e1c7fca334dffa6ace73bc5e9351b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adjusts lengths of delay lines for reverb line based on <code>dataPointRate</code>, <code>roomScale</code> and <code>stereoDepth</code>.  <br /></td></tr>
 <tr class="memitem:acf44dfef01a9e02e3819efab8cbc6965" id="r_acf44dfef01a9e02e3819efab8cbc6965"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_audio.html#a8a1335d82708ba40820b69bda61aefd9">AudioDataPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf44dfef01a9e02e3819efab8cbc6965">apply</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_audio.html#a8a1335d82708ba40820b69bda61aefd9">AudioDataPoint</a> inputDataPoint, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> feedback, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> hfDamping, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> gain)</td></tr>
 <tr class="memdesc:acf44dfef01a9e02e3819efab8cbc6965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies reverb line to single <code>inputDataPoint</code> and returns output data point with parameters <code>feedback</code>, <code>hfDamping</code> and <code>gain</code>; the comb filters are applied to the input in parallel, the allpass filters in series.  <br /></td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
 <tr class="memitem:a144e8f196c82ab130599a9b83957dcfa" id="r_a144e8f196c82ab130599a9b83957dcfa"><td class="memItemLeft" align="right" valign="top"><a id="a144e8f196c82ab130599a9b83957dcfa" name="a144e8f196c82ab130599a9b83957dcfa"></a>
 GenericTuple&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html">_AllpassFilter</a> *, <a class="el" href="_so_x_reverb_support_8cpp.html#af9771cd7d7f30966da84ef84c207bcd4">_lineAllpassFilterCount</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_allpassFilterList</b></td></tr>
 <tr class="memdesc:a144e8f196c82ab130599a9b83957dcfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">the list of all allpass filters in reverb line <br /></td></tr>
@@ -125,14 +125,14 @@ GenericTuple&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_re
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <code><a class="el" href="struct___reverb_line.html" title="A _ReverbLine object is a list of filters with delay lines forming a single reverb channel in Freever...">_ReverbLine</a></code> object is a list of filters with delay lines forming a single reverb channel in Freeverb. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a54d04b24f3da20859571d30172e4980f" name="a54d04b24f3da20859571d30172e4980f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54d04b24f3da20859571d30172e4980f">&#9670;&#160;</a></span>adjustRingBufferLengths()</h2>
+<a id="ac55e1c7fca334dffa6ace73bc5e9351b" name="ac55e1c7fca334dffa6ace73bc5e9351b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac55e1c7fca334dffa6ace73bc5e9351b">&#9670;&#160;</a></span>adjustDelayLineLengths()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void _ReverbLine::adjustRingBufferLengths </td>
+          <td class="memname">void _ReverbLine::adjustDelayLineLengths </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a></td>          <td class="paramname"><span class="paramname"><em>dataPointRate</em></span>, </td>
         </tr>
@@ -149,7 +149,7 @@ GenericTuple&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_re
       </table>
 </div><div class="memdoc">
 
-<p>Adjusts lengths of data point ring buffers for reverb line based on <code>dataPointRate</code>, <code>roomScale</code> and <code>stereoDepth</code>. </p>
+<p>Adjusts lengths of delay lines for reverb line based on <code>dataPointRate</code>, <code>roomScale</code> and <code>stereoDepth</code>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">dataPointRate</td><td>new data point rate of reverb line </td></tr>
@@ -204,14 +204,14 @@ GenericTuple&lt; <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_re
 
 </div>
 </div>
-<a id="a0ce70660aa2c03de4e50e12508138ed2" name="a0ce70660aa2c03de4e50e12508138ed2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ce70660aa2c03de4e50e12508138ed2">&#9670;&#160;</a></span>maximumDelayPathLength()</h2>
+<a id="abe3d21cb248cb71b5a99d57677789850" name="abe3d21cb248cb71b5a99d57677789850"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe3d21cb248cb71b5a99d57677789850">&#9670;&#160;</a></span>maximumDelayPathLength()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> _ReverbLine::maximumDelayPathLength </td>
+          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> _ReverbLine::maximumDelayPathLength </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>

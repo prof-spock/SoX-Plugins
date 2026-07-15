@@ -1,11 +1,11 @@
 var struct_audio_1_1_audio_data_point_ring_buffer =
 [
-    [ "AudioDataPointRingBuffer", "struct_audio_1_1_audio_data_point_ring_buffer.html#ac26dfb3a387c206b1d1050dadf46be7e", null ],
-    [ "AudioDataPointRingBuffer", "struct_audio_1_1_audio_data_point_ring_buffer.html#a34946a5286c24e354ac7bb06c35054d7", null ],
+    [ "AudioDataPointRingBuffer", "struct_audio_1_1_audio_data_point_ring_buffer.html#a6b1a77e1d7001449ed9e5dea3aa5de1c", null ],
     [ "~AudioDataPointRingBuffer", "struct_audio_1_1_audio_data_point_ring_buffer.html#aa29bce5fe53d7d0d7daaf529ecdd6e9f", null ],
     [ "at", "struct_audio_1_1_audio_data_point_ring_buffer.html#a389d0e4bc36b5fb3bfe40256ccdb63ea", null ],
     [ "at", "struct_audio_1_1_audio_data_point_ring_buffer.html#a72c3b4e5832df0fdf6335ef0b906cccd", null ],
     [ "first", "struct_audio_1_1_audio_data_point_ring_buffer.html#a3289542b1057a01e56b4f7699cde9e0d", null ],
+    [ "firstIndex", "struct_audio_1_1_audio_data_point_ring_buffer.html#a8d68c3dafa522bd1b0ce7d114c8a19b1", null ],
     [ "last", "struct_audio_1_1_audio_data_point_ring_buffer.html#ad52c8092374b6da004a604863dc4d8e1", null ],
     [ "length", "struct_audio_1_1_audio_data_point_ring_buffer.html#a6b203247a63c5e624570c9418d357936", null ],
     [ "operator[]", "struct_audio_1_1_audio_data_point_ring_buffer.html#a86da00a7b6eda626a26c63e9bf6ba6b9", null ],
@@ -18,7 +18,7 @@ var struct_audio_1_1_audio_data_point_ring_buffer =
     [ "shiftLeft", "struct_audio_1_1_audio_data_point_ring_buffer.html#ac31276f108207124310b476e5c495980", null ],
     [ "shiftRight", "struct_audio_1_1_audio_data_point_ring_buffer.html#abf5b38cfd98bc5c35fba492660279f98", null ],
     [ "toArray", "struct_audio_1_1_audio_data_point_ring_buffer.html#a930cf9ab985c94631644653a53d21d6d", null ],
-    [ "toString", "struct_audio_1_1_audio_data_point_ring_buffer.html#ae46192a05c2498eff4bc6f549864a5bb", null ],
+    [ "toString", "struct_audio_1_1_audio_data_point_ring_buffer.html#a438c8e225df441e525abbe035a9d62b7", null ],
     [ "_allocatedLength", "struct_audio_1_1_audio_data_point_ring_buffer.html#acb47e219966770a08fbbab19282ab7ee", null ],
     [ "_data", "struct_audio_1_1_audio_data_point_ring_buffer.html#aa3fbfcf63c9a9218bddf41f4a6254442", null ],
     [ "_firstIndex", "struct_audio_1_1_audio_data_point_ring_buffer.html#a42b817bda6655f001d8a906d107480fd", null ],

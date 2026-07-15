@@ -30,8 +30,8 @@ SoXAudioEffect::SoXAudioEffect ()
        _dataPointRate{100.0},
        _channelCount{0},
        _effectParameterMap{},
-       _currentTimePosition{Real::infinity},
-       _expectedNextTimePosition{Real::infinity},
+       _currentTimePosition{-99999.99},
+       _expectedNextTimePosition{-99999.99},
        _timePositionHasMoved{true},
        _parametersAreValid{false},
        _effectDescriptor{}

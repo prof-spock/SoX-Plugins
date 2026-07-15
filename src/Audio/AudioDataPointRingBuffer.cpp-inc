@@ -13,6 +13,7 @@
 
 #include <algorithm>
 
+#include "Assertion.h"
 #include "MyArray.h"
 #include "StringUtil.h"
 
@@ -22,6 +23,14 @@ using Audio::AudioDataPointRingBuffer;
 using BaseTypes::Containers::copyArray;
 
 /*====================*/
+
+/** error message for empty buffer */
+static const String _ErrMsg_emptyBuffer =
+    "buffer must not be empty";
+
+/*--------------------*/
+/* simple expressions */
+/*--------------------*/
 
 /** calculates the effective index in a ring buffer by modulus
  * calculation */
@@ -34,16 +43,7 @@ using BaseTypes::Containers::copyArray;
 #define SQ_nextIndex (_firstIndex < _length - 1 ? _firstIndex + 1 : 0)
 
 /*--------------------*/
-
-INLINE
-AudioDataPointRingBuffer::AudioDataPointRingBuffer ()
-    : _allocatedLength{0},
-      _length{0},
-      _firstIndex{0},
-      _data{}
-{
-}
-
+/* con-/destruction   */
 /*--------------------*/
 
 INLINE
@@ -67,16 +67,45 @@ AudioDataPointRingBuffer::~AudioDataPointRingBuffer ()
 }
 
 /*--------------------*/
+/* type conversion    */
+/*--------------------*/
+
+INLINE void
+AudioDataPointRingBuffer::toArray (OUT AudioDataPoint* elementArray) const
+{
+    /* directly access the underlying arrays */
+    AudioDataPoint* destinationPtr = elementArray;
+    const AudioDataPoint* sourcePtr;
+
+    /* copy first segment from firstIndex to end */
+    const Natural segmentLengthA = _length - _firstIndex;
+    sourcePtr = _data.asArray(_firstIndex);
+    copyArray(destinationPtr, sourcePtr, segmentLengthA);
+
+    /* copy second segment from 0 to (firstIndex - 1) */
+    const Natural segmentLengthB = _firstIndex;
+    sourcePtr = _data.asArray();
+    copyArray(destinationPtr, sourcePtr, segmentLengthB);
+}
+
+/*--------------------*/
 
 INLINE
-String AudioDataPointRingBuffer::toString() const
+String AudioDataPointRingBuffer::toString (IN Natural dataPointCount) const
 {
     String st = "[";
+    const Natural effectiveCount =
+        Natural::minimum(_length, dataPointCount);
 
-    for (Natural i = 0;  i < _length;  i++) {
-        st += (i > 0 ? ", " : "") + TOSTRING(_data[i]);
+    for (Natural i = 0;  i < effectiveCount;  i++) {
+        const Natural j = SQ_effectiveIndex(i);
+        st += ((i > 0 ? ", " : "")
+               + TOSTRING(j) +
+               " : "
+               + TOSTRING(_data[j]));
     }
 
+    st += (_length > dataPointCount ? ", ..." : "");
     st += "]";
 
     String result = "AudioDataPointRingBuffer(";
@@ -90,26 +119,13 @@ String AudioDataPointRingBuffer::toString() const
 }
 
 /*--------------------*/
-
-INLINE
-void AudioDataPointRingBuffer::setToZero ()
-{
-    _firstIndex = 0;
-    std::fill(_data.begin(), _data.end(), Real::zero);
-}
-
+/* property access    */
 /*--------------------*/
 
 INLINE
-void AudioDataPointRingBuffer::setLength (IN Natural length)
+Natural AudioDataPointRingBuffer::firstIndex () const
 {
-    if (length > _allocatedLength) {
-        _data.setLength(length);
-        _allocatedLength = length;
-    }
-
-    _length = length;
-    setToZero();
+    return _firstIndex;
 }
 
 /*--------------------*/
@@ -121,10 +137,62 @@ Natural AudioDataPointRingBuffer::length () const
 }
 
 /*--------------------*/
+/* property change    */
+/*--------------------*/
+
+INLINE
+void AudioDataPointRingBuffer::setLength (IN Natural length)
+{
+    if (length > _allocatedLength) {
+        _data.setLength(length);
+        _allocatedLength = length;
+        setToZero();
+    }
+
+    _length = length;
+}
+
+/*--------------------*/
+/* change             */
+/*--------------------*/
+
+INLINE
+void AudioDataPointRingBuffer::shiftLeft (IN AudioDataPoint dataPoint)
+{
+    if (_length > 0) {
+        _data[_firstIndex] = dataPoint;
+        _firstIndex = SQ_nextIndex;
+    }
+}
+
+/*--------------------*/
+
+INLINE
+void AudioDataPointRingBuffer::shiftRight (IN AudioDataPoint dataPoint)
+{
+    if (_length > 0) {
+        _firstIndex = SQ_lastIndex;
+        _data[_firstIndex] = dataPoint;
+    }
+}
+
+/*--------------------*/
+
+INLINE
+void AudioDataPointRingBuffer::setToZero ()
+{
+    _firstIndex = 0;
+    std::fill(_data.begin(), _data.end(), Real::zero);
+}
+
+/*--------------------*/
+/* element access     */
+/*--------------------*/
 
 INLINE
 AudioDataPoint& AudioDataPointRingBuffer::at (IN Natural position)
 {
+    Assertion_pre(_length > 0, _ErrMsg_emptyBuffer);
     const Natural i = SQ_effectiveIndex(position);
     return _data[i];
 }
@@ -135,6 +203,7 @@ INLINE
 const AudioDataPoint& AudioDataPointRingBuffer::at
     (IN Natural position) const
 {
+    Assertion_pre(_length > 0, _ErrMsg_emptyBuffer);
     const Natural i = SQ_effectiveIndex(position);
     return _data[i];
 }
@@ -161,6 +230,7 @@ AudioDataPoint& AudioDataPointRingBuffer::operator []
 INLINE
 AudioDataPoint AudioDataPointRingBuffer::first () const
 {
+    Assertion_pre(_length > 0, _ErrMsg_emptyBuffer);
     return _data[_firstIndex];
 }
 
@@ -169,15 +239,19 @@ AudioDataPoint AudioDataPointRingBuffer::first () const
 INLINE
 AudioDataPoint AudioDataPointRingBuffer::last () const
 {
+    Assertion_pre(_length > 0, _ErrMsg_emptyBuffer);
     return _data[SQ_lastIndex];
 }
 
+/*--------------------*/
+/* element change     */
 /*--------------------*/
 
 INLINE
 void AudioDataPointRingBuffer::set (IN Natural position,
                                     IN AudioDataPoint dataPoint)
 {
+    Assertion_pre(_length > 0, _ErrMsg_emptyBuffer);
     Natural i = SQ_effectiveIndex(position);
     _data[i] = dataPoint;
 }
@@ -187,7 +261,7 @@ void AudioDataPointRingBuffer::set (IN Natural position,
 INLINE
 void AudioDataPointRingBuffer::setFirst (IN AudioDataPoint dataPoint)
 {
-    _data[_firstIndex] = dataPoint;
+    set(0, dataPoint);
 }
 
 /*--------------------*/
@@ -195,43 +269,6 @@ void AudioDataPointRingBuffer::setFirst (IN AudioDataPoint dataPoint)
 INLINE
 void AudioDataPointRingBuffer::setLast (IN AudioDataPoint dataPoint)
 {
+    Assertion_pre(_length > 0, _ErrMsg_emptyBuffer);
     _data[SQ_lastIndex] = dataPoint;
-}
-
-/*--------------------*/
-
-INLINE
-void AudioDataPointRingBuffer::shiftLeft (IN AudioDataPoint dataPoint)
-{
-    _data[_firstIndex] = dataPoint;
-    _firstIndex = SQ_nextIndex;
-}
-
-/*--------------------*/
-
-INLINE
-void AudioDataPointRingBuffer::shiftRight (IN AudioDataPoint dataPoint)
-{
-    _firstIndex = SQ_lastIndex;
-    _data[_firstIndex] = dataPoint;
-}
-
-/*--------------------*/
-
-INLINE void
-AudioDataPointRingBuffer::toArray (OUT AudioDataPoint* elementArray) const
-{
-    /* directly access the underlying arrays */
-    AudioDataPoint* destinationPtr = elementArray;
-    const AudioDataPoint* sourcePtr;
-
-    /* copy first segment from firstIndex to end */
-    const Natural segmentLengthA = _length - _firstIndex;
-    sourcePtr = _data.asArray(_firstIndex);
-    copyArray(destinationPtr, sourcePtr, segmentLengthA);
-
-    /* copy second segment from 0 to (firstIndex - 1) */
-    const Natural segmentLengthB = _firstIndex;
-    sourcePtr = _data.asArray();
-    copyArray(destinationPtr, sourcePtr, segmentLengthB);
 }

@@ -1,7 +1,7 @@
 var namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo =
 [
     [ "_DelayStageParameterData", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data" ],
-    [ "_EffectDescriptor_ECHO", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o" ],
+    [ "_EffectDescriptor_CECH", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___c_e_c_h.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___c_e_c_h" ],
     [ "SoXChorusAndEcho_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect" ],
     [ "SoXChorusAndEcho_AudioProcessor", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_processor.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_processor" ],
     [ "_StageIndexToStageDataMap", "namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html#a568616e41982e23974efa69d0dff07a2", null ],

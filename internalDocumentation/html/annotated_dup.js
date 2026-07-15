@@ -6,6 +6,8 @@ var annotated_dup =
       [ "AudioDataPointListVector", "struct_audio_1_1_audio_data_point_list_vector.html", "struct_audio_1_1_audio_data_point_list_vector" ],
       [ "AudioDataPointRingBuffer", "struct_audio_1_1_audio_data_point_ring_buffer.html", "struct_audio_1_1_audio_data_point_ring_buffer" ],
       [ "AudioDataPointRingBufferVector", "struct_audio_1_1_audio_data_point_ring_buffer_vector.html", "struct_audio_1_1_audio_data_point_ring_buffer_vector" ],
+      [ "DelayLine", "struct_audio_1_1_delay_line.html", "struct_audio_1_1_delay_line" ],
+      [ "DelayLineList", "struct_audio_1_1_delay_line_list.html", "struct_audio_1_1_delay_line_list" ],
       [ "IIRFilter", "struct_audio_1_1_i_i_r_filter.html", "struct_audio_1_1_i_i_r_filter" ],
       [ "WaveForm", "struct_audio_1_1_wave_form.html", "struct_audio_1_1_wave_form" ]
     ] ],
@@ -42,7 +44,7 @@ var annotated_dup =
       [ "Effects", "namespace_so_x_plugins_1_1_effects.html", [
         [ "SoXChorusAndEcho", "namespace_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo.html", [
           [ "_DelayStageParameterData", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___delay_stage_parameter_data" ],
-          [ "_EffectDescriptor_ECHO", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___e_c_h_o" ],
+          [ "_EffectDescriptor_CECH", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___c_e_c_h.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1___effect_descriptor___c_e_c_h" ],
           [ "SoXChorusAndEcho_AudioEffect", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect" ],
           [ "SoXChorusAndEcho_AudioProcessor", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_processor.html", "struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_processor" ]
         ] ],
@@ -123,8 +125,8 @@ var annotated_dup =
     [ "_CombFilter", "struct___comb_filter.html", "struct___comb_filter" ],
     [ "_CompanderBandParameterData", "struct___compander_band_parameter_data.html", "struct___compander_band_parameter_data" ],
     [ "_DelayStageParameterData", "struct___delay_stage_parameter_data.html", "struct___delay_stage_parameter_data" ],
+    [ "_EffectDescriptor_CECH", "struct___effect_descriptor___c_e_c_h.html", "struct___effect_descriptor___c_e_c_h" ],
     [ "_EffectDescriptor_CMPD", "struct___effect_descriptor___c_m_p_d.html", "struct___effect_descriptor___c_m_p_d" ],
-    [ "_EffectDescriptor_ECHO", "struct___effect_descriptor___e_c_h_o.html", "struct___effect_descriptor___e_c_h_o" ],
     [ "_EffectDescriptor_FLTR", "struct___effect_descriptor___f_l_t_r.html", "struct___effect_descriptor___f_l_t_r" ],
     [ "_EffectDescriptor_GAIN", "struct___effect_descriptor___g_a_i_n.html", "struct___effect_descriptor___g_a_i_n" ],
     [ "_EffectDescriptor_ODRV", "struct___effect_descriptor___o_d_r_v.html", "struct___effect_descriptor___o_d_r_v" ],
@@ -147,6 +149,8 @@ var annotated_dup =
     [ "Byte", "struct_byte.html", "struct_byte" ],
     [ "ByteList", "struct_byte_list.html", "struct_byte_list" ],
     [ "Character", "struct_character.html", "struct_character" ],
+    [ "DelayLine", "struct_delay_line.html", "struct_delay_line" ],
+    [ "DelayLineList", "struct_delay_line_list.html", "struct_delay_line_list" ],
     [ "Dictionary", "struct_dictionary.html", "struct_dictionary" ],
     [ "EventDispatcher", "struct_event_dispatcher.html", "struct_event_dispatcher" ],
     [ "File", "struct_file.html", "struct_file" ],

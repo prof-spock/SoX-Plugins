@@ -1,17 +1,19 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,141,117,166"/>
-<area shape="rect" id="Node000001" href="$struct_base_types_1_1_primitives_1_1_byte.html" title="A Byte object wraps a value of the associated primitive type char into an object." alt="" coords="165,5,316,45"/>
-<area shape="poly" id="edge11_Node000000_Node000001" title=" " alt="" coords="81,129,117,92,164,55,186,43,188,48,167,60,121,96,84,133"/>
-<area shape="rect" id="Node000002" href="$struct_base_types_1_1_primitives_1_1_character.html" title="A Character object wraps a value of the associated primitive type char into an object." alt="" coords="165,69,316,109"/>
-<area shape="poly" id="edge12_Node000000_Node000002" title=" " alt="" coords="110,133,183,107,185,112,112,138"/>
-<area shape="rect" id="Node000003" href="$struct_base_types_1_1_primitives_1_1_integer.html" title="An Integer object wraps a value of the associated primitive type in an object." alt="" coords="165,133,316,173"/>
-<area shape="poly" id="edge13_Node000000_Node000003" title=" " alt="" coords="131,151,165,151,165,156,131,156"/>
-<area shape="rect" id="Node000004" href="$struct_base_types_1_1_primitives_1_1_natural.html" title="An Natural object wraps a value of the associated primitive type in an object." alt="" coords="165,197,316,237"/>
-<area shape="poly" id="edge14_Node000000_Node000004" title=" " alt="" coords="112,168,185,195,183,200,110,173"/>
-<area shape="rect" id="Node000005" href="$struct_base_types_1_1_primitives_1_1_real.html" title="An Real object wraps a value of some associated primitive float point type in an object." alt="" coords="165,261,316,301"/>
-<area shape="poly" id="edge15_Node000000_Node000005" title=" " alt="" coords="84,174,121,211,167,247,188,259,186,264,164,252,117,215,81,178"/>
-<area shape="rect" id="Node000006" href="$struct_base_types_1_1_primitives_1_1_percentage.html" title="A Percentage object is real&#45;valued and represents a percentage (normalized to the 0 to 100 range)." alt="" coords="364,229,515,269"/>
-<area shape="poly" id="edge16_Node000005_Node000006" title=" " alt="" coords="329,264,363,259,364,264,330,270"/>
-<area shape="rect" id="Node000007" href="$struct_base_types_1_1_primitives_1_1_radians.html" title="A Radians object is a real&#45;valued and represents the range from 0 to 2pi." alt="" coords="364,293,515,333"/>
-<area shape="poly" id="edge17_Node000005_Node000007" title=" " alt="" coords="330,293,364,299,363,304,329,298"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,209,93,235"/>
+<area shape="rect" id="Node000001" href="$struct_audio_1_1_audio_data_point_list.html" title="An AudioDataPointList object is a list of audio data points with arbitrary indexed access to position..." alt="" coords="141,5,316,31"/>
+<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="54,195,65,160,82,119,107,77,140,41,161,28,164,33,143,45,111,80,87,121,70,162,59,197"/>
+<area shape="rect" id="Node000002" href="$struct_audio_1_1_audio_data_point_list_vector.html" title="A AudioDataPointListVector object is a buffer of audio data point lists containing the input data poi..." alt="" coords="141,55,316,95"/>
+<area shape="poly" id="edge4_Node000000_Node000002" title=" " alt="" coords="62,196,94,150,116,126,140,105,160,93,163,98,143,109,119,130,98,154,67,199"/>
+<area shape="rect" id="Node000003" href="$struct_audio_1_1_delay_line_list.html" title="A DelayLineList object is a list of delay lines for audio data points." alt="" coords="158,120,299,145"/>
+<area shape="poly" id="edge5_Node000000_Node000003" title=" " alt="" coords="75,198,105,176,140,156,173,143,175,148,142,160,108,181,78,203"/>
+<area shape="rect" id="Node000004" href="$struct_base_types_1_1_containers_1_1_byte_list.html" title="A ByteList object is a list of byte values with arbitrary indexed access to positions in the list." alt="" coords="150,170,307,210"/>
+<area shape="poly" id="edge6_Node000000_Node000004" title=" " alt="" coords="106,209,149,201,150,207,107,214"/>
+<area shape="rect" id="Node000005" href="$struct_base_types_1_1_containers_1_1_integer_list.html" title="An IntegerList object is a list of integer values with arbitrary indexed access to positions in the l..." alt="" coords="150,234,307,274"/>
+<area shape="poly" id="edge7_Node000000_Node000005" title=" " alt="" coords="107,230,150,237,149,243,106,235"/>
+<area shape="rect" id="Node000006" href="$struct_base_types_1_1_containers_1_1_natural_list.html" title="A NaturalList object is a list of non&#45;negative integer values with arbitrary indexed access to positi..." alt="" coords="150,298,307,338"/>
+<area shape="poly" id="edge8_Node000000_Node000006" title=" " alt="" coords="79,241,143,284,168,295,166,300,140,288,76,246"/>
+<area shape="rect" id="Node000007" href="$struct_base_types_1_1_containers_1_1_real_list.html" title="A RealList object is a list of real values with arbitrary indexed access to positions in the list." alt="" coords="150,362,307,402"/>
+<area shape="poly" id="edge9_Node000000_Node000007" title=" " alt="" coords="65,246,96,297,118,324,143,348,162,360,159,364,140,352,114,328,92,300,60,248"/>
+<area shape="rect" id="Node000008" href="$struct_base_types_1_1_containers_1_1_string_list.html" title="A StringList object is a list of string values with arbitrary indexed access to positions in the list..." alt="" coords="150,426,307,466"/>
+<area shape="poly" id="edge10_Node000000_Node000008" title=" " alt="" coords="59,247,69,284,86,328,111,373,143,412,159,424,156,428,140,416,106,376,81,330,64,285,54,249"/>
 </map>

@@ -52,7 +52,7 @@ namespace Audio {
          *                                         channel requires two
          *                                         ring buffers (instead
          *                                         of one)
-         * @param[in] dataPointRingBufferLength       the length of each
+         * @param[in] dataPointRingBufferLength    the length of each
          *                                         ring buffer (in data
          *                                         points)
          */
@@ -132,7 +132,7 @@ namespace Audio {
          * @return reference to appropriate ring buffer in vector
          */
         const AudioDataPointRingBuffer& at (IN Natural channelIndex,
-                                         IN Natural position = 0) const;
+                                            IN Natural position = 0) const;
 
         /*--------------------*/
 
@@ -149,8 +149,8 @@ namespace Audio {
          * @return reference to appropriate ring buffer in vector
          */
         AudioDataPointRingBuffer& at (IN Natural channelIndex,
-                                   IN Natural position = 0);
-
+                                      IN Natural position = 0);
+        
         /*--------------------*/
 
         /**

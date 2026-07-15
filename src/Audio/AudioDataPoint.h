@@ -33,16 +33,4 @@ namespace Audio {
      */
     typedef Real AudioDataPoint;
 
-    /*--------------------*/
-
-    /**
-     * Converts audio data point <C>dataPoint</C> to string.
-     *
-     * @param[in] dataPoint  audio data point to be converted to string
-     * @return  string representation of data point
-     */
-    static String toString (IN AudioDataPoint& dataPoint) {
-        return dataPoint.toString();
-    }
-
 }

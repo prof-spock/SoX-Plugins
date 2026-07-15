@@ -93,32 +93,32 @@ $(function(){initNavTree('struct___comb_filter.html','','struct___comb_filter-me
 </div><!--header-->
 <div class="contents">
 
-<p>A <code><a class="el" href="struct___comb_filter.html" title="A _CombFilter object is a simple Schröder-Moorer comb filter with an associated data point ring buffe...">_CombFilter</a></code> object is a simple Schröder-Moorer comb filter with an associated data point ring buffer as a delay line and a single stored data point.  
+<p>A <code><a class="el" href="struct___comb_filter.html" title="A _CombFilter object is a simple Schröder-Moorer comb filter with an associated delay line and a sing...">_CombFilter</a></code> object is a simple Schröder-Moorer comb filter with an associated delay line and a single stored data point.  
  <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a263e1f4f49754fca0c2758cb7394039a" id="r_a263e1f4f49754fca0c2758cb7394039a"><td class="memItemLeft" align="right" valign="top"><a id="a263e1f4f49754fca0c2758cb7394039a" name="a263e1f4f49754fca0c2758cb7394039a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>_CombFilter</b> ()</td></tr>
-<tr class="memdesc:a263e1f4f49754fca0c2758cb7394039a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes comb filter with embedded data point ring buffer. <br /></td></tr>
-<tr class="memitem:ac0b6fe2a28c5aa89b8d4327e5767df82" id="r_ac0b6fe2a28c5aa89b8d4327e5767df82"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0b6fe2a28c5aa89b8d4327e5767df82">ringBufferLength</a> () const</td></tr>
-<tr class="memdesc:ac0b6fe2a28c5aa89b8d4327e5767df82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets length of data point ring buffer in filter.  <br /></td></tr>
-<tr class="memitem:af58f919fc806f7fda438ff1a1c851ae3" id="r_af58f919fc806f7fda438ff1a1c851ae3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af58f919fc806f7fda438ff1a1c851ae3">setRingBufferLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> length)</td></tr>
-<tr class="memdesc:af58f919fc806f7fda438ff1a1c851ae3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets length of data point ring buffer in filter.  <br /></td></tr>
+<tr class="memdesc:a263e1f4f49754fca0c2758cb7394039a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes comb filter with embedded delay line. <br /></td></tr>
+<tr class="memitem:ac2101daa0ed8c21c8dc305a4188cbcf7" id="r_ac2101daa0ed8c21c8dc305a4188cbcf7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2101daa0ed8c21c8dc305a4188cbcf7">delayLineLength</a> () const</td></tr>
+<tr class="memdesc:ac2101daa0ed8c21c8dc305a4188cbcf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets length of delay line in filter.  <br /></td></tr>
+<tr class="memitem:a25c72716294d9e4f398e2a422b5c3e64" id="r_a25c72716294d9e4f398e2a422b5c3e64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25c72716294d9e4f398e2a422b5c3e64">setDelayLineLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> length)</td></tr>
+<tr class="memdesc:a25c72716294d9e4f398e2a422b5c3e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets length of delay line in filter.  <br /></td></tr>
 <tr class="memitem:ae219f0250ff573b4f447f90a97bcf51a" id="r_ae219f0250ff573b4f447f90a97bcf51a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_audio.html#a8a1335d82708ba40820b69bda61aefd9">AudioDataPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae219f0250ff573b4f447f90a97bcf51a">apply</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_audio.html#a8a1335d82708ba40820b69bda61aefd9">AudioDataPoint</a> inputDataPoint, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> feedback, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> hfDamping)</td></tr>
 <tr class="memdesc:ae219f0250ff573b4f447f90a97bcf51a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies comb filter to single <code>inputDataPoint</code> with parameters <code>feedback</code> and <code>hfDamping</code>.  <br /></td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:aa17cd3638882bb61ee8411c4bed9750b" id="r_aa17cd3638882bb61ee8411c4bed9750b"><td class="memItemLeft" align="right" valign="top"><a id="aa17cd3638882bb61ee8411c4bed9750b" name="aa17cd3638882bb61ee8411c4bed9750b"></a>
-<a class="el" href="struct_audio_1_1_audio_data_point_ring_buffer.html">AudioDataPointRingBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_dataPointRingBuffer</b></td></tr>
-<tr class="memdesc:aa17cd3638882bb61ee8411c4bed9750b"><td class="mdescLeft">&#160;</td><td class="mdescRight">internal data point ring buffer of comb filter <br /></td></tr>
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a6a89d938e0afd3c12e7280d51bd02fd6" id="r_a6a89d938e0afd3c12e7280d51bd02fd6"><td class="memItemLeft" align="right" valign="top"><a id="a6a89d938e0afd3c12e7280d51bd02fd6" name="a6a89d938e0afd3c12e7280d51bd02fd6"></a>
+<a class="el" href="struct_audio_1_1_delay_line.html">DelayLine</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_delayLine</b></td></tr>
+<tr class="memdesc:a6a89d938e0afd3c12e7280d51bd02fd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">internal delay line of comb filter <br /></td></tr>
 <tr class="memitem:a0b88d6885c1e449c8b34593e5a7edb48" id="r_a0b88d6885c1e449c8b34593e5a7edb48"><td class="memItemLeft" align="right" valign="top"><a id="a0b88d6885c1e449c8b34593e5a7edb48" name="a0b88d6885c1e449c8b34593e5a7edb48"></a>
 <a class="el" href="namespace_audio.html#a8a1335d82708ba40820b69bda61aefd9">AudioDataPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_storedDataPoint</b></td></tr>
 <tr class="memdesc:a0b88d6885c1e449c8b34593e5a7edb48"><td class="mdescLeft">&#160;</td><td class="mdescRight">the single state data point of comb filter <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A <code><a class="el" href="struct___comb_filter.html" title="A _CombFilter object is a simple Schröder-Moorer comb filter with an associated data point ring buffe...">_CombFilter</a></code> object is a simple Schröder-Moorer comb filter with an associated data point ring buffer as a delay line and a single stored data point. </p>
+<div class="textblock"><p>A <code><a class="el" href="struct___comb_filter.html" title="A _CombFilter object is a simple Schröder-Moorer comb filter with an associated delay line and a sing...">_CombFilter</a></code> object is a simple Schröder-Moorer comb filter with an associated delay line and a single stored data point. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="ae219f0250ff573b4f447f90a97bcf51a" name="ae219f0250ff573b4f447f90a97bcf51a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae219f0250ff573b4f447f90a97bcf51a">&#9670;&#160;</a></span>apply()</h2>
@@ -157,14 +157,14 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ac0b6fe2a28c5aa89b8d4327e5767df82" name="ac0b6fe2a28c5aa89b8d4327e5767df82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0b6fe2a28c5aa89b8d4327e5767df82">&#9670;&#160;</a></span>ringBufferLength()</h2>
+<a id="ac2101daa0ed8c21c8dc305a4188cbcf7" name="ac2101daa0ed8c21c8dc305a4188cbcf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2101daa0ed8c21c8dc305a4188cbcf7">&#9670;&#160;</a></span>delayLineLength()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> _CombFilter::ringBufferLength </td>
+          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> _CombFilter::delayLineLength </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -172,30 +172,30 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gets length of data point ring buffer in filter. </p>
-<dl class="section return"><dt>Returns</dt><dd>length of data point ring buffer </dd></dl>
+<p>Gets length of delay line in filter. </p>
+<dl class="section return"><dt>Returns</dt><dd>length of delay line </dd></dl>
 
 </div>
 </div>
-<a id="af58f919fc806f7fda438ff1a1c851ae3" name="af58f919fc806f7fda438ff1a1c851ae3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af58f919fc806f7fda438ff1a1c851ae3">&#9670;&#160;</a></span>setRingBufferLength()</h2>
+<a id="a25c72716294d9e4f398e2a422b5c3e64" name="a25c72716294d9e4f398e2a422b5c3e64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25c72716294d9e4f398e2a422b5c3e64">&#9670;&#160;</a></span>setDelayLineLength()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void _CombFilter::setRingBufferLength </td>
+          <td class="memname">void _CombFilter::setDelayLineLength </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a></td>          <td class="paramname"><span class="paramname"><em>length</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a></td>          <td class="paramname"><span class="paramname"><em>length</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets length of data point ring buffer in filter. </p>
+<p>Sets length of delay line in filter. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>new length of data point ring buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>new length of delay line </td></tr>
   </table>
   </dd>
 </dl>

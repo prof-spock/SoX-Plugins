@@ -30,12 +30,13 @@ using SoXPlugins::Effects::SoXCompander::SoXMultibandCompander;
 using STR = BaseModules::StringUtil;
 
 /** abbreviation for pagedParameterName */
-#define pagedParameterName SoXEffectParameterMap::pagedParameterName
+static const auto pagedParameterName =
+    SoXEffectParameterMap::pagedParameterName;
 
 /*====================*/
 
 /** maximum number of bands in a multiband compressor */
-#define _maxBandCount  (10)
+constexpr int _maxBandCount = 10;
 
 /** maximum top frequency in a compander band */
 const Real _maxTopFrequency{25000.0};
@@ -413,7 +414,7 @@ String SoXCompander_AudioEffect::_effectDescriptorToString () const
 {
     String result;
 
-    if (_effectDescriptor == NULL) {
+    if (_effectDescriptor == nullptr) {
         result = "NULL";
     } else {
         const _EffectDescriptor_CMPD& effectDescriptor =

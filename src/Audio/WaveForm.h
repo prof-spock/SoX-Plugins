@@ -226,7 +226,7 @@ namespace Audio {
         protected:
 
             /** an untyped pointer to the internal data */
-            Object _internalData;
+            Object _descriptor;
 
     };
 

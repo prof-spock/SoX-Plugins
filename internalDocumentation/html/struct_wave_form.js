@@ -12,5 +12,5 @@ var struct_wave_form =
     [ "setState", "struct_wave_form.html#acd1347e9df44dab34311b1d06d3ed5ff", null ],
     [ "state", "struct_wave_form.html#a08f57be3ae99c9c2fb25c7f47915db0f", null ],
     [ "toString", "struct_wave_form.html#a803b1f90eadf3d5c44f651114988a5fc", null ],
-    [ "_internalData", "struct_wave_form.html#a8109a0ad951272b7af5d8fd7b6ef4dcb", null ]
+    [ "_descriptor", "struct_wave_form.html#adecab53f92730d8f8d23a387bdb7509a", null ]
 ];

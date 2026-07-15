@@ -30,7 +30,7 @@ using Audio::_WaveTable;
 /*============================================================*/
 
 /** number of base points for a sine wave */
-const Natural _sineWaveTableLength     = 10000;
+const Natural _sineWaveTableLength     = 100000;
 
 /** number of base points for a triangle wave(four is enough!) */
 const Natural _triangleWaveTableLength = 4;

@@ -2,9 +2,8 @@ var struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___ef
 [
     [ "toString", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#af16fe4ff7a3ee64182609429687f3a29", null ],
     [ "delay", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#a601de5fc89a54b94cca006122966e8e0", null ],
-    [ "delayRingBufferIndex", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#ab1724376580dd4f74818838ec3e6657e", null ],
-    [ "delayRingBufferLength", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#aae1d2f1e113cd9f29fda1cd9dfcf8cc8", null ],
-    [ "delayRingBufferList", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#a07025b79635456bfc70727342d872496", null ],
+    [ "delayLineLength", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#af265ceb4d7691bfa37c5cb02e345c81b", null ],
+    [ "delayLineList", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#adc703f1025bbac5654c4e84b3548c550", null ],
     [ "depth", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#a90faf16513cf8320e75c684cbd91dae5", null ],
     [ "frequency", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#ae9939851bfb7f23f7f88506b6331cbee", null ],
     [ "inGain", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1___effect_descriptor___p_h_t_r.html#a16303789f50513bb9c7d81d1e6eef011", null ],

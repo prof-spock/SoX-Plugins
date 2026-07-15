@@ -291,16 +291,16 @@ void _fillRectangle (INOUT SoXAudioEditor& editor,
                    fillColour.toString().toStdString());
 
     juce::Rectangle<int> rectangle = editor.getLocalBounds();
-    const Real pixelX{(double) rectangle.getX()};
-    const Real pixelY{(double) rectangle.getY()};
-    const Real pixelWidth{(double) rectangle.getWidth()};
-    const Real pixelHeight{(double) rectangle.getHeight()};
+    const Real pixelX{double(rectangle.getX())};
+    const Real pixelY{double(rectangle.getY())};
+    const Real pixelWidth{double(rectangle.getWidth())};
+    const Real pixelHeight{double(rectangle.getHeight())};
 
     graphics.setColour(fillColour);
-    graphics.fillRect((int) Real::round(pixelX + x.of(pixelWidth)),
-                      (int) Real::round(pixelY + y.of(pixelHeight)),
-                      (int) Real::round(width.of(pixelWidth)),
-                      (int) Real::round(height.of(pixelHeight)));
+    graphics.fillRect(int(Real::round(pixelX + x.of(pixelWidth))),
+                      int(Real::round(pixelY + y.of(pixelHeight))),
+                      int(Real::round(width.of(pixelWidth))),
+                      int(Real::round(height.of(pixelHeight))));
 
     Logging_trace("<<");
 }
@@ -606,8 +606,8 @@ void SoXAudioEditor::_resetAppearance ()
     NaturalList widgetCountList = _addWidgetsToList(this, _widgetList);
     _commonWidgetCount = widgetCountList[0];
     _maximumWidgetCount = Natural::maximum(1, widgetCountList[1]);
-    setSize((int) _defaultWidth,
-            (int) (_heightPerWidget * _maximumWidgetCount));
+    setSize(int(_defaultWidth),
+            int(_heightPerWidget * _maximumWidgetCount));
 
     /* initialize page setup */
     const Real rowSpaceFactor = 0.25;

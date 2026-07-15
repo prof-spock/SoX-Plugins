@@ -1,5 +1,7 @@
 var dir_c64386e93f356b78d4612c7b7741707c =
 [
+    [ "AudioDataPoint.cpp", "_audio_data_point_8cpp.html", null ],
+    [ "AudioDataPoint.cpp-inc", "_audio_data_point_8cpp-inc.html", "_audio_data_point_8cpp-inc" ],
     [ "AudioDataPoint.h", "_audio_data_point_8h.html", "_audio_data_point_8h" ],
     [ "AudioDataPointList.cpp", "_audio_data_point_list_8cpp.html", null ],
     [ "AudioDataPointList.cpp-inc", "_audio_data_point_list_8cpp-inc.html", "_audio_data_point_list_8cpp-inc" ],
@@ -13,6 +15,12 @@ var dir_c64386e93f356b78d4612c7b7741707c =
     [ "AudioDataPointRingBufferVector.cpp", "_audio_data_point_ring_buffer_vector_8cpp.html", null ],
     [ "AudioDataPointRingBufferVector.cpp-inc", "_audio_data_point_ring_buffer_vector_8cpp-inc.html", "_audio_data_point_ring_buffer_vector_8cpp-inc" ],
     [ "AudioDataPointRingBufferVector.h", "_audio_data_point_ring_buffer_vector_8h.html", "_audio_data_point_ring_buffer_vector_8h" ],
+    [ "DelayLine.cpp", "_delay_line_8cpp.html", null ],
+    [ "DelayLine.cpp-inc", "_delay_line_8cpp-inc.html", "_delay_line_8cpp-inc" ],
+    [ "DelayLine.h", "_delay_line_8h.html", "_delay_line_8h" ],
+    [ "DelayLineList.cpp", "_delay_line_list_8cpp.html", null ],
+    [ "DelayLineList.cpp-inc", "_delay_line_list_8cpp-inc.html", "_delay_line_list_8cpp-inc" ],
+    [ "DelayLineList.h", "_delay_line_list_8h.html", "_delay_line_list_8h" ],
     [ "FilterBandwidthUnit.h", "_filter_bandwidth_unit_8h.html", "_filter_bandwidth_unit_8h" ],
     [ "IIRFilter.cpp", "_i_i_r_filter_8cpp.html", null ],
     [ "IIRFilter.cpp-inc", "_i_i_r_filter_8cpp-inc.html", "_i_i_r_filter_8cpp-inc" ],

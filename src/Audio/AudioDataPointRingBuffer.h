@@ -33,11 +33,8 @@ namespace Audio {
      */
     struct AudioDataPointRingBuffer {
 
-        /**
-         * Defines new ring buffer with arbitrary length.
-         */
-        AudioDataPointRingBuffer ();
-
+        /*--------------------*/
+        /* con-/destruction   */
         /*--------------------*/
 
         /**
@@ -46,7 +43,7 @@ namespace Audio {
          *
          * @param[in] length  initial length of ring buffer
          */
-        AudioDataPointRingBuffer (IN Natural length);
+        AudioDataPointRingBuffer (IN Natural length = 0);
 
         /*--------------------*/
 
@@ -56,30 +53,42 @@ namespace Audio {
         ~AudioDataPointRingBuffer ();
 
         /*--------------------*/
+        /* type conversion    */
+        /*--------------------*/
 
         /**
-         * Returns string representation of data point ring buffer.
+         * Gets all elements in ring buffer in ordered form into
+         * <C>elementArray</C>.  Assumes that capacity of destination
+         * is large enough.
          *
+         * @param[out] elementArray  array of data points
+         */
+        void toArray (OUT AudioDataPoint* elementArray) const;
+
+        /*--------------------*/
+
+        /**
+         * Returns string representation of data point ring buffer
+         * (with at most <C>dataPointCount</C> data points of the list
+         * included in the representation.
+         *
+         * @param[in] dataPointCount  count of data points to be
+         *                            included in string
          * @return string representation
          */
-        String toString() const;
+        String toString (IN Natural dataPointCount
+                             = Natural::maximumValue()) const;
 
+        /*--------------------*/
+        /* property access    */
         /*--------------------*/
 
         /**
-         * Sets entries in data point ring buffer to zero, but does
-         * not change effective and maximum length
-         */
-        void setToZero ();
-
-        /*--------------------*/
-
-        /**
-         * Sets length of ring buffer to <C>length</C> entries
+         * Returns first index of ring buffer in underlying list
          *
-         * @param[in] length  new count of data points in ring buffer
+         * @return first index of ring buffer in list
          */
-        void setLength (IN Natural length);
+        Natural firstIndex () const;
 
         /*--------------------*/
 
@@ -90,6 +99,53 @@ namespace Audio {
          */
         Natural length () const;
 
+        /*--------------------*/
+        /* property change    */
+        /*--------------------*/
+
+        /**
+         * Sets length of ring buffer to <C>length</C> entries
+         *
+         * @param[in] length  new count of data points in ring buffer
+         */
+        void setLength (IN Natural length);
+
+        /*--------------------*/
+        /* change             */
+        /*--------------------*/
+
+        /**
+         * Shifts contents of ring buffer by one position to the left
+         * (making space for a new last entry); <C>dataPoint</C> is
+         * inserted as the new last entry
+         *
+         * @param[in] dataPoint  the data point to be inserted as last
+         *                       element after left-shift
+         */
+        void shiftLeft (IN AudioDataPoint dataPoint);
+
+        /*--------------------*/
+
+        /**
+         * Shifts contents of ring buffer by one position to the right
+         * (making space for a new first entry); <C>dataPoint</C> is
+         * inserted as the new first entry
+         *
+         * @param[in] dataPoint  the data point to be inserted as first
+         *                       element after right-shift
+         */
+        void shiftRight (IN AudioDataPoint dataPoint);
+
+        /*--------------------*/
+
+        /**
+         * Sets entries in data point ring buffer to zero, but does
+         * not change effective and maximum length
+         */
+        void setToZero ();
+
+        /*--------------------*/
+        /* element access     */
         /*--------------------*/
 
         /**
@@ -153,6 +209,8 @@ namespace Audio {
         AudioDataPoint last () const;
 
         /*--------------------*/
+        /* element change     */
+        /*--------------------*/
 
         /**
          * Sets data point in ring buffer at <C>position</C> to
@@ -184,41 +242,6 @@ namespace Audio {
          *                       element
          */
         void setLast (IN AudioDataPoint dataPoint);
-
-        /*--------------------*/
-
-        /**
-         * Shifts contents of ring buffer by one position to the left
-         * (making space for a new last entry); <C>dataPoint</C> is
-         * inserted as the new last entry
-         *
-         * @param[in] dataPoint  the data point to be inserted as last
-         *                       element after left-shift
-         */
-        void shiftLeft (IN AudioDataPoint dataPoint);
-
-        /*--------------------*/
-
-        /**
-         * Shifts contents of ring buffer by one position to the right
-         * (making space for a new first entry); <C>dataPoint</C> is
-         * inserted as the new first entry
-         *
-         * @param[in] dataPoint  the data point to be inserted as first
-         *                       element after right-shift
-         */
-        void shiftRight (IN AudioDataPoint dataPoint);
-
-        /*--------------------*/
-
-        /**
-         * Gets all elements in ring buffer in ordered form into
-         * <C>elementArray</C>.  Assumes that capacity of destination
-         * is large enough.
-         *
-         * @param[out] elementArray  array of data points
-         */
-        void toArray (OUT AudioDataPoint* elementArray) const;
 
         /*--------------------*/
         /*--------------------*/

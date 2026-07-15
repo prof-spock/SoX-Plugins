@@ -5,11 +5,14 @@ var namespace_audio =
     [ "AudioDataPointListVector", "struct_audio_1_1_audio_data_point_list_vector.html", "struct_audio_1_1_audio_data_point_list_vector" ],
     [ "AudioDataPointRingBuffer", "struct_audio_1_1_audio_data_point_ring_buffer.html", "struct_audio_1_1_audio_data_point_ring_buffer" ],
     [ "AudioDataPointRingBufferVector", "struct_audio_1_1_audio_data_point_ring_buffer_vector.html", "struct_audio_1_1_audio_data_point_ring_buffer_vector" ],
+    [ "DelayLine", "struct_audio_1_1_delay_line.html", "struct_audio_1_1_delay_line" ],
+    [ "DelayLineList", "struct_audio_1_1_delay_line_list.html", "struct_audio_1_1_delay_line_list" ],
     [ "IIRFilter", "struct_audio_1_1_i_i_r_filter.html", "struct_audio_1_1_i_i_r_filter" ],
     [ "WaveForm", "struct_audio_1_1_wave_form.html", "struct_audio_1_1_wave_form" ],
     [ "_WaveTable", "namespace_audio.html#a82c4cb6bc7c44ffdaff458ef109761ab", null ],
     [ "_WaveTablePtr", "namespace_audio.html#a8730da08410ddb94e356b07224e46bbf", null ],
     [ "AudioDataPoint", "namespace_audio.html#a8a1335d82708ba40820b69bda61aefd9", null ],
+    [ "AudioDataPointRingBufferInterpolator", "namespace_audio.html#a2073bea858f75675f52885c1cc422cc3", null ],
     [ "WaveFormIteratorState", "namespace_audio.html#a1dc88b29af75327455e29e0d3d2563a8", null ],
     [ "FilterBandwidthUnit", "namespace_audio.html#a64aa76192d11c685addc45d443d23ae4", [
       [ "frequency", "namespace_audio.html#a64aa76192d11c685addc45d443d23ae4afad6c43b628858e0b472d0c164557fcf", null ],
@@ -23,7 +26,7 @@ var namespace_audio =
       [ "triangle", "namespace_audio.html#a8cf082e76c27a75bb55cc50f17d0475cacef44b46f16ae8ecf664df4266ffdbf9", null ]
     ] ],
     [ "_audioDataPointListTypeName", "namespace_audio.html#a0fd4a601673977d03922e06385ba15f3", null ],
+    [ "_delayLineListTypeName", "namespace_audio.html#a45a65b43f9cace1e1d9d96744bb1c389", null ],
     [ "stringToWaveFormKind", "namespace_audio.html#afb924ba2c19839c2128ab2b4a79c4ce7", null ],
-    [ "toString", "namespace_audio.html#a4720db2c9e2d45e7d487bf407685ede4", null ],
     [ "waveFormKindToString", "namespace_audio.html#a756c708f5d7d400202219a7a1adaeb13", null ]
 ];

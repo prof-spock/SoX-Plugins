@@ -124,6 +124,13 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a9fe5f37322fbf04e6b644a03d95f5926" id="r_a9fe5f37322fbf04e6b644a03d95f5926"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_global_macros_8h.html#a2eb6f9e0395b47b8d5e3eeae4fe0c116">INLINE</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fe5f37322fbf04e6b644a03d95f5926">_normalize</a> (<a class="el" href="_global_macros_8h.html#a62766f3ea8784d1db62df989f8f33d2d">INOUT</a> <a class="el" href="struct_real_list.html">RealList</a> &amp;data, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> order)</td></tr>
 <tr class="memdesc:a9fe5f37322fbf04e6b644a03d95f5926"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalizes coefficients in <code>data</code> for IIR filter of <code>order</code> by dividing all by a0.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a2d93d9fb654889eecf9b75e8cdfbd70b" id="r_a2d93d9fb654889eecf9b75e8cdfbd70b"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d93d9fb654889eecf9b75e8cdfbd70b">_ErrMsg_badFilterOrderA</a></td></tr>
+<tr class="memdesc:a2d93d9fb654889eecf9b75e8cdfbd70b"><td class="mdescLeft">&#160;</td><td class="mdescRight">error message for required filter order 3  <br /></td></tr>
+<tr class="memitem:a29655c3f7702e4a3e81d3626d2e1cac0" id="r_a29655c3f7702e4a3e81d3626d2e1cac0"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29655c3f7702e4a3e81d3626d2e1cac0">_ErrMsg_badFilterOrderB</a></td></tr>
+<tr class="memdesc:a29655c3f7702e4a3e81d3626d2e1cac0"><td class="mdescLeft">&#160;</td><td class="mdescRight">error message for required filter order 5  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <code><a class="el" href="struct_i_i_r_filter.html" title="A IIRFilter object is an infinite impulse response filter.">IIRFilter</a></code> body implements an infinite impulse response filter <em>(this is the effective code include file for conditional inlining)</em>. </p>
@@ -157,6 +164,59 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+<a id="a2d93d9fb654889eecf9b75e8cdfbd70b" name="a2d93d9fb654889eecf9b75e8cdfbd70b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d93d9fb654889eecf9b75e8cdfbd70b">&#9670;&#160;</a></span>_ErrMsg_badFilterOrderA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a> _ErrMsg_badFilterOrderA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <span class="stringliteral">&quot;filter order must be 3&quot;</span></div>
+</div><!-- fragment -->
+<p>error message for required filter order 3 </p>
+
+</div>
+</div>
+<a id="a29655c3f7702e4a3e81d3626d2e1cac0" name="a29655c3f7702e4a3e81d3626d2e1cac0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29655c3f7702e4a3e81d3626d2e1cac0">&#9670;&#160;</a></span>_ErrMsg_badFilterOrderB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a> _ErrMsg_badFilterOrderB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <span class="stringliteral">&quot;filter order must be 5&quot;</span></div>
+</div><!-- fragment -->
+<p>error message for required filter order 5 </p>
 
 </div>
 </div>

@@ -1,0 +1,9 @@
+<map id="DelayLineList.h" name="DelayLineList.h">
+<area shape="rect" id="Node000001" title="The DelayLineList specification defines a list of delay lines for audio data points." alt="" coords="218,5,329,31"/>
+<area shape="rect" id="Node000002" href="$_delay_line_list_8cpp.html" title="The DelayLine body implements a list of delay lines for audio data points (this is the formal CPP fil..." alt="" coords="5,86,131,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="232,38,99,88,97,83,230,33"/>
+<area shape="rect" id="Node000003" href="$_so_x_chorus_and_echo___audio_effect_8cpp.html" title="The SoXChorusAndEcho_AudioEffect body implements the SoX chorus, echo and echos audio effects; the di..." alt="" coords="155,86,392,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="276,44,276,86,271,86,271,44"/>
+<area shape="rect" id="Node000004" href="$_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXFlangerPhaserAndTremolo_AudioEffect body implements the SoX flanger, phaser and tremolo modula..." alt="" coords="417,79,615,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="323,32,458,76,457,81,321,37"/>
+</map>

@@ -1,0 +1,215 @@
+/**
+ * @file
+ * The <C>DelayLine</C> body implements a ring buffer for audio data
+ * points with real-valued index access and real-valued length
+ * <I>(this is the effective code include file for conditional
+ * inlining)</I>.
+ *
+ * @author Dr. Thomas Tensi
+ * @date   2025-12
+ */
+
+/*====================*/
+
+#include "StringUtil.h"
+
+/*====================*/
+
+using Audio::AudioDataPointRingBufferInterpolator;
+using Audio::DelayLine;
+
+/*====================*/
+
+/** error message for empty delay line */
+static const String _ErrMsg_nonemptyDelayLine =
+    "delay line must not be empty";
+
+/*====================*/
+
+/**
+ * Sets interpolator to new values of length and interpolationOrder.
+ *
+ * @param[inout] interpolator        audio buffer interpolator
+ * @param[in]    buffer              audio buffer to be interpolated
+ * @param[in]    length              real-valued length of delay line
+ * @param[in]    interpolationOrder  order of interpolation polynomial
+ */
+static void
+_setInterpolator (INOUT AudioDataPointRingBufferInterpolator& interpolator,
+                  IN AudioDataPointRingBuffer& buffer,
+                  IN Real length,
+                  IN Natural interpolationOrder)
+{
+    interpolator.set(buffer, buffer.length(), length,
+                     false, interpolationOrder);
+}
+
+/*--------------------*/
+
+INLINE
+void DelayLine::_updateData ()
+{
+    Real totalLength = (Real{_interpolationOrder} + _length);
+    totalLength = totalLength.ceiling();
+    _data.setLength((Natural) totalLength);
+    setToZero();
+    _setInterpolator(_interpolator, _data,
+                     totalLength, _interpolationOrder);
+}
+
+/*--------------------*/
+/* con-/destruction   */
+/*--------------------*/
+
+INLINE
+DelayLine::DelayLine (IN Real length,
+                      IN Natural interpolationOrder)
+    : _length{length},
+      _interpolationOrder{interpolationOrder},
+      _interpolator{},
+      _data{0}
+{
+    _updateData();
+}
+
+/*--------------------*/
+
+INLINE
+DelayLine::~DelayLine ()
+{
+    _data.setLength(0);
+    _length                  = 0.0;
+}
+
+/*--------------------*/
+/* type conversion    */
+/*--------------------*/
+
+INLINE void
+DelayLine::toArray (OUT AudioDataPoint* elementArray) const
+{
+    _data.toArray(elementArray);
+}
+
+/*--------------------*/
+
+INLINE
+String DelayLine::toString (IN Natural dataPointCount) const
+{
+    String result = "DelayLine(";
+    result += "_length = " + TOSTRING(_length);
+    result += ", _interpolationOrder = " + TOSTRING(_interpolationOrder);
+    result += ", _data = " + _data.toString(dataPointCount);
+    result += ")";
+
+    return result;
+}
+
+/*--------------------*/
+
+INLINE
+String DelayLine::toString (IN DelayLine& delayLine)
+{
+    return delayLine.toString();
+}
+
+/*--------------------*/
+/* property access    */
+/*--------------------*/
+
+INLINE
+Natural DelayLine::interpolationOrder () const
+{
+    return _interpolationOrder;
+}
+
+/*--------------------*/
+
+INLINE
+Boolean DelayLine::isEmpty () const
+{
+    return _length == 0.0;
+}
+
+/*--------------------*/
+
+INLINE
+Real DelayLine::length () const
+{
+    return _length;
+}
+
+
+/*--------------------*/
+/* element access     */
+/*--------------------*/
+
+INLINE
+AudioDataPoint DelayLine::at (IN Real position) const
+{
+    Assertion_pre(_length > 0.0, _ErrMsg_nonemptyDelayLine);
+    const Real effectivePosition = position;
+    AudioDataPoint interpolatedValue =
+        _interpolator.at(effectivePosition);
+    return interpolatedValue;
+}
+/*--------------------*/
+
+INLINE
+AudioDataPoint DelayLine::first () const
+{
+    return at(0.0);
+}
+
+/*--------------------*/
+/* change             */
+/*--------------------*/
+
+INLINE
+void DelayLine::advance (IN AudioDataPoint dataPoint)
+{
+    _data.shiftLeft(dataPoint);
+}
+
+/*--------------------*/
+
+INLINE
+void DelayLine::set (IN Natural position,
+                     IN AudioDataPoint dataPoint)
+{
+    _data.set(position, dataPoint);
+}
+
+/*--------------------*/
+
+INLINE
+void DelayLine::setInterpolationOrder (IN Natural interpolationOrder)
+{
+    if (interpolationOrder == _interpolationOrder) {
+        setToZero();
+    } else {
+        _interpolationOrder = interpolationOrder;
+        _updateData();
+    }
+}
+
+/*--------------------*/
+
+INLINE
+void DelayLine::setLength (IN Real length)
+{
+    if (_length == length) {
+        setToZero();
+    } else {
+        _length = length;
+        _updateData();
+    }
+}
+
+/*--------------------*/
+
+INLINE
+void DelayLine::setToZero ()
+{
+    _data.setToZero();
+}

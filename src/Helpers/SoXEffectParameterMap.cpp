@@ -60,7 +60,7 @@ void _adaptRealValueToPrecision (INOUT String& value,
     Real integralDigitCount =
         Real::maximum(Real::one,
                       Real::one + (log10((float) v.abs())));
-    Real fractionalDigitCount = Real{-log10((double) delta)}.round();
+    Real fractionalDigitCount = Real{-log10(double(delta))}.round();
 
     if (fractionalDigitCount > Real::zero) {
         Natural precision =

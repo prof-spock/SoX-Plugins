@@ -6,11 +6,6 @@
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
 
-# support universal binaries on MacOS
-IF(CMAKE_HOST_SYSTEM_NAME STREQUAL "Darwin")
-    SET(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "" FORCE)
-ENDIF()
-
 PROJECT(SoXPlugins
         VERSION 1.0
         LANGUAGES C CXX)
@@ -19,14 +14,15 @@ PROJECT(SoXPlugins
 # === program configuration ===
 # =============================
 
-INCLUDE(GlobalSettings.cmake)
-INCLUDE(GlobalSettings_Plugin.cmake)
+INCLUDE(_UtilityFunctions.cmake)
+INCLUDE(_GlobalConfiguration.cmake)
+INCLUDE(_GlobalConfiguration_Plugin.cmake)
 
 # --- compiler ---
-INCLUDE(PluginSpecificCompilerSettings.cmake)
+INCLUDE(_PluginSpecificCompilerConfiguration.cmake)
 # first JUCE plugin settings, then global compiler settings
-INCLUDE(CPPCompilerConfiguration_Plugin.cmake)
-INCLUDE(CPPCompilerConfiguration.cmake)
+INCLUDE(_CPPCompilerConfiguration_Plugin.cmake)
+INCLUDE(_CPPCompilerConfiguration.cmake)
 
 # --- LaTeX ---
 FIND_PACKAGE(LATEX QUIET OPTIONAL_COMPONENTS PDFLATEX)
@@ -38,7 +34,10 @@ FIND_PACKAGE(Doxygen QUIET)
 FIND_PACKAGE(juce QUIET)
 
 # local configuration settings
-INCLUDE(LocalConfiguration.cmake)
+INCLUDE(_LocalConfiguration.cmake)
+
+# define whether programs are strictly compatible to SoX_ng
+SET(isStrictlyCompatibleToSoX TRUE)
 
 # ===========================
 
@@ -73,6 +72,8 @@ CMAKE_PATH(SET srcPrimitivesDirectory NORMALIZE
            ${srcBaseTypesDirectory}/Primitives)
 CMAKE_PATH(SET srcJuceFacadeDirectory NORMALIZE
            ${srcDirectory}/Libraries/JuceFacade)
+CMAKE_PATH(SET srcStdCFacadeDirectory NORMALIZE
+           ${srcDirectory}/Libraries/StandardCFacade)
 CMAKE_PATH(SET srcViewAndControllerDirectory NORMALIZE
            ${srcDirectory}/ViewAndController)
 CMAKE_PATH(SET srcEffectsDirectory NORMALIZE
@@ -90,9 +91,6 @@ CMAKE_PATH(SET testFileDirectory NORMALIZE
 
 # --- include directories ---
 
-CMAKE_PATH(SET juceModulesDirectory NORMALIZE
-           ${JUCE_DIR}/modules)
-
 SET(standardIncludeDirectoryList
     ${srcAudioSupportDirectory}
     ${srcBaseModulesDirectory}
@@ -101,15 +99,16 @@ SET(standardIncludeDirectoryList
     ${srcPrimitivesDirectory}
     ${srcEffectsDirectory}
     ${srcHelpersDirectory}
+    ${srcStdCFacadeDirectory}
     ${srcViewAndControllerDirectory}
 )
 
 SET(additionalIncludeDirectoryList
     ${srcJuceFacadeDirectory}
-    ${juceModulesDirectory}
-    ${juceModulesDirectory}/juce_audio_plugin_client/AU
-    ${juceModulesDirectory}/juce_audio_processors/format_types/VST3_SDK
 )
+
+GLOBP_appendJuceIncludeDirectories(additionalIncludeDirectoryList
+                                   "${JUCE_DIR}")
 
 # --- add include directories and libraries for Unix ---
 IF(LINUX)
@@ -124,15 +123,30 @@ IF(LINUX)
     )
 ENDIF(LINUX)
 
+# --- Windows specific files ---
+IF(MSVC)
+    CMAKE_PATH(SET debuggerVisualizationFileDirectory
+               ${CMAKE_CURRENT_SOURCE_DIR}/Windows)
+    SET(debuggerVisualizationFileNameList
+        ${debuggerVisualizationFileDirectory}/audio.natvis
+        ${debuggerVisualizationFileDirectory}/basemodules.natvis
+        ${debuggerVisualizationFileDirectory}/basetypes.natvis)
+ELSE()
+    SET(debuggerVisualizationFileNameList )
+ENDIF()
+
 # ====================
 # === source files ===
 # ====================
 
 SET(srcCommonAudioFileList
+    ${srcAudioSupportDirectory}/AudioDataPoint.cpp
     ${srcAudioSupportDirectory}/AudioDataPointList.cpp
     ${srcAudioSupportDirectory}/AudioDataPointListVector.cpp
     ${srcAudioSupportDirectory}/AudioDataPointRingBuffer.cpp
     ${srcAudioSupportDirectory}/AudioDataPointRingBufferVector.cpp
+    ${srcAudioSupportDirectory}/DelayLine.cpp
+    ${srcAudioSupportDirectory}/DelayLineList.cpp
     ${srcAudioSupportDirectory}/IIRFilter.cpp
     ${srcAudioSupportDirectory}/WaveForm.cpp
 )
@@ -175,9 +189,9 @@ SET(srcViewAndControllerFileList
 )
 
 SET(allSrcFileList
-    ${srcBaseModulesFileList} ${srcCommonAudioFileList}
-    ${srcContainersFileList} ${srcEffectsBaseFileList}
-    ${srcHelpersFileList} ${srcPrimitivesFileList}
+    ${srcBaseModulesFileList}  ${srcCommonAudioFileList}
+    ${srcContainersFileList}   ${srcEffectsBaseFileList}
+    ${srcHelpersFileList}      ${srcPrimitivesFileList}
     ${srcViewAndControllerFiles}
 )
 
@@ -219,9 +233,9 @@ IF(MACOS)
 
         LIST(APPEND ${fileListName}
              ${effectDirectory}/SoX${pluginName}_AudioProcessor.cpp
-             ${effectDirectory}/SoXPlugin-util.cpp
-             ${effectDirectory}/SoXPlugin-AU_1.mm
-             ${effectDirectory}/SoXPlugin-Standalone.cpp
+             ${srcJuceFacadeDirectory}/JucePlugin-util.cpp
+             ${srcJuceFacadeDirectory}/JucePlugin-AU_1.mm
+             ${srcJuceFacadeDirectory}/JucePlugin-Standalone.cpp
         )
 
         LIST(APPEND allSrcFileList ${${fileListName}})
@@ -241,7 +255,7 @@ FOREACH(pluginName ${pluginNameList})
 
     SET(${fileListName}
         ${effectDirectory}/SoX${pluginName}_AudioProcessor.cpp
-        ${effectDirectory}/SoXPlugin-VST_1.${GLOBP_juceFileExtension}
+        ${srcJuceFacadeDirectory}/JucePlugin-VST_1.${GLOBP_juceFileExtension}
     )
 
     IF(WINDOWS)
@@ -336,9 +350,9 @@ INCLUDE_DIRECTORIES(${standardIncludeDirectoryList})
 
 # --- common services library (primitives containers and common audio) ---
 SET(sourceFileList
-    ${srcBaseModulesFileList} ${srcPrimitivesFileList}
-    ${srcContainersFileList} ${srcCommonAudioFileList}
-    ${srcEffectsBaseFileList} ${srcHelpersFileList}
+    ${srcBaseModulesFileList}   ${srcContainersFileList}
+    ${srcPrimitivesFileList}    ${srcCommonAudioFileList}
+    ${srcEffectsBaseFileList}   ${srcHelpersFileList}
 )
 
 GLOB_makeTarget_commonProjectLibrary("${sourceFileList}")
@@ -384,7 +398,7 @@ FOREACH(pluginName ${pluginNameList})
     SET(pluginDirectory ${srcEffect${pluginName}Directory})
     SET(fileList
         ${srcEffect${pluginName}FileListSTD}
-        ${GLOB_debuggerVisualizationFileName}
+        ${debuggerVisualizationFileNameList}
     )
     
     GLOBP_makeTarget_pluginStaticLib(${targetName}
@@ -402,7 +416,7 @@ SET(targetName ${testProgramName})
 SET(testProgramFileList
     ${commonSrcFileList}
     ${srcEffectsDirectory}/SoX-Test/SoX-Test_main-std.cpp
-    ${GLOB_debuggerVisualizationFileName}
+    ${debuggerVisualizationFileNameList}
 )
 
 ADD_EXECUTABLE(${targetName} ${testProgramFileList})
@@ -433,8 +447,9 @@ FOREACH(pluginName ${pluginNameList})
     SET(libraryName SoX${pluginName})
     SET(targetName ${libraryName}_VST)
     SET(sourceFileList ${srcEffect${pluginName}FileList_VST})
+    SET(effectTargetName SoX${pluginName}_Effect)
     SET(libraryList
-        SoX${pluginName}_Effect SoXViewAndController
+        ${effectTargetName} SoXViewAndController
         CommonProjectLibrary JuceFramework
     )
 
@@ -445,6 +460,11 @@ FOREACH(pluginName ${pluginNameList})
         "${libraryList}"
         "${unixLibraryList}"
     )
+
+    IF(${isStrictlyCompatibleToSoX})
+        TARGET_COMPILE_DEFINITIONS(${effectTargetName} PUBLIC
+                                   "EMULATE_SOX_STRICTLY")
+    ENDIF()
 
     ADD_DEPENDENCIES(SoXPlugins_VST ${targetName})
     ADD_DEPENDENCIES(SoX${pluginName} ${targetName})

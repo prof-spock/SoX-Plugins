@@ -4,120 +4,116 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="339,40,273,81,270,76,336,35"/>
 <area shape="rect" id="Node000006" href="$_logging_support_8h.html" title="The LoggingSupport specification defines a class for simple entry/exit logging to a file or via an ar..." alt="" coords="355,79,478,104"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="385,41,411,77,406,80,381,44"/>
-<area shape="rect" id="Node000037" href="$_wave_form_8h.html" title="The WaveForm specification defines common services for (LFO) wave forms." alt="" coords="1335,321,1429,346"/>
-<area shape="poly" id="edge71_Node000001_Node000037" title=" " alt="" coords="360,45,328,118,310,154,293,179,273,195,252,202,234,210,219,227,212,247,213,255,218,263,234,270,268,277,378,290,710,309,1075,322,1335,328,1334,334,1075,327,710,315,377,295,267,282,232,275,215,267,208,257,206,246,214,224,231,205,250,197,270,190,289,176,305,152,323,116,355,42"/>
+<area shape="rect" id="Node000037" href="$_wave_form_8h.html" title="The WaveForm specification defines common services for (LFO) wave forms." alt="" coords="297,321,392,346"/>
+<area shape="poly" id="edge67_Node000001_Node000037" title=" " alt="" coords="358,44,294,179,280,202,270,226,266,246,270,264,280,281,294,296,325,318,321,323,291,300,276,284,265,266,260,246,265,225,275,199,289,176,354,42"/>
 <area shape="rect" id="Node000039" href="$_operating_system_8h.html" title="The OperatingSystem specification defines a class for several operating system related utility functi..." alt="" coords="67,79,201,104"/>
-<area shape="poly" id="edge45_Node000001_Node000039" title=" " alt="" coords="318,37,173,81,171,76,316,32"/>
-<area shape="rect" id="Node000040" href="$_so_x_reverb___audio_effect_8h.html" title="The SoXReverb_AudioEffect specification defines the SoX reverb plugin as a simple reverb based on fre..." alt="" coords="2793,152,2961,177"/>
-<area shape="poly" id="edge48_Node000001_Node000040" title=" " alt="" coords="421,18,767,31,1344,57,2050,96,2418,121,2780,149,2793,151,2792,156,2779,155,2418,126,2049,101,1344,62,766,36,421,24"/>
-<area shape="rect" id="Node000041" href="$_string_util_8h.html" title="The StringUtil specification defines several string routines not included in the standard C++ library..." alt="" coords="3291,79,3377,104"/>
-<area shape="poly" id="edge51_Node000001_Node000041" title=" " alt="" coords="421,18,3290,86,3290,92,421,23"/>
-<area shape="rect" id="Node000003" href="$_file_8cpp.html" title="The File body implements a class for simple file handling based on C stdio." alt="" coords="1477,152,1545,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="294,96,344,101,689,127,1025,144,1477,160,1477,165,1025,149,689,132,343,107,294,101"/>
+<area shape="poly" id="edge40_Node000001_Node000039" title=" " alt="" coords="318,37,173,81,171,76,316,32"/>
+<area shape="rect" id="Node000040" href="$_so_x_reverb___audio_effect_8h.html" title="The SoXReverb_AudioEffect specification defines the SoX reverb plugin as a simple reverb based on fre..." alt="" coords="5239,152,5407,177"/>
+<area shape="poly" id="edge43_Node000001_Node000040" title=" " alt="" coords="421,17,1110,20,2277,30,3523,48,4049,61,4445,76,4671,92,4893,112,5240,150,5239,156,4893,117,4670,97,4445,81,4049,66,3523,53,2277,35,1110,26,421,22"/>
+<area shape="rect" id="Node000041" href="$_string_util_8h.html" title="The StringUtil specification defines several string routines not included in the standard C++ library..." alt="" coords="4347,79,4433,104"/>
+<area shape="poly" id="edge46_Node000001_Node000041" title=" " alt="" coords="421,18,4346,87,4346,92,421,23"/>
+<area shape="rect" id="Node000003" href="$_file_8cpp.html" title="The File body implements a class for simple file handling based on C stdio." alt="" coords="1403,152,1471,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="294,96,344,101,666,126,979,143,1403,160,1402,165,979,148,665,131,343,107,294,101"/>
 <area shape="rect" id="Node000004" href="$_logging_support_8cpp.html" title="The LoggingSupport body implements a class for simple entry/exit logging to a file or via a callback ..." alt="" coords="143,152,280,177"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="241,117,220,153,216,151,237,115"/>
 <area shape="rect" id="Node000005" href="$_operating_system_8cpp.html" title="The OperatingSystem body implements a class for several operating system related utility functions (l..." alt="" coords="5,233,153,258"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="213,108,171,126,132,154,115,173,102,195,86,233,81,231,97,193,111,170,128,150,169,122,211,103"/>
-<area shape="poly" id="edge44_Node000006_Node000004" title=" " alt="" coords="372,111,245,154,244,149,370,106"/>
-<area shape="rect" id="Node000007" href="$_logging_8h.html" title="The Logging specification defines macros for entry&#45;, exit&#45; and intermediate logging of functions into..." alt="" coords="2689,152,2768,177"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="492,92,2689,159,2689,165,492,98"/>
-<area shape="poly" id="edge16_Node000007_Node000005" title=" " alt="" coords="2676,169,1516,185,768,202,454,214,217,228,152,235,151,230,216,223,453,209,768,197,1516,179,2676,164"/>
-<area shape="rect" id="Node000008" href="$_audio_data_point_ring_buffer_vector_8cpp-inc.html" title="The AudioDataPointRingBufferVector body implements a two&#45;dimensional list of ring buffers for audio d..." alt="" coords="2927,225,3098,265"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="2782,178,2945,223,2944,228,2780,183"/>
-<area shape="rect" id="Node000011" href="$_so_x_chorus_and_echo___audio_effect_8cpp.html" title="The SoXChorusAndEcho_AudioEffect body implements the SoX chorus, echo and echos audio effects; the di..." alt="" coords="2771,409,3009,434"/>
-<area shape="poly" id="edge21_Node000007_Node000011" title=" " alt="" coords="2779,180,2811,198,2839,224,2854,247,2866,273,2883,326,2890,374,2893,408,2887,409,2885,375,2877,327,2861,275,2850,250,2835,227,2808,203,2776,185"/>
-<area shape="rect" id="Node000012" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="3035,409,3207,434"/>
-<area shape="poly" id="edge27_Node000007_Node000012" title=" " alt="" coords="2782,174,2865,180,2963,183,3010,188,3052,195,3087,206,3112,223,3127,246,3136,271,3141,297,3142,324,3136,374,3127,409,3122,408,3130,373,3136,324,3136,298,3131,272,3122,248,3108,227,3085,211,3051,200,3009,193,2962,189,2865,185,2781,180"/>
-<area shape="rect" id="Node000013" href="$_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXFlangerPhaserAndTremolo_AudioEffect body implements the SoX flanger, phaser and tremolo modula..." alt="" coords="2548,401,2747,441"/>
-<area shape="poly" id="edge29_Node000007_Node000013" title=" " alt="" coords="2771,182,2796,199,2816,224,2822,245,2816,266,2789,311,2754,349,2716,380,2682,403,2679,399,2713,376,2750,345,2785,308,2812,264,2817,245,2812,227,2793,203,2768,186"/>
-<area shape="rect" id="Node000014" href="$_i_i_r_filter_8cpp-inc.html" title="The IIRFilter body implements an infinite impulse response filter (this is the effective code include..." alt="" coords="3173,233,3285,258"/>
-<area shape="poly" id="edge12_Node000007_Node000014" title=" " alt="" coords="2782,175,2888,190,2970,198,3052,206,3154,223,3188,230,3186,235,3154,228,3051,212,2970,203,2887,195,2781,180"/>
-<area shape="rect" id="Node000017" href="$_so_x_compander_support_8cpp.html" title="The SoXCompanderSupport body implements several internal compander classes for the compander algorith..." alt="" coords="3231,409,3413,434"/>
-<area shape="poly" id="edge23_Node000007_Node000017" title=" " alt="" coords="2782,174,2839,177,2908,177,3060,175,3134,177,3202,185,3258,199,3281,210,3299,223,3315,245,3326,269,3333,296,3336,323,3333,373,3327,409,3322,408,3328,372,3330,323,3328,297,3321,271,3311,247,3295,227,3278,215,3256,204,3201,190,3134,183,3060,180,2908,183,2839,183,2782,180"/>
-<area shape="rect" id="Node000018" href="$_so_x_audio_editor_8cpp.html" title="The SoXAudioEditor body implements the audio editor for a plugin, represented by a display window con..." alt="" coords="3411,233,3548,258"/>
-<area shape="poly" id="edge17_Node000007_Node000018" title=" " alt="" coords="2782,175,2954,193,3089,199,3223,204,3392,223,3432,230,3431,235,3391,228,3222,210,3088,204,2954,198,2781,180"/>
-<area shape="rect" id="Node000019" href="$_so_x_audio_editor_widget_8cpp.html" title="The SoXAudioEditorWidget body implements an audio editor widget (a slider or a combo box) in a SoX au..." alt="" coords="3573,233,3751,258"/>
-<area shape="poly" id="edge18_Node000007_Node000019" title=" " alt="" coords="2782,174,2901,188,3001,196,3173,201,3344,204,3444,211,3561,223,3607,230,3607,235,3560,228,3443,216,3344,209,3173,206,3001,201,2900,194,2781,180"/>
-<area shape="rect" id="Node000020" href="$_so_x_audio_effect_8cpp.html" title="The SoXAudioEffect body implements the root class for all SoX audio effects." alt="" coords="3775,233,3911,258"/>
-<area shape="poly" id="edge19_Node000007_Node000020" title=" " alt="" coords="2782,174,2932,190,3058,197,3275,197,3379,196,3490,198,3616,206,3764,223,3801,230,3800,235,3763,228,3616,211,3490,203,3379,201,3275,202,3058,203,2931,196,2782,180"/>
-<area shape="rect" id="Node000021" href="$_so_x_audio_processor_8cpp.html" title="The SoXAudioProcessor body implements an audio effect wrapper for a plugin responsible for the commun..." alt="" coords="383,233,546,258"/>
-<area shape="poly" id="edge20_Node000007_Node000021" title=" " alt="" coords="2676,169,2283,172,1669,181,1029,199,760,212,558,228,514,235,513,230,558,223,760,206,1029,193,1669,175,2283,167,2676,164"/>
-<area shape="rect" id="Node000022" href="$_so_x_chorus_and_echo___audio_processor_8cpp.html" title="The SoXChorusAndEcho_AudioProcessor module provides boilerplate code for a plugin for the combined So..." alt="" coords="571,233,833,258"/>
-<area shape="poly" id="edge22_Node000007_Node000022" title=" " alt="" coords="2675,168,2397,169,1948,176,1405,194,1123,209,846,228,779,235,779,230,846,223,1123,203,1405,189,1948,171,2397,164,2675,163"/>
-<area shape="rect" id="Node000023" href="$_so_x_compander___audio_effect_8cpp.html" title="The SoXCompander_AudioEffect body implements the SoX compand and mcompand audio effects; a simple com..." alt="" coords="3437,409,3647,434"/>
-<area shape="poly" id="edge24_Node000007_Node000023" title=" " alt="" coords="2782,174,2911,182,3068,185,3218,195,3281,206,3330,223,3353,236,3370,251,3394,282,3415,315,3448,351,3488,382,3525,406,3522,411,3485,387,3444,355,3411,318,3389,285,3366,254,3350,241,3328,228,3280,212,3218,201,3068,191,2911,187,2782,180"/>
-<area shape="rect" id="Node000024" href="$_so_x_compander___audio_processor_8cpp.html" title="The SoXCompander_AudioProcessor module provides boilerplate code for a plugin for the combined SoX co..." alt="" coords="858,233,1093,258"/>
-<area shape="poly" id="edge25_Node000007_Node000024" title=" " alt="" coords="2675,169,2430,170,2044,177,1581,195,1341,210,1105,228,1045,235,1044,230,1104,223,1340,204,1581,190,2044,172,2430,165,2675,163"/>
-<area shape="rect" id="Node000025" href="$_so_x_effect_parameter_map_8cpp.html" title="The SoXEffectParameterMap body implements a map of string keys to associated values of SoXEffectParam..." alt="" coords="1117,233,1305,258"/>
-<area shape="poly" id="edge26_Node000007_Node000025" title=" " alt="" coords="2676,168,2459,169,2124,176,1726,194,1519,209,1317,228,1268,235,1267,230,1316,223,1519,204,1725,189,2124,171,2459,164,2676,163"/>
-<area shape="rect" id="Node000026" href="$_so_x_filter___audio_processor_8cpp.html" title="The SoXFilter_AudioProcessor module provides boilerplate code for a plugin for several SoX filter eff..." alt="" coords="1329,233,1528,258"/>
-<area shape="poly" id="edge28_Node000007_Node000026" title=" " alt="" coords="2675,169,2489,172,2208,181,1878,199,1540,228,1489,235,1488,230,1539,223,1877,194,2208,176,2488,167,2675,164"/>
-<area shape="rect" id="Node000027" href="$_so_x_flanger_phaser_and_tremolo___audio_processor_8cpp.html" title="The SoXFlangerPhaserAndTremolo_AudioProcessor module provides boilerplate code for a plugin for the S..." alt="" coords="1552,225,1751,265"/>
-<area shape="poly" id="edge30_Node000007_Node000027" title=" " alt="" coords="2675,170,2294,186,2032,203,1764,228,1751,230,1750,224,1763,223,2031,198,2294,180,2675,165"/>
-<area shape="rect" id="Node000028" href="$_so_x_gain___audio_effect_8cpp.html" title="The SoXGain_AudioEffect body implements the SoX gain plugin amplifying or attenuating the input signa..." alt="" coords="1775,233,1946,258"/>
-<area shape="poly" id="edge31_Node000007_Node000028" title=" " alt="" coords="2676,171,2371,188,2166,205,1958,228,1914,235,1914,230,1958,223,2165,199,2370,183,2675,165"/>
-<area shape="rect" id="Node000029" href="$_so_x_gain___audio_processor_8cpp.html" title="The SoXGain_AudioProcessor module provides boilerplate code for a plugins for the SoX gain effect." alt="" coords="1971,233,2167,258"/>
-<area shape="poly" id="edge32_Node000007_Node000029" title=" " alt="" coords="2676,173,2459,195,2180,228,2133,235,2132,230,2179,223,2459,189,2675,168"/>
-<area shape="rect" id="Node000030" href="$_so_x_overdrive___audio_effect_8cpp.html" title="The SoXOverdrive_AudioEffect body implements the SoX overdrive plugin distorting an input signal with..." alt="" coords="2191,233,2386,258"/>
-<area shape="poly" id="edge33_Node000007_Node000030" title=" " alt="" coords="2676,178,2353,235,2352,230,2675,173"/>
-<area shape="rect" id="Node000031" href="$_so_x_overdrive___audio_processor_8cpp.html" title="The SoXOverdrive_AudioProcessor module provides boilerplate code for a plugin for the SoX overdrive e..." alt="" coords="2410,233,2631,258"/>
-<area shape="poly" id="edge34_Node000007_Node000031" title=" " alt="" coords="2687,185,2552,235,2550,230,2685,180"/>
-<area shape="rect" id="Node000032" href="$_so_x_reverb_support_8cpp.html" title="The SoXReverbSupport body implements support classes for the freeverb algorithm and provides a single..." alt="" coords="3953,409,4107,434"/>
-<area shape="poly" id="edge35_Node000007_Node000032" title=" " alt="" coords="2782,174,2877,178,3020,179,3379,180,3562,183,3726,190,3852,203,3896,212,3925,223,3949,242,3970,266,4001,319,4021,370,4030,408,4025,409,4016,372,3996,321,3966,269,3946,246,3922,228,3894,217,3851,208,3725,195,3562,188,3379,185,3020,184,2877,183,2782,179"/>
-<area shape="rect" id="Node000033" href="$_so_x_reverb___audio_effect_8cpp.html" title="The SoXReverb_AudioEffect body implements the SoX reverb plugin using the freeverb algorithm for room..." alt="" coords="4348,409,4531,434"/>
-<area shape="poly" id="edge36_Node000007_Node000033" title=" " alt="" coords="2782,174,3104,178,3641,180,3916,184,4157,192,4333,204,4388,213,4416,223,4433,244,4445,269,4451,295,4454,322,4451,373,4445,409,4440,408,4446,372,4448,322,4446,296,4439,270,4429,247,4412,228,4386,218,4332,209,4157,197,3916,189,3641,185,3104,183,2782,179"/>
-<area shape="rect" id="Node000034" href="$_so_x_reverb___audio_processor_8cpp.html" title="The SoXReverb_AudioProcessor module provides boilerplate code for a plugin for the SoX reverb effect." alt="" coords="3986,233,4194,258"/>
-<area shape="poly" id="edge37_Node000007_Node000034" title=" " alt="" coords="2782,174,2962,193,3115,203,3250,206,3376,205,3636,203,3788,209,3968,223,4024,230,4024,235,3967,228,3788,214,3636,209,3376,210,3250,211,3115,208,2962,199,2781,180"/>
-<area shape="rect" id="Node000035" href="$_time_and_duration_8cpp.html" title="The TimeAndDuration body implements simple functions for the types for time and duration." alt="" coords="2655,233,2802,258"/>
-<area shape="poly" id="edge38_Node000007_Node000035" title=" " alt="" coords="2731,191,2731,232,2726,232,2726,191"/>
-<area shape="rect" id="Node000036" href="$_wave_form_8cpp-inc.html" title="The WaveForm body implements common services for (LFO) wave forms." alt="" coords="229,233,359,258"/>
-<area shape="poly" id="edge39_Node000007_Node000036" title=" " alt="" coords="2675,169,1488,189,784,206,525,217,372,228,335,235,334,230,371,223,524,211,784,201,1488,183,2675,164"/>
-<area shape="rect" id="Node000009" href="$_audio_data_point_ring_buffer_vector_8h.html" title="The AudioDataPointRingBufferVector specification defines a two&#45;dimensional list of ring buffers for a..." alt="" coords="2927,313,3098,353"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="3015,279,3015,313,3010,313,3010,279"/>
-<area shape="poly" id="edge9_Node000009_Node000011" title=" " alt="" coords="2976,364,2908,411,2905,406,2973,359"/>
-<area shape="poly" id="edge10_Node000009_Node000012" title=" " alt="" coords="3049,360,3107,406,3104,410,3045,364"/>
-<area shape="poly" id="edge11_Node000009_Node000013" title=" " alt="" coords="2920,359,2728,404,2727,399,2919,354"/>
-<area shape="rect" id="Node000015" href="$_i_i_r_filter_8h.html" title="The IIRFilter specification defines an infinite impulse response filter." alt="" coords="3198,321,3275,346"/>
-<area shape="poly" id="edge13_Node000014_Node000015" title=" " alt="" coords="3234,272,3238,320,3233,320,3228,272"/>
-<area shape="poly" id="edge15_Node000015_Node000012" title=" " alt="" coords="3212,356,3138,411,3135,406,3209,352"/>
-<area shape="poly" id="edge14_Node000015_Node000017" title=" " alt="" coords="3260,354,3312,406,3308,410,3256,358"/>
-<area shape="poly" id="edge40_Node000036_Node000037" title=" " alt="" coords="349,258,372,263,513,282,657,297,936,316,1174,326,1334,329,1334,334,1174,331,936,322,656,302,512,287,371,268,348,264"/>
-<area shape="poly" id="edge41_Node000037_Node000011" title=" " alt="" coords="1443,333,1659,338,1983,349,2366,369,2758,399,2819,406,2818,411,2758,404,2366,374,1983,354,1659,343,1443,338"/>
-<area shape="poly" id="edge42_Node000037_Node000013" title=" " alt="" coords="1444,336,2548,411,2548,416,1443,341"/>
-<area shape="rect" id="Node000038" href="$_wave_form_8cpp.html" title="The WaveForm body implements common services for (LFO) wave forms." alt="" coords="1327,409,1437,434"/>
-<area shape="poly" id="edge43_Node000037_Node000038" title=" " alt="" coords="1385,360,1385,408,1379,408,1379,360"/>
-<area shape="poly" id="edge46_Node000039_Node000004" title=" " alt="" coords="158,111,200,150,197,154,155,115"/>
-<area shape="poly" id="edge47_Node000039_Node000005" title=" " alt="" coords="113,116,99,133,89,153,80,196,81,232,75,232,75,195,83,151,95,130,109,112"/>
-<area shape="poly" id="edge49_Node000040_Node000033" title=" " alt="" coords="2974,174,3759,179,4009,184,4227,192,4386,204,4435,213,4460,223,4475,245,4482,270,4483,297,4480,324,4465,374,4448,409,4443,407,4460,372,4474,323,4478,297,4477,271,4470,248,4456,227,4433,218,4385,210,4226,197,4009,189,3759,184,2974,180"/>
-<area shape="poly" id="edge50_Node000040_Node000034" title=" " alt="" coords="2975,175,3255,191,3473,196,3691,202,3818,210,3968,223,4024,230,4023,235,3967,228,3817,215,3690,207,3473,201,3255,197,2975,180"/>
-<area shape="poly" id="edge64_Node000041_Node000003" title=" " alt="" coords="3277,98,1545,165,1545,159,3277,92"/>
-<area shape="poly" id="edge65_Node000041_Node000007" title=" " alt="" coords="3277,99,3059,119,2920,135,2781,155,2769,157,2768,152,2780,149,2920,129,3058,114,3277,94"/>
-<area shape="rect" id="Node000042" href="$_audio_data_point_ring_buffer_8cpp-inc.html" title="The AudioDataPointRingBuffer body implements a ring buffer for audio data points with left and right ..." alt="" coords="2985,152,3203,177"/>
-<area shape="poly" id="edge52_Node000041_Node000042" title=" " alt="" coords="3283,110,3134,154,3132,149,3281,105"/>
-<area shape="rect" id="Node000047" href="$_byte_list_8cpp.html" title="The ByteList body implements sequences of byte values with zero&#45;based arbitrary indexed access to pos..." alt="" coords="3227,152,3321,177"/>
-<area shape="poly" id="edge63_Node000041_Node000047" title=" " alt="" coords="3317,116,3286,154,3282,150,3313,113"/>
-<area shape="rect" id="Node000048" href="$_my_string_8cpp.html" title="The String body implements a standard string type." alt="" coords="3346,152,3445,177"/>
-<area shape="poly" id="edge66_Node000041_Node000048" title=" " alt="" coords="3355,113,3387,150,3383,154,3351,116"/>
-<area shape="rect" id="Node000049" href="$_natural_list_8cpp.html" title="The NaturalList body implements lists of non&#45;negative integer values with zero&#45;based arbitrary indexe..." alt="" coords="3469,152,3578,177"/>
-<area shape="poly" id="edge67_Node000041_Node000049" title=" " alt="" coords="3378,106,3493,149,3491,154,3376,111"/>
-<area shape="rect" id="Node000050" href="$_real_8cpp.html" title="The Real body implements a value object type for real values." alt="" coords="3603,152,3676,177"/>
-<area shape="poly" id="edge68_Node000041_Node000050" title=" " alt="" coords="3391,103,3603,152,3602,157,3390,108"/>
-<area shape="rect" id="Node000051" href="$_string_list_8cpp.html" title="The StringList body implements lists of string values with zero&#45;based arbitrary indexed access to pos..." alt="" coords="3700,152,3803,177"/>
-<area shape="poly" id="edge69_Node000041_Node000051" title=" " alt="" coords="3391,99,3689,149,3700,151,3699,157,3688,155,3391,105"/>
-<area shape="rect" id="Node000052" href="$_string_util_8cpp.html" title="The StringUtil body implements several string routines not included in the standard C++ library (like..." alt="" coords="3827,152,3927,177"/>
-<area shape="poly" id="edge70_Node000041_Node000052" title=" " alt="" coords="3392,96,3581,117,3816,149,3827,151,3826,156,3815,155,3580,123,3391,101"/>
-<area shape="rect" id="Node000043" href="$_audio_data_point_ring_buffer_8h.html" title="The AudioDataPointRingBuffer specification defines a ring buffer for audio data points with left and ..." alt="" coords="4219,233,4401,258"/>
-<area shape="poly" id="edge53_Node000042_Node000043" title=" " alt="" coords="3217,175,3496,188,3714,192,3930,199,4057,208,4206,223,4254,230,4254,235,4206,228,4057,213,3930,204,3714,197,3496,194,3217,180"/>
-<area shape="poly" id="edge55_Node000043_Node000009" title=" " alt="" coords="4241,263,4206,268,4051,283,3920,292,3697,298,3473,301,3341,306,3186,316,3098,324,3098,319,3186,311,3341,301,3473,296,3697,293,3920,287,4051,278,4206,263,4240,258"/>
-<area shape="poly" id="edge56_Node000043_Node000015" title=" " alt="" coords="4241,263,4206,268,3993,289,3827,298,3660,303,3446,316,3276,331,3275,326,3446,311,3660,298,3826,292,3993,284,4206,263,4240,258"/>
-<area shape="rect" id="Node000044" href="$_audio_data_point_ring_buffer_8cpp.html" title="The AudioDataPointRingBuffer body implements a ring buffer for audio data points with left and right ..." alt="" coords="4205,321,4401,346"/>
-<area shape="poly" id="edge54_Node000043_Node000044" title=" " alt="" coords="4311,272,4307,320,4302,320,4305,272"/>
-<area shape="rect" id="Node000045" href="$_so_x_compander_support_8h.html" title="The SoXCompanderSupport specification defines support classes for the compander algorithm and provide..." alt="" coords="3459,321,3625,346"/>
-<area shape="poly" id="edge57_Node000043_Node000045" title=" " alt="" coords="4238,263,4206,268,3885,305,3626,328,3625,323,3885,300,4206,263,4238,258"/>
-<area shape="rect" id="Node000046" href="$_so_x_reverb_support_8h.html" title="The SoXReverbSupport specification defines support classes for the freeverb algorithm and provides a ..." alt="" coords="4041,321,4181,346"/>
-<area shape="poly" id="edge60_Node000043_Node000046" title=" " alt="" coords="4272,266,4139,323,4137,318,4270,261"/>
-<area shape="poly" id="edge58_Node000045_Node000017" title=" " alt="" coords="3501,354,3353,411,3351,406,3499,349"/>
-<area shape="poly" id="edge59_Node000045_Node000023" title=" " alt="" coords="3545,360,3545,408,3539,408,3539,360"/>
-<area shape="poly" id="edge61_Node000046_Node000032" title=" " alt="" coords="4093,358,4043,410,4039,406,4089,354"/>
-<area shape="poly" id="edge62_Node000046_Node000033" title=" " alt="" coords="4169,347,4396,406,4395,411,4168,352"/>
+<area shape="poly" id="edge39_Node000006_Node000004" title=" " alt="" coords="372,111,245,154,244,149,370,106"/>
+<area shape="rect" id="Node000007" href="$_logging_8h.html" title="The Logging specification defines macros for entry&#45;, exit&#45; and intermediate logging of functions into..." alt="" coords="2432,152,2511,177"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="492,93,2432,159,2432,165,491,98"/>
+<area shape="poly" id="edge11_Node000007_Node000005" title=" " alt="" coords="2418,169,1261,191,575,209,322,218,173,228,128,235,128,230,172,223,322,213,575,203,1260,186,2418,164"/>
+<area shape="rect" id="Node000008" href="$_audio_data_point_ring_buffer_vector_8cpp-inc.html" title="The AudioDataPointRingBufferVector body implements a two&#45;dimensional list of ring buffers for audio d..." alt="" coords="4079,225,4250,265"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="2524,164,3267,183,3725,200,3916,211,4061,223,4079,225,4079,230,4060,228,3916,216,3724,206,3267,188,2524,170"/>
+<area shape="rect" id="Node000011" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="3992,401,4164,427"/>
+<area shape="poly" id="edge22_Node000007_Node000011" title=" " alt="" coords="2524,164,2850,168,3320,179,3752,197,3898,208,3943,215,3967,223,3984,237,3994,252,4004,282,4010,316,4026,352,4046,378,4067,399,4063,403,4042,381,4021,355,4005,317,3999,284,3990,254,3980,241,3965,228,3942,221,3897,214,3751,202,3319,184,2850,174,2524,169"/>
+<area shape="rect" id="Node000012" href="$_i_i_r_filter_8cpp-inc.html" title="The IIRFilter body implements an infinite impulse response filter (this is the effective code include..." alt="" coords="434,233,546,258"/>
+<area shape="poly" id="edge10_Node000007_Node000012" title=" " alt="" coords="2418,170,1450,190,887,208,680,218,558,228,526,235,525,230,558,223,680,212,887,202,1450,185,2418,164"/>
+<area shape="rect" id="Node000016" href="$_so_x_audio_editor_8cpp.html" title="The SoXAudioEditor body implements the audio editor for a plugin, represented by a display window con..." alt="" coords="571,233,708,258"/>
+<area shape="poly" id="edge12_Node000007_Node000016" title=" " alt="" coords="2418,169,2094,173,1602,183,1094,200,881,213,721,228,682,235,681,230,720,223,881,207,1094,195,1602,177,2093,168,2418,164"/>
+<area shape="rect" id="Node000017" href="$_so_x_audio_editor_widget_8cpp.html" title="The SoXAudioEditorWidget body implements an audio editor widget (a slider or a combo box) in a SoX au..." alt="" coords="733,233,911,258"/>
+<area shape="poly" id="edge13_Node000007_Node000017" title=" " alt="" coords="2418,170,1694,188,1250,206,1064,216,924,228,876,235,876,230,923,223,1064,211,1250,200,1694,183,2418,164"/>
+<area shape="rect" id="Node000018" href="$_so_x_audio_effect_8cpp.html" title="The SoXAudioEffect body implements the root class for all SoX audio effects." alt="" coords="935,233,1071,258"/>
+<area shape="poly" id="edge14_Node000007_Node000018" title=" " alt="" coords="2418,170,1767,187,1373,204,1208,215,1084,228,1046,235,1045,230,1083,223,1207,210,1372,199,1767,181,2418,164"/>
+<area shape="rect" id="Node000019" href="$_so_x_audio_processor_8cpp.html" title="The SoXAudioProcessor body implements an audio effect wrapper for a plugin responsible for the commun..." alt="" coords="1095,233,1258,258"/>
+<area shape="poly" id="edge15_Node000007_Node000019" title=" " alt="" coords="2418,168,2229,170,1946,178,1612,196,1439,210,1270,228,1227,235,1226,230,1270,223,1439,204,1611,190,1946,172,2229,165,2418,163"/>
+<area shape="rect" id="Node000020" href="$_so_x_chorus_and_echo___audio_effect_8cpp.html" title="The SoXChorusAndEcho_AudioEffect body implements the SoX chorus, echo and echos audio effects; the di..." alt="" coords="4169,482,4406,507"/>
+<area shape="poly" id="edge16_Node000007_Node000020" title=" " alt="" coords="2524,163,2909,164,3477,170,3760,177,4004,188,4181,203,4236,212,4264,223,4287,253,4302,288,4309,326,4311,364,4304,435,4293,483,4288,481,4299,434,4306,364,4304,327,4297,290,4283,256,4260,227,4234,217,4180,208,4004,193,3760,182,3477,175,2909,169,2524,168"/>
+<area shape="rect" id="Node000021" href="$_so_x_chorus_and_echo___audio_processor_8cpp.html" title="The SoXChorusAndEcho_AudioProcessor module provides boilerplate code for a plugin for the combined So..." alt="" coords="1283,233,1545,258"/>
+<area shape="poly" id="edge17_Node000007_Node000021" title=" " alt="" coords="2418,171,2058,190,1810,207,1558,228,1495,235,1494,230,1558,223,1810,201,2057,185,2418,166"/>
+<area shape="rect" id="Node000015" href="$_so_x_compander_support_8cpp.html" title="The SoXCompanderSupport body implements several internal compander classes for the compander algorith..." alt="" coords="1570,233,1751,258"/>
+<area shape="poly" id="edge18_Node000007_Node000015" title=" " alt="" coords="2418,171,2138,190,1952,206,1764,228,1718,235,1717,230,1763,223,1951,201,2138,185,2418,166"/>
+<area shape="rect" id="Node000022" href="$_so_x_compander___audio_effect_8cpp.html" title="The SoXCompander_AudioEffect body implements the SoX compand and mcompand audio effects; a simple com..." alt="" coords="1776,233,1985,258"/>
+<area shape="poly" id="edge19_Node000007_Node000022" title=" " alt="" coords="2418,175,1998,228,1950,235,1949,230,1998,223,2418,169"/>
+<area shape="rect" id="Node000023" href="$_so_x_compander___audio_processor_8cpp.html" title="The SoXCompander_AudioProcessor module provides boilerplate code for a plugin for the combined SoX co..." alt="" coords="2010,233,2245,258"/>
+<area shape="poly" id="edge20_Node000007_Node000023" title=" " alt="" coords="2419,181,2178,235,2177,230,2418,175"/>
+<area shape="rect" id="Node000024" href="$_so_x_effect_parameter_map_8cpp.html" title="The SoXEffectParameterMap body implements a map of string keys to associated values of SoXEffectParam..." alt="" coords="2269,233,2457,258"/>
+<area shape="poly" id="edge21_Node000007_Node000024" title=" " alt="" coords="2446,188,2381,235,2378,230,2443,183"/>
+<area shape="rect" id="Node000025" href="$_so_x_filter___audio_processor_8cpp.html" title="The SoXFilter_AudioProcessor module provides boilerplate code for a plugin for several SoX filter eff..." alt="" coords="2481,233,2680,258"/>
+<area shape="poly" id="edge23_Node000007_Node000025" title=" " alt="" coords="2500,183,2566,230,2563,235,2497,188"/>
+<area shape="rect" id="Node000026" href="$_so_x_flanger_phaser_and_tremolo___audio_effect_8cpp.html" title="The SoXFlangerPhaserAndTremolo_AudioEffect body implements the SoX flanger, phaser and tremolo modula..." alt="" coords="200,475,399,515"/>
+<area shape="poly" id="edge24_Node000007_Node000026" title=" " alt="" coords="2419,169,1948,174,1233,185,573,202,358,214,295,221,269,228,250,255,241,287,240,322,245,357,267,424,291,473,286,476,262,426,240,358,235,322,236,286,245,253,266,223,294,216,357,209,573,197,1233,179,1948,168,2419,164"/>
+<area shape="rect" id="Node000027" href="$_so_x_flanger_phaser_and_tremolo___audio_processor_8cpp.html" title="The SoXFlangerPhaserAndTremolo_AudioProcessor module provides boilerplate code for a plugin for the S..." alt="" coords="2704,225,2903,265"/>
+<area shape="poly" id="edge25_Node000007_Node000027" title=" " alt="" coords="2525,176,2724,223,2723,228,2523,181"/>
+<area shape="rect" id="Node000028" href="$_so_x_gain___audio_effect_8cpp.html" title="The SoXGain_AudioEffect body implements the SoX gain plugin amplifying or attenuating the input signa..." alt="" coords="2927,233,3098,258"/>
+<area shape="poly" id="edge26_Node000007_Node000028" title=" " alt="" coords="2525,170,2698,191,2914,223,2956,230,2955,235,2914,228,2698,197,2524,175"/>
+<area shape="rect" id="Node000029" href="$_so_x_gain___audio_processor_8cpp.html" title="The SoXGain_AudioProcessor module provides boilerplate code for a plugins for the SoX gain effect." alt="" coords="3123,233,3319,258"/>
+<area shape="poly" id="edge27_Node000007_Node000029" title=" " alt="" coords="2524,167,2777,187,3110,223,3159,230,3158,235,3110,228,2777,192,2524,172"/>
+<area shape="rect" id="Node000030" href="$_so_x_overdrive___audio_effect_8cpp.html" title="The SoXOverdrive_AudioEffect body implements the SoX overdrive plugin distorting an input signal with..." alt="" coords="3343,233,3538,258"/>
+<area shape="poly" id="edge28_Node000007_Node000030" title=" " alt="" coords="2524,165,2864,182,3095,199,3330,223,3380,230,3380,235,3330,228,3095,205,2864,188,2524,171"/>
+<area shape="rect" id="Node000031" href="$_so_x_overdrive___audio_processor_8cpp.html" title="The SoXOverdrive_AudioProcessor module provides boilerplate code for a plugin for the SoX overdrive e..." alt="" coords="3562,233,3783,258"/>
+<area shape="poly" id="edge29_Node000007_Node000031" title=" " alt="" coords="2525,164,2949,180,3246,197,3550,223,3606,230,3606,235,3550,228,3246,202,2949,185,2524,170"/>
+<area shape="rect" id="Node000032" href="$_so_x_reverb_support_8cpp.html" title="The SoXReverbSupport body implements support classes for the freeverb algorithm and provides a single..." alt="" coords="4325,401,4479,427"/>
+<area shape="poly" id="edge30_Node000007_Node000032" title=" " alt="" coords="2524,164,2857,169,3337,179,3780,197,3930,209,3977,215,4002,223,4019,237,4029,253,4038,287,4045,321,4054,337,4069,351,4087,361,4113,370,4179,385,4325,404,4324,409,4178,391,4112,376,4085,366,4066,355,4050,340,4040,323,4032,289,4024,256,4015,241,3999,228,3976,221,3929,214,3780,202,3337,185,2857,174,2524,169"/>
+<area shape="rect" id="Node000033" href="$_so_x_reverb___audio_effect_8cpp.html" title="The SoXReverb_AudioEffect body implements the SoX reverb plugin using the freeverb algorithm for room..." alt="" coords="4325,233,4508,258"/>
+<area shape="poly" id="edge31_Node000007_Node000033" title=" " alt="" coords="2524,164,3379,181,3913,199,4137,210,4306,223,4359,230,4358,235,4306,228,4137,215,3913,204,3379,187,2524,169"/>
+<area shape="rect" id="Node000034" href="$_so_x_reverb___audio_processor_8cpp.html" title="The SoXReverb_AudioProcessor module provides boilerplate code for a plugin for the SoX reverb effect." alt="" coords="5094,233,5302,258"/>
+<area shape="poly" id="edge32_Node000007_Node000034" title=" " alt="" coords="2524,164,3407,183,4081,201,4778,223,5094,236,5093,241,4778,228,4081,206,3407,189,2524,170"/>
+<area shape="rect" id="Node000035" href="$_time_and_duration_8cpp.html" title="The TimeAndDuration body implements simple functions for the types for time and duration." alt="" coords="3807,233,3954,258"/>
+<area shape="poly" id="edge33_Node000007_Node000035" title=" " alt="" coords="2525,165,3146,183,3521,200,3677,211,3796,223,3836,230,3835,235,3795,228,3677,216,3521,206,3146,188,2525,170"/>
+<area shape="rect" id="Node000036" href="$_wave_form_8cpp-inc.html" title="The WaveForm body implements common services for (LFO) wave forms." alt="" coords="279,233,410,258"/>
+<area shape="poly" id="edge34_Node000007_Node000036" title=" " alt="" coords="2418,170,1383,190,777,208,554,218,422,228,385,235,384,230,422,223,553,213,777,203,1383,185,2418,164"/>
+<area shape="rect" id="Node000009" href="$_audio_data_point_ring_buffer_vector_8h.html" title="The AudioDataPointRingBufferVector specification defines a two&#45;dimensional list of ring buffers for a..." alt="" coords="4079,313,4250,353"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="4167,279,4167,313,4162,313,4162,279"/>
+<area shape="poly" id="edge9_Node000009_Node000011" title=" " alt="" coords="4135,365,4093,403,4089,399,4132,361"/>
+<area shape="poly" id="edge35_Node000036_Node000037" title=" " alt="" coords="347,272,347,320,342,320,342,272"/>
+<area shape="poly" id="edge36_Node000037_Node000020" title=" " alt="" coords="406,334,4169,486,4168,491,406,340"/>
+<area shape="poly" id="edge37_Node000037_Node000026" title=" " alt="" coords="340,360,327,402,307,475,302,474,322,401,335,359"/>
+<area shape="rect" id="Node000038" href="$_wave_form_8cpp.html" title="The WaveForm body implements common services for (LFO) wave forms." alt="" coords="337,401,446,427"/>
+<area shape="poly" id="edge38_Node000037_Node000038" title=" " alt="" coords="361,357,387,400,382,402,356,359"/>
+<area shape="poly" id="edge41_Node000039_Node000004" title=" " alt="" coords="158,111,200,150,197,154,155,115"/>
+<area shape="poly" id="edge42_Node000039_Node000005" title=" " alt="" coords="113,116,99,133,89,153,80,196,81,232,75,232,75,195,83,151,95,130,109,112"/>
+<area shape="poly" id="edge44_Node000040_Node000033" title=" " alt="" coords="5226,180,5040,195,4896,204,4753,213,4572,228,4505,235,4505,230,4571,223,4753,207,4896,199,5040,190,5225,175"/>
+<area shape="poly" id="edge45_Node000040_Node000034" title=" " alt="" coords="5295,187,5218,235,5215,230,5292,182"/>
+<area shape="poly" id="edge60_Node000041_Node000003" title=" " alt="" coords="4333,97,1471,165,1471,160,4333,91"/>
+<area shape="poly" id="edge61_Node000041_Node000007" title=" " alt="" coords="4333,97,2511,165,2511,159,4333,92"/>
+<area shape="rect" id="Node000042" href="$_audio_data_point_ring_buffer_8cpp-inc.html" title="The AudioDataPointRingBuffer body implements a ring buffer for audio data points with left and right ..." alt="" coords="4373,152,4591,177"/>
+<area shape="poly" id="edge47_Node000041_Node000042" title=" " alt="" coords="4417,110,4469,150,4465,154,4414,114"/>
+<area shape="rect" id="Node000051" href="$_byte_list_8cpp.html" title="The ByteList body implements sequences of byte values with zero&#45;based arbitrary indexed access to pos..." alt="" coords="4765,152,4860,177"/>
+<area shape="poly" id="edge55_Node000041_Node000051" title=" " alt="" coords="4448,99,4753,149,4765,152,4764,157,4752,155,4447,104"/>
+<area shape="rect" id="Node000052" href="$_delay_line_8cpp-inc.html" title="The DelayLine body implements a ring buffer for audio data points with real&#45;valued index access and r..." alt="" coords="4615,152,4741,177"/>
+<area shape="poly" id="edge56_Node000041_Node000052" title=" " alt="" coords="4448,104,4632,149,4631,155,4446,109"/>
+<area shape="rect" id="Node000053" href="$_delay_line_list_8cpp-inc.html" title="The DelayLineList body implements a list of delay lines for audio data points (this is the effective ..." alt="" coords="4466,321,4613,346"/>
+<area shape="poly" id="edge58_Node000041_Node000053" title=" " alt="" coords="4333,95,4247,98,4161,111,4127,121,4106,135,4101,143,4100,153,4103,163,4112,176,4135,197,4158,211,4182,219,4207,222,4257,217,4309,203,4363,189,4416,182,4443,184,4469,190,4495,203,4521,224,4537,247,4544,274,4544,321,4538,321,4539,274,4532,249,4517,227,4493,208,4467,195,4442,189,4416,187,4364,194,4311,208,4258,222,4206,228,4181,224,4156,216,4132,201,4108,179,4098,166,4094,153,4096,142,4102,132,4125,116,4159,105,4247,93,4333,90"/>
+<area shape="rect" id="Node000054" href="$_my_string_8cpp.html" title="The String body implements a standard string type." alt="" coords="4885,152,4983,177"/>
+<area shape="poly" id="edge62_Node000041_Node000054" title=" " alt="" coords="4448,96,4637,118,4872,149,4885,151,4884,157,4871,155,4636,123,4447,101"/>
+<area shape="rect" id="Node000055" href="$_natural_list_8cpp.html" title="The NaturalList body implements lists of non&#45;negative integer values with zero&#45;based arbitrary indexe..." alt="" coords="5007,152,5117,177"/>
+<area shape="poly" id="edge63_Node000041_Node000055" title=" " alt="" coords="4447,94,4686,115,4996,149,5007,151,5007,156,4995,155,4686,120,4447,100"/>
+<area shape="rect" id="Node000056" href="$_real_8cpp.html" title="The Real body implements a value object type for real values." alt="" coords="5141,152,5215,177"/>
+<area shape="poly" id="edge64_Node000041_Node000056" title=" " alt="" coords="4447,92,4740,108,4934,125,5129,149,5141,152,5140,157,5128,155,4933,130,4740,113,4447,97"/>
+<area shape="rect" id="Node000057" href="$_string_list_8cpp.html" title="The StringList body implements lists of string values with zero&#45;based arbitrary indexed access to pos..." alt="" coords="4123,152,4225,177"/>
+<area shape="poly" id="edge65_Node000041_Node000057" title=" " alt="" coords="4343,111,4210,154,4208,149,4341,106"/>
+<area shape="rect" id="Node000058" href="$_string_util_8cpp.html" title="The StringUtil body implements several string routines not included in the standard C++ library (like..." alt="" coords="4249,152,4349,177"/>
+<area shape="poly" id="edge66_Node000041_Node000058" title=" " alt="" coords="4366,115,4316,154,4313,150,4363,110"/>
+<area shape="rect" id="Node000043" href="$_audio_data_point_ring_buffer_8h.html" title="The AudioDataPointRingBuffer specification defines a ring buffer for audio data points with left and ..." alt="" coords="4584,233,4767,258"/>
+<area shape="poly" id="edge48_Node000042_Node000043" title=" " alt="" coords="4524,180,4648,230,4646,235,4522,185"/>
+<area shape="poly" id="edge49_Node000043_Node000009" title=" " alt="" coords="4594,263,4250,320,4250,315,4593,258"/>
+<area shape="rect" id="Node000045" href="$_delay_line_8h.html" title="The DelayLine specification defines a ring buffer for audio data points with real&#45;valued index access..." alt="" coords="4637,321,4727,346"/>
+<area shape="poly" id="edge50_Node000043_Node000045" title=" " alt="" coords="4680,272,4684,320,4678,320,4675,272"/>
+<area shape="poly" id="edge54_Node000045_Node000032" title=" " alt="" coords="4636,353,4625,356,4449,404,4447,399,4624,351,4634,348"/>
+<area shape="rect" id="Node000047" href="$_delay_line_list_8h.html" title="The DelayLineList specification defines a list of delay lines for audio data points." alt="" coords="4504,401,4615,427"/>
+<area shape="poly" id="edge51_Node000045_Node000047" title=" " alt="" coords="4654,356,4579,403,4576,399,4651,351"/>
+<area shape="poly" id="edge52_Node000047_Node000020" title=" " alt="" coords="4507,433,4328,485,4326,479,4506,428"/>
+<area shape="poly" id="edge53_Node000047_Node000026" title=" " alt="" coords="4490,429,4202,443,3733,455,2487,475,399,495,399,490,2487,470,3732,450,4202,438,4490,424"/>
+<area shape="poly" id="edge57_Node000052_Node000045" title=" " alt="" coords="4729,181,4758,198,4780,224,4787,245,4780,267,4767,285,4750,301,4713,323,4710,318,4746,297,4763,282,4776,264,4782,245,4776,227,4754,202,4726,185"/>
+<area shape="poly" id="edge59_Node000053_Node000047" title=" " alt="" coords="4548,359,4559,400,4554,402,4543,360"/>
 </map>

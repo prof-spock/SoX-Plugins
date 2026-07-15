@@ -98,9 +98,9 @@ $(function(){initNavTree('_so_x_reverb_support_8cpp.html','',''); });
 <div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;numeric&gt;</code><br />
 <code>#include &quot;<a class="el" href="_so_x_reverb_support_8h_source.html">SoXReverbSupport.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_delay_line_8h_source.html">DelayLine.h</a>&quot;</code><br />
 <code>#include &quot;GenericTuple.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="_logging_8h_source.html">Logging.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_natural_list_8h_source.html">NaturalList.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_so_x_audio_helper_8h_source.html">SoXAudioHelper.h</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;"><span class="dynarrow"><span class="arrowhead closed"></span></span>Include dependency graph for SoXReverbSupport.cpp:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -112,9 +112,9 @@ $(function(){initNavTree('_so_x_reverb_support_8cpp.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:SoXPlugins_3A_3AEffects_3A_3ASoXReverb_3A_3A_5FAllpassFilter" id="r_SoXPlugins_3A_3AEffects_3A_3ASoXReverb_3A_3A_5FAllpassFilter"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html">SoXPlugins::Effects::SoXReverb::_AllpassFilter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html" title="An _AllpassFilter object is a simple allpass filter with an associated data point ring buffer as a de...">_AllpassFilter</a></code> object is a simple allpass filter with an associated data point ring buffer as a delay line.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html" title="An _AllpassFilter object is a simple allpass filter with an associated delay line.">_AllpassFilter</a></code> object is a simple allpass filter with an associated delay line.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___allpass_filter.html#details">More...</a><br /></td></tr>
 <tr class="memitem:SoXPlugins_3A_3AEffects_3A_3ASoXReverb_3A_3A_5FCombFilter" id="r_SoXPlugins_3A_3AEffects_3A_3ASoXReverb_3A_3A_5FCombFilter"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html">SoXPlugins::Effects::SoXReverb::_CombFilter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html" title="A _CombFilter object is a simple Schröder-Moorer comb filter with an associated data point ring buffe...">_CombFilter</a></code> object is a simple Schröder-Moorer comb filter with an associated data point ring buffer as a delay line and a single stored data point.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html" title="A _CombFilter object is a simple Schröder-Moorer comb filter with an associated delay line and a sing...">_CombFilter</a></code> object is a simple Schröder-Moorer comb filter with an associated delay line and a single stored data point.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___comb_filter.html#details">More...</a><br /></td></tr>
 <tr class="memitem:SoXPlugins_3A_3AEffects_3A_3ASoXReverb_3A_3A_5FReverbLine" id="r_SoXPlugins_3A_3AEffects_3A_3ASoXReverb_3A_3A_5FReverbLine"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html">SoXPlugins::Effects::SoXReverb::_ReverbLine</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html" title="A _ReverbLine object is a list of filters with delay lines forming a single reverb channel in Freever...">_ReverbLine</a></code> object is a list of filters with delay lines forming a single reverb channel in Freeverb.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_line.html#details">More...</a><br /></td></tr>
 <tr class="memitem:SoXPlugins_3A_3AEffects_3A_3ASoXReverb_3A_3A_5FReverbChannel" id="r_SoXPlugins_3A_3AEffects_3A_3ASoXReverb_3A_3A_5FReverbChannel"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_channel.html">SoXPlugins::Effects::SoXReverb::_ReverbChannel</a></td></tr>
@@ -122,9 +122,9 @@ Classes</h2></td></tr>
 <tr class="memitem:SoXPlugins_3A_3AEffects_3A_3ASoXReverb_3A_3A_5FReverbEffectParameterData" id="r_SoXPlugins_3A_3AEffects_3A_3ASoXReverb_3A_3A_5FReverbEffectParameterData"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html">SoXPlugins::Effects::SoXReverb::_ReverbEffectParameterData</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html" title="A _ReverbEffectParameterData object encapsulates the freeverb parameters like e.g....">_ReverbEffectParameterData</a></code> object encapsulates the freeverb parameters like e.g. feedback, stereo depth and room scale.  <a href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1___reverb_effect_parameter_data.html#details">More...</a><br /></td></tr>
 <tr class="memitem:_5FAllpassFilter" id="r__5FAllpassFilter"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___allpass_filter.html">_AllpassFilter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code><a class="el" href="struct___allpass_filter.html" title="An _AllpassFilter object is a simple allpass filter with an associated data point ring buffer as a de...">_AllpassFilter</a></code> object is a simple allpass filter with an associated data point ring buffer as a delay line.  <a href="struct___allpass_filter.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code><a class="el" href="struct___allpass_filter.html" title="An _AllpassFilter object is a simple allpass filter with an associated delay line.">_AllpassFilter</a></code> object is a simple allpass filter with an associated delay line.  <a href="struct___allpass_filter.html#details">More...</a><br /></td></tr>
 <tr class="memitem:_5FCombFilter" id="r__5FCombFilter"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___comb_filter.html">_CombFilter</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct___comb_filter.html" title="A _CombFilter object is a simple Schröder-Moorer comb filter with an associated data point ring buffe...">_CombFilter</a></code> object is a simple Schröder-Moorer comb filter with an associated data point ring buffer as a delay line and a single stored data point.  <a href="struct___comb_filter.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct___comb_filter.html" title="A _CombFilter object is a simple Schröder-Moorer comb filter with an associated delay line and a sing...">_CombFilter</a></code> object is a simple Schröder-Moorer comb filter with an associated delay line and a single stored data point.  <a href="struct___comb_filter.html#details">More...</a><br /></td></tr>
 <tr class="memitem:_5FReverbChannel" id="r__5FReverbChannel"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___reverb_channel.html">_ReverbChannel</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="struct___reverb_channel.html" title="A _ReverbChannel object processes a single stereo channel via either one or two reverb lines (dependi...">_ReverbChannel</a></code> object processes a single stereo channel via either one or two reverb lines (depending on whether stereo depth is greater than 0 or not); also there is a delay of the input data point via a channel delay line (when predelay is non-zero)  <a href="struct___reverb_channel.html#details">More...</a><br /></td></tr>
 <tr class="memitem:_5FReverbEffectParameterData" id="r__5FReverbEffectParameterData"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct___reverb_effect_parameter_data.html">_ReverbEffectParameterData</a></td></tr>
@@ -154,7 +154,7 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>SoXPlugins::Effects:
 <tr class="memdesc:af2209b5b23b313402c1444106ca57003"><td class="mdescLeft">&#160;</td><td class="mdescRight">a list of reverb channels <br /></td></tr>
 <tr class="memitem:a8a1335d82708ba40820b69bda61aefd9" id="r_a8a1335d82708ba40820b69bda61aefd9"><td class="memItemLeft" align="right" valign="top"><a id="a8a1335d82708ba40820b69bda61aefd9" name="a8a1335d82708ba40820b69bda61aefd9"></a>
 typedef <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><b>AudioDataPoint</b></td></tr>
-<tr class="memdesc:a8a1335d82708ba40820b69bda61aefd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code><a class="el" href="_audio_data_point_list_8h.html#a8a1335d82708ba40820b69bda61aefd9" title="An AudioDataPoint represents a single audio data point (a real value)">AudioDataPoint</a></code> represents a single audio data point (a real value) <br /></td></tr>
+<tr class="memdesc:a8a1335d82708ba40820b69bda61aefd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">An <code><a class="el" href="_audio_data_point_8cpp-inc.html#a8a1335d82708ba40820b69bda61aefd9" title="An AudioDataPoint represents a single audio data point (a real value)">AudioDataPoint</a></code> represents a single audio data point (a real value) <br /></td></tr>
 <tr class="memitem:ad4ae2a28ebf25ecb5899cdb82613f731" id="r_ad4ae2a28ebf25ecb5899cdb82613f731"><td class="memItemLeft" align="right" valign="top"><a id="ad4ae2a28ebf25ecb5899cdb82613f731" name="ad4ae2a28ebf25ecb5899cdb82613f731"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>_DataPointPair</b></td></tr>
 <tr class="memdesc:ad4ae2a28ebf25ecb5899cdb82613f731"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <code><a class="el" href="namespace_so_x_plugins_1_1_effects_1_1_so_x_reverb.html#ad4ae2a28ebf25ecb5899cdb82613f731" title="A _DataPointPair is a pair of audio data points.">_DataPointPair</a></code> is a pair of audio data points. <br /></td></tr>
@@ -167,12 +167,12 @@ typedef <a class="el" href="struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a45be72e93fd0b1e55beba7cd12d4678d" id="r_a45be72e93fd0b1e55beba7cd12d4678d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45be72e93fd0b1e55beba7cd12d4678d">_reverbLineDelayLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> isCreation, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> isCombFilter, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> index, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> dataPointRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> roomScale, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> stereoDepth)</td></tr>
-<tr class="memdesc:a45be72e93fd0b1e55beba7cd12d4678d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns length of filter delay line for given parameters; if <code>isCreation</code> is set, the maximum length for those parameters is returned.  <br /></td></tr>
-<tr class="memitem:aeb87faec339c5fb2503a099b6508e014" id="r_aeb87faec339c5fb2503a099b6508e014"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb87faec339c5fb2503a099b6508e014">_initialReverbLineDelayLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> isCombFilter, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> index, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> dataPointRate)</td></tr>
-<tr class="memdesc:aeb87faec339c5fb2503a099b6508e014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns initial filter delay line maximum length for the data point ring buffer for given parameters.  <br /></td></tr>
-<tr class="memitem:a62c229e249d54000356cd1d4588c92a0" id="r_a62c229e249d54000356cd1d4588c92a0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62c229e249d54000356cd1d4588c92a0">_adjustedReverbLineDelayLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> isCombFilter, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> index, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> dataPointRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> roomScale, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> stereoDepth)</td></tr>
-<tr class="memdesc:a62c229e249d54000356cd1d4588c92a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns adapted filter delay line length for the data point ring buffer for given parameters <code>isCombFilter</code>, <code>dataPointRate</code>, <code>roomScale</code> and <code>stereoDepth</code> to their effective length.  <br /></td></tr>
+<tr class="memitem:a970ca8b597b2fd4124751a338400da08" id="r_a970ca8b597b2fd4124751a338400da08"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a970ca8b597b2fd4124751a338400da08">_reverbLineDelayLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> isCreation, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> isCombFilter, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> index, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> dataPointRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> roomScale, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> stereoDepth)</td></tr>
+<tr class="memdesc:a970ca8b597b2fd4124751a338400da08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns length of filter delay line for given parameters; if <code>isCreation</code> is set, the maximum length for those parameters is returned.  <br /></td></tr>
+<tr class="memitem:aa8d10e8d94564ce83444093c1ef945c9" id="r_aa8d10e8d94564ce83444093c1ef945c9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8d10e8d94564ce83444093c1ef945c9">_initialReverbLineDelayLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> isCombFilter, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> index, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> dataPointRate)</td></tr>
+<tr class="memdesc:aa8d10e8d94564ce83444093c1ef945c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns initial filter delay line maximum length for the delay line for given parameters.  <br /></td></tr>
+<tr class="memitem:a1de5e9387694a4ed40232415f3d660ec" id="r_a1de5e9387694a4ed40232415f3d660ec"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1de5e9387694a4ed40232415f3d660ec">_adjustedReverbLineDelayLength</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> isCombFilter, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> index, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> dataPointRate, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> roomScale, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> stereoDepth)</td></tr>
+<tr class="memdesc:a1de5e9387694a4ed40232415f3d660ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns adapted filter delay line length for the data point ring buffer for given parameters <code>isCombFilter</code>, <code>dataPointRate</code>, <code>roomScale</code> and <code>stereoDepth</code> to their effective length.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -182,13 +182,13 @@ static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>_m
 <tr class="memitem:a7f60c93205cfd44f44a053ddce8bff39" id="r_a7f60c93205cfd44f44a053ddce8bff39"><td class="memItemLeft" align="right" valign="top"><a id="a7f60c93205cfd44f44a053ddce8bff39" name="a7f60c93205cfd44f44a053ddce8bff39"></a>
 static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>_lineCombFilterCount</b> = 8</td></tr>
 <tr class="memdesc:a7f60c93205cfd44f44a053ddce8bff39"><td class="mdescLeft">&#160;</td><td class="mdescRight">the number of freeverb comb filters <br /></td></tr>
-<tr class="memitem:a1279baa90e6c2b3accd978a4b27c7327" id="r_a1279baa90e6c2b3accd978a4b27c7327"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_natural_list.html">NaturalList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1279baa90e6c2b3accd978a4b27c7327">_combFilterLengthList</a></td></tr>
-<tr class="memdesc:a1279baa90e6c2b3accd978a4b27c7327"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of data point ring buffer lengths for comb filters in the Freeverb algorithm  <br /></td></tr>
+<tr class="memitem:a9456d4fdd59bf9603e6d2f7b7b25d946" id="r_a9456d4fdd59bf9603e6d2f7b7b25d946"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_real_list.html">RealList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9456d4fdd59bf9603e6d2f7b7b25d946">_combFilterLengthList</a></td></tr>
+<tr class="memdesc:a9456d4fdd59bf9603e6d2f7b7b25d946"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of delay line lengths for comb filters in the Freeverb algorithm  <br /></td></tr>
 <tr class="memitem:af9771cd7d7f30966da84ef84c207bcd4" id="r_af9771cd7d7f30966da84ef84c207bcd4"><td class="memItemLeft" align="right" valign="top"><a id="af9771cd7d7f30966da84ef84c207bcd4" name="af9771cd7d7f30966da84ef84c207bcd4"></a>
 static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>_lineAllpassFilterCount</b> = 4</td></tr>
 <tr class="memdesc:af9771cd7d7f30966da84ef84c207bcd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the number of freeverb allpass filters <br /></td></tr>
-<tr class="memitem:a20f9121328f581a6bd5d00a39af08448" id="r_a20f9121328f581a6bd5d00a39af08448"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_base_types_1_1_containers_1_1_natural_list.html">NaturalList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20f9121328f581a6bd5d00a39af08448">_allpassFilterLengthList</a></td></tr>
-<tr class="memdesc:a20f9121328f581a6bd5d00a39af08448"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of data point ring buffer lengths for allpass filters in the Freeverb algorithm  <br /></td></tr>
+<tr class="memitem:a67e00ec56c3fec6eadfd1f31c0b6a4fe" id="r_a67e00ec56c3fec6eadfd1f31c0b6a4fe"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="struct_real_list.html">RealList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67e00ec56c3fec6eadfd1f31c0b6a4fe">_allpassFilterLengthList</a></td></tr>
+<tr class="memdesc:a67e00ec56c3fec6eadfd1f31c0b6a4fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of delay line lengths for allpass filters in the Freeverb algorithm  <br /></td></tr>
 <tr class="memitem:aa754aabe6cab05e431210e1bd8d8b70c" id="r_aa754aabe6cab05e431210e1bd8d8b70c"><td class="memItemLeft" align="right" valign="top"><a id="aa754aabe6cab05e431210e1bd8d8b70c" name="aa754aabe6cab05e431210e1bd8d8b70c"></a>
 static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_stereoSpread</b> = 12.0</td></tr>
 <tr class="memdesc:aa754aabe6cab05e431210e1bd8d8b70c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the stereo spread in data points in freeverb <br /></td></tr>
@@ -219,8 +219,8 @@ static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html"
 <dl class="section author"><dt>Author</dt><dd>Dr. Thomas Tensi </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020-10 </dd></dl>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a62c229e249d54000356cd1d4588c92a0" name="a62c229e249d54000356cd1d4588c92a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62c229e249d54000356cd1d4588c92a0">&#9670;&#160;</a></span>_adjustedReverbLineDelayLength()</h2>
+<a id="a1de5e9387694a4ed40232415f3d660ec" name="a1de5e9387694a4ed40232415f3d660ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1de5e9387694a4ed40232415f3d660ec">&#9670;&#160;</a></span>_adjustedReverbLineDelayLength()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,7 +229,7 @@ static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html"
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> _adjustedReverbLineDelayLength </td>
+          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> _adjustedReverbLineDelayLength </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a></td>          <td class="paramname"><span class="paramname"><em>isCombFilter</em></span>, </td>
         </tr>
@@ -272,12 +272,12 @@ static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html"
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>adapted length of filter data point ring buffer </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>adapted length of filter delay line </dd></dl>
 
 </div>
 </div>
-<a id="aeb87faec339c5fb2503a099b6508e014" name="aeb87faec339c5fb2503a099b6508e014"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb87faec339c5fb2503a099b6508e014">&#9670;&#160;</a></span>_initialReverbLineDelayLength()</h2>
+<a id="aa8d10e8d94564ce83444093c1ef945c9" name="aa8d10e8d94564ce83444093c1ef945c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8d10e8d94564ce83444093c1ef945c9">&#9670;&#160;</a></span>_initialReverbLineDelayLength()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -286,7 +286,7 @@ static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html"
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> _initialReverbLineDelayLength </td>
+          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> _initialReverbLineDelayLength </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a></td>          <td class="paramname"><span class="paramname"><em>isCombFilter</em></span>, </td>
         </tr>
@@ -308,7 +308,7 @@ static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html"
 </table>
 </div><div class="memdoc">
 
-<p>Returns initial filter delay line maximum length for the data point ring buffer for given parameters. </p>
+<p>Returns initial filter delay line maximum length for the delay line for given parameters. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">isCombFilter</td><td>tells to adapt comb filter or allpass filter </td></tr>
@@ -321,8 +321,8 @@ static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html"
 
 </div>
 </div>
-<a id="a45be72e93fd0b1e55beba7cd12d4678d" name="a45be72e93fd0b1e55beba7cd12d4678d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45be72e93fd0b1e55beba7cd12d4678d">&#9670;&#160;</a></span>_reverbLineDelayLength()</h2>
+<a id="a970ca8b597b2fd4124751a338400da08" name="a970ca8b597b2fd4124751a338400da08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a970ca8b597b2fd4124751a338400da08">&#9670;&#160;</a></span>_reverbLineDelayLength()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -331,7 +331,7 @@ static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html"
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> _reverbLineDelayLength </td>
+          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> _reverbLineDelayLength </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a></td>          <td class="paramname"><span class="paramname"><em>isCreation</em></span>, </td>
         </tr>
@@ -380,13 +380,13 @@ static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html"
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>length of filter data point ring buffer </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>length of filter delay line </dd></dl>
 
 </div>
 </div>
 <a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
-<a id="a20f9121328f581a6bd5d00a39af08448" name="a20f9121328f581a6bd5d00a39af08448"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20f9121328f581a6bd5d00a39af08448">&#9670;&#160;</a></span>_allpassFilterLengthList</h2>
+<a id="a67e00ec56c3fec6eadfd1f31c0b6a4fe" name="a67e00ec56c3fec6eadfd1f31c0b6a4fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67e00ec56c3fec6eadfd1f31c0b6a4fe">&#9670;&#160;</a></span>_allpassFilterLengthList</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -395,7 +395,7 @@ static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html"
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="struct_base_types_1_1_containers_1_1_natural_list.html">NaturalList</a> _allpassFilterLengthList</td>
+          <td class="memname">const <a class="el" href="struct_real_list.html">RealList</a> _allpassFilterLengthList</td>
         </tr>
       </table>
   </td>
@@ -405,17 +405,17 @@ static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html"
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">    <a class="code hl_function" href="struct_natural_list.html#ae3b931a1d1249c61724c05a5c22151fe">NaturalList::fromList</a>({<a class="code hl_struct" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>{225}, <a class="code hl_struct" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>{341},</div>
-<div class="line">                           Natural{441}, Natural{556}})</div>
-<div class="ttc" id="astruct_base_types_1_1_primitives_1_1_natural_html"><div class="ttname"><a href="struct_base_types_1_1_primitives_1_1_natural.html">BaseTypes::Primitives::Natural</a></div><div class="ttdoc">An Natural object wraps a value of the associated primitive type in an object.</div><div class="ttdef"><b>Definition</b> Natural.h:40</div></div>
-<div class="ttc" id="astruct_natural_list_html_ae3b931a1d1249c61724c05a5c22151fe"><div class="ttname"><a href="struct_natural_list.html#ae3b931a1d1249c61724c05a5c22151fe">NaturalList::fromList</a></div><div class="ttdeci">static NaturalList fromList(IN initializer_list&lt; Natural &gt; list)</div><div class="ttdoc">Initializes list of naturals from an initializer list values.</div><div class="ttdef"><b>Definition</b> NaturalList.cpp:38</div></div>
+<div class="line">    <a class="code hl_function" href="struct_real_list.html#a00f8c5989da3c278c752ee4984146b9e">RealList::fromList</a>({<a class="code hl_struct" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>{225.0}, <a class="code hl_struct" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>{341.0},</div>
+<div class="line">                        Real{441.0}, Real{556.0}})</div>
+<div class="ttc" id="astruct_base_types_1_1_primitives_1_1_real_html"><div class="ttname"><a href="struct_base_types_1_1_primitives_1_1_real.html">BaseTypes::Primitives::Real</a></div><div class="ttdoc">An Real object wraps a value of some associated primitive float point type in an object.</div><div class="ttdef"><b>Definition</b> Real.h:34</div></div>
+<div class="ttc" id="astruct_real_list_html_a00f8c5989da3c278c752ee4984146b9e"><div class="ttname"><a href="struct_real_list.html#a00f8c5989da3c278c752ee4984146b9e">RealList::fromList</a></div><div class="ttdeci">static RealList fromList(IN initializer_list&lt; Real &gt; list)</div><div class="ttdoc">Initializes list of reals from initializer list of values.</div><div class="ttdef"><b>Definition</b> RealList.cpp:34</div></div>
 </div><!-- fragment -->
-<p>list of data point ring buffer lengths for allpass filters in the Freeverb algorithm </p>
+<p>list of delay line lengths for allpass filters in the Freeverb algorithm </p>
 
 </div>
 </div>
-<a id="a1279baa90e6c2b3accd978a4b27c7327" name="a1279baa90e6c2b3accd978a4b27c7327"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1279baa90e6c2b3accd978a4b27c7327">&#9670;&#160;</a></span>_combFilterLengthList</h2>
+<a id="a9456d4fdd59bf9603e6d2f7b7b25d946" name="a9456d4fdd59bf9603e6d2f7b7b25d946"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9456d4fdd59bf9603e6d2f7b7b25d946">&#9670;&#160;</a></span>_combFilterLengthList</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -424,7 +424,7 @@ static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html"
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="struct_base_types_1_1_containers_1_1_natural_list.html">NaturalList</a> _combFilterLengthList</td>
+          <td class="memname">const <a class="el" href="struct_real_list.html">RealList</a> _combFilterLengthList</td>
         </tr>
       </table>
   </td>
@@ -434,12 +434,12 @@ static const <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html"
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">    <a class="code hl_function" href="struct_natural_list.html#ae3b931a1d1249c61724c05a5c22151fe">NaturalList::fromList</a>({<a class="code hl_struct" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>{1116}, <a class="code hl_struct" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>{1188},</div>
-<div class="line">                           Natural{1277}, Natural{1356},</div>
-<div class="line">                           Natural{1422}, Natural{1491},</div>
-<div class="line">                           Natural{1557}, Natural{1617}})</div>
+<div class="line">    <a class="code hl_function" href="struct_real_list.html#a00f8c5989da3c278c752ee4984146b9e">RealList::fromList</a>({<a class="code hl_struct" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>{1116.0}, <a class="code hl_struct" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>{1188.0},</div>
+<div class="line">                        Real{1277.0}, Real{1356.0},</div>
+<div class="line">                        Real{1422.0}, Real{1491.0},</div>
+<div class="line">                        Real{1557.0}, Real{1617.0}})</div>
 </div><!-- fragment -->
-<p>list of data point ring buffer lengths for comb filters in the Freeverb algorithm </p>
+<p>list of delay line lengths for comb filters in the Freeverb algorithm </p>
 
 </div>
 </div>

@@ -82,19 +82,19 @@ SET soxCommands=biquad 0.3 -0.5 0.3 2 -0.4 0.1
 CALL :performTest noise biquad
 
 SET stageList=50 0.75 1.25 1 -s  75 0.5 2.5 2 -t  100 0.25 5 4 -s
-SET soxCommands=chorus 1.0 0.5 %stageList%
+SET soxCommands=chorus 1.0 0.4 %stageList%
 CALL :performTest notes chorus
 CALL :performTest onePulse chorus
 
 SET soxCommands=compand 0.02,0.15 -4:-60,0,-20 +4.5
 CALL :performTest noise compander
 
-SET soxCommands=echo 0.9 0.6 200 0.75 400 0.5 800 0.25
+SET soxCommands=echo 0.9 0.4 200 0.75 400 0.5 800 0.25
 CALL :performTest pulse echo
 CALL :performTest notes echo
 CALL :performTest noise echo
 
-SET soxCommands=echos 0.9 0.6 300 0.75 600 0.5 1200 0.25
+SET soxCommands=echos 0.9 0.4 300 0.75 600 0.5 1200 0.25
 CALL :performTest pulse echos
 CALL :performTest notes echos
 CALL :performTest noise echos

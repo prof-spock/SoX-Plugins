@@ -32,6 +32,16 @@ using STR = BaseModules::StringUtil;
 
 /*============================================================*/
 
+/** error message for non-positive length */
+static const String _ErrMsg_badLength =
+    "length must be positive";
+
+/** error message for empty wave table */
+static const String _ErrMsg_badWaveTable =     
+    "wave table must be non-empty";
+
+/*============================================================*/
+
 namespace Audio {
 
     /**
@@ -222,15 +232,15 @@ void _WaveFormDescriptor::set (Real length, WaveFormKind kind,
                    TOSTRING(length), waveFormKindToString(kind),
                    TOSTRING(minimumValue), TOSTRING(maximumValue),
                    TOSTRING(phase), TOSTRING(hasIntegerValues));
-    Assertion_pre(length > 0.0, "length must be positive");
+    Assertion_pre(length > 0.0, _ErrMsg_badLength);
 
     _WaveTablePtr buffer = (kind == WaveFormKind::sine
                             ? &_sineWaveTable
                             : &_triangleWaveTable);
-    const Natural interpolationDegree =
+    const Natural interpolationOrder =
         (kind == WaveFormKind::sine ? 3 : 1);
     const Natural waveTableLength = buffer->length();
-    Assertion_pre(waveTableLength > 0, "wave table must be non-empty");
+    Assertion_pre(waveTableLength > 0, _ErrMsg_badWaveTable);
 
     const Real firstPosition =
         Real::mod((Real) waveTableLength * phase / Real::twoPi,
@@ -247,8 +257,8 @@ void _WaveFormDescriptor::set (Real length, WaveFormKind kind,
     _waveTableLength  = waveTableLength;
     _buffer           = buffer;
 
-    _interpolator.set(*buffer,
-                      waveTableLength, true, interpolationDegree);
+    _interpolator.set(*buffer, waveTableLength, Real{waveTableLength},
+                      true, interpolationOrder);
 
     Logging_trace("<<");
 }
@@ -313,7 +323,7 @@ String _WaveFormDescriptor::asRawString() const
                     " increment = %3, stepcount = %4,"
                     " position = %5, minimumValue = %6,"
                     " maximumValue = %7, hasIntegerValues = %8,"
-                    " waveTableLength = %9, buffer = %10",
+                    " waveTableLength = %9, buffer = %A",
                     waveFormKindToString(_kind), TOSTRING(_firstPosition),
                     TOSTRING(_increment), TOSTRING(_stepCount),
                     TOSTRING(_position), TOSTRING(_minimumValue),
@@ -353,8 +363,8 @@ WaveForm::WaveForm ()
 {
     Logging_trace(">>");
 
-    _internalData = new _WaveFormDescriptor{};
-    set(1000.0, WaveFormKind::sine, 0.0, 1.0, 0.0, false);
+    _descriptor = new _WaveFormDescriptor{};
+    set(10.0, WaveFormKind::triangle, 0.0, 1.0, 0.0, false);
 
     Logging_trace1("<<: %1", toString());
 }
@@ -366,11 +376,11 @@ WaveForm::WaveForm (IN WaveForm& otherWaveForm)
 {
     Logging_trace1(">>: %1", otherWaveForm.toString());
 
-    _internalData = new _WaveFormDescriptor{};
+    _descriptor = new _WaveFormDescriptor{};
     _WaveFormDescriptor& descriptor =
-        TOREFERENCE<_WaveFormDescriptor>(_internalData);
+        TOREFERENCE<_WaveFormDescriptor>(_descriptor);
     const _WaveFormDescriptor& other =
-        TOREFERENCE<_WaveFormDescriptor>(otherWaveForm._internalData);
+        TOREFERENCE<_WaveFormDescriptor>(otherWaveForm._descriptor);
     descriptor = other;
     
     Logging_trace1("<<: %1", toString());
@@ -383,7 +393,7 @@ WaveForm::~WaveForm ()
 {
     Logging_trace(">>");
     _WaveFormDescriptor* descriptor =
-        (_WaveFormDescriptor*) _internalData;
+        (_WaveFormDescriptor*) _descriptor;
     delete descriptor;
     Logging_trace("<<");
 }
@@ -398,9 +408,9 @@ WaveForm& WaveForm::operator= (WaveForm& otherWaveForm)
     Logging_trace1(">>: %1", otherWaveForm.toString());
 
     _WaveFormDescriptor& descriptor =
-        TOREFERENCE<_WaveFormDescriptor>(_internalData);
+        TOREFERENCE<_WaveFormDescriptor>(_descriptor);
     const _WaveFormDescriptor& other =
-        TOREFERENCE<_WaveFormDescriptor>(otherWaveForm._internalData);
+        TOREFERENCE<_WaveFormDescriptor>(otherWaveForm._descriptor);
     descriptor = other;
     
     Logging_trace1("<<: %1", toString());
@@ -414,7 +424,7 @@ WaveForm& WaveForm::operator= (WaveForm& otherWaveForm)
 INLINE
 String WaveForm::toString() const {
     const _WaveFormDescriptor& descriptor =
-        TOREFERENCE<_WaveFormDescriptor>(_internalData);
+        TOREFERENCE<_WaveFormDescriptor>(_descriptor);
 
     String result = "WaveForm(" + descriptor.asRawString() + ")";
 
@@ -436,10 +446,10 @@ void WaveForm::set (Real length, WaveFormKind kind,
                    TOSTRING(length), waveFormKindToString(kind),
                    TOSTRING(minimumValue), TOSTRING(maximumValue),
                    TOSTRING(phase), TOSTRING(hasIntegerValues));
-    Assertion_pre(length > 0.0, "length must be positive");
+    Assertion_pre(length > 0.0, _ErrMsg_badLength);
 
     _WaveFormDescriptor& descriptor =
-        TOREFERENCE<_WaveFormDescriptor>(_internalData);
+        TOREFERENCE<_WaveFormDescriptor>(_descriptor);
     descriptor.set(length, kind, minimumValue, maximumValue,
                    phase, hasIntegerValues);
 
@@ -454,7 +464,7 @@ INLINE
 Real WaveForm::current () const
 {
     const _WaveFormDescriptor& descriptor =
-        TOREFERENCE<_WaveFormDescriptor>(_internalData);
+        TOREFERENCE<_WaveFormDescriptor>(_descriptor);
     return descriptor.current();
 }
 
@@ -464,7 +474,7 @@ INLINE
 WaveFormIteratorState WaveForm::state () const
 {
     const _WaveFormDescriptor& descriptor =
-        TOREFERENCE<_WaveFormDescriptor>(_internalData);
+        TOREFERENCE<_WaveFormDescriptor>(_descriptor);
     return descriptor._stepCount;
 }
 
@@ -476,7 +486,7 @@ INLINE
 void WaveForm::reset ()
 {
     _WaveFormDescriptor& descriptor =
-        TOREFERENCE<_WaveFormDescriptor>(_internalData);
+        TOREFERENCE<_WaveFormDescriptor>(_descriptor);
     descriptor.reset();
 }
 
@@ -486,7 +496,7 @@ INLINE
 void WaveForm::setState (WaveFormIteratorState state)
 {
     _WaveFormDescriptor& descriptor =
-        TOREFERENCE<_WaveFormDescriptor>(_internalData);
+        TOREFERENCE<_WaveFormDescriptor>(_descriptor);
     descriptor.setState(state);
 }
 
@@ -496,7 +506,7 @@ INLINE
 void WaveForm::advance ()
 {
     _WaveFormDescriptor& descriptor =
-        TOREFERENCE<_WaveFormDescriptor>(_internalData);
+        TOREFERENCE<_WaveFormDescriptor>(_descriptor);
     descriptor.advance();
 }
 
