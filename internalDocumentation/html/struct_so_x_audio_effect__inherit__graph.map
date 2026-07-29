@@ -1,17 +1,17 @@
 <map id="SoXAudioEffect" name="SoXAudioEffect">
-<area shape="rect" id="Node000001" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="707,5,895,591"/>
-<area shape="rect" id="Node000002" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html" title="A SoXChorusAndEcho_AudioEffect object models the SoX echo and echos audio effects; the difference bet..." alt="" coords="5,651,237,925"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="696,354,598,408,483,475,364,554,251,641,238,652,234,648,248,637,361,550,480,471,595,403,694,350"/>
-<area shape="rect" id="Node000003" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html" title="A SoXCompander_AudioEffect object models the SoX compand and mcompand audio effects; a simple compand..." alt="" coords="261,661,469,915"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="700,406,594,517,483,640,465,662,461,659,479,637,590,514,696,402"/>
-<area shape="rect" id="Node000004" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html" title="A SoXFilter_AudioEffect object models several SoX biquad filters and combines allpass,..." alt="" coords="493,661,672,915"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="704,523,642,661,637,659,699,520"/>
-<area shape="rect" id="Node000005" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html" title="A SoXFlangerPhaserAndTremolo_AudioEffect object models the SoX flanger, phaser and tremolo modulation..." alt="" coords="696,639,907,937"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="804,605,804,638,799,638,799,605"/>
-<area shape="rect" id="Node000006" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html" title="A SoXGain_AudioEffect object models the SoX gain plugin amplifying or attenuating the input signal by..." alt="" coords="931,678,1133,898"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="904,509,983,677,978,679,899,512"/>
-<area shape="rect" id="Node000007" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html" title="A SoXOverdrive_AudioEffect object models the SoX overdrive plugin amplifying the input signal by a ga..." alt="" coords="1158,661,1349,915"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="907,392,1025,506,1147,637,1165,659,1161,662,1143,640,1022,510,904,396"/>
-<area shape="rect" id="Node000008" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html" title="A SoXReverb_AudioEffect object models the SoX reverb plugin as a simple reverb implementing the Freev..." alt="" coords="1373,651,1552,925"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="909,344,1011,396,1129,463,1251,544,1309,589,1363,637,1375,649,1371,653,1360,641,1306,593,1248,548,1126,468,1009,400,907,349"/>
+<area shape="rect" id="Node000001" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="707,5,895,531"/>
+<area shape="rect" id="Node000002" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_chorus_and_echo_1_1_so_x_chorus_and_echo___audio_effect.html" title="A SoXChorusAndEcho_AudioEffect object models the SoX echo and echos audio effects; the difference bet..." alt="" coords="5,591,237,865"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="696,318,597,365,482,426,363,499,251,581,237,592,234,588,248,577,360,494,480,422,595,361,694,313"/>
+<area shape="rect" id="Node000003" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1_so_x_compander___audio_effect.html" title="A SoXCompander_AudioEffect object models the SoX compand and mcompand audio effects; a simple compand..." alt="" coords="261,601,469,855"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="699,365,593,467,483,580,464,602,460,599,479,577,589,463,695,361"/>
+<area shape="rect" id="Node000004" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_filter_1_1_so_x_filter___audio_effect.html" title="A SoXFilter_AudioEffect object models several SoX biquad filters and combines allpass,..." alt="" coords="493,601,672,855"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="704,479,646,601,641,599,699,477"/>
+<area shape="rect" id="Node000005" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_effect.html" title="A SoXFlangerPhaserAndTremolo_AudioEffect object models the SoX flanger, phaser and tremolo modulation..." alt="" coords="696,579,907,877"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="804,544,804,578,799,578,799,544"/>
+<area shape="rect" id="Node000006" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html" title="A SoXGain_AudioEffect object models the SoX gain plugin amplifying or attenuating the input signal by..." alt="" coords="931,618,1133,838"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="904,467,980,617,975,619,899,470"/>
+<area shape="rect" id="Node000007" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1_so_x_overdrive___audio_effect.html" title="A SoXOverdrive_AudioEffect object models the SoX overdrive plugin amplifying the input signal by a ga..." alt="" coords="1158,601,1349,855"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="908,352,1026,456,1088,515,1147,577,1166,599,1162,602,1143,580,1085,519,1023,460,904,356"/>
+<area shape="rect" id="Node000008" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_reverb_1_1_so_x_reverb___audio_effect.html" title="A SoXReverb_AudioEffect object models the SoX reverb plugin as a simple reverb implementing the Freev..." alt="" coords="1373,591,1552,865"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="909,308,1011,354,1130,414,1251,489,1309,531,1363,577,1375,589,1372,592,1360,581,1306,536,1248,493,1127,419,1009,358,907,313"/>
 </map>

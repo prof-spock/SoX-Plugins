@@ -1,5 +1,5 @@
 <map id="SoXGain_AudioEffect" name="SoXGain_AudioEffect">
-<area shape="rect" id="Node000001" title="A SoXGain_AudioEffect object models the SoX gain plugin amplifying or attenuating the input signal by..." alt="" coords="10,653,189,859"/>
-<area shape="rect" id="Node000002" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="5,5,193,605"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,619,102,653,97,653,97,619"/>
+<area shape="rect" id="Node000001" title="A SoXGain_AudioEffect object models the SoX gain plugin amplifying or attenuating the input signal by..." alt="" coords="10,593,189,799"/>
+<area shape="rect" id="Node000002" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="5,5,193,545"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,559,102,593,97,593,97,559"/>
 </map>

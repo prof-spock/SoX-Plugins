@@ -1012,12 +1012,19 @@ void SoXAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     _SoXAudioProcessorDescriptor& descriptor =
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
     SoXAudioEffect* effect = descriptor.effect;
+    const Real dataPointRate = getSampleRate();
 
+    /* check whether data point rate has changed; if yes, assume that
+       playback has started */
+    if (dataPointRate != effect->dataPointRate()) {
+        effect->prepareToPlay(dataPointRate);
+    }
+    
     const Natural channelCount = getTotalNumInputChannels();
     const Natural outputChannelCount = getTotalNumOutputChannels();
     const Natural dataPointCount{buffer.getNumSamples()};
     
-    /* In case we have more outputs than inputs, this code clears any
+    /* in case we have more outputs than inputs, this code clears any
        output channels that didn't contain input data */
     for (Natural i = channelCount;  i < outputChannelCount;  i++) {
         buffer.clear(int(i), 0, int(dataPointCount));

@@ -1019,14 +1019,16 @@ void SoXFilter_AudioEffect::prepareToPlay (IN Real dataPointRate)
 {
     Logging_trace1(">>: %1", TOSTRING(dataPointRate));
 
-    if (dataPointRate != _dataPointRate) {
+    if (dataPointRate == _dataPointRate) {
+        Logging_trace("--: no recalculation");
+    } else {
         _EffectDescriptor_FLTR& effectDescriptor =
             TOREFERENCE<_EffectDescriptor_FLTR>(_effectDescriptor);
-        _dataPointRate = dataPointRate;
-
         /* filter has to be recalculated */
-        effectDescriptor.updateSettings(_dataPointRate);
+        effectDescriptor.updateSettings(dataPointRate);
     }
+
+    _prepareToPlay(dataPointRate);
 
     Logging_trace("<<");
 }

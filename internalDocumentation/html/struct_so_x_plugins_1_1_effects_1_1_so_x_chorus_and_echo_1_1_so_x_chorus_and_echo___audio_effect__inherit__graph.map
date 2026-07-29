@@ -1,5 +1,5 @@
 <map id="SoXPlugins::Effects::SoXChorusAndEcho::SoXChorusAndEcho_AudioEffect" name="SoXPlugins::Effects::SoXChorusAndEcho::SoXChorusAndEcho_AudioEffect">
-<area shape="rect" id="Node000001" title="A SoXChorusAndEcho_AudioEffect object models the SoX echo and echos audio effects; the difference bet..." alt="" coords="5,653,237,928"/>
-<area shape="rect" id="Node000002" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="27,5,215,605"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,619,124,653,119,653,119,619"/>
+<area shape="rect" id="Node000001" title="A SoXChorusAndEcho_AudioEffect object models the SoX echo and echos audio effects; the difference bet..." alt="" coords="5,593,237,868"/>
+<area shape="rect" id="Node000002" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_audio_effect.html" title="A SoXAudioEffect object is a generic stereo audio effect from SoX encapsulating the common services o..." alt="" coords="27,5,215,545"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,559,124,593,119,593,119,559"/>
 </map>

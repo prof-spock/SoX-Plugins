@@ -1,5 +1,14 @@
 var NAVTREEINDEX11 =
 {
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html#ac012bffb850fdd0e3ebb6e6b68ee9ec1":[2,0,3,0,1,6,6],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html#afae8e133996bc70834a2b13d8270156f":[1,0,3,0,1,6,5],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___point2_d.html#afae8e133996bc70834a2b13d8270156f":[2,0,3,0,1,6,5],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html":[1,0,3,0,1,7],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html":[2,0,3,0,1,7],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#a1a7d0824b21072fae5ad33a2b8e71844":[1,0,3,0,1,7,8],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#a1a7d0824b21072fae5ad33a2b8e71844":[2,0,3,0,1,7,8],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#a2c6a541c5ab30ea3648b106fa62117f8":[1,0,3,0,1,7,1],
+"struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#a2c6a541c5ab30ea3648b106fa62117f8":[2,0,3,0,1,7,1],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#a3808c5b663590cbbed602f6bfd73c46e":[1,0,3,0,1,7,5],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#a3808c5b663590cbbed602f6bfd73c46e":[2,0,3,0,1,7,5],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___tf_segment.html#a7bbf1046e903712e8ea2caee1d0b593b":[1,0,3,0,1,7,7],
@@ -240,14 +249,5 @@ var NAVTREEINDEX11 =
 "struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_effect.html#aebf9f0dc62487e2a01e7cd7468f1e232":[2,0,3,0,4,1,5],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_processor.html":[1,0,3,0,4,2],
 "struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_processor.html":[2,0,3,0,4,2],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_processor.html#a9dd84a0e3bf3d44cfd014fab0234bfb3":[1,0,3,0,4,2,0],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_processor.html#a9dd84a0e3bf3d44cfd014fab0234bfb3":[2,0,3,0,4,2,0],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html":[1,0,3,0,5,0],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html":[2,0,3,0,5,0],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a04beb6537727cb27fa03ff2d9042955e":[1,0,3,0,5,0,7],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a04beb6537727cb27fa03ff2d9042955e":[2,0,3,0,5,0,7],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a08eb72362193d117f64bbeaff5c0d021":[1,0,3,0,5,0,1],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a08eb72362193d117f64bbeaff5c0d021":[2,0,3,0,5,0,1],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a0bc0bd5f8ee2b971df2e0f1c18c2b963":[1,0,3,0,5,0,2],
-"struct_so_x_plugins_1_1_effects_1_1_so_x_overdrive_1_1___effect_descriptor___o_d_r_v.html#a0bc0bd5f8ee2b971df2e0f1c18c2b963":[2,0,3,0,5,0,2]
+"struct_so_x_plugins_1_1_effects_1_1_so_x_gain_1_1_so_x_gain___audio_processor.html#a9dd84a0e3bf3d44cfd014fab0234bfb3":[1,0,3,0,4,2,0]
 };

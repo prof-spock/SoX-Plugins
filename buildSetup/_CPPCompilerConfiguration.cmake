@@ -39,9 +39,7 @@ FUNCTION(CMPCONF_addCompilerFlags targetName warningsAreEnabled)
 
     # definitions
     TARGET_COMPILE_DEFINITIONS(${targetName} PRIVATE
-                               ${CMPCONF_cppDefinitions_common})
-
-    TARGET_COMPILE_DEFINITIONS(${targetName} PRIVATE
+                               ${CMPCONF_cppDefinitions_common}
                                $<IF:$<CONFIG:Release>,NDEBUG,DEBUG>)
 
     IF(CMPCONF_debugVersionHasLogging STREQUAL "X")
@@ -274,8 +272,14 @@ ELSE()
              -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk)
     ENDIF()
 
+    IF(CMPCONF_compilerIsGCC)
+        SET(releaseOptimizationLevel 1)  # minor optimization
+    ELSE()
+        SET(releaseOptimizationLevel 3)  # extreme optimization
+    ENDIF()
+
     LIST(APPEND CMPCONF_cppOptions_release
-         -O3                  # extreme optimization
+         -O${releaseOptimizationLevel}
     )
 
     LIST(APPEND CMPCONF_cppOptions_relWithDebInfo
@@ -309,4 +313,6 @@ SET(CMAKE_MODULE_LINKER_FLAGS ${CMPCONF_cppLinkerOptions_common}
 SET(CMAKE_SHARED_LINKER_FLAGS ${CMPCONF_cppLinkerOptions_common}
     CACHE STRING "" FORCE)
 SET(CMAKE_STATIC_LINKER_FLAGS ${CMPCONF_cppLinkerOptions_common}
+    CACHE STRING "" FORCE)
+SET(CMAKE_CXX_FLAGS_RELEASE ""
     CACHE STRING "" FORCE)

@@ -95,6 +95,20 @@ String SoXAudioEffect::_effectDescriptorToString () const
 /* property queries   */
 /*--------------------*/
 
+Natural SoXAudioEffect::channelCount () const
+{
+    return _channelCount;
+}
+
+/*--------------------*/
+
+Real SoXAudioEffect::dataPointRate () const
+{
+    return _dataPointRate;
+}
+
+/*--------------------*/
+
 String SoXAudioEffect::name () const
 {
     return "???";
@@ -209,11 +223,20 @@ setValueChangeHandler (Object valueChangeHandler,
 /* event handling     */
 /*--------------------*/
 
-void SoXAudioEffect::prepareToPlay (IN Real dataPointRate)
+void SoXAudioEffect::_prepareToPlay (IN Real dataPointRate)
 {
     Logging_trace1(">>: dataPointRate = %1", TOSTRING(dataPointRate));
     _expectedNextTimePosition = Real::infinity;
     _dataPointRate            = dataPointRate;
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+void SoXAudioEffect::prepareToPlay (IN Real dataPointRate)
+{
+    Logging_trace1(">>: dataPointRate = %1", TOSTRING(dataPointRate));
+    _prepareToPlay(dataPointRate);
     Logging_trace("<<");
 }
 

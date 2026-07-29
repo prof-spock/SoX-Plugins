@@ -1104,9 +1104,8 @@ void SoXChorusAndEcho_AudioEffect::prepareToPlay (IN Real dataPointRate)
     if (dataPointRate == _dataPointRate) {
         Logging_trace("--: no recalculation");
     } else {
-        _dataPointRate = dataPointRate;
         /* echo stages have to be recalculated to change the lengths */
-        effectDescriptor.updateSettings(_dataPointRate, _channelCount,
+        effectDescriptor.updateSettings(dataPointRate, _channelCount,
                                         _currentTimePosition);
     }
 
@@ -1121,6 +1120,8 @@ void SoXChorusAndEcho_AudioEffect::prepareToPlay (IN Real dataPointRate)
         }
     }
 
+    _prepareToPlay(dataPointRate);
+    
     Logging_trace("<<");
 }
 

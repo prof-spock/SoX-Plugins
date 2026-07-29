@@ -161,7 +161,7 @@ namespace BaseTypes::GenericTypes {
             for (Natural i = 0;  i < length();  i++) {
                 result += (i == 0 ? "" : ", ");
 
-                if constexpr(elementToString == nullptr) {
+                if (elementToString == nullptr) {
                     result += "?" + std::to_string(int(i)) + "?";
                 } else {
                     const ElementType& element = at(i);

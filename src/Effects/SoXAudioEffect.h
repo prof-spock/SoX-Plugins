@@ -76,6 +76,24 @@ namespace SoXPlugins::Effects {
         /*--------------------*/
 
         /**
+         * Returns the number of channels for this effect
+         *
+         * @return count of channels of effect
+         */
+        Natural channelCount () const;
+
+        /*--------------------*/
+
+        /**
+         * Returns the data point rate for this effect
+         *
+         * @return data point rate of effect
+         */
+        Real dataPointRate () const;
+
+        /*--------------------*/
+
+        /**
          * Returns the name of this effect.
          *
          * @return  name of effect
@@ -250,6 +268,17 @@ namespace SoXPlugins::Effects {
              *          descriptor
              */
             virtual String _effectDescriptorToString () const = 0;
+
+            /*--------------------*/
+
+            /**
+             * Informs effect about upcoming processing with
+             * <C>dataPointRate</C> (default behavior).
+             *
+             * @param[in] dataPointRate  data point rate to be used for
+             *                           processing
+             */
+            void _prepareToPlay (IN Real dataPointRate);
 
             /*--------------------*/
 

@@ -563,10 +563,11 @@ void SoXCompander_AudioEffect::prepareToPlay (IN Real dataPointRate)
     } else {
         _EffectDescriptor_CMPD& effectDescriptor =
             TOREFERENCE<_EffectDescriptor_CMPD>(_effectDescriptor);
-        _dataPointRate = dataPointRate;
         /* compander has to be recalculated */
-        effectDescriptor.updateSettings(_dataPointRate, _channelCount);
+        effectDescriptor.updateSettings(dataPointRate, _channelCount);
     }
+
+    _prepareToPlay(dataPointRate);
 
     Logging_trace("<<");
 }

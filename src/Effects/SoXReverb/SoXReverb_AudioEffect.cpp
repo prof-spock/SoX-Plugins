@@ -377,6 +377,7 @@ void SoXReverb_AudioEffect::prepareToPlay (IN Real dataPointRate)
     _EffectDescriptor_RVRB& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_RVRB>(_effectDescriptor);
     effectDescriptor.updateSettings(dataPointRate, _channelCount);
+    _prepareToPlay(dataPointRate);
 
     Logging_trace("<<");
 }

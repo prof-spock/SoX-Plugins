@@ -114,6 +114,10 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~SoXAudioEffect</b
 <tr class="memdesc:a06fb80612a4ed2308cf768c5f7bac0a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor of an audio effect. <br /></td></tr>
 <tr class="memitem:aee18be5bb7048909c45831bcca78a8a3" id="r_aee18be5bb7048909c45831bcca78a8a3"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee18be5bb7048909c45831bcca78a8a3">toString</a> () const</td></tr>
 <tr class="memdesc:aee18be5bb7048909c45831bcca78a8a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns string representation of audio effect.  <br /></td></tr>
+<tr class="memitem:a4e0935f6c8f3d635675c51ee71ca6ce2" id="r_a4e0935f6c8f3d635675c51ee71ca6ce2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e0935f6c8f3d635675c51ee71ca6ce2">channelCount</a> () const</td></tr>
+<tr class="memdesc:a4e0935f6c8f3d635675c51ee71ca6ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of channels for this effect.  <br /></td></tr>
+<tr class="memitem:a3349f4a8185a88ffc1c1ec2ac0c2f7fb" id="r_a3349f4a8185a88ffc1c1ec2ac0c2f7fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3349f4a8185a88ffc1c1ec2ac0c2f7fb">dataPointRate</a> () const</td></tr>
+<tr class="memdesc:a3349f4a8185a88ffc1c1ec2ac0c2f7fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the data point rate for this effect.  <br /></td></tr>
 <tr class="memitem:a20683cbe412d425bc27b7bd3a8e63e0b" id="r_a20683cbe412d425bc27b7bd3a8e63e0b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20683cbe412d425bc27b7bd3a8e63e0b">name</a> () const</td></tr>
 <tr class="memdesc:a20683cbe412d425bc27b7bd3a8e63e0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of this effect.  <br /></td></tr>
 <tr class="memitem:ac5de158efc6c8a03e972aee36d25a9e5" id="r_ac5de158efc6c8a03e972aee36d25a9e5"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5de158efc6c8a03e972aee36d25a9e5">tailLength</a> () const</td></tr>
@@ -133,7 +137,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setDefaultVal
 <tr class="memdesc:adadb0c7a70e55bca080207e314b50b24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets parameters collectively to valid or invalid depending on <code>isValid</code>.  <br /></td></tr>
 <tr class="memitem:a48926a08b6451536c283d47c8bf624ff" id="r_a48926a08b6451536c283d47c8bf624ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48926a08b6451536c283d47c8bf624ff">setValueChangeHandler</a> (<a class="el" href="namespace_base_types_1_1_primitives.html#a46e9a7b488f5aadebd3b8413adf482f6">Object</a> valueChangeHandler, <a class="el" href="_so_x_audio_processor_8cpp.html#a37bb2b70b4a8f47ea8cd2f5e5e571970">ValueChangeNotification</a> notificationProc)</td></tr>
 <tr class="memdesc:a48926a08b6451536c283d47c8bf624ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets handler object and procedure for routing value changes to <code>parent</code> and <code>notificationProc</code>; if handler object is NULL, any value change is just processed locally, otherwise it is assumed that handler calls the local setValue function indirectly.  <br /></td></tr>
-<tr class="memitem:aaa79ff6ec5181ffe645228d31c2bb3c8" id="r_aaa79ff6ec5181ffe645228d31c2bb3c8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa79ff6ec5181ffe645228d31c2bb3c8">prepareToPlay</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> dataPointRate)</td></tr>
+<tr class="memitem:aaa79ff6ec5181ffe645228d31c2bb3c8" id="r_aaa79ff6ec5181ffe645228d31c2bb3c8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa79ff6ec5181ffe645228d31c2bb3c8">prepareToPlay</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> <a class="el" href="#a3349f4a8185a88ffc1c1ec2ac0c2f7fb">dataPointRate</a>)</td></tr>
 <tr class="memdesc:aaa79ff6ec5181ffe645228d31c2bb3c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Informs effect about upcoming processing with <code>dataPointRate</code>.  <br /></td></tr>
 <tr class="memitem:aa9b71710af346e9e4b980b281b60a452" id="r_aa9b71710af346e9e4b980b281b60a452"><td class="memItemLeft" align="right" valign="top"><a id="aa9b71710af346e9e4b980b281b60a452" name="aa9b71710af346e9e4b980b281b60a452"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>releaseResources</b> ()</td></tr>
@@ -147,6 +151,8 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:aac9c8bfc52b9844b76501c2e87eb00e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns data of audio effect as string without surrounding type information.  <br /></td></tr>
 <tr class="memitem:a007fb21403fd3ed4df0536841b5e793a" id="r_a007fb21403fd3ed4df0536841b5e793a"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a007fb21403fd3ed4df0536841b5e793a">_effectDescriptorToString</a> () const=0</td></tr>
 <tr class="memdesc:a007fb21403fd3ed4df0536841b5e793a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns effect descriptor data as string.  <br /></td></tr>
+<tr class="memitem:a0a6428388268ae2c48bc82f77f6e01bd" id="r_a0a6428388268ae2c48bc82f77f6e01bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a6428388268ae2c48bc82f77f6e01bd">_prepareToPlay</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> <a class="el" href="#a3349f4a8185a88ffc1c1ec2ac0c2f7fb">dataPointRate</a>)</td></tr>
+<tr class="memdesc:a0a6428388268ae2c48bc82f77f6e01bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Informs effect about upcoming processing with <code>dataPointRate</code> (default behavior).  <br /></td></tr>
 <tr class="memitem:af73cd02a0c0855883797e1fbae7ce7b0" id="r_af73cd02a0c0855883797e1fbae7ce7b0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespace_so_x_plugins_1_1_helpers.html#aeb3d6a9a55d48b23c0f515258422f716">SoXParameterValueChangeKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af73cd02a0c0855883797e1fbae7ce7b0">_setValueInternal</a> (<a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a> &amp;parameterName, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc">String</a> &amp;value, <a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_boolean.html">Boolean</a> recalculationIsForced)=0</td></tr>
 <tr class="memdesc:af73cd02a0c0855883797e1fbae7ce7b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets parameter named <code>parameterName</code> to <code>value</code>.  <br /></td></tr>
 </table><table class="memberdecls">
@@ -242,6 +248,39 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a0a6428388268ae2c48bc82f77f6e01bd" name="a0a6428388268ae2c48bc82f77f6e01bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a6428388268ae2c48bc82f77f6e01bd">&#9670;&#160;</a></span>_prepareToPlay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SoXAudioEffect::_prepareToPlay </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_global_macros_8h.html#ac2bbd6d630a06a980d9a92ddb9a49928">IN</a> <a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a></td>          <td class="paramname"><span class="paramname"><em>dataPointRate</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Informs effect about upcoming processing with <code>dataPointRate</code> (default behavior). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dataPointRate</td><td>data point rate to be used for processing </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="af73cd02a0c0855883797e1fbae7ce7b0" name="af73cd02a0c0855883797e1fbae7ce7b0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af73cd02a0c0855883797e1fbae7ce7b0">&#9670;&#160;</a></span>_setValueInternal()</h2>
 
@@ -285,6 +324,46 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>value change kind to be reported to observers </dd></dl>
+
+</div>
+</div>
+<a id="a4e0935f6c8f3d635675c51ee71ca6ce2" name="a4e0935f6c8f3d635675c51ee71ca6ce2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e0935f6c8f3d635675c51ee71ca6ce2">&#9670;&#160;</a></span>channelCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_natural.html">Natural</a> SoXAudioEffect::channelCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the number of channels for this effect. </p>
+<dl class="section return"><dt>Returns</dt><dd>count of channels of effect </dd></dl>
+
+</div>
+</div>
+<a id="a3349f4a8185a88ffc1c1ec2ac0c2f7fb" name="a3349f4a8185a88ffc1c1ec2ac0c2f7fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3349f4a8185a88ffc1c1ec2ac0c2f7fb">&#9670;&#160;</a></span>dataPointRate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_base_types_1_1_primitives_1_1_real.html">Real</a> SoXAudioEffect::dataPointRate </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the data point rate for this effect. </p>
+<dl class="section return"><dt>Returns</dt><dd>data point rate of effect </dd></dl>
 
 </div>
 </div>
