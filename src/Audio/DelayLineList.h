@@ -54,9 +54,9 @@ namespace Audio {
          * Initializes list of delay lines containing <C>count</C>
          * lines with intial length <C>delayLineLength</C>.
          *
-         * @param[in] count            initial count of delay lines
-         * @param[in] delayLineLength  initial length of each delay
-         *                             line
+         * @param[in] count               initial count of delay lines
+         * @param[in] delayLineLength     initial length of each delay
+         *                                line
          * @return  delay line list
          */
         DelayLineList (IN Natural count = 0,
@@ -72,6 +72,21 @@ namespace Audio {
          * @param[in]  elementLength  new length of each delay line
          */
         void setElementLength (IN Real elementLength);
+
+        /*--------------------*/
+
+        /**
+         * Sets interpolation parameters for all delay lines to
+         * <C>interpolationOrder</C> and <C>pointLocation</C>.
+         *
+         * @param[in] interpolationOrder  order of interpolation polynomial
+         * @param[in] pointLocation       position of reference point
+         *                                in interpolation interval
+         */
+        void setElementInterpolation
+                 (IN Natural interpolationOrder = 0,
+                  IN ListInterpolatorPointLocation pointLocation
+                         = ListInterpolatorPointLocation::atCenter);
 
         /*--------------------*/
 

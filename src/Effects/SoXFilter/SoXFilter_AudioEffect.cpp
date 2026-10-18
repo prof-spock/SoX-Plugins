@@ -53,52 +53,46 @@ static const StringList _yesNoList =
     StringList::makeBySplit("Yes/No", separator);
 
 /*....................*/
-/* FILTER KINDS       */
+/* EFFECT KINDS       */
 /*....................*/
 
 /** the name of the allpass filter */
-static const String filterKind_allpass    = "Allpass";
+static const String _EffectKind_allpass    = "Allpass";
 
 /** the name of the band filter */
-static const String filterKind_band       = "Band";
+static const String _EffectKind_band       = "Band";
 
 /** the name of the bass filter */
-static const String filterKind_bass       = "Bass";
+static const String _EffectKind_bass       = "Bass";
 
 /** the name of the bandpass filter */
-static const String filterKind_bandpass   = "BandPass";
+static const String _EffectKind_bandpass   = "BandPass";
 
 /** the name of the bandreject filter */
-static const String filterKind_bandreject = "BandReject";
+static const String _EffectKind_bandreject = "BandReject";
 
 /** the name of the biquad filter */
-static const String filterKind_biquad     = "Biquad";
+static const String _EffectKind_biquad     = "Biquad";
 
 /** the name of the equalizer filter */
-static const String filterKind_equalizer  = "Equalizer";
+static const String _EffectKind_equalizer  = "Equalizer";
 
 /** the name of the highpass filter */
-static const String filterKind_highpass   = "HighPass";
+static const String _EffectKind_highpass   = "HighPass";
 
 /** the name of the lowpass filter */
-static const String filterKind_lowpass    = "LowPass";
+static const String _EffectKind_lowpass    = "LowPass";
 
 /** the name of the treble filter */
-static const String filterKind_treble     = "Treble";
+static const String _EffectKind_treble     = "Treble";
 
 /** the list of all filter kinds as a string (in English language) */
-static const StringList _kindList =
-    StringList::fromList({filterKind_allpass, filterKind_band,
-                          filterKind_bass, filterKind_bandpass,
-                          filterKind_bandreject, filterKind_biquad,
-                          filterKind_equalizer, filterKind_highpass,
-                          filterKind_lowpass, filterKind_treble});
-
-/*--------------------*/
-
-/** the parameter names of a biquad filter */
-static const StringList _biquadFilterParameterNameList =
-    StringList::fromList({"b0", "b1", "b2", "a0", "a1", "a2"});
+static const StringList _effectKindList =
+    StringList::fromList({_EffectKind_allpass, _EffectKind_band,
+                          _EffectKind_bandpass, _EffectKind_bandreject,
+                          _EffectKind_bass, _EffectKind_biquad,
+                          _EffectKind_equalizer, _EffectKind_highpass,
+                          _EffectKind_lowpass, _EffectKind_treble});
 
 /*----------------------*/
 /* FORWARD DECLARATIONS */
@@ -108,11 +102,11 @@ static Real _alphaForBandwidth (IN Real dataPointRate,
                                 IN Real bandwidth,
                                 IN FilterBandwidthUnit unit,
                                 IN Real frequency,
-                                IN Real dBGain);
+                                IN Real gain);
 
 static String _bwUnitToString (IN FilterBandwidthUnit value);
 
-static StringList _unitCodeListForKind (IN String& filterKind);
+static StringList _unitCodeListForKind (IN String& effectKind);
 
 /*============================================================*/
 
@@ -129,7 +123,7 @@ namespace SoXPlugins::Effects::SoXFilter {
         /** the associated filter effect */
         SoXFilter_AudioEffect& effect;
 
-        /** the filter kind (as a string) */
+        /** the effect kind (as a string) */
         String kind;
 
         Real b0; /**< IIR filter coefficient b0 */
@@ -155,10 +149,7 @@ namespace SoXPlugins::Effects::SoXFilter {
         FilterBandwidthUnit bandwidthUnit;
 
         /** the filter gain */
-        Real dBGain;
-
-        /** the gain for an equalizer */
-        Real equGain;
+        Real gain;
 
         /** tells whether filter uses mode for unpitched audio (for a
          *  band filter) */
@@ -208,6 +199,274 @@ namespace SoXPlugins::Effects::SoXFilter {
 
 using SoXPlugins::Effects::SoXFilter::_EffectDescriptor_FLTR;
 
+/*--------------------*/
+/* support functions  */
+/*--------------------*/
+
+/**
+ * Updates coefficients for an allpass filter in <C>descriptor</C>
+ * using parameters <C>alpha</C> and <C>cw0</C>.
+ *
+ * @param [inout]  descriptor  filter descriptor to be updated
+ * @param [in]     alpha       alpha parameter
+ * @param [in]     cw0         cosine of wave length
+ */
+static void
+_updateSettingsForAllpassFilter (INOUT _EffectDescriptor_FLTR& descriptor,
+                                 IN Real alpha,
+                                 IN Real cw0)
+{
+    Logging_trace3(">>: descriptor = %1, alpha = %2, cw0 = %3",
+                   descriptor.toString(), TOSTRING(alpha), TOSTRING(cw0));
+
+    const Real b0 =  Real::one - alpha;
+    const Real b1 = -Real::two * cw0;
+    const Real b2 =  Real::one + alpha;
+
+    descriptor.b0 =  b0;
+    descriptor.b1 =  b1;
+    descriptor.b2 =  b2;
+    descriptor.a0 =  b2;
+    descriptor.a1 =  b1;
+    descriptor.a2 =  b0;
+
+    Logging_trace1("<<: descriptor = %1", descriptor.toString());
+}
+
+/*--------------------*/
+
+/**
+ * Updates coefficients for a band filter in <C>descriptor</C> using
+ * parameters <C>dataPointRate</C> and <C>cw0</C>.
+ *
+ * @param [inout]  descriptor     filter descriptor to be updated
+ * @param [in]     dataPointRate  data point rate
+ * @param [in]     cw0            cosine of wave length
+ */
+static void
+_updateSettingsForBandFilter (INOUT _EffectDescriptor_FLTR& descriptor,
+                              IN Real cw0,
+                              IN Real dataPointRate)
+{
+    Logging_trace3(">>: descriptor = %1, cw0 = %2, dataPointRate = %3Hz",
+                   descriptor.toString(), TOSTRING(cw0),
+                   TOSTRING(dataPointRate));
+
+    const Real four{4.0};
+    const Real frequency = descriptor.frequency;
+    const Real bandwidth = descriptor.bandwidth;
+    const FilterBandwidthUnit bandwidthUnit = descriptor.bandwidthUnit;
+
+    const Real bandwidthAsFrequency =
+             (bandwidthUnit == FilterBandwidthUnit::quality
+              ? frequency / bandwidth
+              : (bandwidthUnit == FilterBandwidthUnit::octaves
+                 ? Real{(frequency * Real::two.power(bandwidth - Real::one)
+                         * Real::two.power(-bandwidth / Real::two))}
+                 : bandwidth));
+
+    const Real a0 = Real::one;
+    const Real a2 = (-Real::twoPi * bandwidthAsFrequency / dataPointRate).exp();
+    const Real a1 = -four * a2 / (Real::one + a2) * cw0;
+    Real b0 = (Real::sqrt(Real::one - a1.sqr() / (four * a2))
+               * (Real::one - a2));
+    const Real b1 = Real::zero;
+    const Real b2 = Real::zero;
+
+    if (descriptor.usesUnpitchedAudioMode) {
+        const Real factor =
+            Real::sqrt(((Real::one + a2).sqr() - a1.sqr())
+                       * (Real::one - a2) / (Real::one + a2))
+            / b0;
+        b0 *= factor;
+    }
+
+    descriptor.b0 =  b0;
+    descriptor.b1 =  b1;
+    descriptor.b2 =  b2;
+    descriptor.a0 =  a0;
+    descriptor.a1 =  a1;
+    descriptor.a2 =  a2;
+
+    Logging_trace1("<<: descriptor = %1", descriptor.toString());
+}
+
+/*--------------------*/
+
+/**
+ * Updates coefficients for a band pass or band reject filter in
+ * <C>descriptor</C> using parameters <C>alpha</C>, <C>cw0</C> and
+ * <C>sw0</C>.
+ *
+ * @param [inout]  descriptor     filter descriptor to be updated
+ * @param [in]     alpha          alpha parameter
+ * @param [in]     cw0            cosine of wave length
+ * @param [in]     sw0            sine of wave length
+ */
+static void
+_updateSettingsForBpBrFilter (INOUT _EffectDescriptor_FLTR& descriptor,
+                              IN Real alpha,
+                              IN Real cw0,
+                              IN Real sw0)
+{
+    Logging_trace3(">>: descriptor = %1, cw0 = %2, dataPointRate = %3Hz",
+                   descriptor.toString(), TOSTRING(cw0),
+                   TOSTRING(dataPointRate));
+
+    Real b0, b1, b2;
+
+    if (descriptor.kind == _EffectKind_bandreject) {
+        b0 =  Real::one;
+        b1 = -cw0 * Real::two;
+        b2 =  Real::one;
+    } else {
+        b0 =  (descriptor.usesConstantSkirtGain ? sw0 / Real::two : alpha);
+        b1 =  Real::zero;
+        b2 = -b0;
+    }
+
+    descriptor.b0 =  b0;
+    descriptor.b1 =  b1;
+    descriptor.b2 =  b2;
+    descriptor.a0 =  alpha + Real::one;
+    descriptor.a1 = -cw0 * Real::two;
+    descriptor.a2 = -alpha + Real::one;
+
+    Logging_trace1("<<: descriptor = %1", descriptor.toString());
+}
+
+/*--------------------*/
+
+/**
+ * Updates coefficients for a bass or treble filter in
+ * <C>descriptor</C> using parameters <C>alpha</C> and <C>cw0</C>.
+ *
+ * @param [inout]  descriptor  filter descriptor to be updated
+ * @param [in]     alpha       alpha parameter
+ * @param [in]     cw0         cosine of wave length
+ */
+static void
+_updateSettingsForBsTrbFilter (INOUT _EffectDescriptor_FLTR& descriptor,
+                               IN Real alpha,
+                               IN Real cw0)
+{
+    Logging_trace3(">>: descriptor = %1, alpha = %2, cw0 = %3",
+                   descriptor.toString(), TOSTRING(alpha), TOSTRING(cw0));
+
+    const Real a = SoXAudioHelper::dBToLinear(descriptor.gain, 40.0);
+    const Real aP1 = a + Real::one;
+    const Real aM1 = a - Real::one;
+    const Real f = (descriptor.kind == _EffectKind_bass
+                    ? Real::one : -Real::one);
+    const Real sqrtAlphaA = Real::two * Real::sqrt(a) * alpha;
+    const Real twoF = Real::two * f;
+
+    descriptor.b0 =         a * ( aP1 - f * aM1 * cw0 + sqrtAlphaA );
+    descriptor.b1 =  twoF * a * ( aM1 - f * aP1 * cw0              );
+    descriptor.b2 =         a * ( aP1 - f * aM1 * cw0 - sqrtAlphaA );
+    descriptor.a0 =               aP1 + f * aM1 * cw0 + sqrtAlphaA;
+    descriptor.a1 = -twoF *     ( aM1 + f * aP1 * cw0              );
+    descriptor.a2 =               aP1 + f * aM1 * cw0 - sqrtAlphaA;
+
+    Logging_trace1("<<: descriptor = %1", descriptor.toString());
+}
+
+/*--------------------*/
+
+/**
+ * Updates coefficients for an equalizer filter in
+ * <C>descriptor</C> using parameters <C>alpha</C> and <C>cw0</C>.
+ *
+ * @param [inout]  descriptor  filter descriptor to be updated
+ * @param [in]     alpha       alpha parameter
+ * @param [in]     cw0         cosine of wave length
+ */
+static void
+_updateSettingsForEqualizerFilter (INOUT _EffectDescriptor_FLTR& descriptor,
+                                   IN Real alpha,
+                                   IN Real cw0)
+{
+    Logging_trace3(">>: descriptor = %1, alpha = %2, cw0 = %3",
+                   descriptor.toString(), TOSTRING(alpha), TOSTRING(cw0));
+
+    const Real ten{10.0};
+    const Real filterGain = ten.power(descriptor.gain / 40.0);
+    const Real b1 = -Real::two * cw0;
+
+    descriptor.b0 = Real::one + alpha * filterGain;
+    descriptor.b1 = b1;
+    descriptor.b2 = Real::one - alpha * filterGain;
+    descriptor.a0 = Real::one + alpha / filterGain;
+    descriptor.a1 = b1;
+    descriptor.a2 = Real::one - alpha / filterGain;
+
+    Logging_trace1("<<: descriptor = %1", descriptor.toString());
+}
+
+/*--------------------*/
+
+/**
+ * Updates coefficients for an equalizer filter in
+ * <C>descriptor</C> using parameters <C>alpha</C> and <C>cw0</C>.
+ *
+ * @param [inout]  descriptor  filter descriptor to be updated
+ * @param [in]     alpha       alpha parameter
+ * @param [in]     cw0         cosine of wave length
+ */
+static void
+_updateSettingsForHpLpFilter (INOUT _EffectDescriptor_FLTR& descriptor,
+                              IN Real alpha,
+                              IN Real cw0,
+                              IN Real w0)
+{
+    Logging_trace4(">>: descriptor = %1, alpha = %2, cw0 = %3, w0 = %4",
+                   descriptor.toString(), TOSTRING(alpha),
+                   TOSTRING(cw0), TOSTRING(w0));
+
+    Real factorA, factorB, factorC;
+
+    if (descriptor.isSinglePole) {
+        if (descriptor.kind == _EffectKind_highpass) {
+            factorA = -Real::one;
+            factorB = 0.5;
+            factorC = -Real::one;
+        } else {
+            factorA = Real::one;
+            factorB = Real::one;
+            factorC = Real::zero;
+        }
+
+        const Real a1 = -Real::exp(-w0);
+        const Real b0 = (Real::one + factorA * a1) * factorB;
+
+        descriptor.a0 = Real::one;
+        descriptor.a1 = a1;
+        descriptor.a2 = Real::zero;
+        descriptor.b0 = b0;
+        descriptor.b1 = factorC * b0;
+        descriptor.b2 = Real::zero;
+    } else {
+        if (descriptor.kind == _EffectKind_highpass) {
+            factorA = (Real::one + cw0);
+            factorB = -Real::one;
+        } else {
+            factorA = (Real::one - cw0);
+            factorB = Real::one;
+        }
+
+        const Real b0 = factorA / Real::two;
+
+        descriptor.b0 = b0;
+        descriptor.b1 = factorB * factorA;
+        descriptor.b2 = b0;
+        descriptor.a0 = Real::one + alpha;
+        descriptor.a1 = -Real::two * cw0;
+        descriptor.a2 = Real::one - alpha;
+    }
+
+    Logging_trace1("<<: descriptor = %1", descriptor.toString());
+}
+
 /*------------------------*/
 /* _EffectDescriptor_FLTR */
 /*------------------------*/
@@ -215,15 +474,14 @@ using SoXPlugins::Effects::SoXFilter::_EffectDescriptor_FLTR;
 _EffectDescriptor_FLTR::
 _EffectDescriptor_FLTR (INOUT SoXFilter_AudioEffect& effect)
     : effect(effect),
-      kind{filterKind_biquad},
+      kind{_EffectKind_biquad},
       b0{0.0}, b1{0.0}, b2{0.0}, a0{0.0}, a1{0.0}, a2{0.0},
       dataPointRingBufferVector{2, true, _biquadFilterOrder},
       filter{_biquadFilterOrder},
       frequency{1000.0},
       bandwidth{1.5},
       bandwidthUnit{FilterBandwidthUnit::slope},
-      dBGain{0.0},
-      equGain{0.0},
+      gain{0.0},
       usesUnpitchedAudioMode{false},
       usesConstantSkirtGain{false},
       isSinglePole{true}
@@ -241,13 +499,10 @@ void _EffectDescriptor_FLTR::updateSettings (IN Real dataPointRate)
 
     effect.setParameterValidity(false);
 
-    if (kind == filterKind_biquad) {
+    if (kind == _EffectKind_biquad) {
         /* we can just keep the direct coefficients, no
            calculation is necessary */
     } else {
-        const Real four{4.0};
-        const Real ten{10.0};
-
         const Real w0 = Real::twoPi * frequency / dataPointRate;
         const Real cw0 = Real::cos(w0);
         const Real sw0 = Real::sin(w0);
@@ -255,111 +510,22 @@ void _EffectDescriptor_FLTR::updateSettings (IN Real dataPointRate)
                                               bandwidth,
                                               bandwidthUnit,
                                               frequency,
-                                              dBGain);
-        const Real a = SoXAudioHelper::dBToLinear(dBGain, 40.0);
+                                              gain);
 
-        if (kind == filterKind_allpass) {
-            b0 =  Real::one - alpha;
-            b1 = -Real::two * cw0;
-            b2 =  Real::one + alpha;
-            a0 =  b2;
-            a1 =  b1;
-            a2 =  b0;
-        } else if (kind == filterKind_band) {
-            const Real bandwidthAsFrequency =
-                     (bandwidthUnit == FilterBandwidthUnit::quality
-                      ? frequency / bandwidth
-                      : (bandwidthUnit == FilterBandwidthUnit::octaves
-                         ? Real{(frequency * Real::two.power(bandwidth - Real::one)
-                                 * Real::two.power(-bandwidth / Real::two))}
-                         : bandwidth));
-            a2 = (-Real::twoPi * bandwidthAsFrequency / dataPointRate).exp();
-            a1 = -four * a2 / (Real::one + a2) * cw0;
-            a0 = Real::one;
-            b2 = Real::zero;
-            b1 = Real::zero;
-            b0 = Real::sqrt(Real::one - a1.sqr()
-                            / (four * a2)) * (Real::one - a2);
-
-            if (usesUnpitchedAudioMode) {
-                const Real factor =
-                    Real::sqrt(((Real::one + a2).sqr() - a1.sqr())
-                               * (Real::one - a2) / (Real::one + a2))
-                    / b0;
-                b0 *= factor;
-            }
-        } else if (kind == filterKind_bandpass
-                   || kind == filterKind_bandreject) {
-            if (kind == filterKind_bandreject) {
-                b0 =  Real::one;
-                b1 = -cw0 * Real::two;
-                b2 =  Real::one;
-            } else {
-                b0 =  (usesConstantSkirtGain ? sw0 / Real::two : alpha);
-                b1 =  Real::zero;
-                b2 = -b0;
-            }
-
-            a0 =  alpha + Real::one;
-            a1 = -cw0 * Real::two;
-            a2 = -alpha + Real::one;
-        } else if (kind == filterKind_bass || kind == filterKind_treble) {
-            const Real f = (kind == filterKind_bass ? Real::one : -Real::one);
-            const Real sqrtAlphaA = Real::two * Real::sqrt(a) * alpha;
-            const Real aP1 = a + Real::one;
-            const Real aM1 = a - Real::one;
-            const Real twoF = Real::two * f;
-            b0 =         a * ( (aP1) - f * (aM1) * cw0 + sqrtAlphaA );
-            b1 =  twoF * a * ( (aM1) - f * (aP1) * cw0              );
-            b2 =         a * ( (aP1) - f * (aM1) * cw0 - sqrtAlphaA );
-            a0 =               (aP1) + f * (aM1) * cw0 + sqrtAlphaA;
-            a1 = -twoF *     ( (aM1) + f * (aP1) * cw0              );
-            a2 =               (aP1) + f * (aM1) * cw0 - sqrtAlphaA;
-        } else if (kind == filterKind_equalizer) {
-            const Real filterGain = ten.power(equGain / 40.0);
-            b0 = Real::one + alpha * filterGain;
-            b1 = -Real::two * cw0;
-            b2 = Real::one - alpha * filterGain;
-            a0 = Real::one + alpha / filterGain;
-            a1 = b1;
-            a2 = Real::one - alpha / filterGain;
-        } else if (kind == filterKind_highpass
-                   || kind == filterKind_lowpass) {
-            Real factorA, factorB, factorC;
-
-            if (isSinglePole) {
-                if (kind == filterKind_highpass) {
-                    factorA = -Real::one;
-                    factorB = 0.5;
-                    factorC = -Real::one;
-                } else {
-                    factorA = Real::one;
-                    factorB = Real::one;
-                    factorC = Real::zero;
-                }
-
-                a0 = Real::one;
-                a1 = -Real::exp(-w0);
-                a2 = Real::zero;
-                b0  = (Real::one + factorA * a1) * factorB;
-                b1  = factorC * b0;
-                b2  = Real::zero;
-            } else {
-                if (kind == filterKind_highpass) {
-                    factorA = (Real::one + cw0);
-                    factorB = -Real::one;
-                } else {
-                    factorA = (Real::one - cw0);
-                    factorB = Real::one;
-                }
-
-                b0  = factorA / Real::two;
-                b1  = factorB * factorA;
-                b2  = b0;
-                a0 = Real::one + alpha;
-                a1 = -Real::two * cw0;
-                a2 = Real::one - alpha;
-            }
+        if (kind == _EffectKind_allpass) {
+            _updateSettingsForAllpassFilter(*this, alpha, cw0);
+        } else if (kind == _EffectKind_band) {
+            _updateSettingsForBandFilter(*this, cw0, dataPointRate);
+        } else if (kind == _EffectKind_bandpass
+                   || kind == _EffectKind_bandreject) {
+            _updateSettingsForBpBrFilter(*this, alpha, cw0, sw0);
+        } else if (kind == _EffectKind_bass || kind == _EffectKind_treble) {
+            _updateSettingsForBsTrbFilter(*this, alpha, cw0);
+        } else if (kind == _EffectKind_equalizer) {
+            _updateSettingsForEqualizerFilter(*this, alpha, cw0);
+        } else if (kind == _EffectKind_highpass
+                   || kind == _EffectKind_lowpass) {
+            _updateSettingsForHpLpFilter(*this, alpha, cw0, w0);
         }
     }
 
@@ -376,13 +542,13 @@ String _EffectDescriptor_FLTR::toString () const
     String st1 =
         STR::expand("kind = %1, frequency = %2Hz,"
                     " bandwidth = %3%4,"
-                    " dBGain = %5dB, equGain = %6dB,"
-                    " usesUnpitchedAudioMode = %7,"
-                    " usesConstantSkirtGain = %8,"
-                    " isSinglePole = %9",
+                    " gain = %5dB,"
+                    " usesUnpitchedAudioMode = %6,"
+                    " usesConstantSkirtGain = %7,"
+                    " isSinglePole = %8",
                     kind, TOSTRING(frequency),
                     TOSTRING(bandwidth), _bwUnitToString(bandwidthUnit),
-                    TOSTRING(dBGain), TOSTRING(equGain),
+                    TOSTRING(gain),
                     TOSTRING(usesUnpitchedAudioMode),
                     TOSTRING(usesConstantSkirtGain),
                     TOSTRING(isSinglePole));
@@ -410,31 +576,53 @@ String _EffectDescriptor_FLTR::toString () const
 /*....................*/
 
 /** the parameter name of the bandwidth parameter */
-static const String parameterName_bandwidth     = "Bandwidth";
+static const String parameterName_bandwidth      = "Bandwidth";
 
 /** the parameter name of the bandwidthUnit parameter */
-static const String parameterName_bandwidthUnit = "Bandwidth Unit";
+static const String parameterName_bandwidthUnit  = "Bandwidth Unit";
+
+/** the parameter names of a biquad filter */
+static const StringList _biquadFilterParameterNameList =
+    StringList::fromList({"b0", "b1", "b2", "a0", "a1", "a2"});
 
 /** the parameter name of the cstSkirtGain parameter */
-static const String parameterName_cstSkirtGain  = "Cst. Skirt Gain?";
+static const String parameterName_cstSkirtGain   = "Cst. Skirt Gain?";
 
-/** the parameter name of the dBGain parameter */
-static const String parameterName_dBGain        = "Gain [dB]";
+/** the parameter name of the effect kind parameter */
+static const String parameterName_effectKind     = "Effect Kind";
 
-/** the parameter name of the equGain parameter */
-static const String parameterName_equGain       = "Eq. Gain [dB]";
+/** the alias parameter name of the effect kind parameter */
+static const String parameterName__EffectKind_OLD = "Filter Kind";
+
+/** the alias parameter name of the eqGain parameter */
+static const String parameterName_eqGain_OLD     = "Eq. Gain [dB]";
 
 /** the parameter name of the frequency parameter */
-static const String parameterName_frequency     = "Frequency [Hz]";
+static const String parameterName_frequency      = "Frequency [Hz]";
 
-/** the parameter name of the kind parameter */
-static const String parameterName_kind          = "Filter Kind";
+/** the parameter name of the gain parameter */
+static const String parameterName_gain           = "Gain [dB]";
 
 /** the parameter name of the poleCount parameter */
-static const String parameterName_poleCount     = "Number of Poles";
+static const String parameterName_poleCount      = "Number of Poles";
 
 /** the parameter name of the unpitchedMode parameter */
-static const String parameterName_unpitchedMode = "Unpitched Mode?";
+static const String parameterName_unpitchedMode  = "Unpitched Mode?";
+
+/*--------------------*/
+
+/** the list of all parameter names */
+static StringList _allParameterNameList =
+    StringList::fromList(
+        {parameterName_bandwidth,
+         parameterName_bandwidthUnit,
+         parameterName_cstSkirtGain,
+         parameterName_frequency,
+         parameterName_gain,
+         parameterName_effectKind,
+         parameterName_poleCount,
+         parameterName_unpitchedMode,
+         "b0", "b1", "b2", "a0", "a1", "a2"});
 
 /*....................*/
 /* BANDWIDTH UNITS    */
@@ -476,11 +664,8 @@ static const String paramFlag_biquad        = "Q";
 /** the character flag for the cstSkirtGain parameter set in a dialog */
 static const String paramFlag_cstSkirtGain  = "C";
 
-/** the character flag for the dBGain parameter set in a dialog */
-static const String paramFlag_dBGain        = "D";
-
-/** the character flag for the equGain parameter set in a dialog */
-static const String paramFlag_equGain       = "E";
+/** the character flag for the gain parameter set in a dialog */
+static const String paramFlag_gain        = "D";
 
 /** the character flag for the frequency parameter set in a dialog */
 static const String paramFlag_frequency     = "F";
@@ -496,19 +681,19 @@ static const String paramFlag_unpitchedMode = "U";
  * letters: "Q" is the biquad parameter set, "F" the frequency widget,
  * "B" the bandwidth widgets, "U" for the unpitched audio mode etc.
 */
-static const Dictionary _filterKindToWidgetDataMap =
+static const Dictionary _effectKindToWidgetDataMap =
     Dictionary::fromList(
         StringList::makeBySplit(
-            filterKind_allpass    + comma + "F/B"   + comma +
-            filterKind_band       + comma + "U/F/B" + comma +
-            filterKind_bandpass   + comma + "C/F/B" + comma +
-            filterKind_bandreject + comma + "F/B"   + comma +
-            filterKind_bass       + comma + "D/F/B" + comma +
-            filterKind_biquad     + comma + "Q"     + comma +
-            filterKind_equalizer  + comma + "F/B/E" + comma +
-            filterKind_highpass   + comma + "P/F/B" + comma +
-            filterKind_lowpass    + comma + "P/F/B" + comma +
-            filterKind_treble     + comma + "D/F/B",
+            _EffectKind_allpass    + comma + "F/B"   + comma +
+            _EffectKind_band       + comma + "U/F/B" + comma +
+            _EffectKind_bandpass   + comma + "C/F/B" + comma +
+            _EffectKind_bandreject + comma + "F/B"   + comma +
+            _EffectKind_bass       + comma + "D/F/B" + comma +
+            _EffectKind_biquad     + comma + "Q"     + comma +
+            _EffectKind_equalizer  + comma + "F/B/D" + comma +
+            _EffectKind_highpass   + comma + "P/F/B" + comma +
+            _EffectKind_lowpass    + comma + "P/F/B" + comma +
+            _EffectKind_treble     + comma + "D/F/B",
             comma)
         );
 
@@ -537,18 +722,18 @@ static const String unitFlag_slope       = "s";
  * frequency ("f"), octave ("o"), quality ("q"), butterworth ("b") and
  * slope ("s")
  */
-static const Dictionary _filterKindToUnitMap =
+static const Dictionary _effectKindToUnitMap =
     Dictionary::fromList(
         StringList::makeBySplit(
-            filterKind_allpass    + comma + "f/o/q/b"   + comma +
-            filterKind_band       + comma + "f/o/q/b"   + comma +
-            filterKind_bandpass   + comma + "f/o/q/b"   + comma +
-            filterKind_bandreject + comma + "f/o/q/b"   + comma +
-            filterKind_bass       + comma + "f/o/q/b/s" + comma +
-            filterKind_equalizer  + comma + "f/o/q/b"   + comma +
-            filterKind_highpass   + comma + "f/o/q/b"   + comma +
-            filterKind_lowpass    + comma + "f/o/q/b"   + comma +
-            filterKind_treble     + comma + "f/o/q/b/s",
+            _EffectKind_allpass    + comma + "f/o/q/b"   + comma +
+            _EffectKind_band       + comma + "f/o/q/b"   + comma +
+            _EffectKind_bandpass   + comma + "f/o/q/b"   + comma +
+            _EffectKind_bandreject + comma + "f/o/q/b"   + comma +
+            _EffectKind_bass       + comma + "f/o/q/b/s" + comma +
+            _EffectKind_equalizer  + comma + "f/o/q/b"   + comma +
+            _EffectKind_highpass   + comma + "f/o/q/b"   + comma +
+            _EffectKind_lowpass    + comma + "f/o/q/b"   + comma +
+            _EffectKind_treble     + comma + "f/o/q/b/s",
             comma)
         );
 
@@ -570,7 +755,7 @@ static const Dictionary _unitCodeToTextMap =
 
 /**
  * Returns the alpha for given <C>bandwidth</C> measured as
- * <C>unit</C> with <C>frequency</C> and <C>dBgain</C>;
+ * <C>unit</C> with <C>frequency</C> and <C>gain</C>;
  * <C>dataPointRate</C> gives the current data point rate for the
  * effect.
  *
@@ -578,20 +763,20 @@ static const Dictionary _unitCodeToTextMap =
  * @param[in] bandWidth      the nominal of the filter band width
  * @param[in] unit           the unit of the filter band width
  * @param[in] frequency      the characteristic frequency of the filter
- * @param[in] dBGain         the filter gain (in decibels)
+ * @param[in] gain           the filter gain (in decibels)
  * @return  alpha parameter of filter
  */
 static Real _alphaForBandwidth (IN Real dataPointRate,
                                 IN Real bandwidth,
                                 IN FilterBandwidthUnit unit,
                                 IN Real frequency,
-                                IN Real dBGain)
+                                IN Real gain)
 {
     Logging_trace5(">>: dataPointRate = %1, bandwidth = %2%3,"
                    " frequency = %4, gain = %5",
                    TOSTRING(dataPointRate), TOSTRING(bandwidth),
                    _bwUnitToString(unit), TOSTRING(frequency),
-                   TOSTRING(dBGain));
+                   TOSTRING(gain));
 
     const Real w0 = Real::twoPi * frequency / dataPointRate;
     const Real sinW0 = w0.sin();
@@ -619,7 +804,7 @@ static Real _alphaForBandwidth (IN Real dataPointRate,
             break;
 
         case FilterBandwidthUnit::slope:
-            const Real a = SoXAudioHelper::dBToLinear(dBGain, 40.0);
+            const Real a = SoXAudioHelper::dBToLinear(gain, 40.0);
             alpha = (sinW0 / two
                      * Real::sqrt((a + one / a)
                                   * (one / bandwidth - one)
@@ -667,21 +852,21 @@ static String _bwUnitToString (IN FilterBandwidthUnit value)
 
 /**
  * Sets up bandwidth unit parameter in <C>parameterMap</C> for
- * filter kind given as <C>filterKind</C>.
+ * filter kind given as <C>effectKind</C>.
  *
  * @param[inout] parameterMap  effect parameter map of filter effect
  *                             to be updated for bandwidth unit parameter
- * @param[in] filterKind       kind of filter
+ * @param[in] effectKind       kind of filter
  */
 static void
 _setBandwidthUnitParameter(INOUT SoXEffectParameterMap& parameterMap,
-                           IN String& filterKind)
+                           IN String& effectKind)
 {
-    Logging_trace1(">>: %1", filterKind);
+    Logging_trace1(">>: %1", effectKind);
 
-    const StringList unitCodeList = _unitCodeListForKind(filterKind);
+    const StringList unitCodeList = _unitCodeListForKind(effectKind);
 
-    if (unitCodeList.size() > 0) {
+    if (!unitCodeList.empty()) {
         StringList bwUnitTextList;
 
         for (Natural i = 0;  i < unitCodeList.size();  i++) {
@@ -731,17 +916,20 @@ static FilterBandwidthUnit _toBWUnit (IN String& value)
 
 /**
  * Returns list of bandwidth unit codes for given
- * <C>filterKind</C>.
+ * <C>effectKind</C>.
  *
- * @param[in] filterKind  kind of filter to be used
+ * @param[in] effectKind  kind of filter to be used
  * @return  list of bandwidth unit codes for filter
  */
-static StringList _unitCodeListForKind (IN String& filterKind)
+static StringList _unitCodeListForKind (IN String& effectKind)
 {
-    Logging_trace1(">>: %1", filterKind);
+    Logging_trace1(">>: %1", effectKind);
     StringList result;
+    /* WORKAROUND: use longest unit code list for the value list,
+     * because the values cannot be changed later */
     const String unitCodeListAsString =
-        _filterKindToUnitMap.atWithDefault(filterKind, "");
+        // _effectKindToUnitMap.atWithDefault(effectKind, "");
+        "f/o/q/b/s";    
 
     if (STR::contains(unitCodeListAsString, separator)) {
         result = StringList::makeBySplit(unitCodeListAsString, separator);
@@ -749,64 +937,6 @@ static StringList _unitCodeListForKind (IN String& filterKind)
 
     Logging_trace1("<<: %1", result.toString());
     return result;
-}
-
-/*--------------------*/
-
-/**
- * Updates effect parameters in <C>parameterMap</C> for filter
- * kind given as <C>filterKind</C>.
- *
- * @param[inout] parameterMap  effect parameter map of filter
- *                             effect to be initialized
- * @param[in] filterKind       kind of filter to be set up
- */
-static void
-_updateParametersForKind (INOUT SoXEffectParameterMap& parameterMap,
-                          IN String& filterKind)
-{
-    Logging_trace1(">>: %1", filterKind);
-    Assertion_pre(_kindList.contains(filterKind),
-                  "filter kind must be known");
-
-    _setBandwidthUnitParameter(parameterMap, filterKind);
-
-    /* activate or deactivate parameter names */
-    Boolean isActive;
-    const String widgetDataString =
-        _filterKindToWidgetDataMap.at(filterKind);
-    const StringList widgetCodeList =
-        StringList::makeBySplit(widgetDataString, separator);
-
-    isActive = widgetCodeList.contains(paramFlag_biquad);
-
-    for (const String& parameterName : _biquadFilterParameterNameList) {
-        parameterMap.setActiveness(parameterName, isActive);
-    }
-
-    isActive = widgetCodeList.contains(paramFlag_poleCount);
-    parameterMap.setActiveness(parameterName_poleCount, isActive);
-
-    isActive = widgetCodeList.contains(paramFlag_dBGain);
-    parameterMap.setActiveness(parameterName_dBGain, isActive);
-
-    isActive = widgetCodeList.contains(paramFlag_unpitchedMode);
-    parameterMap.setActiveness(parameterName_unpitchedMode, isActive);
-
-    isActive = widgetCodeList.contains(paramFlag_cstSkirtGain);
-    parameterMap.setActiveness(parameterName_cstSkirtGain, isActive);
-
-    isActive = widgetCodeList.contains(paramFlag_frequency);
-    parameterMap.setActiveness(parameterName_frequency, isActive);
-
-    isActive = widgetCodeList.contains(paramFlag_bandwidth);
-    parameterMap.setActiveness(parameterName_bandwidth, isActive);
-    parameterMap.setActiveness(parameterName_bandwidthUnit, isActive);
-
-    isActive = widgetCodeList.contains(paramFlag_equGain);
-    parameterMap.setActiveness(parameterName_equGain, isActive);
-
-    Logging_trace1("<<: parameterMap = %1", parameterMap.toString());
 }
 
 /*============================================================*/
@@ -823,11 +953,11 @@ SoXFilter_AudioEffect::SoXFilter_AudioEffect ()
     _effectDescriptor = new _EffectDescriptor_FLTR(*this);
 
     /* calculate list of bandwidth units */
-    const String filterKind = _kindList[0];
-    const StringList unitCodeList = _unitCodeListForKind(filterKind);
+    const String effectKind = _effectKindList[0];
+    const StringList unitCodeList = _unitCodeListForKind(effectKind);
     StringList bwUnitTextList;
 
-    if (unitCodeList.size() == 0) {
+    if (unitCodeList.empty()) {
         bwUnitTextList.append(_bwUnitText_quality);
     } else {
         for (Natural i = 0; i < unitCodeList.size(); i++) {
@@ -840,31 +970,35 @@ SoXFilter_AudioEffect::SoXFilter_AudioEffect ()
     /* initialize parameters */
     _effectParameterMap.clear();
 
-    /* first of all define kind of filter and all parameter names */
-    _effectParameterMap.setKindAndValueEnum(parameterName_kind,
-                                            _kindList,
-                                            filterKind_allpass);
+    /* define kind of filter and all parameter names in the
+       presentation order */
+    _effectParameterMap.setKindAndValueEnum(parameterName_effectKind,
+                                            _effectKindList,
+                                            _EffectKind_allpass);
 
+    _effectParameterMap.setKindEnum(parameterName_cstSkirtGain,
+                                    _yesNoList);
+    _effectParameterMap.setKindEnum(parameterName_unpitchedMode,
+                                    _yesNoList);
+
+    _effectParameterMap.setKindReal(parameterName_gain,
+                                    -25.0, 25.0, 0.01);
+    _effectParameterMap.setKindReal(parameterName_poleCount,
+                                    1.0, 2.0, 1.0);
     _effectParameterMap.setKindReal(parameterName_frequency,
                                     10.0, 20000.0, 0.01);
     _effectParameterMap.setKindReal(parameterName_bandwidth,
                                     0.001, 20000.0, 0.001);
     _effectParameterMap.setKindEnum(parameterName_bandwidthUnit,
                                     bwUnitTextList);
-    _effectParameterMap.setKindReal(parameterName_dBGain,
-                                    -25.0, 25.0, 0.01);
-    _effectParameterMap.setKindEnum(parameterName_cstSkirtGain,
-                                    _yesNoList);
-    _effectParameterMap.setKindReal(parameterName_equGain,
-                                    -25.0, 25.0, 0.01);
-    _effectParameterMap.setKindReal(parameterName_poleCount,
-                                    1.0, 2.0, 1.0);
-    _effectParameterMap.setKindEnum(parameterName_unpitchedMode,
-                                    _yesNoList);
 
     for (const String& parameterName : _biquadFilterParameterNameList) {
         _effectParameterMap.setKindReal(parameterName, -10.0, 10.0, 1e-6);
     }
+
+    /* add alias parameter name */
+    _effectParameterMap.setAsAlias(parameterName__EffectKind_OLD,
+                                   parameterName_effectKind);
 
     Logging_trace1("<<: %1", toString());
 }
@@ -882,22 +1016,11 @@ SoXFilter_AudioEffect::~SoXFilter_AudioEffect ()
 /* string representation */
 /*-----------------------*/
 
-String SoXFilter_AudioEffect::toString () const
-{
-    String st = "SoXFilter_AudioEffect(";
-    st += _asRawString();
-    st += ")";
-
-    return st;
-}
-
-/*--------------------*/
-
 String SoXFilter_AudioEffect::_effectDescriptorToString () const
 {
     String result;
 
-    if (_effectDescriptor == NULL) {
+    if (_effectDescriptor == nullptr) {
         result = "NULL";
     } else {
         const _EffectDescriptor_FLTR& effectDescriptor =
@@ -921,31 +1044,26 @@ String SoXFilter_AudioEffect::name () const
 /* parameter change   */
 /*--------------------*/
 
-SoXParameterValueChangeKind
+SoXValueChangeKind
 SoXFilter_AudioEffect::_setValueInternal
-                           (IN String& parameterName,
-                            IN String& value,
-                            IN Boolean recalculationIsForced)
+                                (IN String& parameterName,
+                                 IN String& value)
 {
-    Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalculationIsForced = %3",
-                   parameterName, value,
-                   TOSTRING(recalculationIsForced));
+    Logging_trace2(">>: parameterName = %1, value = %2",
+                   parameterName, value);
 
     _EffectDescriptor_FLTR& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_FLTR>(_effectDescriptor);
-    SoXParameterValueChangeKind result =
-        SoXParameterValueChangeKind::parameterChange;
+    SoXValueChangeKind result = SoXValueChangeKind::parameterChange;
 
-    if (parameterName == parameterName_kind) {
-        _updateParametersForKind(_effectParameterMap, value);
+    if (parameterName == parameterName_effectKind) {
+        _updateEffectForKind(value);
         effectDescriptor.kind = _effectParameterMap.value(parameterName);
-        result = SoXParameterValueChangeKind::globalChange;
+        setDefaultValues();
+        result = SoXValueChangeKind::globalChange;
+    } else if (!_effectParameterMap.isActive(parameterName)) {
+        Logging_trace("--: parameter is inactive -> ignored");
     } else {
-        Boolean effectIsUpdated =
-            (recalculationIsForced
-             && _effectParameterMap.isActive(parameterName));
-
         if (parameterName == "a0") {
             effectDescriptor.a0 = STR::toReal(value);
         } else if (parameterName == "a1") {
@@ -964,10 +1082,8 @@ SoXFilter_AudioEffect::_setValueInternal
             effectDescriptor.bandwidthUnit = _toBWUnit(value);
         } else if (parameterName == parameterName_cstSkirtGain) {
             effectDescriptor.usesConstantSkirtGain = (value == "Yes");
-        } else if (parameterName == parameterName_dBGain) {
-            effectDescriptor.dBGain = STR::toReal(value);
-        } else if (parameterName == parameterName_equGain) {
-            effectDescriptor.equGain = STR::toReal(value);
+        } else if (parameterName == parameterName_gain) {
+            effectDescriptor.gain = STR::toReal(value);
         } else if (parameterName == parameterName_frequency) {
             effectDescriptor.frequency = STR::toReal(value);
         } else if (parameterName == parameterName_poleCount) {
@@ -975,13 +1091,9 @@ SoXFilter_AudioEffect::_setValueInternal
         } else if (parameterName == parameterName_unpitchedMode) {
             effectDescriptor.usesUnpitchedAudioMode = (value == "Yes");
         }
-
-        if (effectIsUpdated) {
-            effectDescriptor.updateSettings(_dataPointRate);
-        }
     }
 
-    Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));
+    Logging_trace1("<<: %1", SoXValueChangeKind_toString(result));
     return result;
 }
 
@@ -989,24 +1101,42 @@ SoXFilter_AudioEffect::_setValueInternal
 
 void SoXFilter_AudioEffect::setDefaultValues () {
     Logging_trace(">>");
-    const String filterKind =
-        _effectParameterMap.value(parameterName_kind);
 
-    setValueViaParent(parameterName_kind,          filterKind);
-    setValueViaParent(parameterName_bandwidth,     "1.0");
-    setValueViaParent(parameterName_bandwidthUnit, _bwUnitText_quality);
-    setValueViaParent(parameterName_dBGain,        "0.0");
-    setValueViaParent(parameterName_cstSkirtGain,  "No");
-    setValueViaParent(parameterName_equGain,       "0.0");
-    setValueViaParent(parameterName_poleCount,     "1.0");
-    setValueViaParent(parameterName_unpitchedMode, "No");
+    const String effectKind =
+        _effectParameterMap.value(parameterName_effectKind);
+    Dictionary dictionary;
 
-    for (const String& parameterName : _biquadFilterParameterNameList) {
-        setValueViaParent(parameterName, "0.0");
+    dictionary.set(parameterName_effectKind, effectKind);
+
+    dictionary.set(parameterName_bandwidth,     "1.0");
+    dictionary.set(parameterName_bandwidthUnit, _bwUnitText_quality);
+    dictionary.set(parameterName_cstSkirtGain,  "No");
+    dictionary.set(parameterName_gain,          "0.0");
+    dictionary.set(parameterName_frequency,     "1000.0");
+    dictionary.set(parameterName_poleCount,     "1.0");
+    dictionary.set(parameterName_unpitchedMode, "No");
+
+    if (effectKind == _EffectKind_bass
+        || effectKind == _EffectKind_treble) {
+        dictionary.set(parameterName_frequency,
+                       (effectKind == _EffectKind_bass ? "100" : "3000"));
+        dictionary.set(parameterName_bandwidth, "0.5");
+        dictionary.set(parameterName_bandwidthUnit, _bwUnitText_slope);
+    } else if (effectKind == _EffectKind_biquad) {
+        for (const String& parameterName : _biquadFilterParameterNameList) {
+            dictionary.set(parameterName, "0.0");
+        }
+
+        dictionary.set("a0", "1.0");
+    } else if (effectKind == _EffectKind_highpass
+               || effectKind == _EffectKind_lowpass) {
+        dictionary.set(parameterName_bandwidth, "0.707107");
+        dictionary.set(parameterName_bandwidthUnit, _bwUnitText_quality);
     }
 
-    setValueViaParent(parameterName_frequency, "1000.0", true);
-    _updateParametersForKind(_effectParameterMap, filterKind);
+    _updateEffectForKind(effectKind);
+    setValues(dictionary);
+    recalculate();
 
     Logging_trace1("<<: %1", toString());
 }
@@ -1015,62 +1145,110 @@ void SoXFilter_AudioEffect::setDefaultValues () {
 /* event handling     */
 /*--------------------*/
 
-void SoXFilter_AudioEffect::prepareToPlay (IN Real dataPointRate)
+void SoXFilter_AudioEffect::
+_applyForFrame (IN AudioDataPointList& inputDataPointList,
+                OUT AudioDataPointList& outputDataPointList)
 {
-    Logging_trace1(">>: %1", TOSTRING(dataPointRate));
+    Logging_trace(">>");
 
-    if (dataPointRate == _dataPointRate) {
-        Logging_trace("--: no recalculation");
-    } else {
-        _EffectDescriptor_FLTR& effectDescriptor =
-            TOREFERENCE<_EffectDescriptor_FLTR>(_effectDescriptor);
-        /* filter has to be recalculated */
-        effectDescriptor.updateSettings(dataPointRate);
+    _EffectDescriptor_FLTR& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_FLTR>(_effectDescriptor);
+    const IIRFilter& filter{effectDescriptor.filter};
+    AudioDataPointRingBufferVector& dataPointRingBufferVector =
+        effectDescriptor.dataPointRingBufferVector;
+
+    for (Natural channel = 0;  channel < _channelCount; channel++) {
+        AudioDataPointRingBuffer& inputDataPointRingBuffer =
+            dataPointRingBufferVector.at(channel, 0);
+        AudioDataPointRingBuffer& outputDataPointRingBuffer =
+            dataPointRingBufferVector.at(channel, 1);
+        const AudioDataPoint inputDataPoint = inputDataPointList[channel];
+        AudioDataPoint& outputDataPoint     = outputDataPointList[channel];
+        inputDataPointRingBuffer.shiftRight(inputDataPoint);
+        outputDataPointRingBuffer.shiftRight(0.0);
+        filter.apply(inputDataPointRingBuffer, outputDataPointRingBuffer);
+        outputDataPoint = outputDataPointRingBuffer.first();
     }
-
-    _prepareToPlay(dataPointRate);
 
     Logging_trace("<<");
 }
 
 /*--------------------*/
 
-void
-SoXFilter_AudioEffect::processBlock (IN Real timePosition,
-                                     INOUT AudioDataPointListVector& buffer)
+void SoXFilter_AudioEffect::
+_handleDataPointRateChange (IN Real dataPointRate)
 {
-    Logging_trace1(">>: time = %1", TOSTRING(timePosition));
+    Logging_trace1(">>: %1", TOSTRING(dataPointRate));
+    recalculate();
+    Logging_trace("<<");
+}
 
-    if (_parametersAreValid) {
-        SoXAudioEffect::processBlock(timePosition, buffer);
+/*--------------------*/
 
-        _EffectDescriptor_FLTR& effectDescriptor =
-            TOREFERENCE<_EffectDescriptor_FLTR>(_effectDescriptor);
-        const Natural dataPointCount = buffer[0].size();
-        IIRFilter& filter{effectDescriptor.filter};
-        AudioDataPointRingBufferVector& dataPointRingBufferVector =
-            effectDescriptor.dataPointRingBufferVector;
+void SoXFilter_AudioEffect::recalculate ()
+{
+    Logging_trace(">>");
 
-        for (Natural channel = 0;  channel < _channelCount;
-             channel++) {
-            AudioDataPointRingBuffer& inputDataPointRingBuffer =
-                dataPointRingBufferVector.at(channel, 0);
-            AudioDataPointRingBuffer& outputDataPointRingBuffer =
-                dataPointRingBufferVector.at(channel, 1);
-            const AudioDataPointList& inputList = buffer[channel];
-            AudioDataPointList& outputList = buffer[channel];
+    _EffectDescriptor_FLTR& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_FLTR>(_effectDescriptor);
+    effectDescriptor.updateSettings(_dataPointRate);
 
-            for (Natural i = 0;  i < dataPointCount;  i++) {
-                const AudioDataPoint inputDataPoint = inputList[i];
-                AudioDataPoint& outputDataPoint     = outputList[i];
-                inputDataPointRingBuffer.shiftRight(inputDataPoint);
-                outputDataPointRingBuffer.shiftRight(0.0);
-                filter.apply(inputDataPointRingBuffer,
-                             outputDataPointRingBuffer);
-                outputDataPoint = outputDataPointRingBuffer.first();
-            }
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+void SoXFilter_AudioEffect::_updateEffectForKind (IN String& effectKind)
+{
+    Logging_trace1(">>: %1", effectKind);
+    Assertion_pre(_effectKindList.contains(effectKind),
+                  "effect kind must be known");
+
+    SoXEffectParameterMap& parameterMap = _effectParameterMap;
+
+    _setBandwidthUnitParameter(parameterMap, effectKind);
+
+    /* activate or deactivate parameter names */
+    const String widgetDataString =
+        _effectKindToWidgetDataMap.at(effectKind);
+    const StringList widgetCodeList =
+        StringList::makeBySplit(widgetDataString, separator);
+
+    StringList activeParameterNameList;
+    activeParameterNameList.append(parameterName_effectKind);
+
+    for (String widgetCode : widgetCodeList) {
+        if (widgetCode == paramFlag_biquad) {
+            activeParameterNameList.append(_biquadFilterParameterNameList);
+        } else if (widgetCode == paramFlag_poleCount) {
+            activeParameterNameList.append(parameterName_poleCount);
+        } else if (widgetCode == paramFlag_gain) {
+            activeParameterNameList.append(parameterName_gain);
+        } else if (widgetCode == paramFlag_unpitchedMode) {
+            activeParameterNameList.append(parameterName_unpitchedMode);
+        } else if (widgetCode == paramFlag_cstSkirtGain) {
+            activeParameterNameList.append(parameterName_cstSkirtGain);
+        } else if (widgetCode == paramFlag_frequency) {
+            activeParameterNameList.append(parameterName_frequency);
+        } else if (widgetCode == paramFlag_bandwidth) {
+            activeParameterNameList.append(parameterName_bandwidth);
+            activeParameterNameList.append(parameterName_bandwidthUnit);
         }
     }
 
-    Logging_trace("<<");
+    /* set the parameter activeness by effect kind and update
+       ranges of parameters */
+    parameterMap.setActivenessForNameList(_allParameterNameList, false);
+    parameterMap.setActivenessForNameList(activeParameterNameList, true);
+    parameterMap.invalidateValues(activeParameterNameList);
+    parameterMap.setValue(parameterName_effectKind, effectKind);
+    parameterMap.reorderByNameList(activeParameterNameList);
+
+    if (effectKind == _EffectKind_equalizer) {
+        /* make old eq gain an alias for gain parameter */
+        parameterMap.setAsAlias(parameterName_eqGain_OLD,
+                                parameterName_gain);
+    }
+
+    Logging_trace1("<<: parameterMap = %1", parameterMap.toString());
 }

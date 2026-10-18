@@ -24,36 +24,44 @@
 /* IMPORTS */
 /*=========*/
 
-#include <cmath>
-#include <cstdio>
-
 #include "DelayLineList.h"
 #include "Logging.h"
 #include "Percentage.h"
 #include "WaveForm.h"
+#include "SoXEmulationHelper.h"
 #include "SoXFlangerPhaserAndTremolo_AudioEffect.h"
 
 /*--------------------*/
 
 using Audio::DelayLineList;
+using Audio::ValuePrecision;
 using Audio::WaveForm;
 using Audio::WaveFormKind;
 using Audio::WaveFormIteratorState;
 using BaseTypes::Primitives::Percentage;
 using SoXPlugins::Effects::SoXFlangerPhaserAndTremolo
       ::SoXFlangerPhaserAndTremolo_AudioEffect;
+using SoXPlugins::Helpers::SoXEmulationHelper;
 
 /** abbreviation for StringUtil */
 using STR = BaseModules::StringUtil;
+
+/** abbreviation for adaptValueForSoXEmulation */
+static const auto adaptValueForSoXEmulation =
+    SoXEmulationHelper::adaptValueForSoXEmulation;
+
+/** abbreviation for soxIsStrictlyEmulated */
+static const auto soxIsStrictlyEmulated =
+    SoXEmulationHelper::soxIsStrictlyEmulated;
 
 /*============================================================*/
 
 namespace SoXPlugins::Effects::SoXFlangerPhaserAndTremolo {
 
     /**
-     * An <C>_EffectDescriptor_PHTR</C> object is the internal
-     * implementation of a effect descriptor type for phaser and
-     * tremolo; both effects share parameters and have similar
+     * An <C>_EffectDescriptor_FPHT</C> object is the internal
+     * implementation of a effect descriptor type for flanger, phaser
+     * and tremolo; both effects share parameters and have similar
      * implementations: hence they can be combined.
      *
      * For the tremolo the phaser parameters are assumed as follows:
@@ -63,47 +71,60 @@ namespace SoXPlugins::Effects::SoXFlangerPhaserAndTremolo {
      * For the phaser the tremolo parameter depth is not relevant and
      * ignored.
      */
-    struct _EffectDescriptor_PHTR {
+    struct _EffectDescriptor_FPHT {
 
-        /** information whether effect is a phaser or tremolo */
-        Boolean isPhaser;
-
-        /** the modulation frequency in Hz */
-        Real frequency;
-
-        /** the modulation waveform kind */
-        WaveFormKind waveFormKind;
-
-        /** the waveform data */
-        WaveForm waveForm;
-
-        /** the time offset of this effect in seconds */
-        Real timeOffset;
-
-        /** the input gain as a factor */
-        Real inGain;
-
-        /** the output gain as a factor */
-        Real outGain;
+        /** information whether effect is a flanger, phaser or
+         * tremolo */
+        String kind;
 
         /** the delay in seconds */
         Real delay;
 
+        /** the modulation depth in seconds */
+        Real depth;
+
+        /** the modulation depth in percent */
+        Percentage depthInPct;
+
+        /** the modulation frequency in Hz */
+        Real frequency;
+
+        /** the input gain as a factor */
+        Real inGain;
+
+        /** the order of interpolation for the delay lines: 0 is no
+         * interpolation, 1 is linear and 2 is quadratic */
+        Natural interpolationOrder;
+
+        /** the output gain as a factor */
+        Real outGain;
+
+        /** the phase shift as a percent value */
+        Percentage phase;
+
         /** the regeneration as a factor */
         Real regeneration;
 
-        /** the modulation depth in percent */
-        Percentage depth;
+        /** the time offset of this effect in seconds */
+        Real timeOffset;
 
-        /** the order of interpolation for the ring buffer: 0 is no
-         * interpolation, 1 is linear and 2 is quadratic */
-        Natural interpolationOrder;
+        /** the waveform data */
+        WaveForm waveForm;
+
+        /** the modulation waveform kind */
+        WaveFormKind waveFormKind;
+
+        /** the output gain of the delayed signal as a percent value */
+        Percentage width;
+
+        /** the previous data point values for each channel */
+        AudioDataPointList previousDataPointList;
 
         /** the list of delay lines */
         DelayLineList delayLineList;
 
         /** the delay buffer length in data points */
-        Real delayLineLength;
+        Real delayLineLengthInDataPoints;
 
         /*--------------------*/
         /*--------------------*/
@@ -114,6 +135,47 @@ namespace SoXPlugins::Effects::SoXFlangerPhaserAndTremolo {
          * @return  string representation of effect
          */
         String toString () const;
+
+        /*--------------------*/
+
+        /**
+         * Applies the effect on multiple channel data from
+         * <C>inputDataPointList</C> and returns echo result in
+         * <C>outputDataPointList</C>.
+         *
+         * @param [in]  inputDataPointList   list of input data points
+         *                                   for each channel
+         * @param [out] outputDataPointList  list of output data points
+         *                                   for each channel
+         */
+        void applyForFrame (IN AudioDataPointList& inputDataPointList,
+                            OUT AudioDataPointList& outputDataPointList);
+
+
+        /*--------------------*/
+
+        /**
+         * Returns string representation of internal data.
+         *
+         * @return  string representation
+         */
+        String internalState () const;
+
+        /*--------------------*/
+
+        /**
+         * Recalculates derived parameters in current effect
+         * descriptor from parameter map and <C>channelCount</C>,
+         * <C>dataPointRate</C> and start time in <C>currentTime</C>.
+         *
+         * @param[in]  channelCount   the number of channels
+         * @param[in]  dataPointRate  new data point rate for effect
+         * @param[in]  currentTime    current time for effect
+         */
+        void updateSettings (IN Natural channelCount,
+                             IN Real dataPointRate,
+                             IN Real currentTime);
+
     };
 
 }
@@ -121,35 +183,361 @@ namespace SoXPlugins::Effects::SoXFlangerPhaserAndTremolo {
 /*============================================================*/
 
 using SoXPlugins::Effects::SoXFlangerPhaserAndTremolo
-          ::_EffectDescriptor_PHTR;
+          ::_EffectDescriptor_FPHT;
+
+/*--------------------------------*/
+/* support constants and routines */
+/*--------------------------------*/
+
+/** pi */
+static const Radians _pi = 3.141592653589793238462643383279;
+
+/** the standard starting phase of a flanger (270°) */
+static const Radians _defaultPhase_flanger = _pi * 1.5;
+
+/** the standard starting phase of a phaser (90°) */
+static const Radians _defaultPhase_phaser  = _pi / 2.0;
+
+/** the standard starting phase of a tremolo (90°) */
+static const Radians _defaultPhase_tremolo = _pi / 2.0;
+
+/** the maximum order of interpolation, quadratic */
+static const Natural _maximumInterpolationOrder = 2;
+
+/*....................*/
+/* EFFECT KINDS       */
+/*....................*/
+
+/** the name of the flanger effect */
+static const String _EffectKind_flanger = "Flanger";
+
+/** the name of the phaser effect */
+static const String _EffectKind_phaser  = "Phaser";
+
+/** the name of the tremolo effect */
+static const String _EffectKind_tremolo = "Tremolo";
+
+/** the name of the unknown effect */
+static const String _EffectKind_unknown = "Unknown";
 
 /*--------------------*/
+
+/**
+ * Calculates the effective width for a flanger effect from
+ * <C>width</C> and <C>regeneration</C>.
+ *
+ * @param[in] width         width of flanger effect
+ * @param[in] regeneration  regeneration factor
+ */
+INLINE
+static Real _effectiveWidthForFlanger (IN Percentage width,
+                                       IN Real regeneration)
+{
+    Real result = Percentage::toReal(width);
+    result /= (result + Real::one);
+    result *= Real::one - regeneration.abs();
+    return result;
+}
+
 /*--------------------*/
 
-String _EffectDescriptor_PHTR::toString () const
+/**
+ * Calculates flanger variables <C>phaseOffset</C>,
+ * <C>waveFormValue</C>, and <C>delayedDataPoint</C> for single
+ * calculation step of effect descriptor <C>descriptor</C> and given
+ * <C>channel</C> and <C>interpolationOrder</C> setting.  Phase offset
+ * depends on the channel and the descriptor phase variable and tells
+ * how much the offset in the wave form is shifted for the given
+ * channel.
+ *
+ * @param[inout]  descriptor          effect descriptor
+ * @param[in]     channel             channel to be processed
+ * @param[in]     interpolationOrder  order of interpolation
+ * @param[out]    phaseOffset         phase offset variable
+ * @param[out]    waveFormValue       selected wave form value
+ * @param[out]    delayedDataPoint    data point from delay line
+ */
+INLINE static
+void _calculateFlangerVariables (IN _EffectDescriptor_FPHT& descriptor,
+                                 IN Natural channel,
+                                 IN Natural interpolationOrder,
+                                 OUT Real& phaseOffset,
+                                 OUT Real& waveFormValue,
+                                 OUT Real& delayedDataPoint)
+{
+    Logging_trace1(">>: %1", TOSTRING(channel));
+
+    const DelayLine& delayLine = descriptor.delayLineList[channel];
+    const Real waveFormLength =
+        adaptValueForSoXEmulation(descriptor.waveForm.length(), 'r');
+    phaseOffset = descriptor.phase.of(waveFormLength * Real{channel});
+    phaseOffset = adaptValueForSoXEmulation(phaseOffset, 'r');
+    waveFormValue = descriptor.waveForm.at(phaseOffset);
+
+    if (interpolationOrder == 0) {
+        /* when interpolation is constant and SoX is strictly
+           emulated, round the wave form value, otherwise leave it as
+           is */
+        waveFormValue = adaptValueForSoXEmulation(waveFormValue, 'r');
+    }
+
+    delayedDataPoint = delayLine.at(waveFormValue);
+
+    Logging_trace3("<<: phaseOffset = %1, waveFormValue = %2,"
+                   " delayedDataPoint = %3",
+                   TOSTRING(phaseOffset), TOSTRING(waveFormValue),
+                   TOSTRING(delayedDataPoint));
+}
+    
+/*------------------------*/
+/* _EffectDescriptor_FPHT */
+/*------------------------*/
+
+String
+_EffectDescriptor_FPHT::toString () const
 {
     String st1 =
-        STR::expand("isPhaser = %1, frequency = %2Hz,"
-                    " timeOffset = %3s, inGain = %4,"
-                    " outGain = %5, delay = %6s,"
-                    " regeneration = %7, depth = %8%,"
-                    " interpolationOrder = %9",
-                    TOSTRING(isPhaser), TOSTRING(frequency),
-                    TOSTRING(timeOffset), TOSTRING(inGain),
-                    TOSTRING(outGain), TOSTRING(delay),
-                    TOSTRING(regeneration), TOSTRING(depth),
-                    TOSTRING(interpolationOrder));
+        STR::expand("kind = %1, delay = %2s,"
+                    " depth = %3%, depthInPct = %4%,"
+                    " frequency = %5Hz, inGain = %6,"
+                    " interpolationOrder = %7, outGain = %8,"
+                    " phase = %9",
+                    kind, TOSTRING(delay),
+                    TOSTRING(depth), TOSTRING(depthInPct),
+                    TOSTRING(frequency), TOSTRING(inGain),
+                    TOSTRING(interpolationOrder), TOSTRING(outGain),
+                    TOSTRING(phase));
 
     String st2 =
-        STR::expand(" waveForm = %1,"
-                    " delayLineLength = %2,"
-                    " delayLineList = %3",
-                    waveForm.toString(),
-                    TOSTRING(delayLineLength),
+        STR::expand(" regeneration = %1, timeOffset = %2,"
+                    " width = %3, waveForm = %4,"
+                    " previousDataPointList = %5,"
+                    " delayLineLengthInDataPoints = %6,"
+                    " delayLineList = %7",
+                    TOSTRING(regeneration), TOSTRING(timeOffset),
+                    TOSTRING(width), waveForm.toString(),
+                    previousDataPointList.toString(),
+                    TOSTRING(delayLineLengthInDataPoints),
                     delayLineList.toString());
 
-    return STR::expand("_EffectDescriptor_PHTR(%1, %2)",
+    return STR::expand("_EffectDescriptor_FPHT(%1, %2)",
                        st1, st2);
+}
+
+/*--------------------*/
+
+void
+_EffectDescriptor_FPHT::applyForFrame
+                            (IN AudioDataPointList& inputDataPointList,
+                             OUT AudioDataPointList& outputDataPointList)
+{
+    const Natural channelCount = inputDataPointList.length();
+    Real effectiveWidth;
+
+    if (kind == _EffectKind_flanger) {
+        effectiveWidth =
+            _effectiveWidthForFlanger(width, regeneration);
+    }
+    
+    for (Natural channel = 0;  channel < channelCount; channel++) {
+        const AudioDataPoint inputDataPoint = inputDataPointList[channel];
+        AudioDataPoint& outputDataPoint     = outputDataPointList[channel];
+        DelayLine& delayLine                = delayLineList[channel];
+
+        outputDataPoint = 0.0;
+
+        if (kind == _EffectKind_flanger) {
+            Real phaseOffset, waveFormValue;
+            AudioDataPoint delayedDataPoint, previousDataPoint;
+            _calculateFlangerVariables(*this, channel,
+                                       interpolationOrder,
+                                       phaseOffset, waveFormValue,
+                                       delayedDataPoint);
+            previousDataPoint = previousDataPointList.at(channel);
+            previousDataPointList.set(channel, delayedDataPoint);
+            const AudioDataPoint newDelayedDataPoint =
+                inputDataPoint + previousDataPoint * regeneration;
+            delayLine.advance(newDelayedDataPoint);
+            outputDataPoint =
+                inputDataPoint * inGain + delayedDataPoint * effectiveWidth;
+        } else if (kind == _EffectKind_phaser) {
+            outputDataPoint = inputDataPoint * inGain;
+
+            if (delayLineLengthInDataPoints > 0.0) {
+                Real waveFormValue = waveForm.current();
+                waveFormValue = adaptValueForSoXEmulation(waveFormValue, 'r');
+                outputDataPoint +=
+                    delayLine.at(waveFormValue) * regeneration;
+                delayLine.advance(outputDataPoint);
+            }
+
+            outputDataPoint *= outGain;
+        } else if (kind == _EffectKind_tremolo) {
+            const Real factor = waveForm.current();
+            outputDataPoint = inputDataPoint * factor;
+        }
+
+    }
+
+    waveForm.advance();
+}
+
+/*--------------------*/
+
+String _EffectDescriptor_FPHT::internalState () const
+{
+    const Natural channelCount = previousDataPointList.length();
+    String st = STR::expand("effectKind = %1", kind);
+
+    if (kind == _EffectKind_tremolo) {
+        RealList factorList{channelCount};
+
+        for (Natural channel = 0;  channel < channelCount;  channel++) {
+            const Real factor = waveForm.current();
+            factorList.set(channel, factor);
+        }
+        
+        st += STR::expand(", factors = %1", factorList.toString(false));
+    } else if (kind == _EffectKind_phaser) {
+        RealList channelDataPointList{channelCount};
+        Real waveFormValue = waveForm.current();
+        waveFormValue = adaptValueForSoXEmulation(waveFormValue, 'r');
+
+        for (Natural channel = 0;  channel < channelCount;  channel++) {
+            const DelayLine delayLine = delayLineList.at(channel);
+            Real channelDataPoint =
+                delayLine.at(waveFormValue) * regeneration;
+            channelDataPointList.set(channel, channelDataPoint);
+        }
+
+        st += STR::expand(", channelDataPoints = %1",
+                          channelDataPointList.toString(false));
+    } else if (kind == _EffectKind_flanger) {
+        RealList delayedDataPointList{channelCount};
+        RealList newDataPointList{channelCount};
+        RealList phaseOffsetList{channelCount};
+        RealList waveFormValueList{channelCount};
+
+        const Real effectiveWidth =
+            _effectiveWidthForFlanger(width, regeneration);
+
+        for (Natural channel = 0;  channel < channelCount;  channel++) {
+            Real phaseOffset, waveFormValue;
+            AudioDataPoint delayedDataPoint, newDataPoint;
+            _calculateFlangerVariables(*this, channel,
+                                       interpolationOrder,
+                                       phaseOffset, waveFormValue,
+                                       delayedDataPoint);
+            newDataPoint = previousDataPointList[channel] * regeneration;
+            delayedDataPointList.set(channel, delayedDataPoint);
+            newDataPointList.set(channel, newDataPoint);
+            phaseOffsetList.set(channel, phaseOffset);
+            waveFormValueList.set(channel, waveFormValue);
+        }
+        
+        st += STR::expand(", effectiveWidth = %1", TOSTRING(effectiveWidth));
+        st += STR::expand(", previousDataPoints = %1",
+                          previousDataPointList.toString(false));
+        st += STR::expand(", phaseOffsets = %1",
+                          phaseOffsetList.toString(false));
+        st += STR::expand(", waveFormValues = %1",
+                          waveFormValueList.toString(false));
+        st += STR::expand(", delayedDataPoints = %1",
+                          delayedDataPointList.toString(false));
+        st += STR::expand(", newDataPointIncrements = %1",
+                          newDataPointList.toString(false));
+    }
+
+    return st;
+}
+
+/*--------------------*/
+
+void _EffectDescriptor_FPHT::updateSettings (IN Natural channelCount,
+                                             IN Real dataPointRate,
+                                             IN Real currentTime)
+{
+    Logging_trace3(">>: channelCount = %1, dataPointRate = %2,"
+                   " currentTime = %3",
+                   TOSTRING(channelCount), TOSTRING(dataPointRate),
+                   TOSTRING(currentTime));
+
+    const Real waveFormLength = dataPointRate / frequency;
+    Radians defaultPhase;
+    Real minimumModulationValue;
+    Real maximumModulationValue;
+
+    if (kind == _EffectKind_flanger) {
+        inGain = Real::one / (Percentage::toReal(width) + 1.0);
+        delayLineLengthInDataPoints = (delay + depth) * dataPointRate;
+        delayLineLengthInDataPoints =
+            adaptValueForSoXEmulation(delayLineLengthInDataPoints, 'c');
+        defaultPhase                = _defaultPhase_flanger;
+        /* ensure that minimum modulation value is an integer */
+        const Real amplitude = depth * dataPointRate;
+        const Real delayLineSlack =
+            Real{(soxIsStrictlyEmulated ? _maximumInterpolationOrder : 0)};
+        minimumModulationValue      = amplitude.ceiling() + delayLineSlack;
+        maximumModulationValue      = minimumModulationValue - amplitude;
+        delayLineLengthInDataPoints += delayLineSlack;
+        previousDataPointList.setLength(channelCount);
+        previousDataPointList.setToZero();
+    } else if (kind == _EffectKind_phaser) {
+        defaultPhase                = _defaultPhase_phaser;
+        delayLineLengthInDataPoints =
+            adaptValueForSoXEmulation(delay * dataPointRate, 'r');
+        delayLineLengthInDataPoints +=
+            Natural{(soxIsStrictlyEmulated ? interpolationOrder : 0)};
+        minimumModulationValue      = 0.0;
+        maximumModulationValue      = delayLineLengthInDataPoints - 1.0;
+    } else if (kind == _EffectKind_tremolo) {
+        inGain              = 1.0;
+        outGain             = 1.0;
+        delay               = 0.0;
+        waveFormKind        = WaveFormKind::sine;
+
+        delayLineLengthInDataPoints = 0.0;
+        minimumModulationValue      =
+            Real{1.0} - Percentage::toReal(depthInPct);
+        maximumModulationValue      = 1.0;
+        defaultPhase                = _defaultPhase_tremolo;
+    }
+
+    /* delay settings */
+
+    /* flanger and phaser in SoX apply an interpolation using later
+     * points in the delay line*/
+    const ListInterpolatorPointLocation pointLocation =
+        (soxIsStrictlyEmulated && interpolationOrder == 1
+         ? ListInterpolatorPointLocation::atBegin
+         : ListInterpolatorPointLocation::atCenter);
+    delayLineList.setElementLength(delayLineLengthInDataPoints);
+    delayLineList.setElementInterpolation(interpolationOrder,
+                                          pointLocation);
+    delayLineList.setToZero();
+
+    /* waveform */
+    if (soxIsStrictlyEmulated && kind != _EffectKind_tremolo) {
+        /* adapt default phase for flanger and phaser because of some
+           subsequent rounding in the SoX lsx_generate_wave_table
+           function; tremolo does not use that algorithm, hence its
+           phase _must not_ be adapted */
+        const Real twoPi = _pi * 2.0;
+        const Real phaseOffset =
+            Real::round(defaultPhase / twoPi * waveFormLength);
+        defaultPhase = phaseOffset * twoPi / waveFormLength;
+    }
+
+    const Radians effectivePhase =
+        (defaultPhase
+         + WaveForm::phaseByTime(frequency, timeOffset, currentTime));
+
+    const ValuePrecision precision = ValuePrecision::singlePrecision;
+    waveForm.set(waveFormLength, waveFormKind,
+                 minimumModulationValue, maximumModulationValue,
+                 effectivePhase, precision);
+
+    Logging_trace1("<<: %1", toString());
 }
 
 /*====================*/
@@ -160,84 +548,111 @@ static const Real _maximumDelay = 1.0;
 /** the internal separator for lists */
 static const String separator = "/";
 
-/** the standard starting phase of a phaser (90°) */
-static const Radians _defaultPhase = 3.141592653589793238462643383279 / 2.0;
-
-/** the name of the tremolo effect */
-static const String _tremoloEffectKind = "Tremolo";
-
 /** the list of effect kinds in this plugin */
-static const StringList _kindList =
-    StringList::makeBySplit("Phaser/Tremolo", separator);
+static const StringList _effectKindList =
+    StringList::fromList({_EffectKind_flanger, _EffectKind_phaser,
+                          _EffectKind_tremolo});
 
 /*....................*/
 /* parameter names    */
 /*....................*/
 
-/** the name for the delay parameter */
-static const String parameterName_delayInMs    = "Delay [ms]";
+/** the name of the delay parameter */
+static const String parameterName_delay             = "Delay [ms]";
 
-/** the name for the depth parameter */
-static const String parameterName_depth        = "Depth [%]";
+/** the name of the depth parameter */
+static const String parameterName_depthInMs         = "Depth [ms]";
 
-/** the name for the effect kind parameter */
-static const String parameterName_effectKind   = "Effect Kind";
+/** the name of the depth parameter */
+static const String parameterName_depthInPct        = "Depth [%]";
 
-/** the name for the frequency parameter */
-static const String parameterName_frequency    = "Modulation [Hz]";
+/** the name of the effect kind parameter */
+static const String parameterName_effectKind        = "Effect Kind";
 
-/** the name for the interpolation order parameter */
+/** the name of the frequency parameter */
+static const String parameterName_frequency         = "Frequency [Hz]";
+
+/** the alias parameter name of the frequency parameter */
+static const String parameterName_frequency_OLD     = "Modulation [Hz]";
+
+/** the name of the input gain parameter */
+static const String parameterName_inGain            = "In Gain";
+
+/** the name of the interpolation order parameter */
 static const String parameterName_interpolationOrder =
     "Interp. Order";
 
-/** the name for the input gain parameter */
-static const String parameterName_inGain       = "In Gain";
+/** the name of the output gain parameter */
+static const String parameterName_outGain           = "Out Gain";
 
-/** the name for the output gain parameter */
-static const String parameterName_outGain      = "Out Gain";
+/** the name of the phase parameter */
+static const String parameterName_phase             = "Phase [%]";
 
-/** the name for the regeneration parameter */
-static const String parameterName_regeneration = "Regeneration";
+/** the name of the regeneration parameter */
+static const String parameterName_regeneration      = "Regeneration";
 
-/** the original name for the regeneration parameter */
-static const String parameterName_regeneration_OLD = "Decay";
+/** the original name of the regeneration parameter */
+static const String parameterName_regeneration_OLD  = "Decay";
 
-/** the name for the time offset parameter */
-static const String parameterName_timeOffset   = "Time Offset [s]";
+/** the original name of the regeneration parameter */
+static const String parameterName_regenerationInPct = "Regeneration [%]";
 
-/** the name for the waveform kind parameter */
-static const String parameterName_waveFormKind = "Waveform";
+/** the name of the time offset parameter */
+static const String parameterName_timeOffset        = "Time Offset [s]";
+
+/** the name of the waveform kind parameter */
+static const String parameterName_waveFormKind      = "Waveform";
+
+/** the name of the width parameter */
+static const String parameterName_width             = "Width [%]";
 
 /** the list of all parameter names */
 static const StringList _allParameterNameList =
-    StringList::fromList({parameterName_delayInMs,
-                          parameterName_depth,
+    StringList::fromList({parameterName_delay,
+                          parameterName_depthInMs,
+                          parameterName_depthInPct,
                           parameterName_effectKind,
                           parameterName_frequency,
                           parameterName_inGain,
                           parameterName_interpolationOrder,
-                          parameterName_regeneration,
                           parameterName_outGain,
+                          parameterName_phase,
+                          parameterName_regeneration,
+                          parameterName_regenerationInPct,
                           parameterName_timeOffset,
-                          parameterName_waveFormKind});
+                          parameterName_waveFormKind,
+                          parameterName_width});
 
-/** the list of the phaser parameter names */
+/** the list of the flanger parameter names in appearance order */
+static const StringList _flangerParameterNameList =
+    StringList::fromList({parameterName_effectKind,
+                          parameterName_delay,
+                          parameterName_depthInMs,
+                          parameterName_regenerationInPct,
+                          parameterName_width,
+                          parameterName_frequency,
+                          parameterName_waveFormKind,
+                          parameterName_phase,
+                          parameterName_interpolationOrder,
+                          parameterName_timeOffset});
+
+/** the list of the phaser parameter names in appearance order */
 static const StringList _phaserParameterNameList =
-    StringList::fromList({parameterName_delayInMs,
-                          parameterName_effectKind,
-                          parameterName_frequency,
+    StringList::fromList({parameterName_effectKind,
                           parameterName_inGain,
-                          parameterName_interpolationOrder,
-                          parameterName_regeneration,
                           parameterName_outGain,
-                          parameterName_timeOffset,
-                          parameterName_waveFormKind});
-
-/** the list of the tremolo parameter names */
-static const StringList _tremoloParameterNameList =
-    StringList::fromList({parameterName_depth,
-                          parameterName_effectKind,
+                          parameterName_delay,
+                          parameterName_regeneration,
                           parameterName_frequency,
+                          parameterName_waveFormKind,
+                          parameterName_interpolationOrder,
+                          parameterName_timeOffset});
+
+/** the list of the tremolo parameter names in appearance order */
+static const StringList _tremoloParameterNameList =
+    StringList::fromList({parameterName_effectKind,
+                          parameterName_frequency,
+                          parameterName_depthInPct,
                           parameterName_timeOffset});
 
 /*--------------------*/
@@ -252,144 +667,40 @@ static const StringList _tremoloParameterNameList =
  * @return  new phaser/tremolo effect descriptor
  */
 static
-_EffectDescriptor_PHTR* _createEffectDescriptor (IN Real dataPointRate)
+_EffectDescriptor_FPHT* _createEffectDescriptor (IN Real dataPointRate)
 {
     Logging_trace1(">>: %1", TOSTRING(dataPointRate));
 
     const Natural maximumDelayBufferLength =
-        (Natural) Real::ceiling(_maximumDelay * dataPointRate);
+        Natural(Real::ceiling(_maximumDelay * dataPointRate));
 
-    _EffectDescriptor_PHTR* result =
-        new _EffectDescriptor_PHTR{
-            true,                           /* phaser */
+    _EffectDescriptor_FPHT* result =
+        new _EffectDescriptor_FPHT{
+            _EffectKind_unknown,            /* kind of effect */
 
-            0.5,                            /* frequency */
-            WaveFormKind::sine,             /* waveFormKind */
-            {},                             /* waveForm */
-            0.0,                            /* timeOffset */
-
-            0.4,                            /* inGain */
-            0.74,                           /* outGain */
             0.003,                          /* delay */
-            0.4,                            /* regeneration */
-            40.0,                           /* depth */
+            2.0,                            /* depth in s */
+            40.0,                           /* depth in pct */
+            0.5,                            /* frequency */
+            0.4,                            /* inGain */
             0,                              /* interpolationOrder */
+            0.74,                           /* outGain */
+            0.25,                           /* phase */
+            0.4,                            /* regeneration */
+            0.0,                            /* timeOffset */
+            {},                             /* waveForm */
+            WaveFormKind::sine,             /* waveFormKind */
+            0.0,                            /* width */
 
+            {},                             /* previousDataPointList */
             {2, maximumDelayBufferLength},  /* delayLineList */
-            maximumDelayBufferLength        /* delayLineLength */
+            maximumDelayBufferLength        /* delayLineLengthInDataPoints */
         };
 
     
-    Logging_trace1("<<: %1", result->toString());
+    Logging_trace1("<<: %1",
+                   result->toString());
     return result;
-}
-
-/*--------------------*/
-
-/**
- * Updates effect parameters in <C>parameterMap</C> for effect
- * kind given as <C>effectKind</C>.
- *
- * @param[inout] parameterMap  effect parameter map of effect to be
- *                             initialized
- * @param[in] effectKind       kind of effect to be set up
- */
-static void
-_updateParametersForKind (INOUT SoXEffectParameterMap& parameterMap,
-                          IN String& effectKind)
-{
-    Logging_trace1(">>: %1", effectKind);
-    Assertion_pre(_kindList.contains(effectKind),
-                  "effect kind must be known");
-
-    /* set the parameter activeness by effect kind */
-    parameterMap.setActivenessForNameList(_allParameterNameList,
-                                          false);
-    const Boolean isTremolo = (effectKind == _tremoloEffectKind);
-
-    if (isTremolo) {
-        parameterMap.setActivenessForNameList(_tremoloParameterNameList,
-                                              true);
-    } else {
-        parameterMap.setActivenessForNameList(_phaserParameterNameList,
-                                              true);
-    }
-
-    Logging_trace("<<");
-}
-
-/*--------------------*/
-
-/**
- * Recalculates derived parameters in <C>effectDescriptor</C> for
- * <C>effect</C> from parameter map and <C>dataPointRate</C> and start
- * time in <C>currentTime</C>.
- *
- * @param[inout] effect            the current effect
- * @param[inout] effectDescriptor  descriptor of effect
- * @param[in]    dataPointRate     new data point rate for effect
- * @param[in]    currentTime       current time for effect
- */
-static void
-_updateSettings (INOUT SoXFlangerPhaserAndTremolo_AudioEffect& effect,
-                 INOUT _EffectDescriptor_PHTR& effectDescriptor,
-                 IN Real dataPointRate, IN Real currentTime)
-{
-    Logging_trace2(">>: dataPointRate = %1, currentTime = %2",
-                   TOSTRING(dataPointRate), TOSTRING(currentTime));
-
-    effect.setParameterValidity(false);
-    const Real frequency = effectDescriptor.frequency;
-    Real waveFormLength = dataPointRate / frequency;
-    Real delayLineLength;
-    Real lowModulationValue;
-    Real highModulationValue;
-
-    if (effectDescriptor.isPhaser) {
-        /* phaser */
-        delayLineLength = effectDescriptor.delay * dataPointRate;
-
-        #ifdef EMULATE_SOX_STRICTLY
-            /* delay lines have a natural length */
-            delayLineLength = Real::round(delayLineLength);
-        #endif
-               
-        lowModulationValue  = 0.0;
-        highModulationValue = delayLineLength - 1.0;
-    } else {
-        /* tremolo: set some effect parameters to constants */
-        effectDescriptor.delay        = 0.0;
-        effectDescriptor.inGain       = 1.0;
-        effectDescriptor.outGain      = 1.0;
-        effectDescriptor.waveFormKind = WaveFormKind::sine;
-
-        delayLineLength = 0.0;
-        lowModulationValue =
-            Real{1.0} - effectDescriptor.depth / Real{100.0};
-        highModulationValue = 1.0;
-    }
-
-    /* delay settings */
-    effectDescriptor.delayLineLength = delayLineLength;
-    DelayLineList& delayLineList = effectDescriptor.delayLineList;
-    delayLineList.setElementLength(delayLineLength);
-    delayLineList.setToZero();
-
-    /* waveform */
-    const Radians effectivePhase =
-        (_defaultPhase
-         + WaveForm::phaseByTime(frequency,
-                                 effectDescriptor.timeOffset,
-                                 currentTime));
-
-    const Boolean hasIntegerValues = false;
-    WaveForm& waveForm = effectDescriptor.waveForm;
-    waveForm.set(waveFormLength, effectDescriptor.waveFormKind,
-                 lowModulationValue, highModulationValue,
-                 effectivePhase, hasIntegerValues);
-    effect.setParameterValidity(true);
-
-    Logging_trace1("<<: %1", effectDescriptor.toString());
 }
 
 /*============================================================*/
@@ -407,32 +718,8 @@ SoXFlangerPhaserAndTremolo_AudioEffect ()
     _effectDescriptor = _createEffectDescriptor(_dataPointRate);
 
     /* initialize parameters */
-    const String effectKind = _kindList[0];
-    const StringList waveFormKindValueList =
-        StringList::makeBySplit("Sine/Triangle", separator);
-
-    _effectParameterMap.clear();
-    _effectParameterMap.setKindAndValueEnum(parameterName_effectKind,
-                                            _kindList, effectKind);
-    _effectParameterMap.setKindReal(parameterName_inGain,
-                                    0.0, 1.0, 0.001);
-    _effectParameterMap.setKindReal(parameterName_outGain,
-                                    0.0, 1000.0, 0.001);
-    _effectParameterMap.setKindReal(parameterName_delayInMs,
-                                    0.0, 5.0, 0.001);
-    _effectParameterMap.setKindReal(parameterName_regeneration,
-                                    0.0, 0.99, 0.001);
-    _effectParameterMap.setKindReal(parameterName_depth,
-                                    0.0, 100.0, 0.001);
-    _effectParameterMap.setKindReal(parameterName_frequency,
-                                    0.1, 2.0, 0.001);
-    _effectParameterMap.setKindEnum(parameterName_waveFormKind,
-                                    waveFormKindValueList);
-    _effectParameterMap.setKindInt(parameterName_interpolationOrder,
-                                    0, 2, 1);
-    _effectParameterMap.setKindReal(parameterName_timeOffset,
-                                    -8192.0, +8192.0,
-                                    Real::two.power(-16.0));
+    _updateEffectForKind(_EffectKind_unknown);
+    setDefaultValues();
 
     Logging_trace1("<<: %1", toString());
 }
@@ -443,7 +730,7 @@ SoXFlangerPhaserAndTremolo_AudioEffect::
 ~SoXFlangerPhaserAndTremolo_AudioEffect ()
 {
     Logging_trace(">>");
-    delete (_EffectDescriptor_PHTR*) _effectDescriptor;
+    delete (_EffectDescriptor_FPHT*) _effectDescriptor;
     Logging_trace("<<");
 }
 
@@ -451,28 +738,37 @@ SoXFlangerPhaserAndTremolo_AudioEffect::
 /* string representation */
 /*-----------------------*/
 
-String SoXFlangerPhaserAndTremolo_AudioEffect::toString () const
-{
-    String st = "SoXFlangerPhaserAndTremolo_AudioEffect(";
-    st += _asRawString();
-    st += ")";
-
-    return st;
-}
-
-/*--------------------*/
-
 String SoXFlangerPhaserAndTremolo_AudioEffect::
 _effectDescriptorToString () const
 {
     String result;
 
-    if (_effectDescriptor == NULL) {
+    if (_effectDescriptor == nullptr) {
         result = "NULL";
     } else {
-        const _EffectDescriptor_PHTR& effectDescriptor =
-            TOREFERENCE<_EffectDescriptor_PHTR>(_effectDescriptor);
+        const _EffectDescriptor_FPHT& effectDescriptor =
+            TOREFERENCE<_EffectDescriptor_FPHT>(_effectDescriptor);
+
         result = effectDescriptor.toString();
+    }
+
+    return result;
+}
+
+/*-----------------------*/
+
+String SoXFlangerPhaserAndTremolo_AudioEffect::
+_internalState () const
+{
+    String result;
+
+    if (_effectDescriptor == nullptr) {
+        result = "";
+    } else {
+        const _EffectDescriptor_FPHT& effectDescriptor =
+            TOREFERENCE<_EffectDescriptor_FPHT>(_effectDescriptor);
+
+        result = effectDescriptor.internalState();
     }
 
     return result;
@@ -482,17 +778,24 @@ _effectDescriptorToString () const
 /* property queries   */
 /*--------------------*/
 
+Boolean SoXFlangerPhaserAndTremolo_AudioEffect::isTimeVariant () const
+{
+    return true;
+}
+
+/*--------------------*/
+
 String SoXFlangerPhaserAndTremolo_AudioEffect::name () const
 {
-    return "SoX Flanger, Phaser & Tremolo";
+    return "SoX FlangerPhaserAndTremolo";
 }
 
 /*--------------------*/
 
 Real SoXFlangerPhaserAndTremolo_AudioEffect::tailLength () const
 {
-    const _EffectDescriptor_PHTR& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_PHTR>(_effectDescriptor);
+    const _EffectDescriptor_FPHT& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_FPHT>(_effectDescriptor);
     return effectDescriptor.delay;
 }
 
@@ -500,34 +803,35 @@ Real SoXFlangerPhaserAndTremolo_AudioEffect::tailLength () const
 /* parameter change   */
 /*--------------------*/
 
-SoXParameterValueChangeKind SoXFlangerPhaserAndTremolo_AudioEffect::
+SoXValueChangeKind SoXFlangerPhaserAndTremolo_AudioEffect::
 _setValueInternal (IN String& parameterName,
-                   IN String& value,
-                   IN Boolean recalculationIsForced)
+                   IN String& value)
 {
-    Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalculationIsForced = %3",
-                   parameterName, value,
-                   TOSTRING(recalculationIsForced));
+    Logging_trace2(">>: parameterName = %1, value = %2",
+                   parameterName, value);
 
-    _EffectDescriptor_PHTR& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_PHTR>(_effectDescriptor);
-    SoXParameterValueChangeKind result =
-        SoXParameterValueChangeKind::parameterChange;
+    _EffectDescriptor_FPHT& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_FPHT>(_effectDescriptor);
+    SoXValueChangeKind result = SoXValueChangeKind::parameterChange;
 
     if (parameterName == parameterName_effectKind) {
-        _updateParametersForKind(_effectParameterMap, value);
-        effectDescriptor.isPhaser = (value != _tremoloEffectKind);
-        result = SoXParameterValueChangeKind::globalChange;
-    } else {
-        const Boolean effectIsUpdated =
-            (recalculationIsForced
-             && _effectParameterMap.isActive(parameterName));
+        const String previousKind = effectDescriptor.kind;
 
-        if (parameterName == parameterName_delayInMs) {
+        if (value != _EffectKind_unknown && value != previousKind) {
+            _updateEffectForKind(value);
+            effectDescriptor.kind = value;
+            setDefaultValues();
+            result = SoXValueChangeKind::globalChange;
+        }
+    } else if (!_effectParameterMap.isActive(parameterName)) {
+        Logging_trace("--: parameter is inactive -> ignored");
+    } else {
+        if (parameterName == parameterName_delay) {
             effectDescriptor.delay = STR::toReal(value) / 1000.0;
-        } else if (parameterName == parameterName_depth) {
-            effectDescriptor.depth = STR::toPercentage(value);
+        } else if (parameterName == parameterName_depthInMs) {
+            effectDescriptor.depth = STR::toReal(value) / 1000.0;
+        } else if (parameterName == parameterName_depthInPct) {
+            effectDescriptor.depthInPct = STR::toPercentage(value);
         } else if (parameterName == parameterName_frequency) {
             effectDescriptor.frequency = STR::toReal(value);
         } else if (parameterName == parameterName_inGain) {
@@ -536,23 +840,25 @@ _setValueInternal (IN String& parameterName,
             effectDescriptor.interpolationOrder = STR::toNatural(value);
         } else if (parameterName == parameterName_outGain) {
             effectDescriptor.outGain = STR::toReal(value);
-        } else if (parameterName == parameterName_regeneration
-            || parameterName == parameterName_regeneration_OLD) {
+        } else if (parameterName == parameterName_phase) {
+            effectDescriptor.phase = STR::toPercentage(value);
+        } else if (parameterName == parameterName_regeneration) {
             effectDescriptor.regeneration = STR::toReal(value);
+        } else if (parameterName == parameterName_regenerationInPct) {
+            /* adapt from percent to factor */
+            effectDescriptor.regeneration =
+                Percentage::toReal(STR::toReal(value));
+        } else if (parameterName == parameterName_timeOffset) {
+            effectDescriptor.timeOffset = STR::toReal(value);
         } else if (parameterName == parameterName_waveFormKind) {
             effectDescriptor.waveFormKind =
                 Audio::stringToWaveFormKind(value);
-        } else if (parameterName == parameterName_timeOffset) {
-            effectDescriptor.timeOffset = STR::toReal(value);
-        }
-
-        if (effectIsUpdated) {
-            _updateSettings(*this, effectDescriptor,
-                            _dataPointRate, _currentTimePosition);
+        } else if (parameterName == parameterName_width) {
+            effectDescriptor.width = STR::toPercentage(value);
         }
     }
 
-    Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));
+    Logging_trace1("<<: %1", SoXValueChangeKind_toString(result));
     return result;
 }
 
@@ -562,24 +868,37 @@ void SoXFlangerPhaserAndTremolo_AudioEffect::setDefaultValues ()
 {
     Logging_trace(">>");
 
+    Dictionary dictionary;
     const String effectKind =
         _effectParameterMap.value(parameterName_effectKind);
-    const Boolean isTremolo = (effectKind == _tremoloEffectKind);
 
-    if (isTremolo) {
-        setValueViaParent(parameterName_frequency, "0.5");
-        setValueViaParent(parameterName_depth,     "40");
-    } else {
-        setValueViaParent(parameterName_inGain,             "0.4");
-        setValueViaParent(parameterName_outGain,            "0.74");
-        setValueViaParent(parameterName_delayInMs,          "3.0");
-        setValueViaParent(parameterName_regeneration,       "0.4");
-        setValueViaParent(parameterName_frequency,          "0.5");
-        setValueViaParent(parameterName_waveFormKind,       "Triangle");
-        setValueViaParent(parameterName_interpolationOrder, "0");
+    dictionary.set(parameterName_effectKind, effectKind);
+
+    if (effectKind == _EffectKind_flanger) {
+        dictionary.set(parameterName_delay,              "0.0");
+        dictionary.set(parameterName_depthInMs,          "2");
+        dictionary.set(parameterName_regenerationInPct,  "0.0");
+        dictionary.set(parameterName_width,              "71");
+        dictionary.set(parameterName_frequency,          "0.5");
+        dictionary.set(parameterName_waveFormKind,       "Sine");
+        dictionary.set(parameterName_phase,              "25");
+        dictionary.set(parameterName_interpolationOrder, "0");
+    } else if (effectKind == _EffectKind_phaser) {
+        dictionary.set(parameterName_inGain,             "0.4");
+        dictionary.set(parameterName_outGain,            "0.74");
+        dictionary.set(parameterName_delay,              "3.0");
+        dictionary.set(parameterName_regeneration,       "0.4");
+        dictionary.set(parameterName_frequency,          "0.5");
+        dictionary.set(parameterName_waveFormKind,       "Triangle");
+        dictionary.set(parameterName_interpolationOrder, "0");
+    } else if (effectKind == _EffectKind_tremolo) {
+        dictionary.set(parameterName_frequency,          "0.5");
+        dictionary.set(parameterName_depthInPct,         "40");
     }
 
-    setValueViaParent(parameterName_timeOffset, "0", true);
+    dictionary.set(parameterName_timeOffset, "0");
+    setValues(dictionary);
+    recalculate();
 
     Logging_trace1("<<: %1", toString());
 }
@@ -589,75 +908,117 @@ void SoXFlangerPhaserAndTremolo_AudioEffect::setDefaultValues ()
 /*--------------------*/
 
 void SoXFlangerPhaserAndTremolo_AudioEffect::
-processBlock (IN Real timePosition,
-              INOUT AudioDataPointListVector& buffer)
+_applyForFrame (IN AudioDataPointList& inputDataPointList,
+                OUT AudioDataPointList& outputDataPointList)
 {
-    Logging_trace1(">>: time = %1", TOSTRING(timePosition));
+    Logging_trace(">>");
 
-    if (_parametersAreValid) {
-        SoXAudioEffect::processBlock(timePosition, buffer);
-
-        _EffectDescriptor_PHTR& effectDescriptor =
-            TOREFERENCE<_EffectDescriptor_PHTR>(_effectDescriptor);
-
-        if (_timePositionHasMoved) {
-            /* playhead was moved ==> keep time synchronisation of
-               waveform */
-            _updateSettings(*this, effectDescriptor,
-                            _dataPointRate, _currentTimePosition);
-        }
-
-        const Natural dataPointCount = buffer[0].size();
-
-        const Boolean isPhaser       = effectDescriptor.isPhaser;
-        const Real inGain            = effectDescriptor.inGain;
-        const Real outGain           = effectDescriptor.outGain;
-        const Real regeneration      = effectDescriptor.regeneration;
-        const Real delayLineLength   = effectDescriptor.delayLineLength;
-        DelayLineList& delayLineList = effectDescriptor.delayLineList;
-        WaveForm& waveForm           = effectDescriptor.waveForm;
-
-        WaveFormIteratorState state = waveForm.state();
-
-        for (Natural channel = 0;  channel < _channelCount;
-             channel++) {
-            const AudioDataPointList& inputList = buffer[channel];
-            AudioDataPointList& outputList = buffer[channel];
-            DelayLine& delayLine = delayLineList[channel];
-
-            waveForm.setState(state);
-
-            for (Natural i = 0;  i < dataPointCount;  i++) {
-                const AudioDataPoint inputDataPoint = inputList[i];
-                AudioDataPoint outputDataPoint = 0.0;
-
-                if (!isPhaser) {
-                    const Real factor = waveForm.current();
-                    outputDataPoint = inputDataPoint * factor;
-                } else {
-                    outputDataPoint = inputDataPoint * inGain;
-
-                    if (delayLineLength > 0.0) {
-                        Real waveFormValue = waveForm.current();
-
-                        #ifdef EMULATE_SOX_STRICTLY
-                            /* round value from waveform */
-                            waveFormValue = waveFormValue.round();
-                        #endif
-
-                        outputDataPoint +=
-                            delayLine.at(waveFormValue) * regeneration;
-                        delayLine.advance(outputDataPoint);
-                    }
-
-                    outputDataPoint *= outGain;
-                }
-
-                outputList[i] = outputDataPoint;
-                waveForm.advance();
-            }
-        }
-    }
+    _EffectDescriptor_FPHT& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_FPHT>(_effectDescriptor);
+    effectDescriptor.applyForFrame(inputDataPointList, outputDataPointList);
 
     Logging_trace("<<");
+}
+
+/*--------------------*/
+
+void SoXFlangerPhaserAndTremolo_AudioEffect::
+_handleDataPointRateChange (IN Real dataPointRate)
+{
+    Logging_trace1(">>: %1", TOSTRING(dataPointRate));
+    recalculate();
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+void SoXFlangerPhaserAndTremolo_AudioEffect::recalculate ()
+{
+    Logging_trace(">>");
+
+    setParameterValidity(false);
+    _EffectDescriptor_FPHT& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_FPHT>(_effectDescriptor);
+    effectDescriptor.updateSettings(_channelCount, _dataPointRate,
+                                    _currentTimePosition);
+    setParameterValidity(true);
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+void SoXFlangerPhaserAndTremolo_AudioEffect::
+_updateEffectForKind (IN String& effectKind)
+{
+    Logging_trace1(">>: %1", effectKind);
+
+    SoXEffectParameterMap& parameterMap = _effectParameterMap;
+    const StringList waveFormKindValueList =
+        StringList::makeBySplit("Sine/Triangle", separator);
+
+    parameterMap.clear();
+    parameterMap.setKindEnum(parameterName_effectKind, _effectKindList);
+    parameterMap.setValue(parameterName_effectKind, effectKind);
+
+    parameterMap.setKindReal(parameterName_delay, 0.0, 5.0, 0.001);
+    parameterMap.setKindReal(parameterName_depthInMs,
+                             0.0, 10.0, 0.001);
+    parameterMap.setKindReal(parameterName_depthInPct,
+                             0.0, 100.0, 0.001);
+    parameterMap.setKindReal(parameterName_frequency, 0.1, 2.0, 0.001);
+    parameterMap.setKindReal(parameterName_inGain, 0.0, 1.0, 0.001);
+    parameterMap.setKindInt(parameterName_interpolationOrder,
+                            0, _maximumInterpolationOrder, 1);
+    parameterMap.setKindReal(parameterName_outGain, 0.0, 1000.0, 0.001);
+    parameterMap.setKindReal(parameterName_phase, 0.0, 100.0, 0.001);
+    parameterMap.setKindReal(parameterName_regeneration,
+                             0.0, 0.99, 0.001);
+    parameterMap.setKindReal(parameterName_regenerationInPct,
+                             -95.0, 95.0, 0.001);
+    parameterMap.setKindReal(parameterName_timeOffset,
+                             -8192.0, +8192.0,
+                             Real::two.power(-16.0));
+    parameterMap.setKindEnum(parameterName_waveFormKind,
+                             waveFormKindValueList);
+    parameterMap.setKindReal(parameterName_width, 0.0, 100.0, 0.001);
+
+    StringList parameterNameList;
+
+    if (effectKind == _EffectKind_unknown) {
+        Logging_trace("--: effect kind is unknown -> no change");
+    } else if (effectKind == _EffectKind_flanger) {
+        parameterNameList = _flangerParameterNameList;
+        parameterMap.setKindReal(parameterName_delay,
+                                 0.0, 30.0, 0.001);
+        parameterMap.setKindReal(parameterName_frequency,
+                                 0.1, 10.0, 0.001);
+    } else if (effectKind == _EffectKind_phaser) {
+        parameterNameList = _phaserParameterNameList;
+        parameterMap.setKindReal(parameterName_delay,
+                                 0.0, 5.0, 0.001);
+        parameterMap.setKindReal(parameterName_frequency,
+                                 0.1, 2.0, 0.001);
+    } else if (effectKind == _EffectKind_tremolo) {
+        parameterNameList = _tremoloParameterNameList;
+        parameterMap.setKindReal(parameterName_frequency,
+                                 0.0, 20.0, 0.001);
+    }
+
+    /* set the parameter activeness by effect kind and update
+       ranges of parameters */
+    parameterMap.setActivenessForNameList(_allParameterNameList,
+                                          false);
+    parameterMap.setActivenessForNameList(parameterNameList, true);
+    parameterMap.invalidateValues(parameterNameList);
+    parameterMap.setValue(parameterName_effectKind, effectKind);
+    parameterMap.reorderByNameList(parameterNameList);
+
+    /* add alias parameter names */
+    parameterMap.setAsAlias(parameterName_regeneration_OLD,
+                            parameterName_regeneration);
+    parameterMap.setAsAlias(parameterName_frequency_OLD,
+                            parameterName_frequency);
+
+    Logging_trace1("<<: parameterMap = %1", parameterMap.toString());
 }

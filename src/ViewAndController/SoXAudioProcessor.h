@@ -207,33 +207,13 @@ namespace SoXPlugins::ViewAndController {
 
         /**
          * Sets parameter named <C>parameterName</C> to <C>value</C>
-         * and notifies host.  If value has wrong kind, it is ignored;
-         * if <C>recalculationIsForced</C> is set, the recalculation
-         * of dependent internal settings is forced (otherwise it is
-         * suppressed).
+         * and notifies host.  If value has wrong kind, it is ignored.
          *
          * @param[in] parameterName          name of parameter to be set
          * @param[in] value                  new value of parameter
-         * @param[in] recalculationIsForced  tells whether some
-         *                                   internal recalculation
-         *                                   of associated effect
-         *                                   must be done
          */
         virtual void setValue (IN String& parameterName,
-                               IN String& value,
-                               IN Boolean recalculationIsForced = false);
-
-        /*--------------------*/
-
-        /**
-         * Sets all parameters for audio processor to values
-         * defined by <C>dictionary</C>.
-         *
-         * @param[in] dictionary  dictionary from parameter names to
-         *                        associated string values to be set
-         *                        for the parameters
-         */
-        void setValues (IN Dictionary& dictionary);
+                               IN String& value);
 
         /*--------------------*/
         /* observer mgmt      */
@@ -336,19 +316,6 @@ namespace SoXPlugins::ViewAndController {
             /** the object containing the internal data of
                 the audio processor */
             Object _descriptor;
-
-            /*--------------------*/
-
-            /**
-             * Tells all observers about change of kind <C>kind</C>
-             * using (optional) <C>data</C>.
-             *
-             * @param[in] kind  kind of change to be reported
-             * @param[in] data  associated data for change
-             */
-            void _notifyObserversAboutChange
-                     (IN SoXParameterValueChangeKind kind,
-                      IN String& data = "");
 
             /*--------------------*/
 

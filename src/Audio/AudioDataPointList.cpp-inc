@@ -17,8 +17,8 @@
 /*--------------------*/
 
 using Audio::AudioDataPointList;
-using BaseTypes::Containers::clearArray;
-using BaseTypes::Containers::copyArray;
+using BaseTypes::Containers::Array_clear;
+using BaseTypes::Containers::Array_copy;
 
 /*====================*/
 
@@ -39,7 +39,7 @@ void AudioDataPointList::setToZero (IN Natural position,
         const Natural effectiveCount =
             Natural::minimum(currentLength - position, count);
         AudioDataPoint* dataPointArray = asArray(position);
-        clearArray(dataPointArray, effectiveCount, AudioDataPoint{0.0f});
+        Array_clear(dataPointArray, effectiveCount, AudioDataPoint{0.0f});
     }
 }
 
@@ -61,8 +61,8 @@ void AudioDataPointList::extend (IN AudioDataPointList& other,
 
         AudioDataPoint* destinationArray = asArray(currentLength);
         const AudioDataPoint* sourceArray = other.asArray();
-        copyArray(destinationArray, sourceArray,
-                  effectiveCount);
+        Array_copy(destinationArray, sourceArray,
+                   effectiveCount);
   }
 }
 

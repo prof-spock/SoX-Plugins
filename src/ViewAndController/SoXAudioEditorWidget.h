@@ -111,6 +111,16 @@ namespace SoXPlugins::ViewAndController {
         String parameterName () const;
 
         /*--------------------*/
+
+        /**
+         * Returns currently represented value of widget (not
+         * necessarily the displayed value if rounding may be off).
+         *
+         * @return represented value of widget
+         */
+        String value () const;
+
+        /*--------------------*/
         /* event processing   */
         /*--------------------*/
 
@@ -250,6 +260,11 @@ namespace SoXPlugins::ViewAndController {
 
             /** name of parameter displayed by this widget */
             String _parameterName;
+
+            /** parameter value represented by this widget (not
+             * necessarily identical to displayed value for float
+             * widgets) */
+            String _representedValue;
 
             /** page position within editor (where zero means:
              * show on all pages) */

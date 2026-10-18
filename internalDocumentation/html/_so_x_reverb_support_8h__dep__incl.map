@@ -1,7 +1,0 @@
-<map id="SoXReverbSupport.h" name="SoXReverbSupport.h">
-<area shape="rect" id="Node000001" title="The SoXReverbSupport specification defines support classes for the freeverb algorithm and provides a ..." alt="" coords="109,5,249,31"/>
-<area shape="rect" id="Node000002" href="$_so_x_reverb_support_8cpp.html" title="The SoXReverbSupport body implements support classes for the freeverb algorithm and provides a single..." alt="" coords="5,79,160,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,41,100,81,97,76,151,37"/>
-<area shape="rect" id="Node000003" href="$_so_x_reverb___audio_effect_8cpp.html" title="The SoXReverb_AudioEffect body implements the SoX reverb plugin using the freeverb algorithm for room..." alt="" coords="185,79,367,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="207,37,262,76,259,81,204,41"/>
-</map>

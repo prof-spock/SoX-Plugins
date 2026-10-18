@@ -18,19 +18,24 @@
 
 using SoXPlugins::Effects::SoXAudioEffect;
 
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
+
 /*====================*/
+
+static const String _undefinedString = "???";
 
 /*--------------------*/
 /* setup              */
 /*--------------------*/
 
 SoXAudioEffect::SoXAudioEffect ()
-     : _valueChangeHandler{NULL},
-       _notificationProc{NULL},
+     : _valueChangeObserver{nullptr},
        _dataPointRate{100.0},
        _channelCount{0},
        _effectParameterMap{},
        _currentTimePosition{-99999.99},
+       _deltaTime{-99999.99},
        _expectedNextTimePosition{-99999.99},
        _timePositionHasMoved{true},
        _parametersAreValid{false},
@@ -45,7 +50,7 @@ SoXAudioEffect::SoXAudioEffect ()
 SoXAudioEffect::~SoXAudioEffect ()
 {
     Logging_trace(">>");
-    _effectDescriptor = NULL;
+    _effectDescriptor = nullptr;
     Logging_trace("<<");
 }
 
@@ -55,22 +60,19 @@ SoXAudioEffect::~SoXAudioEffect ()
 
 String SoXAudioEffect::toString () const
 {
-    String st = "SoXAudioEffect(";
-    st += _asRawString();
-    st += ")";
-
-    return st;
-}
-
-/*--------------------*/
-
-String SoXAudioEffect::_asRawString () const
-{
+    String effectName = name();
+    STR::replace(effectName, " ", "");
+    String className = (effectName == _undefinedString
+                        ? "SoX"
+                        : effectName + "_");
+    className += "AudioEffect";
     String st;
+    st += className + "(";
     st += "_dataPointRate = " + TOSTRING(_dataPointRate) + "Hz";
     st += ", _channelCount = " + TOSTRING(_channelCount);
     st += (", _currentTimePosition = "
            + TOSTRING(_currentTimePosition) + "s");
+    st += (", _deltaTime = " + TOSTRING(_deltaTime) + "s");
     st += (", _expectedNextTimePosition = "
            + TOSTRING(_expectedNextTimePosition) + "s");
     st += (", _timePositionHasMoved = "
@@ -78,6 +80,7 @@ String SoXAudioEffect::_asRawString () const
     st += ", _parametersAreValid = " + TOSTRING(_parametersAreValid);
     st += ", _effectParameterMap = " +  _effectParameterMap.toString();
     st += ", _effectDescriptor = " + _effectDescriptorToString();
+    st += ")";
 
     return st;
 }
@@ -86,9 +89,16 @@ String SoXAudioEffect::_asRawString () const
 
 String SoXAudioEffect::_effectDescriptorToString () const
 {
-    return (_effectDescriptor == NULL
-            ? "NULL"
+    return (_effectDescriptor == nullptr
+            ? "nullptr"
             : "_EffectDescriptor()");
+}
+
+/*--------------------*/
+
+String SoXAudioEffect::_internalState () const
+{
+    return "";
 }
 
 /*--------------------*/
@@ -109,9 +119,26 @@ Real SoXAudioEffect::dataPointRate () const
 
 /*--------------------*/
 
+Boolean SoXAudioEffect::isTimeVariant () const
+{
+    return false;
+}
+
+/*--------------------*/
+
+Boolean SoXAudioEffect::hasValidParameters () const
+{
+    Logging_trace(">>");
+    const Boolean result = _parametersAreValid;
+    Logging_trace1("<<: %1", TOSTRING(result));
+    return result;
+}
+
+/*--------------------*/
+
 String SoXAudioEffect::name () const
 {
-    return "???";
+    return _undefinedString;
 }
 
 /*--------------------*/
@@ -132,74 +159,57 @@ SoXEffectParameterMap& SoXAudioEffect::effectParameterMap () const
 
 /*--------------------*/
 
-SoXParameterValueChangeKind
-SoXAudioEffect::setValue (IN String& parameterName,
-                          IN String& value,
-                          IN Boolean recalculationIsForced)
+void SoXAudioEffect::setParameterValidity (IN Boolean isValid)
 {
-    Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalcIsForced = %3",
-                   parameterName, value,
-                   TOSTRING(recalculationIsForced));
-
-    SoXParameterValueChangeKind result =
-        SoXParameterValueChangeKind::noChange;
-
-    if (!_effectParameterMap.valueIsDifferent(parameterName, value)) {
-        /* break cycles: if value is already known, ignore this
-           request */
-    } else if (!_effectParameterMap
-               .isAllowedValue(parameterName, value)) {
-        /* do not store a bad value */
-    } else {
-        _effectParameterMap.setValue(parameterName, value);
-        result = _setValueInternal(parameterName, value,
-                                   recalculationIsForced);
-    }
-
-    Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));
-    return result;
+    Logging_trace1(">>: %1", TOSTRING(isValid));
+    _parametersAreValid = isValid;
+    Logging_trace("<<");
 }
 
 /*--------------------*/
 
-void SoXAudioEffect::setValueViaParent (IN String& parameterName,
-                                        IN String& value,
-                                        IN Boolean recalculationIsForced)
+void SoXAudioEffect::setValue (IN String& parameterName,
+                               IN String& value)
 {
-    Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalcIsForced = %3",
-                   parameterName, value,
-                   TOSTRING(recalculationIsForced));
+    Logging_trace2(">>: parameterName = %1, value = %2",
+                   parameterName, value);
 
-    if (_valueChangeHandler == NULL || _notificationProc == NULL) {
-        /* set value directly in effect */
-        setValue(parameterName, value, recalculationIsForced);
-    } else {
-        /* use indirection via enclosing object */
-        (*_notificationProc)(_valueChangeHandler,
-                             parameterName, value, recalculationIsForced);
-    }
+    Dictionary dictionary;
+    dictionary.set(parameterName, value);
+    setValues(dictionary);
 
     Logging_trace("<<");
 }
 
 /*--------------------*/
 
-Boolean SoXAudioEffect::hasValidParameters () const
+void SoXAudioEffect::setValues (IN Dictionary& dictionary)
 {
-    Logging_trace(">>");
-    const Boolean result = _parametersAreValid;
-    Logging_trace1("<<: %1", TOSTRING(result));
-    return result;
-}
+    Logging_trace1(">>: %1", dictionary.toString());
+    
+    Dictionary changedValueDictionary;
+    SoXValueChangeKind valueChangeKind =
+        SoXValueChangeKind::noChange;
 
-/*--------------------*/
+    for (const auto& [parameterName, value] : dictionary) {
+        if (!_effectParameterMap.valueIsDifferent(parameterName, value)) {
+            /* break cycles: if value is already known, ignore change */
+        } else if (!_effectParameterMap
+                   .isAllowedValue(parameterName, value)) {
+            /* do not store a bad value */
+        } else {
+            _effectParameterMap.setValue(parameterName, value);
+            changedValueDictionary.set(parameterName, value);
+            SoXValueChangeKind localValueChangeKind =
+                _setValueInternal(parameterName, value);
+            valueChangeKind =
+                std::max(localValueChangeKind, valueChangeKind);
+        }
+    }
 
-void SoXAudioEffect::setParameterValidity (IN Boolean isValid)
-{
-    Logging_trace1(">>: %1", TOSTRING(isValid));
-    _parametersAreValid = isValid;
+    _valueChangeObserver.notifyAboutValueChange(changedValueDictionary,
+                                                valueChangeKind);
+
     Logging_trace("<<");
 }
 
@@ -209,13 +219,10 @@ void SoXAudioEffect::setParameterValidity (IN Boolean isValid)
 
 void SoXAudioEffect::
 setValueChangeHandler (Object valueChangeHandler,
-                       ValueChangeNotification notificationProc)
+                       SoXValueChangeNotification notificationProc)
 {
     Logging_trace(">>");
-
-    _valueChangeHandler = valueChangeHandler;
-    _notificationProc   = notificationProc;
-
+    _valueChangeObserver.set(valueChangeHandler, notificationProc);
     Logging_trace("<<");
 }
 
@@ -223,11 +230,9 @@ setValueChangeHandler (Object valueChangeHandler,
 /* event handling     */
 /*--------------------*/
 
-void SoXAudioEffect::_prepareToPlay (IN Real dataPointRate)
+void SoXAudioEffect::_handleDataPointRateChange (IN Real dataPointRate)
 {
     Logging_trace1(">>: dataPointRate = %1", TOSTRING(dataPointRate));
-    _expectedNextTimePosition = Real::infinity;
-    _dataPointRate            = dataPointRate;
     Logging_trace("<<");
 }
 
@@ -236,7 +241,92 @@ void SoXAudioEffect::_prepareToPlay (IN Real dataPointRate)
 void SoXAudioEffect::prepareToPlay (IN Real dataPointRate)
 {
     Logging_trace1(">>: dataPointRate = %1", TOSTRING(dataPointRate));
-    _prepareToPlay(dataPointRate);
+
+    _deltaTime                = Real::one / dataPointRate;
+    _expectedNextTimePosition = Real::infinity;
+
+    if (dataPointRate == _dataPointRate) {
+        Logging_trace("--: no recalculation");
+    } else {
+        _dataPointRate = dataPointRate;
+        _handleDataPointRateChange(dataPointRate);
+    }
+    
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+void SoXAudioEffect::processBlock (IN Real timePosition,
+                                   INOUT AudioDataPointListVector& buffer)
+{
+    Logging_trace1(">>: timePosition = %1", TOSTRING(timePosition));
+
+    const Natural newChannelCount = buffer.size();
+    const Boolean channelCountHasChanged =
+        _channelCount != newChannelCount;
+
+    _currentTimePosition = timePosition;
+    _channelCount        = newChannelCount;
+
+    /* check whether timing has changed significantly */
+    const Real absoluteDifference =
+        Real::abs(_currentTimePosition - _expectedNextTimePosition);
+    _timePositionHasMoved = (absoluteDifference > 1E-3);
+
+    if (_timePositionHasMoved && isTimeVariant()
+        || channelCountHasChanged) {
+        /* channel count has changed or playhead was moved ==> keep
+           time synchronisation of modulation waveforms */
+        recalculate();
+    }
+
+    if (_channelCount > 0) {
+        const Natural dataPointCount = buffer[0].size();
+        _expectedNextTimePosition = (timePosition
+                                     + Real(dataPointCount) * _deltaTime);
+    }
+
+    if (_parametersAreValid) {
+        String internalState, st;
+        Real effectiveTime = timePosition;
+
+        const Natural dataPointCount = buffer[0].size();
+        AudioDataPointList inputDataPointList{_channelCount};
+        AudioDataPointList outputDataPointList{_channelCount};
+
+        /* go through all frames */
+        for (Natural i = 0;  i < dataPointCount;  i++) {
+            buffer.getFrame(inputDataPointList, i);
+
+            if (Logging_isActive) {
+                st = STR::expand("time = %1ms, inputDataPoints = %2",
+                                 TOSTRING(effectiveTime * 1000.0),
+                                 inputDataPointList.toString(false));
+                internalState = _internalState();
+
+                if (internalState > "") {
+                    st += ", " + internalState;
+                }
+            }
+
+            _applyForFrame(inputDataPointList, outputDataPointList);
+
+            Logging_trace2("--: %1, outputDataPoints = %2",
+                           st, outputDataPointList.toString(false));
+            buffer.setFrame(outputDataPointList, i);
+            effectiveTime += _deltaTime;
+        }
+    }
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+void SoXAudioEffect::recalculate ()
+{
+    Logging_trace(">>");
     Logging_trace("<<");
 }
 
@@ -249,24 +339,3 @@ void SoXAudioEffect::releaseResources ()
     Logging_trace("<<");
 }
 
-/*--------------------*/
-
-void SoXAudioEffect::processBlock (IN Real timePosition,
-                                   INOUT AudioDataPointListVector& buffer)
-{
-    Logging_trace1(">>: timePosition = %1", TOSTRING(timePosition));
-
-    _currentTimePosition = timePosition;
-    _channelCount        = buffer.size();
-
-    /* check whether timing has changed significantly */
-    const Real absoluteDifference =
-        Real::abs(_currentTimePosition - _expectedNextTimePosition);
-    _timePositionHasMoved = (absoluteDifference > 1E-3);
-
-    const Natural dataPointCount = buffer[0].size();
-    _expectedNextTimePosition = (timePosition
-                                 + Real(dataPointCount) / _dataPointRate);
-
-    Logging_trace("<<");
-}

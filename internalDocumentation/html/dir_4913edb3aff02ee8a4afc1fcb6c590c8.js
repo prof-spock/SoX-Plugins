@@ -1,9 +1,0 @@
-var dir_4913edb3aff02ee8a4afc1fcb6c590c8 =
-[
-    [ "SoXAudioEditor.cpp", "_so_x_audio_editor_8cpp.html", "_so_x_audio_editor_8cpp" ],
-    [ "SoXAudioEditor.h", "_so_x_audio_editor_8h.html", "_so_x_audio_editor_8h" ],
-    [ "SoXAudioEditorWidget.cpp", "_so_x_audio_editor_widget_8cpp.html", "_so_x_audio_editor_widget_8cpp" ],
-    [ "SoXAudioEditorWidget.h", "_so_x_audio_editor_widget_8h.html", "_so_x_audio_editor_widget_8h" ],
-    [ "SoXAudioProcessor.cpp", "_so_x_audio_processor_8cpp.html", "_so_x_audio_processor_8cpp" ],
-    [ "SoXAudioProcessor.h", "_so_x_audio_processor_8h.html", "_so_x_audio_processor_8h" ]
-];

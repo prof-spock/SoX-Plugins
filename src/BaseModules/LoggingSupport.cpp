@@ -326,7 +326,7 @@ static String _ignoredFunctionNamePrefix = "";
 
 /** the function to be directly called when logging (e.g. for embedded
  * systems) */
-static LoggingCallbackFunction _callbackFunction = NULL;
+static LoggingCallbackFunction _callbackFunction = nullptr;
 
 /*--------------------*/
 
@@ -420,7 +420,7 @@ void _appendEntryToBuffer (IN String& functionSignature,
         _LoggingBufferEntry bufferEntry{functionSignature, time,
                                         _currentThreadID(), message};
 
-        if (_callbackFunction != NULL) {
+        if (_callbackFunction != nullptr) {
             String st = _bufferEntryToString(bufferEntry);
             _callbackFunction(st);
         } else {

@@ -851,6 +851,15 @@ namespace BaseModules {
             return _combineListElements(typeName, printableStringList);
         }
 
+        /*--------------------*/
+        /* constants          */
+        /*--------------------*/
+
+        static const Character blankCharacter;        /**< blank space */
+        static const Character doubleQuoteCharacter;  /**< double quote */
+        static const String    newlineString;         /**< newline */
+        static const Character tabulatorCharacter;    /**< tabulator */
+
     };
 
 }

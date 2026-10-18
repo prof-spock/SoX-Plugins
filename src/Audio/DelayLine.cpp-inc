@@ -18,6 +18,10 @@
 using Audio::AudioDataPointRingBufferInterpolator;
 using Audio::DelayLine;
 
+/** abbreviation for pointLocationToString */
+static const auto _pointLocationToString = 
+    BaseTypes::GenericTypes::pointLocationToString;
+
 /*====================*/
 
 /** error message for empty delay line */
@@ -33,15 +37,18 @@ static const String _ErrMsg_nonemptyDelayLine =
  * @param[in]    buffer              audio buffer to be interpolated
  * @param[in]    length              real-valued length of delay line
  * @param[in]    interpolationOrder  order of interpolation polynomial
+ * @param[in]    pointLocation       position of reference point
+ *                                   in interpolation interval
  */
 static void
 _setInterpolator (INOUT AudioDataPointRingBufferInterpolator& interpolator,
                   IN AudioDataPointRingBuffer& buffer,
                   IN Real length,
-                  IN Natural interpolationOrder)
+                  IN Natural interpolationOrder,
+                  IN ListInterpolatorPointLocation pointLocation)
 {
     interpolator.set(buffer, buffer.length(), length,
-                     false, interpolationOrder);
+                     interpolationOrder, pointLocation);
 }
 
 /*--------------------*/
@@ -49,12 +56,11 @@ _setInterpolator (INOUT AudioDataPointRingBufferInterpolator& interpolator,
 INLINE
 void DelayLine::_updateData ()
 {
-    Real totalLength = (Real{_interpolationOrder} + _length);
-    totalLength = totalLength.ceiling();
-    _data.setLength((Natural) totalLength);
+    const Real totalLength = _length.ceiling();
+    _data.setLength(Natural(totalLength));
     setToZero();
-    _setInterpolator(_interpolator, _data,
-                     totalLength, _interpolationOrder);
+    _setInterpolator(_interpolator, _data, totalLength,
+                     _interpolationOrder, _referencePointLocation);
 }
 
 /*--------------------*/
@@ -63,9 +69,11 @@ void DelayLine::_updateData ()
 
 INLINE
 DelayLine::DelayLine (IN Real length,
-                      IN Natural interpolationOrder)
+                      IN Natural interpolationOrder,
+                      IN ListInterpolatorPointLocation pointLocation)
     : _length{length},
       _interpolationOrder{interpolationOrder},
+      _referencePointLocation{pointLocation},
       _interpolator{},
       _data{0}
 {
@@ -78,7 +86,7 @@ INLINE
 DelayLine::~DelayLine ()
 {
     _data.setLength(0);
-    _length                  = 0.0;
+    _length = 0.0;
 }
 
 /*--------------------*/
@@ -99,6 +107,8 @@ String DelayLine::toString (IN Natural dataPointCount) const
     String result = "DelayLine(";
     result += "_length = " + TOSTRING(_length);
     result += ", _interpolationOrder = " + TOSTRING(_interpolationOrder);
+    result += (", _referencePointLocation = "
+               + _pointLocationToString(_referencePointLocation));
     result += ", _data = " + _data.toString(dataPointCount);
     result += ")";
 
@@ -139,6 +149,13 @@ Real DelayLine::length () const
     return _length;
 }
 
+/*--------------------*/
+
+INLINE
+ListInterpolatorPointLocation DelayLine::referencePointLocation () const
+{
+    return _referencePointLocation;
+}
 
 /*--------------------*/
 /* element access     */
@@ -202,6 +219,18 @@ void DelayLine::setLength (IN Real length)
         setToZero();
     } else {
         _length = length;
+        _updateData();
+    }
+}
+
+/*--------------------*/
+
+INLINE
+void DelayLine::setReferencePointLocation
+         (IN ListInterpolatorPointLocation pointLocation)
+{
+    if (pointLocation != _referencePointLocation) {
+        _referencePointLocation = pointLocation;
         _updateData();
     }
 }

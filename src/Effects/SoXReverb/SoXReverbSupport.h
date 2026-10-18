@@ -16,13 +16,13 @@
 /* IMPORTS */
 /*=========*/
 
-#include "AudioDataPointRingBuffer.h"
+#include "AudioDataPointList.h"
 #include "Object.h"
 #include "Percentage.h"
 
 /*--------------------*/
 
-using Audio::AudioDataPointRingBuffer;
+using Audio::AudioDataPointList;
 using BaseTypes::Primitives::Object;
 using BaseTypes::Primitives::Percentage;
 using BaseTypes::Primitives::Real;
@@ -139,8 +139,8 @@ namespace SoXPlugins::Effects::SoXReverb {
          * @param[out] outputDataPointList  the queue of data points for
          *                                  all output channels
          */
-        void apply (IN AudioDataPointRingBuffer& inputDataPointList,
-                    OUT AudioDataPointRingBuffer& outputDataPointList);
+        void apply (IN AudioDataPointList& inputDataPointList,
+                    OUT AudioDataPointList& outputDataPointList);
 
         /*--------------------*/
         /* type conversion    */

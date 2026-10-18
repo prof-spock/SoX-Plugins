@@ -13,7 +13,6 @@
 #include "Logging.h"
 #include "GenericTuple.h"
 #include "RealList.h"
-#include "SoXAudioHelper.h"
 #include "SoXEffectParameterMap.h"
 #include "SoXCompander_AudioEffect.h"
 #include "SoXCompanderSupport.h"
@@ -116,12 +115,6 @@ namespace SoXPlugins::Effects::SoXCompander {
           * (like e.g. attack) */
         _BandIndexToCompanderDataMap indexToCompanderBandParamDataMap;
 
-        /** the input data point buffer of this effect */
-        AudioDataPointList inputDataPointList;
-
-        /** the output data point buffer of this effect */
-        AudioDataPointList outputDataPointList;
-
         /*--------------------*/
         /*--------------------*/
 
@@ -194,9 +187,7 @@ _EffectDescriptor_CMPD (INOUT SoXCompander_AudioEffect& effect)
       bandCount{1},
       channelCount{0},
       multibandCompander{},
-      indexToCompanderBandParamDataMap{},
-      inputDataPointList{},
-      outputDataPointList{}
+      indexToCompanderBandParamDataMap{}
 {
     Logging_trace(">>");
     Logging_trace1("<<: %1", toString());
@@ -231,7 +222,7 @@ updateSettings (IN Real dataPointRate,
     for (Natural bandIndex = 0;  bandIndex < allocatedBandCount;
          bandIndex++) {
         Logging_trace1("--: bandIndex = %1", TOSTRING(bandIndex));
-        _CompanderBandParameterData& data =
+        const _CompanderBandParameterData& data =
             indexToCompanderBandParamDataMap[bandIndex];
         const bool isUnbounded = (bandIndex >= bandCount - 1);
         const Real topFrequency =
@@ -243,8 +234,6 @@ updateSettings (IN Real dataPointRate,
                                        topFrequency);
     }
 
-    inputDataPointList.setLength(channelCount);
-    outputDataPointList.setLength(channelCount);
     effect.setParameterValidity(true);
 
     Logging_trace1("<<: %1", toString());
@@ -381,7 +370,7 @@ SoXCompander_AudioEffect::SoXCompander_AudioEffect ()
     }
 
     effectDescriptor.bandCount = 1;
-    effectDescriptor.updateSettings(_dataPointRate, 2);
+    recalculate();
 
     Logging_trace1("<<: %1", toString());
 }
@@ -398,17 +387,6 @@ SoXCompander_AudioEffect::~SoXCompander_AudioEffect ()
 /*-----------------------*/
 /* string representation */
 /*-----------------------*/
-
-String SoXCompander_AudioEffect::toString () const
-{
-    String st = "SoXCompander_AudioEffect(";
-    st += _asRawString();
-    st += ")";
-
-    return st;
-}
-
-/*--------------------*/
 
 String SoXCompander_AudioEffect::_effectDescriptorToString () const
 {
@@ -438,18 +416,14 @@ String SoXCompander_AudioEffect::name () const
 /* parameter change   */
 /*--------------------*/
 
-SoXParameterValueChangeKind SoXCompander_AudioEffect
+SoXValueChangeKind SoXCompander_AudioEffect
 ::_setValueInternal (IN String& parameterName,
-                     IN String& value,
-                     IN Boolean recalculationIsForced)
+                     IN String& value)
 {
-    Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalcIsForced = %3",
-                   parameterName, value,
-                   TOSTRING(recalculationIsForced));
+    Logging_trace2(">>: parameterName = %1, value = %2",
+                   parameterName, value);
 
-    SoXParameterValueChangeKind result =
-        SoXParameterValueChangeKind::parameterChange;
+    SoXValueChangeKind result = SoXValueChangeKind::parameterChange;
     _EffectDescriptor_CMPD& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_CMPD>(_effectDescriptor);
     const String bandCountParam = parameterName_bandCount;
@@ -462,14 +436,12 @@ SoXParameterValueChangeKind SoXCompander_AudioEffect
         effectDescriptor.bandCount = bandCount;
         effectDescriptor.multibandCompander.setEffectiveSize(bandCount);
         _effectParameterMap.setValue(bandCountParam, TOSTRING(bandCount));
-        effectDescriptor.updateSettings(_dataPointRate, _channelCount);
-        result = SoXParameterValueChangeKind::pageCountChange;
+        recalculate();
     } else if (STR::endsWith(parameterName, bandIndexParam)) {
         const Natural bandIndex =
             Natural::forceToInterval(STR::toNatural(value),
                                      1, effectDescriptor.bandCount);
         _effectParameterMap.setValue(bandIndexParam, TOSTRING(bandIndex));
-        result = SoXParameterValueChangeKind::pageChange;
     } else {
         Natural pageIndex;
         String effectiveParameterName;
@@ -497,14 +469,10 @@ SoXParameterValueChangeKind SoXCompander_AudioEffect
             } else if (effectiveParameterName == parameterName_topFrequency) {
                 data.topFrequency = STR::toReal(value);
             }
-
-            if (recalculationIsForced) {
-                effectDescriptor.updateSettings(_dataPointRate, _channelCount);
-            }
         }
     }
 
-    Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));
+    Logging_trace1("<<: %1", SoXValueChangeKind_toString(result));
     return result;
 }
 
@@ -514,9 +482,10 @@ void SoXCompander_AudioEffect::setDefaultValues ()
 {
     Logging_trace(">>");
 
+    Dictionary dictionary;
     _channelCount = 2;
 
-    setValueViaParent("-2#" + parameterName_bandCount, "1");
+    dictionary.set("-2#" + parameterName_bandCount, "1");
 
     for (Natural bandIndex = 0;  bandIndex < _maxBandCount;
          bandIndex++) {
@@ -527,25 +496,26 @@ void SoXCompander_AudioEffect::setDefaultValues ()
                 return result;
             };
 
-        setValueViaParent(pagedName(parameterName_attack),      "0.02");
-        setValueViaParent(pagedName(parameterName_decay),       "0.15");
-        setValueViaParent(pagedName(parameterName_dBKnee),      "6");
-        setValueViaParent(pagedName(parameterName_dBThreshold), "-20");
-        setValueViaParent(pagedName(parameterName_ratio),       "2");
-        setValueViaParent(pagedName(parameterName_dBGain),      "5");
+        dictionary.set(pagedName(parameterName_attack),      "0.02");
+        dictionary.set(pagedName(parameterName_decay),       "0.15");
+        dictionary.set(pagedName(parameterName_dBKnee),      "6");
+        dictionary.set(pagedName(parameterName_dBThreshold), "-20");
+        dictionary.set(pagedName(parameterName_ratio),       "2");
+        dictionary.set(pagedName(parameterName_dBGain),      "5");
         const Real topFrequency =
             (_maxTopFrequency * (bandIndex + Natural{1}))
               / Real{Natural{_maxBandCount}};
-        setValueViaParent(pagedName(parameterName_topFrequency),
+        dictionary.set(pagedName(parameterName_topFrequency),
                           TOSTRING(topFrequency));
     }
 
-    setValueViaParent("-1#" + parameterName_bandIndex, "1", true);
+    dictionary.set("-1#" + parameterName_bandIndex, "1");
+    setValues(dictionary);
 
     _EffectDescriptor_CMPD& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_CMPD>(_effectDescriptor);
     effectDescriptor.bandCount = 1;
-    effectDescriptor.updateSettings(_dataPointRate, _channelCount);
+    recalculate();
 
     Logging_trace1("<<: %1", toString());
 }
@@ -554,64 +524,39 @@ void SoXCompander_AudioEffect::setDefaultValues ()
 /* event handling     */
 /*--------------------*/
 
-void SoXCompander_AudioEffect::prepareToPlay (IN Real dataPointRate)
+void SoXCompander_AudioEffect::
+_handleDataPointRateChange (IN Real dataPointRate)
 {
     Logging_trace1(">>: %1", TOSTRING(dataPointRate));
-
-    if (dataPointRate == _dataPointRate) {
-        Logging_trace("--: no recalculation");
-    } else {
-        _EffectDescriptor_CMPD& effectDescriptor =
-            TOREFERENCE<_EffectDescriptor_CMPD>(_effectDescriptor);
-        /* compander has to be recalculated */
-        effectDescriptor.updateSettings(dataPointRate, _channelCount);
-    }
-
-    _prepareToPlay(dataPointRate);
-
+    recalculate();
     Logging_trace("<<");
 }
 
 /*--------------------*/
 
-void
-SoXCompander_AudioEffect::processBlock
-                              (IN Real timePosition,
-                               INOUT AudioDataPointListVector& buffer) {
-    Logging_trace1(">>: time = %1", TOSTRING(timePosition));
+void SoXCompander_AudioEffect::
+_applyForFrame (IN AudioDataPointList& inputDataPointList,
+                OUT AudioDataPointList& outputDataPointList)
+{
+    Logging_trace(">>");
 
-    if (_parametersAreValid) {
-        SoXAudioEffect::processBlock(timePosition, buffer);
+    _EffectDescriptor_CMPD& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_CMPD>(_effectDescriptor);
+    SoXMultibandCompander& compander = effectDescriptor.multibandCompander;
+    compander.apply(inputDataPointList, outputDataPointList);
+        
+    Logging_trace("<<");
+}
 
-        _EffectDescriptor_CMPD& effectDescriptor =
-            TOREFERENCE<_EffectDescriptor_CMPD>(_effectDescriptor);
+/*--------------------*/
 
-        if (_channelCount != effectDescriptor.channelCount) {
-            effectDescriptor.updateSettings(_dataPointRate, _channelCount);
-        }
+void SoXCompander_AudioEffect::recalculate ()
+{
+    Logging_trace(">>");
 
-        const Natural dataPointCount = buffer[0].size();
-        SoXMultibandCompander& compander = effectDescriptor.multibandCompander;
-        AudioDataPointList& inputDataPointList  =
-            effectDescriptor.inputDataPointList;
-        AudioDataPointList& outputDataPointList =
-            effectDescriptor.outputDataPointList;
-
-        for (Natural i = 0;  i < dataPointCount;  i++) {
-            for (Natural channel = 0;  channel < _channelCount;  channel++) {
-                const AudioDataPointList& inputList = buffer[channel];
-                inputDataPointList[channel] = inputList[i];
-            }
-
-            compander.apply(inputDataPointList, outputDataPointList);
-
-            /* write output data point list onto all channels */
-            for (Natural channel = 0;  channel < _channelCount;  channel++) {
-                AudioDataPointList& outputList = buffer[channel];
-                outputList[i] = outputDataPointList[channel];
-            }
-        }
-    }
+    _EffectDescriptor_CMPD& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_CMPD>(_effectDescriptor);
+    effectDescriptor.updateSettings(_dataPointRate, _channelCount);
         
     Logging_trace("<<");
 }

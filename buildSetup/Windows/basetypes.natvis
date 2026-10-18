@@ -29,7 +29,7 @@
   </Type>
 
   <Type Name="BaseTypes::Primitives::Percentage">
-	<DisplayString>{_value*100.0}%</DisplayString>
+	<DisplayString>{_value}%</DisplayString>
   </Type>
 
   <Type Name="BaseTypes::Primitives::Radians">

@@ -1,9 +1,10 @@
-internalDocumentation/**     -diff -merge
-internalDocumentation/**     linguist-generated=true
+*.bat    		     text eol=crlf
 *.cmake    		     text eol=lf 
 *.cpp      		     text eol=lf 
 *.cpp-inc  		     text eol=lf 
-*.h        		     text eol=lf 
 *.desc     		     text eol=lf 
+*.h        		     text eol=lf 
 *.ltx      		     text eol=lf 
 *.natvis   		     text eol=crlf
+*.rc    		     text eol=crlf
+*.rpp      		     text eol=auto

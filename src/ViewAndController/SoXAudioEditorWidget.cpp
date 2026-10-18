@@ -134,7 +134,7 @@ namespace SoXPlugins::ViewAndController {
             const String parameterName = slider->getName().toStdString();
             const Real realValue = slider->getValue();
             const Integer intValue{realValue};
-            const String value =(realValue == (Real) intValue
+            const String value =(realValue == Real(intValue)
                                  ? TOSTRING(intValue)
                                  : TOSTRING(realValue));
             _editor->setValue(parameterName, value);
@@ -365,6 +365,13 @@ String SoXAudioEditorWidget::parameterName () const
 }
 
 /*--------------------*/
+
+String SoXAudioEditorWidget::value () const
+{
+    return _representedValue;
+}
+
+/*--------------------*/
 /* event processing   */
 /*--------------------*/
 
@@ -372,7 +379,11 @@ void SoXAudioEditorWidget::setValue (IN String& value)
 {
     Logging_trace1(">>: %1", value);
 
-    if (_parameterMap.isAllowedValue(_parameterName, value)) {
+    if (!_parameterMap.isAllowedValue(_parameterName, value)) {
+        Logging_trace("--: bad value -> ignored");
+    } else if (_representedValue == value) {
+        Logging_trace("--: no change -> ignored");
+    } else {
         juce::Slider* slider =
             dynamic_cast<juce::Slider*>(_controlWidget);
         juce::ComboBox* comboBox =
@@ -429,12 +440,12 @@ void SoXAudioEditorWidget::resized ()
         /* when it is a slider, also adapt text box */
         juce::Slider* slider = dynamic_cast<juce::Slider*>(_controlWidget);
 
-        if (slider != NULL) {
+        if (slider != nullptr) {
             Integer boxWidth =
-                (Integer) Real::round(_valueFieldWidthPercentage
-                                      .of(parentWidth));
+                Integer(Real::round(_valueFieldWidthPercentage
+                                    .of(parentWidth)));
             Integer boxHeight =
-                (Integer) Real::round(_rowHeightPercentage.of(parentHeight));
+                Integer(Real::round(_rowHeightPercentage.of(parentHeight)));
             slider->setTextBoxStyle(juce::Slider::TextBoxRight,
                                     false, int(boxWidth), int(boxHeight));
             Logging_trace2("--: sliderBoxSize = (%1, %2)",

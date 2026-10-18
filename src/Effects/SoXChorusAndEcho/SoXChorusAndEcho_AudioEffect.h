@@ -18,13 +18,13 @@
 /*=========*/
 
 #include "Real.h"
-#include "SoXAudioEffect.h"
+#include "SoXCombinedAudioEffect.h"
 #include "MyString.h"
 
 /*--------------------*/
 
 using BaseTypes::Primitives::Real;
-using SoXPlugins::Effects::SoXAudioEffect;
+using SoXPlugins::Effects::SoXCombinedAudioEffect;
 
 /*====================*/
 
@@ -36,7 +36,7 @@ namespace SoXPlugins::Effects::SoXChorusAndEcho {
      * that <B>echo</B> has parallel taps all fed by the input signal
      * while <B>echos</B> has sequential taps.
      */
-    struct SoXChorusAndEcho_AudioEffect : public SoXAudioEffect {
+    struct SoXChorusAndEcho_AudioEffect : public SoXCombinedAudioEffect {
 
         /*---------------------*/
         /* setup & destruction */
@@ -48,14 +48,12 @@ namespace SoXPlugins::Effects::SoXChorusAndEcho {
 
         ~SoXChorusAndEcho_AudioEffect () override;
 
-        /*-----------------------*/
-        /* string representation */
-        /*-----------------------*/
-
-        String toString () const override;
-
         /*--------------------*/
         /* property queries   */
+        /*--------------------*/
+
+        Boolean isTimeVariant () const override;
+
         /*--------------------*/
 
         String name () const override;
@@ -74,29 +72,51 @@ namespace SoXPlugins::Effects::SoXChorusAndEcho {
         /* event handling     */
         /*--------------------*/
 
-        void prepareToPlay (IN Real dataPointRate)
-            override;
-
-        /*--------------------*/
-
-        void processBlock (IN Real timePosition,
-                           INOUT AudioDataPointListVector& buffer)
-            override;
+        void recalculate () override;
 
         /*--------------------*/
         /*--------------------*/
 
         protected:
 
+            /*-----------------------*/
+            /* string representation */
+            /*-----------------------*/
+
             String _effectDescriptorToString () const
+                override;
+
+            /*-----------------------*/
+
+            String _internalState () const
+                override;
+
+            /*--------------------*/
+            /* parameter map      */
+            /*--------------------*/
+
+            SoXValueChangeKind
+            _setValueInternal (IN String& parameterName,
+                               IN String& value)
+                override;
+
+            /*--------------------*/
+            /* event handling     */
+            /*--------------------*/
+
+            void
+            _applyForFrame (IN AudioDataPointList& inputDataPointList,
+                            OUT AudioDataPointList& outputDataPointList)
                 override;
 
             /*--------------------*/
 
-            SoXParameterValueChangeKind
-            _setValueInternal (IN String& parameterName,
-                               IN String& value,
-                               IN Boolean recalculationIsForced)
+            void _handleDataPointRateChange (IN Real dataPointRate)
+                override;
+
+            /*--------------------*/
+
+            void _updateEffectForKind (IN String& effectKindString)
                 override;
 
     };

@@ -20,11 +20,10 @@
 /*--------------------*/
 
 using Audio::AudioDataPointListVector;
-using BaseTypes::Containers::convertArray;
+using BaseTypes::Containers::Array_convert;
 using BaseTypes::GenericTypes::GenericSet;
 using SoXPlugins::Helpers::SoXEffectParameterKind;
 using SoXPlugins::ViewAndController::SoXAudioEditor;
-using SoXPlugins::Effects::ValueChangeNotification;
 
 /** abbreviation for StringUtil */
 using STR = BaseModules::StringUtil;
@@ -39,15 +38,8 @@ typedef GenericSet<SoXAudioEditor*> _SoXAudioEditorPtrSet;
 /** a mapping from string to natural */
 typedef GenericMap<String, Natural> StringToNaturalMap;
 
-/** a JUCE array of audio processor parameter pointers */
-typedef juce::Array<juce::AudioProcessorParameter*>
-    _AudioProcessorParameterArray;
-
 /*--------------------*/
 /*--------------------*/
-
-/** the double quote character */
-static const Character quoteCharacter = '"';
 
 /** number of decimal places for reals in serialized form */
 static const Natural decimalPlaceCount = 5;
@@ -67,10 +59,282 @@ static Real _stretchToRealInterval (IN Real unitIntervalValue,
                                     IN Real lowValue,
                                     IN Real highValue);
 
-static void _updateAudioProcessorParameterRange
-                    (INOUT juce::AudioProcessorParameter& parameterObject,
-                     IN String& parameterName,
-                     IN SoXEffectParameterMap& effectParameterMap);
+/*============================================================*/
+
+/*--------------------------*/
+/* _AudioProcessorParameter */
+/*--------------------------*/
+
+/** a JUCE audio processor parameter */
+typedef juce::AudioProcessorParameter _AudioProcessorParameter;
+
+/** a JUCE array of audio processor parameter pointers */
+typedef juce::Array<_AudioProcessorParameter*> _AudioProcessorParameterArray;
+
+/*--------------------*/
+
+/**
+ * Updates range of juce parameter object <C>parameterObject</C> named
+ * <C>parameterName</C> using data taken from
+ * <C>parameterMap</C>.
+ *
+ * @param[inout] parameterObject  juce audio parameter object
+ * @param[in]    parameterName    name of audio parameter in map
+ * @param[in]    parameterMap     map of all audio parameters to
+ *                                associated attributes
+ */
+static void _AudioProcessorParameter_updateRange
+                (INOUT _AudioProcessorParameter& parameterObject,
+                 IN String& parameterName,
+                 IN SoXEffectParameterMap& parameterMap)
+{
+    Logging_trace1(">>: %1", parameterName);
+
+    const SoXEffectParameterKind kind = parameterMap.kind(parameterName);
+    const String value = parameterMap.value(parameterName);
+
+    const juce::String juceParameterName = juce::String(parameterName);
+    const juce::ParameterID juceParameterID = juceParameterName;
+
+    if (kind == SoXEffectParameterKind::enumKind) {
+        Logging_traceError("combo box change is not supported");
+        /* TODO: check whether some combo box change is possible
+
+           juce::AudioParameterChoice& choiceParameterObject =
+           dynamic_cast<juce::AudioParameterChoice&>(parameterObject);
+           StringList enumValueList;
+           parameterMap.valueRangeEnum(parameterName, enumValueList);
+           juce::StringArray juceChoiceList;
+           Natural parameterIndex = 0;
+           Boolean isFound = false;
+           
+           for (const String& enumValue : enumValueList) {
+               juceChoiceList.add(juce::String(enumValue));
+               isFound = isFound || (value == enumValue);
+               parameterIndex += (isFound ? 0 : 1);
+           }
+
+           while (juceChoiceList.size() < 2) {
+               juceChoiceList.add("x");
+           }
+        */
+    } else if (kind == SoXEffectParameterKind::realKind
+               || kind == SoXEffectParameterKind::intKind) {
+        juce::AudioParameterFloat& floatParameterObject =
+            dynamic_cast<juce::AudioParameterFloat&>(parameterObject);
+        Real lowValue, highValue, delta;
+
+        if (kind == SoXEffectParameterKind::realKind) {
+            parameterMap.valueRangeReal(parameterName,
+                                        lowValue, highValue, delta);
+        } else {
+            Integer lowV, highV, deltaV;
+            parameterMap.valueRangeInt(parameterName,
+                                       lowV, highV, deltaV);
+            lowValue  = lowV;
+            highValue = highV;
+            delta     = deltaV;
+        }
+        
+        juce::NormalisableRange<float>& range =
+            floatParameterObject.range;
+        range.start    = float(lowValue);
+        range.end      = float(highValue);
+        range.interval = float(delta);
+        const Real currentValue = STR::toReal(value);
+        floatParameterObject = float(currentValue);
+    }
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+/**
+ * Ensures that all audio parameter ranges correspond to the
+ * underlying parameter map.
+ *
+ * @param[in] audioParameterList  list of audio parameter objects
+ * @param[in] parameterMap        map with parameter data
+ */
+static void _AudioProcessorParameter_updateRanges
+                (IN _AudioProcessorParameterArray& audioParameterList,
+                 IN SoXEffectParameterMap& parameterMap)
+{
+    Logging_trace(">>");
+
+    for (_AudioProcessorParameter* parameterObject : audioParameterList) {
+        String parameterName =
+            parameterObject->getName(1000).toStdString();
+        _AudioProcessorParameter_updateRange(*parameterObject,
+                                             parameterName,
+                                             parameterMap);
+    }
+    
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+/**
+ * Updates value of juce parameter object <C>parameterObject</C> named
+ * <C>parameterName</C> to <C>value</C> using data taken from
+ * <C>parameterMap</C>.
+ *
+ * @param[inout] parameterObject  juce audio parameter object
+ * @param[in]    parameterName    name of audio parameter in map
+ * @param[in]    parameterMap     map of all audio parameters to
+ *                                associated attributes
+ * @param[in]    value            new value for parameter
+ */
+static void
+_AudioProcessorParameter_updateValue
+        (INOUT _AudioProcessorParameter* parameterObject,
+         IN String& parameterName,
+         IN SoXEffectParameterMap& parameterMap,
+         IN String& value)
+{
+    Logging_trace2(">>: parameterName = %1, value = %2",
+                   parameterName, value);
+
+    const SoXEffectParameterKind kind =
+        parameterMap.kind(parameterName);
+
+    if (kind == SoXEffectParameterKind::realKind
+        || kind == SoXEffectParameterKind::intKind) {
+        Real realValue = STR::toReal(value);
+
+        if (kind == SoXEffectParameterKind::intKind) {
+            realValue = Real::round(realValue);
+        }
+
+        juce::AudioParameterFloat& numericParameterObject =
+            TOREFERENCE<juce::AudioParameterFloat>(parameterObject);
+        numericParameterObject = float(realValue);
+    } else if (kind == SoXEffectParameterKind::enumKind) {
+        StringList enumValueList;
+        parameterMap.valueRangeEnum(parameterName, enumValueList);
+        const int valueIndex =
+            int(Integer::maximum(0, enumValueList.position(value)));
+        juce::AudioParameterChoice& choiceParameterObject =
+            TOREFERENCE<juce::AudioParameterChoice>(parameterObject);
+        choiceParameterObject = int(valueIndex);
+    }
+
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+/**
+ * Updates values of audio parameters in <C>audioParameterList</C> by
+ * key-value map <C>dictionary</C> underlying parameter map.
+ *
+ * @param[in] audioParameterList  list of audio parameter objects
+ * @param[in] dictionary          map with parameter values
+ * @param[in] parameterMap        map of all audio parameters to
+ *                                associated attributes
+ */
+static void _AudioProcessorParameter_updateValues
+                (IN _AudioProcessorParameterArray& audioParameterList,
+                 IN Dictionary& dictionary,
+                 IN SoXEffectParameterMap& parameterMap)
+{
+    Logging_trace1(">>: %1", dictionary.toString());
+
+    for (_AudioProcessorParameter* parameterObject : audioParameterList) {
+        const String parameterName =
+            parameterObject->getName(1000).toStdString();
+
+        if (dictionary.contains(parameterName)) {
+            String value = dictionary.at(parameterName);
+            _AudioProcessorParameter_updateValue(parameterObject,
+                                                 parameterName,
+                                                 parameterMap,
+                                                 value);
+        }
+    }
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+/**
+ * Constructs juce parameter object from <C>parameterName</C> with
+ * data taken from <C>parameterMap</C>.
+ *
+ * @param[in] parameterName  name of audio parameter in map
+ * @param[in] parameterMap   map of all audio parameters to
+ *                           associated attributes
+ * @return  juce audio parameter object
+ */
+static _AudioProcessorParameter*
+_AudioProcessorParameter_create (IN String& parameterName,
+                                 IN SoXEffectParameterMap& parameterMap)
+{
+    Logging_trace1(">>: %1", parameterName);
+
+    const SoXEffectParameterKind kind =
+        parameterMap.kind(parameterName);
+    const String value = parameterMap.value(parameterName);
+
+    juce::NormalisableRange<float> range;
+    const juce::String juceParameterName = juce::String(parameterName);
+    const juce::ParameterID juceParameterID = juceParameterName;
+    _AudioProcessorParameter* parameterObject = nullptr;
+
+    if (kind == SoXEffectParameterKind::realKind
+        || kind == SoXEffectParameterKind::intKind) {
+        parameterObject =
+            new juce::AudioParameterFloat(juceParameterID,
+                                          juceParameterName,
+                                          range, 1.0);
+    } else if (kind == SoXEffectParameterKind::enumKind) {
+        StringList enumValueList;
+        parameterMap.valueRangeEnum(parameterName, enumValueList);
+        juce::StringArray juceChoiceList;
+        Natural parameterIndex = 0;
+        Boolean isFound = false;
+
+        for (const String& enumValue : enumValueList) {
+            juceChoiceList.add(juce::String(enumValue));
+            isFound = isFound || (value == enumValue);
+            parameterIndex += (isFound ? 0 : 1);
+        }
+
+        /* workaround */
+        while (juceChoiceList.size() < 2) {
+            juceChoiceList.add("x");
+        }
+
+        /* for Apple audio units when changing a meta parameter, other
+           parameter values may be affected by that */
+        const Boolean isMetaParameter =
+            metaParameterNameSet.contains(parameterName);
+        const juce::AudioParameterChoiceAttributes attributes =
+            juce::AudioParameterChoiceAttributes()
+            .withMeta((bool) isMetaParameter);
+        parameterObject =
+            new juce::AudioParameterChoice(juceParameterID,
+                                           juceParameterName,
+                                           juceChoiceList,
+                                           int(parameterIndex),
+                                           attributes);
+    }
+
+    const Boolean parameterObjectIsSet = (parameterObject != nullptr);
+
+    if (parameterObjectIsSet) {
+        _AudioProcessorParameter_updateRange(*parameterObject,
+                                            parameterName,
+                                            parameterMap);
+    }
+
+    Logging_trace1("<<: %1", (parameterObjectIsSet ? "OKAY" : "NULL"));
+    return parameterObject;
+}
 
 /*============================================================*/
 
@@ -81,7 +345,7 @@ namespace SoXPlugins::ViewAndController {
         : juce::AudioProcessorParameter::Listener {
 
         /** the associated processor for this listener */
-        SoXAudioProcessor* processor;
+        SoXAudioProcessor* audioProcessor;
 
         /*--------------------*/
 
@@ -126,6 +390,7 @@ using SoXPlugins::ViewAndController::_SoXAudioProcessorDescriptor;
 
 void _EffectParameterListener::parameterGestureChanged (int, bool)
 {
+    /* no gesture support for now */
 }
 
 /*--------------------*/
@@ -139,15 +404,18 @@ void _EffectParameterListener::parameterValueChanged (int paramIndex,
                    TOSTRING(parameterIndex),
                    TOSTRING(unitIntervalValue));
 
-    /* find associated parameter */
-    const juce::AudioProcessorParameter* parameter =
-        processor->getParameters()[int(parameterIndex)];
-    const String parameterName{parameter->getName(1000).toStdString()};
+    /* find associated JUCE parameter object */
+    const _AudioProcessorParameter* parameterObject =
+        audioProcessor->getParameters()[int(parameterIndex)];
+    const String parameterName =
+        parameterObject->getName(1000).toStdString();
     Logging_trace1("--: parameterName = %1", parameterName);
     const SoXEffectParameterMap& parameterMap =
-        processor->effectParameterMap();
+        audioProcessor->effectParameterMap();
 
-    if (parameterMap.contains(parameterName)) {
+    if (!parameterMap.contains(parameterName)) {
+        Logging_trace("--: parameterName is unknown");
+    } else {
         String value;
         const SoXEffectParameterKind kind =
             parameterMap.kind(parameterName);
@@ -186,7 +454,7 @@ void _EffectParameterListener::parameterValueChanged (int paramIndex,
         if (value > "") {
             /* lock the juce message manager for updating */
             const juce::MessageManagerLock mutex;
-            processor->setValue(parameterName, value, false);
+            audioProcessor->setValue(parameterName, value);
         }
     }
 
@@ -197,79 +465,6 @@ void _EffectParameterListener::parameterValueChanged (int paramIndex,
 
 /*--------------------*/
 /* internal routines  */
-/*--------------------*/
-
-/**
- * Constructs juce parameter object from <C>parameterName</C> with
- * data taken from <C>effectParameterMap</C>.
- *
- * @param[in] parameterName      name of audio parameter in map
- * @param[in] effectParameterMap  map of all audio parameters to
- *                               associated attributes
- * @return  juce audio parameter object
- */
-static juce::AudioProcessorParameter*
-_constructParameterObject (IN String& parameterName,
-                           IN SoXEffectParameterMap& effectParameterMap)
-{
-    Logging_trace1(">>: %1", parameterName);
-
-    const SoXEffectParameterKind kind =
-        effectParameterMap.kind(parameterName);
-    const String value = effectParameterMap.value(parameterName);
-
-    juce::NormalisableRange<float> range;
-    const juce::String juceParameterName = juce::String(parameterName);
-    const juce::ParameterID juceParameterID = juceParameterName;
-    juce::AudioProcessorParameter* parameterObject = nullptr;
-
-    if (kind == SoXEffectParameterKind::realKind
-        || kind == SoXEffectParameterKind::intKind) {
-        parameterObject =
-            new juce::AudioParameterFloat(juceParameterID,
-                                          juceParameterName,
-                                          range, 1.0);
-    } else if (kind == SoXEffectParameterKind::enumKind) {
-        StringList enumValueList;
-        effectParameterMap.valueRangeEnum(parameterName, enumValueList);
-        juce::StringArray juceChoiceList;
-        Natural parameterIndex = 0;
-        Boolean isFound = false;
-
-        for (const String& enumValue : enumValueList) {
-            juceChoiceList.add(juce::String(enumValue));
-            isFound = isFound || (value == enumValue);
-            parameterIndex += (isFound ? 0 : 1);
-        }
-
-        /* workaround */
-        while (juceChoiceList.size() < 2) {
-            juceChoiceList.add("x");
-        }
-
-        /* for Apple audio units when changing a meta parameter, other
-           parameter values may be affected by that */
-        const Boolean isMetaParameter =
-            metaParameterNameSet.contains(parameterName);
-        const juce::AudioParameterChoiceAttributes attributes =
-            juce::AudioParameterChoiceAttributes()
-            .withMeta((bool)isMetaParameter);
-        parameterObject =
-            new juce::AudioParameterChoice(juceParameterID,
-                                           juceParameterName,
-                                           juceChoiceList,
-                                           int(parameterIndex),
-                                           attributes);
-    }
-
-    _updateAudioProcessorParameterRange(*parameterObject,
-                                        parameterName,
-                                        effectParameterMap);
-
-    Logging_trace1("<<: %1", (parameterObject == nullptr ? "NULL" : "OKAY"));
-    return parameterObject;
-}
-
 /*--------------------*/
 
 /**
@@ -287,7 +482,7 @@ static String _convertMapToString (IN SoXEffectParameterMap& parameterMap,
                    parameterMap.toString(), title);
 
     const StringList parameterNameList = parameterMap.parameterNameList();
-    String result = title + "\n";
+    String result = title + STR::newlineString;
 
     for (Natural i = 0;  i < parameterNameList.size();  i++) {
         const String parameterName = parameterNameList[i];
@@ -296,12 +491,13 @@ static String _convertMapToString (IN SoXEffectParameterMap& parameterMap,
         String parameterValue = parameterMap.value(parameterName);
 
         if (kind == SoXEffectParameterKind::enumKind) {
-            STR::prepend(parameterValue, quoteCharacter);
-            STR::append(parameterValue, quoteCharacter);
+            STR::prepend(parameterValue, STR::doubleQuoteCharacter);
+            STR::append(parameterValue,  STR::doubleQuoteCharacter);
         }
 
         /* write each entry as a line */
-        result += (parameterName + " = " + parameterValue + "\n");
+        result +=
+            (parameterName + " = " + parameterValue + STR::newlineString);
     }
 
     Logging_trace1("<<: %1", String_normalize(result));
@@ -311,28 +507,48 @@ static String _convertMapToString (IN SoXEffectParameterMap& parameterMap,
 /*--------------------*/
 
 /**
- * Sets parameter named <C>parameterName</C> to <C>value</C> for audio
- * processor given as <C>object</C>; calls associated setValue
- * function for processor
+ * Sets all parameter with keys in <C>dictionary</C> to associated
+ * values for audio processor given as <C>object</C> and notifies
+ * observers
  *
- * @param[in] parameterName          name of parameter to be set
- * @param[in] value                  associated value of parameter
- * @param[in] recalculationIsForced  flag to tell whether complex
- *                                   recalculations should be done
+ * @param[in] object           descriptor object receiving notification
+ * @param[in] dictionary       map from parameter names to new values
+ * @param[in] valueChangeKind  maximum kind of value change
  */
 static void _dispatchValueChange (INOUT Object object,
-                                  IN String& parameterName,
-                                  IN String& value,
-                                  IN Boolean recalculationIsForced)
+                                  IN Dictionary& dictionary,
+                                  IN SoXValueChangeKind valueChangeKind)
 {
-    Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalcIsForced = %3",
-                   parameterName, value,
-                   TOSTRING(recalculationIsForced));
+    Logging_trace2(">>: dictionary = %1, changeKind = %2",
+                   dictionary.toString(),
+                   SoXValueChangeKind_toString(valueChangeKind));
 
-    SoXAudioProcessor& processor = TOREFERENCE<SoXAudioProcessor>(object);
-    processor.setValue(parameterName, value, recalculationIsForced);
+    _SoXAudioProcessorDescriptor& descriptor =
+        TOREFERENCE<_SoXAudioProcessorDescriptor>(object);
+    SoXAudioProcessor& audioProcessor =
+        TOREFERENCE<SoXAudioProcessor>(descriptor.listener.audioProcessor);
+    const SoXEffectParameterMap& parameterMap =
+        audioProcessor.effectParameterMap();
+    const _AudioProcessorParameterArray& apParameterList =
+        audioProcessor.getParameters();
+
+    if (valueChangeKind == SoXValueChangeKind::globalChange) {
+        _AudioProcessorParameter_updateRanges(apParameterList,
+                                              parameterMap);
+    }
     
+    _AudioProcessorParameter_updateValues (apParameterList,
+                                           dictionary, parameterMap);
+
+    /* notify all observers about change */
+    _SoXAudioEditorPtrSet observerSet = descriptor.observerSet;
+
+    for (SoXAudioEditor* editor : observerSet) {
+        if (editor != nullptr) {
+            editor->notifyAboutChange(dictionary, valueChangeKind);
+        }
+    }
+
     Logging_trace("<<");
 }
 
@@ -356,7 +572,8 @@ static void _readKeyValueMapString (INOUT SoXAudioProcessor* audioProcessor,
     Logging_trace1(">>: st = %1", st);
 
     /* read the data as written by the string conversion */
-    const StringList lineList = StringList::makeBySplit(st, "\n");
+    const StringList lineList =
+        StringList::makeBySplit(st, STR::newlineString);
 
     /* throw away empty last line and title => first index is 1,
        last index is lineCount - 1 */
@@ -371,15 +588,15 @@ static void _readKeyValueMapString (INOUT SoXAudioProcessor* audioProcessor,
         if (partList.size() == 2) {
             Natural pageNumber;
             String labelName;
-            const String parameterName = STR::strip(partList[0]);
+            String parameterName = STR::strip(partList[0]);
             String value = STR::strip(partList[1]);
             SoXEffectParameterMap::splitParameterName(parameterName,
                                                       labelName,
                                                       pageNumber);
 
             if (value.length() >= 2
-                && STR::firstCharacter(value) == quoteCharacter
-                && STR::lastCharacter(value) == quoteCharacter) {
+                && STR::firstCharacter(value) == STR::doubleQuoteCharacter
+                && STR::lastCharacter(value) == STR::doubleQuoteCharacter) {
                 value = value.substr(1, value.length() - 2);
             }
 
@@ -390,15 +607,22 @@ static void _readKeyValueMapString (INOUT SoXAudioProcessor* audioProcessor,
             const Boolean recalculationIsForced =
               (i == lastIndex || !isOnSamePage);
 
-            /* make sure that the value in parameter map does not
-               match the new value */
-            if (!parameterMap.isAllowedValue(parameterName, value)) {
-                value = parameterMap.value(parameterName);
-            }
+            /* map to the canonical name */
+            String canonicalParameterName;
+            
+            if (parameterMap.isAcceptableName(parameterName,
+                                              canonicalParameterName)) {
+                parameterName = canonicalParameterName;
 
-            parameterMap.invalidateValue(parameterName);
-            audioProcessor->setValue(parameterName, value,
-                                     recalculationIsForced);
+                /* make sure that the value in parameter map does not
+                   match the new value */
+                if (!parameterMap.isAllowedValue(parameterName, value)) {
+                    value = parameterMap.value(parameterName);
+                }
+
+                parameterMap.invalidateValue(parameterName);
+                audioProcessor->setValue(parameterName, value);
+            }
         }
     }
 
@@ -447,7 +671,7 @@ static Integer _stretchToIntegerInterval (IN Real unitIntervalValue,
                               TOSTRING(unitIntervalValue)));
     const Real stretchedValue =
         _stretchToRealInterval(unitIntervalValue, lowValue, highValue);
-    return (Integer) Real::round(stretchedValue);
+    return Integer(Real::round(stretchedValue));
 }
 
 /*--------------------*/
@@ -471,162 +695,6 @@ static Real _stretchToRealInterval (IN Real unitIntervalValue,
     return lowValue + unitIntervalValue * (highValue - lowValue);
 }
 
-/*--------------------*/
-
-/**
- * Updates range of juce parameter object <C>parameterObject</C> named
- * <C>parameterName</C> using data taken from
- * <C>effectParameterMap</C>.
- *
- * @param[inout] parameterObject     juce audio parameter object
- * @param[in]    parameterName       name of audio parameter in map
- * @param[in]    effectParameterMap  map of all audio parameters to
- *                                   associated attributes
- */
-static void _updateAudioProcessorParameterRange
-                (INOUT juce::AudioProcessorParameter& parameterObject,
-                 IN String& parameterName,
-                 IN SoXEffectParameterMap& effectParameterMap)
-{
-    Logging_trace1(">>: %1", parameterName);
-
-    const SoXEffectParameterKind kind =
-        effectParameterMap.kind(parameterName);
-    const String value = effectParameterMap.value(parameterName);
-
-    const juce::String juceParameterName = juce::String(parameterName);
-    const juce::ParameterID juceParameterID = juceParameterName;
-
-    if (kind == SoXEffectParameterKind::enumKind) {
-        Logging_traceError("combo box change is not supported");
-        /* TODO: check whether some combo box change is possible
-
-           juce::AudioParameterChoice& choiceParameterObject =
-           dynamic_cast<juce::AudioParameterChoice&>(parameterObject);
-           StringList enumValueList;
-           effectParameterMap.valueRangeEnum(parameterName, enumValueList);
-           juce::StringArray juceChoiceList;
-           Natural parameterIndex = 0;
-           Boolean isFound = false;
-           
-           for (const String& enumValue : enumValueList) {
-               juceChoiceList.add(juce::String(enumValue));
-               isFound = isFound || (value == enumValue);
-               parameterIndex += (isFound ? 0 : 1);
-           }
-
-           while (juceChoiceList.size() < 2) {
-               juceChoiceList.add("x");
-           }
-        */
-    } else if (kind == SoXEffectParameterKind::realKind
-               || kind == SoXEffectParameterKind::intKind) {
-        juce::AudioParameterFloat& floatParameterObject =
-            dynamic_cast<juce::AudioParameterFloat&>(parameterObject);
-        Real lowValue, highValue, delta;
-
-        if (kind == SoXEffectParameterKind::realKind) {
-            effectParameterMap.valueRangeReal(parameterName,
-                                              lowValue, highValue, delta);
-        } else {
-            Integer lowV, highV, deltaV;
-            effectParameterMap.valueRangeInt(parameterName,
-                                             lowV, highV, deltaV);
-            lowValue  = lowV;
-            highValue = highV;
-            delta     = deltaV;
-        }
-        
-        juce::NormalisableRange<float>& range =
-            floatParameterObject.range;
-        range.start    = (float) lowValue;
-        range.end      = (float) highValue;
-        range.interval = (float) delta;
-        const Real currentValue = STR::toReal(value);
-        floatParameterObject = (float) currentValue;
-    }
-
-    Logging_trace("<<");
-}
-
-/*--------------------*/
-
-/**
- * Updates value of juce parameter object <C>parameterObject</C> named
- * <C>parameterName</C> to <C>value</C> using data taken from
- * <C>effectParameterMap</C>.
- *
- * @param[inout] parameterObject     juce audio parameter object
- * @param[in]    parameterName       name of audio parameter in map
- * @param[in]    effectParameterMap  map of all audio parameters to
- *                                   associated attributes
- * @param[in]    value               new value for parameter
- */
-static void
-_updateAudioProcessorParameterValue
-        (INOUT juce::AudioProcessorParameter* parameterObject,
-         IN String& parameterName,
-         IN SoXEffectParameterMap& effectParameterMap,
-         IN String& value)
-{
-    Logging_trace2(">>: parameterName = %1, value = %2",
-                   parameterName, value);
-
-    const SoXEffectParameterKind kind =
-        effectParameterMap.kind(parameterName);
-
-    if (kind == SoXEffectParameterKind::realKind
-        || kind == SoXEffectParameterKind::intKind) {
-        Real realValue = STR::toReal(value);
-
-        if (kind == SoXEffectParameterKind::intKind) {
-            realValue = Real::round(realValue);
-        }
-
-        juce::AudioParameterFloat& numericParameterObject =
-            TOREFERENCE<juce::AudioParameterFloat>(parameterObject);
-        numericParameterObject = (float) realValue;
-    } else if (kind == SoXEffectParameterKind::enumKind) {
-        StringList enumValueList;
-        effectParameterMap.valueRangeEnum(parameterName, enumValueList);
-        const int valueIndex =
-            int(Integer::maximum(0, enumValueList.position(value)));
-        juce::AudioParameterChoice& choiceParameterObject =
-            TOREFERENCE<juce::AudioParameterChoice>(parameterObject);
-        choiceParameterObject = int(valueIndex);
-    }
-
-
-    Logging_trace("<<");
-}
-
-
-/*--------------------*/
-
-/**
- * Ensures that all audio parameter ranges correspond to the
- * underlying parameter map.
- *
- * @param[in] audioParameterList  list of audio parameter objects
- * @param[in] effectParameterMap  map with parameter data
- */
-static void
-_updateParameterRanges (IN _AudioProcessorParameterArray& audioParameterList,
-                        IN SoXEffectParameterMap& effectParameterMap)
-{
-    Logging_trace(">>");
-
-    for (juce::AudioProcessorParameter* parameterObject : audioParameterList) {
-        String parameterName =
-            parameterObject->getName(1000).toStdString();
-        _updateAudioProcessorParameterRange(*parameterObject,
-                                            parameterName,
-                                            effectParameterMap);
-    }
-    
-    Logging_trace("<<");
-}
-
 /*============================================================*/
 
 /*--------------------*/
@@ -643,7 +711,7 @@ SoXAudioProcessor::SoXAudioProcessor ()
     _SoXAudioProcessorDescriptor& descriptor =
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
 
-    descriptor.listener.processor = this;
+    descriptor.listener.audioProcessor = this;
 
     Logging_trace("<<");
 }
@@ -705,8 +773,9 @@ double SoXAudioProcessor::getTailLengthSeconds () const
 {
     const _SoXAudioProcessorDescriptor& descriptor =
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
-    const SoXAudioEffect* effect = descriptor.effect;
-    return double(effect->tailLength());
+    const SoXAudioEffect& effect =
+        TOREFERENCE<SoXAudioEffect>(descriptor.effect);
+    return double(effect.tailLength());
 }
 
 /*--------------------*/
@@ -792,16 +861,18 @@ void SoXAudioProcessor::setStateInformation (const void* data,
 
     const _SoXAudioProcessorDescriptor& descriptor =
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
-    SoXAudioEffect* effect = descriptor.effect;
+    SoXAudioEffect& effect =
+        TOREFERENCE<SoXAudioEffect>(descriptor.effect);
 
     /* restores state of audio processor from <data> */
     String st(static_cast<char*>(const_cast<void*>(data)),
               sizeInBytes);
     _readKeyValueMapString(this, effectParameterMap(), st);
-    effect->setParameterValidity(true);
+    effect.recalculate();
+    effect.setParameterValidity(true);
 
     Logging_trace2("<<: data = %1, processor = %2",
-                   String_normalize(st), effect->toString());
+                   String_normalize(st), effect.toString());
 }
 
 /*--------------------*/
@@ -810,22 +881,20 @@ void SoXAudioProcessor::setStateInformation (const void* data,
 
 SoXEffectParameterMap& SoXAudioProcessor::effectParameterMap () const
 {
-    _SoXAudioProcessorDescriptor& descriptor =
+    const _SoXAudioProcessorDescriptor& descriptor =
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
-    const SoXAudioEffect* effect = descriptor.effect;
-    return effect->effectParameterMap();
+    const SoXAudioEffect& effect =
+        TOREFERENCE<SoXAudioEffect>(descriptor.effect);
+    return effect.effectParameterMap();
 }
 
 /*--------------------*/
 
 void SoXAudioProcessor::setValue (IN String& parameterName,
-                                  IN String& value,
-                                  IN Boolean recalculationIsForced)
+                                  IN String& value)
 {
-    Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalcIsForced = %3",
-                   parameterName, value,
-                   TOSTRING(recalculationIsForced));
+    Logging_trace2(">>: parameterName = %1, value = %2",
+                   parameterName, value);
 
     _SoXAudioProcessorDescriptor& descriptor =
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
@@ -834,58 +903,11 @@ void SoXAudioProcessor::setValue (IN String& parameterName,
     if (!parameterMap.contains(parameterName)) {
         Logging_trace1("--: bad parameter - %1", parameterName);
     } else {
-        if (parameterMap.valueIsDifferent(parameterName, value)) {
-            /* update effect and parameter map */
-            SoXAudioEffect* effect = descriptor.effect;
-            const SoXParameterValueChangeKind changeKind =
-                effect->setValue(parameterName, value,
-                                 recalculationIsForced);
-
-            if (changeKind != SoXParameterValueChangeKind::noChange) {
-                /* notify listeners */
-                SoXParameterValueChangeKind parameterChange = 
-                    SoXParameterValueChangeKind::parameterChange;
-
-                if (changeKind == SoXParameterValueChangeKind::globalChange) {
-                    _updateParameterRanges(getParameters(),
-                                           effectParameterMap());
-                }
-            
-                if (changeKind != parameterChange) {
-                    _notifyObserversAboutChange(changeKind, parameterName);
-                }
-
-                _notifyObserversAboutChange(parameterChange, parameterName);
-                
-                /* update juce parameter object */
-                Natural parameterIndex =
-                    descriptor.parameterNameToIndexMap.at(parameterName);
-                juce::AudioProcessorParameter* parameter =
-                    getParameters()[int(parameterIndex)];
-                _updateAudioProcessorParameterValue(parameter,
-                                                    parameterName,
-                                                    parameterMap,
-                                                    value);
-            }
-        }
-    }
-
-    Logging_trace("<<");
-}
-
-/*--------------------*/
-
-void SoXAudioProcessor::setValues (IN Dictionary& dictionary)
-{
-    Logging_trace1(">>: %1", dictionary.toString());
-
-    Natural count = dictionary.size();
-
-    for (const auto& entry : dictionary) {
-        const String parameterName = entry.first;
-        const String value         = entry.second;
-        const Boolean recalculationIsForced = (--count == 0);
-        setValue(parameterName, value, recalculationIsForced);
+        /* update effect and parameter map */
+        SoXAudioEffect& effect =
+            TOREFERENCE<SoXAudioEffect>(descriptor.effect);
+        effect.setValue(parameterName, value);
+        effect.recalculate();
     }
 
     Logging_trace("<<");
@@ -906,8 +928,8 @@ void SoXAudioProcessor::_setAssociatedEffect (IN SoXAudioEffect* effect)
     const StringList parameterNameList = parameterMap.parameterNameList();
 
     for (const String& parameterName : parameterNameList) {
-        juce::AudioProcessorParameter* parameterObject =
-            _constructParameterObject(parameterName, parameterMap);
+        _AudioProcessorParameter* parameterObject =
+            _AudioProcessorParameter_create(parameterName, parameterMap);
 
         if (parameterObject != nullptr) {
             addParameter(parameterObject);
@@ -918,7 +940,8 @@ void SoXAudioProcessor::_setAssociatedEffect (IN SoXAudioEffect* effect)
         }
     }
 
-    descriptor.effect->setValueChangeHandler(this, _dispatchValueChange);
+    descriptor.effect->setValueChangeHandler(&descriptor,
+                                             _dispatchValueChange);
 
     Logging_trace("<<");
 }
@@ -946,30 +969,6 @@ void SoXAudioProcessor::unregisterObserver (INOUT Object observer)
 }
 
 /*--------------------*/
-
-void
-SoXAudioProcessor::_notifyObserversAboutChange
-                       (IN SoXParameterValueChangeKind kind,
-                        IN String& data)
-{
-    Logging_trace2(">>: kind = %1, data = %2",
-                   SoXParameterValueChangeKind_toString(kind),
-                   data);
-
-    const _SoXAudioProcessorDescriptor& descriptor =
-        TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
-    _SoXAudioEditorPtrSet observerSet = descriptor.observerSet;
-
-    for (SoXAudioEditor* editor : observerSet) {
-        if (editor != nullptr) {
-            editor->notifyAboutChange(kind, data);
-        }
-    }
-
-    Logging_trace("<<");
-}
-
-/*--------------------*/
 /* event handling     */
 /*--------------------*/
 
@@ -980,14 +979,15 @@ void SoXAudioProcessor::prepareToPlay (double dataPointRate, int)
 
     _SoXAudioProcessorDescriptor& descriptor =
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
-    SoXAudioEffect* effect = descriptor.effect;
+    SoXAudioEffect& effect =
+        TOREFERENCE<SoXAudioEffect>(descriptor.effect);
 
-    if (!effect->hasValidParameters()) {
-        effect->setDefaultValues();
-        effect->setParameterValidity(true);
+    if (!effect.hasValidParameters()) {
+        effect.setDefaultValues();
+        effect.setParameterValidity(true);
     }
 
-    effect->prepareToPlay(dataPointRate);
+    effect.prepareToPlay(dataPointRate);
 
     Logging_trace("<<");
 }
@@ -999,8 +999,9 @@ void SoXAudioProcessor::releaseResources ()
     Logging_trace(">>");
     _SoXAudioProcessorDescriptor& descriptor =
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
-    SoXAudioEffect* effect = descriptor.effect;
-    effect->releaseResources();
+    SoXAudioEffect& effect =
+        TOREFERENCE<SoXAudioEffect>(descriptor.effect);
+    effect.releaseResources();
     Logging_trace("<<");
 }
 
@@ -1011,13 +1012,14 @@ void SoXAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
 {
     _SoXAudioProcessorDescriptor& descriptor =
         TOREFERENCE<_SoXAudioProcessorDescriptor>(_descriptor);
-    SoXAudioEffect* effect = descriptor.effect;
+    SoXAudioEffect& effect =
+        TOREFERENCE<SoXAudioEffect>(descriptor.effect);
     const Real dataPointRate = getSampleRate();
 
     /* check whether data point rate has changed; if yes, assume that
        playback has started */
-    if (dataPointRate != effect->dataPointRate()) {
-        effect->prepareToPlay(dataPointRate);
+    if (dataPointRate != effect.dataPointRate()) {
+        effect.prepareToPlay(dataPointRate);
     }
     
     const Natural channelCount = getTotalNumInputChannels();
@@ -1035,16 +1037,16 @@ void SoXAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     for (Natural channel = 0;  channel < channelCount;  channel++) {
         const float* inputPtr = buffer.getReadPointer(int(channel));
         AudioDataPointList dataPointList{dataPointCount};
-        convertArray(dataPointList.asArray(), inputPtr, dataPointCount);
+        Array_convert(dataPointList.asArray(), inputPtr, dataPointCount);
         audioDataPointBuffer.append(dataPointList);
     }
 
     const Real currentTimePosition = _readTime(getPlayHead());
-    effect->processBlock(currentTimePosition, audioDataPointBuffer);
+    effect.processBlock(currentTimePosition, audioDataPointBuffer);
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
         float* outputPtr = buffer.getWritePointer(int(channel));
         AudioDataPointList& dataPointList = audioDataPointBuffer[channel];
-        convertArray(outputPtr, dataPointList.asArray(), dataPointCount);
+        Array_convert(outputPtr, dataPointList.asArray(), dataPointCount);
     }
 }

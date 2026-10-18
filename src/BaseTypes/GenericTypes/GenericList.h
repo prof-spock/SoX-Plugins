@@ -20,6 +20,7 @@
 #include <vector>
 
 #include "Boolean.h"
+#include "Configuration.h"
 #include "ElementToStringProc.h"
 #include "Integer.h"
 #include "StringProc.h"
@@ -27,6 +28,7 @@
 /*--------------------*/
 
 using std::vector;
+using BaseModules::Configuration;
 using BaseTypes::GenericTypes::ElementToStringProc;
 using BaseTypes::GenericTypes::StringProc;
 using BaseTypes::Primitives::Boolean;
@@ -157,8 +159,14 @@ namespace BaseTypes::GenericTypes {
         String toString (IN Boolean typeNameIsUsed = true) const
         {
             String result = "";
+            const Natural count =
+                Natural::minimum(length(),
+                                 Configuration::presentedListElementCount());
+            const String suffix = (count == length()
+                                   ? ""
+                                   : ", ...");
 
-            for (Natural i = 0;  i < length();  i++) {
+            for (Natural i = 0;  i < count;  i++) {
                 result += (i == 0 ? "" : ", ");
 
                 if (elementToString == nullptr) {
@@ -169,7 +177,7 @@ namespace BaseTypes::GenericTypes {
                 }
             }
 
-            result = "(" + result + ")";
+            result = "(" + result + suffix + ")";
 
             if (typeNameIsUsed) {
                 String typeName = (nameOfType == nullptr ? "List"

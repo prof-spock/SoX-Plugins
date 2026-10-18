@@ -1,7 +1,0 @@
-<map id="NaturalList.h" name="NaturalList.h">
-<area shape="rect" id="Node000001" title="The NaturalList specification defines lists of non&#45;negative integer values with zero&#45;based arbitrary ..." alt="" coords="86,5,181,31"/>
-<area shape="rect" id="Node000002" href="$_natural_list_8cpp.html" title="The NaturalList body implements lists of non&#45;negative integer values with zero&#45;based arbitrary indexe..." alt="" coords="5,79,115,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,42,74,80,70,77,110,38"/>
-<area shape="rect" id="Node000003" href="$_so_x_audio_editor_8cpp.html" title="The SoXAudioEditor body implements the audio editor for a plugin, represented by a display window con..." alt="" coords="139,79,277,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="157,38,198,77,194,80,153,42"/>
-</map>

@@ -217,8 +217,6 @@ SoXReverb_AudioEffect::SoXReverb_AudioEffect ()
 
     /* initialize descriptor */
     _effectDescriptor = new _EffectDescriptor_RVRB{*this};
-    _EffectDescriptor_RVRB& effectDescriptor =
-        TOREFERENCE<_EffectDescriptor_RVRB>(_effectDescriptor);
 
     /* initialize parameters */
     _effectParameterMap.clear();
@@ -237,7 +235,7 @@ SoXReverb_AudioEffect::SoXReverb_AudioEffect ()
                                     -100.0, 100.0, 0.001);
 
     _channelCount = Natural::maximum(_channelCount, 2);
-    effectDescriptor.updateSettings(_dataPointRate, _channelCount);
+    recalculate();
 
     Logging_trace1("<<: %1", toString());
 }
@@ -253,28 +251,18 @@ SoXReverb_AudioEffect::~SoXReverb_AudioEffect ()
 
 /*-----------------------*/
 /* string representation */
-/*-----------------------*/
-
-String SoXReverb_AudioEffect::toString () const
-{
-    String st = "SoXReverb_AudioEffect(";
-    st += _asRawString();
-    st += ")";
-
-    return st;
-}
-
 /*--------------------*/
 
 String SoXReverb_AudioEffect::_effectDescriptorToString () const
 {
     String result;
 
-    if (_effectDescriptor == NULL) {
+    if (_effectDescriptor == nullptr) {
         result = "NULL";
     } else {
         const _EffectDescriptor_RVRB& effectDescriptor =
             TOREFERENCE<_EffectDescriptor_RVRB>(_effectDescriptor);
+
         result = effectDescriptor.toString();
     }
 
@@ -309,21 +297,17 @@ Real SoXReverb_AudioEffect::tailLength () const
 /* parameter change   */
 /*--------------------*/
 
-SoXParameterValueChangeKind
+SoXValueChangeKind
 SoXReverb_AudioEffect::_setValueInternal
                            (IN String& parameterName,
-                            IN String& value,
-                            IN Boolean recalculationIsForced)
+                            IN String& value)
 {
-    Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalculationIsForced = %3",
-                   parameterName, value,
-                   TOSTRING(recalculationIsForced));
+    Logging_trace2(">>: parameterName = %1, value = %2",
+                   parameterName, value);
 
     _EffectDescriptor_RVRB& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_RVRB>(_effectDescriptor);
-    SoXParameterValueChangeKind result =
-        SoXParameterValueChangeKind::parameterChange;
+    SoXValueChangeKind result = SoXValueChangeKind::parameterChange;
 
     if (parameterName == parameterName_isWetOnly) {
         effectDescriptor.isWetOnly = (value == "Yes");
@@ -341,11 +325,9 @@ SoXReverb_AudioEffect::_setValueInternal
         effectDescriptor.wetDbGain = STR::toReal(value);
     }
 
-    if (recalculationIsForced) {
-        effectDescriptor.updateSettings(_dataPointRate, _channelCount);
-    }
+    recalculate();
 
-    Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));
+    Logging_trace1("<<: %1", SoXValueChangeKind_toString(result));
     return result;
 }
 
@@ -355,13 +337,17 @@ void SoXReverb_AudioEffect::setDefaultValues ()
 {
     Logging_trace(">>");
 
-    setValueViaParent(parameterName_isWetOnly,    "No");
-    setValueViaParent(parameterName_reverberance, "50");
-    setValueViaParent(parameterName_hfDamping,    "50");
-    setValueViaParent(parameterName_roomScale,    "100");
-    setValueViaParent(parameterName_stereoDepth,  "100");
-    setValueViaParent(parameterName_preDelay,     "0");
-    setValueViaParent(parameterName_wetGain,      "0", true);
+    Dictionary dictionary;
+
+    dictionary.set(parameterName_isWetOnly,    "No");
+    dictionary.set(parameterName_reverberance, "50");
+    dictionary.set(parameterName_hfDamping,    "50");
+    dictionary.set(parameterName_roomScale,    "100");
+    dictionary.set(parameterName_stereoDepth,  "100");
+    dictionary.set(parameterName_preDelay,     "0");
+    dictionary.set(parameterName_wetGain,      "0");
+    setValues(dictionary);
+    recalculate()
 
     Logging_trace1("<<: %1", toString());
 }
@@ -370,62 +356,40 @@ void SoXReverb_AudioEffect::setDefaultValues ()
 /* event handling     */
 /*--------------------*/
 
-void SoXReverb_AudioEffect::prepareToPlay (IN Real dataPointRate)
+void SoXReverb_AudioEffect::
+_handleDataPointRateChange (IN Real dataPointRate)
 {
     Logging_trace1(">>: dataPointRate = %1", TOSTRING(dataPointRate));
+    recalculate();
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+void SoXReverb_AudioEffect::
+_applyForFrame (IN AudioDataPointList& inputDataPointList,
+                OUT AudioDataPointList& outputDataPointList)
+{
+    Logging_trace(">>");
 
     _EffectDescriptor_RVRB& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_RVRB>(_effectDescriptor);
-    effectDescriptor.updateSettings(dataPointRate, _channelCount);
-    _prepareToPlay(dataPointRate);
+    _SoXReverb& reverb = effectDescriptor.reverb;
+    reverb.apply(inputDataPointList, outputDataPointList);
 
     Logging_trace("<<");
 }
 
 /*--------------------*/
 
-void SoXReverb_AudioEffect::processBlock
-                                (IN Real timePosition,
-                                 INOUT AudioDataPointListVector& buffer)
+void SoXReverb_AudioEffect::recalculate ()
 {
-    Logging_trace1(">>: time = %1", TOSTRING(timePosition));
+    Logging_trace(">>");
 
-    if (_parametersAreValid) {
-        SoXAudioEffect::processBlock(timePosition, buffer);
+    _EffectDescriptor_RVRB& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_RVRB>(_effectDescriptor);
+    effectDescriptor.updateSettings(_dataPointRate, _channelCount);
 
-        /* apply the effect */
-        _EffectDescriptor_RVRB& effectDescriptor =
-            TOREFERENCE<_EffectDescriptor_RVRB>(_effectDescriptor);
-
-        if (_channelCount != effectDescriptor.channelCount) {
-            effectDescriptor.channelCount = _channelCount;
-            effectDescriptor.updateSettings(_dataPointRate,
-                                            _channelCount);
-        }
-
-        const Natural dataPointCount = buffer[0].size();
-        _SoXReverb& reverb = effectDescriptor.reverb;
-        AudioDataPointRingBuffer inputDataPointList{_channelCount};
-        AudioDataPointRingBuffer outputDataPointList{_channelCount};
-
-        for (Natural i = 0;  i < dataPointCount;  i++) {
-            /* read all channel data points into one list */
-            for (Natural channel = 0;  channel < _channelCount;
-                 channel++) {
-                const AudioDataPointList& inputList = buffer[channel];
-                inputDataPointList[channel] = inputList[i];
-            }
-
-            reverb.apply(inputDataPointList, outputDataPointList);
-
-            /* write output data point list onto all channels */
-            for (Natural channel = 0;  channel < _channelCount;
-                 channel++) {
-                AudioDataPointList& outputList = buffer[channel];
-                outputList[i] = outputDataPointList[channel];
-            }
-        }
-    }
 
     Logging_trace("<<");
 }

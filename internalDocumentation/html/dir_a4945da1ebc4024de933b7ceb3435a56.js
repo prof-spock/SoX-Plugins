@@ -1,9 +1,0 @@
-var dir_a4945da1ebc4024de933b7ceb3435a56 =
-[
-    [ "JucePluginDefines.h", "_so_x_reverb_2_juce_plugin_defines_8h.html", "_so_x_reverb_2_juce_plugin_defines_8h" ],
-    [ "SoXReverb_AudioEffect.cpp", "_so_x_reverb___audio_effect_8cpp.html", "_so_x_reverb___audio_effect_8cpp" ],
-    [ "SoXReverb_AudioEffect.h", "_so_x_reverb___audio_effect_8h.html", "_so_x_reverb___audio_effect_8h" ],
-    [ "SoXReverb_AudioProcessor.cpp", "_so_x_reverb___audio_processor_8cpp.html", "_so_x_reverb___audio_processor_8cpp" ],
-    [ "SoXReverbSupport.cpp", "_so_x_reverb_support_8cpp.html", "_so_x_reverb_support_8cpp" ],
-    [ "SoXReverbSupport.h", "_so_x_reverb_support_8h.html", "_so_x_reverb_support_8h" ]
-];

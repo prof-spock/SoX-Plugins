@@ -35,7 +35,10 @@ typedef std::logic_error AssertionError;
  * @param message    message to be given in case of failure
  */
 #define _ASSERT_WITH_MESSAGE(condition, prefix, message) \
-    if (!(condition)) { throw AssertionError{std::string(prefix ": ") + std::string(message)}; }
+    if (!(condition)) { \
+        throw AssertionError{std::string(prefix ": ") \
+                             + std::string(message)}; \
+    }
 
 /*--------------------*/
 

@@ -1,7 +1,0 @@
-<map id="AudioDataPointRingBufferVector.h" name="AudioDataPointRingBufferVector.h">
-<area shape="rect" id="Node000001" title="The AudioDataPointRingBufferVector specification defines a two&#45;dimensional list of ring buffers for a..." alt="" coords="103,5,273,45"/>
-<area shape="rect" id="Node000002" href="$_audio_data_point_ring_buffer_vector_8cpp.html" title="The AudioDataPointRingBufferVector body implements a two&#45;dimensional list of ring buffers for audio d..." alt="" coords="5,93,176,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,56,114,95,110,91,155,52"/>
-<area shape="rect" id="Node000003" href="$_so_x_filter___audio_effect_8cpp.html" title="The SoXFilter_AudioEffect body implements a universal SoX filter plugin representing different IIR fi..." alt="" coords="201,101,373,126"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="222,53,275,98,271,102,219,57"/>
-</map>

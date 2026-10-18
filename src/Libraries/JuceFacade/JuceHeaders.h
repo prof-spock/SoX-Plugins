@@ -48,7 +48,7 @@ namespace ProjectInfo
 #if JUCE_MAJOR_VERSION < 8
     /** makes font from <C>size</C> and <C>style</C>*/
     #define JuceFont_make(size, style) \
-        juce::Font{(float) (size), style}
+        juce::Font{float(size), style}
 
     /** returns width of string <C>st</C> in <C>font</C> in pixels */
     #define JuceFont_getStringWidth(font, st) \
@@ -56,7 +56,7 @@ namespace ProjectInfo
 #else
     /** makes font from <C>size</C> and <C>style</C>*/
     #define JuceFont_make(size, style) \
-        juce::Font{juce::FontOptions{(float) (size), style}}
+        juce::Font{juce::FontOptions{float(size), style}}
 
     /** returns width of string <C>st</C> in <C>font</C> in pixels */
     #define JuceFont_getStringWidth(font, st) \

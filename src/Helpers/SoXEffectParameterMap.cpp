@@ -59,15 +59,15 @@ void _adaptRealValueToPrecision (INOUT String& value,
     Real v = STR::toReal(value);
     Real integralDigitCount =
         Real::maximum(Real::one,
-                      Real::one + (log10((float) v.abs())));
+                      Real::one + (log10(float(v.abs()))));
     Real fractionalDigitCount = Real{-log10(double(delta))}.round();
 
     if (fractionalDigitCount > Real::zero) {
         Natural precision =
-            (Natural) (integralDigitCount + fractionalDigitCount);
+            Natural(integralDigitCount + fractionalDigitCount);
         value = STR::toString(v,
                               precision,
-                              (Natural) fractionalDigitCount);
+                              Natural(fractionalDigitCount));
     }
     
     Logging_trace1("<<: value = %1", value);
@@ -133,7 +133,7 @@ static void _splitParameterName (IN String& parameterName,
             STR::substring(parameterName, position + separatorLength);
         nominalPageIndex =
             STR::toInteger(STR::prefix(parameterName, position));
-        pageIndex = (Natural) Integer::maximum(nominalPageIndex, 0);
+        pageIndex = Natural(Integer::maximum(nominalPageIndex, 0));
     }
 }
 
@@ -237,6 +237,8 @@ String SoXEffectParameterMap::toString () const
              + _parameterNameToValueRangeMap.toString()
          + ", _activeParameterNameSet = "
              + _activeParameterNameSet.toString()
+         + ", _aliasToCanonicalNameMap = "
+             + _aliasToCanonicalNameMap.toString()
          + ")");
 
     return result;
@@ -255,6 +257,7 @@ void SoXEffectParameterMap::clear()
     _parameterNameToKindMap.clear();
     _parameterNameToValueRangeMap.clear();
     _activeParameterNameSet.clear();
+    _aliasToCanonicalNameMap.clear();
     Logging_trace("<<");
 }
 
@@ -289,9 +292,8 @@ Dictionary SoXEffectParameterMap::parameterNameToValueMap () const
 
 /*--------------------*/
 
-SoXEffectParameterKind SoXEffectParameterMap::kind
-                                          (IN String& parameterName)
-    const
+SoXEffectParameterKind
+SoXEffectParameterMap::kind (IN String& parameterName) const
 {
     Logging_trace1(">>: %1", parameterName);
 
@@ -615,6 +617,50 @@ void SoXEffectParameterMap::changeActivenessByPage (IN Natural lastPageIndex)
     Logging_trace("<<");
 }
 
+/*---------------------*/
+/* alias name handling */
+/*---------------------*/
+
+Boolean SoXEffectParameterMap::isAcceptableName
+            (IN String& parameterName,
+             OUT String& canonicalParameterName) const
+{
+    Logging_trace(">>");
+    Boolean result = false;
+
+    if (_parameterNameToValueMap.contains(parameterName)) {
+        result = true;
+        canonicalParameterName = parameterName;
+    } else if (_aliasToCanonicalNameMap.contains(parameterName)) {
+        result = true;
+        canonicalParameterName =
+            _aliasToCanonicalNameMap.at(parameterName);
+    }
+
+    Logging_trace2("<<: result = %1, canonicalParameterName = %2",
+                   TOSTRING(result), canonicalParameterName);
+    return result;
+}
+
+/*---------------------*/
+
+void SoXEffectParameterMap::setAsAlias
+            (IN String& parameterName,
+             IN String& canonicalParameterName)
+{
+    Logging_trace(">>");
+
+    if (!_parameterNameToValueMap.contains(canonicalParameterName)) {
+        Logging_trace1("--: cannot set alias for unknown %1",
+                       canonicalParameterName);
+    } else {
+        _aliasToCanonicalNameMap.set(parameterName,
+                                     canonicalParameterName);
+    }
+
+    Logging_trace("<<");
+}
+
 /*--------------------*/
 /* data access/change */
 /*--------------------*/
@@ -650,6 +696,22 @@ void SoXEffectParameterMap::invalidateValue (IN String& parameterName)
 
     if (_parameterNameList.contains(parameterName)) {
         _parameterNameToValueMap[parameterName] = unknownValue;
+    }
+
+    Logging_trace("<<");
+}
+
+/*--------------------*/
+
+void
+SoXEffectParameterMap::invalidateValues (IN StringList& parameterNameList)
+{
+    Logging_trace1(">>: %1", parameterNameList.toString());
+
+    for (const String& parameterName : parameterNameList) {
+        if (_parameterNameList.contains(parameterName)) {
+            _parameterNameToValueMap[parameterName] = unknownValue;
+        }
     }
 
     Logging_trace("<<");
@@ -836,9 +898,26 @@ SoXEffectParameterMap
     Logging_trace1(">>: %1", parameterName);
     _splitParameterName(parameterName, effectiveParameterName,
                         pageIndex, nominalPageIndex);
-    Logging_trace3("<<: name = %1, page = %2, isPageSelector = %3",
+    Logging_trace3("<<: name = %1, page = %2, nominalPageIndex = %3",
                    effectiveParameterName, TOSTRING(pageIndex),
                    nominalPageIndex.toString());
+}
+
+/*--------------------*/
+
+Boolean
+SoXEffectParameterMap::isPageCount (IN String& parameterName) {
+    Logging_trace1(">>: %1", parameterName);
+
+    String effectiveParameterName;
+    Natural pageIndex;
+    Integer nominalPageIndex;
+    _splitParameterName(parameterName, effectiveParameterName,
+                        pageIndex, nominalPageIndex);
+    const Boolean result = (nominalPageIndex == pageCounterPage);
+
+    Logging_trace1("<<: %1", TOSTRING(result));
+    return result;
 }
 
 /*--------------------*/
@@ -852,8 +931,43 @@ SoXEffectParameterMap::isPageSelector (IN String& parameterName) {
     Integer nominalPageIndex;
     _splitParameterName(parameterName, effectiveParameterName,
                         pageIndex, nominalPageIndex);
-    const Boolean isPageSelector = (nominalPageIndex == selectorPage);
+    const Boolean result = (nominalPageIndex == selectorPage);
 
-    Logging_trace1("<<: %1", TOSTRING(isPageSelector));
-    return isPageSelector;
+    Logging_trace1("<<: %1", TOSTRING(result));
+    return result;
+}
+
+/*--------------------*/
+/* transformation     */
+/*--------------------*/
+
+void
+SoXEffectParameterMap::reorderByNameList (IN StringList parameterNameList)
+{
+    Logging_trace1(">>: %1", parameterNameList.toString());
+
+    StringList newParameterNameList;
+    const StringSet knownParameterNameSet =
+        StringSet::fromList(_parameterNameList);
+    const StringSet newParameterNameSet = 
+        StringSet::fromList(parameterNameList);
+
+    /* put names in <parameterNameList> to front */
+    for (const String& parameterName : parameterNameList) {
+        if (knownParameterNameSet.contains(parameterName)) {
+            newParameterNameList.append(parameterName);
+        }
+    }
+    
+    /* append remaining names in <_parameterNameList> */
+    for (const String& parameterName : _parameterNameList) {
+        if (!newParameterNameSet.contains(parameterName)) {
+            newParameterNameList.append(parameterName);
+        }
+    }
+    
+    _parameterNameList = newParameterNameList;
+
+    Logging_trace1("<<: _parameterNameList = %1",
+                   _parameterNameList.toString());
 }

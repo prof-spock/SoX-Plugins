@@ -68,7 +68,7 @@ static _WaveTable _makeWaveTable (IN WaveFormKind kind,
 
     _WaveTable result;
     result.setLength(length);
-    const Real delta = Real::twoPi / (Real) length;
+    const Real delta = Real::twoPi / Real(length);
     const Real four{4.0};
 
     for (Natural i = 0;  i < length;  i++) {

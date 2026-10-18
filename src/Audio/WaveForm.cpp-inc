@@ -21,6 +21,7 @@
 
 /*--------------------*/
 
+using Audio::ValuePrecision;
 using Audio::WaveForm;
 using Audio::WaveFormIteratorState;
 using Audio::WaveFormKind;
@@ -53,6 +54,9 @@ namespace Audio {
     /** pointer to a wave table */
     typedef _WaveTable *_WaveTablePtr;
     
+    /** a position or length in the domain of a wave table */
+    typedef Real _WaveTableDomainValue;
+    
     /*====================*/
 
     /**
@@ -69,27 +73,31 @@ namespace Audio {
         WaveFormKind _kind;
 
         /** the increment for stepping in the waveform */
-        Real _increment;
+        _WaveTableDomainValue _increment;
 
-        /** the first x-position in the waveform */
-        Real _firstPosition;
+        /** the first x-position into the underlying waveform */
+        _WaveTableDomainValue _firstPosition;
 
         /** the number of steps in the waveform so far */
         Natural _stepCount;
 
-        /** the current (cursor) x-position in the waveform */
-        Real _position;
+        /** the current (cursor) x-position into the waveform */
+        _WaveTableDomainValue _position;
 
-        /** the minimum value in the waveform */
+        /** the minimum y-value in the waveform */
         Real _minimumValue;
 
-        /** the maximum value in the waveform */
+        /** the maximum y-value in the waveform */
         Real _maximumValue;
 
-        /** the information whether only integer values may be used */
-        Boolean _hasIntegerValues;
+        /** the information what kind of values is provided by the
+         * wave form */
+        ValuePrecision _precision;
 
-        /** the count of points in the waveform */
+        /** the length of the waveform */
+        Real _length;
+
+        /** the count of underlying points in the waveform */
         Natural _waveTableLength;
 
         /** the data buffer for the waveform */
@@ -116,27 +124,40 @@ namespace Audio {
          * form given by <C>kind</C>; wave form has
          * <C>minimumValue</C> and <C>maximumValue</C> as bounds;
          * <C>phase</C> specifies the offset in the waveform and
-         * <C>hasIntegerValues</C> tells whether data has to be
-         * rounded to integer; note that the length is <B>real</B>,
-         * that means, albeit the internal representation is an array
-         * of samples, the advance operation takes care of the
-         * accumulated indexing error and corrects is as soon as it
-         * exceeds one sample position
+         * <C>precision</C> tells whether data has to be rounded to
+         * integer or single precision; note that the length is
+         * <B>real</B>, that means, albeit the internal representation
+         * is an array of samples, the advance operation takes care of
+         * the accumulated indexing error and corrects is as soon as
+         * it exceeds one (natural) index position
          *
-         * @param[in] length            the count of base points
-         * @param[in] kind              the kind (sine or triangle)
-         * @param[in] minimumValue      the minimum y-value in waveform
-         * @param[in] maximumValue      the maximum y-value in waveform
-         * @param[in] phase             the initial phase (in radians)
-         * @param[in] hasIntegerValues  tells whether waveform only may
-         *                              have integer values as y-values
+         * @param[in] length        the count of base points
+         * @param[in] kind          the kind (sine or triangle)
+         * @param[in] minimumValue  the minimum y-value in waveform
+         * @param[in] maximumValue  the maximum y-value in waveform
+         * @param[in] phase         the initial phase (in radians)
+         * @param[in] precision     tells the precision of the
+         *                          y-values in the waveform
          */
-        void set (Real length, WaveFormKind kind,
-                  Real minimumValue, Real maximumValue,
-                  Radians phase, Boolean hasIntegerValues);
+        void set (IN Real length, IN WaveFormKind kind,
+                  IN Real minimumValue, IN Real maximumValue,
+                  IN Radians phase, IN ValuePrecision precision);
 
         /*--------------------*/
         /* property access    */
+        /*--------------------*/
+
+        /**
+         * Returns value of waveform at <C>relativePosition</C>
+         * relative to current waveform pointer (with possible
+         * subsequent value transformation).
+         *
+         * @param[in] relativePosition  position relative to current
+         *                              pointer
+         * @return value of waveform at current position
+         */
+        Real at (IN Real relativePosition) const;
+
         /*--------------------*/
 
         /**
@@ -145,6 +166,15 @@ namespace Audio {
          * @return value of waveform at current pointer
          */
         Real current () const;
+
+        /*--------------------*/
+
+        /**
+         * Returns length of waveform.
+         *
+         * @return length of waveform
+         */
+        Real length () const;
 
         /*--------------------*/
         /* change             */
@@ -182,7 +212,7 @@ namespace Audio {
          *
          * @return string representation without type wrapping
          */
-        String asRawString() const;
+        String asRawString () const;
 
     };
 
@@ -193,6 +223,7 @@ namespace Audio {
 /*============================================================*/
 
 using Audio::_WaveTable;
+using Audio::_WaveTableDomainValue;
 using Audio::_WaveFormDescriptor;
 
 /*============================================================*/
@@ -213,8 +244,9 @@ extern _WaveTable _triangleWaveTable;
 INLINE
 void _WaveFormDescriptor::_updatePosition ()
 {
-    Real p = _firstPosition + Real{_stepCount} * _increment;
-    _position = Real::mod(p, Real{_waveTableLength});
+    _WaveTableDomainValue p =
+        _firstPosition + _WaveTableDomainValue{_stepCount} * _increment;
+    _position = _WaveTableDomainValue::mod(p, _waveTableLength);
 }
 
 /*--------------------*/
@@ -222,16 +254,17 @@ void _WaveFormDescriptor::_updatePosition ()
 /*--------------------*/
 
 INLINE
-void _WaveFormDescriptor::set (Real length, WaveFormKind kind,
-                               Real minimumValue, Real maximumValue,
-                               Radians phase, Boolean hasIntegerValues)
+void _WaveFormDescriptor::set (IN Real length, IN WaveFormKind kind,
+                               IN Real minimumValue, IN Real maximumValue,
+                               IN Radians phase,
+                               IN ValuePrecision precision)
 {
     Logging_trace6(">>: length = %1, kind = %2,"
                    " minimumValue = %3, maximumValue = %4,"
-                   " phase = %5, hasIntegerValues = %6",
+                   " phase = %5, precision = %6",
                    TOSTRING(length), waveFormKindToString(kind),
                    TOSTRING(minimumValue), TOSTRING(maximumValue),
-                   TOSTRING(phase), TOSTRING(hasIntegerValues));
+                   TOSTRING(phase), valuePrecisionToString(precision));
     Assertion_pre(length > 0.0, _ErrMsg_badLength);
 
     _WaveTablePtr buffer = (kind == WaveFormKind::sine
@@ -242,23 +275,25 @@ void _WaveFormDescriptor::set (Real length, WaveFormKind kind,
     const Natural waveTableLength = buffer->length();
     Assertion_pre(waveTableLength > 0, _ErrMsg_badWaveTable);
 
-    const Real firstPosition =
-        Real::mod((Real) waveTableLength * phase / Real::twoPi,
-                  (Real) waveTableLength);
+    const _WaveTableDomainValue firstPosition =
+        _WaveTableDomainValue::mod((_WaveTableDomainValue) waveTableLength
+                                   * phase / Real::twoPi,
+                                   (_WaveTableDomainValue) waveTableLength);
 
     _kind             = kind;
     _firstPosition    = firstPosition;
-    _increment        = (Real) waveTableLength / length;
+    _increment        = (_WaveTableDomainValue) waveTableLength / length;
     _stepCount        = 0;
     _position         = firstPosition;
     _minimumValue     = minimumValue;
     _maximumValue     = maximumValue;
-    _hasIntegerValues = hasIntegerValues;
+    _precision        = precision;
+    _length           = length;
     _waveTableLength  = waveTableLength;
     _buffer           = buffer;
 
-    _interpolator.set(*buffer, waveTableLength, Real{waveTableLength},
-                      true, interpolationOrder);
+    _interpolator.set(*buffer, _waveTableLength, _waveTableLength,
+                      interpolationOrder);
 
     Logging_trace("<<");
 }
@@ -268,18 +303,44 @@ void _WaveFormDescriptor::set (Real length, WaveFormKind kind,
 /*--------------------*/
 
 INLINE
-Real _WaveFormDescriptor::current () const
+Real _WaveFormDescriptor::at (IN Real relativePosition) const
 {
+    _WaveTableDomainValue positionInWaveTable =
+        _position + relativePosition * _increment;
+
+    while (positionInWaveTable < 0.0) {
+        positionInWaveTable += _waveTableLength;
+    }
+    
+    Real value = _interpolator.at(positionInWaveTable);
     const Real scalingFactor = _maximumValue - _minimumValue;
-    Assertion_check(_position >= 0.0, "position must be non-negative");
-    Real value = _interpolator.at(_position);
     value = _minimumValue + value * scalingFactor;
 
     /* the following does not distribute integer values equally over
        their range: the minimum and maximum value only get 50%
        coverage of all the other values */
-    value = (_hasIntegerValues ? value.round() : value);
+    value = (_precision == ValuePrecision::doublePrecision
+             ? value
+             : (_precision == ValuePrecision::integerPrecision
+                ? value.round()
+                : value.toSinglePrecision()));
     return value;
+}
+
+/*--------------------*/
+
+INLINE
+Real _WaveFormDescriptor::current () const
+{
+    return at(0.0);
+}
+
+/*--------------------*/
+
+INLINE
+Real _WaveFormDescriptor::length () const
+{
+    return _length;
 }
 
 /*--------------------*/
@@ -316,19 +377,21 @@ void _WaveFormDescriptor::advance ()
 /*--------------------*/
 
 INLINE
-String _WaveFormDescriptor::asRawString() const
+String _WaveFormDescriptor::asRawString () const
 {
     String result=
         STR::expand("kind = %1, firstPosition = %2,"
                     " increment = %3, stepcount = %4,"
                     " position = %5, minimumValue = %6,"
-                    " maximumValue = %7, hasIntegerValues = %8,"
-                    " waveTableLength = %9, buffer = %A",
+                    " maximumValue = %7, precision = %8,"
+                    " length = %9, waveTableLength = %A, buffer = %B",
                     waveFormKindToString(_kind), TOSTRING(_firstPosition),
                     TOSTRING(_increment), TOSTRING(_stepCount),
                     TOSTRING(_position), TOSTRING(_minimumValue),
-                    TOSTRING(_maximumValue), TOSTRING(_hasIntegerValues),
-                    TOSTRING(_waveTableLength), _buffer->toString());
+                    TOSTRING(_maximumValue),
+                    valuePrecisionToString(_precision),
+                    TOSTRING(_length), TOSTRING(_waveTableLength),
+                    _buffer->toString());
     return result;
 }
 
@@ -343,6 +406,17 @@ WaveFormKind Audio::stringToWaveFormKind (IN String& st)
 {
     return (STR::toLowercase(st) == "triangle"
             ? WaveFormKind::triangle : WaveFormKind::sine);
+}
+
+/*--------------------*/
+
+INLINE
+String Audio::valuePrecisionToString (IN ValuePrecision precision)
+{
+    return String((precision == ValuePrecision::doublePrecision
+                   ? "double"
+                   : (precision == ValuePrecision::integerPrecision
+                      ? "integer" : "single")));
 }
 
 /*--------------------*/
@@ -364,7 +438,8 @@ WaveForm::WaveForm ()
     Logging_trace(">>");
 
     _descriptor = new _WaveFormDescriptor{};
-    set(10.0, WaveFormKind::triangle, 0.0, 1.0, 0.0, false);
+    set(10.0, WaveFormKind::triangle, 0.0, 1.0, 0.0,
+        ValuePrecision::singlePrecision);
 
     Logging_trace1("<<: %1", toString());
 }
@@ -422,7 +497,7 @@ WaveForm& WaveForm::operator= (WaveForm& otherWaveForm)
 /*--------------------*/
 
 INLINE
-String WaveForm::toString() const {
+String WaveForm::toString () const {
     const _WaveFormDescriptor& descriptor =
         TOREFERENCE<_WaveFormDescriptor>(_descriptor);
 
@@ -436,22 +511,22 @@ String WaveForm::toString() const {
 /*--------------------*/
 
 INLINE
-void WaveForm::set (Real length, WaveFormKind kind,
-                    Real minimumValue, Real maximumValue,
-                    Radians phase, Boolean hasIntegerValues)
+void WaveForm::set (IN Real length, IN WaveFormKind kind,
+                    IN Real minimumValue, IN Real maximumValue,
+                    IN Radians phase, IN ValuePrecision precision)
 {
     Logging_trace6(">>: length = %1, kind = %2,"
                    " minimumValue = %3, maximumValue = %4,"
-                   " phase = %5, hasIntegerValues = %6",
+                   " phase = %5, precision = %6",
                    TOSTRING(length), waveFormKindToString(kind),
                    TOSTRING(minimumValue), TOSTRING(maximumValue),
-                   TOSTRING(phase), TOSTRING(hasIntegerValues));
+                   TOSTRING(phase), valuePrecisionToString(precision));
     Assertion_pre(length > 0.0, _ErrMsg_badLength);
 
     _WaveFormDescriptor& descriptor =
         TOREFERENCE<_WaveFormDescriptor>(_descriptor);
     descriptor.set(length, kind, minimumValue, maximumValue,
-                   phase, hasIntegerValues);
+                   phase, precision);
 
     Logging_trace1("<<: %1", toString());
 }
@@ -461,11 +536,31 @@ void WaveForm::set (Real length, WaveFormKind kind,
 /*--------------------*/
 
 INLINE
+Real WaveForm::at (IN Real position) const
+{
+    const _WaveFormDescriptor& descriptor =
+        TOREFERENCE<_WaveFormDescriptor>(_descriptor);
+    return descriptor.at(position);
+}
+
+/*--------------------*/
+
+INLINE
 Real WaveForm::current () const
 {
     const _WaveFormDescriptor& descriptor =
         TOREFERENCE<_WaveFormDescriptor>(_descriptor);
     return descriptor.current();
+}
+
+/*--------------------*/
+
+INLINE
+Real WaveForm::length () const
+{
+    const _WaveFormDescriptor& descriptor =
+        TOREFERENCE<_WaveFormDescriptor>(_descriptor);
+    return descriptor.length();
 }
 
 /*--------------------*/

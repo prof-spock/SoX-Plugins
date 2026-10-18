@@ -23,7 +23,7 @@ namespace BaseTypes::Primitives {
 
     /**
      * A <C>Percentage</C> object is real-valued and represents a
-     * percentage (normalized to the 0 to 100 range).
+     * percentage (typically normalized to the 0 to 100 range).
      */
     struct Percentage : public Real {
 
@@ -87,7 +87,7 @@ namespace BaseTypes::Primitives {
          * @param[in] fractionalDigitCount  number of decimal digits
          * @param[in] padString             string to use for left
          *                                  padding
-         * @return  string representation
+         * @return  string representation with trailing percent sign
          */
         String toString (IN Natural precision = 0,
                          IN Natural fractionalDigitCount = 0,
@@ -102,7 +102,21 @@ namespace BaseTypes::Primitives {
                 result = padString + result;
             }
 
-            return result;
+            return result + "%";
+        }
+
+        /*--------------------*/
+
+        /**
+         * Returns real fractional value of percentage <C>p</C>.
+         *
+         * @param[in] p  percentage value
+         * @return  real representation of percentage (as a value from
+         *          0 to 1)
+         */
+        static Real toReal (IN Percentage p)
+        {
+            return p / Real{100.0};
         }
 
         /*--------------------*/
@@ -172,7 +186,7 @@ namespace BaseTypes::Primitives {
         static Real percentOf (IN Percentage percentage,
                                IN Real value)
         {
-            return percentage * value / Real{100.0};
+            return toReal(percentage * value);
         }
 
         /*--------------------*/

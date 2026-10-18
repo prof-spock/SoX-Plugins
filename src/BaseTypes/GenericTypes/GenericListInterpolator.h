@@ -15,44 +15,51 @@
 /* IMPORTS */
 /*=========*/
 
-#include "GenericMap.h"
+#include "GenericList.h"
 #include "IntegerList.h"
+#include "MyArray.h"
 #include "RealList.h"
 
 /*--------------------*/
 
-using BaseTypes::GenericTypes::GenericMap;
 using BaseTypes::Containers::IntegerList;
 using BaseTypes::Containers::RealList;
+using BaseTypes::Containers::Array_at;
+using BaseTypes::Containers::Array_set;
 
 /*====================*/
 
 namespace BaseTypes::GenericTypes {
 
+    /** the position of the reference point when interpolating; it may
+     * be at the begin of the interval (using other points with higher
+     * indices), at the end (using points with lower indices) or at
+     * the center (using points with lower and higher indices);
+     * typically for the interpolation a center position of the
+     * reference point is preferred */
+    enum class ListInterpolatorPointLocation {
+        atBegin, atCenter, atEnd
+    };
+
     /*--------------------*/
-    /* class attributes   */
-    /*--------------------*/
 
-    /** the maximum polynomial order for interpolation */
-    const Natural GLI_maximumInterpolationOrder = 3;
-
-    /** mapping from interpolation order to offsets in base
-        point list */
-    static GenericMap<Natural, IntegerList> _GLI_orderToOffsetMap;
-
-    /** mapping from interpolation order to barymetric weights */
-    static GenericMap<Natural, RealList> _GLI_orderToWeightMap;
-
+    /**
+     * Returns string representation of point location <C>p</C>.
+     *
+     * @param[in] p   point location to be converted to string
+     * @return string representation
+     */
+    String pointLocationToString (IN ListInterpolatorPointLocation p);
+    
     /*====================*/
     
     /**
      * A <C>GenericListInterpolator</C> specification defines a
      * wrapper object doing an interpolation on a list of values.
-     * This value list has some element count and may be either
-     * stretched to a given length (e.g. when implementing waveforms
-     * using prototype data) or left as is and interpolated (e.g. when
-     * implementing delay lines with fractional delay line length). It
-     * is always assumed that the underlying value list is cyclic.
+     * This value list has some element count and is interpolated
+     * (e.g. when implementing delay lines with fractional delay line
+     * length). It is always assumed that the underlying value list is
+     * cyclic.
      */
     template <typename ListType, typename ElementType>
     class GenericListInterpolator
@@ -68,45 +75,55 @@ namespace BaseTypes::GenericTypes {
             /** the real-valued list length */
             Real _listLength;
 
-            /** multiplication factor for the range or the underlying
-             * data list to be used for positioning */
-            Real _stretchFactor;
-
             /** order of interpolation polynomial */
             Natural _interpolationOrder;
+
+            /** offsets in base point list */
+            IntegerList _offsetList;
+
+            /** barymetric weights list */
+            RealList _weightList;
 
             /*--------------------*/
             /* setup              */
             /*--------------------*/
 
             /**
-             * Initializes maps with offsets and weights
+             * Sets coefficient lists containing offsets and weights
+             * using <C>interpolationOrder</C> and
+             * <C>pointLocation</C>.
+             *
+             * @param[in] interpolationOrder  order of interpolation
+             *                                polynomial
+             * @param[in] pointLocation       position of reference
+             *                                point in interpolation
+             *                                interval
              */
-            static void _initializeMaps ()
+            void _setInterpolationCoefficients
+                     (IN Natural interpolationOrder,
+                      IN ListInterpolatorPointLocation pointLocation)
             {
-                _GLI_orderToOffsetMap.clear();
-                _GLI_orderToWeightMap.clear();
+                _interpolationOrder = interpolationOrder;
+                _offsetList.clear();
+                _weightList.clear();
+                
+                const Integer offset =
+                    (pointLocation == ListInterpolatorPointLocation::atCenter
+                     ? interpolationOrder / 2
+                     : (pointLocation == ListInterpolatorPointLocation::atBegin
+                        ? 0 : interpolationOrder));
 
-                for (Natural i = 0; i <= GLI_maximumInterpolationOrder; i++) {
-                    IntegerList offsetList;
-                    RealList weightList;
-                    const Integer offset = i / 2;
-
-                    for (Natural j = 0;  j <= i; j++) {
-                        Real weight = Real::one;
-                        offsetList.append(Integer{j} - offset);
+                for (Natural j = 0;  j <= interpolationOrder; j++) {
+                    _offsetList.append(Integer{j} - offset);
+                    Real weight = Real::one;
                         
-                        for (Natural k = 0;  k <= i; k++) {
-                            if (j != k) {
-                                weight *= Real{j} - Real{k};
-                            }
+                    for (Natural k = 0;  k <= interpolationOrder; k++) {
+                        if (j != k) {
+                            weight *= Real{j} - Real{k};
                         }
-
-                        weightList.append(Real::one / weight);
                     }
 
-                    _GLI_orderToOffsetMap.set(i, offsetList);
-                    _GLI_orderToWeightMap.set(i, weightList);
+                    _weightList.append(Real::one / weight);
                 }
             }
 
@@ -120,17 +137,15 @@ namespace BaseTypes::GenericTypes {
              * Initializes interpolator to point to no list and have a
              * length of zero.
              */
-            GenericListInterpolator ()
-                : _list{NULL},
+            GenericListInterpolator
+                (IN Natural interpolationOrder = 0)
+                : _list{nullptr},
                   _elementCount{0},
                   _listLength{0.0},
-                  _stretchFactor{1.0},
-                  _interpolationOrder{0}
+                  _interpolationOrder{0},
+                  _offsetList{},
+                  _weightList{}
             {
-                // initialize the static variables if empty
-                if (_GLI_orderToOffsetMap.isEmpty()) {
-                    _initializeMaps();
-                }
             }
 
             /*--------------------*/
@@ -140,33 +155,32 @@ namespace BaseTypes::GenericTypes {
             /**
              * Sets interpolator to point to <C>list</C>, have
              * <C>elementCount</C> base points, an real-valued length
-             * of <C>listLength</C>, using range stretching signified
-             * by <C>isStretched</C> and an order of interpolation of
-             * <C>interpolationOrder</C>.
+             * of <C>listLength</C> and an order of interpolation of
+             * <C>interpolationOrder</C> and <C>pointLocation</C>.
              *
              * @param[in] list                list to be interpolated
              * @param[in] elementCount        count of base points in
              *                                list
              * @param[in] listLength          assumed length of list
-             * @param[in] isStretched         tells whether base points
-             *                                are stretched to length
-             *                                or left as is
              * @param[in] interpolationOrder  order of interpolation
              *                                polynomial
+             * @param[in] pointLocation       position of reference
+             *                                point in interpolation
+             *                                interval
              */
             void set (IN ListType& list,
                       IN Natural elementCount,
                       IN Real listLength,
-                      IN Boolean isStretched,
-                      IN Natural interpolationOrder)
+                      IN Natural interpolationOrder,
+                      IN ListInterpolatorPointLocation pointLocation
+                             = ListInterpolatorPointLocation::atCenter)
             {
                 _list               = (ListType*) &list;
                 _elementCount       = elementCount;
                 _listLength         = listLength;
-                _stretchFactor      = (!isStretched || listLength == 0.0
-                                       ? 1.0
-                                       : Real{elementCount} / listLength);
-                _interpolationOrder = interpolationOrder;
+
+                _setInterpolationCoefficients(interpolationOrder,
+                                              pointLocation);
             }
 
             /*--------------------*/
@@ -182,8 +196,7 @@ namespace BaseTypes::GenericTypes {
              */
             ElementType at (IN Real position) const
             {
-                const Real adaptedPosition =
-                    (position * _stretchFactor).mod(_listLength);
+                const Real adaptedPosition = position.mod(_listLength);
                 const Real fractionalPart = adaptedPosition.fractionalPart();
                 Natural nPosition{Real::floor(adaptedPosition)};
 
@@ -194,19 +207,19 @@ namespace BaseTypes::GenericTypes {
                     result = _list->at(nPosition);
                 } else {
                     /* do a Lagrange barycentric interpolation */
-                    const IntegerList& offsetList =
-                        _GLI_orderToOffsetMap.at(_interpolationOrder);
-                    const RealList& weightList =
-                        _GLI_orderToWeightMap.at(_interpolationOrder);
-                    RealList xDifferenceList;
-                    GenericList<ElementType> yList;
+                    Real* xDifferenceList =
+                        Array_createLocal(Real, _interpolationOrder + 1);
+                    ElementType* yList =
+                        Array_createLocal(ElementType,
+                                          _interpolationOrder + 1);
 
                     /* collect x-differences and values into lists */
                     for (Natural i = 0;  i <= _interpolationOrder;  i++) {
-                        Integer j = offsetList.at(i);
-                        xDifferenceList.append(fractionalPart - Real{j});
+                        Integer j = _offsetList.at(i);
+                        Array_set(xDifferenceList, i,
+                                  fractionalPart - Real{j});
                         j = (j + nPosition + _elementCount) % _elementCount;
-                        yList.append(_list->at(Natural{j}));
+                        Array_set(yList, i, _list->at(Natural{j}));
                     }
 
                     /* calculate the ell-function: i.e. the product of
@@ -214,14 +227,14 @@ namespace BaseTypes::GenericTypes {
                     Real ell{Real::one};
 
                     for (Natural i = 0;  i <= _interpolationOrder;  i++) {
-                        ell *= xDifferenceList.at(i);
+                        ell *= Array_at(xDifferenceList, i);
                     }
 
                     /* add all Lagrange terms w_i*f(i)/(x-x_i) for all i */
                     for (Natural i = 0;  i <= _interpolationOrder;  i++) {
                         const ElementType delta{
-                            weightList.at(i) * yList.at(i)
-                            / xDifferenceList.at(i)};
+                            _weightList.at(i) * Array_at(yList, i)
+                            / Array_at(xDifferenceList, i)};
                         result = (i == 0 ? delta : result + delta);
                     }
 

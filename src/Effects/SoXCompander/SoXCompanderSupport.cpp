@@ -1514,7 +1514,7 @@ namespace SoXPlugins::Effects::SoXCompander {
                 const AudioDataPointRingBuffer* ringBuffer =
                     buffer[channel][size_t(stream)];
                 const String bufferAsString =
-                    (ringBuffer == NULL ? "NULL" : ringBuffer->toString());
+                    (ringBuffer == nullptr ? "NULL" : ringBuffer->toString());
                 st += STR::expand("channel_%1_%2 = (%3)",
                                   TOSTRING(channel) +
                                   _streamKindAsString[size_t(stream)],

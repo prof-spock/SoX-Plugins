@@ -38,9 +38,26 @@ namespace BaseTypes::Containers {
      * @param[in] count        count of elements to be allocated
      * @return array with <C>count</C> entries of type <C>ElementType</C>
      */
-    #define makeLocalArray(ElementType, count) \
+    #define Array_createLocal(ElementType, count) \
         static_cast<ElementType*>(alloca(sizeof(ElementType) \
                                   * size_t(count)))
+
+    /*--------------------*/
+
+    /**
+     * Returns element at <C>index</C> in <C>array</C>.
+     *
+     * @tparam     ElementType  element type of array
+     * @param[in]  array        element array to be indexed
+     * @param[in]  index        index of element to be accessed
+     * @return  element in array at index
+     */
+    template<typename ElementType>
+    ElementType Array_at (ElementType* array,
+                          IN Natural index)
+    {
+        return array[size_t(index)];
+    }
 
     /*--------------------*/
 
@@ -54,37 +71,13 @@ namespace BaseTypes::Containers {
      * @param[in] zero         zero value in given element type
      */
     template<typename ElementType>
-    void clearArray (ElementType* array,
-                     Natural count,
-                     ElementType zero)
+    void Array_clear (ElementType* array,
+                      Natural count,
+                      ElementType zero)
     {
         for (Natural i = 0;  i < count;  i++) {
             *array++ = zero;
         }
-    }
-
-    /*--------------------*/
-
-    /**
-     * Copies <C>count</C> elements from array pointed to by
-     * <C>sourcePtr</C> of type <C>ElementType</C> to array pointed to
-     * by <C>destinationPtr</C> (also of type <C>ElementType</C>).
-     * Increments both pointers by <C>count</C>.
-     *
-     * @tparam       ElementType     element type of both arrays
-     * @param[in]    sourcePtr       pointer to first source data element
-     * @param[inout] destinationPtr  pointer to first data element in
-     *                               destination
-     * @param[in]    count           count of elements to be copied
-     */
-    template<typename ElementType>
-    void copyArray (ElementType*& destinationPtr,
-                    const ElementType*& sourcePtr,
-                    Natural count)
-    {
-        const Natural byteCount = Natural{sizeof(ElementType)} * count;
-        CString_memcpy(destinationPtr, sourcePtr, size_t(byteCount));
-        destinationPtr += size_t(count);
     }
 
     /*--------------------*/
@@ -105,13 +98,55 @@ namespace BaseTypes::Containers {
      * @param[in]  count                   count of elements to be copied
      */
     template<typename DestinationElementType, typename SourceElementType>
-    void convertArray (OUT DestinationElementType* destinationPtr,
-                       IN SourceElementType* sourcePtr,
-                       IN Natural count)
+    void Array_convert (OUT DestinationElementType* destinationPtr,
+                        IN SourceElementType* sourcePtr,
+                        IN Natural count)
     {
         for (Natural i = 0;  i < count;  i++) {
-            *destinationPtr++ = (DestinationElementType) *sourcePtr++;
+            *destinationPtr++ = DestinationElementType(*sourcePtr++);
         }
+    }
+
+    /*--------------------*/
+
+    /**
+     * Copies <C>count</C> elements from array pointed to by
+     * <C>sourcePtr</C> of type <C>ElementType</C> to array pointed to
+     * by <C>destinationPtr</C> (also of type <C>ElementType</C>).
+     * Increments both pointers by <C>count</C>.
+     *
+     * @tparam       ElementType     element type of both arrays
+     * @param[in]    sourcePtr       pointer to first source data element
+     * @param[inout] destinationPtr  pointer to first data element in
+     *                               destination
+     * @param[in]    count           count of elements to be copied
+     */
+    template<typename ElementType>
+    void Array_copy (ElementType*& destinationPtr,
+                     const ElementType*& sourcePtr,
+                     Natural count)
+    {
+        const Natural byteCount = Natural{sizeof(ElementType)} * count;
+        CString_memcpy(destinationPtr, sourcePtr, size_t(byteCount));
+        destinationPtr += size_t(count);
+    }
+
+    /*--------------------*/
+
+    /**
+     * Sets element at <C>index</C> in <C>array</C> to <C>value</C> .
+     *
+     * @tparam     ElementType  element type of array
+     * @param[in]  array        element array to be indexed
+     * @param[in]  index        index of element to be changed
+     * @param[in]  value        new value of element
+     */
+    template<typename ElementType>
+    void Array_set (ElementType* array,
+                    IN Natural index,
+                    IN ElementType value)
+    {
+        array[size_t(index)] = value;
     }
 
 }

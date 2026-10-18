@@ -152,6 +152,7 @@ SET(srcCommonAudioFileList
 )
 
 SET(srcBaseModulesFileList
+    ${srcBaseModulesDirectory}/Configuration.cpp
     ${srcBaseModulesDirectory}/File.cpp
     ${srcBaseModulesDirectory}/LoggingSupport.cpp
     ${srcBaseModulesDirectory}/OperatingSystem.cpp
@@ -172,8 +173,13 @@ SET(srcEffectsBaseFileList
     ${srcEffectsDirectory}/SoXAudioEffect.cpp
 )
 
+SET(srcGenericTypesFileList
+    ${srcGenericTypesDirectory}/GenericListInterpolator.cpp
+)
+
 SET(srcHelpersFileList
     ${srcHelpersDirectory}/SoXEffectParameterMap.cpp
+    ${srcHelpersDirectory}/SoXValueChangeObserver.cpp
 )
 
 SET(srcPrimitivesFileList
@@ -189,10 +195,10 @@ SET(srcViewAndControllerFileList
 )
 
 SET(allSrcFileList
-    ${srcBaseModulesFileList}  ${srcCommonAudioFileList}
-    ${srcContainersFileList}   ${srcEffectsBaseFileList}
-    ${srcHelpersFileList}      ${srcPrimitivesFileList}
-    ${srcViewAndControllerFiles}
+    ${srcBaseModulesFileList}   ${srcCommonAudioFileList}
+    ${srcContainersFileList}    ${srcEffectsBaseFileList}
+    ${srcGenericTypesFileList}  ${srcHelpersFileList}
+    ${srcPrimitivesFileList}    ${srcViewAndControllerFiles}
 )
 
 # -------------------------------------------------------------------
@@ -352,7 +358,8 @@ INCLUDE_DIRECTORIES(${standardIncludeDirectoryList})
 SET(sourceFileList
     ${srcBaseModulesFileList}   ${srcContainersFileList}
     ${srcPrimitivesFileList}    ${srcCommonAudioFileList}
-    ${srcEffectsBaseFileList}   ${srcHelpersFileList}
+    ${srcEffectsBaseFileList}   ${srcGenericTypesFileList}
+    ${srcHelpersFileList}
 )
 
 GLOB_makeTarget_commonProjectLibrary("${sourceFileList}")
@@ -424,15 +431,21 @@ ADD_EXECUTABLE(${targetName} ${testProgramFileList})
 CMPCONF_addCompilerFlags(${targetName} TRUE)
 
 TARGET_INCLUDE_DIRECTORIES(${targetName} PUBLIC
+                           ${srcEffectsDirectory}/SoXChorusAndEcho
                            ${srcEffectsDirectory}/SoXCompander
                            ${srcEffectsDirectory}/SoXFilter
                            ${srcEffectsDirectory}/SoXFlangerPhaserAndTremolo
+                           ${srcEffectsDirectory}/SoXGain
+                           ${srcEffectsDirectory}/SoXOverdrive
                            ${srcEffectsDirectory}/SoXReverb)
 
 TARGET_LINK_LIBRARIES(${targetName}
+                      SoXChorusAndEcho_Effect
                       SoXCompander_Effect
                       SoXFilter_Effect
                       SoXFlangerPhaserAndTremolo_Effect
+                      SoXGain_Effect
+                      SoXOverdrive_Effect
                       SoXReverb_Effect
                       CommonProjectLibrary)
 

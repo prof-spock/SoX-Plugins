@@ -44,9 +44,9 @@ function makeBurstFile() {
     ${sox} -n ${soxFileSettings[@]} ${noiseFile} "${soxCommands[@]}"
 
     if [ ${isChannelB} != "true" ]; then
-        fileList="-v 0.2 ${noiseFile} -v 0.6 ${noiseFile}";
+        fileList="-v 0.2 ${noiseFile} -v 0.5 ${noiseFile}";
     else
-        fileList="-v 0.6 ${noiseFile} -v 0.2 ${noiseFile}";
+        fileList="-v 0.5 ${noiseFile} -v 0.2 ${noiseFile}";
     fi
 
     fileList="${fileList} ${fileList}"
@@ -111,12 +111,24 @@ soxCommand=(synth ${durationInSecondsByFour} pluck)
 for note in ${notes[@]}; do
     targetFile="note-${note}${soxFileType}"
     noteFileList="${noteFileList} ${targetFile}"
-    ${command[@]} ${targetFile} ${soxCommand[@]} ${note}
+    ${command[@]} ${targetFile} ${soxCommand[@]} ${note} gain -6
 done
 
 targetFile="notes${soxFileType}"
 ${sox} ${soxFileSettings[@]} ${noteFileList[@]} \
        ${targetFile} ${soxCommandsSuffix[@]}
+
+# -- dirac pulse --
+tempFileNameL="dirac-L.dat"
+tempFileNameR="dirac-R.dat"
+diracPrefixFileName="dirac-prefix.dat"
+targetFile="dirac-pulse${soxFileType}"
+echo "; Sample Rate 44100" >${diracPrefixFileName}
+echo "; Channels 1"        >>${diracPrefixFileName}
+echo "0.0 0.9999999"       >>${diracPrefixFileName}
+${sox} ${diracPrefixFileName} ${tempFileNameL} pad 0 0.999977
+${sox} ${diracPrefixFileName} ${tempFileNameR} pad 0.000997 0.99897
+${sox} -M ${tempFileNameL} ${tempFileNameR} ${targetFile}
 
 # =====================
 # === perform tests ===
@@ -142,10 +154,10 @@ performTest sine-sweep bass
 soxCommands=(biquad 0.3 -0.5 0.3 2 -0.4 0.1)
 performTest noise biquad
 
-soxCommands=(chorus 1.0 0.4
-                      50 0.75 1.25 1 -s
-                      75 0.5  2.5  2 -t
-                     100 0.25 5    4 -s)
+soxCommands=(chorus -l 1.0 0.4
+                        50 0.75 1.25 1 -s
+                        75 0.5  2.5  2 -t
+                       100 0.25 5    4 -s)
 performTest notes chorus
 performTest pulse chorus
 
@@ -153,23 +165,26 @@ soxCommands=(compand 0.02,0.15 -4:-60,0,-20 +4.5)
 performTest noise compander
 
 soxCommands=(echo 0.9 0.4
-                    200 0.75
-                    400 0.5
-                    800 0.25)
+                  200 0.75
+                  400 0.5
+                  800 0.25)
 performTest pulse echo
 performTest notes echo
 performTest noise echo
 
 soxCommands=(echos 0.9 0.4
-                      300 0.75
-                      600 0.5
-                     1200 0.25)
+                    300 0.75
+                    600 0.5
+                   1200 0.25)
 performTest pulse echos
 performTest notes echos
 performTest noise echos
 
 soxCommands=(equalizer 520 2o -3)
 performTest sine-sweep equalizer
+
+soxCommands=(flanger -l 10 5 30 55 0.5 sine)
+performTest noise flanger
 
 soxCommands=(gain -7.5)
 performTest noise gain
@@ -187,7 +202,7 @@ soxCommands=(mcompand "0.02,0.15 4:-60,0,-20 +4.5")
 soxCommands+=(1000 "0.15,0.4 -20,0,-10 -2")
 performTest noise mcompander
 
-soxCommands=(phaser 0.6 0.66 3 0.6 0.5 -t)
+soxCommands=(phaser 0.6 0.66 3 0.4 0.5 -t)
 performTest noise phaser
 
 soxCommands=(reverb 60 22 87.5 34.88 20 -3)

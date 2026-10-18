@@ -18,11 +18,11 @@
 /* IMPORTS */
 /*=========*/
 
-#include "SoXAudioEffect.h"
+#include "SoXCombinedAudioEffect.h"
 
 /*--------------------*/
 
-using SoXPlugins::Effects::SoXAudioEffect;
+using SoXPlugins::Effects::SoXCombinedAudioEffect;
 
 /*====================*/
 
@@ -35,7 +35,7 @@ namespace SoXPlugins::Effects::SoXFilter {
      * <B>equalizer</B>, <B>highpass</B>, <B>lowpass</B> and
      * <B>treble</B> into a single plugin.
      */
-    struct SoXFilter_AudioEffect : public SoXAudioEffect {
+    struct SoXFilter_AudioEffect : public SoXCombinedAudioEffect {
 
         /*---------------------*/
         /* setup & destruction */
@@ -46,12 +46,6 @@ namespace SoXPlugins::Effects::SoXFilter {
         /*--------------------*/
 
         ~SoXFilter_AudioEffect () override;
-
-        /*-----------------------*/
-        /* string representation */
-        /*-----------------------*/
-
-        String toString () const override;
 
         /*--------------------*/
         /* property queries   */
@@ -69,29 +63,46 @@ namespace SoXPlugins::Effects::SoXFilter {
         /* event handling     */
         /*--------------------*/
 
-        void prepareToPlay (IN Real dataPointRate)
-            override;
-
-        /*--------------------*/
-
-        void processBlock (IN Real timePosition,
-                           INOUT AudioDataPointListVector& buffer)
-            override;
+        void recalculate () override;
 
         /*--------------------*/
         /*--------------------*/
 
         protected:
 
+            /*-----------------------*/
+            /* string representation */
+            /*-----------------------*/
+
             String _effectDescriptorToString () const
                 override;
 
             /*--------------------*/
+            /* parameter map      */
+            /*--------------------*/
 
-            SoXParameterValueChangeKind
+            SoXValueChangeKind
             _setValueInternal (IN String& parameterName,
-                               IN String& value,
-                               IN Boolean recalculationIsForced)
+                               IN String& value)
+                override;
+
+            /*--------------------*/
+            /* event handling     */
+            /*--------------------*/
+
+            void
+            _applyForFrame (IN AudioDataPointList& inputDataPointList,
+                            OUT AudioDataPointList& outputDataPointList)
+                override;
+
+            /*--------------------*/
+
+            void _handleDataPointRateChange (IN Real dataPointRate)
+                override;
+
+            /*--------------------*/
+
+            void _updateEffectForKind (IN String& effectKindString)
                 override;
 
     };

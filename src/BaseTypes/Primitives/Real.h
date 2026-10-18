@@ -94,6 +94,15 @@ namespace BaseTypes::Primitives {
         /*--------------------*/
 
         /**
+         * Returns real in single precision.
+         *
+         * @return  real rounded to nearest single precision value
+         */
+        Real toSinglePrecision () const;
+
+        /*--------------------*/
+
+        /**
          * Returns string representation of real with precision and
          * padding information.
          *
@@ -109,8 +118,8 @@ namespace BaseTypes::Primitives {
          *                                        notation
          * @return  string representation
          */
-        String toString (IN Natural precision = 7,
-                         IN Natural fractionalDigitCount = 3,
+        String toString (IN Natural precision = 9,
+                         IN Natural fractionalDigitCount = 5,
                          IN String& padString = "0",
                          IN Boolean scientificNotationIsForced = false) const;
 
@@ -349,6 +358,16 @@ namespace BaseTypes::Primitives {
           * @return x^{1/2}
           */
         static Real sqrt (IN Real x);
+
+        /*--------------------*/
+
+        /**
+         * Returns single precision value for real <C>r</C>.
+         *
+         * @param[in] r  real value to be converted to single precision
+         * @return  single precision representation
+         */
+        static Real toSinglePrecision (IN Real r);
 
         /*--------------------*/
 

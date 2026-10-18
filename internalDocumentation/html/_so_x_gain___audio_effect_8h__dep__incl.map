@@ -1,7 +1,0 @@
-<map id="SoXGain_AudioEffect.h" name="SoXGain_AudioEffect.h">
-<area shape="rect" id="Node000001" title="The SoXGain_AudioEffect specification defines the SoX gain plugin amplifying or attenuating the input..." alt="" coords="117,5,273,31"/>
-<area shape="rect" id="Node000002" href="$_so_x_gain___audio_effect_8cpp.html" title="The SoXGain_AudioEffect body implements the SoX gain plugin amplifying or attenuating the input signa..." alt="" coords="5,79,176,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,41,109,81,106,76,165,36"/>
-<area shape="rect" id="Node000003" href="$_so_x_gain___audio_processor_8cpp.html" title="The SoXGain_AudioProcessor module provides boilerplate code for a plugins for the SoX gain effect." alt="" coords="201,79,397,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="224,36,283,76,280,81,221,41"/>
-</map>

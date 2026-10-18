@@ -44,12 +44,6 @@ namespace SoXPlugins::Effects::SoXReverb {
 
         ~SoXReverb_AudioEffect () override;
 
-        /*-----------------------*/
-        /* string representation */
-        /*-----------------------*/
-
-        String toString () const override;
-
         /*--------------------*/
         /* property queries   */
         /*--------------------*/
@@ -70,28 +64,41 @@ namespace SoXPlugins::Effects::SoXReverb {
         /* event handling     */
         /*--------------------*/
 
-        void prepareToPlay (IN Real dataPointRate) override;
-
-        /*--------------------*/
-
-        void processBlock (IN Real timePosition,
-                           INOUT AudioDataPointListVector& buffer)
-            override;
+        void recalculate () override;
 
         /*--------------------*/
         /*--------------------*/
 
         protected:
 
+            /*-----------------------*/
+            /* type conversion       */
+            /*-----------------------*/
+
             String _effectDescriptorToString () const
                 override;
 
             /*--------------------*/
+            /* parameter map      */
+            /*--------------------*/
 
-            SoXParameterValueChangeKind
+            SoXValueChangeKind
             _setValueInternal (IN String& parameterName,
-                               IN String& value,
-                               IN Boolean recalculationIsForced)
+                               IN String& value)
+                override;
+
+            /*--------------------*/
+            /* event handling     */
+            /*--------------------*/
+
+            void
+            _applyForFrame (IN AudioDataPointList& inputDataPointList,
+                            OUT AudioDataPointList& outputDataPointList)
+                override;
+
+            /*--------------------*/
+
+            void _handleDataPointRateChange (IN Real dataPointRate)
                 override;
 
     };

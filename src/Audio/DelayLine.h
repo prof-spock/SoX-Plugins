@@ -22,6 +22,7 @@
 
 using Audio::AudioDataPointRingBuffer;
 using BaseTypes::GenericTypes::GenericListInterpolator;
+using BaseTypes::GenericTypes::ListInterpolatorPointLocation;
 
 /*====================*/
 
@@ -47,15 +48,20 @@ namespace Audio {
 
         /**
          * Defines new delay line with arbitrary length and given
-         * initial length and interpolation order.
+         * initial length, interpolation order and reference point
+         * location.
          *
-         * @param[in] length                   initial real-valued
-         *                                     length of delay line
-         * @param[in] interpolationOrder       initial order of
-         *                                     interpolation polynomial
+         * @param[in] length              initial real-valued length
+         *                                of delay line
+         * @param[in] interpolationOrder  initial order of
+         *                                interpolation polynomial
+         * @param[in] pointLocation       initial position of reference
+         *                                point in interpolation interval
          */
         DelayLine (IN Real length = 0.0,
-                   IN Natural interpolationOrder = 0);
+                   IN Natural interpolationOrder = 0,
+                   IN ListInterpolatorPointLocation pointLocation
+                          = ListInterpolatorPointLocation::atCenter);
 
         /*--------------------*/
 
@@ -132,6 +138,16 @@ namespace Audio {
         Real length () const;
 
         /*--------------------*/
+
+        /**
+         * Returns the reference point location for the delay line
+         *
+         * @return reference point location within interpolation
+         *         interval
+         */
+        ListInterpolatorPointLocation referencePointLocation () const;
+
+        /*--------------------*/
         /* element access     */
         /*--------------------*/
 
@@ -202,6 +218,17 @@ namespace Audio {
         /*--------------------*/
 
         /**
+         * Sets the reference point location for the delay line
+         *
+         * @param[in] pointLocation  reference point location within
+         *                           interpolation interval
+         */
+        void setReferencePointLocation
+                 (IN ListInterpolatorPointLocation pointLocation);
+
+        /*--------------------*/
+
+        /**
          * Sets entries in delay line to zero, but does not change
          * effective and maximum length
          */
@@ -218,6 +245,10 @@ namespace Audio {
 
             /** the order of the interpolation polynomial */
             Natural _interpolationOrder;
+
+            /** the reference point location in the interpolation
+             * interval */
+            ListInterpolatorPointLocation _referencePointLocation;
 
             /** the interpolator */
             AudioDataPointRingBufferInterpolator _interpolator;

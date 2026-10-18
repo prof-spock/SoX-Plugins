@@ -197,9 +197,9 @@ void IIRFilter::apply (IN AudioDataPointRingBuffer& inputBuffer,
     #else
         /* support vectorization by using arrays for the buffers */
         AudioDataPoint* inputBufferAsArray =
-            makeLocalArray(AudioDataPoint, _order);
+            Array_createLocal(AudioDataPoint, _order);
         AudioDataPoint* outputBufferAsArray = 
-            makeLocalArray(AudioDataPoint, _order);
+            Array_createLocal(AudioDataPoint, _order);
         const AudioDataPoint* dataAsArray = _data.asArray();
         const AudioDataPoint* otherDataAsArray = _data.asArray(_order);
         inputBuffer.toArray(inputBufferAsArray);

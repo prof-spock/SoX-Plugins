@@ -15,7 +15,6 @@
 /* IMPORTS */
 /*=========*/
 
-#include "Boolean.h"
 #include "Natural.h"
 #include "Object.h"
 #include "Radians.h"
@@ -23,7 +22,6 @@
 
 /*--------------------*/
 
-using BaseTypes::Primitives::Boolean;
 using BaseTypes::Primitives::Natural;
 using BaseTypes::Primitives::Object;
 using BaseTypes::Primitives::Radians;
@@ -38,6 +36,26 @@ namespace Audio {
      * iterator on the current waveform.
      */
     using WaveFormIteratorState = Natural;
+
+    /*--------------------*/
+
+    /**
+     * The <C>ValuePrecision</C> is an enumeration type for the
+     * supported precision of wave form elements: integer values,
+     * single precision float values and double precision float values
+     */
+    enum class ValuePrecision
+                   { integerPrecision, singlePrecision, doublePrecision };
+
+    /*--------------------*/
+
+    /**
+     * Returns string representation of <C>precision</C>.
+     *
+     * @param[in]  precision   precision to be converted to string
+     * @return string representation of precision
+     */
+    String valuePrecisionToString (IN ValuePrecision precision);
 
     /*--------------------*/
 
@@ -121,7 +139,7 @@ namespace Audio {
          *
          * @return string representation
          */
-        String toString() const;
+        String toString () const;
 
         /*--------------------*/
         /* setup              */
@@ -132,27 +150,38 @@ namespace Audio {
          * form given by <C>kind</C>; wave form has
          * <C>minimumValue</C> and <C>maximumValue</C> as bounds;
          * <C>phase</C> specifies the offset in the waveform and
-         * <C>hasIntegerElements</C> tells whether data has to be
-         * rounded to integer; note that the length is <B>real</B>,
-         * that means, albeit the internal representation is an array
-         * of samples, the advance operation takes care of the
-         * accumulated indexing error and corrects is as soon as it
-         * exceeds one sample position
+         * <C>precision</C> tells whether data has to be rounded to
+         * integer or single precision; note that the length is
+         * <B>real</B>, that means, albeit the internal representation
+         * is an array of values, the advance operation takes care of
+         * the accumulated indexing error and corrects is as soon as
+         * it exceeds one (natural) index position
          *
-         * @param[in] length            the count of base points
-         * @param[in] kind              the kind (sine or triangle)
-         * @param[in] minimumValue      the minimum y-value in waveform
-         * @param[in] maximumValue      the maximum y-value in waveform
-         * @param[in] phase             the initial phase (in radians)
-         * @param[in] hasIntegerValues  tells whether waveform only may
-         *                              have integer values as y-values
+         * @param[in] length        the count of base points
+         * @param[in] kind          the kind (sine or triangle)
+         * @param[in] minimumValue  the minimum y-value in waveform
+         * @param[in] maximumValue  the maximum y-value in waveform
+         * @param[in] phase         the initial phase (in radians)
+         * @param[in] precision     tells the value precision of
+         *                          the y-values in the waveform
          */
         void set (IN Real length, IN WaveFormKind kind,
                   IN Real minimumValue, IN Real maximumValue,
-                  IN Radians phase, IN Boolean hasIntegerValues);
+                  IN Radians phase, IN ValuePrecision precision);
 
         /*--------------------*/
         /* property access    */
+        /*--------------------*/
+
+        /**
+         * Returns value of waveform at <C>position</C> relative to
+         * current waveform pointer.
+         *
+         * @param[in] position  position relative to current pointer
+         * @return value of waveform at current position
+         */
+        Real at (IN Real position) const;
+
         /*--------------------*/
 
         /**
@@ -161,6 +190,15 @@ namespace Audio {
          * @return value of waveform at current pointer
          */
         Real current () const;
+
+        /*--------------------*/
+
+        /**
+         * Returns length of waveform.
+         *
+         * @return length of waveform
+         */
+        Real length () const;
 
         /*--------------------*/
 

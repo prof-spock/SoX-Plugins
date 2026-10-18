@@ -1,5 +1,0 @@
-<map id="IIRFilter" name="IIRFilter">
-<area shape="rect" id="Node000001" title="A IIRFilter object is an infinite impulse response filter." alt="" coords="47,5,134,231"/>
-<area shape="rect" id="Node000002" href="$struct_so_x_plugins_1_1_effects_1_1_so_x_compander_1_1___l_r_filter.html" title="A _LRFilter object is a Linkwitz&#45;Riley filter of order 5." alt="" coords="5,279,176,379"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,245,93,278,88,278,88,245"/>
-</map>

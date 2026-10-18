@@ -1145,10 +1145,13 @@ void _SoXReverb::setParameters (IN Boolean isWetOnly,
     effectParameterData.feedback    =
         Real::one - Real::exp((Real{currentReverberance} - maximumFeedback)
                             / (minimumFeedback * maximumFeedback));
-    effectParameterData.hfDamping   = currentHfDamping / 100.0 * 0.3 + 0.2;
+    effectParameterData.hfDamping   =
+        Percentage::toReal(currentHfDamping) * 0.3 + 0.2;
     effectParameterData.predelay    = currentPredelay;
-    effectParameterData.stereoDepth = currentStereoDepth / 100.0;
-    effectParameterData.roomScale   = currentRoomScale / 100.0 * 0.9 + 0.1;
+    effectParameterData.stereoDepth =
+        Percentage::toReal(currentStereoDepth);
+    effectParameterData.roomScale   =
+        Percentage::toReal(currentRoomScale) * 0.9 + 0.1;
     effectParameterData.wetGain     =
         SoXAudioHelper::dBToLinear(currentWetDbGain) * 0.015;
 
@@ -1202,8 +1205,8 @@ void _SoXReverb::resize (IN Real dataPointRate,
 /* complex change     */
 /*--------------------*/
 
-void _SoXReverb::apply (IN AudioDataPointRingBuffer& inputDataPointList,
-                        OUT AudioDataPointRingBuffer& outputDataPointList)
+void _SoXReverb::apply (IN AudioDataPointList& inputDataPointList,
+                        OUT AudioDataPointList& outputDataPointList)
 {
     Logging_trace(">>");
 

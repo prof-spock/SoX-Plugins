@@ -1,7 +1,0 @@
-var searchData=
-[
-  ['soxaudioeditorwidgetptrlist_0',['SoXAudioEditorWidgetPtrList',['../namespace_so_x_plugins_1_1_view_and_controller.html#a1d18461453a22537cf1370aa0a6ecd09',1,'SoXPlugins::ViewAndController::SoXAudioEditorWidgetPtrList'],['../_so_x_audio_editor_8cpp.html#a1d18461453a22537cf1370aa0a6ecd09',1,'SoXAudioEditorWidgetPtrList:&#160;SoXAudioEditor.h']]],
-  ['str_1',['STR',['../_audio_data_point_ring_buffer_vector_8cpp-inc.html#a5b6f88d1249b396e351c4a85bcb35b2c',1,'AudioDataPointRingBufferVector.cpp-inc']]],
-  ['string_2',['String',['../namespace_base_types_1_1_primitives.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc',1,'BaseTypes::Primitives::String'],['../_audio_data_point_8h.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc',1,'String:&#160;MyString.h'],['../_file_8h.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc',1,'String:&#160;MyString.h'],['../_logging_support_8h.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc',1,'String:&#160;MyString.h'],['../_operating_system_8h.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc',1,'String:&#160;MyString.h'],['../_string_list_8cpp.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc',1,'String:&#160;MyString.h'],['../_my_string_8cpp.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc',1,'String:&#160;MyString.h'],['../_real_8cpp.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc',1,'String:&#160;MyString.h'],['../_so_x_audio_effect_8h.html#aa37c6ea28e4f3e4a9ceab460d9bc88fc',1,'String:&#160;MyString.h']]],
-  ['stringtonaturalmap_3',['StringToNaturalMap',['../_so_x_audio_processor_8cpp.html#a159291a215bac17ba80d19973f63fdec',1,'SoXAudioProcessor.cpp']]]
-];

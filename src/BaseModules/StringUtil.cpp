@@ -30,9 +30,6 @@ using STR = BaseModules::StringUtil;
   * not found  */
 static const size_t _notFound = std::string::npos;
 
-/** the character representing a blank character */
-static const Character _blankCharacter{' '};
-
 /** the character representing a minus sign in a number */
 static const Character _minusCharacter{'-'};
 
@@ -401,7 +398,7 @@ Boolean StringUtil::isReal (IN String& st)
 
             if (state == State::atMantissaSign) {
                 if (ch == _plusCharacter || ch == _minusCharacter
-                    || ch == _blankCharacter || _isDigitChar(ch)) {
+                    || ch == blankCharacter || _isDigitChar(ch)) {
                     state = State::inIntegralPart;
                 } else if (ch == _decimalPointCharacter) {
                     state = State::inFractionalPart;
@@ -862,3 +859,12 @@ std::wstring StringUtil::toWideString (IN String& st)
     std::mbsrtowcs(wCharPtr, &charPtr, length, &state);
     return result;
 }
+
+/*--------------------*/
+/* constants          */
+/*--------------------*/
+
+const Character StringUtil::blankCharacter{' '};
+const Character StringUtil::doubleQuoteCharacter{'"'};
+const String    StringUtil::newlineString{"\n"};
+const Character StringUtil::tabulatorCharacter{'\t'};

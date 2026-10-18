@@ -104,11 +104,12 @@ namespace SoXPlugins::ViewAndController {
         /**
          * Callback method to get informed about a change.
          *
-         * @param[in] kind  change kind
-         * @param[in] data  data depending on change kind
+         * @param[in] dictionary  dictionary with key-value pairs for
+         *                        parameters
+         * @param[in] kind        value change kind
          */
-        virtual void notifyAboutChange (IN SoXParameterValueChangeKind kind,
-                                        IN String& data="");
+        virtual void notifyAboutChange (IN Dictionary& dictionary,
+                                        IN SoXValueChangeKind kind);
 
         /*--------------------*/
         /*--------------------*/

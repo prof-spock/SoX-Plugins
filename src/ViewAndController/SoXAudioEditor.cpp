@@ -547,45 +547,46 @@ void SoXAudioEditor::setValue (IN String& parameterName,
                                IN String& value)
 {
     Logging_trace(">>");
-    _processor.setValue(parameterName, value, true);
+    _processor.setValue(parameterName, value);
     Logging_trace("<<");
 }
 
 /*--------------------*/
 
 void
-SoXAudioEditor::notifyAboutChange (IN SoXParameterValueChangeKind kind,
-                                   IN String& data)
+SoXAudioEditor::notifyAboutChange (IN Dictionary& dictionary,
+                                   IN SoXValueChangeKind kind)
 {
     Logging_trace2(">>: kind = %1, data = %2",
-                   SoXParameterValueChangeKind_toString(kind), data);
+                   SoXValueChangeKind_toString(kind), data);
     Boolean repaintIsNecessary = false;
 
-    if (kind == SoXParameterValueChangeKind::globalChange) {
+    if (kind == SoXValueChangeKind::globalChange) {
         _updateWidgetRanges(_widgetList);
         _resetAppearance();
-    } else if (kind == SoXParameterValueChangeKind::pageChange) {
-        repaintIsNecessary = true;
-    } else {
-        const String parameterName = data;
-        const String value = effectParameterMap().value(parameterName);
-        Logging_trace2("--: parameterName = %1, value = %2",
-                       parameterName, value);
+    }
+    
+    for (SoXAudioEditorWidget* widget : _widgetList) {
+        const String& parameterName = widget->parameterName();
 
-        for (SoXAudioEditorWidget* widget : _widgetList) {
-            if (widget->parameterName() == parameterName) {
-                widget->setValue(value);
+        if (dictionary.contains(parameterName)) {
+            const String& value = dictionary.at(parameterName);
+            Logging_trace2("--: parameterName = %1, value = %2",
+                           parameterName, value);
+            widget->setValue(value);
+
+            /* handle special parameters related to page */
+            if (SoXEffectParameterMap::isPageSelector(parameterName)) {
+                /* selected page change */
+                _currentEditorPageIndex =
+                    Natural::maximum(1, STR::toNatural(value, 1));
+                repaintIsNecessary = true;
+            } else if (SoXEffectParameterMap::isPageCount(parameterName)) {
+                /* page count change */
+                _lastEditorPageIndex =
+                    Natural::maximum(1, STR::toNatural(value, 1));
+                repaintIsNecessary = true;
             }
-        }
-
-        if (kind == SoXParameterValueChangeKind::pageCountChange) {
-            _lastEditorPageIndex =
-                Natural::maximum(1, STR::toNatural(value, 1));
-            repaintIsNecessary = true;
-        } else if (SoXEffectParameterMap::isPageSelector(parameterName)) {
-            _currentEditorPageIndex =
-                Natural::maximum(1, STR::toNatural(value, 1));
-            repaintIsNecessary = true;
         }
     }
 

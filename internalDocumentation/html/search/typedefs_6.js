@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['object_0',['Object',['../namespace_base_types_1_1_primitives.html#a46e9a7b488f5aadebd3b8413adf482f6',1,'BaseTypes::Primitives::Object'],['../_wave_form_8h.html#a46e9a7b488f5aadebd3b8413adf482f6',1,'Object:&#160;Object.h'],['../_file_8h.html#a46e9a7b488f5aadebd3b8413adf482f6',1,'Object:&#160;Object.h'],['../_string_util_8h.html#a46e9a7b488f5aadebd3b8413adf482f6',1,'Object:&#160;Object.h'],['../_so_x_audio_effect_8h.html#a46e9a7b488f5aadebd3b8413adf482f6',1,'Object:&#160;Object.h'],['../_so_x_compander_support_8h.html#a46e9a7b488f5aadebd3b8413adf482f6',1,'Object:&#160;Object.h'],['../_so_x_reverb_support_8h.html#a46e9a7b488f5aadebd3b8413adf482f6',1,'Object:&#160;Object.h'],['../_so_x_audio_editor_widget_8h.html#a46e9a7b488f5aadebd3b8413adf482f6',1,'Object:&#160;Object.h']]]
-];

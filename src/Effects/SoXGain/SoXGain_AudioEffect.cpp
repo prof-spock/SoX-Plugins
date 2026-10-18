@@ -134,26 +134,16 @@ SoXGain_AudioEffect::~SoXGain_AudioEffect ()
 /* string representation */
 /*-----------------------*/
 
-String SoXGain_AudioEffect::toString () const
-{
-    String st = "SoXGain_AudioEffect(";
-    st += _asRawString();
-    st += ")";
-
-    return st;
-}
-
-/*--------------------*/
-
 String SoXGain_AudioEffect::_effectDescriptorToString () const
 {
     String result;
 
-    if (_effectDescriptor == NULL) {
+    if (_effectDescriptor == nullptr) {
         result = "NULL";
     } else {
         const _EffectDescriptor_GAIN& effectDescriptor =
             TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);
+
         result = effectDescriptor.toString();
     }
 
@@ -173,30 +163,24 @@ String SoXGain_AudioEffect::name () const
 /* parameter change   */
 /*--------------------*/
 
-SoXParameterValueChangeKind
+SoXValueChangeKind
 SoXGain_AudioEffect::_setValueInternal
                          (IN String& parameterName,
-                          IN String& value,
-                          IN Boolean recalculationIsForced)
+                          IN String& value)
 {
-    Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalculationIsForced = %3",
-                   parameterName, value,
-                   TOSTRING(recalculationIsForced));
+    Logging_trace2(">>: parameterName = %1, value = %2",
+                   parameterName, value);
 
     _EffectDescriptor_GAIN& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);
-    SoXParameterValueChangeKind result =
-        SoXParameterValueChangeKind::parameterChange;
-
-    SoXAudioEffect::setValue(parameterName, value, true);
+    SoXValueChangeKind result = SoXValueChangeKind::parameterChange;
 
     if (parameterName == parameterName_gain) {
         const Real dBGain = STR::toReal(value);
         effectDescriptor.gain = SoXAudioHelper::dBToLinear(dBGain);
     }
 
-    Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));
+    Logging_trace1("<<: %1", SoXValueChangeKind_toString(result));
     return result;
 }
 
@@ -204,7 +188,7 @@ SoXGain_AudioEffect::_setValueInternal
 
 void SoXGain_AudioEffect::setDefaultValues () {
     Logging_trace(">>");
-    setValueViaParent(parameterName_gain, "0");
+    setValue(parameterName_gain, "0");
     Logging_trace1("<<: %1", toString());
 }
 
@@ -212,31 +196,21 @@ void SoXGain_AudioEffect::setDefaultValues () {
 /* event handling     */
 /*--------------------*/
 
-void
-SoXGain_AudioEffect::processBlock (IN Real timePosition,
-                                   INOUT AudioDataPointListVector& buffer)
+void SoXGain_AudioEffect::
+_applyForFrame (IN AudioDataPointList& inputDataPointList,
+                OUT AudioDataPointList& outputDataPointList)
 {
-    Logging_trace1(">>: time = %1", TOSTRING(timePosition));
+    Logging_trace(">>");
 
-    if (_parametersAreValid) {
-        SoXAudioEffect::processBlock(timePosition, buffer);
-        _EffectDescriptor_GAIN& effectDescriptor =
-            TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);
+    _EffectDescriptor_GAIN& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_GAIN>(_effectDescriptor);
 
-        const Natural dataPointCount = buffer[0].size();
-        const Real gain = effectDescriptor.gain;
+    const Real gain = effectDescriptor.gain;
 
-        for (Natural channel = 0;  channel < _channelCount;
-             channel++) {
-            const AudioDataPointList& inputList = buffer[channel];
-            AudioDataPointList& outputList      = buffer[channel];
-
-            for (Natural i = 0;  i < dataPointCount;  i++) {
-                const AudioDataPoint inputDataPoint = inputList[i];
-                AudioDataPoint& outputDataPoint     = outputList[i];
-                outputDataPoint = (AudioDataPoint) (inputDataPoint * gain);
-            }
-        }
+    for (Natural channel = 0;  channel < _channelCount; channel++) {
+        const AudioDataPoint inputDataPoint = inputDataPointList[channel];
+        AudioDataPoint& outputDataPoint     = outputDataPointList[channel];
+        outputDataPoint = inputDataPoint * gain;
     }
 
     Logging_trace("<<");

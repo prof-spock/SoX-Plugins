@@ -117,8 +117,10 @@ namespace SoXPlugins::Helpers {
 
         /**
          * Tells whether <C>parameterName</C> occurs in list of
-         * parameter names.
+         * allowed parameter names.
          *
+         * @param[in] parameterName  name of parameter to be checked
+         *                           for existence
          * @return information whether parameter name is contained
          *         in map
          */
@@ -345,6 +347,39 @@ namespace SoXPlugins::Helpers {
          */
         void changeActivenessByPage (IN Natural lastPageIndex);
 
+        /*---------------------*/
+        /* alias name handling */
+        /*---------------------*/
+
+        /**
+         * Tells whether <C>parameterName</C> is an acceptable name
+         * for some parameter and returns associated
+         * <C>canonicalParameterName</C>.
+         *
+         * @param[in] parameterName           name of parameter to be
+         *                                    checked for existence
+         * @param[in] canonicalParameterName  name of canonical
+         *                                    parameter
+         * @return  information whether parameter name is acceptable
+         *          for value access (either being an alias or a
+         *          canonical name)
+         */
+        Boolean isAcceptableName (IN String& parameterName,
+                                  OUT String& canonicalParameterName) const;
+
+        /*---------------------*/
+
+        /**
+         * Sets <C>aliasParameterName</C> as an alias name for some
+         * parameter with canonical name
+         * <C>canonicalParameterName</C>.
+         *
+         * @param[in] aliasParameterName      alias name for parameter
+         * @param[in] canonicalParameterName  canonical parameter name
+         */
+        void setAsAlias (IN String& aliasParameterName,
+                         IN String& canonicalParameterName);
+
         /*--------------------*/
         /* data access/change */
         /*--------------------*/
@@ -368,6 +403,17 @@ namespace SoXPlugins::Helpers {
          *                           invalidated
          */
         void invalidateValue (IN String& parameterName);
+
+        /*--------------------*/
+
+        /**
+         * Sets all parameter in <C>parameterNameList</C> to an
+         * unknown value.
+         *
+         * @param[in] parameterNameList  list of parameter names to be
+         *                               invalidated
+         */
+        void invalidateValues (IN StringList& parameterNameList);
 
         /*--------------------*/
 
@@ -563,6 +609,19 @@ namespace SoXPlugins::Helpers {
 
         /**
          * Tells whether parameter given by <C>parameterName</C>
+         * is the page count.
+         *
+         * @param[in] parameterName name of parameter to be checked
+         * @return  tells whether this parameter is the page count
+         *          (its nominal page index equals
+         *          <C>pageCounterPage</C>
+         */
+        static Boolean isPageCount (IN String& parameterName);
+
+        /*--------------------*/
+
+        /**
+         * Tells whether parameter given by <C>parameterName</C>
          * is the page selector.
          *
          * @param[in] parameterName name of parameter to be checked
@@ -570,6 +629,20 @@ namespace SoXPlugins::Helpers {
          *          (its nominal page index equals <C>selectorPage</C>
          */
         static Boolean isPageSelector (IN String& parameterName);
+
+        /*--------------------*/
+        /* transformation     */
+        /*--------------------*/
+
+        /**
+         * Reorders parameters such that for names in
+         * <C>parameterNameList</C> those are available in that order
+         * in parameter name list of map.
+         *
+         * @param[in] parameterNameList  list of parameter names to
+         *                               be used for ordering
+         */
+        void reorderByNameList (IN StringList parameterNameList);
 
         /*--------------------*/
         /*--------------------*/
@@ -593,6 +666,10 @@ namespace SoXPlugins::Helpers {
 
             /** the set of parameter names considered active */
             StringSet _activeParameterNameSet;
+
+            /** the mapping from alias parameter name to canonical
+             *  parameter name */
+            Dictionary _aliasToCanonicalNameMap;
 
     };
 

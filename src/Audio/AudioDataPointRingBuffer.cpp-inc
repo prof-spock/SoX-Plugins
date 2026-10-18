@@ -20,7 +20,7 @@
 /*====================*/
 
 using Audio::AudioDataPointRingBuffer;
-using BaseTypes::Containers::copyArray;
+using BaseTypes::Containers::Array_copy;
 
 /*====================*/
 
@@ -80,12 +80,12 @@ AudioDataPointRingBuffer::toArray (OUT AudioDataPoint* elementArray) const
     /* copy first segment from firstIndex to end */
     const Natural segmentLengthA = _length - _firstIndex;
     sourcePtr = _data.asArray(_firstIndex);
-    copyArray(destinationPtr, sourcePtr, segmentLengthA);
+    Array_copy(destinationPtr, sourcePtr, segmentLengthA);
 
     /* copy second segment from 0 to (firstIndex - 1) */
     const Natural segmentLengthB = _firstIndex;
     sourcePtr = _data.asArray();
-    copyArray(destinationPtr, sourcePtr, segmentLengthB);
+    Array_copy(destinationPtr, sourcePtr, segmentLengthB);
 }
 
 /*--------------------*/

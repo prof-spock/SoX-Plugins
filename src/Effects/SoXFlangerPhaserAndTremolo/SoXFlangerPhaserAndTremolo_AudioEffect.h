@@ -17,11 +17,11 @@
 /* IMPORTS */
 /*=========*/
 
-#include "SoXAudioEffect.h"
+#include "SoXCombinedAudioEffect.h"
 
 /*--------------------*/
 
-using SoXPlugins::Effects::SoXAudioEffect;
+using SoXPlugins::Effects::SoXCombinedAudioEffect;
 
 /*====================*/
 
@@ -33,7 +33,8 @@ namespace SoXPlugins::Effects::SoXFlangerPhaserAndTremolo {
      * modulation effects that have similar parameters and hence are
      * combined into a single plugin.
      */
-    struct SoXFlangerPhaserAndTremolo_AudioEffect : public SoXAudioEffect {
+    struct SoXFlangerPhaserAndTremolo_AudioEffect
+        : public SoXCombinedAudioEffect {
 
         /*---------------------*/
         /* setup & destruction */
@@ -45,14 +46,12 @@ namespace SoXPlugins::Effects::SoXFlangerPhaserAndTremolo {
 
         ~SoXFlangerPhaserAndTremolo_AudioEffect () override;
 
-        /*-----------------------*/
-        /* string representation */
-        /*-----------------------*/
-
-        String toString () const override;
-
         /*--------------------*/
         /* property queries   */
+        /*--------------------*/
+
+        Boolean isTimeVariant () const override;
+
         /*--------------------*/
 
         String name () const override;
@@ -71,24 +70,51 @@ namespace SoXPlugins::Effects::SoXFlangerPhaserAndTremolo {
         /* event handling     */
         /*--------------------*/
 
-        void processBlock (IN Real timePosition,
-                           INOUT AudioDataPointListVector& buffer)
-            override;
+        void recalculate () override;
 
         /*--------------------*/
         /*--------------------*/
 
         protected:
 
+            /*-----------------------*/
+            /* string representation */
+            /*-----------------------*/
+
             String _effectDescriptorToString () const
+                override;
+
+            /*-----------------------*/
+
+            String _internalState () const
+                override;
+
+            /*--------------------*/
+            /* parameter map      */
+            /*--------------------*/
+
+            SoXValueChangeKind
+            _setValueInternal (IN String& parameterName,
+                               IN String& value)
+                override;
+
+            /*--------------------*/
+            /* event handling     */
+            /*--------------------*/
+
+            void
+            _applyForFrame (IN AudioDataPointList& inputDataPointList,
+                            OUT AudioDataPointList& outputDataPointList)
                 override;
 
             /*--------------------*/
 
-            SoXParameterValueChangeKind
-            _setValueInternal (IN String& parameterName,
-                               IN String& value,
-                               IN Boolean recalculationIsForced)
+            void _handleDataPointRateChange (IN Real dataPointRate)
+                override;
+
+            /*--------------------*/
+
+            void _updateEffectForKind (IN String& effectKindString)
                 override;
 
     };

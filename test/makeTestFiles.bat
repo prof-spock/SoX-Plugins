@@ -28,6 +28,7 @@ PUSHD %scriptDirectory%
 ECHO === preparing test files ===
 
 SET soxCommandsSuffix=fade 0.1 -0 pad 1 1
+
 REM -- a stereo file with noise on one channel and sine on the other
 REM -- (both with two bursts)
 SET soxCommands=synth %durationInSecondsBy4% pinknoise
@@ -52,10 +53,21 @@ REM -- four notes --
 SET notes=E2 A2 D3 G3
 SET soxCommand=synth %durationInSecondsBy4% pluck
 SET prefix=%sox% -n %soxFileSettings%
-FOR %%n IN (%notes%) DO %prefix% note-%%n%soxFileType% %soxCommand% %%n
+FOR %%n IN (%notes%) DO %prefix% note-%%n%soxFileType% %soxCommand% %%n gain -6
 SET fileList=
 FOR %%n IN (%notes%) DO SET fileList=!fileList! note-%%n%soxFileType%
 %sox% %fileList% notes%soxFileType% %soxCommandsSuffix%
+
+REM -- two dirac pulses at 0 and 1ms --
+SET tempFileNameL=dirac-L.dat
+SET tempFileNameR=dirac-R.dat
+SET diracPrefixFileName=dirac-Prefix.dat
+ECHO ; Sample Rate 44100 >%diracPrefixFileName%
+ECHO ; Channels 1        >>%diracPrefixFileName%
+ECHO 0.0 0.9999999       >>%diracPrefixFileName%
+%sox% %diracPrefixFileName% %tempFileNameL% pad 0 0.999977
+%sox% %diracPrefixFileName% %tempFileNameR% pad 0.000997 0.99897
+%sox% -M %tempFileNameL% %tempFileNameR% dirac-pulse%soxFileType%
 
 REM =====================
 REM === perform tests ===
@@ -82,7 +94,7 @@ SET soxCommands=biquad 0.3 -0.5 0.3 2 -0.4 0.1
 CALL :performTest noise biquad
 
 SET stageList=50 0.75 1.25 1 -s  75 0.5 2.5 2 -t  100 0.25 5 4 -s
-SET soxCommands=chorus 1.0 0.4 %stageList%
+SET soxCommands=chorus -l 1.0 0.4 %stageList%
 CALL :performTest notes chorus
 CALL :performTest onePulse chorus
 
@@ -101,6 +113,10 @@ CALL :performTest noise echos
 
 SET soxCommands=equalizer 520 2o -3
 CALL :performTest sine-sweep equalizer
+
+SET soxCommands=flanger -l 10 5 30 55 0.5 sine
+CALL :performTest noise flanger
+CALL :performTest dirac-pulse flanger
 
 SET soxCommands=gain -7.5
 CALL :performTest noise gain
@@ -147,10 +163,10 @@ REM ============================================================
     %sox% -n %soxFileSettings% %noiseFile% %soxCommands%
 
     IF "%isChannelB%"=="true" GOTO ELSE1
-        SET fileList=-v 0.2 %noiseFile% -v 0.6 %noiseFile%
+        SET fileList=-v 0.2 %noiseFile% -v 0.5 %noiseFile%
         GOTO ENDIF1
     :ELSE1
-        SET fileList=-v 0.6 %noiseFile% -v 0.2 %noiseFile%
+        SET fileList=-v 0.5 %noiseFile% -v 0.2 %noiseFile%
     :ENDIF1
 
     SET fileList=%fileList% %fileList%

@@ -66,14 +66,6 @@ namespace SoXPlugins::Effects::SoXOverdrive {
           * a DC offset applied to the signal*/
         Real colour;
 
-        /** the list of incoming data points for all channels (one for
-         * each) */
-        AudioDataPointList inputDataPointList;
-
-        /** the list of outgoing data points for all channels (one for
-         * each) */
-        AudioDataPointList outputDataPointList;
-
         /** the list of the previously incoming data points for all
          * channels (one for each) */
         AudioDataPointList previousInputDataPointList;
@@ -98,8 +90,14 @@ namespace SoXPlugins::Effects::SoXOverdrive {
          * Applies the overdrive effect on multiple channel data from
          * <C>inputDataPointList</C> and returns effect result in
          * <C>outputDataPointList</C>.
+         *
+         * @param [in]  inputDataPointList   list of input data points
+         *                                   for each channel
+         * @param [out] outputDataPointList  list of output data points
+         *                                   for each channel
          */
-        void apply ();
+        void apply (IN AudioDataPointList& inputDataPointList,
+                    OUT AudioDataPointList& outputDataPointList);
 
         /*--------------------*/
 
@@ -138,8 +136,6 @@ _EffectDescriptor_ODRV (INOUT SoXOverdrive_AudioEffect& effect)
       channelCount{2},
       gain{SoXAudioHelper::dBToLinear(0.0)},
       colour{Real{20.0} * colourFactor},
-      inputDataPointList{channelCount},
-      outputDataPointList{channelCount},
       previousInputDataPointList{channelCount},
       previousOutputDataPointList{channelCount}
 {
@@ -149,13 +145,14 @@ _EffectDescriptor_ODRV (INOUT SoXOverdrive_AudioEffect& effect)
 
 /*--------------------*/
 
-void _EffectDescriptor_ODRV::apply ()
+void
+_EffectDescriptor_ODRV::apply (IN AudioDataPointList& inputDataPointList,
+                               OUT AudioDataPointList& outputDataPointList)
 {
     Logging_trace(">>");
 
     for (Natural channel = 0;  channel < channelCount;  channel++) {
-        const AudioDataPoint inputDataPoint =
-            inputDataPointList[channel];
+        const AudioDataPoint inputDataPoint = inputDataPointList[channel];
         const AudioDataPoint previousInputDataPoint =
             previousInputDataPointList[channel];
         const AudioDataPoint previousOutputDataPoint =
@@ -169,7 +166,7 @@ void _EffectDescriptor_ODRV::apply ()
             (newValue - previousInputDataPoint
              + Real{0.995} * previousOutputDataPoint);
         outputDataPointList[channel] = (inputDataPoint / Real::two
-                                     + outputDataPoint * Real{0.75});
+                                        + outputDataPoint * Real{0.75});
         previousInputDataPointList[channel]  = newValue;
         previousOutputDataPointList[channel] = outputDataPoint;
     }
@@ -185,10 +182,10 @@ void _EffectDescriptor_ODRV::updateSettings (IN Natural newChannelCount)
 
     effect.setParameterValidity(false);
     channelCount = newChannelCount;
-    inputDataPointList.setLength(channelCount);
-    outputDataPointList.setLength(channelCount);
     previousInputDataPointList.setLength(channelCount);
     previousOutputDataPointList.setLength(channelCount);
+    previousInputDataPointList.setToZero();
+    previousOutputDataPointList.setToZero();
     effect.setParameterValidity(true);
 
     Logging_trace("<<");
@@ -228,6 +225,8 @@ SoXOverdrive_AudioEffect::SoXOverdrive_AudioEffect ()
                                            0, 100, 1, 20);
     _effectParameterMap.setKindAndValueInt(parameterName_colour,
                                            0, 100, 1, 20);
+    setDefaultValues();
+
     Logging_trace1("<<: %1", toString());
 }
 
@@ -242,28 +241,18 @@ SoXOverdrive_AudioEffect::~SoXOverdrive_AudioEffect ()
 
 /*-----------------------*/
 /* string representation */
-/*-----------------------*/
-
-String SoXOverdrive_AudioEffect::toString () const
-{
-    String st = "SoXOverdrive_AudioEffect(";
-    st += _asRawString();
-    st += ")";
-
-    return st;
-}
-
 /*--------------------*/
 
 String SoXOverdrive_AudioEffect::_effectDescriptorToString () const
 {
     String result;
 
-    if (_effectDescriptor == NULL) {
+    if (_effectDescriptor == nullptr) {
         result = "NULL";
     } else {
         const _EffectDescriptor_ODRV& effectDescriptor =
             TOREFERENCE<_EffectDescriptor_ODRV>(_effectDescriptor);
+
         result = effectDescriptor.toString();
     }
 
@@ -297,21 +286,17 @@ Real SoXOverdrive_AudioEffect::tailLength () const
 /* parameter change   */
 /*--------------------*/
 
-SoXParameterValueChangeKind
+SoXValueChangeKind
 SoXOverdrive_AudioEffect::_setValueInternal
                               (IN String& parameterName,
-                               IN String& value,
-                               IN Boolean recalculationIsForced)
+                               IN String& value)
 {
-    Logging_trace3(">>: parameterName = %1, value = %2,"
-                   " recalcIsForced = %3",
-                   parameterName, value,
-                   TOSTRING(recalculationIsForced));
+    Logging_trace2(">>: parameterName = %1, value = %2",
+                   parameterName, value);
 
     _EffectDescriptor_ODRV& effectDescriptor =
         TOREFERENCE<_EffectDescriptor_ODRV>(_effectDescriptor);
-    SoXParameterValueChangeKind result =
-        SoXParameterValueChangeKind::parameterChange;
+    SoXValueChangeKind result = SoXValueChangeKind::parameterChange;
 
     if (parameterName == parameterName_gain) {
         const Real dBGain = STR::toReal(value);
@@ -320,7 +305,7 @@ SoXOverdrive_AudioEffect::_setValueInternal
         effectDescriptor.colour = STR::toReal(value) * colourFactor;
     }
 
-    Logging_trace1("<<: %1", SoXParameterValueChangeKind_toString(result));
+    Logging_trace1("<<: %1", SoXValueChangeKind_toString(result));
     return result;
 }
 
@@ -329,8 +314,9 @@ SoXOverdrive_AudioEffect::_setValueInternal
 void SoXOverdrive_AudioEffect::setDefaultValues () {
     Logging_trace(">>");
 
-    setValueViaParent(parameterName_gain, "20");
-    setValueViaParent(parameterName_colour, "20", true);
+    setValue(parameterName_gain, "20");
+    setValue(parameterName_colour, "20");
+    recalculate();
 
     Logging_trace1("<<: %1", toString());
 }
@@ -339,48 +325,28 @@ void SoXOverdrive_AudioEffect::setDefaultValues () {
 /* event handling     */
 /*--------------------*/
 
-void
-SoXOverdrive_AudioEffect::processBlock
-    (IN Real timePosition,
-     INOUT AudioDataPointListVector& buffer)
+void SoXOverdrive_AudioEffect::
+_applyForFrame (IN AudioDataPointList& inputDataPointList,
+                OUT AudioDataPointList& outputDataPointList)
 {
-    Logging_trace1(">>: %1", TOSTRING(timePosition));
+    Logging_trace(">>");
 
-    if (_parametersAreValid) {
-        SoXAudioEffect::processBlock(timePosition, buffer);
+    _EffectDescriptor_ODRV& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_ODRV>(_effectDescriptor);
+    effectDescriptor.apply(inputDataPointList, outputDataPointList);
 
-        _EffectDescriptor_ODRV& effectDescriptor =
-            TOREFERENCE<_EffectDescriptor_ODRV>(_effectDescriptor);
+    Logging_trace("<<");
+}
 
-        if (_channelCount != effectDescriptor.channelCount) {
-            /* channel count has changed => update descriptor */
-            effectDescriptor.updateSettings(_channelCount);
-        }
+/*--------------------*/
 
-        const Natural dataPointCount = buffer[0].size();
-        AudioDataPointList& inputDataPointList  =
-            effectDescriptor.inputDataPointList;
-        AudioDataPointList& outputDataPointList =
-            effectDescriptor.outputDataPointList;
+void SoXOverdrive_AudioEffect::recalculate ()
+{
+    Logging_trace(">>");
 
-        for (Natural i = 0;  i < dataPointCount;  i++) {
-            /* read input data point list at position i for all
-             * channels */
-            for (Natural channel = 0;  channel < _channelCount;  channel++) {
-                const AudioDataPointList& inputList = buffer[channel];
-                inputDataPointList[channel] = inputList[i];
-            }
-            
-            effectDescriptor.apply();
-
-            /* write output data point list at position i onto all
-             * channels */
-            for (Natural channel = 0;  channel < _channelCount;  channel++) {
-                AudioDataPointList& outputList = buffer[channel];
-                outputList[i] = outputDataPointList[channel];
-            }
-        }
-    }
+    _EffectDescriptor_ODRV& effectDescriptor =
+        TOREFERENCE<_EffectDescriptor_ODRV>(_effectDescriptor);
+    effectDescriptor.updateSettings(_channelCount);
 
     Logging_trace("<<");
 }

@@ -103,7 +103,8 @@ namespace BaseModules {
 
         /**
          * Sets callback function for logging to <C>callback
-         * function</C>. Using NULL resets the callback mechanism.
+         * function</C>. Using <C>nullptr</C> resets the callback
+         * mechanism.
          *
          * @param[in] callbackFunction  function to be called for
          *                              logging

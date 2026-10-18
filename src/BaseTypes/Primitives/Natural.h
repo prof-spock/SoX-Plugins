@@ -143,7 +143,7 @@ namespace BaseTypes::Primitives {
          */
         explicit operator float () const
         {
-            return (float) _value;
+            return float(_value);
         }
 
         /*--------------------*/

@@ -1,4 +1,0 @@
-var struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_processor =
-[
-    [ "name", "struct_so_x_plugins_1_1_effects_1_1_so_x_flanger_phaser_and_tremolo_1_1_so_x_flanger_phaser_and_tremolo___audio_processor.html#a9cc1705f26ac019f387c9b8e181e9ca7", null ]
-];

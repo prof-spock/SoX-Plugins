@@ -50,7 +50,7 @@ static const String _ErrMsg_fileClosedWhenWriting =
 /*--------------------*/
 
 File::File ()
-    : _descriptor{NULL}
+    : _descriptor{nullptr}
 {
 }
 
@@ -73,7 +73,7 @@ Boolean File::open (IN String& fileName, IN String& mode)
                   STR::expand("file mode must be known - %1", mode));
     FilePointer file = C_StdIO::fopen(fileName.c_str(), mode.c_str());
     _descriptor = file;
-    Boolean result = (file != NULL);
+    Boolean result = (file != nullptr);
     return result;
 }
 
@@ -84,7 +84,7 @@ void File::close ()
     Assertion_pre(isOpen(), _ErrMsg_alreadyClosedFile);
     FilePointer file = static_cast<FilePointer>(_descriptor);
     C_StdIO::fclose(file);
-    _descriptor = NULL;
+    _descriptor = nullptr;
 }
 
 /*--------------------*/
@@ -178,7 +178,7 @@ Natural File::length (IN String& fileName)
     Natural result = 0;
     FilePointer file = C_StdIO::fopen(fileName.c_str(), "rb");
 
-    if (file != NULL) {
+    if (file != nullptr) {
         C_StdIO::fseek(file, 0, SEEK_END);
         result = size_t(C_StdIO::ftell(file));
         C_StdIO::fclose(file);
@@ -193,7 +193,7 @@ Natural File::length (IN String& fileName)
 
 Boolean File::isOpen () const
 {
-    return _descriptor != NULL;
+    return _descriptor != nullptr;
 }
 
 /*--------------------*/

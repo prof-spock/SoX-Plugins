@@ -15,32 +15,22 @@
 /* IMPORTS */
 /*=========*/
 
-#include "Object.h"
 #include "AudioDataPointListVector.h"
 #include "SoXEffectParameterMap.h"
-#include "SoXParameterValueChangeKind.h"
+#include "SoXValueChangeObserver.h"
 
 /*--------------------*/
 
 using Audio::AudioDataPointList;
 using Audio::AudioDataPointListVector;
-using BaseTypes::Primitives::Object;
-using BaseTypes::Primitives::String;
 using SoXPlugins::Helpers::SoXEffectParameterMap;
-using SoXPlugins::Helpers::SoXParameterValueChangeKind;
+using SoXPlugins::Helpers::SoXValueChangeKind;
+using SoXPlugins::Helpers::SoXValueChangeNotification;
+using SoXPlugins::Helpers::SoXValueChangeObserver;
 
 /*====================*/
 
 namespace SoXPlugins::Effects {
-
-    /** a callback function type for receiving a value change
-     * notification */
-    typedef void (*ValueChangeNotification)(INOUT Object,
-                                            IN String&,
-                                            IN String&,
-                                            IN Boolean);
-
-    /*====================*/
 
     /**
      * A <C>SoXAudioEffect</C> object is a generic stereo audio effect
@@ -61,7 +51,7 @@ namespace SoXPlugins::Effects {
         virtual ~SoXAudioEffect ();
 
         /*-----------------------*/
-        /* string representation */
+        /* type conversion       */
         /*-----------------------*/
 
         /**
@@ -69,7 +59,7 @@ namespace SoXPlugins::Effects {
          *
          * @return string representation
          */
-        virtual String toString () const;
+        String toString () const;
 
         /*--------------------*/
         /* property queries   */
@@ -90,6 +80,26 @@ namespace SoXPlugins::Effects {
          * @return data point rate of effect
          */
         Real dataPointRate () const;
+
+        /*--------------------*/
+
+        /**
+         * Tells whether effect parameters are set.
+         *
+         * @return validity of parameters
+         */
+        Boolean hasValidParameters () const;
+
+        /*--------------------*/
+
+        /**
+         * Tells whether effect settings are dependent on the time
+         * position (e.g. when modulators are used).
+         *
+         * @return  information whether effect settings depend on the
+         *          time
+         */
+        virtual Boolean isTimeVariant () const;
 
         /*--------------------*/
 
@@ -124,63 +134,9 @@ namespace SoXPlugins::Effects {
         /*--------------------*/
 
         /**
-         * Sets parameter named <C>parameterName</C> to <C>value</C>
-         * without informing parent processor.  If value has wrong
-         * kind, it is ignored; if <C>recalculationIsForced</C> is
-         * set, the recalculation of dependent internal settings is
-         * forced (otherwise it is suppressed); returns change kind of
-         * value to be reported to observers
-         *
-         * @param[in] parameterName          name of parameter to
-         *                                   be set
-         * @param[in] value                  associated value of
-         *                                   parameter
-         * @param[in] recalculationIsForced  flag to tell whether
-         *                                   complex recalculations
-         *                                   should be done
-         * @return  change kind of value (e.g. parameter change)
-         */
-        SoXParameterValueChangeKind
-        setValue (IN String& parameterName,
-                  IN String& value,
-                  IN Boolean recalculationIsForced = true);
-
-        /*--------------------*/
-
-        /**
-         * Sets parameter named <C>parameterName</C> to <C>value</C>
-         * by informing parent processor.  If value has wrong kind, it
-         * is ignored; if <C>recalculationIsForced</C> is set, the
-         * recalculation of dependent internal settings is forced
-         * (otherwise it is suppressed)
-         *
-         * @param[in] parameterName          name of parameter to
-         *                                   be set
-         * @param[in] value                  associated value of
-         *                                   parameter
-         * @param[in] recalculationIsForced  flag to tell whether
-         *                                   complex recalculations
-         *                                   should be done
-         */
-        void setValueViaParent (IN String& parameterName,
-                                IN String& value,
-                                IN Boolean recalculationIsForced = false);
-        
-        /*--------------------*/
-
-        /**
          * Sets parameters to effect default values.
          */
         virtual void setDefaultValues () = 0;
-
-        /*--------------------*/
-
-        /**
-         * Tells whether effect parameters are set.
-         *
-         * @return validity of parameters
-         */
-        Boolean hasValidParameters () const;
 
         /*--------------------*/
 
@@ -193,6 +149,30 @@ namespace SoXPlugins::Effects {
          */
         void setParameterValidity (IN Boolean isValid);
 
+        /*--------------------*/
+
+        /**
+         * Sets parameter named <C>parameterName</C> to <C>value</C>.
+         * If value has wrong kind, it is ignored; otherwise ensures,
+         * that this value is available as value for given parameter
+         * name in parameter map
+         *
+         * @param[in] parameterName  name of parameter to be set
+         * @param[in] value          associated value of parameter
+         */
+        void setValue (IN String& parameterName, IN String& value);
+
+        /*--------------------*/
+
+        /**
+         * Sets parameters to values defined by <C>dictionary</C>.
+         *
+         * @param[in] dictionary  dictionary from parameter names to
+         *                        associated string values to be set
+         *                        for the parameters
+         */
+        void setValues (IN Dictionary& dictionary);
+        
         /*----------------------*/
         /* data change listener */
         /*----------------------*/
@@ -200,17 +180,17 @@ namespace SoXPlugins::Effects {
         /**
          * Sets handler object and procedure for routing value changes
          * to <C>parent</C> and <C>notificationProc</C>; if handler
-         * object is NULL, any value change is just processed locally,
-         * otherwise it is assumed that handler calls the local
-         * setValue function indirectly
+         * object is <C>nullptr</C>, any value change is just
+         * processed locally
          *
          * @param [inout] valueChangeHandler  object processing the
          *                                    value change
          * @param [inout] notificationProc    callback routine called
          *                                    for some value change
          */
-        void setValueChangeHandler (Object valueChangeHandler,
-                                    ValueChangeNotification notificationProc);
+        void setValueChangeHandler
+                 (Object valueChangeHandler,
+                  SoXValueChangeNotification notificationProc);
 
         /*--------------------*/
         /* event handling     */
@@ -223,7 +203,28 @@ namespace SoXPlugins::Effects {
          * @param[in] dataPointRate  data point rate to be used for
          *                           processing
          */
-        virtual void prepareToPlay (IN Real dataPointRate);
+        void prepareToPlay (IN Real dataPointRate);
+
+        /*--------------------*/
+
+        /**
+         * Processes a block of audio data points <C>buffer</C> for
+         * position <C>timePosition</C>; this is a template function
+         * relying on <C>_applyForFrame</C> and <C>_internalState</C>.
+         *
+         * @param[in]    timePosition  position where processing starts
+         * @param[inout] buffer        buffer of input and output audio
+         *                             data points to be processed
+         */
+        void processBlock (IN Real timePosition,
+                           INOUT AudioDataPointListVector& buffer);
+
+        /*--------------------*/
+
+        /**
+         * Recalculates dependent data in effect
+         */
+        virtual void recalculate ();
 
         /*--------------------*/
 
@@ -233,33 +234,13 @@ namespace SoXPlugins::Effects {
         virtual void releaseResources ();
 
         /*--------------------*/
-
-        /**
-         * Processes a block of audio data points <C>buffer</C> for
-         * position <C>timePosition</C>.
-         *
-         * @param[in]    timePosition  position where processing starts
-         * @param[inout] buffer        buffer of input and output audio
-         *                             data points to be processed
-         */
-        virtual void processBlock (IN Real timePosition,
-                                   INOUT AudioDataPointListVector& buffer);
-
-        /*--------------------*/
         /*--------------------*/
 
         protected:
 
-            /**
-             * Returns data of audio effect as string without surrounding
-             * type information
-             *
-             * @return  string representation of internal data without
-             *          surrounding type information
-             */
-            virtual String _asRawString () const;
-
-            /*--------------------*/
+            /*-----------------------*/
+            /* string representation */
+            /*-----------------------*/
 
             /**
              * Returns effect descriptor data as string
@@ -267,19 +248,19 @@ namespace SoXPlugins::Effects {
              * @return  string representation of internal effect 
              *          descriptor
              */
-            virtual String _effectDescriptorToString () const = 0;
+            virtual String _effectDescriptorToString () const;
 
-            /*--------------------*/
+            /*-----------------------*/
 
             /**
-             * Informs effect about upcoming processing with
-             * <C>dataPointRate</C> (default behavior).
+             * Returns characteristic state data of effect as a string
              *
-             * @param[in] dataPointRate  data point rate to be used for
-             *                           processing
+             * @return  string representation of internal effect state
              */
-            void _prepareToPlay (IN Real dataPointRate);
+            virtual String _internalState () const;
 
+            /*--------------------*/
+            /* parameter map      */
             /*--------------------*/
 
             /**
@@ -294,25 +275,44 @@ namespace SoXPlugins::Effects {
              *                                   be set
              * @param[in] value                  associated value of
              *                                   parameter
-             * @param[in] recalculationIsForced  flag to tell whether
-             *                                   complex recalculations
-             *                                   should be done
              * @return  value change kind to be reported to observers
              */
-            virtual SoXParameterValueChangeKind
+            virtual SoXValueChangeKind
             _setValueInternal (IN String& parameterName,
-                               IN String& value,
-                               IN Boolean recalculationIsForced) = 0;
+                               IN String& value) = 0;
+
+            /*--------------------*/
+            /* event handling     */
+            /*--------------------*/
+
+            /**
+             * Applies effect for a single frame given by
+             * <C>inputDataPointList</C> with results stored in
+             * <C>outputDataPointList</C>
+             *
+             * @param[in]  inputDataPointList   frame input data points
+             * @param[out] outputDataPointList  frame output data points
+             */
+            virtual void
+            _applyForFrame (IN AudioDataPointList& inputDataPointList,
+                            OUT AudioDataPointList& outputDataPointList) = 0;
 
             /*--------------------*/
 
-            /** destination object for value change information */
-            Object _valueChangeHandler;
-        
-            /** callback function connecting this effect to value
-             * change handler */
-            ValueChangeNotification _notificationProc;
+            /**
+             * Informs effect about a change in <C>dataPointRate</C>.
+             *
+             * @param[in] dataPointRate  data point rate to be used for
+             *                           processing
+             */
+            virtual void _handleDataPointRateChange (IN Real dataPointRate);
 
+            /*--------------------*/
+            /*--------------------*/
+
+            /** observer object for value change information */
+            SoXValueChangeObserver _valueChangeObserver;
+        
             /** the audio data point rate to be used in this effect */
             Real _dataPointRate;
 
@@ -325,6 +325,10 @@ namespace SoXPlugins::Effects {
             /** during processing: the current time position in
              * seconds */
             Real _currentTimePosition;
+
+            /** during processing: the time difference between two
+             * adjacent audio data points */
+            Real _deltaTime;
 
             /** during processing: the expected next time position in
              * seconds */

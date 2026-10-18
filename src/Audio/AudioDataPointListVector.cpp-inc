@@ -14,9 +14,21 @@
 /* IMPORTS */
 /*=========*/
 
+#include "Assertion.h"
+#include "StringUtil.h"
+
+/*--------------------*/
+
 using Audio::AudioDataPointListVector;
 
+/** abbreviation for StringUtil */
+using STR = BaseModules::StringUtil;
+
 /*====================*/
+
+/*--------------------*/
+/* type conversion    */
+/*--------------------*/
 
 INLINE
 String AudioDataPointListVector::toString (IN Natural frameCount,
@@ -51,12 +63,56 @@ String AudioDataPointListVector::toString (IN Natural frameCount,
 }
 
 /*--------------------*/
+/* measurement        */
+/*--------------------*/
 
 INLINE
 Natural AudioDataPointListVector::frameCount () const
 {
     Natural result = (length() == 0 ? 0 : at(0).length());
     return result;
+}
+
+/*--------------------*/
+/* element access     */
+/*--------------------*/
+
+INLINE void
+AudioDataPointListVector::getFrame (OUT AudioDataPointList& frameDataPointList,
+                                    IN Natural frameIndex) const
+{
+    Assertion_pre(0 <= frameIndex && frameIndex < frameCount(),
+                  STR::expand("bad frame index %1 for length %2",
+                              TOSTRING(frameIndex), TOSTRING(frameCount())));
+    const Natural channelCount = length();
+
+    for (Natural channel = 0;  channel < channelCount;  channel++) {
+        const AudioDataPointList& bufferChannelDataPointList =
+            at(channel);
+        frameDataPointList.set(channel,
+                               bufferChannelDataPointList.at(frameIndex));
+    }
+}
+
+/*--------------------*/
+/* change             */
+/*--------------------*/
+
+INLINE void
+AudioDataPointListVector::setFrame
+                              (IN AudioDataPointList& frameDataPointList,
+                               IN Natural frameIndex)
+{
+    Assertion_pre(0 <= frameIndex && frameIndex < frameCount(),
+                  STR::expand("bad frame index %1 for length %2",
+                              TOSTRING(frameIndex), TOSTRING(frameCount())));
+    const Natural channelCount = length();
+
+    for (Natural channel = 0;  channel < channelCount;  channel++) {
+        AudioDataPointList& bufferChannelDataPointList = at(channel);
+        bufferChannelDataPointList.set(frameIndex,
+                                       frameDataPointList.at(channel));
+    }
 }
 
 /*--------------------*/

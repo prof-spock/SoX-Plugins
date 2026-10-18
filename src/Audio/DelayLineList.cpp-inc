@@ -18,6 +18,7 @@ using Audio::DelayLineList;
 
 /*====================*/
 
+INLINE
 String Audio::_delayLineListTypeName ()
 {
     return "DelayLineList";
@@ -47,6 +48,19 @@ void DelayLineList::setElementLength (IN Real elementLength)
 {
     for (DelayLine& delayLine : *this) {
         delayLine.setLength(elementLength);
+    }
+}
+
+/*--------------------*/
+
+INLINE
+void DelayLineList::setElementInterpolation
+         (IN Natural interpolationOrder,
+          IN ListInterpolatorPointLocation pointLocation)
+{
+    for (DelayLine& delayLine : *this) {
+        delayLine.setInterpolationOrder(interpolationOrder);
+        delayLine.setReferencePointLocation(pointLocation);
     }
 }
 

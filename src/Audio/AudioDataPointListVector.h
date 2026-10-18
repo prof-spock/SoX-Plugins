@@ -31,6 +31,10 @@ namespace Audio {
      */
     struct AudioDataPointListVector : public GenericList<AudioDataPointList> {
 
+        /*--------------------*/
+        /* type conversion    */
+        /*--------------------*/
+
         /**
          * Returns printable representation of buffer.
          *
@@ -45,6 +49,8 @@ namespace Audio {
                          IN Boolean isGroupedByFrames = true) const;
 
         /*--------------------*/
+        /* measurement        */
+        /*--------------------*/
 
         /**
          * Returns number of frames (the data points in each channel).
@@ -52,6 +58,39 @@ namespace Audio {
          * @return  number of frames in data point lists
          */
         Natural frameCount () const;
+
+        /*--------------------*/
+        /* element access     */
+        /*--------------------*/
+
+        /**
+         * Gets a single frame (the data points in each channel) for a
+         * given <C>frameIndex</C> and writes it to
+         * <C>frameDataPointList</C>.
+         *
+         * @param[out] frameDataPointList  the list receiving the
+         *                                 selected frame data points
+         * @param[in]  frameIndex          the index of the frame in
+         *                                 the buffer
+         */
+        void getFrame (OUT AudioDataPointList& frameDataPointList,
+                       IN Natural frameIndex) const;
+
+        /*--------------------*/
+        /* change             */
+        /*--------------------*/
+
+        /**
+         * Sets a single frame (the data points in each channel) for a
+         * given <C>frameIndex</C> from <C>frameDataPointList</C>.
+         *
+         * @param[in] frameDataPointList  the list with the new frame
+         *                                data points
+         * @param[in] frameIndex          the index of the frame in
+         *                                the buffer
+         */
+        void setFrame (IN AudioDataPointList& frameDataPointList,
+                       IN Natural frameIndex);
 
         /*--------------------*/
 

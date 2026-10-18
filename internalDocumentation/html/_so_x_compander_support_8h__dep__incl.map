@@ -1,7 +1,0 @@
-<map id="SoXCompanderSupport.h" name="SoXCompanderSupport.h">
-<area shape="rect" id="Node000001" title="The SoXCompanderSupport specification defines support classes for the compander algorithm and provide..." alt="" coords="122,5,289,31"/>
-<area shape="rect" id="Node000002" href="$_so_x_compander_support_8cpp.html" title="The SoXCompanderSupport body implements several internal compander classes for the compander algorith..." alt="" coords="5,79,187,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,40,115,81,112,76,175,36"/>
-<area shape="rect" id="Node000003" href="$_so_x_compander___audio_effect_8cpp.html" title="The SoXCompander_AudioEffect body implements the SoX compand and mcompand audio effects; a simple com..." alt="" coords="211,79,421,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="236,36,299,76,296,81,233,40"/>
-</map>
